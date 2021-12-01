@@ -12,7 +12,7 @@
         border: 1px solid black;
     }
      /* 전체적 구조 */
-    .header{height: 150px;}
+    .header{height: 140px;}
     .nav-area{height: 40px;}
 
      /* header부분 전반적인 구조 */
@@ -25,7 +25,6 @@
     #logo img{
         width: 350px;
         height: 70px;
-        position: absolute;
         margin: auto;
         top: 0;
         bottom: -25px;
@@ -106,6 +105,7 @@
         height: 800px;
         position: relative;
     }
+    /* 사이드바 큰 제목 스타일 */
     #category{
         list-style-type: none;
         font-weight: bolder;
@@ -113,53 +113,39 @@
         position: absolute;
         left:90px;
     }
+    /* 강아지, 고양이, 기타 카테고리 스타일*/
     .d-category{
         list-style-type: none;
+        font-size: 16px;
+        width: 130px;
+        font-weight: bolder;
+        cursor:pointer;
     }
-    .dd-category{
-        list-style-type: none;
-    }
-    #dog{
+    #d-category{
         position: absolute;
         top:80px;
-        left: 0;
+        left: 90px;
+    }
+    /* 세부 카테고리 전체 스타일 */
+    .dd-category{
+        list-style-type: none;
+        color: darkgray;
+        font-weight: bolder;
+        font-size: 13px;
+        width: 45px;
+    }
+
+    /* 강아지, 고양이, 기타 카테고리 제목 위치 */
+    #dog{
+        background-color: rgb(247, 198, 4);
+        color: white;
     }
     #cat{
-        position: absolute;
-        top:170px;
-        left: 0;
+      
     }
     #etc{
-        position: absolute;
-        top:210px;
-        left: 0;
+    
     }
-    
-    
-    
-     /* footer 영역의 세부 스타일 */
-     #footer{
-         background-color: rgb(211, 211, 211);  /* 색 다시 설정 */
-     }
-     #footer_1{ margin-left:40px}
-     #footer_1>a{
-            font-weight:600;
-            margin:15px;
-            line-height:20px;
-            color:rgb(97, 95, 95);  /* 색 다시 설정 */
-            font-size: 13px;
-            
-        }
-        #footer_2{ margin-left:40px}
-        #footer_2>p{
-            width:100%;
-            margin:0;
-            box-sizing:border-box;
-            
-        }
-        #p1{height:80%; padding:15px; font-size:12px;}
-        #p2{height:20%; padding:15px; font-size:10px; }
-    
     
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -175,7 +161,7 @@
         <div id="left"></div>
         <div id="logo">
             <a href="">
-                <img src="/resources/img/logo_side.png" alt="logo">
+                <img src="/resources/img/logo_side.png" alt="">
             </a>
         </div>
         <div id="right">
@@ -221,40 +207,38 @@
     <!--  사이드바  -->
     <div class="sidebar-area">
         <ul>
-            <li id="category">중고거래</li>
-            <li class="d-category" id = "dog"><a>강아지</a>
-                <ul>
-                    <li class="dd-category">살래요</li>
-                    <li class="dd-category">팔래요</li>
-                </ul>
-            </li>
-            <li class="d-category" id="cat"><a>고양이</a></li>
-            <li class="d-category" id="etc"><a>기타</a></li>
+            <div id="category">중고거래</div>
+            <div id="d-category">
+                <div class="d-category" id="dog">강아지</div>
+                <div class="dd-category buy">살래요</div>
+                <div class="dd-category sell">팔래요</div>
+
+                <div class="d-category" id="cat">고양이</div>
+                <div class="dd-category buy">살래요</div>
+                <div class="dd-category sell">팔래요</div>
+
+                <div class="d-category" id="etc">기타</div>
+                <div class="dd-category buy">살래요</div>
+                <div class="dd-category sell">팔래요</div>
+            </div>
         </ul>
     </div>
+
+    <script>
+        $(function(){
+            $(".d-category").click(function(){
+                const $dd = $(this).next();
     
+                if($dd.css("display") == "none"){
+                    $dd.siblings("div").slideUp();
     
-    
-    
-    
-    
-     <div id="footer">
-        <div id="footer_1">
-            <a href="">서비스 이용약관</a> 
-            <a href="">개인정보처리방침</a> 
-            <a href="">협업/제휴 문의</a> 
-            <a href="">고객센터</a>
-        </div>
-        <div id="footer_2">
-            <p id="p1">
-                (주)펫밀리 대표 :  개발하라묘    |     사업자 등록번호 : 123-45-67890 사업자정보확인     |     통신판매업신고번호 : 제 2021-서울강남-1004호     |       TEL : 1588-1588
-서울특별시 강남구 테헤란로100 (kh빌딩) 7층
-            </p>
-            <p id="p2">
-                Copyright © www.petmily.com all rights reserved.
-            </p>
-        </div>
-    </div>
+                    $dd.slideDown();
+                }else{
+                    $dd.slideUp();
+                }
+            })
+        })
+    </script>
     
 </body>
 </html>
