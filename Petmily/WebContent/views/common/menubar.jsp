@@ -9,7 +9,7 @@
 <style>
     div, img, li{
         box-sizing: border-box;
-        border: 1px solid black;
+        border: 1px soli black;
     }
      /* 전체적 구조 */
     .header{height: 140px;}
@@ -120,6 +120,7 @@
         width: 130px;
         font-weight: bolder;
         cursor:pointer;
+        margin-bottom: 5px;
     }
     #d-category{
         position: absolute;
@@ -132,19 +133,11 @@
         color: darkgray;
         font-weight: bolder;
         font-size: 13px;
-        width: 45px;
-    }
-
-    /* 강아지, 고양이, 기타 카테고리 제목 위치 */
-    #dog{
-        background-color: rgb(247, 198, 4);
-        color: white;
-    }
-    #cat{
-      
-    }
-    #etc{
-    
+        width: 60px;
+        display: none;
+        margin-bottom: 3px;
+        cursor: pointer;
+        margin-left: 15px;
     }
     
 </style>
@@ -227,15 +220,25 @@
     <script>
         $(function(){
             $(".d-category").click(function(){
-                const $dd = $(this).next();
+                $(this).siblings(".d-category").css({background: "", color:"black"});
+                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
+                const $buy = $(this).next();
     
-                if($dd.css("display") == "none"){
-                    $dd.siblings("div").slideUp();
-    
-                    $dd.slideDown();
+                if($buy.css("display") == "none" && $buy.next().css("display") == "none"){
+                    $(this).siblings(".buy").slideUp();
+                    $(this).siblings(".sell").slideUp();
+                    
+                    $buy.slideDown();
+                    $buy.next().slideDown();
                 }else{
-                    $dd.slideUp();
+                    $buy.slideUp();
+                    $buy.next().slideUp();
                 }
+            })
+
+            $(".dd-category").click(function(){
+                $(this).siblings(".dd-category").css("color", "darkgray").css("text-decoration", "none");
+                $(this).css("color", "orange").css("text-decoration", "underline");
             })
         })
     </script>
