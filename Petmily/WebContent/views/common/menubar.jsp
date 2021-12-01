@@ -139,14 +139,14 @@
     
      /* footer 영역의 세부 스타일 */
      #footer{
-         background-color: rgb(211, 211, 211);
+         background-color: rgb(211, 211, 211);  /* 색 다시 설정 */
      }
      #footer_1{ margin-left:40px}
      #footer_1>a{
             font-weight:600;
             margin:15px;
             line-height:20px;
-            color:rgb(97, 95, 95);
+            color:rgb(97, 95, 95);  /* 색 다시 설정 */
             font-size: 13px;
             
         }
