@@ -96,7 +96,7 @@
         line-height: 40px;
         cursor: pointer;
     }
-<<<<<<< Updated upstream
+
     .menu a:hover{background: white; text-decoration: none; color:black}
 
     /*사이드바 스타일*/
@@ -141,7 +141,7 @@
         margin-left: 15px;
     }
     
-=======
+
     .menu a:hover{background: white;}
     
     
@@ -169,7 +169,7 @@
         }
         #p1{height:80%; padding:15px; font-size:12px;}
         #p2{height:20%; padding:15px; font-size:10px; }
->>>>>>> Stashed changes
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -216,7 +216,7 @@
             </div>
         </div>
     </div>
-<<<<<<< Updated upstream
+
     <div class="nav-area" align="center">
         <div class="menu"><a href="">쇼핑몰</a></div>
         <div class="menu"><a href="">궁금해요</a></div>
@@ -274,7 +274,7 @@
         })
     </script>
     
-=======
+
     
     
     
@@ -295,6 +295,6 @@
             </p>
         </div>
     </div>
->>>>>>> Stashed changes
+
 </body>
 </html>
