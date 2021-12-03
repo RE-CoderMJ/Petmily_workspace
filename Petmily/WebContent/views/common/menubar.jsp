@@ -12,24 +12,19 @@
         border: 1px soli black;
     }
      /* 전체적 구조 */
-    .header{height: 140px;}
+    .header{height: 140px;line-height: 140px;}
     .nav-area{height: 40px;}
 
      /* header부분 전반적인 구조 */
     .header>div{height: 100%; float: left;}
     #left{width: 30%; position: relative;}
-    #logo{width: 41%; position: relative;}
+    #logo{width: 41%; position: relative;text-align: center;}
     #right{width: 29%; position: relative;}
 
     /* 로고 이미지 스타일 */
     #logo img{
         width: 350px;
         height: 70px;
-        margin: auto;
-        top: 0;
-        bottom: -25px;
-        left: 0;
-        right: 0;
     }
 
     /* 오른쪽 상단 전반적 구조 */
