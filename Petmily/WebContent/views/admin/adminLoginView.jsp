@@ -47,10 +47,28 @@
         #login_form{
             width:100%;height:140px;text-align: center;
         }
+        #login_input_id_pwd input{
+            display: inline-block;
+            width: 250px;
+            padding:10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #c5c5c5;
+        }
+        #login_form_etc a{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #login_form_etc input{
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: -3px;    
+        }
         /* 로그인 버튼 */
         #login_login_btn .btn{
-            padding: 30px;
-            width: 250px;
+            padding: 25px;
+            width: 280px;
             font-size: 25px;
             font-weight: bold;
         }
