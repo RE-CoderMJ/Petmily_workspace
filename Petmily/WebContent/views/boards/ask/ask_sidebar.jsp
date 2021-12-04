@@ -35,18 +35,6 @@
         top:80px;
         left: 90px;
     }
-    /* 세부 카테고리 전체 스타일 */
-    .dd-category{
-        list-style-type: none;
-        color: darkgray;
-        font-weight: bolder;
-        font-size: 13px;
-        width: 60px;
-        display: none;
-        margin-bottom: 3px;
-        cursor: pointer;
-        margin-left: 15px;
-    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -60,19 +48,14 @@
       <!--  사이드바  -->
       <div class="sidebar-area">
         <ul>
-            <div id="category">중고거래</div>
+            <div id="category">궁금해요</div>
             <div id="d-category">
                 <div class="d-category" id="dog">강아지</div>
-                <div class="dd-category buy">살래요</div>
-                <div class="dd-category sell">팔래요</div>
 
                 <div class="d-category" id="cat">고양이</div>
-                <div class="dd-category buy">살래요</div>
-                <div class="dd-category sell">팔래요</div>
-
+                
                 <div class="d-category" id="etc">기타</div>
-                <div class="dd-category buy">살래요</div>
-                <div class="dd-category sell">팔래요</div>
+                
             </div>
         </ul>
     </div>
@@ -82,23 +65,6 @@
             $(".d-category").click(function(){
                 $(this).siblings(".d-category").css({background: "", color:"black"});
                 $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                const $buy = $(this).next();
-    
-                if($buy.css("display") == "none" && $buy.next().css("display") == "none"){
-                    $(this).siblings(".buy").slideUp();
-                    $(this).siblings(".sell").slideUp();
-                    
-                    $buy.slideDown();
-                    $buy.next().slideDown();
-                }else{
-                    $buy.slideUp();
-                    $buy.next().slideUp();
-                }
-            })
-
-            $(".dd-category").click(function(){
-                $(this).siblings(".dd-category").css("color", "darkgray").css("text-decoration", "none");
-                $(this).css("color", "orange").css("text-decoration", "underline");
             })
         })
     </script>

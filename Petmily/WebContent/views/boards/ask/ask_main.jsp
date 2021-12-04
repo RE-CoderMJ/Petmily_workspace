@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
-<%
-	String contextPath = request.getContextPath();
-%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+</head>
 <style>
-    div, img, li{
+
+div, img, li{
         box-sizing: border-box;
+        border: 1px solid black;
     }
      /* 전체적 구조 */
     .header{height: 140px;line-height: 140px;}
@@ -95,6 +95,43 @@
 
     .menu a:hover{background: white; text-decoration: none; color:black}
     
+
+	/*사이드바 스타일*/
+    .sidebar-area{
+        float: left;
+        width: 250px;
+        height: 800px;
+        position: relative;
+    }
+    /* 사이드바 큰 제목 스타일 */
+    #category{
+        list-style-type: none;
+        font-weight: bolder;
+        font-size: 25px;
+        position: absolute;
+        left:90px;
+    }
+    /* 강아지, 고양이, 기타 카테고리 스타일*/
+    .d-category{
+        list-style-type: none;
+        font-size: 16px;
+        width: 130px;
+        font-weight: bolder;
+        cursor:pointer;
+        margin-bottom: 5px;
+    }
+    #d-category{
+        position: absolute;
+        top:80px;
+        left: 90px;
+    }
+
+	/* 궁금해요 메인 스타일 */
+	.content-area{
+		float: left;
+		width: 1400px;
+		height: 800px;
+	}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -103,9 +140,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
 <body>
-    <div class="header">
+	
+	<%@ include file="../../common/menubar.jsp" %>
+	<%@ include file="ask_sidebar.jsp" %>
+
+	<div class="header">
         <div id="left"></div>
         <div id="logo">
             <a href="">
@@ -151,6 +191,36 @@
         <div class="menu"><a href="">MyPage</a></div>
         <div class="menu"><a href="">고객센터</a></div>
     </div>
+
+	 <!--  사이드바  -->
+	 <div class="sidebar-area">
+        <ul>
+            <div id="category">궁금해요</div>
+            <div id="d-category">
+                <div class="d-category" id="dog">강아지</div>
+
+                <div class="d-category" id="cat">고양이</div>
+                
+                <div class="d-category" id="etc">기타</div>
+                
+            </div>
+        </ul>
+    </div>
+
+    <script>
+        $(function(){
+            $(".d-category").click(function(){
+                $(this).siblings(".d-category").css({background: "", color:"black"});
+                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
+            })
+        })
+    </script>
+	
+	<div class="content-area">
+
+
+	</div>
+
 
 </body>
 </html>
