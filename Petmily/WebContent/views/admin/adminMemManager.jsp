@@ -114,10 +114,12 @@
             font-size: 26px;
             font-weight: bold;
         }
+        
+        /* 셀렉트 박스 */
         .search-box{
             display: flex;
         }
-        /* 셀렉트 박스 */
+
         .selectpicker{
             width: 150px;
             border: 1px solid #ddd;
@@ -140,8 +142,17 @@
         .btn-box{
             text-align: right;
         }
+        /* 표 */
         table {
             text-align: center;
+        }
+        /* 페이징바 */
+        .paging-area button{
+            border:  0;
+            background-color: transparent;
+            height: 40px;
+            width: 40px;
+            border-radius: 5px;
         }
 
 
@@ -226,6 +237,7 @@
                             </form>
                         </div>
                     </div>
+
                     <!-- table -->
                     <div class="table">
                         <!-- btn-box -->
@@ -263,7 +275,27 @@
                     </div>
                 </div>
             </div>
+            <br><br><br><br>
+            <!-- 페이징 바 -->
+            <div class="paging-area" align="center">
+                <button> &lt; </button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button> &gt; </button>
+            </div>
+            <script>
+                $(function(){
+                    $(".paging-area button").click(function(){
+                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                    })
+                })
+            </script>
         </div>
+
     </body>
     </html>
    
