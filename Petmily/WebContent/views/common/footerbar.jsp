@@ -7,9 +7,20 @@
 <title>Insert title here</title>
 <style>
     /* footer 영역의 세부 스타일 */
+    html{
+        position: relative;
+    }
+    body{
+        min-height: 100%;
+    }
     #footer{
-         background-color: rgb(211, 211, 211);  /* 색 다시 설정 */
-     }
+        background-color: rgb(235, 235, 235);  /* 색 다시 설정 */
+        position:absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 15px 0;
+    }
      #footer_1{ margin-left:40px}
      #footer_1>a{
             font-weight:600;
