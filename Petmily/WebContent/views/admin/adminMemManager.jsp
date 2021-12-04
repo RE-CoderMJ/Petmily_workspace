@@ -154,6 +154,40 @@
             width: 40px;
             border-radius: 5px;
         }
+        /* 모달 팝업 */
+        .modal .modal-footer{
+            justify-content: center;
+        }
+        .modal .modal-header{
+            border-bottom: 0;
+        }
+        .modal .modal-body{
+            margin: 0 70px;
+        }
+        .modal-body .md-box{
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .md-box p{
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+            margin: 0;
+        }
+        .md-box input{
+            font-size: 22px;
+            padding: 5px 0;
+            border:0;
+            width: 230px;
+        }
+        .md-box .btn-box{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .md-box .btn-box button{
+            background-color: #d4d4d4;
+        }
 
 
     </style>
@@ -189,7 +223,7 @@
                 <a href="">로그아웃</a>
             </div>
         </div>
-        <div class="container" style="max-width: 1600px;">
+        <div class="container" style="max-width:1600px;">
             <!--  사이드바  -->
             <div class="sidebar-area">
                 <ul>
@@ -232,7 +266,7 @@
                             <form class="form-inline" action=" ">
                               <input class="form-control p-4" type="text" placeholder="조회할 회원을 입력해주세요." style="width: 350px;">
                               <button class="btn" type="submit">
-                                <span class="material-icons ">search</span>                                    
+                                <span class="material-icons">search</span>                                    
                               </button>
                             </form>
                         </div>
@@ -242,8 +276,99 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-warning mr-2">회원수정</button>
-                            <button class="btn btn-sm btn-danger">회원삭제</button>
+                            <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">회원수정</button>
+                            <button class="btn btn-sm btn-danger" data-toggle="modal2" data-target="#myModal2">회원삭제</button>
+                        </div>
+                        <!-- 회원수정 Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="md-box">
+                                        <p>회원 ID</p>
+                                        <input type="text" value="id">
+                                    </div>
+                                    <div class="md-box">
+                                        <p>이름 / 성별</p>
+                                        <input type="text" value="name / gender">
+                                    </div>
+                                    <div class="md-box">
+                                        <p>회원 이메일</p>
+                                        <input type="text" value="email">
+                                    </div>
+                                    <div class="md-box">
+                                        <p>회원 번화번호</p>
+                                        <input type="text" value="phone">
+                                    </div>
+                                    <div class="md-box">
+                                        <p>회원 포인트</p>
+                                        <input id="point1" class="point" type="number" value="3000">
+                                        
+                                        <div class="btn-box">
+                                            <button onclick="plus();" class="btn btn-sm material-icons">add</button>
+                                            <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
+                                        </div>
+                                    </div>
+                                    <!-- 회원 포인트 +,- 구현 -->
+                                    <script>
+                                        function plus(){
+                                            
+                                            const p1 = document.getElementById("point1").value;
+
+                                            const sum = Number(p1) + Number(10);
+
+                                            document.getElementById("point1").value = sum;
+
+                                        }
+                                    </script>
+                                    <script>
+                                        function minus(){
+
+                                            const m1 = document.getElementById("point1").value;
+
+                                            const minus = Number(m1) - Number(10);
+
+                                            document.getElementById("point1").value = minus;
+                                        }
+                                    </script>
+
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">회원수정</button>
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 회원삭제 모달 -->
+                        <div class="modal2" id="myModal2">
+                            <div class="modal2-dialog">
+                              <div class="modal2-content">
+                          
+                                <!-- Modal Header -->
+                                <div class="modal2-header">
+                                  <h4 class="modal2-title">Modal Heading</h4>
+                                  <button type="button" class="close" data-dismiss="modal2">&times;</button>
+                                </div>
+                          
+                                <!-- Modal body -->
+                                <div class="modal2-body">
+                                  Modal body..
+                                </div>
+                          
+                                <!-- Modal footer -->
+                                <div class="modal2-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal2">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
                         </div>
                         <table style="width: 100%;">
                             <thead>
