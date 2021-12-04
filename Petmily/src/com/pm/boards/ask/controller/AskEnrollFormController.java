@@ -8,16 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AskNoticePageController
+ * Servlet implementation class AskEnrollFormController
  */
-@WebServlet("/no.ask")
-public class AskNoticePageController extends HttpServlet {
+@WebServlet("/enrollForm.ask")
+public class AskEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see HttpServlet#HttpServlet()
      */
-    public AskNoticePageController() {
+    public AskEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +25,7 @@ public class AskNoticePageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/boards/ask/askNotice.jsp").forward(request, response);
+		request.getRequestDispatcher("views/boards/ask/askEnrollForm.jsp").forward(request, response);
 	}
 
 	/**

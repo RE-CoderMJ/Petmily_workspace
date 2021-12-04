@@ -18,7 +18,7 @@ div, img, li, a{
 	height: 800px;
 	float:left;
 	padding:200px;
-	padding-top:35px
+	padding-top:35px;
 }
 
 /* 위쪽 부분 스타일 */
@@ -60,7 +60,7 @@ div, img, li, a{
 <body>
 	
 	<%@ include file="../../common/menubar.jsp" %>
-	<%@ include file="ask_sidebar.jsp" %>
+	<%@ include file="askSidebar.jsp" %>
 
 	<div class="content-area" align="center">
 		<div id="info">

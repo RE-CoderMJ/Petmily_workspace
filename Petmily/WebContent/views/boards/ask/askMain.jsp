@@ -134,7 +134,7 @@ div, img, li, a{
 <body>
 	
 	<%@ include file="../../common/menubar.jsp" %>
-	<%@ include file="ask_sidebar.jsp" %>
+	<%@ include file="askSidebar.jsp" %>
 
 	<div class="content-area" align="center">
 
@@ -175,17 +175,22 @@ div, img, li, a{
 				</select>
 			</div>
 			<div align="right">
-				<button type="button" class="btn btn-secondary"id="write">글쓰기</button>
+				<button type="button" class="btn btn-secondary" id="write" onclick="write();">글쓰기</button>
 			</div>
 			<br><br><hr style="border: solid 1px rgb(179, 178, 178);">
 		</div>
+		<script>
+			function write(){
+				location.href="<%=contextPath%>/enrollForm.ask"
+			}
+		</script>
 		<div id="notice-area" align="left">
 			<span class="badge badge-pill" id="notice" onclick="askNotice();">공지사항</span>
 			<span onclick="askNotice();">게시글 작성시 유의사항</span>
 		</div>
 		<script>
 			function askNotice(){
-				location.href = "<%= contextPath%>/ask.no"; 
+				location.href = "<%= contextPath%>/no.ask"; 
 			}
 		</script>
 		<div id="content-area">

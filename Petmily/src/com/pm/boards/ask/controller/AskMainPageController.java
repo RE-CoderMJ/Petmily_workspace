@@ -28,7 +28,7 @@ public class AskMainPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/boards/ask/ask_main.jsp").forward(request, response);
+		request.getRequestDispatcher("views/boards/ask/askMain.jsp").forward(request, response);
 		
 	}
 

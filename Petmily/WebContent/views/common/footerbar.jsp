@@ -14,7 +14,7 @@
         min-height: 100%;
     }
     #footer{
-        background-color: rgb(235, 235, 235);  /* 색 다시 설정 */
+        background-color: rgb(235, 235, 235);
         position:absolute;
         left: 0;
         bottom: 0;
@@ -26,7 +26,7 @@
             font-weight:600;
             margin:15px;
             line-height:20px;
-            color:rgb(97, 95, 95);  /* 색 다시 설정 */
+            color:rgb(97, 95, 95);
             font-size: 13px;
             text-decoration: none;
         }
