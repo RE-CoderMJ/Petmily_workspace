@@ -15,7 +15,16 @@
         #logo{width: 41%; position: relative; margin: 0 auto;}
 
         /* navigator 영역에 대한 세부 스타일 */
-        .nav-area{background: rgb(247, 198, 4);height: 60px; width: 100%;}
+        .nav-area{
+            background: rgb(247, 198, 4);
+            height: 60px; 
+            width: 100%;
+            margin: 0 auto;
+        }
+        .nav-area .navbar{
+            width: 1200px;
+        }
+
         .menu{
             display: table-cell;
             width: 160px;
@@ -33,6 +42,7 @@
             cursor: pointer;
         }
         .menu a:hover{background: white; text-decoration: none; color:black}
+        
 
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -54,7 +64,7 @@
         </div>
        <!-- 메뉴바 -->
         <div class="nav-area" align="center">
-            <div>
+            <div class="navbar">
                 <div class="menu"><a href="">회원관리</a></div> 
                 <div class="menu"><a href="">쇼핑몰</a></div>
                 <div class="menu"><a href="">게시판관리</a></div>
@@ -62,10 +72,9 @@
                 <div class="menu"><a href="">고객센터</a></div>
                 <div class="menu"><a href="">신고관리</a></div>
             </div>
-            <!-- <div> 
-                <div class="menu-right"><a href="">로그아웃</a></div> 
-                <div class="menu-right"><a href="">내정보</a></div>
-            </div> -->
+            <div> 
+                
+            </div>
         </div>
     
     </body>
