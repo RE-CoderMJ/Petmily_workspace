@@ -3,24 +3,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>반려동물 정보는 펫밀리</title>
-<style>
+  <title>반려동물 정보는 펫밀리</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+
+  <style>
     .outer {
-        width: 100%;
+          width: 100%;
     }
 
-    .center {
+    .inner {
         max-width: 350px;
         margin: auto;
         padding : 40px
     }
 
+    .img {
+        margin-bottom: 70px; /* 사진 크기에 따라 마진 바꿀 예정 */
+    }
+
     input {
         width: 100%;
-        height: 50px;
+        height: 50px !important;
         padding: 10px;
-        margin: 1px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
     }
 
     button {
@@ -29,12 +41,9 @@
         width: 100%;
         height: 50px;
     }
-
-    button:hover {
-        background-color: sandybrown;
-    }
-
+    
     .loginBottom {
+        margin-top: 20px;
         font-size: 13px;
     }
 
@@ -48,62 +57,68 @@
         text-decoration-line: none !important;
     }
 
-</style>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    a:hover {
+        color: tomato !important;
+    }
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  </style>
 </head>
 
 <body>
 
-    <!-- 메뉴바, 사이드바 해당 X -->
-	
-	<div class="outer">
+<div class="outer">
 
-        <div class="center" align="center">
-
-           	 이미지 
-            <br><br>
-            
-            <form action="">
-                <div>
-                    <input type="email" placeholder="이메일" required>
-                </div>
-                
-                <div>
-                    <input type="password" placeholder="비밀번호" required>
-                </div>
-
-                <br>
-
-       
-                <button type="submit" class="btn btn-warning">로그인</button>
-               
-
-                <br><br>
-                <div class="loginBottom">
-                    <div id="findEmail">
-                       	 이메일 계정을 잊으셨나요? <a href="이메일찾기경로">이메일 찾기</a>
-                    </div>
-                    <div id="findPwdOrJoin">
-                        <a href="비밀번호찾기경로">비밀번호 재설정</a> 
-                        <a href="회원가입경로">&ensp; 회원가입</a>
-                    </div>
-                </div>
-
-            </form>
-
+    <div class="inner">
+        
+        <div class="img" align="center">
+           	 이미지 넣는 부분
         </div>
+        
+        <form action="/action_page.php" class="needs-validation" novalidate>
+          <div class="form-group">
+          	<input type="text" class="form-control" id="userEmail" placeholder="E-mail" name="userEmail" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">이메일을 입력해주세요</div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="userPwd" placeholder="Password" name="userpwd" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">비밀번호를 입력해주세요</div>
+          </div>
+          <button type="submit" class="btn btn-warning">로그인</button>
+        </form>
 
+        <div class="loginBottom" align="center">
+            <div id="findEmail">
+                이메일 계정을 잊으셨나요? <a href="이메일찾기경로">이메일 찾기</a>
+            </div>
+            <div id="findPwdOrJoin">
+                <a href="비밀번호찾기경로">비밀번호 재설정</a> 
+                <a href="회원가입경로">&ensp; 회원가입</a>
+            </div>
+        </div>
     </div>
+</div>
+
+<script>
+	// Disable form submissions if there are invalid fields
+	(function() {
+	  'use strict';
+	  window.addEventListener('load', function() {
+	    // Get the forms we want to add validation styles to
+	    var forms = document.getElementsByClassName('needs-validation');
+	    // Loop over them and prevent submission
+	    var validation = Array.prototype.filter.call(forms, function(form) {
+	      form.addEventListener('submit', function(event) {
+	        if (form.checkValidity() === false) {
+	          event.preventDefault();
+	          event.stopPropagation();
+	        }
+	        form.classList.add('was-validated');
+	      }, false);
+	    });
+	  }, false);
+	})();
+</script>
 </body>
 </html>
