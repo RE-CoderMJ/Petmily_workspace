@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AskMainPage
  */
 @WebServlet("/main.ask")
-public class AskMainPage extends HttpServlet {
+public class AskMainPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AskMainPage() {
+    public AskMainPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,8 @@ public class AskMainPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("views/boards/ask/ask_main.jsp");
-		view.forward(request, response);
+		request.getRequestDispatcher("views/boards/ask/ask_main.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -12,7 +12,6 @@ div, img, li, a{
         box-sizing: border-box;
     }
      
-
 	/* 궁금해요 메인 스타일 */
 	.content-area{
 		float: left;
@@ -69,6 +68,7 @@ div, img, li, a{
 		font-size: 12px;
 		margin-right: 10px;
 		font-weight: bold;
+		cursor: pointer;
 	}
 
 	/* 게시글 영역 스타일 */
@@ -123,7 +123,6 @@ div, img, li, a{
 		margin-top: 120px;
 	}
 
-
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -144,7 +143,7 @@ div, img, li, a{
 				<div id="search-title1">궁금해요! 고민이에요!</div>
 				<div id="search-title2">PETMILY 가족들과 이야기를 나누어 보세요.</div>
 			</div>
-			<form action="" id="search-area2">
+			<form action="" method="get" id="search-area2">
 					<select name="category" id="search-condition1">
 						<option value="entire">전체</option>
 						<option value="dog">강아지</option>
@@ -181,9 +180,14 @@ div, img, li, a{
 			<br><br><hr style="border: solid 1px rgb(179, 178, 178);">
 		</div>
 		<div id="notice-area" align="left">
-			<span class="badge badge-pill" id="notice">공지사항</span>
-			<span>게시글 작성시 유의사항</span>
+			<span class="badge badge-pill" id="notice" onclick="askNotice();">공지사항</span>
+			<span onclick="askNotice();">게시글 작성시 유의사항</span>
 		</div>
+		<script>
+			function askNotice(){
+				location.href = "<%= contextPath%>/ask.no"; 
+			}
+		</script>
 		<div id="content-area">
 			<div class="contents">
 				<div class="number">1</div>
