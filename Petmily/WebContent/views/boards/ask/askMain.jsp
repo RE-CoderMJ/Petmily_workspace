@@ -156,7 +156,7 @@ div, img, li, a{
 						<option value="etc">작성자</option>
 					</select>
 					<input type="search" name="keyword">
-					<button type="submit" class="btn"><img src="" alt=""></button>
+					<button type="submit" class="btn">버튼자리<img src="" alt=""></button>
 				<div id="search-area3">
 					<span id="search-keyword">검색 키워드 예시 : </span>
 					<span class="badge badge-pill badge-light">사료</span>
@@ -175,31 +175,21 @@ div, img, li, a{
 				</select>
 			</div>
 			<div align="right">
-				<button type="button" class="btn btn-secondary" id="write" onclick="write();">글쓰기</button>
+				<button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.ask';">글쓰기</button>
 			</div>
 			<br><br><hr style="border: solid 1px rgb(179, 178, 178);">
 		</div>
-		<script>
-			function write(){
-				location.href="<%=contextPath%>/enrollForm.ask"
-			}
-		</script>
 		<div id="notice-area" align="left">
-			<span class="badge badge-pill" id="notice" onclick="askNotice();">공지사항</span>
+			<span class="badge badge-pill" id="notice" onclick= "location.href = '<%= contextPath%>/no.ask';">공지사항</span>
 			<span onclick="askNotice();">게시글 작성시 유의사항</span>
 		</div>
-		<script>
-			function askNotice(){
-				location.href = "<%= contextPath%>/no.ask"; 
-			}
-		</script>
 		<div id="content-area">
 			<div class="contents">
 				<div class="number">1</div>
 				<div class="photo"></div>
 				<div class="texts">
 					<div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-					<div class="info">쪼꼬언니 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
+					<div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
 					<div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
 				</div>
 			</div>
@@ -208,7 +198,7 @@ div, img, li, a{
 				<div class="photo"></div>
 				<div class="texts">
 					<div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-					<div class="info">쪼꼬언니 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
+					<div class="info">쪼꼬언니 &nbsp;&nbsp;2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
 					<div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
 				</div>
 			</div>
@@ -217,7 +207,7 @@ div, img, li, a{
 				<div class="photo"></div>
 				<div class="texts">
 					<div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-					<div class="info">쪼꼬언니 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
+					<div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
 					<div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
 				</div>
 			</div>
@@ -226,7 +216,7 @@ div, img, li, a{
 				<div class="photo"></div>
 				<div class="texts">
 					<div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-					<div class="info">쪼꼬언니 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
+					<div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
 					<div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
 				</div>
 			</div>
@@ -235,7 +225,7 @@ div, img, li, a{
 				<div class="photo"></div>
 				<div class="texts">
 					<div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-					<div class="info">쪼꼬언니 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
+					<div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
 					<div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
 				</div>
 			</div>
