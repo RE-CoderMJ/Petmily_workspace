@@ -10,4 +10,7 @@ public class Member {
 	
 	// 권수연 실험
 
+	// 권한나 실험
+
+
 }
