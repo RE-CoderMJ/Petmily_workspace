@@ -8,7 +8,7 @@
 </head>
 <style>
 
-div, img, li{
+div, img, li, a{
         box-sizing: border-box;
         border: 1px solid black;
     }
@@ -132,6 +132,35 @@ div, img, li{
 		width: 1400px;
 		height: 800px;
 	}
+	.content-area > div{
+		width: 85%;
+	}
+
+	/* 검색영역 스타일 */
+	#search-area{
+		height: 200px;
+		background-color: rgb(235, 235, 235);
+		padding: 25px;
+	}
+	#search-title1{
+		font-size: 18px;
+		font-weight: bolder;
+		margin-bottom: 1px;
+	}
+	#search-title2{
+		font-size: 13px;
+		margin-bottom: 20px;
+	}
+	#search-area2>select{
+		width: 80px;
+		height: 30px;
+		margin-bottom: 15px;
+		margin-right: 5px;;
+	}
+	#search-area2>input{width: 250px; height: 30px;}
+
+
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -145,79 +174,45 @@ div, img, li{
 	<%@ include file="../../common/menubar.jsp" %>
 	<%@ include file="ask_sidebar.jsp" %>
 
-	<div class="header">
-        <div id="left"></div>
-        <div id="logo">
-            <a href="">
-                <img src="../../resources/img/logo_side.png" alt="">
-            </a>
-        </div>
-        <div id="right">
-            <!--로그인 전-->
-            <div id="loginBtn">
-                <a href="">로그인</a>
-            </div>
-            <div id="register">
-                <a href="">회원가입</a>
-            </div>
-            
-            <!-- 로그인 후
-            <div id="userName">
-                <b>xxxx</b>님, 반가워요! &nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div id="logout">
-                <a href="">로그아웃</a>
-            </div>
-            -->
-            <div id="heart">
-                <a href="">
-                    <img src="../../resources/img/heart.jpg" alt="">
-                </a> 
-            </div>
-            <div id="shoppingCart">
-                <a href="">
-                    <img src="../../resources/img/shopping_cart.png" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
+	<div class="content-area" align="center">
 
-    <div class="nav-area" align="center">
-        <div class="menu"><a href="">쇼핑몰</a></div>
-        <div class="menu"><a href="<%= contextPath %>/main.ask">궁금해요</a></div>
-        <div class="menu"><a href="">찾고있어요</a></div>
-        <div class="menu"><a href="">PetLog</a></div>
-        <div class="menu"><a href="">중고거래</a></div>
-        <div class="menu"><a href="">MyPage</a></div>
-        <div class="menu"><a href="">고객센터</a></div>
-    </div>
+		<div id="search-area">
+			<div id="search-area1">
+				<div id="search-title1">궁금해요! 고민이에요!</div>
+				<div id="search-title2">PETMILY 가족들과 이야기를 나누어 보세요.</div>
+			</div>
+			<form action="" id="search-area2">
+					<select name="category" id="search-condition1">
+						<option value="entire">전체</option>
+						<option value="dog">강아지</option>
+						<option value="cat">고양이</option>
+						<option value="etc">기타</option>
+					</select>
+					<select name="keyword-option" id="search-condition2">
+						<option value="entire">전체</option>
+						<option value="dog">제목+내용</option>
+						<option value="etc">작성자</option>
+					</select>
+					<input type="search" name="keyword">
+					<button type="submit" class="btn"><img src="" alt=""></button>
+				<div id="search-area3">
+					<span>검색 키워드 예시 : </span>
+					<span class="badge badge-pill badge-light">사료</span>
+					<span class="badge badge-pill badge-light">산책</span>
+					<span class="badge badge-pill badge-light">훈련</span>
+					<span class="badge badge-pill badge-light">장난감</span>
+				</div>
+			</form>
+		</div>
+		<div id="middle-bar">
 
-	 <!--  사이드바  -->
-	 <div class="sidebar-area">
-        <ul>
-            <div id="category">궁금해요</div>
-            <div id="d-category">
-                <div class="d-category" id="dog">강아지</div>
+		</div>
+		<div id="notice-area">
 
-                <div class="d-category" id="cat">고양이</div>
-                
-                <div class="d-category" id="etc">기타</div>
-                
-            </div>
-        </ul>
-    </div>
+		</div>
+		<div id="content-area">
 
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-            })
-        })
-    </script>
-	
-	<div class="content-area">
-
+		</div>
 
 	</div>
 
