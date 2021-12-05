@@ -158,27 +158,23 @@
         .modal .modal-footer{
             justify-content: center;
         }
-        .modal .modal-header{
+        .modal-title{
             border-bottom: 0;
-        }
-        .modal .modal-body{
-            margin: 0 70px;
-        }
-        .modal-body .md-box{
-            position: relative;
-            margin-bottom: 25px;
+            text-align: center;
         }
         .md-box p{
             font-size: 14px;
             color: #555;
             font-weight: 500;
             margin: 0;
+            text-align: center;
         }
         .md-box input{
             font-size: 22px;
             padding: 5px 0;
             border:0;
             width: 230px;
+            text-align: center;
         }
         .md-box .btn-box{
             position: absolute;
@@ -254,7 +250,7 @@
                     <h3 class="mt-2">> 관리자 회원관리</h3>
                 </div>
                 <div class="content">
-                    <p class="ct-tit pt-2 pb-3">회원정보 조회/수정/삭제</p>
+                    <p class="ct-tit pt-2 pb-3">블랙리스트 관리</p>
                     <!-- 회원 조회 -->
                     <div class="search-box pb-5">
                         <select class="selectpicker show-tick p-2">
@@ -276,100 +272,24 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">회원수정</button>
+                            <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#myModal">계정 삭제</button>
                         </div>
-                        <!-- 회원수정 Modal -->
+                        <!-- 포인트관리 Modal -->
                         <div class="modal" id="myModal">
                             <div class="modal-dialog">
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
+                                    <h4 class="modal-title">해당 계정을 삭제 합니다.</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="md-box">
-                                        <p>회원 ID</p>
-                                        <input type="text" value="id">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>이름 / 성별</p>
-                                        <input type="text" value="name / gender">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>회원 이메일</p>
-                                        <input type="text" value="email">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>회원 번화번호</p>
-                                        <input type="text" value="phone">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>회원 포인트</p>
-                                        <input id="point1" class="point" type="number" value="3000">
-                                        
-                                        <div class="btn-box">
-                                            <button onclick="plus();" class="btn btn-sm material-icons">add</button>
-                                            <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
-                                        </div>
-                                    </div>
-                                    <!-- 회원 포인트 +,- 구현 -->
-                                    <script>
-                                        function plus(){
-                                            
-                                            const p1 = document.getElementById("point1").value;
-
-                                            const sum = Number(p1) + Number(10);
-
-                                            document.getElementById("point1").value = sum;
-
-                                        }
-                                    </script>
-                                    <script>
-                                        function minus(){
-
-                                            const m1 = document.getElementById("point1").value;
-
-                                            const minus = Number(m1) - Number(10);
-
-                                            document.getElementById("point1").value = minus;
-                                        }
-                                    </script>
-
-                                </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">회원수정</button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">아니오</button>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal2">회원삭제</button>
-                        </div>
-                        <!-- 회원삭제 모달 -->
-                        <div class="modal" id="myModal2">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                          
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                  <h4 class="modal-title">Modal Heading</h4>
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                          
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                  Modal body..
-                                </div>
-                          
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
                         </div>
                         <table style="width: 100%;">
                             <thead>
@@ -377,9 +297,10 @@
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
                                     <th width="150px">회원 ID</th>
-                                    <th width="150px">회원 이름</th>
-                                    <th width="500px">회원 이메일</th>
-                                    <th width="300px">회원 전화번호</th>
+                                    <th width="120px">누적신고횟수</th>
+                                    <th width="200px">일자</th>
+                                    <th width="450px">재재 내용</th>
+                                    <th width="100px">회원상태</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -392,9 +313,10 @@
                                     <td><input type="checkbox" name="" value=""></td>
                                     <td>1</td>
                                     <td>id</td>
-                                    <td>name</td>
-                                    <td>email</td>
-                                    <td>phone</td>
+                                    <td>3회</td>
+                                    <td>date</td>
+                                    <td>content</td>
+                                    <td>경고3회</td>
                                 </tr>
                             </tbody>
                         </table>
