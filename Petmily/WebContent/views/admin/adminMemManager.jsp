@@ -140,7 +140,8 @@
         }
         /* 버튼 박스 */
         .btn-box{
-            text-align: right;
+            display: flex;
+            justify-content: flex-end;
         }
         /* 표 */
         table {
@@ -274,103 +275,102 @@
 
                     <!-- table -->
                     <div class="table">
-                        <!-- btn-box -->
-                        <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">회원수정</button>
-                        </div>
-                        <!-- 회원수정 Modal -->
-                        <div class="modal" id="myModal">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div class="btn-box">
+                            <!-- btn-box -->
+                            <div class="pb-5">
+                                <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">회원수정</button>
+                            </div>
+                            <!-- 회원수정 Modal -->
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div class="md-box">
+                                            <p>회원 ID</p>
+                                            <input type="text" value="id">
+                                        </div>
+                                        <div class="md-box">
+                                            <p>이름 / 성별</p>
+                                            <input type="text" value="name / gender">
+                                        </div>
+                                        <div class="md-box">
+                                            <p>회원 이메일</p>
+                                            <input type="text" value="email">
+                                        </div>
+                                        <div class="md-box">
+                                            <p>회원 번화번호</p>
+                                            <input type="text" value="phone">
+                                        </div>
+                                        <div class="md-box">
+                                            <p>회원 포인트</p>
+                                            <input id="point1" class="point" type="number" value="3000">
+                                            
+                                            <div class="btn-box">
+                                                <button onclick="plus();" class="btn btn-sm material-icons">add</button>
+                                                <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
+                                            </div>
+                                        </div>
+                                        <!-- 회원 포인트 +,- 구현 -->
+                                        <script>
+                                            function plus(){
+                                                
+                                                const p1 = document.getElementById("point1").value;
+
+                                                const sum = Number(p1) + Number(10);
+
+                                                document.getElementById("point1").value = sum;
+
+                                            }
+                                        </script>
+                                        <script>
+                                            function minus(){
+
+                                                const m1 = document.getElementById("point1").value;
+
+                                                const minus = Number(m1) - Number(10);
+
+                                                document.getElementById("point1").value = minus;
+                                            }
+                                        </script>
+
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">회원수정</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
+                                    </div>
                                 </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="md-box">
-                                        <p>회원 ID</p>
-                                        <input type="text" value="id">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>이름 / 성별</p>
-                                        <input type="text" value="name / gender">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>회원 이메일</p>
-                                        <input type="text" value="email">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>회원 번화번호</p>
-                                        <input type="text" value="phone">
-                                    </div>
-                                    <div class="md-box">
-                                        <p>회원 포인트</p>
-                                        <input id="point1" class="point" type="number" value="3000">
-                                        
-                                        <div class="btn-box">
-                                            <button onclick="plus();" class="btn btn-sm material-icons">add</button>
-                                            <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
+                            </div>
+                            </div>
+                            <div class="pb-5">
+                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal2">회원삭제</button>
+                            </div>
+                            <!-- 회원삭제 모달 -->
+                            <div class="modal" id="myModal2">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">정말로 해당 회원을 삭제 하시겠습니까?</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
                                         </div>
                                     </div>
-                                    <!-- 회원 포인트 +,- 구현 -->
-                                    <script>
-                                        function plus(){
-                                            
-                                            const p1 = document.getElementById("point1").value;
-
-                                            const sum = Number(p1) + Number(10);
-
-                                            document.getElementById("point1").value = sum;
-
-                                        }
-                                    </script>
-                                    <script>
-                                        function minus(){
-
-                                            const m1 = document.getElementById("point1").value;
-
-                                            const minus = Number(m1) - Number(10);
-
-                                            document.getElementById("point1").value = minus;
-                                        }
-                                    </script>
-
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">회원수정</button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal2">회원삭제</button>
-                        </div>
-                        <!-- 회원삭제 모달 -->
-                        <div class="modal" id="myModal2">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                          
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                  <h4 class="modal-title">Modal Heading</h4>
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                          
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                  Modal body..
-                                </div>
-                          
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                        
                         <table style="width: 100%;">
                             <thead>
                                 <tr>

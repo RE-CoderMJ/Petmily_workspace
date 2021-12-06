@@ -274,7 +274,7 @@
                         <div class="btn-box pb-5" style="width: 100%;">
                             <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#myModal">계정 삭제</button>
                         </div>
-                        <!-- 포인트관리 Modal -->
+                        <!-- 회원삭제 Modal -->
                         <div class="modal" id="myModal">
                             <div class="modal-dialog">
                             <div class="modal-content">
