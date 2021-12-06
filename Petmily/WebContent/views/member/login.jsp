@@ -24,7 +24,11 @@
     }
 
     .img {
-        margin-bottom: 70px; /* 사진 크기에 따라 마진 바꿀 예정 */
+        margin-bottom: 10px;
+    }
+
+    img {
+      width: 200px;
     }
 
     input {
@@ -71,7 +75,9 @@
     <div class="inner">
         
         <div class="img" align="center">
-           	 이미지 넣는 부분
+          <a href="">
+            <img src="../../resources/img/logo_top.png" alt="">
+          </a>
         </div>
         
         <form action="/action_page.php" class="needs-validation" novalidate>

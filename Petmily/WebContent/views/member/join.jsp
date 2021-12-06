@@ -9,9 +9,14 @@
 <style>
     .top {
         width: 100%;
-        height: 100px;
+        height: 55px;
         background-color: orange;
-        margin-bottom: 70px;
+        margin-bottom: 50px;
+    }
+
+    img {
+        width: 200px;
+        margin-top: 5px;
     }
 
     .inner {
@@ -19,11 +24,7 @@
         margin: auto;
     }
 
-    .inner-top {
-        margin-bottom: 70px;
-    }
-
-    .category {
+    .leftText {
         float: left;
         width: 160px;
         font-size: 20px;
@@ -84,7 +85,7 @@
         height: 170px;
     }
 
-    .termCheck {
+    .termsCheck {
         margin: 20px;
     }
     
@@ -124,7 +125,9 @@
 	<div class="outer">
 
         <div class="top" align="center">
-            	이미지 넣는 공간 <!-- 추후 이미지 크기에 따라 div크기도 변경-->
+            <a href="">
+                <img src="../../resources/img/logo_side.png" alt="">
+            </a>
         </div>
 
         <div class="inner">
@@ -132,6 +135,7 @@
             <div class="inner-top">
                 <h1 align="center" style="margin-bottom: 20px;">Welcome to Petmily</h1>
                 <p align="center">이미 계정이 있으신가요?  <a href="로그인경로">로그인</a></p>
+                <p align="right" style="margin-top: 50px;"><span class="star">*</span>필수입력사항</p>
             </div>
 
             <div class="content">
@@ -140,7 +144,7 @@
                     
                     <div>
                         <div>
-                            <label class="category" for="userEmail">이메일<span class="star">*</span></label>
+                            <label class="leftText" for="userEmail">이메일<span class="star">*</span></label>
                         </div>
 
                         <div>
@@ -163,7 +167,7 @@
 
                     <div>
                         <div>
-                            <label class="category" for="userPwd">비밀번호<span class="star">*</span></label>
+                            <label class="leftText" for="userPwd">비밀번호<span class="star">*</span></label>
                         </div>
 
                         <div>
@@ -175,7 +179,7 @@
 
                     <div>
                         <div>
-                            <label class="category" for="userPwd2">비밀번호 확인<span class="star">*</span></label>
+                            <label class="leftText" for="userPwd2">비밀번호 확인<span class="star">*</span></label>
                         </div>
 
                         <div>
@@ -186,7 +190,7 @@
 
                     <div>
                         <div>
-                            <label class="category" for="userName">이름<span class="star">*</span></label>
+                            <label class="leftText" for="userName">이름<span class="star">*</span></label>
                         </div>
 
                         <div>
@@ -198,7 +202,7 @@
 
                     <div>
                         <div>
-                            <label class="category" for="Phone">전화번호<span class="star">*</span></label>
+                            <label class="leftText" for="Phone">전화번호<span class="star">*</span></label>
                         </div>
 
                         <div>
@@ -213,7 +217,7 @@
                 
                     <div>
                         <div>
-                            <label class="category" for="nickname">닉네임<span class="star">*</span></label>
+                            <label class="leftText" for="nickname">닉네임<span class="star">*</span></label>
                         </div>
 
                         <div>
@@ -227,7 +231,7 @@
 
                     <div>
                         <div>
-                            <label class="category" for="address">주소</label>
+                            <label class="leftText" for="address">주소</label>
                         </div>
 
                         <div>
@@ -248,7 +252,7 @@
                     <div>
 
                         <div>
-                            <label class="category" for="terms">약관동의</label>
+                            <label class="leftText" for="terms">약관동의</label>
                         </div>
 
                         <div id="termsBox">
@@ -261,14 +265,14 @@
                             <hr style="width: 300px;">
                             
                             <div class="termsCheck">
-                                        <input type="checkbox" name="agreeAll">
+                                        <input type="checkbox">
                                         <a href="" class="checkText">이용 약관</a> 
                                         <span class="smallSpan">(필수)</span><span class="star">*</span>
                                 
                             </div>
 
                             <div class="termsCheck">
-                                        <input type="checkbox" name="agreeAll">
+                                        <input type="checkbox">
                                         <a href="" class="checkText">개인정보 수집 및 이용동의</a> 
                                         <span class="smallSpan">(필수)</span><span class="star">*</span>
                                 

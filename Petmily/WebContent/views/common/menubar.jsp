@@ -115,7 +115,7 @@
         <div id="right">
             <!--로그인 전-->
             <div id="loginBtn">
-                <a href="">로그인</a>
+                <a href="<%= contextPath %>/loginForm.me">로그인</a>
             </div>
             <div id="register">
                 <a href="">회원가입</a>
