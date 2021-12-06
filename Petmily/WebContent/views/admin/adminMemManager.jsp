@@ -202,6 +202,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
+	<%@ include file="../../common/footerbar.jsp" %>
+
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
