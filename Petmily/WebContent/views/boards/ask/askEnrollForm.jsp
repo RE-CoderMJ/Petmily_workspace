@@ -10,12 +10,12 @@
 
 div, img, li, a{
      box-sizing: border-box;
-     border: 1px solid black; 
+	 border: soli 1px black;
 }
      
 .content-area{
 	width: 1400px;
-	height: 1000px;
+	height: 1200px;
 	float:left;
 	padding:200px;
 	padding-top:35px
@@ -43,30 +43,33 @@ div, img, li, a{
 #required-area{
 	margin-top: -15px;
 }
-
-/* 내용 입력 영역 스타일 */
+/* 전체 입력 영역 스타일 */
 #content{
-	margin-top: 40px;
 	text-align: left;
 	height: 1000px;
 	position: relative;
 }
 /* 분류 스타일 */
-#category-text{
+#category-area{
+	margin-top: 60px;
+	position: absolute;
+	top: 120px;
+	left: 369px;
+}
+#category-area>span{
 	font-size: 17px;
-	font-weight: bold;
-	margin-left: 150px;
+	font-weight: bolder;
 	margin-right: 15px;
 }
 /* 제목 스타일 */
 #title{
 	width: 700px;
-	margin-top: 20px;
+	margin-top: 100px;
 	margin-left: 150px;
 }
 #title-required{
 	position: absolute;
-	top: 40px;
+	top: 95px;
 	left: 860px;
 }
 /* 내용 스타일 */
@@ -79,22 +82,42 @@ div, img, li, a{
 }
 #texts-required{
 	position: absolute;
-	top: 110px;
+	top: 165px;
 	left: 860px;
 }
 /* 파일첨부 영역 스타일 */
 #file-area{
 	margin-left: 150px;
 	margin-top: 30px;
+	position: relative;
 }
 #file-area>p{
-	margin-right: 20px;
-	display: block;
+	margin-right: 30px;
 	float: left;
+	font-weight: bolder;
 }
+#file-area>input{
+	position: absolute;
+	top: 8px;
+}
+/*
 #file-area>textarea{
 	width: 610px;
 	resize: none;
+}
+*/
+/* 올리기 버튼 영역 스타일 */
+#btn-area{
+	margin-top: 75px;
+	width:850px;
+}
+#btn-area>button{
+	background-color: orange;
+	color: white;
+	font-weight: bolder;
+	font-size: 14px;
+	height: 27px;
+	line-height: 2px;
 }
 
 </style>
@@ -121,40 +144,42 @@ div, img, li, a{
 				<span id="required">필수입력사항</span>
 			</div>
 		</div>
-		<div id="content">
-			<span id="category-text">분류</span>
-			<select name="category" id="category">
-				<option value="dog">강아지</option>
-				<option value="cat">고양이</option>
-				<option value="etc">기타</option>
-			</select>
-			<span class="required">*</span>
+		<div id="category-area" align="left">
+			<span>분류</span>
+			<span>
+				<select name="category" id="category">
+					<option value="dog">강아지</option>
+					<option value="cat">고양이</option>
+					<option value="etc">기타</option>
+				</select>
+			</span>
+		</div>
+		<form action="" id="content" method="post">
 			
-			<input type="text" name="title" id="title" placeholder="제목을 입력해 주세요">
+			<input type="text" name="title" id="title" placeholder="제목을 입력해 주세요" required>
 			<span class="required" id="title-required">*</span>
 			
-			<textarea name="texts" id="texts">
+			<textarea name="texts" id="texts" required>
 
 			</textarea>
 			<span class="required" id="texts-required">*</span>
 			
 			<div id="file-area">
 				<p>파일<br>첨부</p>
-				<textarea name="attatchment" id="attatchment">
-					
-				</textarea>
+				<!--
+					<textarea name="attatchment" id="attatchment">
+						
+					</textarea>
+				-->
+				<input type="file">
 			</div>
-			
-			<div>
-				<button>파일 첨부하기</button>
+			<div id="btn-area" align="right">
+				<button class="btn">올리기</button>
 			</div>
-			<div>
-				<button>올리기</button>
-			</div>
-		</div>
+		</form>
 		
 	</div>
-
+	
 	<%@ include file="../../common/footerbar.jsp" %>
 
 </body>

@@ -181,7 +181,7 @@ div, img, li, a{
 		</div>
 		<div id="notice-area" align="left">
 			<span class="badge badge-pill" id="notice" onclick= "location.href = '<%= contextPath%>/no.ask';">공지사항</span>
-			<span onclick="askNotice();">게시글 작성시 유의사항</span>
+			<span onclick= "location.href = '<%= contextPath%>/no.ask';">게시글 작성시 유의사항</span>
 		</div>
 		<div id="content-area">
 			<div class="contents">

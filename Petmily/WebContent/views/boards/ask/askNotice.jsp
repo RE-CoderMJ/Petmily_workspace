@@ -65,11 +65,11 @@ div, img, li, a{
 	<div class="content-area" align="center">
 		<div id="info">
 			<div id="list-btn" align="right">
-				<button type="button" class="btn btn-secondary" id="list">목록</button>
+				<button type="button" class="btn btn-secondary" id="list" onclick="location.href='<%=contextPath%>/main.ask';">목록</button>
 			</div>
 			<hr style="border: solid 1px rgb(179, 178, 178);">
 			<div align="left">
-				<span class="badge badge-pill" id="notice" onclick="askNotice();">공지사항</span>
+				<span class="badge badge-pill" id="notice">공지사항</span>
 				<span id="notice-title">게시글 작성시 유의사항</span>
 				<span id="enroll-date">2021-12-05</span>
 			</div>
