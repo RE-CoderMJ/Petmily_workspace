@@ -68,7 +68,8 @@
         /* 로그인 버튼 */
         #login_login_btn .btn{
             padding: 25px;
-            width: 280px;
+            width: 230px;
+            height: 80px;
             font-size: 25px;
             font-weight: bold;
         }
@@ -82,11 +83,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
+
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
                 <a href="">
-                    <img src="../../resources/img/logo_top.png" alt="">
+                    <img src="resources/img/logo_top.png" alt="">
                 </a>
             </div>  
         </div>
@@ -104,7 +106,7 @@
             <!-- 발바닥 이미지 -->
             <div id="logo2">
                 <a href="">
-                    <img src="../../resources/img/foot_logo.png" alt="">
+                    <img src="resources/img/foot_logo.png" alt="">
                 </a>
             </div>
             <!-- 로그인 텍스트 -->
@@ -131,9 +133,6 @@
                 </div>
             </div>
         </div>
-        
-        
-            
     
     </body>
     </html>

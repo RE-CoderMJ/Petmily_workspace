@@ -187,8 +187,10 @@
                     <div id="category">쇼핑몰</div>
                     <div id="d-category">
                         <div class="d-category">상품등록</div>
-                        <div class="d-category">회원 포인트 관리</div>
-                        <div class="d-category">블랙리스트 관리</div>
+                        <div class="d-category">상품관리(수정,삭제)</div>
+                        <div class="d-category">주문/배송조회</div>
+                        <div class="d-category">취소/환불/교환/반품 내역조회</div>
+                        <div class="d-category">결제 내역 조회</div>
                     </div>
                 </ul>
             </div>
@@ -292,8 +294,8 @@
                     </table>
                     <div style="width: 550px; text-align: center;">
                         <br><br>
-                        <button class="btn btn-sm btn-warning mr-3">확인</button>
-                        <button class="btn btn-sm btn-light">취소</button>
+                        <button class="btn btn-warning mr-3">확인</button>
+                        <button class="btn btn-light">취소</button>
                     </div>
                 </div>
             </div>
