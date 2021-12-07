@@ -72,7 +72,7 @@
         <div class="header">
             <div id="logo">
                 <a href="">
-                    <img src="../../resources/img/logo_side.png" alt="">
+                    <img src="resources/img/logo_side.png" alt="">
                 </a>
             </div>  
         </div>

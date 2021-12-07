@@ -67,11 +67,10 @@
         }
         /* 로그인 버튼 */
         #login_login_btn .btn{
-            padding: 25px;
-            width: 230px;
-            height: 80px;
-            font-size: 25px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight: bold !important;
+            width: 250px;
+            height: 50px;
         }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -126,10 +125,10 @@
                 <div id="login_form_etc">
                     <input type="checkbox">
                     <a href="" style="color: rgb(247, 198, 4);">로그인 상태 유지</a>
-                </div><br><br><br>
+                </div><br>
                 <!-- 로그인 버튼 -->
                 <div id="login_login_btn">
-                    <input type="submit" value="로그인" class="btn btn-warning">
+                    <a href=""><input type="submit" value="로그인" class="btn btn-warning"></a>
                 </div>
             </div>
         </div>

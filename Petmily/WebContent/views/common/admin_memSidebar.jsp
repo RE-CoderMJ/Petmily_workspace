@@ -1,5 +1,8 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+   String contextPath = request.getContextPath();
+%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -30,6 +33,11 @@
             cursor:pointer;
             margin-bottom: 5px;
         }
+        .d-category {
+            color: black;
+            font-weight: bolder;
+            text-decoration: none;
+        }
         #d-category{
             position: absolute;
             top:80px;
@@ -48,28 +56,20 @@
     </head>
     <body>
         <!--  사이드바  -->
+        <br>
         <div class="sidebar-area">
             <ul>
                 <div id="category">회원관리</div>
                 <div id="d-category">
-                    <div class="d-category">회원정보 조회/수정/삭제</div>
+                    <div class="d-category" id="memInfor" onclick="location.href='<%= contextPath %>/memMg.ad';">회원정보 조회/수정/삭제</div>
     
-                    <div class="d-category">회원 포인트 관리</div>
+                    <div class="d-category" id="memPoint" onclick="location.href='<%= contextPath %>/memPoint.ad';">회원 포인트 관리</div>
                     
-                    <div class="d-category">블랙리스트 관리</div>
+                    <div class="d-category" id="memWarning" onclick="location.href='<%= contextPath %>/memWarning.ad';">블랙리스트 관리</div>
                     
                 </div>
             </ul>
         </div>
-    
-        <script>
-            $(function(){
-                $(".d-category").click(function(){
-                    $(this).siblings(".d-category").css({background: "", color:"black"});
-                    $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                })
-            })
-        </script>
 
     </body>
     </html>
