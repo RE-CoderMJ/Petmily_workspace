@@ -25,7 +25,7 @@
     }
 
     button {
-        margin-top: 20px;
+        margin-top: 20px !important;
         width: 270px;
         height: 50px;
         font-weight: bold !important;
@@ -61,7 +61,7 @@
 
 <body>
     
-    <%@ include file="../../common/menubar.jsp" %>
+    <%@ include file="../common/menubar.jsp" %>
 
     <div class="content">
 

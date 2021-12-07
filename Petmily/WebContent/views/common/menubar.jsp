@@ -108,7 +108,7 @@
     <div class="header">
         <div id="left"></div>
         <div id="logo">
-            <a href="">
+            <a href="<%= contextPath %>">
                 <img src="resources/img/logo_side.png" alt="">
             </a>
         </div>
@@ -118,7 +118,7 @@
                 <a href="<%= contextPath %>/loginForm.me">로그인</a>
             </div>
             <div id="register">
-                <a href="">회원가입</a>
+                <a href="<%= contextPath %>/joinForm.me">회원가입</a>
             </div>
             
             <!-- 로그인 후

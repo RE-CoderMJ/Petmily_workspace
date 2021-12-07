@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	String contextPath = request.getContextPath();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,11 +101,11 @@
 
         <div class="loginBottom" align="center">
             <div id="findEmail">
-                이메일 계정을 잊으셨나요? <a href="이메일찾기경로">이메일 찾기</a>
+                이메일 계정을 잊으셨나요? <a href="<%= contextPath %>/findEmail.me">이메일 찾기</a>
             </div>
             <div id="findPwdOrJoin">
                 <a href="비밀번호찾기경로">비밀번호 재설정</a> 
-                <a href="회원가입경로">&ensp; 회원가입</a>
+                <a href="<%= contextPath %>/joinForm.me">&ensp; 회원가입</a>
             </div>
         </div>
     </div>
