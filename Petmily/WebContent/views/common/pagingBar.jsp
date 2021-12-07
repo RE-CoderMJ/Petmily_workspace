@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>adminMemManager</title>
+<title>pagingBar</title>
 <style>
 /* 페이징바 */
 .paging-area button{

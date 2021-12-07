@@ -13,7 +13,7 @@
 .content-area{
 	width: 1400px;
 	height: 1200px;
-	float:left;
+	margin: auto;
 	padding:200px;
 	padding-top:35px
 }
@@ -192,6 +192,34 @@ a{
     margin-right: 14px;
 }
 
+/* 삭제모달창 */
+#modalMsg-area{
+    font-weight: bolder;
+    font-size: 17px;
+    margin-top: 20px;
+    height: 70px;
+}
+#deletebtn-area>button{
+    color: white;
+    font-weight: bolder;
+    font-size: 15px;
+    height: 35px;
+    line-height: 5px;
+    width: 100px;
+    margin-top: -10px;
+}
+#confirm-btn{
+    background-color: gray;
+    margin-right: 2px;
+}
+#closebtn{
+    background-color: orange;
+    margin-left: 2px;
+}
+
+.modal - backdrop {
+   opacity: 0.5!important;
+}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -216,7 +244,7 @@ a{
                 <div id="info">
                     2021-11-12 17:00 &nbsp;&nbsp;&nbsp;&nbsp;조회 63&nbsp;&nbsp;&nbsp;
                     <a href="">신고</a> &nbsp;
-                    <a href="">수정하기</a>
+                    <a href="<%=contextPath%>/updateForm.ask">수정하기</a>
                 </div>
                 <div id="writer">
                     <div style="border: 1px solid black;"id="writer-pic"><img src="" alt=""></div>
@@ -240,7 +268,7 @@ a{
                     <span id="reply-count">2</span>
                 </div>
                 <div id="btn-area">
-                    <button type="button" class="btn">글삭제</button>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#deleteAskModal">글삭제</button>
                     <a href="" class="btn">목록</a>
                 </div>
             </div>
@@ -265,6 +293,28 @@ a{
         </div>
     </div>
     
+    
+	
+    
+    <!-- 게시글 삭제 Modal -->
+    <div class="modal fade" id="deleteAskModal">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body" align="center">
+                    <div id="modalMsg-area">
+                                        정말 삭제하시겠습니까?
+                    </div>
+                    <div id="deletebtn-area">
+                      <button type="button" class="btn" id="confirm-btn">확인</button>
+                      <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                    </div>              
+                </div>
+        
+            </div>
+        </div>
+    </div>
     <%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>
