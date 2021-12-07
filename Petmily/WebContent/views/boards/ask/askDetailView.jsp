@@ -8,7 +8,6 @@
 <style>
     div, img, li, a{
      box-sizing: border-box;
-	 border: solid 1px black;
 }
      
 .content-area{
@@ -63,6 +62,10 @@ a{
     height: 30px;
     margin-top: -10px;
 }
+#info a{
+    color: gray;
+    font-weight: bolder;
+}
 #writer{
     position: absolute;
     right:0px;
@@ -70,6 +73,12 @@ a{
 #writer-id{
     font-size:14px;
     font-weight: bold;
+    margin-left: 10px;
+}
+#writer-pic{
+    float: left;
+    width: 30px;
+    height: 30px;
 }
 
 /* 사진영역 */
@@ -89,11 +98,12 @@ a{
 /* 댓글영역 */
 #reply-top{
     height: 32px;
+    margin-bottom: 30px;
 }
 #reply-count-area{
     float: left;
     margin-right: 813px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bolder;
     margin-top: 5px;
 }
@@ -114,6 +124,7 @@ a{
     height: 35px;
     position: relative;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 #write-reply>form>input{
     width: 750px;
@@ -126,11 +137,27 @@ a{
     top: 1px;
     left: 50px;
 }
+#reply-enrollbtn{
+    background-color: orange;
+    font-size: 13px;
+    font-weight: bolder;
+    height: 27px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    line-height: 0px;
+}
 /* 댓글조회영역 스타일 */
 .replies{
-    height: 60px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: -40px;
+    width: 850px;
+    background-color: rgb(240, 239, 239);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
 }
-.replies>*{
+.user-name, .reply-content {
     float: left;
 }
 .profile-pic{
@@ -138,13 +165,31 @@ a{
     width: 30px;
     height: 30px;
     float: left;
-    margin-left: 50px;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 .user-name{
     margin-left: 10px;
     font-weight: bolder;
     font-size: 14px;
+    margin-right: 15px;
+}
+.reply-content{
+    font-size: 13px;
+}
+.delete-btn{
+    margin-right: -300px;
+}
+.reply-info{
+    width: 160px;
+    font-size: 11px;
+    color: gray;
+    margin-left: -620px;
+    margin-top: -6px;
+}
+.reply-info>a{
+    color: gray;
+    font-size: 11px;
+    margin-right: 14px;
 }
 
 </style>
@@ -174,7 +219,7 @@ a{
                     <a href="">수정하기</a>
                 </div>
                 <div id="writer">
-                    <span>프사</span>
+                    <div style="border: 1px solid black;"id="writer-pic"><img src="" alt=""></div>
                     <span id="writer-id">bomilove3</span>
                 </div>
             </div>
@@ -203,17 +248,23 @@ a{
                 <div style="border: 1px solid black;"id="writearea-pic"><img src="" alt=""></div>
                     <form action="">
                         <input type="text" placeholder="댓글을 남겨 보세요." required>
-                        <button class="btn">등록</button>
+                        <button class="btn" id="reply-enrollbtn">등록</button>
                     </form>
             </div>
+            
             <div class="replies">
+                
                 <div class="profile-pic"></div>
                 <div class="user-name">choco22</div>
-                <div>아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-                <a href="" class="btn">x</a>
-                <div>x일전 &nbsp;&nbsp; <a href="">수정</a><a href="">신고</a></div>
+                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                <a href="" class="btn delete-btn">x</a>
+                <div class="reply-info">xxxx-xx-xx &nbsp;&nbsp; <a href="">수정</a><a href="">신고</a></div>
+                
+                <!--<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>-->
             </div>
         </div>
     </div>
+    
+    <%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>

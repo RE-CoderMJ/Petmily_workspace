@@ -187,6 +187,7 @@ div, img, li, a{
 			<span onclick= "location.href = '<%= contextPath%>/no.ask';">게시글 작성시 유의사항</span>
 		</div>
 		<div id="content-area">
+			
 			<div class="contents">
 				<div class="number">1</div>
 				<div class="photo"></div>
@@ -246,6 +247,8 @@ div, img, li, a{
 		<div id="paging-bar">
 			페이징바가 들어갈 공간입니다.
 		</div>
+			
+		<!-- <div>등록된 게시글이 없습니다.</div> -->
 	</div>
 
 	<%@ include file="../../common/footerbar.jsp" %>
