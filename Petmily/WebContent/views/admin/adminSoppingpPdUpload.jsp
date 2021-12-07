@@ -102,16 +102,12 @@
         .cont-wrap{
             margin-left: 350px;
         }
-        .title-box{
-            border-bottom: 2px solid rgb(196, 195, 195);
-        }
         .title-box h3{
             font-size: 24px;
             font-weight: bold;
             color: rgb(196, 195, 195);
         }
-        .content input{
-            display: flex;
+        .product-reg input{
             width: 300px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -210,8 +206,9 @@
                 <div class="title-box mt-5 pb-2">
                     <h3 class="mt-2">> 관리자 쇼핑몰</h3>
                 </div>
-                <div class="content">
-                    <p class="ct-tit pt-2 pb-3">상품 등록</p>
+                <div class="content product-reg">
+                    <hr>
+                    <p class="ct-tit pb-3">상품 등록</p>
                     <table>
                         <tbody>
                             <tr>

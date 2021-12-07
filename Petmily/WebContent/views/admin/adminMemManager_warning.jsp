@@ -102,9 +102,6 @@
         .cont-wrap{
             margin-left: 350px;
         }
-        .title-box{
-            border-bottom: 2px solid rgb(196, 195, 195);
-        }
         .title-box h3{
             font-size: 24px;
             font-weight: bold;
@@ -250,7 +247,8 @@
                     <h3 class="mt-2">> 관리자 회원관리</h3>
                 </div>
                 <div class="content">
-                    <p class="ct-tit pt-2 pb-3">블랙리스트 관리</p>
+                    <hr>
+                    <p class="ct-tit pb-3">블랙리스트 관리</p>
                     <!-- 회원 조회 -->
                     <div class="search-box pb-5">
                         <select class="selectpicker show-tick p-2">
