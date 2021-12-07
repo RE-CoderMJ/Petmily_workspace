@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
 <%
-	String contextPath = request.getContextPath();
+   String contextPath = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -92,77 +92,8 @@
         line-height: 40px;
         cursor: pointer;
     }
-<<<<<<< Updated upstream
 
     .menu a:hover{background: white; text-decoration: none; color:black}
-=======
-    .menu a:hover{background: white; text-decoration: none; color:black}
-
-    /*사이드바 스타일*/
-    .sidebar-area{
-        float: left;
-        width: 250px;
-        height: 800px;
-        position: relative;
-        list-style-type:none;
-    }
-    /* 사이드바 큰 제목 스타일 */
-    #side{
-        list-style-type:none;
-        padding: 0;
-        margin: 0;
-        height: 100%;
-    }
-    
-    /* #category{ 
-        list-style-type: none;
-        font-weight: bolder;
-        font-size: 25px;
-        position: absolute;
-        left:90px;
-    }
-    */
-    /* 강아지, 고양이, 기타 카테고리 스타일*/
-    
-    /*.d-category{
-        list-style-type: none;
-        font-size: 16px;
-        width: 130px;
-        font-weight: bolder;
-        cursor:pointer;
-    }
-    
-    #d-category{
-        position: absolute;
-        top:80px;
-        left: 90px;
-    }
-    */
-
-    /* 세부 카테고리 전체 스타일 */
-    /*.dd-category{
-        list-style-type: none;
-        color: darkgray;
-        font-weight: bolder;
-        font-size: 13px;
-        width: 45px;
-    }
-    */
-
-    /* 강아지, 고양이, 기타 카테고리 제목 위치 */
-    /*  
-    #dog{
-        background-color: rgb(247, 198, 4);
-        color: white;
-    }
-    #cat{
-      
-    }
-    #etc{
-    
-    }
-    */
->>>>>>> Stashed changes
     
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -221,58 +152,7 @@
         <div class="menu"><a href="">고객센터</a></div>
     </div>
 
-<<<<<<< Updated upstream
     <!-- 수정필요한 부분!! -->
-=======
-
-    <!--  사이드바  -->
-    <!-- <div class="sidebar-area">
-        <ul>
-            <div id="category">중고거래</div>
-            <div id="d-category">
-                <div class="d-category" id="dog">강아지</div>
-                <div class="dd-category buy">살래요</div>
-                <div class="dd-category sell">팔래요</div>
-
-                <div class="d-category" id="cat">고양이</div>
-                <div class="dd-category buy">살래요</div>
-                <div class="dd-category sell">팔래요</div>
-
-                <div class="d-category" id="etc">기타</div>
-                <div class="dd-category buy">살래요</div>
-                <div class="dd-category sell">팔래요</div>
-            </div>
-        </ul>
-    </div>
-    -->
-
-    <!--  사이드바-혜선수정  -->
-    <div id="sidebar-area">
-
-        <ul id="side">
-            <li><a href="">강아지</a>
-                <ul>
-                    <li><a href="">살래요</a></li>
-                    <li><a href="">팔래요</a></li>
-                </ul>
-            </li>
-            <li><a href="">고양이</a>
-                <ul>
-                    <li><a href="">살래요</a></li>
-                    <li><a href="">팔래요</a></li>
-                </ul>
-            </li>
-            <li><a href="">기타</a>
-                <ul>
-                    <li><a href="">살래요</a></li>
-                    <li><a href="">팔래요</a></li>
-                </ul>
-            </li>
-        </ul>
-
-    </div>
-
->>>>>>> Stashed changes
     <script>
         $(function(){
             $(".menu").click(function(){
