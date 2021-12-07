@@ -72,6 +72,9 @@ div, img, li, a{
 	}
 
 	/* 게시글 영역 스타일 */
+	.contents{
+		cursor: pointer;
+	}
 	#content-area{
 		margin-top: 80px;
 	}
@@ -230,6 +233,16 @@ div, img, li, a{
 				</div>
 			</div>
 		</div>
+		<script>
+			$(function(){
+				$(".contents").click(function(){
+					//const num = $(this).children().eq(0).text();
+					
+					// /jsp/detail.no?num=클릭한글번호
+					location.href = '<%=contextPath%>/detail.ask';
+				})
+			})
+		</script>
 		<div id="paging-bar">
 			페이징바가 들어갈 공간입니다.
 		</div>

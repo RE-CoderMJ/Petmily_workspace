@@ -14,7 +14,7 @@
         position: relative;
     }
     /* 사이드바 큰 제목 스타일 */
-    #category{
+    #boardName{
         list-style-type: none;
         font-weight: bolder;
         font-size: 25px;
@@ -48,7 +48,7 @@
       <!--  사이드바  -->
       <div class="sidebar-area">
         <ul>
-            <div id="category">궁금해요</div>
+            <div id="boardName">궁금해요</div>
             <div id="d-category">
                 <div class="d-category" id="dog">강아지</div>
 

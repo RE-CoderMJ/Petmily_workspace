@@ -152,5 +152,14 @@
         <div class="menu"><a href="">고객센터</a></div>
     </div>
 
+    <!-- 수정필요한 부분!! -->
+    <script>
+        $(function(){
+            $(".menu").click(function(){
+                $(this).siblings(".menu").css("background", "rgb(247, 198, 4)");
+                $(this).css("background", "white");
+            })
+        })
+    </script>
 </body>
 </html>

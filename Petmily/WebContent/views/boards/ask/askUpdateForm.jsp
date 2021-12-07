@@ -10,7 +10,9 @@
 
 div, img, li, a{
      box-sizing: border-box;
+	 border: soli 1px black;
 }
+     
 .content-area{
 	width: 1400px;
 	height: 1200px;
@@ -50,39 +52,37 @@ div, img, li, a{
 /* 분류 스타일 */
 #category-area{
 	margin-top: 60px;
+	position: absolute;
+	top: 120px;
+	left: 369px;
 }
-#category-area>div{
-	width: 700px;
-	height: 26px;
-}
-#category-area>div>div{
-	float: left;
-	margin-right: 20px;
+#category-area>span{
 	font-size: 17px;
 	font-weight: bolder;
+	margin-right: 15px;
 }
 /* 제목 스타일 */
 #title{
 	width: 700px;
-	margin-top: 20px;
+	margin-top: 100px;
 	margin-left: 150px;
 }
 #title-required{
 	position: absolute;
-	top: 20px;
+	top: 95px;
 	left: 860px;
 }
 /* 내용 스타일 */
 #texts{
 	width: 700px;
 	height: 500px;
-	margin-top: 30px;
+	margin-top: 40px;
 	margin-left: 150px;
 	resize: none;
 }
 #texts-required{
 	position: absolute;
-	top: 80px;
+	top: 165px;
 	left: 860px;
 }
 /* 파일첨부 영역 스타일 */
@@ -144,17 +144,15 @@ div, img, li, a{
 				<span id="required">필수입력사항</span>
 			</div>
 		</div>
-		<div id="category-area">
-			<div>
-				<div>분류</div>
-				<div>
-					<select name="category" id="category">
-						<option value="dog">강아지</option>
-						<option value="cat">고양이</option>
-						<option value="etc">기타</option>
-					</select>
-				</div>
-			</div>
+		<div id="category-area" align="left">
+			<span>분류</span>
+			<span>
+				<select name="category" id="category">
+					<option value="dog">강아지</option>
+					<option value="cat">고양이</option>
+					<option value="etc">기타</option>
+				</select>
+			</span>
 		</div>
 		<form action="" method="post">
 			<div id="content">
