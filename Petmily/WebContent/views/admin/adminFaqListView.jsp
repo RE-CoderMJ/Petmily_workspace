@@ -77,7 +77,7 @@
 </head>
 <body>
 	<!-- 메뉴바 -->
-    <%@ include file="../comon/menubar.jsp" %>
+    <%@ include file="../common/admin_menubar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
