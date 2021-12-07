@@ -140,7 +140,7 @@
 
             <div class="content">
 
-                <form action="" id="joinForm" method="post";>
+                <form action="" id="joinForm" method="post">
                     
                     <div>
                         <div>

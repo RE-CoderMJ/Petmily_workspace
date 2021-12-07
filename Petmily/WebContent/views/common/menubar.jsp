@@ -109,7 +109,7 @@
         <div id="left"></div>
         <div id="logo">
             <a href="">
-                <img src="../../resources/img/logo_side.png" alt="">
+                <img src="resources/img/logo_side.png" alt="">
             </a>
         </div>
         <div id="right">
@@ -131,12 +131,12 @@
             -->
             <div id="heart">
                 <a href="">
-                    <img src="../../resources/img/heart.jpg" alt="">
+                    <img src="resources/img/heart.jpg" alt="">
                 </a> 
             </div>
             <div id="shoppingCart">
                 <a href="">
-                    <img src="../../resources/img/shopping_cart.png" alt="">
+                    <img src="resources/img/shopping_cart.png" alt="">
                 </a>
             </div>
         </div>

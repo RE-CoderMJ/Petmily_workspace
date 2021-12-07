@@ -76,7 +76,7 @@
         
         <div class="img" align="center">
           <a href="">
-            <img src="../../resources/img/logo_top.png" alt="">
+            <img src="resources/img/logo_top.png" alt=""> 
           </a>
         </div>
         
