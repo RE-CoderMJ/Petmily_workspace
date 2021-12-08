@@ -80,7 +80,7 @@
     <div class="inner">
         
         <div class="img" align="center">
-          <a href="">
+          <a href="<%= contextPath %>">
             <img src="resources/img/logo_top.png" alt=""> 
           </a>
         </div>
@@ -101,10 +101,10 @@
 
         <div class="loginBottom" align="center">
             <div id="findEmail">
-                이메일 계정을 잊으셨나요? <a href="<%= contextPath %>/findEmail.me">이메일 찾기</a>
+                이메일 계정을 잊으셨나요? <a href="<%= contextPath %>/findEmailForm.me">이메일 찾기</a>
             </div>
             <div id="findPwdOrJoin">
-                <a href="비밀번호찾기경로">비밀번호 재설정</a> 
+                <a href="<%= contextPath %>/findPwdForm.me">비밀번호 재설정</a> 
                 <a href="<%= contextPath %>/joinForm.me">&ensp; 회원가입</a>
             </div>
         </div>

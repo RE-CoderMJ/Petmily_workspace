@@ -80,16 +80,19 @@
             </div>
 
             <div align="center">
-                <p class="inputP">가입한 이메일 주소를 입력해주세요</p>
+                <p class="inputP">이메일로 발송된 인증번호를 입력하세요</p>
                 <div class="inputWrap">
-                    <input type="text" name="userEmail" placeholder="이메일" required>
-                    <button id="checkBtn" class="btn btn-sm btn-outline-warning">확인</button>
+                    <input type="text" name="userEmail" placeholder="인증번호" required>
                 </div>
                 <br>
             </div>
 
+            <div align="center" style="margin-bottom: 20px;">
+                <button type="submit" class="btn btn-outline-secondary">인증번호 재전송</button>
+            </div>
+
             <div align="center">
-                <button type="submit" class="btn btn-warning">이메일로 인증코드 받기</button>
+                <button type="submit" class="btn btn-warning">다 음</button>
             </div>
 
             <div align="center" class="btnBottom">

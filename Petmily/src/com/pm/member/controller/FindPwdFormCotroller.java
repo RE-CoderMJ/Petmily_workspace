@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FindEmailController
+ * Servlet implementation class FindPwdFormCotroller
  */
-@WebServlet("/findEmail.me")
-public class FindEmailController extends HttpServlet {
+@WebServlet("/findPwdForm.me")
+public class FindPwdFormCotroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindEmailController() {
+    public FindPwdFormCotroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class FindEmailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/member/findEmail.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/findPwd.jsp").forward(request, response);
 	}
 
 	/**

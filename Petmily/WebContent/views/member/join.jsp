@@ -17,8 +17,8 @@
 <style>
     .top {
         width: 100%;
-        height: 55px;
-        background-color: orange;
+        height: 60px;
+        background-color: rgb(247, 198, 4);
         margin-bottom: 50px;
     }
 

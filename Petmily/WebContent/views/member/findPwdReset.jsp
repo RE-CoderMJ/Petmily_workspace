@@ -80,16 +80,24 @@
             </div>
 
             <div align="center">
-                <p class="inputP">가입한 이메일 주소를 입력해주세요</p>
+                <p class="inputP">변경할 비밀번호</p>
                 <div class="inputWrap">
-                    <input type="text" name="userEmail" placeholder="이메일" required>
-                    <button id="checkBtn" class="btn btn-sm btn-outline-warning">확인</button>
+                    <input type="password" name="updatePwd" placeholder="비밀번호" required>
+                </div>
+                <p>영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요</p>
+                <br>
+            </div>
+
+            <div align="center">
+                <p class="inputP">비밀번호 확인</p>
+                <div class="inputWrap">
+                    <input type="password" placeholder="비밀번호 확인" required>
                 </div>
                 <br>
             </div>
 
             <div align="center">
-                <button type="submit" class="btn btn-warning">이메일로 인증코드 받기</button>
+                <button type="submit" class="btn btn-warning">완 료</button>
             </div>
 
             <div align="center" class="btnBottom">
@@ -100,5 +108,6 @@
         </div>
 
     </div>
+
 </body>
 </html>

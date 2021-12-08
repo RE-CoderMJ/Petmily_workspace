@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
 <title>반려동물 정보는 펫밀리</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,39 +17,25 @@
         height: 200px;
     }
 
-    input {
-        width: 270px;
-        padding: 10px;
-        padding-right: 55px;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-    }
-
-    button[type=submit] {
-        margin-top: -10px;
+    button {
+        margin-top: 20px !important;
         width: 270px;
         height: 50px;
         font-weight: bold !important;
     }
 
-    #checkBtn {
-        margin-bottom: 5px;
-        margin-left: -55px;
-    }
-
-
-    .inputP {
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-size: 13px;
-    }
-
-    p {
+    .emailP {
+        margin-top: 20px !important; 
         font-weight: bold;
     }
 
+    span {
+        background-color: orange;
+        color: white;
+    }
+
     .btnBottom {
-        margin-top: 60px;
+        margin-top: 20px;
         font-size: 13px;
     }
 
@@ -59,10 +46,14 @@
     #bb_p2 {
         margin-top: -10px;
         width: 180px;
-        background-color: orange;
+        text-decoration-line: none !important;
+        color: orange !important;
+        font-weight: bold;
     }
 
-    
+    #bb_p2:hover {
+        color: tomato !important;
+    }
 </style>
 
 </head>
@@ -76,29 +67,28 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3>비밀번호 재설정</h3>
+                <h3>이메일 찾기</h3>
+            </div>
+
+            <div class="img" align="center">
+                <img src="resources/img/dog.png"></img>
+            </div>
+
+            <div class="emailP" align="center">
+                <p>김뫄뫄님의 이메일 계정은 <br> <span>pet-mily@naver.com</span>입니다.</p>
             </div>
 
             <div align="center">
-                <p class="inputP">가입한 이메일 주소를 입력해주세요</p>
-                <div class="inputWrap">
-                    <input type="text" name="userEmail" placeholder="이메일" required>
-                    <button id="checkBtn" class="btn btn-sm btn-outline-warning">확인</button>
-                </div>
-                <br>
-            </div>
-
-            <div align="center">
-                <button type="submit" class="btn btn-warning">이메일로 인증코드 받기</button>
+                <button type="submit" class="btn btn-warning">로그인 하러 가기</button>
             </div>
 
             <div align="center" class="btnBottom">
-                <p id="bb_p1">회원가입 시 입력한 정보가 기억나지 않는다면?</p>
-                <p id="bb_p2">고객센터 문의하기 2222-2222</p>
+                <p id="bb_p1">비밀번호도 잊으셨나요? <a id="bb_p2" href="<%= contextPath %>/findPwdForm.me">&ensp;비밀번호 재설정</a></p>
             </div>
 
         </div>
 
     </div>
+
 </body>
 </html>
