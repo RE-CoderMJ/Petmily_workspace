@@ -164,11 +164,13 @@
 	                
 	                </form>
 	    </div>
+	    
+	    <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
 	    <!-- 버튼(등록,수정,삭제), 테이블, 페이징바 -->
 	    <div class="bottom">
 	
 	        <div class="rightbutton" align="right">
-	            <a href="" class="btn btn-sm btn-warning">등록</a>
+	            <a href="<%= contextPath %>/enrollFormAdmin.qna" class="btn btn-sm btn-warning">등록</a>
 	            <a href="" class="btn btn-sm btn-warning">수정</a>
 	            <a href="" class="btn btn-sm btn-danger">삭제</a>
 	            <br><br>
@@ -207,6 +209,8 @@
 	            </table>
 	        </div>
 	        <br>
+	        
+	        <% } %>
 	
 	        <!-- 페이징 바 -->
 	        <div class="paging-area" align="center">

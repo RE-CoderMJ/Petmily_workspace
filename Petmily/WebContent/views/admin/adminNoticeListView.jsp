@@ -105,7 +105,7 @@
 </head>
 <body>
 <!-- 메뉴바 -->
-    <%@ include file="../comon/admin_menubar.jsp" %>
+    <%@ include file="../common/admin_menubar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
@@ -158,8 +158,10 @@
         </div>
             
             <!-- 버튼들(등록,수정,삭제) -->
+            <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
             <div class="buttons" align="right">
-                <a href="" class="btn btn-sm btn-warning">등록</a>
+            
+                <a href="<%= contextPath %>/enrollFormAdmin.no" class="btn btn-sm btn-warning">등록</a>
                 <a href="" class="btn btn-sm btn-warning">수정</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>
@@ -196,6 +198,7 @@
                 </tbody>
         	</table>
     	</div>
+    	<% } %>
     <br><br><br>
 
     <!-- 페이징 바 -->

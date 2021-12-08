@@ -58,11 +58,11 @@
 	        </form>
 	        <br><br>
 	    </div>
-	
+		<% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
 	    <!-- 버튼들(등록, 삭제) -->
 	    <div class="adminbuttons">
 	        <div align="right">
-	            <a href="" class="btn btn-sm btn-warning">답변 등록</a>
+	            <a href="<%= contextPath %>/reply.rv" class="btn btn-sm btn-warning">답변 등록</a>
 	            <a href="" class="btn btn-sm btn-danger">답변 삭제</a>
 	            <br><br>
 	        </div>
@@ -102,10 +102,11 @@
 	    </div>
 	<br><br><br>
 	
+	<% } %>
 	</div>
 
 <!-- 페이징 바 -->
-<%@ include file="admin_pasingBar.jsp" %>
+<%@ include file="../common/admin_pasingBar.jsp" %>
 	
 </body>
 </html>
