@@ -65,6 +65,8 @@ a{
 #info a{
     color: gray;
     font-weight: bolder;
+    text-decoration: none;
+    cursor: pointer;
 }
 #writer{
     position: absolute;
@@ -193,13 +195,13 @@ a{
 }
 
 /* 삭제모달창 */
-#modalMsg-area{
+.modalMsg-area{
     font-weight: bolder;
     font-size: 17px;
     margin-top: 20px;
     height: 70px;
 }
-#deletebtn-area>button{
+#deletebtn-area>*{
     color: white;
     font-weight: bolder;
     font-size: 15px;
@@ -211,14 +213,79 @@ a{
 #confirm-btn{
     background-color: gray;
     margin-right: 2px;
+    line-height: 22px;
 }
 #closebtn{
     background-color: orange;
     margin-left: 2px;
 }
+#deleteCompletedclosebtn{
+    background-color: orange;
+    width: 250px;
+    color: white;
+    font-weight: bolder;
+}
 
-.modal - backdrop {
-   opacity: 0.5!important;
+/* 신고모달창 */
+span{
+    color: orange;
+    font-weight: bolder;
+}
+#required-area{
+    width: 80px;
+    font-size: 11px;
+    color: gray;
+    margin-left: 200px;
+    margin-top: 1px;
+    margin-bottom: 30px;
+}
+#report-area{
+    font-weight: bolder;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+/* 라디오 인풋 영역 */
+#select-area{
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+#select-area>input{
+    margin-bottom: 20px;
+}
+/* 신고사유영역 */
+#reason-area{
+    font-size: 12px;
+    font-weight: bolder;
+}
+#reason-area>textarea{
+    margin-top: 7px;
+    width: 210px;
+    resize: none;
+    height: 120px;
+}
+#reportbtn-area>*{
+    width: 80%;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+#report-btn{
+    color: white;
+    background-color: orange;
+}
+#report-close{
+    border: 1px solid orange;
+    color: orange;
+    margin-bottom: 10px;
+}
+#report-confirmMsg{
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+#reportCompletedclosebtn{
+	background-color: orange;
+    width: 250px;
+    color: white;
+    font-weight: bolder;
 }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -243,7 +310,7 @@ a{
             <div id="info-area">
                 <div id="info">
                     2021-11-12 17:00 &nbsp;&nbsp;&nbsp;&nbsp;조회 63&nbsp;&nbsp;&nbsp;
-                    <a href="">신고</a> &nbsp;
+                    <a data-toggle="modal" data-target="#reportAskModal">신고</a> &nbsp;
                     <a href="<%=contextPath%>/updateForm.ask">수정하기</a>
                 </div>
                 <div id="writer">
@@ -293,9 +360,6 @@ a{
         </div>
     </div>
     
-    
-	
-    
     <!-- 게시글 삭제 Modal -->
     <div class="modal fade" id="deleteAskModal">
         <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -303,12 +367,91 @@ a{
 
                 <!-- Modal body -->
                 <div class="modal-body" align="center">
-                    <div id="modalMsg-area">
+                    <div class="modalMsg-area">
                                         정말 삭제하시겠습니까?
                     </div>
                     <div id="deletebtn-area">
-                      <button type="button" class="btn" id="confirm-btn">확인</button>
+                      <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
                       <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                    </div>              
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- 게시글 삭제완료 Modal -->
+    <div class="modal fade" id="deleteCompleted">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body" align="center">
+                    <div class="modalMsg-area">
+                        정상적으로 삭제되었습니다.
+                    </div>
+                    <div>
+                      <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                    </div>              
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- 신고 Modal -->
+    <div class="modal fade" id="reportAskModal">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body" align="center">
+                    <div id="required-area"><span>*</span>필수입력사항</div>
+                    <div id="report-area">
+                        신고 사유를 선택해주세요
+                        <span>*</span>
+                    </div>
+                    <form action="" id="report-form">
+                        <div id=select-area align="left">
+                            <input type="radio" name="reason" checked>광고성 게시물<br>
+                            <input type="radio" name="reason">도배 및 중복 게시물<br>
+                            <input type="radio" name="reason">욕설/비방<br>
+                            <input type="radio" name="reason">외설적인 게시물<br>
+                            <input type="radio" name="reason">기타
+                        </div>
+
+                        <div id="reason-area">
+                            <span>*</span>사유에 대한 간략한 설명을 적어주세요.<br>
+                            <textarea name="report-reason" id="report-content" placeholder="내용을 입력해주세요" required></textarea>
+                        </div>
+                        <div id="reportbtn-area">
+                          <a type="button" class="btn" id="report-btn" data-dismiss="modal" data-toggle="modal" href="#reportCompleted">신고하기</a>
+                          <button type="button" class="btn" data-dismiss="modal" id="report-close">닫기</button>
+                        </div>              
+                    </form>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- 신고완료 Modal -->
+    <div class="modal fade" id="reportCompleted">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body" align="center">
+                    <div class="modalMsg-area">
+                        신고가 완료되었습니다.
+                    </div>
+                    <div id="report-confirmMsg">
+                        신고 내역은 검토 후<br>
+                        조취될 예정입니다.<br>
+                        감사합니다.
+                    </div>
+                    <div id="deletebtn-area">
+                      <button type="button" class="btn" data-dismiss="modal" id="reportCompletedclosebtn">확인</button>
                     </div>              
                 </div>
         
