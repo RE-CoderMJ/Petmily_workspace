@@ -141,6 +141,7 @@ div, img, li, a{
      width: 40px;
      border-radius: 5px;
 }
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -279,7 +280,7 @@ div, img, li, a{
         })
     </script>
          
-      <!-- <div>등록된 게시글이 없습니다.</div> -->
+      <!-- <div>xxx에 대한 검색결과가 없습니다.</div> -->
    </div>
 
    

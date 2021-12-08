@@ -6,38 +6,38 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    /* footer 영역의 세부 스타일 */
-    html{
-        position: relative;
-    }
-    body{
-        min-height: 100%;
-    }
-    #footer{
-        background-color: rgb(235, 235, 235);
-        position:absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        padding: 15px 0;
-    }
-     #footer_1{ margin-left:40px}
-     #footer_1>a{
-            font-weight:600;
-            margin:15px;
-            line-height:20px;
-            color:rgb(97, 95, 95);
-            font-size: 13px;
-            text-decoration: none;
-        }
-        #footer_2{ margin-left:40px}
-        #footer_2>p{
-            width:100%;
-            margin:0;
-            box-sizing:border-box;
-        }
-        #p1{height:80%; padding:15px; font-size:12px;}
-        #p2{height:20%; padding:15px; font-size:10px;}
+/* footer 영역의 세부 스타일 */
+html{
+    position: relative;
+}
+body{
+    min-height: 100%;
+}
+#footer{
+    background-color: rgb(235, 235, 235);
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 0;
+}
+#footer_1{ margin-left:40px}
+#footer_1>a{
+    font-weight:600;
+    margin:15px;
+    line-height:20px;
+    color:rgb(97, 95, 95);
+    font-size: 13px;
+    text-decoration: none;
+}
+#footer_2{ margin-left:40px}
+#footer_2>p{
+    width:100%;
+    margin:0;
+    box-sizing:border-box;
+}
+#p1{height:80%; padding:15px; font-size:12px;}
+#p2{height:20%; padding:15px; font-size:10px;}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
