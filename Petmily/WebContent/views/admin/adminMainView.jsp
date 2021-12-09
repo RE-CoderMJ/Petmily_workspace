@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,7 +136,8 @@
 <body>
 
 	<!-- 메뉴바 -->
-    <%@ include file="../comon/admin_menubar.jsp" %>
+    <%@ include file="../common/admin_menubar.jsp" %>
+    <%@ include file="../common/admin_memSidebar.jsp" %>
 
     <div class="outer">
 

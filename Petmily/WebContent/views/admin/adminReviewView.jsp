@@ -34,7 +34,7 @@
 	<div class="outer">
 
 	    <!-- 사이드바 -->
-	    <%@ include file="../common/admin_sideBar.jsp" %>
+	    <%@ include file="../common/admin_memSidebar.jsp" %>
 	
 	    <!-- 상단바 -->
 	    <div class="top">
