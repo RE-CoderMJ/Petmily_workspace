@@ -5,145 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="resources/css/boards/missing/missingMain.css" rel="stylesheet">
 </head>
-<style>
 
-div, img, li, a{
-        box-sizing: border-box;
-        border: soli 1px black;
-}
-     
-/* 찾고있어요 메인 스타일 */
-.content-area{
-   width: 1400px;
-   height: 1600px;
-   margin: auto;
-}
-.content-area > div{
-   width: 85%;
-}
-
-/* 게시판 설명 영역 스타일 */
-#title-area{
-   height: 65px;
-   background: rgb(235, 235, 235);
-   margin-bottom: 20px;
-   padding: 12px;
-}
-#title1{
-   font-weight: bolder;
-}
-#title2{
-   color: rgb(153, 20, 20);
-   font-size: 11px;
-   font-weight: bolder;
-}
-
-/* 검색영역 스타일 */
-#search-area{
-   padding: 20px;
-   border: solid 1px rgb(247, 198, 4);
-   height: 250px;
-}
-#search-area span,p{
-   color: gray;
-   font-weight: bolder;
-   font-size: 15px;
-}
-#search-area input{
-   font-size: 17px;
-}
-#search-left{
-   float: left;
-   width: 50%;
-   text-align: left;
-   margin-left: 80px;
-}
-#search-right{
-   text-align: left;
-}
-/* 대상 스타일 */
-#category-select-area{
-   margin-bottom: 15px;
-}
-#category-select-area label{
-   font-size: 15px;
-}
-#category-select-area >span{
-   margin-right: 38px;
-}
-/* 성별 스타일 */
-#gender-select-area{
-   font-size: 15px;
-   margin-bottom: 15px;
-}
-#gender-select-area >span{
-   margin-right: 38px;
-}
-/* 발생, 발견일 스타일*/
-#missing-date-area>p{
-   float: left;
-   text-align: left;
-   margin-right: 30px;
-}
-#missing-date-area input{
-   font-size: 14px;
-   margin-top: 7px;
-}
-#missing-date-area{
-   margin-bottom: 20px;
-}
-/* 신체특징 스타일 */
-#feature-area>span{
-   margin-left: -68px;
-   margin-right: 12px;
-}
-#feature-area>input{
-   font-size: 15px;
-   width: 295px;
-}
-#feature-area>div{
-   margin-left: 75px;
-   font-size: 11px;
-   color: orange;
-   font-weight: bolder;
-}
-
-/* 중간영역 스타일 */
-#middle-area>div{
-   float: left; 
-   width:592px;
-   margin-top: 25px;
-}
-#write{
-   height: 27px;
-   line-height: 3px;
-}
-/* 공지사항 영역 스타일 */
-#notice{
-   background-color: orange;
-}
-#notice-area>span{
-   font-size: 12px;
-   margin-right: 10px;
-   font-weight: bold;
-   cursor: pointer;
-}
-
-/* 페이징바 스타일 */
-#paging-bar{
-   margin-top: 120px;
-}
-/* 페이징바 */
-.paging-area button{
-   border:  0;
-   background-color: transparent;
-   height: 40px;
-   width: 40px;
-   border-radius: 5px;
-}
-
-</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -223,7 +87,7 @@ div, img, li, a{
                </div>
             </div>
             <div id="search-right">
-               <div>
+               <div id="select-ddcategory">
                   <span>구분</span>
                   <select name="d-category" id="select-dcategory">
                      <option value="">전체</option>
@@ -236,27 +100,31 @@ div, img, li, a{
                   <span>이름</span>
                   <input type="text" name="mpName">
                </div>
-               <div>
+               <div id="age-area">
                   <span>나이</span>
                   <input type="number" name="mpAgeFrom">
+                  <span>세 ~</span>
+                  <input type="number" name="mpAgeTo" id="mpAgeTo">
+                  <span>세</span>
                </div>
-               <div>
+               <div id="missing-place-area">
                   <p>발생,<br>발견장소</p>
-                  <input type="number" name="mpAgeFrom">
-               </div>
-               <div>
-                  ex) 서울시 용산구 갈월동 놀이터 앞<br>
-                  상세주소로 검색이 가능합니다.
+                  <input type="text" name="mpPlace">
+                  <div>
+                     ex) 서울시 용산구 갈월동 놀이터 앞
+                     <br>상세주소로 검색이 가능합니다.
+                  </div>
                </div>
             </div>
-            <div>
-               <button>검색</button>
+            <div id="missing-search-btn-area">
+               <button type="submit" class="btn" id="missing-search-btn">검색</button>
             </div>
          </form>
       </div>
 
       <div id="middle-area">
-         <div align="left">
+         <div align="left" id="selectBy">
+            <!-- 선택한 카테고리에 따라 문구 변경됨 -->
             전체 xxx건
          </div>
          <div align="right">
@@ -265,23 +133,124 @@ div, img, li, a{
          <br><br><hr style="border: solid 1px rgb(179, 178, 178);">
       </div>
       <div id="notice-area" align="left">
-         <span class="badge badge-pill" id="notice" onclick= "location.href = '<%= contextPath%>/no.ask';">공지사항</span>
-         <span onclick= "location.href = '<%= contextPath%>/no.ask';">게시글 작성시 유의사항</span>
+         <span class="badge badge-pill" id="notice" onclick= "location.href = '<%= contextPath%>/no.missing';">공지사항</span>
+         <span onclick= "location.href = '<%= contextPath%>/no.missing';">게시글 작성시 유의사항</span>
       </div>
+
+      <!-- 게시글 영역 -->
       <div id="content-area">
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="found-title">보호하고있어요</div>
+               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
+               <div>발견일자 : 2021년 11월 12일
+                  <br>발견지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
+
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="found-title">보호하고있어요</div>
+               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
+               <div>발견일자 : 2021년 11월 12일
+                  <br>발견지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
+
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="found-title">보호하고있어요</div>
+               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
+               <div>발견일자 : 2021년 11월 12일
+                  <br>발견지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
+
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="found-title">보호하고있어요</div>
+               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
+               <div>발견일자 : 2021년 11월 12일
+                  <br>발견지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
+
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="missing-title">찾고있어요</div>
+               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
+               <div>실종일자 : 2021년 11월 12일
+                  <br>실종지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
          
-         
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="missing-title">찾고있어요</div>
+               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
+               <div>실종일자 : 2021년 11월 12일
+                  <br>실종지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
+
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="missing-title">찾고있어요</div>
+               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
+               <div>실종일자 : 2021년 11월 12일
+                  <br>실종지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
+
+         <div class="content-box-area">
+            <div style="border:1px solid black;" class="missing-img">
+               <img src="" alt="">
+            </div>
+            <div class="content-info-area" align="left">
+               <div class="missing-title">찾고있어요</div>
+               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
+               <div>실종일자 : 2021년 11월 12일
+                  <br>실종지역 : 구갈동 ak플라자 앞
+                  <br>신체특징 : 귀가 큼
+               </div>
+            </div>
+         </div>
       </div>
-      <script>
-         $(function(){
-            $(".contents").click(function(){
-               //const num = $(this).children().eq(0).text();
-               
-               // /jsp/detail.no?num=클릭한글번호
-               location.href = '<%=contextPath%>/detail.ask';
-            })
-         })
-      </script>
 
       <!-- 페이징 바 -->
       <div class="paging-area" align="center">
