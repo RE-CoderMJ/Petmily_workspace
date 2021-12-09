@@ -67,7 +67,7 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3>이메일 찾기</h3>
+                <h3 style="font-weight: bold">이메일 찾기</h3>
             </div>
 
             <div class="img" align="center">

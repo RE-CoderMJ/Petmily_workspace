@@ -16,21 +16,30 @@
         height: 200px;
     }
 
-
     input {
         width: 270px;
         padding: 10px;
+        padding-right: 55px;
         border: 1px solid lightgray;
         border-radius: 5px;
-        margin-bottom: 10px;
     }
 
-    button {
-        margin-top: 15px !important;
+    .btns {
+        margin: 30px !important;
+    }
+
+    button[type=submit] {
+        margin-top: -10px;
         width: 270px;
         height: 50px;
         font-weight: bold !important;
     }
+
+    #checkBtn {
+        margin-bottom: 5px;
+        margin-left: -55px;
+    }
+
 
     .inputP {
         margin-top: 10px;
@@ -58,31 +67,26 @@
     }
 
     #notify {
-        margin-top: 15px;
         width: 280px;
+    }
+
+    .notifyGreen {
+        font-size: 13px;
+        color: mediumseagreen;
+        font-weight: bold;
+        margin: 10px 10px 20px;
+        float: left;
     }
 
     .notifyRed {
         font-size: 13px;
         color: red;
         font-weight: bold;
-        margin: 0 10px 0 10px;
+        margin: 10px 10px 20px;
         float: left;
     }
 
-    .notifyOrange {
-        font-size: 13px;
-        color: orange;
-        font-weight: bold;
-        margin: 0 10px 0 10px;
-        float: right;
-        text-decoration-line: none !important;
-    }
-
-    .notifyOrange:hover {
-        color: tomato;
-    }
-
+    
 </style>
 
 </head>
@@ -96,31 +100,35 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3 style="font-weight: bold">이메일 찾기</h3>
+                <h3 style="font-weight: bold">비밀번호 재설정</h3>
             </div>
 
             <div align="center">
-                <p class="inputP">회원정보에 등록한 이름을 입력해주세요</p>
-                <input type="text" name="userName" required placeholder="이름">
-                <br>
-                <p class="inputP">회원정보에 등록한 전화번호를 입력해주세요</p>
-                <input type="text" name="phone" placeholder="010" style="width: 60px;" required>
-                -
-                <input type="text" name="phone2" placeholder="0000" style="width: 90px;" required>
-                -
-                <input type="text" name="phone3" placeholder="0000" style="width: 90px;" required>
+                <p class="inputP">이메일로 발송된 인증번호를 입력하세요</p>
+                <div class="inputWrap">
+                    <input type="text" name="userEmail" placeholder="인증번호" required>
+                </div>
                 
-                <!-- 일치하는 정보 없을 때 나타나는 div -->
+                <!-- 인증번호 성공 시 나타나는 div -->
                 <!-- <div id="notify">
-                    <p class="notifyRed">일치하는 정보가 없습니다</p>
-                    <a class="notifyOrange" href="<%= contextPath %>/joinForm.me">회원가입하기</a>
+                    <p class="notifyGreen"> 인증번호 성공</p>
+                </div> -->
+
+                <!-- 인증번호 실패 시 나타나는 div -->
+                <!-- <div id="notify">
+                    <p class="notifyRed"> 인증번호 실패</p>
                 </div> -->
             </div>
 
-           
 
-            <div align="center">
-                <button type="submit" class="btn btn-warning">이메일 찾기</button>
+            <div class="btns">
+                <div align="center" style="margin-bottom: 20px;">
+                    <button type="submit" class="btn btn-outline-secondary">인증번호 재전송</button>
+                </div>
+    
+                <div align="center">
+                    <button type="submit" class="btn btn-warning">다 음</button>
+                </div>
             </div>
 
             <div align="center" class="btnBottom">

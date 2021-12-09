@@ -36,15 +36,14 @@
         margin-left: -55px;
     }
 
-
     .inputP {
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-size: 13px;
+        font-weight: bold;
     }
 
-    p {
-        font-weight: bold;
+    .inputP2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 13px;
     }
 
     .btnBottom {
@@ -76,20 +75,20 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3>비밀번호 재설정</h3>
+                <h3 style="font-weight: bold;">비밀번호 재설정</h3>
             </div>
 
             <div align="center">
-                <p class="inputP">변경할 비밀번호</p>
+                <h5 class="inputP" style="margin-right: 130px;">변경할 비밀번호</h5>
                 <div class="inputWrap">
                     <input type="password" name="updatePwd" placeholder="비밀번호" required>
                 </div>
-                <p>영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요</p>
+                <p class="inputP2">영문, 숫자를 포함하여 8자 이상으로 입력해주세요</p>
                 <br>
             </div>
 
             <div align="center">
-                <p class="inputP">비밀번호 확인</p>
+                <h5 class="inputP" style="margin-right: 145px;">비밀번호 확인</h5>
                 <div class="inputWrap">
                     <input type="password" placeholder="비밀번호 확인" required>
                 </div>

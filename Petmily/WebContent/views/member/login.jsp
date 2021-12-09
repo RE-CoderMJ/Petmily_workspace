@@ -70,6 +70,12 @@
         color: tomato !important;
     }
 
+    .notifyRed {
+        font-size: 13px;
+        color: red;
+        font-weight: bold;
+    }
+
   </style>
 </head>
 
@@ -86,17 +92,32 @@
         </div>
         
         <form action="/action_page.php" class="needs-validation" novalidate>
-          <div class="form-group">
-          	<input type="text" class="form-control" id="userEmail" placeholder="E-mail" name="userEmail" required>
-            <div class="valid-feedback"></div>
-            <div class="invalid-feedback">이메일을 입력해주세요</div>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="userPwd" placeholder="Password" name="userpwd" required>
-            <div class="valid-feedback"></div>
-            <div class="invalid-feedback">비밀번호를 입력해주세요</div>
-          </div>
-          <button type="submit" class="btn btn-warning">로그인</button>
+            <!-- Email 인풋 null일 때-->
+            <div class="form-group">
+              <input type="text" class="form-control" id="userEmail" placeholder="E-mail" name="userEmail" required>
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">이메일을 입력해주세요</div>
+            </div>
+            <!-- 비밀번호 인풋 null일 때-->
+            <div class="form-group">
+              <input type="password" class="form-control" id="userPwd" placeholder="Password" name="userpwd" required>
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">비밀번호를 입력해주세요</div>
+            </div>
+
+            <!--
+            // Email 틀렸을 시 
+            <div>
+              <p class="notifyRed">등록되지않은 이메일입니다</p>
+            </div>
+
+            // 비밀번호 틀렸을 시
+            <div>
+              <p class="notifyRed">비밀번호가 틀렸습니다</p>
+            </div>
+            -->
+
+            <button type="submit" class="btn btn-warning">로그인</button>
         </form>
 
         <div class="loginBottom" align="center">

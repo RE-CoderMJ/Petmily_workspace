@@ -122,6 +122,18 @@
         color: white;
     }
 
+    .notify {
+        font-size: 13px;
+        color: mediumseagreen;
+        font-weight: bold;
+    }
+
+    .notifyRed {
+        font-size: 13px;
+        color: red;
+        font-weight: bold;
+    }
+
 </style>
 </head>
 
@@ -165,8 +177,35 @@
                             </select>
 
                             <button type="button" class="rightBtn btn-sm btn-light">이메일 인증</button>
+                            
+                            <!-- 이메일 인증 버튼 누를 시 바뀌는 버튼 (이메일 인증->인증번호 재전송) -->
+                            <!-- <button type="button" class="rightBtn btn-sm btn-light">인증번호 재전송</button> -->
                         </div>
+
                     </div>
+
+
+                    <!-- 이메일 인증 버튼 누를 시 아래에 나타나는 div -->
+                    <!-- <div>
+                        <div>
+                            <label class="leftText" for="verify"></span></label>
+                        </div>
+
+                        <div>
+                            <input type="text" name="verification" placeholder="인증번호" required>
+                            <button type="button" class="rightBtn btn-sm btn-light">인증하기</button>
+                        </div>
+
+                        <div>
+                            <span class="notify">등록하신 이메일로 인증번호를 발송하였습니다</span>
+                            // 이메일 인증 성공 시
+                            <span class="notify">이메일 인증 성공</span>
+                            // 이메일 인증 실패 시
+                            <span class="notifyRed">이메일 인증 실패</span>
+                        </div>
+
+                    </div> -->
+
 
 
                     <div>

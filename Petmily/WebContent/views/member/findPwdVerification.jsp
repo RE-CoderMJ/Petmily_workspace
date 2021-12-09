@@ -31,6 +31,10 @@
         font-weight: bold !important;
     }
 
+    .btns {
+        margin: 40px !important;
+    }
+
     #checkBtn {
         margin-bottom: 5px;
         margin-left: -55px;
@@ -62,6 +66,19 @@
         background-color: orange;
     }
 
+    #notify {
+        border: 1px solid;
+        width: 280px;
+    }
+
+    .notifyGreen {
+        font-size: 13px;
+        color: mediumseagreen;
+        font-weight: bold;
+        margin: 0 10px 10px;
+        float: left;
+    }
+
     
 </style>
 
@@ -76,7 +93,7 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3>비밀번호 재설정</h3>
+                <h3 style="font-weight: bold">비밀번호 재설정</h3>
             </div>
 
             <div align="center">
@@ -84,15 +101,20 @@
                 <div class="inputWrap">
                     <input type="text" name="userEmail" placeholder="인증번호" required>
                 </div>
-                <br>
+
+                <!-- <div>
+                    <p class="notifyGreen"> 인증번호 성공</p>
+                </div> -->
             </div>
 
-            <div align="center" style="margin-bottom: 20px;">
-                <button type="submit" class="btn btn-outline-secondary">인증번호 재전송</button>
-            </div>
-
-            <div align="center">
-                <button type="submit" class="btn btn-warning">다 음</button>
+            <div class="btns">
+                <div align="center" style="margin-bottom: 20px;">
+                    <button type="submit" class="btn btn-outline-secondary">인증번호 재전송</button>
+                </div>
+    
+                <div align="center">
+                    <button type="submit" class="btn btn-warning">다 음</button>
+                </div>
             </div>
 
             <div align="center" class="btnBottom">

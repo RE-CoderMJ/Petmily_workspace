@@ -22,10 +22,11 @@
         padding-right: 55px;
         border: 1px solid lightgray;
         border-radius: 5px;
+        margin-bottom: 10px !important;
     }
 
     button[type=submit] {
-        margin-top: -10px;
+        margin-top: 5px;
         width: 270px;
         height: 50px;
         font-weight: bold !important;
@@ -62,6 +63,39 @@
         background-color: orange;
     }
 
+    #notify {
+        width: 280px;
+    }
+
+    .notifyRed {
+        font-size: 13px;
+        color: red;
+        font-weight: bold;
+        margin: 0 10px 10px;
+        float: left;
+    }
+
+    .notifyGreen {
+        font-size: 13px;
+        color: mediumseagreen;
+        font-weight: bold;
+        margin: 0 10px 10px;
+        float: left;
+    }
+
+    .notifyOrange {
+        font-size: 13px;
+        color: orange;
+        font-weight: bold;
+        margin: 0 10px 10px;
+        float: right;
+        text-decoration-line: none !important;
+    }
+
+    .notifyOrange:hover {
+        color: tomato;
+    }
+
     
 </style>
 
@@ -76,7 +110,7 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3>비밀번호 재설정</h3>
+                <h3 style="font-weight: bold">비밀번호 재설정</h3>
             </div>
 
             <div align="center">
@@ -85,9 +119,22 @@
                     <input type="text" name="userEmail" placeholder="이메일" required>
                     <button id="checkBtn" class="btn btn-sm btn-outline-warning">확인</button>
                 </div>
-                <br>
-            </div>
 
+                <!-- 가입한 정보 있을 때 나타나는 div -->
+                <!-- <div id="notify">
+                    <p class="notifyGreen">가입된 이메일입니다</p>
+                </div> -->
+
+                <!-- 가입한 정보 없을 때 나타나는 div -->
+                <!-- <div id="notify">
+                    <p class="notifyRed">등록되지 않은 이메일입니다</p>
+                    <a class="notifyOrange" href="<%= contextPath %>/joinForm.me">회원가입하기</a>
+                    이메일로 인증코드 받기 버튼도 disabled 처리
+                </div> -->
+               
+            </div>
+            
+            
             <div align="center">
                 <button type="submit" class="btn btn-warning">이메일로 인증코드 받기</button>
             </div>
