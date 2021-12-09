@@ -54,6 +54,7 @@ body{
             <a href="">개인정보처리방침</a> 
             <a href="">협업/제휴 문의</a> 
             <a href="">고객센터</a>
+            <a href="<%= contextPath %>/login.ad;">관리자 페이지로 이동</a>
         </div>
         <div id="footer_2">
             <p id="p1">

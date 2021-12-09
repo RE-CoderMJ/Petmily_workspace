@@ -1,5 +1,8 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+ %>
     <!DOCTYPE html>
     <html>
     <head>
@@ -79,8 +82,8 @@
        <!-- 메뉴바 -->
         <div class="nav-area" align="center">
             <div class="menu-box">
-                <div class="menu"><a href="">회원관리</a></div> 
-                <div class="menu"><a href="">쇼핑몰</a></div>
+                <div class="menu"><a href="<%= contextPath %>/memMg.ad;">회원관리</a></div> 
+                <div class="menu"><a href="<%= contextPath %>/spErPd.ad;">쇼핑몰</a></div>
                 <div class="menu"><a href="">게시판관리</a></div>
                 <div class="menu"><a href="">Petlog</a></div>
                 <div class="menu"><a href="">고객센터</a></div>
