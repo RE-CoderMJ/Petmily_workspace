@@ -15,8 +15,9 @@ div, img, li, a{
    /* 궁금해요 메인 스타일 */
    .content-area{
       width: 1400px;
-      height: 1600px;
+      height: auto;
       margin: auto;
+      margin-bottom: 230px;
    }
    .content-area > div{
       width: 85%;

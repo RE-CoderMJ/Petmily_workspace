@@ -15,7 +15,7 @@ div, img, li, a{
      
 .content-area{
 	width: 1400px;
-	height: 800px;
+	height: auto;
 	margin: auto;
 	padding:200px;
 	padding-top:35px;
