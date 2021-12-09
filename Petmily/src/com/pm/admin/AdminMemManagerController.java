@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class adminMemManagerController
  */
 @WebServlet("/memMg.ad")
-public class adminMemManagerController extends HttpServlet {
+public class AdminMemManagerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminMemManagerController() {
+    public AdminMemManagerController() {
         super();
         // TODO Auto-generated constructor stub
     }

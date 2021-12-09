@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -91,8 +91,8 @@
             
             <!-- cont-wrap -->
             <div class="cont-wrap">
-                <div class="title-box mt-5 pb-2">
-                    <h3 class="mt-2">> 관리자 쇼핑몰</h3>
+                <div class="title-box mt-1 pb-2">
+                    <h3 class="mt-1">> 관리자 쇼핑몰</h3>
                 </div>
                 <div class="content product-reg">
                     <hr>

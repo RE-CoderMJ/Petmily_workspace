@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -106,6 +106,7 @@
         .md-box .btn-box button{
             background-color: #d4d4d4;
         }
+        /* 사이드바 색 고정 */
         #memInfor{
             background: rgb(247, 198, 4);
             color: white;
@@ -264,6 +265,7 @@
                             <div class="pb-5">
                                 <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
                             </div>
+                            <!-- 회원삭제 모달 -->
                             <div class="modal fade" id="deleteModal">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content" style="width: 400px;">

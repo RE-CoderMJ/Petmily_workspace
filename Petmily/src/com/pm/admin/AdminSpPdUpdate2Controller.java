@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminSpEnrollPdController
+ * Servlet implementation class adminSpPdUpdate2Controller
  */
-@WebServlet("/spErPd.ad")
-public class adminSpEnrollPdController extends HttpServlet {
+@WebServlet("/spPdUd2.ad")
+public class AdminSpPdUpdate2Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminSpEnrollPdController() {
+    public AdminSpPdUpdate2Controller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,8 @@ public class adminSpEnrollPdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/shopping/adminSoppingEnrollPd.jsp").forward(request, response);
-		}
+		request.getRequestDispatcher("views/admin/shopping/adminSoppingPdUd2.jsp").forward(request, response);	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
