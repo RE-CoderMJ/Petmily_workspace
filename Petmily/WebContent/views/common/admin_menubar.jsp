@@ -14,8 +14,8 @@
         .nav-area{height: 10px;}
     
         /* header부분 전반적인 구조 */
-        .header>div{height: 100%; }
-        #logo{width: 41%; position: relative; margin: 0 auto;}
+        .header>div{height: 70px; }
+        #logo{width: 35%; position: relative; margin: 0 auto;}
 
         /* navigator 영역에 대한 세부 스타일 */
         .nav-area{
@@ -76,7 +76,7 @@
         <div class="header">
             <div id="logo">
                 <a href="">
-                <img src="resources/img/logo_side.png" alt="">
+                <img style="width: 350px;" src="resources/img/logo_side.png" alt="">
             	</a>
             </div>  
         </div>
