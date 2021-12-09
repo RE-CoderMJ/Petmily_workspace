@@ -13,7 +13,7 @@ div, img, li, a{
 }
 .content-area{
 	width: 1400px;
-	height: 1100px;
+	height: auto;
 	margin: auto;
 	padding:200px;
 	padding-top:35px
@@ -144,19 +144,19 @@ div, img, li, a{
 				<span id="required">필수입력사항</span>
 			</div>
 		</div>
-		<div id="category-area">
-			<div>
-				<div>분류</div>
+		<form action="" method="post" enctype="multipart/form-data">
+			<div id="category-area">
 				<div>
-					<select name="category" id="category">
-						<option value="dog">강아지</option>
-						<option value="cat">고양이</option>
-						<option value="etc">기타</option>
-					</select>
+					<div>분류</div>
+					<div>
+						<select name="category" id="category" required>
+							<option value="dog">강아지</option>
+							<option value="cat">고양이</option>
+							<option value="etc">기타</option>
+						</select>
+					</div>
 				</div>
 			</div>
-		</div>
-		<form action="" method="post">
 			<div id="content">
 				<div>
 					<input type="text" name="title" id="title" placeholder="제목을 입력해 주세요" required>
