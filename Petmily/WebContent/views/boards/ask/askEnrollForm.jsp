@@ -61,6 +61,9 @@ div, img, li, a{
 	font-size: 17px;
 	font-weight: bolder;
 }
+#required-category{
+	margin-left: -570px;
+}
 /* 제목 스타일 */
 #title{
 	width: 700px;
@@ -136,7 +139,7 @@ div, img, li, a{
 	<div class="content-area" align="center">
 		<div id="top">
 			<div id="list-btn" align="right">
-				<button type="button" class="btn btn-secondary" id="list">목록</button>
+				<button type="button" class="btn btn-secondary" id="list" onclick="location.href='<%=contextPath%>/main.ask?page=1';">목록</button>
 			</div>
 			<hr style="border: solid 1px rgb(179, 178, 178);">
 			<div id="required-area" align="right">
@@ -155,6 +158,7 @@ div, img, li, a{
 							<option value="etc">기타</option>
 						</select>
 					</div>
+					<span class="required" id="required-category">*</span>
 				</div>
 			</div>
 			<div id="content">
