@@ -110,6 +110,39 @@
             background: rgb(247, 198, 4);
             color: white;
         }
+        /* 삭제모달창 */
+        .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
+            text-align: center;
+        }
+        #deletebtn-area>*{
+            color: white;
+            font-weight: bolder;
+            font-size: 15px;
+            height: 35px;
+            line-height: 5px;
+            width: 70px;
+            margin-top: -10px;
+        }
+        #confirm-btn{
+            background-color: red;
+            margin-right: 2px;
+            line-height: 22px;
+        }
+        #closebtn{
+            background-color: gray;
+            margin-left: 2px;
+        }
+        #deleteCompletedclosebtn{
+            background-color: orange;
+            width: 100px;
+            color: white;
+            font-weight: bolder;
+        }
+
 
 
     </style>
@@ -163,7 +196,7 @@
                             </div>
                             <!-- 회원수정 Modal -->
                             <div class="modal" id="myModal">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <!-- Modal Header -->
                                     <div class="modal-header">
@@ -229,24 +262,41 @@
                             </div>
                             </div>
                             <div class="pb-5">
-                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal2">회원삭제</button>
+                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
                             </div>
-                            <!-- 회원삭제 모달 -->
-                            <div class="modal" id="myModal2">
-                                <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal fade" id="deleteModal">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content" style="width: 400px;">
+                        
+                                        <!-- Modal body -->
+                                        <div class="modal-body" align="center">
+                                            <div class="modalMsg-area">
+                                                                정말 삭제하시겠습니까?
+                                            </div>
+                                            <div id="deletebtn-area">
+                                              <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                                              <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                                            </div>              
+                                        </div>
+                                
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 게시글 삭제완료 Modal -->
+                            <div class="modal fade" id="deleteCompleted">
+                                <div class="modal-dialog modal-sm modal-dialog-centered">
                                     <div class="modal-content">
-                                
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">정말로 해당 회원을 삭제 하시겠습니까?</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body" align="center" style="text-align: center;">
+                                            <div class="modalMsg-area">
+                                                정상적으로 삭제되었습니다.
+                                            </div>
+                                            <div>
+                                            <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                                            </div>              
                                         </div>
                                 
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
-                                            <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

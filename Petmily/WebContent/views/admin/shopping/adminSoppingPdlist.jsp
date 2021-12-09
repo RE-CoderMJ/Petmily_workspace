@@ -16,36 +16,6 @@
         border-radius: 4px;
     }
 
-    /*사이드바 스타일*/
-    .sidebar-area{
-            float: left;
-            width: 350px;
-            height: 800px;
-            position: relative;
-            /* margin-top: 70px; */
-        }
-        /* 사이드바 큰 제목 스타일 */
-        #category{
-            list-style-type: none;
-            font-weight: bolder;
-            font-size: 25px;
-            position: absolute;
-            left:90px;
-        }
-        /* 사이드바 스타일*/
-        .d-category{
-            list-style-type: none;
-            font-size: 16px;
-            font-weight: bolder;
-            cursor:pointer;
-            margin-bottom: 5px;
-        }
-        #d-category{
-            position: absolute;
-            top:80px;
-            left: 90px;
-            font-weight: bolder;
-        }
 
     /* cont-wrap */
     .cont-wrap{
@@ -96,6 +66,11 @@
     .info p {
         font-size: 18px;
     }
+    #spPdlist{
+            background: rgb(247, 198, 4);
+            color: white;
+        }
+
 </style>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -109,30 +84,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="../common/admin_menubar.jsp" %>
-    <%@ include file="../common/footerbar.jsp" %>
-
-    <!--  사이드바  -->
-    <div class="sidebar-area">
-        <ul>
-            <div id="category">쇼핑몰</div>
-            <div id="d-category">
-                <div class="d-category">상품등록</div>
-                <div class="d-category">상품관리(수정,삭제)</div>
-                <div class="d-category">주문/배송조회</div>
-                <div class="d-category">취소/환불/교환/반품 내역조회</div>
-                <div class="d-category">결제 내역 조회</div>
-            </div>
-        </ul>
-    </div>
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-            })
-        })
-    </script>
+    
+    <%@ include file="../../common/admin_menubar.jsp" %>
+    <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
 
     <!-- cont-wrap -->
     <div class="cont-wrap"><!-- 사후처리 내역 조회 부분 -->
@@ -226,5 +180,6 @@
     </div>
 </div>
 <!-- // cont-wrap -->
+<br><br>
 </body>
 </html>

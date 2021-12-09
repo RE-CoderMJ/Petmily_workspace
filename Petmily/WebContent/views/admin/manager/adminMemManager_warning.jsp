@@ -157,7 +157,7 @@
                         </div>
                         <!-- 회원삭제 Modal -->
                         <div class="modal" id="myModal">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
