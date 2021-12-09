@@ -12,7 +12,7 @@
      
 .content-area{
 	width: 1400px;
-	height: 1200px;
+	height: auto;
 	margin: auto;
 	padding:200px;
 	padding-top:35px
@@ -151,7 +151,7 @@ a{
 /* 댓글조회영역 스타일 */
 .replies{
     margin-top: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 80px;
     margin-left: -40px;
     width: 850px;
     background-color: rgb(240, 239, 239);
