@@ -77,27 +77,13 @@
 </head>
 <body>
 	<!-- 메뉴바 -->
-    <%@ include file="../common/admin_menubar.jsp" %>
+    <%@ include file="../../common/admin_menubar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
 
         <!-- 사이드바 -->
-        <div class="sidebar-area">
-            <ul>
-                <div id="category">고객센터</div>
-                <div id="d-category">
-                    <div class="d-category">공지사항 관리</div>
-
-                    <div class="d-category">FAQ 관리</div>
-                    
-                    <div class="d-category">Q&A문의/상품문의 관리</div>
-
-                    <div class="d-category">리뷰 관리</div>
-                    
-                </div>
-            </ul>
-        </div>
+        <%@ include file="admin_faqSidebar.jsp" %>
 
         <!-- 맨 위 게시판 이름-->
         <div class="top">
@@ -136,11 +122,11 @@
             </div>
         </div>
 
-		<% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
+		
         <!-- 버튼들(등록, 수정,삭제) -->
         <div class="right" id="right">
             <div>
-                <a href="<%= contextPath %>/enrollFormAdmin.faq" class="btn btn-sm btn-warning">등록</a>
+                <a href="" class="btn btn-sm btn-warning">등록</a>
                 <a href="" class="btn btn-sm btn-warning">수정</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>
@@ -181,38 +167,24 @@
     	
     
             <br><br><br>
-			<% } %>
+			
 
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
-            </div>
+	        <button> &lt; </button>
+	        <button>1</button>
+	        <button>2</button>
+	        <button>3</button>
+	        <button>4</button>
+	        <button>5</button>
+	        <button> &gt; </button>
+    		</div>
+            
+           
+            
         </div>
 
-    <!-- 사이드 바-->
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-            })
-        })
-    </script>
-    <!-- 페이징 바 -->
-    <script>
-        $(function(){
-            $(".paging-area button").click(function(){
-                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-            })
-        })
-    </script>
+    
     
     </div>
 
