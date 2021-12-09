@@ -72,36 +72,40 @@
             width: 40px;
             border-radius: 5px;
         }
-        /* 모달 팝업 */
-        .modal .modal-footer{
-            justify-content: center;
-        }
-        .modal-title{
-            border-bottom: 0;
+        /* 삭제모달창 */
+        .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
             text-align: center;
         }
-        .md-box p{
-            font-size: 14px;
-            color: #555;
-            font-weight: 500;
-            margin: 0;
-            text-align: center;
+        #deletebtn-area>*{
+            color: white;
+            font-weight: bolder;
+            font-size: 15px;
+            height: 35px;
+            line-height: 5px;
+            width: 70px;
+            margin-top: -10px;
         }
-        .md-box input{
-            font-size: 22px;
-            padding: 5px 0;
-            border:0;
-            width: 230px;
-            text-align: center;
+        #confirm-btn{
+            background-color: red;
+            margin-right: 2px;
+            line-height: 22px;
         }
-        .md-box .btn-box{
-            position: absolute;
-            bottom: 0;
-            right: 0;
+        #closebtn{
+            background-color: gray;
+            margin-left: 2px;
         }
-        .md-box .btn-box button{
-            background-color: #d4d4d4;
+        #deleteCompletedclosebtn{
+            background-color: orange;
+            width: 100px;
+            color: white;
+            font-weight: bolder;
         }
+
+        /* 사이드바 색 고정 */
         #memWarning{
             background: rgb(247, 198, 4);
             color: white;
@@ -153,24 +157,47 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#myModal">계정 삭제</button>
+                            <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
                         </div>
                         <!-- 회원삭제 Modal -->
-                        <div class="modal" id="myModal">
+                        <div class="modal fade" id="deleteModal">
                             <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">해당 계정을 삭제 합니다.</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">아니오</button>
+                                <div class="modal-content" style="width: 400px;">
+                    
+                                    <!-- Modal body -->
+                                    <div class="modal-body" align="center">
+                                        <div class="modalMsg-area">
+                                                            정말 삭제하시겠습니까?
+                                        </div>
+                                        <div id="deletebtn-area">
+                                          <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                                          <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                                        </div>              
+                                    </div>
+                            
                                 </div>
                             </div>
                         </div>
+                        <!-- 게시글 삭제완료 Modal -->
+                        <div class="modal fade" id="deleteCompleted">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body" align="center" style="text-align: center;">
+                                        <div class="modalMsg-area">
+                                            정상적으로 삭제되었습니다.
+                                        </div>
+                                        <div>
+                                        <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                                        </div>              
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                         </div>
                         <table style="width: 100%;">
                             <thead>
