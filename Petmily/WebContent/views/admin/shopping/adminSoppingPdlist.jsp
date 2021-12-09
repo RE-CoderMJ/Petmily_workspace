@@ -66,6 +66,82 @@
     .info p {
         font-size: 18px;
     }
+    /* 모달 팝업 */
+    .modal .modal-footer{
+            justify-content: center;
+        }
+        .modal .modal-header{
+            border-bottom: 0;
+        }
+        .modal .modal-body{
+            margin: 0 70px;
+        }
+        #madalTitle{
+            text-align: center;
+        }
+        .modal-body .md-box{
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .md-box p{
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+            margin: 0;
+        }
+        .md-box input{
+            font-size: 22px;
+            padding: 5px 0;
+            border:0;
+            width: 230px;
+        }
+        .md-box .btn-box{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .md-box .btn-box button{
+            background-color: #d4d4d4;
+        }
+        #reason{
+            width: 300px;
+            height: 200px;
+        }
+
+        /* 상태변경 모달창 */
+        .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
+            text-align: center;
+        }
+        #deletebtn-area>*{
+            color: white;
+            font-weight: bolder;
+            font-size: 15px;
+            height: 35px;
+            line-height: 5px;
+            width: 130px;
+            margin-top: -10px;
+            float: left;
+        }
+        #confirm-btn{
+            background-color: rgb(247, 198, 4);
+            margin-right: 2px;
+            line-height: 20px;
+        }
+        #closebtn{
+            background-color: rgb(247, 198, 4);
+            margin-left: 2px;
+        }
+        #changeCompletedclosebtn{
+            background-color: orange;
+            width: 100px;
+            color: white;
+            font-weight: bolder;
+        }
+    /* 사이드바 색 고정 */
     #spPdlist{
             background: rgb(247, 198, 4);
             color: white;
@@ -168,15 +244,80 @@
                         <div class="info">
                             <p class="name">새콤달콤 츄르</p>
                             <p class="user text-dark">구매자:김민지</p>
-                            <p class="state text-warning float-left">교환 처리중</p>
-                            <button class="btn btn-sm btn-warning">교환 사유</button>
+                            <p class="state text-warning float-left" data-toggle="modal" data-target="#statusChange">교환 처리중</p>
+                            <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">교환 사유</button>
                         </div>
                         <p class="price flex-fill text-right">5,000원</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- // 전체 조회 된 목록 -->
+        <!-- 상태변경 모달 -->
+        <div class="modal fade" id="statusChange">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="width: 400px;">
+    
+                    <!-- Modal body -->
+                    <div class="modal-body" align="center">
+                        <div class="modalMsg-area">
+                                            다음으로 상태를 변경합니다
+                        </div>
+                        <div id="deletebtn-area">
+                          <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">교환처리 중</a>
+                          <button type="button" class="btn" data-dismiss="modal" id="closebtn" data-toggle="modal" href="#changeCompleted">교환처리 완료</button>
+                        </div>              
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+        <!-- 게시글 삭제완료 Modal -->
+        <div class="modal fade" id="changeCompleted">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+
+                    <!-- Modal body -->
+                    <div class="modal-body" align="center" style="text-align: center;">
+                        <div class="modalMsg-area">
+                            정상적으로 변경되었습니다.
+                        </div>
+                        <div>
+                        <button type="button" class="btn" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
+                        </div>              
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+        <!-- 교환사유 Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="md-box">
+                        <h2 id="madalTitle">교환 사유</h2>
+                    </div>
+                    <div class="md-box">
+                        <p>#불량 교환시 [불량교환] 기대 부탁드립니다.</p>
+                        <textarea id="reason" type="text" style="resize: none;">사이즈가 개판이에요.ㅡㅡ l시켰는데 s왔어요 원래 장사 이렇게 하시나요?
+                        </textarea> 
+                    </div>
+                    
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">확인</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
+                </div>
+            </div>
+        </div>
+
+        
     </div>
 </div>
 <!-- // cont-wrap -->
