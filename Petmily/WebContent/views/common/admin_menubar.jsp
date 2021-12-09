@@ -70,20 +70,21 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
+    
     <body>
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
                 <a href="">
-                    <img src="resources/img/logo_side.png" alt="">
-                </a>
+                <img src="resources/img/logo_side.png" alt="">
+            	</a>
             </div>  
         </div>
        <!-- 메뉴바 -->
         <div class="nav-area" align="center">
             <div class="menu-box">
-                <div class="menu"><a href="<%= contextPath %>/memMg.ad;">회원관리</a></div> 
-                <div class="menu"><a href="<%= contextPath %>/spErPd.ad;">쇼핑몰</a></div>
+                <div class="menu"><a href="<%= contextPath %>/memMg.ad">회원관리</a></div> 
+                <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
                 <div class="menu"><a href="">게시판관리</a></div>
                 <div class="menu"><a href="">Petlog</a></div>
                 <div class="menu"><a href="">고객센터</a></div>
