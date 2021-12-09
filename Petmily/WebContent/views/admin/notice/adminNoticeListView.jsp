@@ -111,22 +111,7 @@
     <div class="outer">
 
         <!--  사이드바  -->
-        <div class="sidebar">
-            <div class="sidebar-area">
-                <ul>
-                    <div id="category">고객센터</div>
-                    <div id="d-category">
-                        <div class="d-category">공지사항 관리</div>
-        
-                        <div class="d-category">FAQ 관리</div>
-                        
-                        <div class="d-category">Q&A문의/상품문의 관리</div>
-
-                        <div class="d-category">리뷰 관리</div>
-                    </div>
-                </ul>
-            </div>
-        </div>
+        <%@ include file="../common/admin_memSidebar.jsp" %>
 
         <!-- 맨 위 게시판이름 -->
         <div class="top">
