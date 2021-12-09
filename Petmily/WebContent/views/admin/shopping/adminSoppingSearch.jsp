@@ -89,6 +89,13 @@
         border: 1px solid #ddd;
         border-radius: 4px;
     }
+    .property{
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .info p {
+        font-size: 18px;
+    }
 </style>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -136,7 +143,7 @@
             <!-- 사후처리 내역 조회 검색 -->
             <div class="history-area ">
                 <hr>
-                <p class="ct-tit pt-2 pb-3">사후처리 내역 조회</p>
+                <p class="ct-tit pt-2 pb-3">취소/환불/교환/반품 내역조회</p>
                 <div class="inner ml-5">
                     <div class="hs-box d-flex mb-4">
                         <span class="tit text-danger mr-2">* 사후처리 기간</span>

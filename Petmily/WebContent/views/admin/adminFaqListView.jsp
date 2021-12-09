@@ -136,11 +136,11 @@
             </div>
         </div>
 
-
+		<% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
         <!-- 버튼들(등록, 수정,삭제) -->
         <div class="right" id="right">
             <div>
-                <a href="" class="btn btn-sm btn-warning">등록</a>
+                <a href="<%= contextPath %>/enrollFormAdmin.faq" class="btn btn-sm btn-warning">등록</a>
                 <a href="" class="btn btn-sm btn-warning">수정</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>
@@ -181,7 +181,7 @@
     	
     
             <br><br><br>
-
+			<% } %>
 
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">

@@ -199,13 +199,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-	<%@ include file="../../common/footerbar.jsp" %>
+        
+        <%@ include file="../../common/admin_menubar.jsp" %>
+        <%@ include file="../../common/admin_memSidebar.jsp" %>
 
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
                 <a href="">
-                    <img src="../../resources/img/logo_side.png" alt="">
+                    <img src="resources/img/logo_side.png" alt="">
                 </a>
             </div>  
         </div>
@@ -311,7 +313,7 @@
                                             <input id="point1" class="point" type="number" value="3000">
                                             
                                             <div class="btn-box">
-                                                <button onclick="plus();" class="btn btn-sm material-icons">add</button>
+                                                <button onclick="plus();" style="margin-right: 5px;" class="btn btn-sm material-icons">add</button>
                                                 <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
                                             </div>
                                         </div>
@@ -352,7 +354,7 @@
                             </div>
                             <!-- 회원삭제 모달 -->
                             <div class="modal" id="myModal2">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                 
                                         <!-- Modal Header -->

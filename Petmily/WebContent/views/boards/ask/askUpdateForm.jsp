@@ -10,13 +10,11 @@
 
 div, img, li, a{
      box-sizing: border-box;
-	 border: soli 1px black;
 }
-     
 .content-area{
 	width: 1400px;
-	height: 1200px;
-	float:left;
+	height: 1100px;
+	margin: auto;
 	padding:200px;
 	padding-top:35px
 }
@@ -46,43 +44,45 @@ div, img, li, a{
 /* 전체 입력 영역 스타일 */
 #content{
 	text-align: left;
-	height: 1000px;
+	height: 900px;
 	position: relative;
 }
 /* 분류 스타일 */
 #category-area{
 	margin-top: 60px;
-	position: absolute;
-	top: 120px;
-	left: 369px;
 }
-#category-area>span{
+#category-area>div{
+	width: 700px;
+	height: 26px;
+}
+#category-area>div>div{
+	float: left;
+	margin-right: 20px;
 	font-size: 17px;
 	font-weight: bolder;
-	margin-right: 15px;
 }
 /* 제목 스타일 */
 #title{
 	width: 700px;
-	margin-top: 100px;
+	margin-top: 20px;
 	margin-left: 150px;
 }
 #title-required{
 	position: absolute;
-	top: 95px;
+	top: 20px;
 	left: 860px;
 }
 /* 내용 스타일 */
 #texts{
 	width: 700px;
 	height: 500px;
-	margin-top: 40px;
+	margin-top: 30px;
 	margin-left: 150px;
 	resize: none;
 }
 #texts-required{
 	position: absolute;
-	top: 165px;
+	top: 80px;
 	left: 860px;
 }
 /* 파일첨부 영역 스타일 */
@@ -144,15 +144,17 @@ div, img, li, a{
 				<span id="required">필수입력사항</span>
 			</div>
 		</div>
-		<div id="category-area" align="left">
-			<span>분류</span>
-			<span>
-				<select name="category" id="category">
-					<option value="dog">강아지</option>
-					<option value="cat">고양이</option>
-					<option value="etc">기타</option>
-				</select>
-			</span>
+		<div id="category-area">
+			<div>
+				<div>분류</div>
+				<div>
+					<select name="category" id="category">
+						<option value="dog">강아지</option>
+						<option value="cat">고양이</option>
+						<option value="etc">기타</option>
+					</select>
+				</div>
+			</div>
 		</div>
 		<form action="" method="post">
 			<div id="content">
@@ -177,7 +179,7 @@ div, img, li, a{
 					<input type="file">
 				</div>
 				<div id="btn-area" align="right">
-					<button class="btn">올리기</button>
+					<button class="btn">수정하기</button>
 				</div>
 			</div>
 		</form>

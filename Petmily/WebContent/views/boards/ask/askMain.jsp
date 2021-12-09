@@ -44,11 +44,18 @@ div, img, li, a{
       margin-right: 5px;;
    }
    #search-area2>input{
-      width: 250px; 
+      width: 280px; 
       height: 30px;
       border: none;
    }
    #search-keyword{font-size: 13px;}
+   #search-btn{
+      background-image: url("resources/img/searchImg.png");
+      background-size: cover;
+      width: 30px;
+      height: 30px;
+      margin-left: -35px;
+   }
 
    /* 중간영역 스타일 */
    #middle-bar>div{
@@ -167,7 +174,7 @@ div, img, li, a{
                   <option value="etc">작성자</option>
                </select>
                <input type="search" name="keyword">
-               <button type="submit" class="btn">버튼자리<img src="" alt=""></button>
+               <button class="btn" id="search-btn"></button>
             <div id="search-area3">
                <span id="search-keyword">검색 키워드 예시 : </span>
                <span class="badge badge-pill badge-light">사료</span>

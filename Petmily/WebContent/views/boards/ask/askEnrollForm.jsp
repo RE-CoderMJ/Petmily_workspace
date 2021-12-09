@@ -13,8 +13,8 @@ div, img, li, a{
 }
 .content-area{
 	width: 1400px;
-	height: 1200px;
-	float:left;
+	height: 1100px;
+	margin: auto;
 	padding:200px;
 	padding-top:35px
 }
@@ -44,7 +44,7 @@ div, img, li, a{
 /* 전체 입력 영역 스타일 */
 #content{
 	text-align: left;
-	height: 1000px;
+	height: 900px;
 	position: relative;
 }
 /* 분류 스타일 */
