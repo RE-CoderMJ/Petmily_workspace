@@ -48,12 +48,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 	<!-- 메뉴바 -->
 	<%@ include file="../../common/admin_menubar.jsp" %>
 	
 	<!-- 사이드바 -->
     <%@ include file="admin_faqSidebar.jsp" %>
-
+    
     <!-- 큰틀 -->
     <div class="outer" align="center">
         <br>
@@ -85,13 +86,13 @@
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>FAQ 질문</td>
-                    <td><input type="text" name="title" required></td>
+                    <td><input type="text" name="title" required placeholder="주문 완료했는데 상품 옵션을 바꿀 수 있나요?"></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>FAQ 답변</td>
                     <td>
-                        <textarea rows="10" name="content" style="resize:none" required></textarea>
+                        <textarea rows="10" name="content" style="resize:none" required>결제 완료 후 상품 옵션 변경은 어렵습니다.</textarea>
                     </td>
                 </tr>
             </table>
@@ -99,7 +100,7 @@
 
             <!-- 하단 버튼들 -->
             <div>
-                <button type="submit" class="btn btn-sm btn-warning">등록</button>
+                <button type="submit" class="btn btn-sm btn-warning">수정</button>
                 <button type="reset" class="btn btn-sm btn-secondary">취소</button>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
