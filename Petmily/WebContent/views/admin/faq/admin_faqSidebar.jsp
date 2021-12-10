@@ -55,6 +55,7 @@
     <body>
         
         <!-- 사이드바 -->
+        <br>
         <div class="sidebar-area">
             <ul>
                 <div id="category">고객센터</div>

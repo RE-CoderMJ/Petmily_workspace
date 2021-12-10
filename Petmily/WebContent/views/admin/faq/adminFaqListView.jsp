@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	
 	<style>
+	
         /* 큰 틀 */
         .outer{
             width:100%;
@@ -14,52 +16,25 @@
         .outer>div{
             float:left;
         }
-        /* 맨위 게시판이름 */
+        
+        /* 맨위 현재게시판이름 */
         .top{
             width:70%;
-
         }
+        
         /* 버튼들(등록,수정,삭제) */
         #right{
             float:right;
             padding-top:50px;
+            padding-right:220px;
         }
+        
         /* 테이블 + 페이징 바 */
         .tablepaging{
             width:70%;
             float:center;
         }
-
-
-        /*사이드바 스타일*/
-        .sidebar-area{
-            float: left;
-            width: 350px;
-            height: 800px;
-            position: relative;
-        }
-        /* 사이드바 큰 제목 스타일 */
-        #category{
-            list-style-type: none;
-            font-weight: bolder;
-            font-size: 25px;
-            position: absolute;
-            left:90px;
-        }
-        /* 사이드바 스타일*/
-        .d-category{
-            list-style-type: none;
-            font-size: 16px;
-            font-weight: bolder;
-            cursor:pointer;
-            margin-bottom: 5px;
-        }
-        #d-category{
-            position: absolute;
-            top:80px;
-            left: 90px;
-            font-weight: bolder;
-        }
+        
         /* 페이징바 */
        .paging-area button{
             border:  0;
@@ -78,27 +53,14 @@
 <body>
 	<!-- 메뉴바 -->
     <%@ include file="../../common/admin_menubar.jsp" %>
+    
+    <!-- 사이드바 -->
+        <%@ include file="admin_faqSidebar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
 
-        <!-- 사이드바 -->
-        <div class="sidebar-area">
-            <ul>
-                <div id="category">고객센터</div>
-                
-                <div id="d-category">
-                    <div class="d-category">공지사항 관리</div>
-
-                    <div class="d-category">FAQ 관리</div>
-                    
-                    <div class="d-category">Q&A문의/상품문의 관리</div>
-
-                    <div class="d-category">리뷰 관리</div>
-                    
-                </div>
-            </ul>
-        </div>
+        
 
         <!-- 맨 위 게시판 이름-->
         <div class="top">
@@ -154,12 +116,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="30"><input type="checkbox" name="" value=""></th>
-                            <th width="120">번호</th>
-                            <th width="100">분류</th>
-                            <th width="500">제목</th>
-                            <th width="100">작성자</th>
-                            <th width="150">작성일</th>
+                            <th width="50"><input type="checkbox" name="" value=""></th>
+                            <th width="200">번호</th>
+                            <th width="200">분류</th>
+                            <th width="700">제목</th>
+                            <th width="150">작성자</th>
+                            <th width="200">작성일</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -182,7 +144,7 @@
     	
     
             <br><br><br>
-			<%-- <% } %> --%>
+
 
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
@@ -196,15 +158,8 @@
             </div>
         </div>
 
-    <!-- 사이드 바-->
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-            })
-        })
-    </script>
+    
+    
     <!-- 페이징 바 -->
     <script>
         $(function(){
