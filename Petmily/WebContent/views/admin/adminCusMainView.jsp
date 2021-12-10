@@ -120,8 +120,8 @@
 </head>
 <body>
 <!-- 메뉴바 -->
-    <%@ include file="../comon/admin_menubar.jsp" %>
-
+    	<%@ include file="/WEB_INF/views/common/admin_menubar.jsp" %>
+        <%@ include file="/WEB-INF/views/common/admin_memSidebar.jsp" %>
 
     <br><br>
 

@@ -105,28 +105,13 @@
 </head>
 <body>
 <!-- 메뉴바 -->
-    <%@ include file="../common/admin_menubar.jsp" %>
+    <%@ include file="../../common/admin_menubar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
 
         <!--  사이드바  -->
-        <div class="sidebar">
-            <div class="sidebar-area">
-                <ul>
-                    <div id="category">고객센터</div>
-                    <div id="d-category">
-                        <div class="d-category">공지사항 관리</div>
-        
-                        <div class="d-category">FAQ 관리</div>
-                        
-                        <div class="d-category">Q&A문의/상품문의 관리</div>
-
-                        <div class="d-category">리뷰 관리</div>
-                    </div>
-                </ul>
-            </div>
-        </div>
+        <%@ include file="../common/admin_memSidebar.jsp" %>
 
         <!-- 맨 위 게시판이름 -->
         <div class="top">
@@ -158,7 +143,7 @@
         </div>
             
             <!-- 버튼들(등록,수정,삭제) -->
-            <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
+            
             <div class="buttons" align="right">
             
                 <a href="<%= contextPath %>/enrollFormAdmin.no" class="btn btn-sm btn-warning">등록</a>
@@ -167,8 +152,8 @@
                 <br><br>
             </div>
         
-<!-- 테이블 + 페이징 바 -->
-<div class="table-paging">
+		<!-- 테이블 + 페이징 바 -->
+		<div class="table-paging">
 
         <!-- 테이블 -->
         <div class="table table-bordered" id="noticetable">

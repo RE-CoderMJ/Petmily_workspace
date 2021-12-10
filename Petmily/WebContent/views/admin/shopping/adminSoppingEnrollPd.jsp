@@ -1,91 +1,12 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
     <head>
     <meta charset="UTF-8">
-    <title>adminMemManager</title>
+    <title>adminSoppingEnrollPd</title>
     <style>
-        /* 전체적 구조 */
-        .header{width:100%;height:140px;text-align: center;line-height: 140px;}
-        .nav-area{height: 10px;width: 100%;}
-    
-        /* header부분 전반적인 구조 */
-        .header>div{height: 100%; }
-        #logo{width: 41%; position: relative; margin: 0 auto;}
-
-        /* navigator 영역에 대한 세부 스타일 */
-        .nav-area{
-            position: relative;
-            background: rgb(247, 198, 4);
-            height: 60px;
-            margin: 0 auto;
-        }
-        .nav-area .menu-box{
-            width: 1200px;
-        }
-        .nav-area .right-box{
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 200px;
-            height: 60px;
-            line-height: 60px;
-        }
-        .nav-area .right-box a{
-            display: block;
-            color:black;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .menu{
-            display: table-cell;
-            width: 160px;
-            height: 60px;
-        }
-        .menu a{
-            text-decoration: none;
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            display: block;
-            width: 90%;
-            height: 100%;
-            line-height: 60px;
-            cursor: pointer;
-        }
-        .menu a:hover{background: white; text-decoration: none; color:black}
         
-        /*사이드바 스타일*/
-        .sidebar-area{
-            float: left;
-            width: 350px;
-            height: 800px;
-            position: relative;
-            /* margin-top: 70px; */
-        }
-        /* 사이드바 큰 제목 스타일 */
-        #category{
-            list-style-type: none;
-            font-weight: bolder;
-            font-size: 25px;
-            position: absolute;
-            left:90px;
-        }
-        /* 사이드바 스타일*/
-        .d-category{
-            list-style-type: none;
-            font-size: 16px;
-            font-weight: bolder;
-            cursor:pointer;
-            margin-bottom: 5px;
-        }
-        #d-category{
-            position: absolute;
-            top:80px;
-            left: 90px;
-            font-weight: bolder;
-        }
         /* 세부 카테고리 전체 스타일 */
         .dd-category{
             list-style-type: none;
@@ -144,6 +65,11 @@
         table tbody td input{
          margin-right: 20px;
         }
+        #spErPd{
+            background: rgb(247, 198, 4);
+            color: white;
+        }
+
 
 
 
@@ -158,55 +84,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <!-- 상단 로고 -->
-        <div class="header">
-            <div id="logo">
-                <a href="">
-                    <img src="../../resources/img/logo_side.png" alt="">
-                </a>
-            </div>  
-        </div>
-       <!-- 메뉴바 -->
-        <div class="nav-area" align="center">
-            <div class="menu-box">
-                <div class="menu"><a href="">회원관리</a></div> 
-                <div class="menu"><a href="">쇼핑몰</a></div>
-                <div class="menu"><a href="">게시판관리</a></div>
-                <div class="menu"><a href="">Petlog</a></div>
-                <div class="menu"><a href="">고객센터</a></div>
-                <div class="menu"><a href="">신고관리</a></div>
-            </div>
-            <div class="right-box"> 
-                <a href="">로그아웃</a>
-            </div>
-        </div>
+        <%@ include file="../../common/admin_menubar.jsp" %>
+        <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
+        
         <div class="container" style="max-width:1600px;">
-            <!--  사이드바  -->
-            <div class="sidebar-area">
-                <ul>
-                    <div id="category">쇼핑몰</div>
-                    <div id="d-category">
-                        <div class="d-category">상품등록</div>
-                        <div class="d-category">상품관리(수정,삭제)</div>
-                        <div class="d-category">주문/배송조회</div>
-                        <div class="d-category">취소/환불/교환/반품 내역조회</div>
-                        <div class="d-category">결제 내역 조회</div>
-                    </div>
-                </ul>
-            </div>
-            <script>
-                $(function(){
-                    $(".d-category").click(function(){
-                        $(this).siblings(".d-category").css({background: "", color:"black"});
-                        $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                    })
-                })
-            </script>
-    
+            
             <!-- cont-wrap -->
             <div class="cont-wrap">
-                <div class="title-box mt-5 pb-2">
-                    <h3 class="mt-2">> 관리자 쇼핑몰</h3>
+                <div class="title-box mt-1 pb-2">
+                    <h3 class="mt-1">> 관리자 쇼핑몰</h3>
                 </div>
                 <div class="content product-reg">
                     <hr>
@@ -300,7 +186,7 @@
                 </div>
             </div>
         </div>
-
+        <br><br>
     </body>
     </html>
    

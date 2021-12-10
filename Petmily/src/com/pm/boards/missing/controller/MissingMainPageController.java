@@ -1,4 +1,4 @@
-package com.pm.admin;
+package com.pm.boards.missing.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminFaqEnrollFormController
+ * Servlet implementation class MissingMainPageController
  */
-@WebServlet("/enrollFormAdmin.faq")
-public class adminFaqEnrollFormController extends HttpServlet {
+@WebServlet("/main.missing")
+public class MissingMainPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminFaqEnrollFormController() {
+    public MissingMainPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,7 @@ public class adminFaqEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("views/boards/missing/missingMain.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-   String contextPath = request.getContextPath();
-%>
+    String contextPath1 = request.getContextPath();
+ %>
     <!DOCTYPE html>
     <html>
     <head>
@@ -61,11 +61,11 @@
             <ul>
                 <div id="category">회원관리</div>
                 <div id="d-category">
-                    <div class="d-category" id="memInfor" onclick="location.href='<%= contextPath %>/memMg.ad';">회원정보 조회/수정/삭제</div>
+                    <div class="d-category" id="memInfor" onclick="location.href='<%= contextPath1 %>/memMg.ad';">회원정보 조회/수정/삭제</div>
     
-                    <div class="d-category" id="memPoint" onclick="location.href='<%= contextPath %>/memPoint.ad';">회원 포인트 관리</div>
+                    <div class="d-category" id="memPoint" onclick="location.href='<%= contextPath1 %>/memPoint.ad';">회원 포인트 관리</div>
                     
-                    <div class="d-category" id="memWarning" onclick="location.href='<%= contextPath %>/memWarning.ad';">블랙리스트 관리</div>
+                    <div class="d-category" id="memWarning" onclick="location.href='<%= contextPath1 %>/memWarning.ad';">블랙리스트 관리</div>
                     
                 </div>
             </ul>

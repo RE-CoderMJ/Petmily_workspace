@@ -1,4 +1,4 @@
-package com.pm.admin;
+package com.pm.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminMemManagerController
+ * Servlet implementation class FindPwdFormCotroller
  */
-@WebServlet("/memMg.ad")
-public class adminMemManagerController extends HttpServlet {
+@WebServlet("/findPwdForm.me")
+public class FindPwdFormCotroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminMemManagerController() {
+    public FindPwdFormCotroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class adminMemManagerController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/manager/adminMemManager.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/findPwd.jsp").forward(request, response);
 	}
 
 	/**

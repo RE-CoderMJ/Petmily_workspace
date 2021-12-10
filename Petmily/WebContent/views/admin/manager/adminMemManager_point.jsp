@@ -1,5 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -164,7 +164,7 @@
                         </div>
                         <!-- 포인트관리 Modal -->
                         <div class="modal" id="myModal">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">

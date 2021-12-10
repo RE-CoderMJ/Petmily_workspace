@@ -16,6 +16,7 @@
         height: 200px;
     }
 
+
     input {
         width: 270px;
         padding: 10px;
@@ -25,7 +26,7 @@
     }
 
     button {
-        margin-top: 20px !important;
+        margin-top: 15px !important;
         width: 270px;
         height: 50px;
         font-weight: bold !important;
@@ -55,6 +56,33 @@
         width: 180px;
         background-color: orange;
     }
+
+    #notify {
+        margin-top: 15px;
+        width: 280px;
+    }
+
+    .notifyRed {
+        font-size: 13px;
+        color: red;
+        font-weight: bold;
+        margin: 0 10px 0 10px;
+        float: left;
+    }
+
+    .notifyOrange {
+        font-size: 13px;
+        color: orange;
+        font-weight: bold;
+        margin: 0 10px 0 10px;
+        float: right;
+        text-decoration-line: none !important;
+    }
+
+    .notifyOrange:hover {
+        color: tomato;
+    }
+
 </style>
 
 </head>
@@ -68,7 +96,7 @@
         <div class="form">
             
             <div align="center" style="margin-bottom: 50px;">
-                <h3>이메일 찾기</h3>
+                <h3 style="font-weight: bold">이메일 찾기</h3>
             </div>
 
             <div align="center">
@@ -81,7 +109,15 @@
                 <input type="text" name="phone2" placeholder="0000" style="width: 90px;" required>
                 -
                 <input type="text" name="phone3" placeholder="0000" style="width: 90px;" required>
+                
+                <!-- 일치하는 정보 없을 때 나타나는 div -->
+                <!-- <div id="notify">
+                    <p class="notifyRed">일치하는 정보가 없습니다</p>
+                    <a class="notifyOrange" href="<%= contextPath %>/joinForm.me">회원가입하기</a>
+                </div> -->
             </div>
+
+           
 
             <div align="center">
                 <button type="submit" class="btn btn-warning">이메일 찾기</button>

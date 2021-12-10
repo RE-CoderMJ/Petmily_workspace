@@ -15,8 +15,9 @@ div, img, li, a{
    /* 궁금해요 메인 스타일 */
    .content-area{
       width: 1400px;
-      height: 1600px;
+      height: auto;
       margin: auto;
+      margin-bottom: 230px;
    }
    .content-area > div{
       width: 85%;
@@ -47,6 +48,7 @@ div, img, li, a{
       width: 280px; 
       height: 30px;
       border: none;
+      padding-right: 27px;
    }
    #search-keyword{font-size: 13px;}
    #search-btn{
@@ -140,7 +142,6 @@ div, img, li, a{
      width: 40px;
      border-radius: 5px;
 }
-
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -173,7 +174,7 @@ div, img, li, a{
                   <option value="dog">제목+내용</option>
                   <option value="etc">작성자</option>
                </select>
-               <input type="search" name="keyword">
+               <input type="text" name="keyword">
                <button class="btn" id="search-btn"></button>
             <div id="search-area3">
                <span id="search-keyword">검색 키워드 예시 : </span>

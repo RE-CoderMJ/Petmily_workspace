@@ -77,7 +77,7 @@
 </head>
 <body>
 	<!-- 메뉴바 -->
-    <%@ include file="../common/admin_menubar.jsp" %>
+    <%@ include file="../../common/admin_menubar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
@@ -86,6 +86,7 @@
         <div class="sidebar-area">
             <ul>
                 <div id="category">고객센터</div>
+                
                 <div id="d-category">
                     <div class="d-category">공지사항 관리</div>
 
@@ -136,7 +137,7 @@
             </div>
         </div>
 
-		<% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
+		<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %> --%>
         <!-- 버튼들(등록, 수정,삭제) -->
         <div class="right" id="right">
             <div>
@@ -181,7 +182,7 @@
     	
     
             <br><br><br>
-			<% } %>
+			<%-- <% } %> --%>
 
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">

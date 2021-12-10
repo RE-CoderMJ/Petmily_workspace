@@ -1,0 +1,229 @@
+div, img, li, a{
+    box-sizing: border-box;
+    border: soli 1px black;
+}
+ 
+/* 찾고있어요 메인 스타일 */
+.content-area{
+width: 1400px;
+height: auto;
+margin: auto;
+margin-bottom: 250px;
+}
+.content-area > div{
+width: 85%;
+}
+
+/* 게시판 설명 영역 스타일 */
+#title-area{
+height: 65px;
+background: rgb(235, 235, 235);
+margin-bottom: 20px;
+padding: 15px;
+}
+#title1{
+font-weight: bolder;
+}
+#title2{
+color: rgb(153, 20, 20);
+font-size: 11px;
+font-weight: bolder;
+}
+
+/* 검색영역 스타일 */
+#search-area{
+padding: 20px;
+padding-top:30px;
+border: solid 1px rgb(247, 198, 4);
+height: 320px;
+width: 85%;
+}
+#search-area span,p{
+color: gray;
+font-weight: bolder;
+font-size: 15px;
+}
+#search-left{
+float: left;
+width: 50%;
+text-align: left;
+margin-left: 100px;
+}
+#search-right{
+text-align: left;
+width: 30%;
+margin-left: 500px;
+}
+/* 대상 스타일 */
+#category-select-area{
+margin-bottom: 15px;
+}
+#category-select-area label{
+font-size: 15px;
+}
+#category-select-area >span{
+margin-right: 38px;
+}
+/* 성별 스타일 */
+#gender-select-area{
+font-size: 15px;
+margin-bottom: 15px;
+}
+#gender-select-area >span{
+margin-right: 38px;
+}
+/* 발생, 발견일 스타일*/
+#missing-date-area>p{
+float: left;
+text-align: left;
+margin-right: 30px;
+}
+#missing-date-area input{
+font-size: 14px;
+margin-top: 7px;
+}
+#missing-date-area{
+margin-bottom: 10px;
+height: 50px;
+}
+/* 신체특징 스타일 */
+#feature-area>span{
+margin-right: 12px;
+margin-left:-69px;
+}
+#feature-area>input{
+font-size: 15px;
+width: 295px;
+}
+#feature-area>div{
+margin-left: 70px;
+font-size: 11px;
+color: orange;
+font-weight: bolder;
+}
+/* 구분 스타일 */
+#search-right span{
+margin-right: 45px;
+}
+#search-right>div{
+margin-bottom: 15px;
+}
+#search-right input{
+font-size: 15px;
+}
+/* 나이 스타일 */
+#age-area>input{
+width: 40px;
+}
+#mpAgeTo{
+    margin-left: -35px;
+}
+/* 발생, 발견장소 스타일 */
+#missing-place-area>p{
+float: left;
+margin-right: 20px;
+}
+#missing-place-area>input{
+margin-top: 6px;
+}
+#missing-place-area>div{
+font-size: 11px;
+color: orange;
+font-weight: bolder;
+width: 300px;
+}
+/* 검색버튼 */
+#missing-search-btn-area{
+margin-top: 30px;
+}
+#missing-search-btn-area>button{
+background-color: orange;
+color: white;
+font-weight: bolder;
+font-size: 18px;
+width: 300px;
+height: 35px;
+line-height: 2px;
+}
+
+
+/* 중간영역 스타일 */
+#middle-area>div{
+float: left; 
+width:592px;
+margin-top: 25px;
+}
+#write{
+height: 27px;
+line-height: 3px;
+}
+/* 공지사항 영역 스타일 */
+#notice{
+background-color: orange;
+}
+#notice-area>span{
+font-size: 12px;
+margin-right: 10px;
+font-weight: bold;
+cursor: pointer;
+}
+
+
+/* 컨텐츠영역 */
+#content-area{
+    height: 800px;
+    padding-top: 60px;
+    padding-left: 0px;
+    margin-bottom: 50px;
+}
+.content-box-area{
+    width: 450px;
+    float: left;
+    margin-left: 100px;
+    margin-bottom: 50px;
+}
+.missing-img{
+    float: left;
+    width: 130px;
+    height: 132px;
+}
+.found-title{
+    background: rgb(2, 68, 2);
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
+}
+.missing-title{
+    background: rgba(255, 110, 32, 0.946);
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+}
+.content-info-area{
+    width: 300px;
+    margin-left: 150px;
+    font-size: 14px;
+}
+.gender-age{
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* 페이징바 스타일 */
+#paging-bar{
+margin-top: 120px;
+}
+/* 페이징바 */
+.paging-area button{
+border:  0;
+background-color: transparent;
+height: 40px;
+width: 40px;
+border-radius: 5px;
+}

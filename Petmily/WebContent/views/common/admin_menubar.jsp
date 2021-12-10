@@ -1,5 +1,8 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+ %>
     <!DOCTYPE html>
     <html>
     <head>
@@ -11,8 +14,8 @@
         .nav-area{height: 10px;}
     
         /* header부분 전반적인 구조 */
-        .header>div{height: 100%; }
-        #logo{width: 41%; position: relative; margin: 0 auto;}
+        .header>div{height: 70px; }
+        #logo{width: 35%; position: relative; margin: 0 auto;}
 
         /* navigator 영역에 대한 세부 스타일 */
         .nav-area{
@@ -67,20 +70,21 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
+    
     <body>
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
                 <a href="">
-                    <img src="resources/img/logo_side.png" alt="">
-                </a>
+                <img style="width: 350px;" src="resources/img/logo_side.png" alt="">
+            	</a>
             </div>  
         </div>
        <!-- 메뉴바 -->
         <div class="nav-area" align="center">
             <div class="menu-box">
-                <div class="menu"><a href="">회원관리</a></div> 
-                <div class="menu"><a href="">쇼핑몰</a></div>
+                <div class="menu"><a href="<%= contextPath %>/memMg.ad">회원관리</a></div> 
+                <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
                 <div class="menu"><a href="">게시판관리</a></div>
                 <div class="menu"><a href="">Petlog</a></div>
                 <div class="menu"><a href="">고객센터</a></div>

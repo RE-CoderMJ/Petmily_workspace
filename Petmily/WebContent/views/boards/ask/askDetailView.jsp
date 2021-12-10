@@ -12,7 +12,7 @@
      
 .content-area{
 	width: 1400px;
-	height: 1200px;
+	height: auto;
 	margin: auto;
 	padding:200px;
 	padding-top:35px
@@ -151,7 +151,7 @@ a{
 /* 댓글조회영역 스타일 */
 .replies{
     margin-top: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 80px;
     margin-left: -40px;
     width: 850px;
     background-color: rgb(240, 239, 239);
@@ -304,7 +304,7 @@ span{
 		<div id="top">
 			<div id="title-area">
                 <div id="title">제목이 들어갈 위치입니다.</div>
-                <button type="button" class="btn" id="enroll">글쓰기</button>
+                <button type="button" class="btn" id="enroll" onclick="location.href='<%= contextPath %>/enrollForm.ask';">글쓰기</button>
 			</div>
 			<hr style="border: solid 1px rgb(179, 178, 178);">
             <div id="info-area">
@@ -336,7 +336,7 @@ span{
                 </div>
                 <div id="btn-area">
                     <button type="button" class="btn" data-toggle="modal" data-target="#deleteAskModal">글삭제</button>
-                    <a href="" class="btn">목록</a>
+                    <a href="<%=contextPath%>/main.ask?page=1" class="btn">목록</a>
                 </div>
             </div>
             <div id="write-reply">
