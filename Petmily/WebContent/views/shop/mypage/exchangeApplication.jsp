@@ -5,13 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
          div, img, li, a{
@@ -22,13 +20,13 @@
 			width: 1400px;
 			height: 1000px;
 			padding:200px;
-			padding-top:35px;
+			padding-top:5px;
 		}
         #title{
             color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
-            margin:20px;
+            margin-bottom:20px;
             margin-left:150px;
         } 
         #outer{
@@ -37,7 +35,9 @@
             padding: 10px 20px;
             border-radius: 10px;
             position: relative;
+            margin-left:200px;
         }
+        
         #content-img{margin-left: 30px;}
         #onecontent{
             position: absolute;
@@ -171,50 +171,50 @@
             </table>
             <br><br>
 
-<!-- 교환버튼 모달창 -->
-<button type="button" id="bbtn1" data-toggle="modal" data-target="#myModal">
-    교환
-  </button>
-  
-
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: gray;">
-  
-        <!-- Modal Header -->
-        <div class="modal-header" >
-          <h4 class="modal-title" style="color: white;">교환 사유</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-            <p  style="color: white;">※불량 교환시 [불량 교환] 기재 부탁드립니다.</p> 
-              <hr>
-          <textarea name="" id="" cols="30" rows="10" style="margin-left:50px; width:350px; resize: none;">
-
-              
-
-          </textarea>
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <a href="" class="btn btn-danger">확인</a>
-        </div>
-  
-      </div>
-    </div>
-  </div>
+	<!-- 교환버튼 모달창 -->
+	<button type="button" id="bbtn1" data-toggle="modal" data-target="#myModal">
+	    교환
+	  </button>
+	  
+	
+	  <div class="modal" id="myModal">
+	    <div class="modal-dialog">
+	      <div class="modal-content" style="background-color: gray;">
+	  
+	        <!-- Modal Header -->
+	        <div class="modal-header" >
+	          <h4 class="modal-title" style="color: white;">교환 사유</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	  
+	        <!-- Modal body -->
+	        <div class="modal-body">
+	            <p  style="color: white;">※불량 교환시 [불량 교환] 기재 부탁드립니다.</p> 
+	              <hr>
+	          <textarea name="" id="" cols="30" rows="10" style="margin-left:50px; width:350px; resize: none;">
+	
+	              
+	
+	          </textarea>
+	        </div>
+	  
+	        <!-- Modal footer -->
+	        <div class="modal-footer">
+	          <a href="" class="btn btn-danger">확인</a>
+	        </div>
+	  
+	      </div>
+	    </div>
+	  </div>
 
     <!-- 반품버튼 모달창 -->
 
-    <button type="button" id="bbtn2" data-toggle="modal" data-target="#cancle">
+    <button type="button" id="bbtn2" data-toggle="modal" data-target="#cancel">
         반품
       </button>
 
 
-    <div class="modal" id="cancle">
+    <div class="modal" id="cancel" style="background: rgba(0, 0, 0, 0.8);">
         <div class="modal-dialog">
           <div class="modal-content" style="background-color: gray;">
       

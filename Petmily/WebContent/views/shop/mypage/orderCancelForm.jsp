@@ -14,11 +14,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
+    
+     div, img, li, a{
+		     box-sizing: border-box;
+		}
+		     
+		.content-area{
+			width: 1400px;
+			height: 1200px;
+			padding:200px;
+			padding-top:5px;
+			
+		}
         .outer{
             margin:auto;
             border: 1px solid black;
             width:700px;
             position: relative;
+            
         }
 
         #title{
@@ -79,6 +92,7 @@
 <%@ include file="mypageSidebar.jsp" %>
 
     <form action="" method="">
+    <div class="content-area">
         <div class="outer">
             <div id="title">주문취소신청</div>
             
@@ -170,9 +184,9 @@
             </div>
 
         </div>
+</div>
+</form>
 
-    </form>
-      </form>
 
 <%@ include file="../../common/footerbar.jsp" %>
 </body>

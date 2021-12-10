@@ -16,13 +16,13 @@
 			width: 1400px;
 			height: 1000px;
 			padding:200px;
-			padding-top:35px
+			padding-top:5px
 		}
         #title{
             color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
-            margin:20px;
+             margin-bottom:20px;
             margin-left:150px;
         } 
         #outer{
@@ -100,9 +100,9 @@
 	<%@ include file="../../common/menubar.jsp" %>
 	<%@ include file="mypageSidebar.jsp" %>
 	
-	<div id="title" class="inline-block" >장바구니</div>
+	
 <div class="content-area">
-
+<div id="title" class="inline-block" >장바구니</div>
 <div id="outer">
 
     <form action="">

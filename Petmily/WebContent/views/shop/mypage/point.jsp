@@ -21,7 +21,6 @@
             color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
-            margin:20px;
             margin-left:150px;
         } 
       
@@ -33,6 +32,8 @@
             border-radius: 13px;
             color:white;
             position:relative;
+            margin-left:200px;
+            margin-bottom:20px;
         }
         #point1{
             font-size:14px;
@@ -72,7 +73,19 @@
 
 
 
-
+		/* 페이징바 스타일 */
+		.paging-area{
+		margin-top: 100px;
+		margin-left:580px;
+		}
+		/* 페이징바 */
+		.paging-area button{
+		border:  0;
+		background-color: transparent;
+		height: 40px;
+		width: 40px;
+		border-radius: 5px;
+		}
 
         .inline-block{display:inline-block;}
     </style>
@@ -102,6 +115,7 @@
             <br> 
             리뷰 작성 적립
         </div>
+        <br>
         <br>
         <img src="" alt="" width="50px" height="50px">
         <div class="inline-block" id="content">
@@ -144,16 +158,29 @@
     </div>
 </div>
 
-<div class="paging-area" align="center">
-<button class="pagging inline-block">&lt</button>
-<button class="pagging inline-block">1</button>
-<button class="pagging inline-block">2</button>
-<button class="pagging inline-block">3</button>
-<button class="pagging inline-block">4</button>
-<button class="pagging inline-block">&gt</button>
-</div>
+ <!-- 페이징 바 -->
+      <div class="paging-area" >
+            <button> &lt; </button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button> &gt; </button>
+    </div>
 
 </div>
+
+ <script>
+        $(function(){
+            $(".paging-area button").click(function(){
+                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+            })
+        })
+    </script>
+
+
 
 <%@ include file="../../common/footerbar.jsp" %>
 </body>

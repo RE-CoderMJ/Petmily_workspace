@@ -6,21 +6,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <style>
-        #title{
-            color:rgb(94,94,94);
-            font-size: 20px;
-            font-weight: 900;
-            margin:20px 10px ;
-        } 
+ div, img, li, a{
+		     box-sizing: border-box;
+		}
+		     
+		.content-area{
+			width: 1400px;
+			height: 1200px;
+			padding:200px;
+			padding-top:5px;
+			
+		}
 
+       #title{
+            color:rgb(94,94,94);
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom:20px;
+            margin-left:150px;
+        } 
         #outer{
             width:800px;
             border: 1px soild black;
-            padding: 10px 20px;
+            margin-left:150px;
         }
          
         #content{
-            width:700px;
+            width:800px;
             border:1px solid black;
             border-radius: 5px;
             margin:25px 0px;
@@ -35,17 +47,17 @@
             color:darkslategray; /*색 바꾸기*/
             margin-left:30px;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 15px;
         }
 
         #c3{
             color:gray;  /*색 바꾸기*/
-            margin-left: 180px;
+            margin-left: 250px;
         }
         #c4{
             color:darkslategray; /*색 바꾸기*/
             margin:5px 20px;
-            font-size: 20px;
+            font-size: 23px;
             font-weight: 700;
         }
 
@@ -58,6 +70,7 @@
 <%@ include file="../../common/menubar.jsp" %>
 <%@ include file="mypageSidebar.jsp" %>
     
+<div class="content-area">
     <div id="title">주문내역 / 배송조회</div>
 
     <div id="outer">
@@ -118,6 +131,7 @@
 
 
     </div>
+</div>
 
 <%@ include file="../../common/footerbar.jsp" %>
 </body>

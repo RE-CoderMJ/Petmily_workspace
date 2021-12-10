@@ -6,22 +6,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-        #title{
+div, img, li, a{
+		     box-sizing: border-box;
+		}
+		     
+		.content-area{
+			width: 1400px;
+			height: 1200px;
+			padding:200px;
+			padding-top:5px;
+			
+		}
+
+       #title{
             color:rgb(94,94,94);
-            font-size: 20px;
+            font-size: 30px;
             font-weight: 900;
-            margin:20px 10px ;
+            margin-bottom:20px;
+            margin-left:150px;
         } 
         #outer{
-            width:800px;
+            width:1000px;
             border: 1px soild black;
             background-color: rgb(213,213,213);
             padding: 10px 20px;
+            margin-left:150px;
         }
 
         .cart-content{
-            width:700px;
-            height:100px;
+            width:800px;
+            height:120px;
             border:0;
             background-color: white;
             margin:auto;
@@ -43,14 +57,14 @@
             position:absolute;
             margin-left: 10px;
             top:10px;
-            bottom: px;
+            
         }
 
         #button{position: absolute; top:55px; left:350px;}
         .bbtn{ 
             color:white;
             background-color: orange; /*색 바꾸기*/
-            width:90px;
+            width:100px;
             padding:7px 15px;
             margin: 0px 5px;
             border:0;
@@ -60,13 +74,13 @@
 
          /*총개수, 총금액 */
          #sumcount {
-            font-size: large;
+            font-size: 25px;
             font-weight: 900;
             color:darkgray;     /*색 바꾸기*/
         }
 
         #summoney{ 
-            font-size: large;
+            font-size: 25px;
             font-weight: 900;
         }
         #foot{
@@ -83,11 +97,14 @@
 <%@ include file="../../common/menubar.jsp" %>
 <%@ include file="mypageSidebar.jsp" %>
 
+<div class="content-area">
     <div id="title">주문내역 / 배송조회</div>
 
     <div id="outer">
-        <span style="font-weight: 700; font-size: 14px;">주문번호 : A-13124954</span>  <br>
-        주문일 : 21.11.15
+        <span style="font-weight: 700; font-size: 18px;">주문번호 : A-13124954</span>  <br>
+        <span style=" font-size: 17px;">
+        	주문일 : 21.11.15        
+        </span>
 
 
         <div class="cart-content" >
@@ -132,6 +149,7 @@
                 블루1개 (옵션)
                 <br>
                 <br>
+
                 <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>
             </div>
 
@@ -195,7 +213,7 @@
 
     </div>
 
-
+</div>
     <%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>

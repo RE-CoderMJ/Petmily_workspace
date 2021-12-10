@@ -10,7 +10,6 @@
     .sidebar-area{
         float: left;
         width: 250px;
-        height: 800px;
         position: relative;
     }
     /* 사이드바 큰 제목 스타일 */
@@ -60,7 +59,7 @@
       <!--  사이드바  -->
       <div class="sidebar-area">
         <ul>
-            <div id="boardName">중고거래</div>
+            <div id="boardName">마이페이지</div>
             <div id="d-category">
                 <div class="d-category" id="">회원정보수정</div>
                 <div class="d-category" id="">내가쓴게시글조회</div>
@@ -72,7 +71,7 @@
                 <div class="dd-category like">찜</div>
                 <div class="dd-category point">포인트조회</div>
                 <div class="dd-category exchange">교환/반품신청</div>
-                <div class="dd-category cancle">취소/환불 내역 조회</div>
+                <div class="dd-category cancel">취소/환불 내역 조회</div>
             </div>
         </ul>
     </div>
@@ -90,7 +89,7 @@
                     $(this).siblings(".like").slideUp();
                     $(this).siblings(".point").slideUp();
                     $(this).siblings(".exchange").slideUp();
-                    $(this).siblings(".cancle").slideUp();
+                    $(this).siblings(".cancel").slideUp();
                     
                     $buy.slideDown();
                     $buy.next().slideDown();
