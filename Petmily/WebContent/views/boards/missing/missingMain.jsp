@@ -128,12 +128,12 @@
             전체 xxx건
          </div>
          <div align="right">
-            <button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.ask';">글쓰기</button>
+            <button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.missing';">글쓰기</button>
          </div>
          <br><br><hr style="border: solid 1px rgb(179, 178, 178);">
       </div>
-      <div id="notice-area" align="left">
-         <span class="badge badge-pill" id="notice" onclick= "location.href = '<%= contextPath%>/no.missing';">공지사항</span>
+      <div class="notice-area" align="left">
+         <span class="badge badge-pill" style="background:orange" onclick= "location.href = '<%= contextPath%>/no.missing';">공지사항</span>
          <span onclick= "location.href = '<%= contextPath%>/no.missing';">게시글 작성시 유의사항</span>
       </div>
 

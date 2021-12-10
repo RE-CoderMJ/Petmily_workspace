@@ -70,10 +70,8 @@ div, img, li, a{
       line-height: 3px;
    }
    /* 공지사항 영역 스타일 */
-   #notice{
-      background-color: orange;
-   }
-   #notice-area>span{
+   
+   .notice-area>span{
       font-size: 12px;
       margin-right: 10px;
       font-weight: bold;
@@ -198,10 +196,11 @@ div, img, li, a{
          </div>
          <br><br><hr style="border: solid 1px rgb(179, 178, 178);">
       </div>
-      <div id="notice-area" align="left">
-         <span class="badge badge-pill" id="notice" onclick= "location.href = '<%= contextPath%>/no.ask';">공지사항</span>
+      <div class="notice-area" align="left">
+         <span class="badge badge-pill" style="background:orange" onclick= "location.href = '<%= contextPath%>/no.ask';">공지사항</span>
          <span onclick= "location.href = '<%= contextPath%>/no.ask';">게시글 작성시 유의사항</span>
       </div>
+      
       <div id="content-area">
          
          <div class="contents">

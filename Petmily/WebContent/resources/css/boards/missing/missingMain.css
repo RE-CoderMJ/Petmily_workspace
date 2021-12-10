@@ -158,10 +158,8 @@ height: 27px;
 line-height: 3px;
 }
 /* 공지사항 영역 스타일 */
-#notice{
-background-color: orange;
-}
-#notice-area>span{
+
+.notice-area>span{
 font-size: 12px;
 margin-right: 10px;
 font-weight: bold;
