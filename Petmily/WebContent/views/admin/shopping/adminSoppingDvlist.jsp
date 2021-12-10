@@ -201,9 +201,8 @@
                         </div>
                     </div>
                     <div id="missing-date-area">
-                        <p>날짜검색:</p>
-                        <div>
-                           <input type="date"> ~ <input type="date">
+                        <div style="width: 160px;" class="d-flex">
+                           <input class="form-control mr-2" type="date"> ~ <input class="form-control mr-2" type="date">
                         </div>
                      </div>
                      <br>

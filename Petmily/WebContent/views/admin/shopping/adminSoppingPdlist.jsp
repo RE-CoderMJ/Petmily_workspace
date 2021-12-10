@@ -51,7 +51,37 @@
         right: 30px;
     }
     /* 전체 조회 된 목록 */
-    
+    .list-area .item{
+        position: relative;
+        margin-bottom: 30px;
+    }
+    .list-area .item p{
+        margin: 0;
+    }
+    .list-area .item .name{
+        font-size: 26px;
+        font-weight: 700;
+        padding-bottom: 5px;
+    }
+    /*  */
+    .list-area .item .state{
+        font-size:22px;
+        font-weight: 700;
+        padding-top: 4px;
+        margin-right: 5px;
+        color:orange;
+        cursor: pointer;
+    }
+    .list-area .item .btn{
+        vertical-align: -7px;
+    }
+    .list-area .item .price{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 30px;
+        font-weight: 700;
+    }
     /* input style */
     .cancel-history input{
         display: inline-block;
@@ -116,7 +146,7 @@
             height: 70px;
             text-align: center;
         }
-        #deletebtn-area>*{
+        #statusChangebtn-area-area>*{
             color: white;
             font-weight: bolder;
             font-size: 15px;
@@ -125,15 +155,6 @@
             width: 130px;
             margin-top: -10px;
             float: left;
-        }
-        #confirm-btn{
-            background-color: rgb(247, 198, 4);
-            margin-right: 2px;
-            line-height: 20px;
-        }
-        #closebtn{
-            background-color: rgb(247, 198, 4);
-            margin-left: 2px;
         }
         #changeCompletedclosebtn{
             background-color: orange;
@@ -178,16 +199,16 @@
                     <div class="hs-box d-flex mb-4">
                         <span class="tit text-danger mr-2">* 사후처리 기간</span>
                         <div class="input-box">
-                            <input class="form-control mr-2" type="text" value="21.10.14">
+                            <input class="form-control mr-2" type="date">
                             <span class="icon material-icons">
-                                calendar_month
+                                <!-- calendar_month -->
                             </span>
                         </div>
                         <span class="mr-2">~</span>
                         <div class="input-box">
-                            <input class="form-control mr-2" type="text" value="21.11.14">
+                            <input class="form-control mr-2" type="date">
                             <span class="icon material-icons">
-                                calendar_month
+                                <!-- calendar_month -->
                             </span>
                         </div>
                         <span class="tit ml-5">상품 상태</span>
@@ -216,38 +237,38 @@
                 <div class="list-box">
                     <p class="property text-dark mb-2">취소/환불</p>
                     <div class="item d-flex">
-                        <img src="" alt="" style="width: 50px;height: 50px;">
+                        <img class="mr-4" src="" alt="" style="width: 100px;height: 100px;">
                         <div class="info">
                             <p class="name">강아지 마약 방석</p>
                             <p class="user text-dark">구매자:김빙근</p>
-                            <p class="state text-warning">취소/환불 완료</p>
+                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">취소/환불 완료</a>
                         </div>
-                        <p class="price flex-fill text-right">40,000원</p>
+                        <p class="price flex-fill">40,000원</p>
                     </div>
                 </div>
                 <div class="list-box">
                     <p class="property text-dark mb-2">취소/환불</p>
                     <div class="item d-flex">
-                        <img src="" alt="" style="width: 50px;height: 50px;">
+                        <img class="mr-4" src="" alt="" style="width: 100px;height: 100px;">
                         <div class="info">
                             <p class="name">친칠라 쳇바퀴</p>
                             <p class="user text-dark">구매자:원남이</p>
-                            <p class="state text-warning">즉시 취소</p>
+                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">즉시 취소</a>
                         </div>
-                        <p class="price flex-fill text-right">20,000원</p>
+                        <p class="price flex-fill">20,000원</p>
                     </div>
                 </div>
                 <div class="list-box">
                     <p class="property text-dark mb-2">교환/반품</p>
                     <div class="item d-flex">
-                        <img src="" alt="" style="width: 50px;height: 50px;">
+                        <img class="mr-4" src="" alt="" style="width: 100px;height: 100px;">
                         <div class="info">
                             <p class="name">새콤달콤 츄르</p>
                             <p class="user text-dark">구매자:김민지</p>
-                            <p class="state text-warning float-left" data-toggle="modal" data-target="#statusChange">교환 처리중</p>
-                            <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">교환 사유</button>
+                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">교환 처리중</a>
+                            <button class="btn btn-sm btn-warning text-white" data-toggle="modal" data-target="#myModal">교환 사유</button>
                         </div>
-                        <p class="price flex-fill text-right">5,000원</p>
+                        <p class="price flex-fill">5,000원</p>
                     </div>
                 </div>
             </div>
@@ -255,16 +276,16 @@
         <!-- 상태변경 모달 -->
         <div class="modal fade" id="statusChange">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content" style="width: 400px;">
+                <div class="modal-content" style="width: 500px;">
     
                     <!-- Modal body -->
                     <div class="modal-body" align="center">
                         <div class="modalMsg-area">
                                             다음으로 상태를 변경합니다
                         </div>
-                        <div id="deletebtn-area">
-                          <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">교환처리 중</a>
-                          <button type="button" class="btn" data-dismiss="modal" id="closebtn" data-toggle="modal" href="#changeCompleted">교환처리 완료</button>
+                        <div id="statusChangebtn-area">
+                          <button type="button" class="btn btn-warning text-white" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">처리중</button>
+                          <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="closebtn" data-toggle="modal" href="#changeCompleted">처리완료</button>
                         </div>              
                     </div>
             
@@ -282,7 +303,7 @@
                             정상적으로 변경되었습니다.
                         </div>
                         <div>
-                        <button type="button" class="btn" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
+                        <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
                         </div>              
                     </div>
             
