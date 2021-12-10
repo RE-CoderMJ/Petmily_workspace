@@ -5,54 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-div, img, li, a{
-    box-sizing: border-box;
-    border: black 1px solid;
-}
-.content-area{
-	width: 1400px;
-	height: auto;
-	margin: auto;
-	padding:200px;
-	padding-top:35px
-}
-/* 목록버튼 스타일 */
-#list-btn{
-	width: 997px;
-	margin-bottom: -10px;
-}
-#list{
-	height: 27px;
-	font-size: 14px;
-	line-height: 2px;
-}
-/* 사진 부분 스타일 */
-#photo-area{
-    width: 400px;
-    height: 500px;
-    margin-top: 60px;
-    float: left;
-}
-#demo{
-    width: 100%;
-    height: 400px;
-}
-.carousel-inner img {
-    width: 100%;
-    height: 100%;
-}
+<link href="resources/css/boards/missing/missingEnrollForm.css" rel="stylesheet">
 
-/* 입력부분 스타일 */
-#input-area{
-    width: 500px;
-    height: 500px;
-    margin-left: 495px;
-    margin-top: 60px;
-    background: rgb(235, 235, 235);
-}
-.select-ddcategoryt
-</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -68,7 +22,7 @@ div, img, li, a{
     <div class="content-area" align="center">
 	    <div id="top">
 			<div id="list-btn" align="right">
-				<button type="button" class="btn btn-secondary" id="list">목록</button>
+				<button type="button" class="btn btn-secondary" id="list" onclick="location.href='<%=contextPath%>/main.missing?page=1'">목록</button>
 			</div>
 			<hr style="border: solid 1px rgb(179, 178, 178);">
 		</div>
@@ -98,18 +52,18 @@ div, img, li, a{
                 </a>
               
             </div>
-            <div>
-                <span>사진<br>첨부</span>
+            <div id="file-upload-area">
+                <p>사진<br>첨부</p>
                 <input type="file">
             </div>
         </div>
 
+        <!-- 찾고있어요 작성폼 -->
         <form action="">
             <div id="input-area">
                 <div id="select-ddcategory">
                     <span>구분</span>
                     <select name="d-category" id="select-dcategory">
-                    <option value="">전체</option>
                     <option value="">찾고있어요</option>
                     <option value="">보호하고있어요</option>
                     </select>
@@ -118,12 +72,7 @@ div, img, li, a{
                     <span>대상</span>
                     <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="category">전체
-                    </label>
-                    </div>
-                    <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="category">강아지
+                        <input type="radio" class="form-check-input" name="category" checked>강아지
                     </label>
                     </div>
                     <div class="form-check-inline">
@@ -141,7 +90,7 @@ div, img, li, a{
                     <span>성별</span>
                     <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="gender">전체
+                        <input type="radio" class="form-check-input" name="gender" checked>암컷
                     </label>
                     </div>
                     <div class="form-check-inline">
@@ -149,26 +98,25 @@ div, img, li, a{
                         <input type="radio" class="form-check-input" name="gender">수컷
                     </label>
                     </div>
-                    <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="gender">암컷
-                    </label>
-                    </div>
                 </div>
-                <div>
+                <div id="name-area">
                     <span>이름</span>
-                    <input type="text" name="mpName">
+                    <input type="text" name="mpName" required>
                 </div>
                 <div id="age-area">
-                    <span>나이</span>
-                    <input type="number" name="mpAgeFrom">
+                    <span style="margin-right: 49px;">나이</span>
+                    <input type="number" name="mpAgeFrom" required>
                     <span>세 ~</span>
-                    <input type="number" name="mpAgeTo" id="mpAgeTo">
+                    <input type="number" name="mpAgeTo" id="mpAgeTo" required>
                     <span>세</span>
                 </div>
+                <div id="missing-date-area">
+                    <span>발생일</span>
+                    <input type="date" required>
+                </div>
                 <div id="missing-place-area">
-                    <p>발생,<br>발견장소</p>
-                    <input type="text" name="mpPlace">
+                    <span>발생장소</span>
+                    <input type="text" name="mpPlace" required>
                     <div>
                     ex) 서울시 용산구 갈월동 놀이터 앞
                     <br>상세주소로 검색이 가능합니다.
@@ -176,15 +124,94 @@ div, img, li, a{
                 </div>
                 <div id="feature-area">
                     <span>신체특징</span>
-                    <input type="text">
+                    <textarea name="feature"></textarea>
                     <div>
                     ex)'시츄', '파란색 눈', '초록색 줄무늬 옷'
                     <br>키워드로 검색이 가능합니다.
                     </div>
                 </div>
             </div>    
-            <div><button>올리기</button></div>
+            <div align="right" id="enroll-btn-area"><button class= "btn">올리기</button></div>
         </form>
-	</div>
+
+        <!-- 보호하고있어요 작성폼 -->
+        <!-- <form action="">
+            <div id="input-area">
+                <div id="select-ddcategory">
+                    <span>구분</span>
+                    <select name="d-category" id="select-dcategory">
+                    <option value="">찾고있어요</option>
+                    <option value="">보호하고있어요</option>
+                    </select>
+                </div>
+                <div id="category-select-area">
+                    <span>대상</span>
+                    <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="category" checked>강아지
+                    </label>
+                    </div>
+                    <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="category">고양이
+                    </label>
+                    </div>
+                    <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="category">기타
+                    </label>
+                    </div>
+                </div>
+                <div id="gender-select-area">
+                    <span>성별</span>
+                    <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" checked>암컷
+                    </label>
+                    </div>
+                    <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender">수컷
+                    </label>
+                    </div>
+                </div>
+                <div id="name-area">
+                    <span>이름</span>
+                    <input type="text" name="mpName">
+                </div>
+                <div id="age-area">
+                    <span style="margin-right: 49px;">나이</span>
+                    <input type="number" name="mpAgeFrom" required>
+                    <span>세 ~</span>
+                    <input type="number" name="mpAgeTo" id="mpAgeTo" required>
+                    <span>세</span>
+                </div>
+                <div id="missing-date-area">
+                    <span>발생일</span>
+                    <input type="date" required>
+                </div>
+                <div id="missing-place-area">
+                    <span>발생장소</span>
+                    <input type="text" name="mpPlace" required>
+                    <div>
+                        ex) 서울시 용산구 갈월동 놀이터 앞
+                        <br>상세주소로 검색이 가능합니다.
+                    </div>
+                </div>
+                <div id="feature-area">
+                    <span>신체특징</span>
+                    <textarea name="feature"></textarea>
+                    <div>
+                    ex)'시츄', '파란색 눈', '초록색 줄무늬 옷'
+                    <br>키워드로 검색이 가능합니다.
+                    </div>
+                </div>
+            </div>    
+            <div align="right" id="enroll-btn-area"><button class= "btn">올리기</button></div>
+        </form>
+    </div> -->
+
+
+	<%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>
