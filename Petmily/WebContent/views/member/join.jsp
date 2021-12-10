@@ -240,6 +240,8 @@
                             <input type="text" name="userName" placeholder="이름" required>
                         </div>
                         <span class="tip">한글, 영문으로만 2~15자로 입력해주세요</span>
+                        <!-- 닉네임 중복버튼 클릭 시 중복일 때 -->
+                        <!-- <span class="notifyRed">중복된 닉네임입니다. 다른 닉네임을 입력해주세요</span> -->
                     </div>
 
 

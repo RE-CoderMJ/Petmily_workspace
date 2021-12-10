@@ -32,7 +32,7 @@
     }
 
     .btns {
-        margin: 40px !important;
+        margin: 20px !important;
     }
 
     #checkBtn {
@@ -67,8 +67,10 @@
     }
 
     #notify {
-        border: 1px solid;
+        border: 1px solid ;
+        margin: 10px 10px 10px 10px;
         width: 280px;
+        height: 20px;
     }
 
     .notifyGreen {
@@ -78,7 +80,15 @@
         margin: 0 10px 10px;
         float: left;
     }
+    
+    .notifyRed {
+        font-size: 13px;
+        color: red;
+        font-weight: bold;
+        margin: 0 10px 10px;
+        float: left;
 
+    }
     
 </style>
 
@@ -102,8 +112,11 @@
                     <input type="text" name="userEmail" placeholder="인증번호" required>
                 </div>
 
-                <!-- <div>
+                <!-- <div id="notify">
+                    // 인증번호 입력 후 성공 시
                     <p class="notifyGreen"> 인증번호 성공</p>
+                    // 인증번호 입력 후 실패 시
+                    <p class="notifyRed"> 인증번호 실패</p>
                 </div> -->
             </div>
 
