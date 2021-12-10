@@ -69,6 +69,30 @@
             background: rgb(247, 198, 4);
             color: white;
         }
+        /* 상품 업로드 완료 모달창 */
+        .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
+            text-align: center;
+        }
+        #uploadCompletedbtn-area-area>*{
+            color: white;
+            font-weight: bolder;
+            font-size: 15px;
+            height: 35px;
+            line-height: 5px;
+            width: 130px;
+            margin-top: -10px;
+            float: left;
+        }
+        #uploadCompletedclosebtn{
+            background-color: orange;
+            width: 100px;
+            color: white;
+            font-weight: bolder;
+        }
 
 
 
@@ -180,8 +204,26 @@
                     </table>
                     <div style="width: 550px; text-align: center;">
                         <br><br>
-                        <button class="btn btn-warning mr-3">확인</button>
+                        <button class="btn btn-warning mr-3" data-dismiss="modal" data-toggle="modal" href="#uploadCompleted">확인</button>
                         <button class="btn btn-light">취소</button>
+                    </div>
+                    <!-- 상품 등록 완료 Modal -->
+                    <div class="modal fade" id="uploadCompleted">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal body -->
+                                <div class="modal-body" align="center" style="text-align: center;">
+                                    <div class="modalMsg-area">
+                                        정상적으로 <br>상품이 등록 되었습니다.
+                                    </div>
+                                    <div>
+                                    <button type="button" class="btn" data-dismiss="modal" id="uploadCompletedclosebtn">닫기</button>
+                                    </div>              
+                                </div>
+                        
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

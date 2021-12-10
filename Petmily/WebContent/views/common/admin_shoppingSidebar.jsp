@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-    String contextPath1 = request.getContextPath();
+    String contextPathas = request.getContextPath();
  %>
     <!DOCTYPE html>
     <html>
@@ -61,15 +61,15 @@
             <ul>
                 <div id="category">쇼핑몰</div>
                 <div id="d-category">
-                    <div class="d-category" id="spErPd" onclick="location.href='<%= contextPath1 %>/spErPd.ad';">상품 등록</div>
+                    <div class="d-category" id="spErPd" onclick="location.href='<%= contextPathas %>/spErPd.ad';">상품 등록</div>
     
-                    <div class="d-category" id="spPdUd" onclick="location.href='<%= contextPath1 %>/spPdUd.ad';">상품 관리(수정,삭제)</div>
+                    <div class="d-category" id="spPdUd" onclick="location.href='<%= contextPathas %>/spPdUd.ad';">상품 관리(수정,삭제)</div>
                     
-                    <div class="d-category" id="spDvlist" onclick="location.href='<%= contextPath1 %>/spDvlist.ad';">주문/배송 조회</div>
+                    <div class="d-category" id="spDvlist" onclick="location.href='<%= contextPathas %>/spDvlist.ad';">주문/배송 조회</div>
 
-                    <div class="d-category" id="spPdlist" onclick="location.href='<%= contextPath1 %>/spPdlist.ad';">취소/환불/교환/반품 조회</div>
+                    <div class="d-category" id="spPdlist" onclick="location.href='<%= contextPathas %>/spPdlist.ad';">취소/환불/교환/반품 조회</div>
 
-                    <div class="d-category" id="spPmlist" onclick="location.href='<%= contextPath1 %>/spPmlist.ad';">결제 내역 조회</div>
+                    <div class="d-category" id="spPmlist" onclick="location.href='<%= contextPathas %>/spPmlist.ad';">결제 내역 조회</div>
                     
                 </div>
             </ul>

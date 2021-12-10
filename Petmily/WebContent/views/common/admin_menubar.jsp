@@ -88,10 +88,10 @@
                 <div class="menu"><a href="">게시판관리</a></div>
                 <div class="menu"><a href="">Petlog</a></div>
                 <div class="menu"><a href="">고객센터</a></div>
-                <div class="menu"><a href="">신고관리</a></div>
+                <div class="menu"><a href="<%= contextPath %>/nfList.ad">신고관리</a></div>
             </div>
             <div class="right-box"> 
-                <a href="">로그아웃</a>
+                <a href="<%= contextPath %>/login.ad">로그아웃</a>
             </div>
         </div>
     

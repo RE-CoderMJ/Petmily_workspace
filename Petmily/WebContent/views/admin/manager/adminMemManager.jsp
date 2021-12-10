@@ -256,12 +256,31 @@
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">회원수정</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">회원수정</button>
                                         <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <!-- 회원 수정완료 Modal -->
+                        <div class="modal fade" id="changeCompleted">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body" align="center" style="text-align: center;">
+                                        <div class="modalMsg-area">
+                                            정상적으로 수정 되었습니다.
+                                        </div>
+                                        <div>
+                                        <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                                        </div>              
+                                    </div>
+                            
+                                </div>
                             </div>
+                        </div>
+                            <!-- 회원 삭제 버튼 -->
                             <div class="pb-5">
                                 <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
                             </div>
@@ -280,7 +299,6 @@
                                               <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
                                             </div>              
                                         </div>
-                                
                                     </div>
                                 </div>
                             </div>

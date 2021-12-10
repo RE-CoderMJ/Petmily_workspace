@@ -72,43 +72,41 @@
             width: 40px;
             border-radius: 5px;
         }
-        /* 모달 팝업 */
-        .modal .modal-footer{
-            justify-content: center;
-        }
-        .modal .modal-header{
-            border-bottom: 0;
-        }
-        .modal .modal-body{
-            margin: 0 70px;
-        }
-        .modal-body .md-box{
-            position: relative;
-            margin-bottom: 25px;
-        }
-        .md-box p{
-            font-size: 14px;
-            color: #555;
-            font-weight: 500;
-            margin: 0;
+        /* 삭제모달창 */
+        .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
             text-align: center;
         }
-        .md-box input{
-            font-size: 22px;
-            padding: 5px 0;
-            border:0;
-            width: 230px;
-            text-align: center;
+        #deletebtn-area>*{
+            color: white;
+            font-weight: bolder;
+            font-size: 15px;
+            height: 35px;
+            line-height: 5px;
+            width: 70px;
+            margin-top: -10px;
         }
-        .md-box .btn-box{
-            position: absolute;
-            bottom: 0;
-            right: 0;
+        #confirm-btn{
+            background-color: red;
+            margin-right: 2px;
+            line-height: 22px;
         }
-        .md-box .btn-box button{
-            background-color: #d4d4d4;
+        #closebtn{
+            background-color: gray;
+            margin-left: 2px;
         }
-        #memPoint{
+        #deleteCompletedclosebtn{
+            background-color: orange;
+            width: 100px;
+            color: white;
+            font-weight: bolder;
+        }
+
+        /* 사이드바 색 고정 */
+        #memWarning{
             background: rgb(247, 198, 4);
             color: white;
         }
@@ -127,27 +125,39 @@
     <body>
         <%@ include file="../../common/admin_menubar.jsp" %>
         <%@ include file="../../common/admin_memSidebar.jsp" %>
-   
+        
         <div class="container" style="max-width:1600px;">
     
             <!-- cont-wrap -->
             <div class="cont-wrap">
-                <div class="title-box mt-5 pb-2">
-                    <h3 class="mt-2">> 관리자 회원관리</h3>
+                <div class="title-box mt-1 pb-2">
+                    <h3>> 관리자 신고관리</h3>
                 </div>
                 <div class="content">
                     <hr>
-                    <p class="ct-tit pb-3">회원 포인트 관리</p>
+                    <p class="ct-tit pb-3">신고 내역 조회</p>
                     <!-- 회원 조회 -->
-                    <div class="search-box pb-5">
-                        <select class="selectpicker show-tick p-2">
+                    <div class="search-box pb-2">
+                        <select class="selectpicker show-tick p-2" style="width: 110PX;">
+                            <option>분류</option>
+                            <option>게시글</option>
+                            <option>댓글</option>
+                            <option>계정</option>
+                        </select>
+                        <select class="selectpicker show-tick p-2" style="width: 110PX;">
+                            <option>사유</option>
+                            <option>광고성</option>
+                            <option>욕설/비방</option>
+                            <option>도배 및 중복</option>
+                        </select>
+                        <select class="selectpicker show-tick p-2" style="width: 130PX;">
+                            <option>전체</option>
+                            <option>신고자 아이디</option>
                             <option>회원 아이디</option>
-                            <option>회원 이름</option>
-                            <option>회원 이메일</option>
                         </select>
                         <div class="search">
                             <form class="form-inline" action=" ">
-                              <input class="form-control p-4" type="text" placeholder="조회할 회원을 입력해주세요." style="width: 350px;">
+                              <input class="form-control p-4" type="text" placeholder="조회할 회원을 입력해주세요." style="width: 270px;">
                               <button class="btn" type="submit">
                                 <span class="material-icons">search</span>                                    
                               </button>
@@ -159,60 +169,59 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">전체 +/-</button>
-                            <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">선택 +/-</button>
+                            <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
                         </div>
-                        <!-- 포인트관리 Modal -->
-                        <div class="modal" id="myModal">
+                        <!-- 회원삭제 Modal -->
+                        <div class="modal fade" id="deleteModal">
                             <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title" style="font-size: 20px;">전체(선택) 회원에게 포인트를 적립/차감 합니다.</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="md-box">
-                                        <p>포인트를 입력하세요.</p>
-                                        <input type="number" value="0" style="width: 150px; margin-left: 30%;">
+                                <div class="modal-content" style="width: 400px;">
+                    
+                                    <!-- Modal body -->
+                                    <div class="modal-body" align="center">
+                                        <div class="modalMsg-area">
+                                                            정말 삭제하시겠습니까?
+                                        </div>
+                                        <div id="deletebtn-area">
+                                          <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                                          <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                                        </div>              
                                     </div>
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">적립</button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">차감</button>
+                            
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- 처리완료 Modal -->
-                    <div class="modal fade" id="changeCompleted">
-                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                            <div class="modal-content">
+                        <!-- 게시글 삭제완료 Modal -->
+                        <div class="modal fade" id="deleteCompleted">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
 
-                                <!-- Modal body -->
-                                <div class="modal-body" align="center" style="text-align: center;">
-                                    <div class="modalMsg-area">
-                                        정상적으로 적립/차감 되었습니다.
+                                    <!-- Modal body -->
+                                    <div class="modal-body" align="center" style="text-align: center;">
+                                        <div class="modalMsg-area">
+                                            정상적으로 삭제되었습니다.
+                                        </div>
+                                        <div>
+                                        <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                                        </div>              
                                     </div>
-                                    <div>
-                                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
-                                    </div>              
+                            
                                 </div>
-                        
                             </div>
                         </div>
                     </div>
+                    
+                        </div>
                         <table style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
                                     <th width="150px">회원 ID</th>
-                                    <th width="150px">회원 이름</th>
-                                    <th width="500px">회원 이메일</th>
-                                    <th width="300px">회원 전화번호</th>
+                                    <th width="120px">분류</th>
+                                    <th width="200px">신고사유</th>
+                                    <th width="450px">신고내용</th>
+                                    <th width="150px">신고자 ID</th>
+                                    <th width="100px">신고일</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -224,10 +233,12 @@
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
                                     <td>1</td>
-                                    <td>id</td>
-                                    <td>name</td>
-                                    <td>email</td>
-                                    <td>phone</td>
+                                    <td>qldrmsl</td>
+                                    <td>댓글</td>
+                                    <td>욕설/비방</td>
+                                    <td>저희집 강아지 보고 돼지래요 사실이긴 합니다</td>
+                                    <td>bomi</td>
+                                    <td>21/11/15</td>
                                 </tr>
                             </tbody>
                         </table>

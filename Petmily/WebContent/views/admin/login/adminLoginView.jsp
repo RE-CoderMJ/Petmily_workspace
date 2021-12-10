@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String contextPathal = request.getContextPath();
+ %>
     <!DOCTYPE html>
     <html>
     <head>
@@ -101,7 +104,7 @@
             <div class="menu"><a href=""></a></div> -->
         </div>
     
-        <div class="body">
+        <form action="<%= contextPathal %>/memMg.ad" class="body">
             <!-- 발바닥 이미지 -->
             <div id="logo2">
                 <a href="">
@@ -128,10 +131,10 @@
                 </div><br>
                 <!-- 로그인 버튼 -->
                 <div id="login_login_btn">
-                    <a href=""><input type="submit" value="로그인" class="btn btn-warning"></a>
+                    <button type="submit" class="btn btn-warning">로그인</button>
                 </div>
             </div>
-        </div>
+        </form>
     
     </body>
     </html>

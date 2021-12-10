@@ -199,14 +199,14 @@
                     <div class="hs-box d-flex mb-4">
                         <span class="tit text-danger mr-2">* 사후처리 기간</span>
                         <div class="input-box">
-                            <input class="form-control mr-2" type="date">
+                            <input class="form-control mr-2" type="date" style="width: 155px;">
                             <span class="icon material-icons">
                                 <!-- calendar_month -->
                             </span>
                         </div>
                         <span class="mr-2">~</span>
                         <div class="input-box">
-                            <input class="form-control mr-2" type="date">
+                            <input class="form-control mr-2" type="date" style="width: 155px;">
                             <span class="icon material-icons">
                                 <!-- calendar_month -->
                             </span>
@@ -237,7 +237,7 @@
                 <div class="list-box">
                     <p class="property text-dark mb-2">취소/환불</p>
                     <div class="item d-flex">
-                        <img class="mr-4" src="" alt="" style="width: 100px;height: 100px;">
+                        <img class="mr-4" src="resources/img/sp_coshion.jpg" alt="" style="width: 100px;height: 100px;">
                         <div class="info">
                             <p class="name">강아지 마약 방석</p>
                             <p class="user text-dark">구매자:김빙근</p>
@@ -249,11 +249,11 @@
                 <div class="list-box">
                     <p class="property text-dark mb-2">취소/환불</p>
                     <div class="item d-flex">
-                        <img class="mr-4" src="" alt="" style="width: 100px;height: 100px;">
+                        <img class="mr-4" src="resources/img/sp_wheel.jpg" alt="" style="width: 100px;height: 100px;">
                         <div class="info">
                             <p class="name">친칠라 쳇바퀴</p>
                             <p class="user text-dark">구매자:원남이</p>
-                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">즉시 취소</a>
+                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">취소/환불 처리중</a>
                         </div>
                         <p class="price flex-fill">20,000원</p>
                     </div>
@@ -261,7 +261,7 @@
                 <div class="list-box">
                     <p class="property text-dark mb-2">교환/반품</p>
                     <div class="item d-flex">
-                        <img class="mr-4" src="" alt="" style="width: 100px;height: 100px;">
+                        <img class="mr-4" src="resources/img/sp_churu.jpg" alt="" style="width: 100px;height: 100px;">
                         <div class="info">
                             <p class="name">새콤달콤 츄르</p>
                             <p class="user text-dark">구매자:김민지</p>
@@ -292,7 +292,7 @@
                 </div>
             </div>
         </div>
-        <!-- 게시글 삭제완료 Modal -->
+        <!-- 처리완료 Modal -->
         <div class="modal fade" id="changeCompleted">
             <div class="modal-dialog modal-sm modal-dialog-centered">
                 <div class="modal-content">
