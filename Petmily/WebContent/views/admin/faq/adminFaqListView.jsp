@@ -26,7 +26,7 @@
         #right{
             float:right;
             padding-top:50px;
-            padding-right:220px;
+            padding-right:100px;
         }
         
         /* 테이블 + 페이징 바 */
@@ -55,7 +55,7 @@
     <%@ include file="../../common/admin_menubar.jsp" %>
     
     <!-- 사이드바 -->
-        <%@ include file="admin_faqSidebar.jsp" %>
+    <%@ include file="admin_faqSidebar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">

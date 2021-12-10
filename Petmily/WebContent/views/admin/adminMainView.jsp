@@ -103,11 +103,13 @@
 	<!-- 메뉴바 -->
     <%@ include file="../common/admin_menubar.jsp" %>
     
+    <!-- 사이드바 (관리자 전체) -->
+    <%@ include file="../common/admin_mainSidebar.jsp" %>
+    
 
     <div class="outer">
 
-        <!-- 사이드바 (관리자 전체) -->
-        <%@ include file="../common/admin_mainSidebar.jsp" %>
+        
         
 
         <!-- 맨밑 회색 상단바 -->

@@ -41,8 +41,7 @@
             left: 90px;
             font-weight: bolder;
         }
-        
-        
+
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -53,25 +52,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-        
+        <!--  사이드바  -->
         <br>
-        <!-- 사이드바 -->
-        <div class="sidebar-area">
-            <ul>
-                <div id="category">고객센터</div>
-                <div id="d-category">
-                    <div class="d-category">공지사항 관리</div>
-
-                    <div class="d-category">FAQ 관리</div>
-                    
-                    <div class="d-category">Q&A문의/상품문의 관리</div>
-
-                    <div class="d-category">리뷰 관리</div>
-                    
-                </div>
-            </ul>
-        </div>
         
+            <div class="sidebar-area">
+                <ul>
+                    <div id="category">고객센터</div>
+                    <div id="d-category">
+                        <div class="d-category" id="notice">공지사항 관리</div>
+        
+                        <div class="d-category" id="faq">FAQ 관리</div>
+        
+                        <div class="d-category" id="qna">Q&A문의/상품문의 관리</div>
+        
+                        <div class="d-category" id="review">리뷰 관리</div>
+                    </div>
+                </ul>
+            </div>
+            
         <script>
         $(function(){
             $(".d-category").click(function(){
@@ -79,7 +77,7 @@
                 $(this).css({background: "rgb(247, 198, 4)", color:"white"});
             })
         })
-    </script>
+    	</script>
 
     </body>
     </html>

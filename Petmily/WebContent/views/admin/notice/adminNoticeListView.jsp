@@ -15,36 +15,7 @@
             float:left;
         }
 
-        /*사이드바 스타일*/
-        .sidebar-area{
-            float: left;
-            width: 350px;
-            height: 800px;
-            position: relative;
-            /* margin-top: 70px; */
-        }
-        /* 사이드바 큰 제목 스타일 */
-        #category{
-            list-style-type: none;
-            font-weight: bolder;
-            font-size: 25px;
-            position: absolute;
-            left:90px;
-        }
-        /* 사이드바 스타일*/
-        .d-category{
-            list-style-type: none;
-            font-size: 16px;
-            font-weight: bolder;
-            cursor:pointer;
-            margin-bottom: 5px;
-        }
-        #d-category{
-            position: absolute;
-            top:80px;
-            left: 90px;
-            font-weight: bolder;
-        }
+        
 
         /* 맨 위 게시판이름 바 */
         .top{
@@ -73,12 +44,13 @@
             width:70%;
             height:50px;
             /* float:right; */
-            margin:0;          
+
+            padding-right:10px;        
         }
 
         /* 공지사항 테이블 */
         #noticetable{
-            width:800px; 
+            width:1000px; 
         }
         /* 테이블 + 페이징바 */
         .table-paging{
@@ -104,15 +76,17 @@
 
 </head>
 <body>
-<!-- 메뉴바 -->
+
+	<!-- 메뉴바 -->
     <%@ include file="../../common/admin_menubar.jsp" %>
+    
+    <!-- 사이드바 -->
+    <%@ include file="admin_noticeSidebar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
 
-        <!--  사이드바  -->
-        <%@ include file="../common/admin_memSidebar.jsp" %>
-
+        
         <!-- 맨 위 게시판이름 -->
         <div class="top">
             <br>
@@ -160,9 +134,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th width="30"><input type="checkbox" name="" value=""></th>
-                        <th width="120">번호</th>
-                        <th width="550">제목</th>
+                        <th width="50"><input type="checkbox" name="" value=""></th>
+                        <th width="200">번호</th>
+                        <th width="600">제목</th>
                         <th width="150">작성자</th>
                         <th width="150">작성일</th>
                     </tr>
@@ -183,7 +157,7 @@
                 </tbody>
         	</table>
     	</div>
-    	<% } %>
+    	
     <br><br><br>
 
     <!-- 페이징 바 -->
@@ -202,15 +176,7 @@
 
 
 
-    <!-- 사이드 바-->
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-            })
-        })
-    </script>
+    
     <!-- 페이징 바-->
     <script>
         $(function(){
