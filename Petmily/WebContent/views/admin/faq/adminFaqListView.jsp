@@ -67,7 +67,7 @@
             <br>
             <h2 style="color:gray">&gt; 관리자 고객센터</h2>
             <hr>
-            <h3>FAQ 관리</h3>
+            <h5>FAQ 관리</h3>
             <br>
         </div>
 
