@@ -239,10 +239,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <br><br><br><br>
+                        <br><br><br><br><br>
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
                 <button> &lt; </button>
@@ -261,6 +258,9 @@
                     })
                 })
             </script>
+                    </div>
+                </div>
+            </div>
         </div>
         <br><br>
     </body>

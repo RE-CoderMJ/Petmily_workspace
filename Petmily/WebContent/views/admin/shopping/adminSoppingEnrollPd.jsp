@@ -202,10 +202,10 @@
                             </tr>
                         </tbody>    
                     </table>
-                    <div style="width: 550px; text-align: center;">
-                        <br><br>
-                        <button class="btn btn-warning mr-3" data-dismiss="modal" data-toggle="modal" href="#uploadCompleted">확인</button>
-                        <button class="btn btn-light">취소</button>
+                    <div style="width: 800px; text-align: center;" align="center">
+                        <br><br><br><br>
+                        <button class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" href="#uploadCompleted">확인</button>
+                        <button class="btn btn-light" style="width: 80px;">취소</button>
                     </div>
                     <!-- 상품 등록 완료 Modal -->
                     <div class="modal fade" id="uploadCompleted">

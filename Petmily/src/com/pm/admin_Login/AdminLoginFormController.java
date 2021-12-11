@@ -1,4 +1,4 @@
-package com.pm.admin;
+package com.pm.admin_Login;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminSpPdUpdateController
+ * Servlet implementation class adminLoginFormController
  */
-@WebServlet("/spPdUd.ad")
-public class AdminSpPdUpdateController extends HttpServlet {
+@WebServlet("/login.ad")
+public class AdminLoginFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSpPdUpdateController() {
+    public AdminLoginFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class AdminSpPdUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/shopping/adminSoppingPdUd.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/login/adminLoginView.jsp").forward(request, response);
 	}
 
 	/**

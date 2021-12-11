@@ -80,7 +80,8 @@
             border-bottom: 0;
         }
         .modal .modal-body{
-            margin: 0 70px;
+            padding-top: 20px;
+            text-align: center;
         }
         .modal-body .md-box{
             position: relative;
@@ -94,19 +95,23 @@
             text-align: center;
         }
         .md-box input{
-            font-size: 22px;
-            padding: 5px 0;
-            border:0;
-            width: 230px;
-            text-align: center;
+            width: 220px;
+            margin-top: 25px;
+            padding: 10px;
+            border: 1px solid rgb(186, 186, 186);
+            border-radius: 5px;
+            font-size: 18px;
         }
-        .md-box .btn-box{
+        /* .md-box .btn-box{
             position: absolute;
             bottom: 0;
             right: 0;
         }
         .md-box .btn-box button{
             background-color: #d4d4d4;
+        } */
+        .modal-footer button{
+            width: 100px;
         }
         #memPoint{
             background: rgb(247, 198, 4);
@@ -132,7 +137,7 @@
     
             <!-- cont-wrap -->
             <div class="cont-wrap">
-                <div class="title-box mt-5 pb-2">
+                <div class="title-box mt-1 pb-2">
                     <h3 class="mt-2">> 관리자 회원관리</h3>
                 </div>
                 <div class="content">
@@ -164,18 +169,13 @@
                         </div>
                         <!-- 포인트관리 Modal -->
                         <div class="modal" id="myModal">
-                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
                             <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title" style="font-size: 20px;">전체(선택) 회원에게 포인트를 적립/차감 합니다.</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
                                     <div class="md-box">
-                                        <p>포인트를 입력하세요.</p>
-                                        <input type="number" value="0" style="width: 150px; margin-left: 30%;">
+                                        <h4 class="modal-title" style="font-size: 20px;">전체(선택) 회원에게 포인트를 <br>적립/차감 합니다.</h4>
+                                        <input type="number" placeholder="포인트를 입력하세요.">
                                     </div>
                                 </div>
                                 <!-- Modal footer -->
@@ -196,10 +196,10 @@
                                     <div class="modalMsg-area">
                                         정상적으로 적립/차감 되었습니다.
                                     </div>
-                                    <div>
-                                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
-                                    </div>              
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
+                                </div> 
                         
                             </div>
                         </div>

@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <title>adminMemManager</title>
     <style>
-        
         /* 세부 카테고리 전체 스타일 */
         .dd-category{
             list-style-type: none;
@@ -58,7 +57,8 @@
         }
         /* 버튼 박스 */
         .btn-box{
-            text-align: right;
+            display: flex;
+            justify-content: flex-end;
         }
         /* 표 */
         table {
@@ -80,8 +80,7 @@
             border-bottom: 0;
         }
         .modal .modal-body{
-            padding-top: 30px;
-            text-align: center;
+            margin: 0 70px;
         }
         .modal-body .md-box{
             position: relative;
@@ -92,28 +91,56 @@
             color: #555;
             font-weight: 500;
             margin: 0;
-            text-align: center;
         }
         .md-box input{
-            width: 220px;
-            margin-top: 25px;
-            padding: 10px;
-            border: 1px solid rgb(186, 186, 186);
-            border-radius: 5px;
-            font-size: 18px;
+            font-size: 22px;
+            padding: 5px 0;
+            border:0;
+            width: 230px;
         }
-        /* .md-box .btn-box{
+        .md-box .btn-box{
             position: absolute;
             bottom: 0;
             right: 0;
         }
         .md-box .btn-box button{
             background-color: #d4d4d4;
-        } */
-        .modal-footer button{
-            width: 100px;
         }
-        #memPoint{
+        
+        /* 삭제모달창 */
+        .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
+            text-align: center;
+        }
+        #deletebtn-area>*{
+            color: white;
+            font-weight: bolder;
+            font-size: 15px;
+            height: 35px;
+            line-height: 5px;
+            width: 70px;
+            margin-top: -10px;
+        }
+        #confirm-btn{
+            background-color: red;
+            margin-right: 2px;
+            line-height: 22px;
+        }
+        #closebtn{
+            background-color: gray;
+            margin-left: 2px;
+        }
+        #deleteCompletedclosebtn{
+            background-color: orange;
+            width: 100px;
+            color: white;
+            font-weight: bolder;
+        }
+        /* 사이드바 색 고정 */
+        #nfWnList{
             background: rgb(247, 198, 4);
             color: white;
         }
@@ -130,25 +157,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
+
         <%@ include file="../../common/admin_menubar.jsp" %>
-        <%@ include file="../../common/admin_memSidebar.jsp" %>
-   
+        <%@ include file="../../common/admin_notifySidebar.jsp" %>
+
         <div class="container" style="max-width:1600px;">
-    
+            
             <!-- cont-wrap -->
             <div class="cont-wrap">
-                <div class="title-box mt-5 pb-2">
-                    <h3 class="mt-2">> 관리자 회원관리</h3>
+                <div class="title-box mt-1 pb-2">
+                    <h3>> 관리자 신고관리</h3>
                 </div>
                 <div class="content">
                     <hr>
-                    <p class="ct-tit pb-3">회원 포인트 관리</p>
+                    <p class="ct-tit pb-3">신고 회원 관리</p>
                     <!-- 회원 조회 -->
                     <div class="search-box pb-5">
                         <select class="selectpicker show-tick p-2">
                             <option>회원 아이디</option>
-                            <option>회원 이름</option>
-                            <option>회원 이메일</option>
+                            <option>신고자 아이디</option>
                         </select>
                         <div class="search">
                             <form class="form-inline" action=" ">
@@ -162,57 +189,58 @@
 
                     <!-- table -->
                     <div class="table">
-                        <!-- btn-box -->
-                        <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">전체 +/-</button>
-                            <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">선택 +/-</button>
-                        </div>
-                        <!-- 포인트관리 Modal -->
-                        <div class="modal" id="myModal">
-                            <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
-                            <div class="modal-content">
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="md-box">
-                                        <h4 class="modal-title" style="font-size: 20px;">전체(선택) 회원에게 포인트를 <br>적립/차감 합니다.</h4>
-                                        <input type="number" placeholder="포인트를 입력하세요.">
-                                    </div>
-                                </div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">적립</button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">차감</button>
-                                </div>
+                        <div class="btn-box">
+                            <!-- 회원 삭제 버튼 -->
+                            <div class="pb-5">
+                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
                             </div>
-                        </div>
-                    </div>
-                    <!-- 처리완료 Modal -->
-                    <div class="modal fade" id="changeCompleted">
-                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                            <div class="modal-content">
-
-                                <!-- Modal body -->
-                                <div class="modal-body" align="center" style="text-align: center;">
-                                    <div class="modalMsg-area">
-                                        정상적으로 적립/차감 되었습니다.
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
-                                </div> 
+                            <!-- 회원삭제 모달 -->
+                            <div class="modal fade" id="deleteModal">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content" style="width: 400px;">
                         
+                                        <!-- Modal body -->
+                                        <div class="modal-body" align="center">
+                                            <div class="modalMsg-area">
+                                                                정말 삭제하시겠습니까?
+                                            </div>
+                                            <div id="deletebtn-area">
+                                              <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                                              <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                                            </div>              
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 게시글 삭제완료 Modal -->
+                            <div class="modal fade" id="deleteCompleted">
+                                <div class="modal-dialog modal-sm modal-dialog-centered">
+                                    <div class="modal-content">
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body" align="center" style="text-align: center;">
+                                            <div class="modalMsg-area">
+                                                정상적으로 삭제되었습니다.
+                                            </div>
+                                            <div>
+                                            <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                                            </div>              
+                                        </div>
+                                
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        
                         <table style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
                                     <th width="150px">회원 ID</th>
-                                    <th width="150px">회원 이름</th>
-                                    <th width="500px">회원 이메일</th>
-                                    <th width="300px">회원 전화번호</th>
+                                    <th width="150px">누적 신고수</th>
+                                    <th width="500px">재재 내용</th>
+                                    <th width="300px">회원 상태</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -224,35 +252,35 @@
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
                                     <td>1</td>
-                                    <td>id</td>
-                                    <td>name</td>
-                                    <td>email</td>
-                                    <td>phone</td>
+                                    <td>qldrmsl</td>
+                                    <td>2회</td>
+                                    <td>욕설,비방 / 광고성 게시글</td>
+                                    <td>탈퇴</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <br><br><br><br>
+                        <!-- 페이징 바 -->
+                        <div class="paging-area" align="center">
+                            <button> &lt; </button>
+                            <button>1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>4</button>
+                            <button>5</button>
+                            <button> &gt; </button>
+                        </div>
+                        <script>
+                            $(function(){
+                                $(".paging-area button").click(function(){
+                                    $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                                    $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                                })
+                            })
+                        </script>
                     </div>
                 </div>
             </div>
-            <br><br><br><br>
-            <!-- 페이징 바 -->
-            <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
-            </div>
-            <script>
-                $(function(){
-                    $(".paging-area button").click(function(){
-                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-                    })
-                })
-            </script>
         </div>
 
     </body>

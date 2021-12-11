@@ -104,9 +104,37 @@
             color: white;
             font-weight: bolder;
         }
-
+        /* 글,아이디 마우스 호버 */
+        .tbList{
+            cursor: pointer;
+        }
+        .tbList:hover{
+            text-decoration: underline;
+        }
+        /* 신고 아이디 내용 모달 */
+        .modalMsg2-area{
+            font-weight: bolder;
+            color: orange;
+            font-size: 20px;
+            text-align: center;
+        }
+        #report-Msg{
+            font-weight: bolder;
+        }
+        #contentModalbtn{
+            font-weight: bolder;
+            width: 100%;
+            height: 50px;
+            color: white;
+        }
+        #idModalbtn{
+            font-weight: bolder;
+            width: 100%;
+            height: 50px;
+            color: white;
+        }
         /* 사이드바 색 고정 */
-        #memWarning{
+        #nfList{
             background: rgb(247, 198, 4);
             color: white;
         }
@@ -124,7 +152,7 @@
     </head>
     <body>
         <%@ include file="../../common/admin_menubar.jsp" %>
-        <%@ include file="../../common/admin_memSidebar.jsp" %>
+        <%@ include file="../../common/admin_notifySidebar.jsp" %>
         
         <div class="container" style="max-width:1600px;">
     
@@ -149,15 +177,18 @@
                             <option>광고성</option>
                             <option>욕설/비방</option>
                             <option>도배 및 중복</option>
+                            <option>외설적</option>
+                            <option>기타</option>
                         </select>
                         <select class="selectpicker show-tick p-2" style="width: 130PX;">
+
                             <option>전체</option>
                             <option>신고자 아이디</option>
                             <option>회원 아이디</option>
                         </select>
                         <div class="search">
                             <form class="form-inline" action=" ">
-                              <input class="form-control p-4" type="text" placeholder="조회할 회원을 입력해주세요." style="width: 270px;">
+                              <input class="form-control p-4" type="text" placeholder="조회할 회원을 입력해주세요." style="width: 280px;">
                               <button class="btn" type="submit">
                                 <span class="material-icons">search</span>                                    
                               </button>
@@ -233,13 +264,77 @@
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
                                     <td>1</td>
-                                    <td>qldrmsl</td>
+                                    <td class="tbList" data-toggle="modal" data-target="#idModal">qldrmsl</td>
                                     <td>댓글</td>
                                     <td>욕설/비방</td>
-                                    <td>저희집 강아지 보고 돼지래요 사실이긴 합니다</td>
-                                    <td>bomi</td>
+                                    <td class="tbList" data-toggle="modal" data-target="#contentModal">저희집 강아지 보고 돼지래요 사실이긴 합니다</td>
+                                    <td class="tbList" data-toggle="modal" data-target="#idModal">bomi</td>
                                     <td>21/11/15</td>
                                 </tr>
+                                <!-- 신고 아이디 Modal -->
+                                <div class="modal fade" id="idModal">
+                                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <!-- Modal body -->
+                                            <div class="modal-body" align="center">
+                                                <div class="modalMsg2-area">
+                                                    회원 ID
+                                                </div>
+                                                <div id="report-Msg">
+                                                    qldrmsl
+                                                </div>
+                                                <hr>
+                                                <div class="modalMsg2-area">
+                                                    누적 경고 수
+                                                </div>
+                                                <div id="report-Msg">
+                                                    0회
+                                                </div>
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer" align="center">
+                                                <button type="button" class="btn btn-warning" data-dismiss="modal" id="idModalbtn">회원 경고 처리</button>            
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 신고내용 Modal -->
+                                <div class="modal fade" id="contentModal">
+                                    <div class="modal-dialog modal-sm modal-dialog-centered" style="max-width:350px">
+                                        <div class="modal-content">
+                                            <!-- Modal body -->
+                                            <div class="modal-body" align="center">
+                                                <div class="modalMsg2-area">
+                                                    신고 사유
+                                                </div>
+                                                <div id="report-Msg">
+                                                    욕설/비방
+                                                </div>
+                                                <hr>
+                                                <div class="modalMsg2-area">
+                                                    신고 제목
+                                                </div>
+                                                <div id="report-Msg">
+                                                    저희집 강아지 보고 돼지래요 사실이긴 합니다
+                                                </div>
+                                                <hr>
+                                                <div class="modalMsg2-area">
+                                                    신고 내용
+                                                </div>
+                                                <div id="report-Msg">
+                                                    왜자꾸 우리집 개한테 돼지라 하는건지 모르겠어요.ㅡㅡ<br>
+                                                    신고합니다. 처리 부탁요<br>
+                                                </div>
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer" align="center">
+                                                <button type="button" class="btn btn-warning" data-dismiss="modal" id="contentModalbtn">해당 게시글/댓글 로 이동</button>            
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+                                </div>
                             </tbody>
                         </table>
                     </div>
