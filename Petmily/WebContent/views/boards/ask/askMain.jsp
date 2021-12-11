@@ -9,137 +9,124 @@
 <style>
 
 div, img, li, a{
-        box-sizing: border-box;
+   box-sizing: border-box;
 }
-     
-   /* 궁금해요 메인 스타일 */
-   .content-area{
-      width: 1400px;
-      height: auto;
-      margin: auto;
-      margin-bottom: 230px;
-   }
-   .content-area > div{
-      width: 85%;
-   }
-   
-   /* 검색영역 스타일 */
-   #search-area{
-      height: 200px;
-      background-color: rgb(235, 235, 235);
-      padding: 25px;
-   }
-   #search-title1{
-      font-size: 18px;
-      font-weight: bolder;
-      margin-bottom: 1px;
-   }
-   #search-title2{
-      font-size: 13px;
-      margin-bottom: 20px;
-   }
-   #search-area2>select{
-      width: 80px;
-      height: 30px;
-      margin-bottom: 15px;
-      margin-right: 5px;;
-   }
-   #search-area2>input{
-      width: 280px; 
-      height: 30px;
-      border: none;
-      padding-right: 27px;
-   }
-   #search-keyword{font-size: 13px;}
-   #search-btn{
-      background-image: url("resources/img/searchImg.png");
-      background-size: cover;
-      width: 30px;
-      height: 30px;
-      margin-left: -35px;
-   }
-
-   /* 중간영역 스타일 */
-   #middle-bar>div{
-      float: left; 
-      width:592px;
-      margin-top: 25px;
-   }
-   #orderBy, #write{
-      height: 27px;
-      line-height: 3px;
-   }
-   /* 공지사항 영역 스타일 */
-   
-   .notice-area>span{
-      font-size: 12px;
-      margin-right: 10px;
-      font-weight: bold;
-      cursor: pointer;
-   }
-
-   /* 게시글 영역 스타일 */
-   .contents{
-      cursor: pointer;
-   }
-   #content-area{
-      margin-top: 80px;
-   }
-   #content-area>div{
-      height: 130px;
-      margin-bottom: 50px;
-   }
-   .contents>div{
-      height: 130px;
-      float: left;
-   }
-   /* 게시글 번호 들어갈 영역 */
-   .number{
-      width: 15%;
-      text-align: center;
-      line-height: 130px;
-   }
-   /* 사진 들어갈 영역 */
-   .photo{
-      width: 130px;
-   }
-   /* 제목, 내용, 작성날짜, 작성자, 댓글수, 조회수 */
-   .texts{width:70%;}
-   .texts>div{float: left;}
-   .title{
-      font-weight: bolder;
-      font-size: 17px;
-      text-align: left;
-      width: 60%;
-      height: 21%;
-      margin-top: 7px;
-   }
-   .info{
-      font-size: 13px;
-      text-align: right;
-      width: 40%;
-      height: 21%;
-      line-height: 29px;
-      margin-top: 7px;
-      margin-bottom: 10px;
-   }
-   .photo{
-      border: 1px solid black;
-      margin-right: 25px;
-   }
-
-   /* 페이징바 스타일 */
-   #paging-bar{
-      margin-top: 120px;
-   }
-   /* 페이징바 */
-   .paging-area button{
-     border:  0;
-     background-color: transparent;
-     height: 40px;
-     width: 40px;
-     border-radius: 5px;
+  
+/* 궁금해요 메인 스타일 */
+.content-area{
+   width: 1400px;
+   height: auto;
+   margin: auto;
+   margin-bottom: 150px;
 }
+.content-area > div{
+   width: 85%;
+}
+
+/* 검색영역 스타일 */
+#search-area{
+   height: 200px;
+   background-color: rgb(235, 235, 235);
+   padding: 25px;
+}
+#search-title1{
+   font-size: 18px;
+   font-weight: bolder;
+   margin-bottom: 1px;
+}
+#search-title2{
+   font-size: 13px;
+   margin-bottom: 20px;
+}
+#search-area2>select{
+   width: 80px;
+   height: 30px;
+   margin-bottom: 15px;
+   margin-right: 5px;;
+}
+#search-area2>input{
+   width: 280px; 
+   height: 30px;
+   border: none;
+   padding-right: 27px;
+}
+#search-keyword{font-size: 13px;}
+#search-btn{
+   background-image: url("resources/img/searchImg.png");
+   background-size: cover;
+   width: 30px;
+   height: 30px;
+   margin-left: -35px;
+}
+
+/* 중간영역 스타일 */
+#middle-bar>div{
+   float: left; 
+   width:592px;
+   margin-top: 25px;
+}
+#orderBy, #write{
+   height: 27px;
+   line-height: 3px;
+}
+/* 공지사항 영역 스타일 */
+
+.notice-area>span{
+   font-size: 12px;
+   margin-right: 10px;
+   font-weight: bold;
+   cursor: pointer;
+}
+/* 게시글 영역 스타일 */
+.contents{
+   cursor: pointer;
+}
+#content-area{
+   margin-top: 80px;
+}
+#content-area>div{
+   height: 130px;
+   margin-bottom: 50px;
+}
+.contents>div{
+   height: 130px;
+   float: left;
+}
+/* 게시글 번호 들어갈 영역 */
+.number{
+   width: 15%;
+   text-align: center;
+   line-height: 130px;
+}
+/* 사진 들어갈 영역 */
+.photo{
+   width: 130px;
+}
+/* 제목, 내용, 작성날짜, 작성자, 댓글수, 조회수 */
+.texts{width:70%;}
+.texts>div{float: left;}
+.title{
+   font-weight: bolder;
+   font-size: 17px;
+   text-align: left;
+   width: 60%;
+   height: 21%;
+   margin-top: 7px;
+}
+.info{
+   font-size: 13px;
+   text-align: right;
+   width: 40%;
+   height: 21%;
+   line-height: 29px;
+   margin-top: 7px;
+   margin-bottom: 10px;
+}
+.photo{
+   border: 1px solid black;
+   margin-right: 25px;
+}
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -259,27 +246,9 @@ div, img, li, a{
             })
          })
       </script>
-
-      <!-- 페이징 바 -->
-      <div class="paging-area" align="center">
-            <button> &lt; </button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button> &gt; </button>
-    </div>
-    <script>
-        $(function(){
-            $(".paging-area button").click(function(){
-                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-            })
-        })
-    </script>
          
       <!-- <div>등록된 게시글이 없습니다.</div> -->
+	  <%@ include file="../bCommon/boardPagingBar.jsp" %>
    </div>
 
    

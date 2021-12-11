@@ -251,27 +251,27 @@
             </div>
          </div>
       </div>
-
-      <!-- 페이징 바 -->
-      <div class="paging-area" align="center">
-            <button> &lt; </button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button> &gt; </button>
-    </div>
-    <script>
-        $(function(){
-            $(".paging-area button").click(function(){
-                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+      <script>
+         $(function(){
+            $(".content-info-area").click(function(){
+               //const num = $(this).children().eq(0).text();
+               
+               // /jsp/detail.no?num=클릭한글번호
+               location.href = '<%=contextPath%>/detail.missing';
             })
-        })
-    </script>
+            $(".missing-img").click(function(){
+               //const num = $(this).children().eq(0).text();
+               
+               // /jsp/detail.no?num=클릭한글번호
+               location.href = '<%=contextPath%>/detail.missing';
+            })
+         })
+      </script>
+      
+      <%@ include file="../bCommon/boardPagingBar.jsp" %>
          
       <!-- <div>등록된 게시글이 없습니다.</div> -->
+      
    </div>
 
    

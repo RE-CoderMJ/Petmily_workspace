@@ -1,0 +1,145 @@
+div, img, li, a, span{
+    box-sizing: border-box;
+}
+.content-area{
+	width: 1400px;
+	height: auto;
+	margin: auto;
+	padding:200px;
+	padding-top:35px;
+	margin-bottom:70px;
+}
+a{
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* 위쪽 부분 스타일 */
+#title-area>*{
+    float: left;
+}
+#title-area{
+    position: relative;
+    height: 30px;
+    margin-bottom: -12px;
+}
+/* 제목 */
+#title{
+    font-size: 18px;
+    font-weight: bolder;
+}
+/* 글쓰기 버튼 */
+#enroll{
+	height: 27px;
+	font-size: 14px;
+	line-height: 2px;
+    position: absolute;
+    right: 0;
+    background-color: rgb(247, 198, 4);
+    color: black;
+    font-weight: bolder;
+}
+/* 게시글 정보 및 작성자 영역 스타일 */
+#info-area>*{
+    float: left;
+}
+#info-area{
+    position: relative;
+    height: 30px;
+    margin-top: -10px;
+}
+#info a{
+    color: gray;
+    font-weight: bolder;
+    text-decoration: none;
+    cursor: pointer;
+}
+#writer{
+    position: absolute;
+    right:0px;
+}
+#writer-id{
+    font-size:14px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+#writer-pic{
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+/* 사진 부분 스타일 */
+#photo-area{
+    width: 400px;
+    height: 400px;
+    margin-top: 60px;
+    float: left;
+}
+#demo{
+    width: 100%;
+    height: 400px;
+    border: 1px solid black;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 입력부분 스타일 */
+#input-area{
+    width: 500px;
+    height: 400px;
+    margin-left: 495px;
+    margin-top:60px;
+    margin-bottom:80px;
+}
+#input-area>div{
+    text-align: left;
+    padding-left: 50px;
+    margin-bottom: 15px;
+}
+.info-title{
+    color: rgb(214, 94, 1);
+    font-weight: bolder;
+    margin-right: 20px;
+}
+.info-titleF{
+    color: rgb(2, 68, 2);
+    font-weight: bolder;
+    margin-right: 20px;
+}
+/* 구분 */
+.select-ddcategory>span{
+    margin-right: 49px;
+}
+/* 대상 */
+.category-select-area>span{
+    margin-right: 49px;
+}
+/* 성별 */
+.gender-select-area>span{
+    margin-right: 49px;
+}
+/* 이름 */
+.name-area>span{
+    margin-right: 49px;
+}
+/* 나이 */
+.age-area>span{
+    margin-right: 49px;
+}
+/* 발생일 */
+.missing-date-area>span{
+    margin-right: 36px;
+}
+/* 신체특징 */
+.feature-area>span{
+    float: left;
+}
+.feature-area>div{
+    margin-left: 90px;
+    width: 350px;
+    height: 100px;
+}
+

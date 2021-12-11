@@ -1,0 +1,93 @@
+/* 삭제모달창 */
+.modalMsg-area{
+    font-weight: bolder;
+    font-size: 17px;
+    margin-top: 20px;
+    height: 70px;
+}
+#deletebtn-area>*{
+    color: white;
+    font-weight: bolder;
+    font-size: 15px;
+    height: 35px;
+    line-height: 5px;
+    width: 100px;
+    margin-top: -10px;
+}
+#confirm-btn{
+    background-color: gray;
+    margin-right: 2px;
+    line-height: 22px;
+}
+#closebtn{
+    background-color: orange;
+    margin-left: 2px;
+}
+#deleteCompletedclosebtn{
+    background-color: orange;
+    width: 250px;
+    color: white;
+    font-weight: bolder;
+}
+
+/* 신고모달창 */
+.report-required-mark{
+    color: orange;
+    font-weight: bolder;
+}
+#required-area{
+    width: 80px;
+    font-size: 11px;
+    color: gray;
+    margin-left: 200px;
+    margin-top: 1px;
+    margin-bottom: 30px;
+}
+#report-area{
+    font-weight: bolder;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+/* 라디오 인풋 영역 */
+#select-area{
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+#select-area>input{
+    margin-bottom: 20px;
+}
+/* 신고사유영역 */
+#reason-area{
+    font-size: 12px;
+    font-weight: bolder;
+}
+#reason-area>textarea{
+    margin-top: 7px;
+    width: 210px;
+    resize: none;
+    height: 120px;
+}
+#reportbtn-area>*{
+    width: 80%;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+#report-btn{
+    color: white;
+    background-color: orange;
+}
+#report-close{
+    border: 1px solid orange;
+    color: orange;
+    margin-bottom: 10px;
+}
+#report-confirmMsg{
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+#reportCompletedclosebtn{
+	background-color: orange;
+    width: 250px;
+    color: white;
+    font-weight: bolder;
+}
