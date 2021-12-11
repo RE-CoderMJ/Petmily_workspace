@@ -9,18 +9,26 @@
 	<style>
         /* 큰 틀 크기 지정 */
         .outer{
-            width:100%;
-            height:100%;
+            width:1500px;
+            height:800px;
+            margin:auto;
+            margin-top:30px;
+
         }
         .outer>div{
             float:left;
              
         }
-
+        #sidebar{
+        	width:350px;
+        }
+		#adminContent{
+			width:1000px;
+		}
         
         /* 메뉴바 밑 상단 회색바 */
         .top{
-            width:70%;
+            width:850px;
             height:70px;
         }
         /* 노란박스 (new) */
@@ -48,8 +56,9 @@
         }
         /* 게시판별 조회 목록 */
         .right{
-            width:700px;
+            width:1000px;
             height:550px;
+            margin:0;
         }
         .right>div{
             float:left;
@@ -68,19 +77,20 @@
         
         /* 회색박스 (주문건수) */
         .graybox{
-            width:70%;
+            width:800px;
             text-align:center;
-            font-size:15px;
+            font-size:17px;
             font-weight: 900;
             margin:20px;
             
         }
         .graybox>div{
-            width:200px;
+            width:170px;
             background-color: rgb(230, 235, 240);
             float:left;
             padding-top:50px;
             padding-bottom:50px;
+            margin-right:10px;
         }
         .graybox div div{
         	cursor:pointer;
@@ -103,15 +113,15 @@
 	<!-- 메뉴바 -->
     <%@ include file="../common/admin_menubar.jsp" %>
     
-    <!-- 사이드바 (관리자 전체) -->
-    <%@ include file="../common/admin_mainSidebar.jsp" %>
-    
 
     <div class="outer">
 
+    <div id="sidebar">
+    <!-- 사이드바 (관리자 전체) -->
+    <%@ include file="../common/admin_mainSidebar.jsp" %>
+    </div>
         
-        
-
+	<div id="adminContent">
         <!-- 맨밑 회색 상단바 -->
         <div class="top">
             <h2 style="color:gray">&gt; 관리자 메인페이지</h2>
@@ -249,7 +259,7 @@
         </div>
     </div>
 
-    
+    </div>
 
 
 </body>

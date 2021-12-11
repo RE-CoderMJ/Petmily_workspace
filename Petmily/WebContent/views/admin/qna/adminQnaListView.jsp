@@ -8,8 +8,8 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:100%;
-        height: 100%;
+        width:1100px;
+        height: 800px;
     }
     .outer>div{
         float:left;
@@ -18,13 +18,13 @@
 
         /* 상단 회색바 */
         .top{
-            width:70%;
-            height:100px;
+            width:850px;
+            height:70px;
             margin:15px;
         }
         /* 카테고리 분류 포함 검색창 */
         .middle{
-            width:70%;
+            width:850px;
             height:300px;
             padding-top:30px;
         }
@@ -36,7 +36,7 @@
         }
         /* 버튼(등록,수정,삭제), 테이블, 페이징바 */
         .bottom{
-            width:70%;
+            width:850px;
             float:center;
 
         }
@@ -171,7 +171,6 @@
 	                    </tr>
 	                </tbody>
 	            </table>
-	        </div>
 	        </div>
 	        <br>
 	        

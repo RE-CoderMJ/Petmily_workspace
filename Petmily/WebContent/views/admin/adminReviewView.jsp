@@ -8,17 +8,24 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:1000px;
+        width:1100px;
         height:800px;
         margin:auto;
-        margin-top:50px;
+    }
+    .outer div{
+    	float:left;
     }
     
-    .list-area>tbody>tr:hover{
-        background:rgb(247, 198, 4);
-        color:white;
-        cursor:pointer;
+    .top{
+    	width:600px;
+    	height:70px;
     }
+    .middle{
+    	width:600px;
+    	height:500px;
+    }
+    
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,24 +36,25 @@
 	<!-- 메뉴바 -->
 	<%@ include file="../common/admin_menubar.jsp" %>
 
+	<!-- 사이드바 -->
+	<%@ include file="../common/admin_reviewSidebar.jsp" %>
 
 	<!-- 큰 틀 -->
 	<div class="outer">
 
-	    <!-- 사이드바 -->
-	    <%@ include file="../common/admin_memSidebar.jsp" %>
+
 	
 	    <!-- 상단바 -->
 	    <div class="top">
 	        <br>
 	        <h2 style="color:gray">&gt; 관리자 고객센터</h2>
 	        <hr>
-	        <h5>리뷰관리</h3>
+	        <h5>리뷰관리</h5>
 	        <br>
 	    </div>
 	
 	    <!-- 검색창 -->
-	    <div class="middle" align="left" style=width:50%;>
+	    <div class="middle" align="left">
 	        <form>
 	            <div class="input-group mb-3">
 	            <div class="input-group-prepend">
@@ -58,11 +66,11 @@
 	        </form>
 	        <br><br>
 	    </div>
-		<% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
+		
 	    <!-- 버튼들(등록, 삭제) -->
 	    <div class="adminbuttons">
 	        <div align="right">
-	            <a href="<%= contextPath %>/reply.rv" class="btn btn-sm btn-warning">답변 등록</a>
+	            <a href="" class="btn btn-sm btn-warning">답변 등록</a>
 	            <a href="" class="btn btn-sm btn-danger">답변 삭제</a>
 	            <br><br>
 	        </div>
@@ -73,11 +81,11 @@
 	        <table>
 	            <thead>
 	                <tr>
-	                    <th width="30"><input type="checkbox" name="" value=""></th>
-	                    <th width="60">번호</th>
-	                    <th width="120">등록일</th>
-	                    <th width="200">상품명</th>
-	                    <th width="400">리뷰 내용</th>
+	                    <th width="50"><input type="checkbox" name="" value=""></th>
+	                    <th width="10">번호</th>
+	                    <th width="200">등록일</th>
+	                    <th width="300">상품명</th>
+	                    <th width="450">리뷰 내용</th>
 	                    <th width="100">아이디</th>
 	                    <th width="100">처리상태</th>
 	                </tr>
@@ -85,7 +93,7 @@
 	            <tbody>
 	                <!--1. 게시글 없을 경우-->
 	                <tr>
-	                    <td colspan="6">조회된 게시글이 없습니다</td>
+	                    <td colspan="7">조회된 게시글이 없습니다</td>
 	                </tr>
 	                <!--2. 게시글 있을 경우-->
 	                <tr>
@@ -102,11 +110,11 @@
 	    </div>
 	<br><br><br>
 	
-	<% } %>
+
 	</div>
 
-<!-- 페이징 바 -->
-<%@ include file="../common/admin_pasingBar.jsp" %>
+	<!-- 페이징 바 -->
+
 	
 </body>
 </html>
