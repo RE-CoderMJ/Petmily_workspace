@@ -8,12 +8,11 @@
     <style>
     /* 큰 틀 */
     .outer{
-        width:100%;
-        height:100%;
+        width:1000px;
+        height:auto;
         margin:auto;
     }
-    .outer div{
-       
+    .outer div{ 
         float:left;
     }
 
@@ -23,28 +22,73 @@
     }
     /* 노란박스 (new) */
     .middle {
-        width:800px;
+        width:100%;
         height:100px;
         background:rgb(247, 198, 4);
-        padding-left:300px;
         line-height:90px;
         font-size:20px;
         font-weight:900;
         margin:20px;
     }
     .list-area{
+        width:100%;
+        
 
-        width:800px;
-        margin:auto;
     }
-    /* 썸네일 (아직 수정중 : 기본이미지 배치) */
+    .middle>div{
+    	width:100%;
+    	height:45px;
+    	text-align:center;
+    	line-height:70px;
+    }
+    /* 썸네일 (아직 수정중) */
     .thumbnail{
         border:1px solid gold;
-        width:200px;
-        display:inline-block;
-        margin:30px;
+        width:250px;
+        height: 250px;
+        margin:10px;
+        margin-left: 55px;
     }
+    .thumbnail>*{
+        float: left;
+    }
+    #thumbnail{
+        width: 100%;
+        height: 200px;
+
+    }
+    .thumbnail>p{
+        width: 100%;
+        height: 50px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .thumbnail>p>img, .thumbnail>p>a{
+        width: 66px;
+        height: 100%;
+        float: left;
+        box-sizing: border-box;
+    }
+    .nickname{
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        font-weight: bolder;
+        line-height: 45px;
+        text-align: center;
+    }
+    .report{
+        text-decoration: none;
+        color: darkgray;
+        text-align: right;
+        line-height: 40px;
+    }
+
+
     /* 페이징바 */
+    .paging-area{
+        width: 100%;
+    }
     .paging-area button{
         border:  0;
         background-color: transparent;
@@ -63,7 +107,7 @@
     <!-- 사이드바 (리뷰) -->
     <%@ include file="admin_petlogSidebar.jsp" %>
 
-	    <!-- 큰 틀 -->
+	 <!-- 큰 틀 -->
     <div class="outer">
 
         <!-- 현재 게시판이름 -->
@@ -71,7 +115,6 @@
             <br>
             <h2 style="color:gray">&gt; 관리자 Petlog</h2>
             <hr>
-            <h5>피드 관리</h5>
         </div>
 
         <!-- 중간 노란박스 -->
@@ -84,45 +127,79 @@
         <div class="list-area">
 
             <!-- 썸네일 -->
-            <div class="thumbnail" align="center">
+            <div class="thumbnail">
+                <div id="thumbnail">
                     <img src="" alt="">
-                    <img src="" class="rounded-circle" alt="Cinque Terre">
+                </div>    
+
                 <p>
-                    <a href="">뽐뽀미</a>
-                    <br>
-                    <a href="">신고</a>
-                    <a href="">수정</a>
-                    <a href="">이동</a>
+                    <img src="" alt="">
+                    <a href="" class="nickname">뽐뽀미</a>
+                    <a href="" class="report">신고</a>
                 </p>
             </div>
 
-            <div class="thumbnail" align="center">
+            <div class="thumbnail">
+                <div id="thumbnail">
                     <img src="" alt="">
-                    <img src="" class="rounded-circle" alt="Cinque Terre">
+                </div>    
+
                 <p>
-                    <a href="">뽐뽀미</a>
-                    <br>
-                    <a href="">신고</a>
-                    <a href="">수정</a>
-                    <a href="">이동</a>
+                    <img src="" alt="">
+                    <a href="" class="nickname">뽐뽀미</a>
+                    <a href="" class="report">신고</a>
+                </p>
+            </div>
+            <div class="thumbnail">
+                <div id="thumbnail">
+                    <img src="" alt="">
+                </div>    
+
+                <p>
+                    <img src="" alt="">
+                    <a href="" class="nickname">뽐뽀미</a>
+                    <a href="" class="report">신고</a>
                 </p>
             </div>
 
-            <div class="thumbnail" align="center">
+            <div class="thumbnail">
+                <div id="thumbnail">
                     <img src="" alt="">
-                    <img src="" class="rounded-circle" alt="Cinque Terre">
+                </div>    
+
                 <p>
-                    <a href="">뽐뽀미</a>
-                    <br>
-                    <a href="">신고</a>
-                    <a href="">수정</a>
-                    <a href="">이동</a>
+                    <img src="" alt="">
+                    <a href="" class="nickname">뽐뽀미</a>
+                    <a href="" class="report">신고</a>
+                </p>
+            </div>
+            <div class="thumbnail">
+                <div id="thumbnail">
+                    <img src="" alt="">
+                </div>    
+
+                <p>
+                    <img src="" alt="">
+                    <a href="" class="nickname">뽐뽀미</a>
+                    <a href="" class="report">신고</a>
+                </p>
+            </div>
+            <div class="thumbnail">
+                <div id="thumbnail">
+                    <img src="" alt="">
+                </div>    
+
+                <p>
+                    <img src="" alt="">
+                    <a href="" class="nickname">뽐뽀미</a>
+                    <a href="" class="report">신고</a>
                 </p>
             </div>
             
+            
 
 
-            <!-- 페이징 바 / 아직 수정중 : (중간 정렬 안먹히네)-->
+            <!-- 페이징 바 / 중간 정렬 (안먹히네)-->
             <div class="paging-area" align="center">
                 <button> &lt; </button>
                 <button>1</button>
