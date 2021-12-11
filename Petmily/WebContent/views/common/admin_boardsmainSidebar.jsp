@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+ %>
     <!DOCTYPE html>
     <html>
     <head>
@@ -35,44 +38,50 @@
             font-weight: bolder;
             text-decoration: none;
         }
+        #d-category a{
+        	text-decoration:none;
+        	color:black;
+        }
         #d-category{
             position: absolute;
             top:80px;
             left: 90px;
             font-weight: bolder;
         }
-        
-        
+
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
+    <!-- Latest compiled JavaScript -->,
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-        
-        <!-- 사이드바 -->
+        <!--  사이드바  -->
         <br>
-        <div class="sidebar-area">
-            <ul>
-                <div id="category">고객센터</div>
-                <div id="d-category">
-                    <div class="d-category">리뷰관리</div>
-                </div>
-            </ul>
-        </div>
         
+            <div class="sidebar-area">
+                <ul>
+                    <div id="category">게시판 관리</div>
+                    <div id="d-category">
+
+        
+                        <div class="d-category" ><a href="" class="link">전체 게시글 조회</a></div>
+        
+                    </div>
+                </ul>
+            </div>
+            
         <script>
         $(function(){
             $(".d-category").click(function(){
                 $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
+                $(".link").css({background: "rgb(247, 198, 4)", color:"white"});
             })
         })
-    </script>
+    	</script>
 
     </body>
     </html>

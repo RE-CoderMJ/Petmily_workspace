@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+ %>
     <!DOCTYPE html>
     <html>
     <head>
@@ -35,6 +38,10 @@
             font-weight: bolder;
             text-decoration: none;
         }
+        #d-category a{
+        	text-decoration:none;
+        	color:black;
+        }
         #d-category{
             position: absolute;
             top:80px;
@@ -48,7 +55,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
+    <!-- Latest compiled JavaScript -->,
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
@@ -61,7 +68,7 @@
                     <div id="d-category">
                         <div class="d-category" id="notice">공지사항 관리</div>
         
-                        <div class="d-category" id="faq">FAQ 관리</div>
+                        <div class="d-category" id="faq"><a href="<%= contextPath %>/adminList.faq" class="link">FAQ 관리</a></div>
         
                         <div class="d-category" id="qna">Q&A문의/상품문의 관리</div>
         
@@ -74,7 +81,7 @@
         $(function(){
             $(".d-category").click(function(){
                 $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
+                $(".link").css({background: "rgb(247, 198, 4)", color:"white"});
             })
         })
     	</script>
