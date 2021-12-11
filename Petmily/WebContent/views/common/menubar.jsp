@@ -151,7 +151,7 @@ body *{
             </div>
             -->
             <div id="heart">
-                <a href="">
+                <a href="<%= contextPath %>/like.my">
                     <img src="resources/img/heart.jpg" alt="">
                 </a> 
             </div>
