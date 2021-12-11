@@ -16,38 +16,6 @@
     }
 
 
-    /*사이드바 스타일*/
-    .sidebar-area{
-            float: left;
-            width: 300px;
-            height: 800px;
-            position: relative;
-            /* margin-top: 70px; */
-        }
-        /* 사이드바 큰 제목 스타일 */
-        #category{
-            list-style-type: none;
-            font-weight: bolder;
-            font-size: 25px;
-            position: absolute;
-            left:90px;
-        }
-        /* 사이드바 스타일*/
-        .d-category{
-            list-style-type: none;
-            font-size: 16px;
-            font-weight: bolder;
-            cursor:pointer;
-            margin-bottom: 5px;
-        }
-        #d-category{
-            position: absolute;
-            top:80px;
-            left: 90px;
-            font-weight: bolder;
-        }
-
-
         /* 상단 회색바 */
         .top{
             width:70%;
@@ -63,11 +31,21 @@
         .middle div{
             float:left;
         }
+        .table-bordered{
+        	margin:none;
+        }
         /* 버튼(등록,수정,삭제), 테이블, 페이징바 */
         .bottom{
             width:70%;
             float:center;
 
+        }
+        .dropdown{
+            padding-right:30px;
+        }
+        .allselect{
+        	width:100%;
+        	
         }
 
 
@@ -87,37 +65,21 @@
 </head>
 <body>
 	<!-- 메뉴바 -->
-	<%@ include file="../comon/menubar.jsp" %>
+	<%@ include file="../../common/admin_menubar.jsp" %>
 
+	<!--  사이드바  -->
+	<%@ include file="admin_qnaSidebar.jsp" %>
 
 	<!-- 큰 틀 -->
 	<div class="outer">
-	
-	    <!--  사이드바  -->
-	    <div class="side">
-	        <div class="sidebar-area">
-	            <ul>
-	                <div id="category">고객센터</div>
-	                <div id="d-category">
-	                    <div class="d-category">공지사항 관리</div>
-	    
-	                    <div class="d-category">FAQ 관리</div>
-	                    
-	                    <div class="d-category">Q&A문의/상품문의 관리</div>
-	
-	                    <div class="d-category">리뷰 관리</div>
-	                    
-	                </div>
-	            </ul>
-	        </div>
-	    </div>
+
 	
 	    <!-- 상단 회색바 (게시판 이름) -->
 	    <div class="top">
 	        <br>
 	        <h2 style="color:gray">&gt; 관리자 고객센터</h2>
 	        <hr>
-	        <h3>Q&A문의/상품문의 관리</h3>
+	        <h5>Q&A문의/상품문의 관리</h5>
 	        <br>
 	        
 	    </div>
@@ -157,50 +119,52 @@
 	                </div>
 	                    
 	                    <br><br><br><br><br>
-	                    <button type="button" class="btn btn-warning" align="center">검색</button>
-	                    <!-- 얘 오른쪽으로 바꿔야됨... -->
+	                    <div class="allselect" align="center">
+	                    <button type="button" class="btn btn-warning" >검색</button>
+	                    
 	                <hr>
-	                <br><br>
+	                </div>
+	                <br><br><br><br><br>
 	                
 	                </form>
 	    </div>
 	    
-	    <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
+	    
 	    <!-- 버튼(등록,수정,삭제), 테이블, 페이징바 -->
 	    <div class="bottom">
 	
 	        <div class="rightbutton" align="right">
-	            <a href="<%= contextPath %>/enrollFormAdmin.qna" class="btn btn-sm btn-warning">등록</a>
+	            <a href="" class="btn btn-sm btn-warning">등록</a>
 	            <a href="" class="btn btn-sm btn-warning">수정</a>
 	            <a href="" class="btn btn-sm btn-danger">삭제</a>
 	            <br><br>
 	        </div>
 	    
 	
-	        <div class="table table-bordered">
-	            <table>
+			<div style="width:100%">
+	            <table class="table table-bordered" style="margin:none;">
 	                <thead>
-	                    <tr>
-	                        <th width="30"><input type="checkbox" name="" value=""></th>
-	                        <th width="70">번호</th>
-	                        <th width="150">접수일시</th>
+	                    <tr align="center">
+	                        <th width="50"><input type="checkbox" name="" value=""></th>
+	                        <th width="100">번호</th>
+	                        <th width="150">등록일</th>
 	                        <th width="100">문의유형</th>
-	                        <th width="450">문의제목</th>
+	                        <th width="500">문의제목</th>
 	                        <th width="100">작성자</th>
 	                        <th width="100">처리상태</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
 	                    <!--1. 게시글 없을 경우-->
-	                    <tr>
-	                        <td colspan="6">조회된 게시글이 없습니다</td>
+	                    <tr align="center">
+	                        <td colspan="7">조회된 게시글이 없습니다</td>
 	                    </tr>
 	                    <!--2. 게시글 있을 경우-->
-	                    <tr>
+	                    <tr align="center">
 	                        <td>v</td>
 	                        <td>12</td>
 	                        <td>2021-12-04</td>
-	                        <td>주문/결제</td>
+	                        <td>Q&A</td>
 	                        <td>번호 변경이 되지 않아요</td>
 	                        <td>강동원</td>
 	                        <td>미답변</td>
@@ -208,9 +172,10 @@
 	                </tbody>
 	            </table>
 	        </div>
+	        </div>
 	        <br>
 	        
-	        <% } %>
+	        
 	
 	        <!-- 페이징 바 -->
 	        <div class="paging-area" align="center">
@@ -227,15 +192,7 @@
 	
 	</div>
 	
-	<!-- 사이드바 -->
-	<script>
-	    $(function(){
-	        $(".d-category").click(function(){
-	            $(this).siblings(".d-category").css({background: "", color:"black"});
-	            $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-	        })
-	    })
-	</script>
+	
 	<!-- 페이징바 -->
 	<script>
 	    $(function(){
