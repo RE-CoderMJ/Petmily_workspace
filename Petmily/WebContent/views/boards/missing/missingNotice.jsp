@@ -5,58 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="resources/css/boards/bCommon/notice.css" rel="stylesheet">
+<%@ include file="../../common/links.jsp" %>
 </head>
-<style>
 
-div, img, li, a{
-     box-sizing: border-box;
-     border: 1px soli black; 
-}
-     
-.content-area{
-	width: 1400px;
-	height: auto;
-	margin: auto;
-	padding:200px;
-	padding-top:35px;
-}
-
-/* 위쪽 부분 스타일 */
-#list-btn{
-	width: 997px;
-}
-#list{
-	height: 27px;
-	font-size: 14px;
-	line-height: 2px;
-}
-#notice{
-	background-color: orange;
-	font-size: 17px;
-}
-#notice-title{
-	font-size: 17px;
-	font-weight: bolder;	
-	margin-left: 14px;
-}
-#enroll-date{
-	font-size: 17px;
-	float: right;
-}
-#content{
-	margin-top: 40px;
-	text-align: left;
-	height: 350px;
-}
-
-</style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <body>
 	
 	<%@ include file="../../common/menubar.jsp" %>

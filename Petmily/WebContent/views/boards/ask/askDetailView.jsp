@@ -5,102 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-    div, img, li, a{
-     box-sizing: border-box;
-}
-     
-.content-area{
-	width: 1400px;
-	height: auto;
-	margin: auto;
-	padding:200px;
-	padding-top:35px
-}
 
-a{
-    text-decoration: none;
-    font-size: 12px;
-}
-/* 위쪽 부분 스타일 */
-#title-area>*{
-    float: left;
-}
-#title-area{
-    position: relative;
-    height: 30px;
-    margin-bottom: -12px;
-}
-/* 제목 */
-#title{
-    font-size: 18px;
-    font-weight: bolder;
-}
-/* 글쓰기 버튼 */
-#enroll{
-	height: 27px;
-	font-size: 14px;
-	line-height: 2px;
-    position: absolute;
-    right: 0;
-    background-color: rgb(247, 198, 4);
-    color: black;
-    font-weight: bolder;
-}
-/* 게시글 정보 및 작성자 영역 스타일 */
-#info-area>*{
-    float: left;
-}
-#info-area{
-    position: relative;
-    height: 30px;
-    margin-top: -10px;
-}
-#info a{
-    color: gray;
-    font-weight: bolder;
-    text-decoration: none;
-    cursor: pointer;
-}
-#writer{
-    position: absolute;
-    right:0px;
-}
-#writer-id{
-    font-size:14px;
-    font-weight: bold;
-    margin-left: 10px;
-}
-#writer-pic{
-    float: left;
-    width: 30px;
-    height: 30px;
-}
-
-/* 사진영역 */
-#photo-area{
-    width: 500px;
-    height: 370px;
-    margin-top: 60px;
-}
-
-/* 내용영역 */
-#text-area{
-    width: 800px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-
-</style>
+<link href="resources/css/boards/ask/askDetailView.css" rel="stylesheet">
 <link href="resources/css/boards/bCommon/reply.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<%@ include file="../../common/links.jsp" %>
 </head>
 <body>
     <%@ include file="../../common/menubar.jsp" %>

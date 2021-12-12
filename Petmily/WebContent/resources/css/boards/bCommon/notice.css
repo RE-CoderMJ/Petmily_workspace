@@ -1,0 +1,39 @@
+div, img, li, a{
+     box-sizing: border-box;
+}
+     
+.content-area{
+	width: 1400px;
+	height: auto;
+	margin: auto;
+	padding:200px;
+	padding-top:35px;
+}
+
+/* 위쪽 부분 스타일 */
+#list-btn{
+	width: 997px;
+}
+#list{
+	height: 27px;
+	font-size: 14px;
+	line-height: 2px;
+}
+#notice{
+	background-color: orange;
+	font-size: 17px;
+}
+#notice-title{
+	font-size: 17px;
+	font-weight: bolder;	
+	margin-left: 14px;
+}
+#enroll-date{
+	font-size: 17px;
+	float: right;
+}
+#content{
+	margin-top: 40px;
+	text-align: left;
+	height: 350px;
+}
