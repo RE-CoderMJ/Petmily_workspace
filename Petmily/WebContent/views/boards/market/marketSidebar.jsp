@@ -12,6 +12,7 @@
         width: 250px;
         height: 800px;
         position: relative;
+        position: fixed;
     }
     /* 사이드바 큰 제목 스타일 */
     #boardName{
@@ -19,7 +20,6 @@
         font-weight: bolder;
         font-size: 25px;
         position: absolute;
-        left:90px;
     }
     /* 강아지, 고양이, 기타 카테고리 스타일*/
     .d-category{
@@ -33,7 +33,6 @@
     #d-category{
         position: absolute;
         top:80px;
-        left: 90px;
     }
     /* 세부 카테고리 전체 스타일 */
     .dd-category{
@@ -48,13 +47,7 @@
         margin-left: 15px;
     }
 </style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<%@ include file="../../common/links.jsp" %>
 </head>
 <body>
       <!--  사이드바  -->

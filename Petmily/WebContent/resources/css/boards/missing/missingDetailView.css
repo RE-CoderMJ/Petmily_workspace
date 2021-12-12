@@ -9,6 +9,11 @@ div, img, li, a, span{
 	padding-top:35px;
 	margin-bottom:70px;
 }
+#outer{
+	width: 1600px;
+	height: auto;
+	margin: auto;
+}
 a{
     text-decoration: none;
     font-size: 12px;

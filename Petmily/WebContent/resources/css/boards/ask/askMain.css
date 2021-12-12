@@ -3,6 +3,11 @@ div, img, li, a{
 }
   
 /* 궁금해요 메인 스타일 */
+#outer{
+	width: 1600px;
+	height: auto;
+	margin: auto;
+}
 .content-area{
    width: 1400px;
    height: auto;
@@ -32,7 +37,6 @@ div, img, li, a{
    width: 80px;
    height: 30px;
    margin-bottom: 15px;
-   margin-right: 5px;;
 }
 #search-area2>input{
    width: 280px; 
@@ -40,9 +44,9 @@ div, img, li, a{
    border: none;
    padding-right: 27px;
 }
-#search-keyword{font-size: 13px;}
+#search-examples{font-size: 13px;}
 #search-btn{
-   background-image: url("resources/img/searchImg.png");
+   background-image: url("../../../img/searchImg.png");
    background-size: cover;
    width: 30px;
    height: 30px;

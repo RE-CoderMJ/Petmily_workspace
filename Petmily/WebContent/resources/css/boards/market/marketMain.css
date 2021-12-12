@@ -1,0 +1,141 @@
+div, img, li, a{
+    box-sizing: border-box;
+}
+ 
+/* 중고거래 메인 스타일 */
+.content-area{
+width: 1400px;
+height: auto;
+margin: auto;
+margin-bottom: 250px;
+}
+.content-area > div{
+width: 85%;
+}
+#outer{
+	width: 1600px;
+	height: auto;
+	margin: auto;
+}
+
+/* 게시판 설명 영역 스타일 */
+#title-area{
+height: 65px;
+background: rgb(235, 235, 235);
+margin-bottom: 20px;
+padding: 15px;
+}
+#title1{
+font-weight: bolder;
+}
+#title2{
+color: rgb(189, 24, 24);
+font-size: 11px;
+font-weight: bolder;
+}
+
+/* 검색영역 스타일 */
+#search-area{
+    width: 900px;
+}
+#search-area>select{
+    width: 100px;
+    height: 37px;
+    margin-right: 10px;
+}
+#search-area>input{
+    width: 600px;
+    height: 37px;
+    border: rgb(247, 198, 4) 3px solid;
+    padding-right: 50px;
+    padding-left: 5px;
+}
+/* 검색버튼 */
+#search-btn{
+   background-image: url("../../../img/searchImg.png");
+   background-size: cover;
+   width: 30px;
+   height: 30px;
+   margin-left: -45px;
+}
+
+/* 중간영역 스타일 */
+#middle-area>div{
+float: left; 
+width:592px;
+margin-top: 25px;
+}
+#write{
+height: 27px;
+line-height: 3px;
+background: rgb(247, 198, 4);
+color: black;
+font-weight: bolder;
+border: none;
+}
+
+
+/* 공지사항 영역 스타일 */
+.notice-area>span{
+font-size: 12px;
+margin-right: 10px;
+font-weight: bold;
+cursor: pointer;
+}
+.notice-area{
+    margin-bottom: 7px;
+}
+
+/* 게시글 스타일 */
+#market-content-area{
+    height: 800px;
+    padding-left: 150px;
+    padding-right: 85px;
+}
+.content-box-area{
+    margin-top: 40px;
+    margin-bottom: 50px;
+    margin-right: 70px;
+    width: 120px;
+    height: 170px;
+    float:left;
+    cursor: pointer;
+}
+.sell-icon{
+    font-size: 11px;
+    color: white;
+    background: rgb(199, 64, 15);
+    margin-left: -75px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+.buy-icon{
+    font-size: 11px;
+    color: white;
+    background: rgb(4, 77, 4);
+    margin-left: -75px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+.photo-box{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+}
+.content-title{
+    font-weight: bolder;
+    font-size: 15px;
+    margin-top: 3px;
+    width: 119px;
+    height: 23px;
+}
+.sell-price{
+    font-weight: bolder;
+    color: orange;
+    font-size: 14px;
+}
+.buy-price{
+    font-weight: bolder;
+    color: rgb(4, 77, 4);
+    font-size: 14px;
+}

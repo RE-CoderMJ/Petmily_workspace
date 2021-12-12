@@ -12,6 +12,11 @@ margin-bottom: 250px;
 .content-area > div{
 width: 85%;
 }
+#outer{
+	width: 1600px;
+	height: auto;
+	margin: auto;
+}
 
 /* 게시판 설명 영역 스타일 */
 #title-area{
@@ -93,6 +98,7 @@ margin-left:-69px;
 #feature-area>input{
 font-size: 15px;
 width: 295px;
+padding-left: 5px;
 }
 #feature-area>div{
 margin-left: 70px;
@@ -110,6 +116,10 @@ margin-bottom: 15px;
 #search-right input{
 font-size: 15px;
 }
+/* 이름 스타일 */
+#name-area>input{
+	padding-left: 5px;
+}
 /* 나이 스타일 */
 #age-area>input{
 width: 40px;
@@ -123,6 +133,7 @@ float: left;
 margin-right: 20px;
 }
 #missing-place-area>input{
+padding-left: 5px;
 margin-top: 6px;
 }
 #missing-place-area>div{
