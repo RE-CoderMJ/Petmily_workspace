@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    String contextPath = request.getContextPath();
- %>
     <!DOCTYPE html>
     <html>
     <head>
     <meta charset="UTF-8">
-    <title>adminMemManager</title>
+    <title>admin_boardsmainSidebar</title>
+    
     <style>
       /*사이드바 스타일*/
       .sidebar-area{
@@ -66,10 +64,7 @@
                 <ul>
                     <div id="category">게시판 관리</div>
                     <div id="d-category">
-
-        
-                        <div class="d-category" ><a href="" class="link">전체 게시글 조회</a></div>
-        
+                        <div class="d-category" id="boards"><a href="<%= contextPath %>/adminList.bo" class="link">전체 게시글 조회</a></div>
                     </div>
                 </ul>
             </div>

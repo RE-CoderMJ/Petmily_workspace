@@ -8,8 +8,8 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:100%;
-        height: 100%;
+        width:1100px;
+        height:800px;
     }
     .outer>div{
         float:left;
@@ -17,17 +17,15 @@
 
     /* 상단 회색바 */
     .top{
-        width:70%;
+        width:700px;
     }
     /* 3개 게시판별 조회 */
     .middle{
-        width:900px;
+        width:700px;
         height:120px;
-        padding:10px;
     }
-
     .middle div{
-        width:270px;
+        width:150px;
         float:left;
         text-align:center;
         line-height:35px;
@@ -41,7 +39,7 @@
   
     /* 버튼(등록,수정,삭제), 테이블, 페이징바 */
     .bottom{
-        width:70%;
+        width:700px;
         float:center;
         padding-top:20px;
     }
@@ -71,7 +69,7 @@
     <%@ include file="../../common/admin_menubar.jsp" %>
     
     <!-- 사이드바 -->
-    <%@ include file="admin_boardsSidebar.jsp" %>
+    <%@ include file="../../common/admin_boardsmainSidebar.jsp" %>
 
 	<!-- 큰 틀 -->
     <div class="outer">
@@ -103,9 +101,8 @@
         <!-- 테이블, 검색창, 페이징바 -->
         <div class="bottom">
 
-			<!-- 오른쪽 버튼들 -->
+			<!-- 오른쪽 버튼 -->
             <div class="adminbutton" align="right">
-                <a href="" class="btn btn-sm btn-warning">해당 게시글로 이동</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>
             </div>

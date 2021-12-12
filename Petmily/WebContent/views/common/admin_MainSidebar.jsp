@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,9 +72,9 @@
                     <li><a href="" id="">결제 내역 조회</a></li>
                 </ul>
                 
-                <div class="aMenu" id="">게시판 관리</div>
+                <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
-                    <li><a href="" id="ice">전체 게시글 조회</a></li>
+                    <li><a href="" id="allboards">전체 게시글 조회</a></li>
                 </ul>
 
                 <div class="aMenu" id="">Petlog</div>
@@ -82,7 +85,7 @@
                 <div class="aMenu" id="">고객센터</div>
                 <ul>
                     <li><a href="" id="">공지사항 관리</a></li>
-                    <li><a href="" id="">FAQ 관리</a></li>
+                    <li><a href="<%= contextPath %>/adminList.faq" id="faq">FAQ 관리</a></li>
                     <li><a href="" id="">Q&A문의/상품문의 관리</a></li>
                     <li><a href="" id="">리뷰 관리</a></li>
                 </ul>
