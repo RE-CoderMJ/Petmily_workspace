@@ -10,8 +10,8 @@
 	
         /* 큰 틀 */
         .outer{
-            width:100%;
-            height:100%;
+            width:1100px;
+            height:800px;
         }
         .outer>div{
             float:left;
@@ -19,19 +19,19 @@
         
         /* 맨위 현재게시판이름 */
         .top{
-            width:70%;
+            width:750px;
         }
         
         /* 버튼들(등록,수정,삭제) */
         #right{
             float:right;
             padding-top:50px;
-            padding-right:100px;
+            padding-right:10px;
         }
         
         /* 테이블 + 페이징 바 */
         .tablepaging{
-            width:70%;
+            width:750px;
             float:center;
         }
         
@@ -99,11 +99,11 @@
             </div>
         </div>
 
-		<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %> --%>
+		
         <!-- 버튼들(등록, 수정,삭제) -->
         <div class="right" id="right">
             <div>
-                <a href="<%= contextPath %>/enrollFormAdmin.faq" class="btn btn-sm btn-warning">등록</a>
+                <a href="<%= contextPath %>/adminEnrollForm.faq" class="btn btn-sm btn-warning">등록</a>
                 <a href="" class="btn btn-sm btn-warning">수정</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>

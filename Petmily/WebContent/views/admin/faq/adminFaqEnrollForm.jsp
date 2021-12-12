@@ -52,7 +52,7 @@
 	<%@ include file="../../common/admin_menubar.jsp" %>
 	
 	<!-- 사이드바 -->
-    <%@ include file="admin_faqSidebar.jsp" %>
+    <%@ include file="../../common/admin_cusmainSidebar.jsp" %>
 
     <!-- 큰틀 -->
     <div class="outer" align="center">
@@ -63,7 +63,7 @@
         
 
         <!-- FAQ 폼 -->
-        <form action="" id="enroll-form-faq" method="post">
+        <form action="<%= contextPath %>/admininsert.faq" id="enroll-form-faq" method="post">
 
             <table>
                 <tr>

@@ -1,4 +1,4 @@
-package com.pm.boards;
+package com.pm.petlog.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminBoardsListController
+ * Servlet implementation class AdminPetlogListController
  */
-@WebServlet("/adminMain.bo")
-public class AdminBoardsListController extends HttpServlet {
+@WebServlet("/adminMain.pl")
+public class AdminPetlogListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminBoardsListController() {
+    public AdminPetlogListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class AdminBoardsListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/boards/adminBoardsListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/petlog/adminPetlogMainView.jsp").forward(request, response);
 		
 	}
 

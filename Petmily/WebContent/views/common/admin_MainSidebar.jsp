@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String contextPath = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,10 +71,10 @@
                 
                 <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
-                    <li><a href="" id="allboards">전체 게시글 조회</a></li>
+                    <li><a href="" id=""><a href="<%= contextPath %>/adminMain.bo" id="allboards">전체 게시글 조회</a></li>
                 </ul>
 
-                <div class="aMenu" id="">Petlog</div>
+                <div class="aMenu" id=""><a href="<%= contextPath %>/adminMain.pl" id="petlog">Petlog</div>
                 <ul>
                     <li><a href="" id="ort">피드관리</a></li>
                 </ul>

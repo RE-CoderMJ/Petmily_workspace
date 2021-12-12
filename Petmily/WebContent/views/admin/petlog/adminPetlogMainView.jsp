@@ -43,7 +43,6 @@
     }
     /* 썸네일 (아직 수정중) */
     .thumbnail{
-        border:1px solid gold;
         width:250px;
         height: 250px;
         margin:10px;
@@ -105,7 +104,7 @@
     <%@ include file="../../common/admin_menubar.jsp" %>
     
     <!-- 사이드바 (리뷰) -->
-    <%@ include file="admin_petlogSidebar.jsp" %>
+    <%@ include file="../../common/admin_petlogmainSidebar.jsp" %>
 
 	 <!-- 큰 틀 -->
     <div class="outer">
@@ -133,7 +132,7 @@
                 </div>    
 
                 <p>
-                    <img src="" alt="">
+                    <img src="resources/img/petlog_logo.png" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -145,7 +144,7 @@
                 </div>    
 
                 <p>
-                    <img src="" alt="">
+                    <img src="resources/img/petlog_logo.png" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -156,7 +155,7 @@
                 </div>    
 
                 <p>
-                    <img src="" alt="">
+                    <img src="resources/img/petlog_logo.png" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -168,7 +167,7 @@
                 </div>    
 
                 <p>
-                    <img src="" alt="">
+                    <img src="resources/img/petlog_logo.png" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -179,7 +178,7 @@
                 </div>    
 
                 <p>
-                    <img src="" alt="">
+                    <img src="resources/img/petlog_logo.png" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -190,7 +189,7 @@
                 </div>    
 
                 <p>
-                    <img src="" alt="">
+                    <img src="resources/img/petlog_logo.png" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
