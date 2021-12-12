@@ -83,7 +83,7 @@
             <div class="content">
                 <hr>
                 <br><br>
-                <!-- 회원 조회 -->
+                <!-- 글 조회 -->
                 <div class="search-box pb-5">
                     <select class="selectpicker show-tick p-2">
                         <option>전체</option>
