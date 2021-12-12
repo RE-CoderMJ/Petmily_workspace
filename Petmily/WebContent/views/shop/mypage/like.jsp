@@ -14,7 +14,7 @@
 			width: 1400px;
 			height: 1000px;
 			padding:200px;
-			padding-top:5px;
+			padding-top:0px;
 		}
          #outer{
             width:1000px;
@@ -35,16 +35,16 @@
 </head>
 <body>
 <%@ include file="../../common/menubar.jsp" %>
-<%@ include file="mypageSidebar.jsp" %>
+<%@ include file="myPageSidebar2.jsp" %>
 
 <div class="content-area">
 
-    <img src="resources/img/nullheart.png" width="60px" height="60px" alt="" style="margin-left:200px; margin-bottom:20px;">
+    <img src="resources/img/nullheart.png" width="60px" height="60px" alt="" style="margin-left:100px; margin-bottom:20px;">
     
     <div id="outer">
 
         <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
+            <img src=""  id="content-img" width="100px" height="100px" > 
             <br>
             상품명
             <br>

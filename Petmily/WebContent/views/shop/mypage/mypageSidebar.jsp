@@ -81,9 +81,9 @@
             $(".d-category").click(function(){
                 $(this).siblings(".d-category").css({background: "", color:"black"});
                 $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                const $buy = $(this).next();
+                const $cart = $(this).next();
     
-                if($buy.css("display") == "none" && $buy.next().css("display") == "none"){
+                if($cart.css("display") == "none" && $cart.next().css("display") == "none"){
                     $(this).siblings(".cart").slideUp();
                     $(this).siblings(".od").slideUp();
                     $(this).siblings(".like").slideUp();
@@ -91,11 +91,11 @@
                     $(this).siblings(".exchange").slideUp();
                     $(this).siblings(".cancel").slideUp();
                     
-                    $buy.slideDown();
-                    $buy.next().slideDown();
+                    $cart.slideDown();
+                    $cart.next().slideDown();
                 }else{
-                    $buy.slideUp();
-                    $buy.next().slideUp();
+                    $cart.slideUp();
+                    $cart.next().slideUp();
                 }
             })
 
