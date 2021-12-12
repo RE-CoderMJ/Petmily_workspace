@@ -15,6 +15,7 @@
             width: 350px;
             height: 800px;
             position: relative;
+            position: fixed;
             /* margin-top: 70px; */
         }
         /* 사이드바 큰 제목 스타일 */
@@ -44,6 +45,7 @@
             left: 90px;
             font-weight: bolder;
         }
+        
 
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

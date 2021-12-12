@@ -12,6 +12,7 @@
         width: 250px;
         height: 800px;
         position: relative;
+        position: fixed;
     }
     /* 사이드바 큰 제목 스타일 */
     #boardName{

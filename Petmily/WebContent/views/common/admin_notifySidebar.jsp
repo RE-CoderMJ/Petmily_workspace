@@ -15,6 +15,7 @@
             width: 350px;
             height: 800px;
             position: relative;
+            position: fixed;
             /* margin-top: 70px; */
         }
         /* 사이드바 큰 제목 스타일 */
