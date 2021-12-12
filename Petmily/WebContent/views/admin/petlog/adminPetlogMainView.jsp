@@ -18,20 +18,20 @@
 
     /* 현재 게시판이름 */
     .top {
-        width:70%;
+        width:800px;
     }
     /* 노란박스 (new) */
     .middle {
-        width:100%;
+        width:800px;
         height:100px;
         background:rgb(247, 198, 4);
-        line-height:90px;
+        line-height:50px;
         font-size:20px;
         font-weight:900;
-        margin:20px;
+        margin:10px;
     }
     .list-area{
-        width:100%;
+        width:800px;
         
 
     }
@@ -43,7 +43,7 @@
     }
     /* 썸네일 (아직 수정중) */
     .thumbnail{
-        width:250px;
+        width:200px;
         height: 250px;
         margin:10px;
         margin-left: 55px;
@@ -52,7 +52,7 @@
         float: left;
     }
     #thumbnail{
-        width: 100%;
+        width: 220px;
         height: 200px;
 
     }

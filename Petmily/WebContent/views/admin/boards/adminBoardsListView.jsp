@@ -115,8 +115,8 @@
                             <th width="50"><input type="checkbox" name="" value=""></th>
                             <th width="100">번호</th>
                             <th width="100">아이디</th>
-                            <th width="200">게시판 제목</th>
-                            <th width="150">동물 분류</th>
+                            <th width="300">게시판 제목</th>
+                            <th width="200">동물 분류</th>
                             <th width="400">글 제목</th>
                             <th width="100">작성일</th>
                         </tr>
