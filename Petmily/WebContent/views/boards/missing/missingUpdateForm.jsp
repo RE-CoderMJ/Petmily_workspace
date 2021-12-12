@@ -58,8 +58,8 @@
                 <div id="select-ddcategory">
                     <span>구분</span>
                     <select name="d-category" id="select-dcategory">
-                    <option value="">찾고있어요</option>
-                    <option value="">보호하고있어요</option>
+                    <option value="missing">찾고있어요</option>
+                    <option value="found">보호하고있어요</option>
                     </select>
                 </div>
                 <div id="category-select-area">
@@ -134,8 +134,8 @@
                 <div id="select-ddcategory">
                     <span>구분</span>
                     <select name="d-category" id="select-dcategory">
-                    <option value="">찾고있어요</option>
-                    <option value="">보호하고있어요</option>
+                    <option value="missing">찾고있어요</option>
+                    <option value="found">보호하고있어요</option>
                     </select>
                 </div>
                 <div id="category-select-area">

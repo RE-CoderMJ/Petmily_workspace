@@ -17,7 +17,7 @@
 	<div class="content-area" align="center">
 		<div id="top">
 			<div id="list-btn" align="right">
-				<button type="button" class="btn btn-secondary" id="list">목록</button>
+				<button type="button" class="btn btn-secondary" id="list" onclick="location.href='<%=contextPath %>/main.ask?page=1'">목록</button>
 			</div>
 			<hr style="border: solid 1px rgb(179, 178, 178);">
 			<div id="required-area" align="right">

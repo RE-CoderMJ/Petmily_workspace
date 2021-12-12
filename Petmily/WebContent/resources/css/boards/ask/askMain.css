@@ -67,6 +67,9 @@ div, img, li, a{
    font-weight: bold;
    cursor: pointer;
 }
+.notice-area{
+   margin-bottom: 7px;
+}
 /* 게시글 영역 스타일 */
 .contents{
    cursor: pointer;

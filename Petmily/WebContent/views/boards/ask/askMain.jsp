@@ -23,14 +23,14 @@
          </div>
          <form action="" method="get" id="search-area2">
                <select name="category" id="search-condition1">
-                  <option value="entire">전체</option>
+                  <option value="all">전체</option>
                   <option value="dog">강아지</option>
                   <option value="cat">고양이</option>
                   <option value="etc">기타</option>
                </select>
                <select name="keyword-option" id="search-condition2">
-                  <option value="entire">전체</option>
-                  <option value="dog">제목+내용</option>
+                  <option value="all">전체</option>
+                  <option value="titleAndKeyword">제목+내용</option>
                   <option value="etc">작성자</option>
                </select>
                <input type="text" name="keyword">
@@ -47,7 +47,7 @@
       <div id="middle-bar">
          <div align="left">
             <select name="orderBy" id="orderBy">
-               <option value="date">최신순</option>
+               <option value="recent">최신순</option>
                <option value="count">조회순</option>
                <option value="reply">댓글순</option>
             </select>

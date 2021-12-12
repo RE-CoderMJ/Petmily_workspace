@@ -84,9 +84,9 @@
                <div id="select-ddcategory">
                   <span>구분</span>
                   <select name="d-category" id="select-dcategory">
-                     <option value="">전체</option>
-                     <option value="">찾고있어요</option>
-                     <option value="">보호하고있어요</option>
+                     <option value="all">전체</option>
+                     <option value="missing">찾고있어요</option>
+                     <option value="found">보호하고있어요</option>
                   </select>
                </div>
    

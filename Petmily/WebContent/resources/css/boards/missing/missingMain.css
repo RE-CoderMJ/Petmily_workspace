@@ -24,7 +24,7 @@ padding: 15px;
 font-weight: bolder;
 }
 #title2{
-color: rgb(153, 20, 20);
+color: rgb(189, 24, 24);
 font-size: 11px;
 font-weight: bolder;
 }
@@ -164,7 +164,9 @@ margin-right: 10px;
 font-weight: bold;
 cursor: pointer;
 }
-
+.notice-area{
+    margin-bottom: 7px;
+}
 
 /* 컨텐츠영역 */
 #content-area{
