@@ -39,7 +39,7 @@
         }
         .search button{
             width: 50px;
-            height: 52px;
+            height: 50px;
             border: 2px solid rgb(247, 198, 4);
             border-radius: 4px;
             line-height: 50px;

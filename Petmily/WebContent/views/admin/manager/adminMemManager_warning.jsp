@@ -7,18 +7,6 @@
     <title>adminMemManager</title>
     <style>
         
-        /* 세부 카테고리 전체 스타일 */
-        .dd-category{
-            list-style-type: none;
-            color: darkgray;
-            font-weight: bolder;
-            font-size: 13px;
-            width: 60px;
-            display: none;
-            margin-bottom: 3px;
-            cursor: pointer;
-            margin-left: 15px;
-        }
         /* cont-wrap */
         .cont-wrap{
             margin-left: 350px;
