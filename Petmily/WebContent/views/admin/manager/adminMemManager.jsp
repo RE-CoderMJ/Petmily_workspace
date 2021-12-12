@@ -159,9 +159,9 @@
     <body>
 
         <%@ include file="../../common/admin_menubar.jsp" %>
-        <%@ include file="../../common/admin_memSidebar.jsp" %>
-
+        
         <div class="container" style="max-width:1600px;">
+            <%@ include file="../../common/admin_memSidebar.jsp" %>
             
             <!-- cont-wrap -->
             <div class="cont-wrap">

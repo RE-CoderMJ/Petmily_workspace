@@ -24,7 +24,7 @@
             font-weight: bolder;
             font-size: 25px;
             position: absolute;
-            left:90px;
+            /* left:90px; */
         }
         /* 사이드바 스타일*/
         .d-category{
@@ -42,7 +42,7 @@
         #d-category{
             position: absolute;
             top:80px;
-            left: 90px;
+            /* left: 90px; */
             font-weight: bolder;
         }
 

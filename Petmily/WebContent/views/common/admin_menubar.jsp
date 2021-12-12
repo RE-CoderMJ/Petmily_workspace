@@ -25,22 +25,22 @@
             width: 100%;
             margin: 0 auto;
         }
-        .nav-area .menu-box{
-            width: 1200px;
+        .nav-area .inner{
+            position: relative;
+            width: 1600px;
+            margin: 0 auto;
         }
-        .nav-area .right-box{
+        .nav-area .inner .logout{
             position: absolute;
-            right: 0;
-            top: 0;
-            width: 200px;
-            height: 60px;
-            line-height: 60px;
-        }
-        .nav-area .right-box a{
+            top: 17px;
+            right: 15px;
             display: block;
             color:black;
             font-size: 16px;
             font-weight: bold;
+        }
+        .nav-area .menu-box{
+            width: 1200px;
         }
         .menu{
             display: table-cell;
@@ -82,16 +82,16 @@
         </div>
        <!-- 메뉴바 -->
         <div class="nav-area" align="center">
-            <div class="menu-box">
-                <div class="menu"><a href="<%= contextPath %>/memMg.ad">회원관리</a></div> 
-                <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
-                <div class="menu"><a href="<%= contextPath %>/adminMain.bo">게시판관리</a></div>
-                <div class="menu"><a href="<%= contextPath %>/adminMain.pl">Petlog</a></div>
-                <div class="menu"><a href="<%= contextPath %>/main.cus">고객센터</a></div>
-                <div class="menu"><a href="<%= contextPath %>/nfList.ad">신고관리</a></div>
-            </div>
-            <div class="right-box"> 
-                <a href="<%= contextPath %>/login.ad">로그아웃</a>
+            <div class="inner" style="width: 1600px; margin: 0 auto;">
+                <div class="menu-box">
+                    <div class="menu"><a href="<%= contextPath %>/memMg.ad">회원관리</a></div> 
+                    <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/adminMain.bo">게시판관리</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/adminMain.pl">Petlog</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/main.cus">고객센터</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/nfList.ad">신고관리</a></div>
+                </div>
+                <a class="logout" href="<%= contextPath %>/login.ad">로그아웃</a>
             </div>
         </div>
     

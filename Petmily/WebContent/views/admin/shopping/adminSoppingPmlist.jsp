@@ -191,152 +191,153 @@
 <body>
     
     <%@ include file="../../common/admin_menubar.jsp" %>
-    <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
-
-    <!-- cont-wrap -->
-    <div class="cont-wrap"><!-- 사후처리 내역 조회 부분 -->
-        <div class="title-box mt-5 pb-2">
-            <h3 class="mt-2">> 관리자 쇼핑몰</h3>
-        </div>
-        <div class="content cancel-history">
-            <!-- 사후처리 내역 조회 검색 -->
-            <div class="history-area ">
-                <hr>
-                <p class="ct-tit pt-2 pb-3">결제 내역조회</p>
-                <div class="inner ml-5">
-                    <div class="hs-box d-flex mb-4">
-                        <span class="tit text-danger mr-2">* 결제 기간</span>
-                        <div class="input-box">
-                            <input class="form-control mr-2" type="date" style="width: 155px;">
-                            <span class="icon material-icons">
-                                <!-- calendar_month -->
-                            </span>
-                        </div>
-                        <span class="mr-2">~</span>
-                        <div class="input-box">
-                            <input class="form-control mr-2" type="date" style="width: 155px;">
-                            <span class="icon material-icons">
-                                <!-- calendar_month -->
-                            </span>
-                        </div>
-                        <span class="tit ml-5">상품 상태</span>
-                        <select class="selectpicker show-tick p-2">
-                            <option>전체</option>
-                            <option>배송전</option>
-                            <option>배송중</option>
-                            <option>배송 완료</option>
-                        </select>
-                    </div>
-                    <div class="hs-box d-flex mb-4">
-                        <span class="tit mr-2">고객명</span>
-                        <input class="form-control mr-5" type="text" style="width: 120px;">
-                        <span class="tit mr-2">고객ID</span>
-                        <input class="form-control mr-2" type="text">
-                    </div>
-                    <div class="hs-box mb-4 text-center">
-                        <button class="btn btn-warning text-white">검색 하기</button>
-                    </div>
-                </div>
-            </div>
-        <!-- 전체 조회 된 목록 -->
-        <div class="list-area">
-            <hr>
-            <p class="ct-tit pt-2 pb-3">전체 조회 된 목록</p>
-            <div class="inner ml-5">
-                <div class="list-box">
-                    <div class="item d-flex">
-                        <img class="mr-4" src="resources/img/sp_coshion.jpg" alt="" style="width: 100px;height: 100px;">
-                        <div class="info">
-                            <p class="name">강아지 마약 방석</p>
-                            <p class="user text-dark">구매자:김빙근</p>
-                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">배송 완료</a>
-                        </div>
-                        <p class="price flex-fill">40,000원</p>
-                    </div>
-                </div>
-                <div class="list-box">
-                    <div class="item d-flex">
-                        <img class="mr-4" src="resources/img/sp_wheel.jpg" alt="" style="width: 100px;height: 100px;">
-                        <div class="info">
-                            <p class="name">친칠라 쳇바퀴</p>
-                            <p class="user text-dark">구매자:원남이</p>
-                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">배송중</a>
-                        </div>
-                        <p class="price flex-fill">20,000원</p>
-                    </div>
-                </div>
-                <div class="list-box">
-                    <div class="item d-flex">
-                        <img class="mr-4" src="resources/img/sp_churu.jpg" alt="" style="width: 100px;height: 100px;">
-                        <div class="info">
-                            <p class="name">새콤달콤 츄르</p>
-                            <p class="user text-dark">구매자:김민지</p>
-                            <a class="state float-left" data-toggle="modal" data-target="#statusChange">배송전</a>
-                        </div>
-                        <p class="price flex-fill">5,000원</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 상태변경 모달 -->
-        <div class="modal fade" id="statusChange">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content" style="width: 500px;">
     
-                    <!-- Modal body -->
-                    <div class="modal-body" align="center">
-                        <div class="modalMsg-area">
-                                            다음으로 상태를 변경합니다
+    <div class="container" style="max-width:1600px;">
+        <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
+        <!-- cont-wrap -->
+        <div class="cont-wrap"><!-- 사후처리 내역 조회 부분 -->
+            <div class="title-box mt-5 pb-2">
+                <h3 class="mt-2">> 관리자 쇼핑몰</h3>
+            </div>
+            <div class="content cancel-history">
+                <!-- 사후처리 내역 조회 검색 -->
+                <div class="history-area ">
+                    <hr>
+                    <p class="ct-tit pt-2 pb-3">결제 내역조회</p>
+                    <div class="inner ml-5">
+                        <div class="hs-box d-flex mb-4">
+                            <span class="tit text-danger mr-2">* 결제 기간</span>
+                            <div class="input-box">
+                                <input class="form-control mr-2" type="date" style="width: 155px;">
+                                <span class="icon material-icons">
+                                    <!-- calendar_month -->
+                                </span>
+                            </div>
+                            <span class="mr-2">~</span>
+                            <div class="input-box">
+                                <input class="form-control mr-2" type="date" style="width: 155px;">
+                                <span class="icon material-icons">
+                                    <!-- calendar_month -->
+                                </span>
+                            </div>
+                            <span class="tit ml-5">상품 상태</span>
+                            <select class="selectpicker show-tick p-2">
+                                <option>전체</option>
+                                <option>배송전</option>
+                                <option>배송중</option>
+                                <option>배송 완료</option>
+                            </select>
                         </div>
-                        <div id="statusChangebtn-area">
-                            <button type="button" class="btn btn-warning text-white" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">배송전</button>
-                          <button type="button" class="btn btn-warning text-white" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">배송중</button>
-                          <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="closebtn" data-toggle="modal" href="#changeCompleted">배송완료</button>
-                        </div>              
+                        <div class="hs-box d-flex mb-4">
+                            <span class="tit mr-2">고객명</span>
+                            <input class="form-control mr-5" type="text" style="width: 120px;">
+                            <span class="tit mr-2">고객ID</span>
+                            <input class="form-control mr-2" type="text">
+                        </div>
+                        <div class="hs-box mb-4 text-center">
+                            <button class="btn btn-warning text-white">검색 하기</button>
+                        </div>
                     </div>
-            
+                </div>
+            <!-- 전체 조회 된 목록 -->
+            <div class="list-area">
+                <hr>
+                <p class="ct-tit pt-2 pb-3">전체 조회 된 목록</p>
+                <div class="inner ml-5">
+                    <div class="list-box">
+                        <div class="item d-flex">
+                            <img class="mr-4" src="resources/img/sp_coshion.jpg" alt="" style="width: 100px;height: 100px;">
+                            <div class="info">
+                                <p class="name">강아지 마약 방석</p>
+                                <p class="user text-dark">구매자:김빙근</p>
+                                <a class="state float-left" data-toggle="modal" data-target="#statusChange">배송 완료</a>
+                            </div>
+                            <p class="price flex-fill">40,000원</p>
+                        </div>
+                    </div>
+                    <div class="list-box">
+                        <div class="item d-flex">
+                            <img class="mr-4" src="resources/img/sp_wheel.jpg" alt="" style="width: 100px;height: 100px;">
+                            <div class="info">
+                                <p class="name">친칠라 쳇바퀴</p>
+                                <p class="user text-dark">구매자:원남이</p>
+                                <a class="state float-left" data-toggle="modal" data-target="#statusChange">배송중</a>
+                            </div>
+                            <p class="price flex-fill">20,000원</p>
+                        </div>
+                    </div>
+                    <div class="list-box">
+                        <div class="item d-flex">
+                            <img class="mr-4" src="resources/img/sp_churu.jpg" alt="" style="width: 100px;height: 100px;">
+                            <div class="info">
+                                <p class="name">새콤달콤 츄르</p>
+                                <p class="user text-dark">구매자:김민지</p>
+                                <a class="state float-left" data-toggle="modal" data-target="#statusChange">배송전</a>
+                            </div>
+                            <p class="price flex-fill">5,000원</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- 상태변경 모달 -->
+            <div class="modal fade" id="statusChange">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="width: 500px;">
+        
+                        <!-- Modal body -->
+                        <div class="modal-body" align="center">
+                            <div class="modalMsg-area">
+                                                다음으로 상태를 변경합니다
+                            </div>
+                            <div id="statusChangebtn-area">
+                                <button type="button" class="btn btn-warning text-white" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">배송전</button>
+                            <button type="button" class="btn btn-warning text-white" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">배송중</button>
+                            <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="closebtn" data-toggle="modal" href="#changeCompleted">배송완료</button>
+                            </div>              
+                        </div>
+                
+                    </div>
+                </div>
+            </div>
+            <!-- 처리완료 Modal -->
+            <div class="modal fade" id="changeCompleted">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Modal body -->
+                        <div class="modal-body" align="center" style="text-align: center;">
+                            <div class="modalMsg-area">
+                                정상적으로 변경되었습니다.
+                            </div>
+                            <div>
+                            <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
+                            </div>              
+                        </div>
+                    </div>
+                </div>
+            </div>     
         </div>
-        <!-- 처리완료 Modal -->
-        <div class="modal fade" id="changeCompleted">
-            <div class="modal-dialog modal-sm modal-dialog-centered">
-                <div class="modal-content">
-
-                    <!-- Modal body -->
-                    <div class="modal-body" align="center" style="text-align: center;">
-                        <div class="modalMsg-area">
-                            정상적으로 변경되었습니다.
-                        </div>
-                        <div>
-                        <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
-                        </div>              
-                    </div>
+                <br><br><br><br><br>
+                <!-- 페이징 바 -->
+                <div class="paging-area" align="center">
+                    <button> &lt; </button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button> &gt; </button>
                 </div>
-            </div>
-        </div>     
-    </div>
-    <br><br><br><br><br>
-            <!-- 페이징 바 -->
-            <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
-            </div>
-            <script>
-                $(function(){
-                    $(".paging-area button").click(function(){
-                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                <script>
+                    $(function(){
+                        $(".paging-area button").click(function(){
+                            $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                            $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                        })
                     })
-                })
-            </script>
-</div>
-
+                </script>
+        </div>
+    </div>
 <br><br>
 </body>
 </html>
