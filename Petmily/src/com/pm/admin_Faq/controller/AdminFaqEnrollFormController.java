@@ -1,4 +1,4 @@
-package com.pm.faq.controller;
+package com.pm.admin_Faq.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminFaqUpdateController
+ * Servlet implementation class AdminFaqEnrollFormController
  */
-@WebServlet("/adminUpdate.faq")
-public class AdminFaqUpdateController extends HttpServlet {
+@WebServlet("/adminEnrollForm.faq")
+public class AdminFaqEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminFaqUpdateController() {
+    public AdminFaqEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,6 +27,7 @@ public class AdminFaqUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.getRequestDispatcher("views/faq/adminFaqEnrollForm.jsp").forward(request,response);
 	}
 
 	/**
