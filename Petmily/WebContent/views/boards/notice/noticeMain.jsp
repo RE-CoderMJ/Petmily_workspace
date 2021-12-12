@@ -14,39 +14,26 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
-
-    div {
-        /* border: 1px solid red; */
-    }
-
-    
-    .outer {
-        width: 100%;
-    }
     
     .inner {
-        width: 80%;
+        width: 1300px;
+        height: auto;
         margin: auto;
     }
 
-    .sidebar {
-        width: 20%;
-        height: auto;
-        float: left;
+    .inner > div {
+        width: 85%;
     }
 
     .notice {
-        float: left;
-        width: 75%;
-        margin-left: 5%;
-
+        margin: auto;
     }
 
     #title {
         font-weight: 900;
-        font-size: 40px;
+        font-size: 45px;
         height: 100px;
-        margin-top: -10px;
+        margin-top: -15px;
     }
 
     .accordion { 
@@ -57,11 +44,11 @@
         height: 50px;
         text-align: left;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
     }
 
-    img {
+    .down-arrow {
         float: right;
         width: 20px;
         height: 20px;
@@ -88,14 +75,12 @@
 </head>
 <body>
     <%@ include file="../../common/menubar.jsp" %>
+    <%@ include file="noticeSidebar.jsp" %>
     
     <div class="outer">
-
+        
         
         <div class="inner">
-            <div class="sidebar">
-                <%@ include file="noticeSidebar.jsp" %>
-            </div>
             
             <div class="notice">
 
@@ -113,18 +98,17 @@
                         </div>
                         <p class="accordion-body">
                             
-                           	 딸기의 계절이 돌아왔습니다 <br>
+                           	딸기의 계절이 돌아왔습니다 <br>
         
-                           	 인간들만 먹을게 아니라 우리의 반려가족들도 함께 먹어야 합니다 <br>
+                           	인간들만 먹을게 아니라 우리의 반려가족들도 함께 먹어야 합니다 <br>
                 	            
-                                                  반려동물도 배탈없이 안전하게 먹을 수 있는 딸기케이크를 체험해보세요 <br>
+                            반려동물도 배탈없이 안전하게 먹을 수 있는 딸기케이크를 체험해보세요 <br>
                             
                             <br>
         
                             <a href="">[체험단 신청하기]</a> <br>
         
-                            	체험단 당첨 자신은 없는데 돈이 남아돈다..! <a href="">[구매하기]</a>
-                            
+                            체험단 당첨 자신은 없는데 돈이 남아돈다..! <a href="">[구매하기]</a>
                         </p>
                     </div>
 
@@ -137,7 +121,7 @@
                         </div>
                         <p class="accordion-body">
                             
-                            	개인정보처리방침 개정안내입니다.
+                            개인정보처리방침 개정안내입니다.
                         </p>
                     </div>
 
@@ -149,7 +133,7 @@
                         </div>
                         <p class="accordion-body">
                             
-                            	개인정보 처리 위탁했다.
+                            개인정보 처리 위탁했다.
                         </p>
                     </div>
 
@@ -172,6 +156,7 @@
 
     </div>
 
+    
     <script>
         $(function(){
             $(".accordion-head").click(function(){  
@@ -182,7 +167,7 @@
                 if($p.css("display") == "none"){
                     
                     // $(this).siblings("p").slideUp();
-
+                    
                     $p.slideDown();
                     // img.style.transform = 'rotate()';
                 } else {
@@ -193,7 +178,11 @@
                 
             })
         })
-    </script>
+        </script>
 
+
+    <div style="margin-top: 400px;">
+        <%@ include file="../../common/footerbar.jsp" %>
+    </div>
 </body>
 </html>

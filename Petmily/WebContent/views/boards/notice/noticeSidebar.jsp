@@ -6,12 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
     /*사이드바 스타일*/
     .sidebar-area{
         float: left;
         width: 250px;
         height: 800px;
         position: relative;
+        position: fixed;
     }
     /* 사이드바 큰 제목 스타일 */
     #boardName{
@@ -33,7 +35,8 @@
     #d-category{
         position: absolute;
         top:80px;
-        left: 90px;
+        left:90px;
+    }
     }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
