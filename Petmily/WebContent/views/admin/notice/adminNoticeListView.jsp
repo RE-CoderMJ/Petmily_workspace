@@ -81,7 +81,7 @@
     <%@ include file="../../common/admin_menubar.jsp" %>
     
     <!-- 사이드바 -->
-    <%@ include file="admin_noticeSidebar.jsp" %>
+    <%@ include file="../../common/admin_cusmainSidebar.jsp" %>
 
     <!-- 큰 틀-->
     <div class="outer">
