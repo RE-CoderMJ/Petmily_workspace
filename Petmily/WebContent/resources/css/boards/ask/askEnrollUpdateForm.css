@@ -1,6 +1,11 @@
 div, img, li, a{
     box-sizing: border-box;
 }
+#outer{
+	width: 1600px;
+	height: auto;
+	margin: auto;
+}
 .content-area{
    width: 1400px;
    height: auto;

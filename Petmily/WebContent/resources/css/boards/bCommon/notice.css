@@ -9,6 +9,11 @@ div, img, li, a{
 	padding:200px;
 	padding-top:35px;
 }
+#outer{
+	width: 1600px;
+	height: auto;
+	margin: auto;
+}
 
 /* 위쪽 부분 스타일 */
 #list-btn{

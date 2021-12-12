@@ -170,7 +170,7 @@ body *{
         <div class="menu"><a href="">PetLog</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.market">중고거래</a></div>
         <div class="menu"><a href="">MyPage</a></div>
-        <div class="menu"><a href="">고객센터</a></div>
+        <div class="menu"><a href="<%= contextPath %>/main.no">고객센터</a></div>
     </div>
 
     <!-- 수정필요한 부분!! -->

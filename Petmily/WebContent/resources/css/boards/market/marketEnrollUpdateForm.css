@@ -24,6 +24,7 @@ div, img, li, a{
 	font-size: 14px;
 	line-height: 2px;
 }
+
 /* 사진 부분 스타일 */
 #photo-area{
     width: 400px;
@@ -51,79 +52,50 @@ div, img, li, a{
 #file-upload-area>input{
     margin-top: 8px;
 }
+
 /* 입력부분 스타일 */
 #input-area{
     width: 500px;
     height: 500px;
     margin-left: 495px;
-    margin-top: 60px;
-    background: rgb(235, 235, 235);
+    margin-top: 80px;
 }
 #input-area>div{
     text-align: left;
     padding-left: 50px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 #input-area span{
     color: rgb(99, 99, 99);
     font-weight: bolder;
     margin-right: 20px;
 }
+.required{
+    margin-right: 20px!important;
+    color: orange!important;
+}
+.titles{
+    margin-right: 0px!important;
+}
 /* 구분 */
-#select-ddcategory{
-    padding-top: 45px;
+#select-dcategory{
+    margin-left: 10px;
 }
-#select-ddcategory>span{
-    margin-right: 49px;
-}
-/* 대상 */
-#category-select-area{
-    text-align: left;
-    padding-left: 30px;
-    margin-bottom: 20px;
-}
-#category-select-area>span{
-    margin-right: 49px;
-}
-/* 성별 */
-#gender-select-area>span{
-    margin-right: 49px;
-}
-/* 이름 */
-#name-area>span{
-    margin-right: 49px;
-}
-/* 나이 */
-#age-area>input{
-    width: 40px;
-}
-/* 발생일 */
-#missing-date-area>span{
-    margin-right: 36px;
-}
-/* 발생장소 */
-#missing-place-area>input{
+/* 제목 */
+#title-area>input{
     width: 300px;
+    padding-left: 5px;
 }
-#missing-place-area>div{
-    font-size: 12px;
-    color: orange;
-    font-weight: bolder;
-    margin-left: 90px;
+/* 가격 */
+#price-area>input{
+    width: 170px;
 }
-/* 신체특징 */
-#feature-area>textarea{
-    width: 300px;
-    height: 60px;
+/* 내용 */
+#text-area>textarea{
+    width: 370px;
+    height: 240px;
     resize: none;
-    position: absolute;
-}
-#feature-area>div{
-    font-size: 12px;
-    color: orange;
-    font-weight: bolder;
-    margin-left: 85px;
-    margin-top: 40px;
+    padding: 10px;    
 }
 
 /* 올리기 버튼 */

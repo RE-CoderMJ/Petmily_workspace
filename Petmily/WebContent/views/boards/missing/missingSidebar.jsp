@@ -12,6 +12,7 @@
         width: 250px;
         height: 800px;
         position: relative;
+        position: fixed;
     }
     /* 사이드바 큰 제목 스타일 */
     #boardName{
@@ -19,7 +20,6 @@
         font-weight: bolder;
         font-size: 25px;
         position: absolute;
-        left:90px;
     }
     /* 강아지, 고양이, 기타 카테고리 스타일*/
     .d-category{
@@ -33,7 +33,6 @@
     #d-category{
         position: absolute;
         top:80px;
-        left: 90px;
     }
      /* 세부 카테고리 전체 스타일 */
      .dd-category{
