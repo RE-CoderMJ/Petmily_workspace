@@ -25,7 +25,7 @@
     .middle{
     	width:400px;
     }
-    /* 리뷰 조회 테이블 */
+    /* 리뷰 조회 테이블 */ 
     .reviewtable{
     	width:700px;
     	font-size:13px;

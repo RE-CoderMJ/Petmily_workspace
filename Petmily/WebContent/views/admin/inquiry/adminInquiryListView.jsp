@@ -79,7 +79,7 @@
 	        <br>
 	        <h2 style="color:gray">&gt; 관리자 고객센터</h2>
 	        <hr>
-	        <h5>Q&A문의 관리</h5>
+	        <h5>상품문의 관리</h5>
 	        <br>
 	        
 	    </div>
@@ -100,7 +100,7 @@
 	                        <a class="dropdown-item" href="#">처리완료</a>
 	                    </div>
 	                </div>
-
+	
 	                
 	                <div class="selectzone">
 	                    <button type="button" class="btn btn-light" disabled>검색어</button>                                                                                                                                                                                                                                                                                                            
@@ -137,7 +137,7 @@
 	                        <th width="50"><input type="checkbox" name="" value=""></th>
 	                        <th width="100">번호</th>
 	                        <th width="150">등록일</th>
-	                        <th width="500">문의제목</th>
+	                        <th width="550">문의제목</th>
 	                        <th width="150">작성자</th>
 	                        <th width="150">처리상태</th>
 	                    </tr>

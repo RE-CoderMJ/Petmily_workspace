@@ -67,7 +67,9 @@
         
                         <div class="d-category" id="faq">FAQ 관리</a></div>
         
-                        <div class="d-category" id="qna">Q&A문의/상품문의 관리</div>
+                        <div class="d-category" id="qna">Q&A문의 관리</div>
+                        
+                        <div class="d-category" id="qna">상품문의 관리</div>
         
                         <div class="d-category" id="review"><!--<a href="" class="link">-->리뷰 관리</div>
                     </div>
