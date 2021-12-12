@@ -50,7 +50,7 @@
 	<!-- 메뉴바 -->
     <%@ include file="../../common/admin_menubar.jsp" %>
     <!-- 사이드바 -->
-    <%@ include file="admin_noticeSidebar.jsp" %>
+    <%@ include file="../../common/admin_cusmainSidebar.jsp" %>
 	
 	
     <!-- 큰틀 -->
@@ -60,13 +60,25 @@
         <br>
 
         <!-- FAQ 폼 -->
-        <form action="" id="enroll-form-faq" method="post">
+        <form action="<%= contextPath %>/adminUpdate.no" id="enroll-form-faq" method="post">
 
             <table>
+            	<tr>
+                    <th width="10px"></th>
+                    <td>공지사항 분류</td>
+                    <td>
+                    	<select name="" id="">
+                    	    <option value="" selected>선택사항없음</option>
+                            <option value="">궁금해요</option>
+                            <option value="">찾고있어요</option>
+                            <option value="">중고거래</option>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 제목</td>
-                    <td><input type="text" name="title" required placeholder="입점 제휴 문의 안내"></td>
+                    <td><input type="text" name="title" required value="입점 제휴 문의 안내"></td>
                 </tr>
                 <tr>
                     <th width="10px">&nbsp</th>
@@ -86,7 +98,6 @@
             <!-- 하단 버튼들 -->
             <div>
                 <button type="submit" class="btn btn-sm btn-warning">수정</button>
-                <button type="reset" class="btn btn-sm btn-secondary">취소</button>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 

@@ -8,8 +8,8 @@
 <style>
         /* 큰 틀 */
         .outer{
-            width:100%;
-            height:100%;
+            width:1100px;
+            height:800px;
         }
         .outer>div{
             float:left;
@@ -19,18 +19,18 @@
 
         /* 맨 위 게시판이름 바 */
         .top{
-            width:70%;
+            width:750px;
             height:70px;
         }
         /* 검색창, 버튼들(등록,수정,삭제) */
         .bottom{
-            width:70%;
+            width:750px;
             height:150px;
             margin-top:5px;
         }
         /* 검색창 */
         .noticeselect{
-            width:700px;
+            width:750px;
             height:300px;
         }
 
@@ -41,7 +41,7 @@
         }
         /* 버튼들(등록,수정,삭제) */
         .buttons{
-            width:70%;
+            width:750px;
             height:50px;
             /* float:right; */
 
@@ -50,7 +50,7 @@
 
         /* 공지사항 테이블 */
         #noticetable{
-            width:1000px; 
+            width:750px; 
         }
         /* 테이블 + 페이징바 */
         .table-paging{
@@ -120,7 +120,7 @@
             
             <div class="buttons" align="right">
             
-                <a href="<%= contextPath %>/enrollFormAdmin.no" class="btn btn-sm btn-warning">등록</a>
+                <a href="<%= contextPath %>/adminEnrollForm.no" class="btn btn-sm btn-warning">등록</a>
                 <a href="" class="btn btn-sm btn-warning">수정</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>

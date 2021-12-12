@@ -15,12 +15,13 @@
             margin-top:50px;   
         }
 
-        /* 별표 */
-        #enroll-form-faq table th{
+
+		/* 별표 */
+        .detail-area table th{
             width:10px;
         }
         /* 테이블 카테고리,박스들 */
-        #enroll-form-faq table td{
+        .detail-area table td{
             width:300px;
             padding:10px;
             text-align:left;
@@ -28,14 +29,15 @@
             font-family: 'Gowun Dodum', sans-serif;
         }
         /* 테이블 테두리 */
-        #enroll-form-faq table{
+        .detail-area{
+        	width:700px;
             border:2px solid lightgray;
             border-collapse: separate;
             border-radius: 10px;
             padding:20px;
         }
         /* 테이블 카테고리,박스들 */
-        #enroll-form-faq input, #enroll-form-faq textarea{
+        .detail-area input, .detail-area img, .detail-area textarea{
             width:100%;
             box-sizing:border-box;
         }
@@ -59,9 +61,9 @@
         <br>
         <br>
 
-        <!-- FAQ 폼 -->
-        <form action="<%= contextPath %>/adminInsert.no" id="enroll-form-faq" method="post">
 
+		<div class="detail-area">
+		
             <table>
             	<tr>
                     <th width="10px"></th>
@@ -78,18 +80,18 @@
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 제목</td>
-                    <td><input type="text" name="title" required></td>
+                    <td>안녕하세요. 공지사항 제목입니다.</td>
                 </tr>
                 <tr>
                     <th width="10px">&nbsp</th>
                     <td>파일첨부</td>
-                    <td><input type="file" name="upfile"></td>
+                    <td><img src="" "width="300px" height="100px"></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 내용</td>
                     <td>
-                        <textarea rows="10" name="content" style="resize:none" required></textarea>
+                        <textarea rows="10" name="content" style="resize:none" required>안녕하세요. 공지사항 내용입니다.</textarea>
                     </td>
                 </tr>
             </table>
@@ -97,13 +99,15 @@
 
             <!-- 하단 버튼들 -->
             <div>
-                <button type="submit" class="btn btn-sm btn-warning">등록</button>
+                <a href="" class="btn btn-sm btn-warning">수정</a>
+                <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 
-        </form>
 
 
+    </div>
+    
     </div>
 </body>
 </html>
