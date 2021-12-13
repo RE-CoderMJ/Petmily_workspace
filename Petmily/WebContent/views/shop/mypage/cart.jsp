@@ -11,31 +11,37 @@
 		div, img, li, a{
 		     box-sizing: border-box;
 		}
+		.oouter{
+			width: 1600px;
+			height: 1000px;
+			margin:auto;
+		}   
 		     
 		.content-area{
 			width: 1400px;
 			height: 1000px;
 			padding:200px;
-			padding-top:5px
+			padding-top:5px;
+			margin:auto;
 		}
         #title{
             color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
-             margin-bottom:20px;
-            margin-left:150px;
+            margin-bottom:20px;
+            
         } 
         #outer{
             width:1000px;
             border: 1px soild black;
-            background-color: rgb(213,213,213);
+            background-color:rgb(235, 235, 235);
             padding: 10px 20px;
-            margin-left:200px;
+            margin:auto;
         }
         
         /* 흰 박스 안에 css*/
         .cart-content{
-            width:700px;
+            width:800px;
             height:100px;
             border:0;
             background-color: white;
@@ -68,28 +74,28 @@
 
         /*총개수, 총금액, 구매버튼*/
         #sumcount {
-            font-size: large;
+            font-size: 25px;
             font-weight: 900;
-            color:darkgray;     /*색 바꾸기*/
+            color:rgb(94,94,94);
         }
 
         #summoney{ 
-            font-size: large;
+            font-size: 25px;
             font-weight: 900;
         }
 
         #foot1 ,#foot2{
             float:right;
-            margin-right: 50px;
+            margin-right: 100px;
         }
 
         .bbtn{ 
-            color:white;
-            background-color: orange; /*색 바꾸기*/
+            background-color: rgb(247, 198, 4);
             padding:9px 18px;
             margin: 0px 10px;
             border:0;
             border-radius: 4px;
+            font-size:18px;
         }
 
         .inline{display:inline;}
@@ -98,11 +104,12 @@
 </head>
 <body>
 	<%@ include file="../../common/menubar.jsp" %>
+<div class="oouter">
+	
 	<%@ include file="mypageSidebar.jsp" %>
 	
-	
 <div class="content-area">
-<div id="title" class="inline-block" >장바구니</div>
+<div id="title"  >장바구니</div>
 <div id="outer">
 
     <form action="">
@@ -238,7 +245,7 @@
             <br><br>
 
             <div id="foot2">
-                <button class="bbtn">선택구매</button>
+                <button class="bbtn" style="background:rgb(250, 237, 167);">선택구매</button>
                 <button class="bbtn">전체구매</button>
             </div>
 
@@ -249,6 +256,7 @@
         </div>
     </form>
 
+</div>
 </div>
 </div>
 	

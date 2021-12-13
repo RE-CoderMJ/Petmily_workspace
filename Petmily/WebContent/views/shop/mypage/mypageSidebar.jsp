@@ -1,109 +1,227 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
+<%
+   String contextPaths = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
+  <meta charset="UTF-8">
+  <title>Accordion Menu</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     /*사이드바 스타일*/
     .sidebar-area{
-        float: left;
-        width: 250px;
-        position: relative;
+          float: left;
+          width: 350px;
+          height: 100%;
+          position:relative;
+          /*
+          position:absolute;
+          left:100px;
+          */
+          margin-left:-60px;
+          position: fixed;
+          /* margin-top: 70px; */
+     }
+
+
+    ul {
+      list-style-type: none;
+        font-weight: bolder;
+        font-size: 18px;
     }
     /* 사이드바 큰 제목 스타일 */
-    #boardName{
-        list-style-type: none;
-        font-weight: bolder;
+    #sidebarTitle{
+     color:black;
+     font-weight: bolder;
         font-size: 25px;
         position: absolute;
-        left:90px;
+        left:80px;
+     border-bottom: 1px solid #ccc;
     }
-    /* 강아지, 고양이, 기타 카테고리 스타일*/
-    .d-category{
-        list-style-type: none;
-        font-size: 16px;
-        width: 130px;
-        font-weight: bolder;
-        cursor:pointer;
-        margin-bottom: 5px;
+
+	/* 사이드바 스타일*/
+    .accordion {
+      background: #fff;
+      border-radius: 4px;
+      float:left;
+      margin-left:40px;
     }
-    #d-category{
-        position: absolute;
-        top:80px;
-        left: 90px;
+
+    .accordion .menu {
+      position: relative;
+      padding: 15px 15px 15px 45px;
+
+	  width:250px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease;
     }
-    /* 세부 카테고리 전체 스타일 */
-    .dd-category{
-        list-style-type: none;
-        color: darkgray;
-        font-weight: bolder;
-        font-size: 13px;
-        width: 60px;
-        display: none;
-        margin-bottom: 3px;
-        cursor: pointer;
-        margin-left: 15px;
+
+    .accordion li:last-child .menu {
+      border-bottom: 0;
     }
-</style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    .accordion li i {
+      position: absolute;
+      top: 20px;
+      right: 5%;
+
+      transition: all 0.4s ease;
+    }
+
+    .accordion li i.fa-chevron-down {
+      right: 1rem;
+      left: auto;
+    }
+
+    .accordion li.show i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+	/*클릭했을때 큰 제목 색*/
+    .accordion li.show .menu {
+
+    }
+	/*클릭했을때 큰 제목 옆 화살표 색*/
+    .accordion li.show i {
+	  color: rgb(247, 198, 4);
+    }
+
+    /* Show submenu */
+    .accordion li.show .submenu {
+      /* height: auto;를 지정하면 transition이 동작하지 않는다 */
+      max-height: 500px;
+    }
+
+    .submenu {
+      /* height: auto;를 지정하면 transition이 동작하지 않는다 */
+      max-height: 0;
+      overflow: hidden;
+
+      font-size: 16px;
+      transition: max-height 0.4s ease;
+    }
+
+
+    .accordion li:last-child .submenu {
+      border-radius: 0 0 4px 4px;
+    }
+
+    .accordion li:last-child .submenu li:last-child {
+      border-bottom: 0;
+    }
+
+    .submenu a {
+      color:black;
+      display: block;
+      text-decoration: none;
+      padding: 12px;
+      margin-left: 60px;
+      transition: all 0.25s ease-in-out;
+      width:180px;
+    }
+
+    .submenu a:hover {
+      text-decoration:none;
+      background: rgb(247, 198, 4);
+      color: black;
+    }
+  </style>
 </head>
+
 <body>
-      <!--  사이드바  -->
-      <div class="sidebar-area">
-        <ul>
-            <div id="boardName">마이페이지</div>
-            <div id="d-category">
-                <div class="d-category" id="">회원정보수정</div>
-                <div class="d-category" id="">내가쓴게시글조회</div>
-                <div class="d-category" id="">펫적사항</div>
+ <div class="sidebar-area">
+<div id="sidebarTitle" style="width:200px;">마이페이지</div>
+<br>
+<br>
+  <ul id="accordion" class="accordion" >
+    <!-- <li class="show"> -->
+    <li>
+      <div class="menu">회원정보수정<i class="fa fa-chevron-down"></i></div>
+      <ul class="submenu">
+        <li><a href="#">회원정보수정</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="menu">내가 쓴 게시글 조회<i class="fa fa-chevron-down"></i></div>
+      <ul class="submenu">
+        <li><a href="#">내가 쓴 게시글 조회</a></li>
+      </ul>
+    </li>
+    <li>
+     <li>
+      <div class="menu">펫적사항<i class="fa fa-chevron-down"></i></div>
+      <ul class="submenu">
+        <li><a href="#">펫적사항</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="menu">쇼핑몰<i class="fa fa-chevron-down"></i></div>
+      <ul class="submenu">
+        <li><a href="<%= contextPaths %>/cart.my">장바구니</a></li>
+        <li><a href="<%= contextPaths %>/orderselect.my">주문배송조회</a></li>
+        <li><a href="<%= contextPaths %>/like.my">찜</a></li>
+        <li><a href="<%= contextPaths %>/point.my">포인트조회</a></li>
+        <li><a href="<%= contextPaths %>/exchangeapp.my">교환/반품 신청</a></li>
+        <li><a href="<%= contextPaths %>/cancelselect.my">취소/환불내역 조회</a></li>
+      </ul>
+    </li>
+  </ul>
+  </div>
 
-                <div class="d-category" id="shop">쇼핑몰</div>
-                <div class="dd-category cart">장바구니</div>
-                <div class="dd-category od">주문/배송조회</div>
-                <div class="dd-category like">찜</div>
-                <div class="dd-category point">포인트조회</div>
-                <div class="dd-category exchange">교환/반품신청</div>
-                <div class="dd-category cancel">취소/환불 내역 조회</div>
-            </div>
-        </ul>
-    </div>
+<script>
+  class Accordion {
+    constructor(options) {
+      // 기본 옵션과 사용자 지정 옵션을 병합
+      this.config = Accordion.mergeConfig(options);
+      this.accordion = document.querySelector(this.config.selector);
+      // 이벤트 핸들러 내부의 this는 currentTartget
+      this.accordion.addEventListener('click', this.toogle.bind(this));
+    }
 
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                const $cart = $(this).next();
-    
-                if($cart.css("display") == "none" && $cart.next().css("display") == "none"){
-                    $(this).siblings(".cart").slideUp();
-                    $(this).siblings(".od").slideUp();
-                    $(this).siblings(".like").slideUp();
-                    $(this).siblings(".point").slideUp();
-                    $(this).siblings(".exchange").slideUp();
-                    $(this).siblings(".cancel").slideUp();
-                    
-                    $cart.slideDown();
-                    $cart.next().slideDown();
-                }else{
-                    $cart.slideUp();
-                    $cart.next().slideUp();
-                }
-            })
+    static mergeConfig(options) {
+      // 기본 옵션
+      const config = {
+        selector: '#accordion',
+        multi: true
+      };
 
-            $(".dd-category").click(function(){
-                $(this).siblings(".dd-category").css("color", "darkgray").css("text-decoration", "none");
-                $(this).css("color", "orange").css("text-decoration", "underline");
-            })
-        })
-    </script>
+      return { ...config, ...options };
+    }
+
+    toogle(event) {
+      if (!event.target.classList.contains('menu')) return;
+      // click 이벤트를 발생시킨 <div class="menu"> 요소의 부모 요소인 li 요소
+      const targetLi = event.target.parentNode;
+
+      // 멀티 오픈을 허용하지 않으면 타깃 이외의 모든 서브메뉴를 클로즈한다.
+      if (!this.config.multi) {
+        [].filter.call(
+          this.accordion.childNodes,
+          li => li.nodeType === Node.ELEMENT_NODE && li !== targetLi
+        ).forEach(li => li.classList.remove('show'));
+      }
+
+      // li 요소의 class에 "show"가 있으면 제거하고 없으면 추가한다.
+      targetLi.classList.toggle('show');
+    }
+  }
+
+  window.onload = function () {
+    const accordion = new Accordion({ multi: false });
+    // const accordion = new Accordion();
+  };
+</script>
+
 </body>
 </html>

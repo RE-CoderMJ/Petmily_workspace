@@ -37,7 +37,7 @@ div, img, li{
 }
 /* 사용자 이름 뜨는 부분 */
 #userName{
-    font-size: 14px; 
+    font-size: 20px; 
     width: 40%; 
     margin-left: 20px; 
     line-height: 40px;
@@ -45,18 +45,19 @@ div, img, li{
 }
 /* 로그인 버튼 */
 #loginBtn{
-    font-size: 13px;
-    width:20%;
+    font-size: 18px;
+    /*width: 20%;*/ 
     line-height: 40px;
-    margin-left:80px;
+    margin-left:30px;
     font-weight:bold;
 }
 #loginBtn>a{text-decoration: none; color: black;}
 /* 로그아웃 버튼 */
 #logout, #register{
-    font-size:13px; 
-    width: 20%; 
+    font-size:18px; 
+    /*width: 20%;*/ 
     line-height: 40px;
+    margin-left:30px;
     font-weight: bold;
 }
 #logout>a{text-decoration: none; color: black;}
@@ -68,29 +69,36 @@ div, img, li{
 
 #heart, #shoppingCart{
     line-height: 30px;
+    margin-left:10px;
 }
 /* 찜버튼 */
-#heart img{width: 20px; height: 20px;}
+#heart img{width: 30px; height: 30px;}
 /* 장바구니버튼 */
-#shoppingCart img{width: 20px; height: 20px;}
+#shoppingCart img{width: 30px; height: 30px;}
 
 /* navigator 영역에 대한 세부 스타일 */
-.nav-area{background: rgb(247, 198, 4); margin-bottom: 70px;}
+.nav-area{
+	background: rgb(247, 198, 4); 
+	margin-bottom: 70px; 
+	height:50px;
+}
 .menu{
     display: table-cell;
     width: 200px;
-    height: 40px;
+    height: 50px;
+
 }
 .menu a{
     text-decoration: none;
     color: black;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     display: block;
     width: 100%;
     height: 100%;
     line-height: 40px;
     cursor: pointer;
+    padding-top:5px;
 }
 
 .menu a:hover{background: white; text-decoration: none; color:black}
@@ -156,7 +164,7 @@ body *{
                 </a> 
             </div>
             <div id="shoppingCart">
-                <a href="">
+                <a href="<%= contextPath %>/cart.my">
                     <img src="resources/img/shopping_cart.png" alt="">
                 </a>
             </div>

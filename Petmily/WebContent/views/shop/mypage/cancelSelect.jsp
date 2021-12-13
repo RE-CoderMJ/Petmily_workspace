@@ -6,58 +6,85 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-         div, img, li, a{
+        div, img, li, a{
 		     box-sizing: border-box;
 		}
 		     
+		     
+		.oouter{
+			width: 1600px;
+			height: 1000px;
+			margin:auto;
+		}     
 		.content-area{
-			width: 1400px;
+			width: 1600px;
 			height: 1000px;
 			padding:200px;
 			padding-top:0px;
+			margin:auto;
+			
 		}
-        .title{ 
-            color:rgb(94,94,94); /* 색상 바꾸기 */
+	 	#outer{
+            width:1200px;
+            border: 1px soild black;
+            margin:auto;
+            margin-left:100px;
+        }
+       .title{
+            color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
-            margin:20px;
-            margin-left:10px;
+            margin-bottom:20px;
+			margin-left:10px;
         } 
-
-		.outer{
-		margin-left:150px;
-		width:1400px;
-		}
+        .div1{
+        margin-left:40px;
+        margin-bottom:20px;
+        cursor:pointer;
+        }
         /*기간 버튼 클릭시 색 변경*/
         .div2 {
-        width: 70px;
-        height: 30px;
-        padding-top:5px;
-        padding-left:17px;
-        border-radius: 5px;
-        margin:10px;
-        background-color: rgb(213,213,213); /* 색상 바꾸기 */
+	        width: 70px;
+	        height: 40px;
+	        padding-top:10px;
+	        padding-left:17px;
+	        border-radius: 5px;
+	        margin:10px;
+	        background-color: rgb(235, 235, 235); 
       }
 
       .clicked {
-        background-color: gold; /* 색상 바꾸기 */
+        	background-color: rgb(247, 198, 4);
       }
 
       /*내역 테이블*/
       #cancel-content{
-          width:700px;
+          width:1100px;
           border:1px solid #444444;
           border-collapse: collapse;
           text-align: center;
-          margin:10px;
+          margin:auto;
+          margin-bottom:20px;
           padding-top: 30px;
       }
 
-      th, td {
+      th{
          border: 1px solid #444444;
          padding:5px;
+         font-size:20px;
       }
-
+      
+      td{
+      	 border: 1px solid #444444;
+         padding:5px;
+         font-size:18px;
+      }
+      
+      /* 취소환불과정*/
+	 #process{
+	 margin:auto;
+	 text-align:center;
+	 }
       #process1, #process2, #process3, #process4 {
           font-size: 20px;
           text-align: center;
@@ -69,12 +96,25 @@
       }
 
       .process-content{
-          font-size: 12px;
+          font-size: 15px;
           color:gray;
           margin:20px 20px
       }
 
 
+	/* 페이징바 스타일 */
+	.paging-area{
+		margin:auto;
+		text-align:center;
+	}
+	/* 페이징바 */
+	.paging-area button{
+		border:  0;
+		background-color: transparent;
+		height: 40px;
+		width: 40px;
+		border-radius: 5px;
+	}
 
 
 
@@ -84,10 +124,13 @@
 </head>
 <body>
 <%@ include file="../../common/menubar.jsp" %>
+
+<div class="oouter">
+
 <%@ include file="mypageSidebar.jsp" %>
 	
     <div class="content-area">
-    <div class="outer">
+    <div id="outer">
     	 <div class="title">취소/환불 내역 조회</div>
          <hr>
 
@@ -142,14 +185,18 @@
     
         </table>
 
-        <div class="paging-area" align="center">
-            <button class="pagging inline-block">&lt</button>
-            <button class="pagging inline-block">1</button>
-            <button class="pagging inline-block">2</button>
-            <button class="pagging inline-block">3</button>
-            <button class="pagging inline-block">4</button>
-            <button class="pagging inline-block">&gt</button>
-        </div>
+       <br><br>
+	 <!-- 페이징 바 -->
+	    <div class="paging-area" >
+            <button> &lt; </button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button> &gt; </button>
+	    </div>
+
 
         <br><br>
 
@@ -194,7 +241,8 @@
 
 
     </div>
-
+<%@ include file="../../common/footerbar.jsp" %>
+</div>
     <script>
         var div2 = document.getElementsByClassName("div2");
 
@@ -223,9 +271,17 @@
         }
 
         init();
+        
+        
+        $(function(){
+            $(".paging-area button").click(function(){
+                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+            })
+        })
+
     </script>
     
 
-<%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>

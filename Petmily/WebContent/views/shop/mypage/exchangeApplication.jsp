@@ -15,37 +15,44 @@
          div, img, li, a{
 		     box-sizing: border-box;
 		}
-		     
-		.content-area{
-			width: 1400px;
+		.oouter{
+			width: 1600px;
 			height: 1000px;
-			padding:200px;
-			padding-top:5px;
+			margin:auto;
+		}     
+		.content-area{
+			width: 1200px;
+			height: 1000px;
+			padding:100px;
+			padding-top:0px;
+			margin:auto;
 		}
-        #title{
+
+       #title{
             color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
             margin-bottom:20px;
-            margin-left:150px;
+            margin-left:10px;
         } 
         #outer{
-            width:800px;
+            width:1000px;
             border: 1px solid rgb(94,94,94);
-            padding: 10px 20px;
             border-radius: 10px;
-            position: relative;
-            margin-left:200px;
+            padding: 50px 20px;
+            margin:auto;
+
         }
+       
         
         #content-img{margin-left: 30px;}
         #onecontent{
-            position: absolute;
-            top:25px;
+        	position:relative;
+        	top:20px;
             font-size: 20px;
             margin-left: 30px;
         }
-        #money{position:absolute; right:50%; top:30px; font-size:18px;}
+        #money{position:relative; left:500px; top:30px; font-size:18px;}
 
         #two{
             margin:10px 30px;
@@ -60,10 +67,17 @@
             font-weight: 600;
             margin:3px 0px;
         }
-        th,td{
-            padding-right: 40px;
-        }
+        
 
+	  th{
+         padding-right: 40px;
+         font-size:20px;
+      }
+      
+      td{
+      	 padding-right: 40px;
+         font-size:18px;
+      }
         #bbtn1{ 
             color:white;
             background-color:rgb(99, 96, 96) ; /*색 바꾸기*/
@@ -73,8 +87,8 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:550px;
-            top:480px;
+            left:1500px;
+            top:780px;
         }
         
         #bbtn2{ 
@@ -86,9 +100,12 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:650px;
-            top:480px;
+            left:1600px;
+            top:780px;
         }
+        
+        .modal-backdrop { opacity:0.1 !important; }
+
        
         .inline-block{display:inline-block;}
     </style>
@@ -96,11 +113,14 @@
 
 <body>
 <%@ include file="../../common/menubar.jsp" %>
+
+<div class="oouter">
+
 <%@ include file="mypageSidebar.jsp" %>
 
 <div class="content-area">
 
-    <div id="title" class="inline-block" >교환 / 반품 신청</div>
+    <div id="title"  >교환 / 반품 신청</div>
 
     <div id="outer">
 
@@ -111,7 +131,7 @@
             
             <div class="inline-block"  id="onecontent" >
                         
-                상품명
+               	 상품명
                 <br>
 
                 <div id="option" style="font-size:12px; margin-top: 5px;">블루 1개</div>
@@ -214,7 +234,8 @@
       </button>
 
 
-    <div class="modal" id="cancel" style="background: rgba(0, 0, 0, 0.8);">
+    <!-- <div class="modal" id="cancel" style="background: rgba(0, 0, 0, 0.8);"> -->
+    <div class="modal" id="cancel">
         <div class="modal-dialog">
           <div class="modal-content" style="background-color: gray;">
       
@@ -262,7 +283,7 @@
     </div>
 
 </div>
-
+</div>
 
     
 <%@ include file="../../common/footerbar.jsp" %>

@@ -9,33 +9,42 @@
  		div, img, li, a{
 		     box-sizing: border-box;
 		}
-		     
+		.oouter{
+			width: 1600px;
+			height: 1000px;
+			margin:auto;
+		}     
 		.content-area{
-			width: 1400px;
+			width: 1600px;
 			height: 1000px;
 			padding:200px;
 			padding-top:0px;
+			margin:auto;
 		}
+		
          #outer{
             width:1000px;
             height:600px;
             border: 1px soild black;
-            background-color: rgb(213,213,213);
-            padding: 10px 20px;
+            background-color: rgb(235, 235, 235);
+            padding: 0px 20px;
             text-align: center;
-            margin-left:200px;
+            margin:auto !important;
         }
         #like-content{
             text-align: center;
             margin:50px 30px;
-            font-size: 15px;
+            font-size: 18px;
         }
         .inline-block{display:inline-block;}
     </style>
 </head>
 <body>
 <%@ include file="../../common/menubar.jsp" %>
-<%@ include file="myPageSidebar2.jsp" %>
+
+<div class="oouter">
+
+<%@ include file="mypageSidebar.jsp" %>
 
 <div class="content-area">
 
@@ -150,7 +159,8 @@
         </div>
 
     </div>
- </div>
 <%@ include file="../../common/footerbar.jsp" %> 
+ </div>
+</div> 
 </body>
 </html>

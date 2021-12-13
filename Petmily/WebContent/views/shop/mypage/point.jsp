@@ -11,19 +11,27 @@
 		     box-sizing: border-box;
 		}
 		     
+		     
+		.oouter{
+			width: 1600px;
+			height: 1000px;
+			margin:auto;
+		}     
 		.content-area{
-			width: 1400px;
+			width: 1600px;
 			height: 1000px;
 			padding:200px;
-			padding-top:35px
+			padding-top:0px;
+			margin:auto;
 		}
-        #title{
+
+       #title{
             color:rgb(94,94,94);
             font-size: 30px;
             font-weight: 900;
-            margin-left:150px;
+            margin-bottom:20px;
+			margin-left:100px;
         } 
-      
 
         #pointview{
             width:300px;
@@ -32,7 +40,7 @@
             border-radius: 13px;
             color:white;
             position:relative;
-            margin-left:200px;
+            margin-left:100px;
             margin-bottom:20px;
         }
         #point1{
@@ -54,7 +62,7 @@
             border: 1px soild black;
             background-color: rgb(213,213,213);
             padding: 10px 20px;
-            margin-left:200px;
+            margin-left:100px;
             margin-bottom: 20px;
         }
         #date{
@@ -75,8 +83,8 @@
 
 		/* 페이징바 스타일 */
 		.paging-area{
-		margin-top: 100px;
-		margin-left:580px;
+		margin:auto;
+		text-align:center;
 		}
 		/* 페이징바 */
 		.paging-area button{
@@ -93,10 +101,13 @@
 
 <body>
 <%@ include file="../../common/menubar.jsp" %>
+
+<div class="oouter">
+
 <%@ include file="mypageSidebar.jsp" %>
  
-<div id="title" class="inline-block" >포인트 사용 및 적립내역 조회</div>
 <div class="content-area">
+<div id="title" >포인트 사용 및 적립내역 조회</div>
 
 <div class="inline-block" id="pointview">
     <div class="inline-block" id="point1">보유</div>
@@ -170,6 +181,8 @@
     </div>
 
 </div>
+<%@ include file="../../common/footerbar.jsp" %>
+</div>
 
  <script>
         $(function(){
@@ -182,6 +195,5 @@
 
 
 
-<%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>
