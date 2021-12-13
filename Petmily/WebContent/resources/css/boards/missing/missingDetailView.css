@@ -28,11 +28,6 @@ a{
     height: 30px;
     margin-bottom: -12px;
 }
-/* 제목 */
-#title{
-    font-size: 18px;
-    font-weight: bolder;
-}
 /* 글쓰기 버튼 */
 #enroll{
 	height: 27px;
@@ -91,7 +86,7 @@ a{
     height: 100%;
 }
 
-/* 입력부분 스타일 */
+/* 내용부분 스타일 */
 #input-area{
     width: 500px;
     height: 400px;
