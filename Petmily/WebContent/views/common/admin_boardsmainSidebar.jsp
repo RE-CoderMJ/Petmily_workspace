@@ -4,7 +4,7 @@
     <html>
     <head>
     <meta charset="UTF-8">
-    <title>admin_boardsmainSidebar</title>
+    <title>admin boards</title>
     
     <style>
       /*사이드바 스타일*/
@@ -13,6 +13,7 @@
             width: 350px;
             height: 800px;
             position: relative;
+            position: fixed;
             /* margin-top: 70px; */
         }
         /* 사이드바 큰 제목 스타일 */
@@ -21,7 +22,7 @@
             font-weight: bolder;
             font-size: 25px;
             position: absolute;
-            left:90px;
+            /*left:90px;*/
         }
         /* 사이드바 스타일*/
         .d-category{
@@ -43,7 +44,7 @@
         #d-category{
             position: absolute;
             top:80px;
-            left: 90px;
+            /*left: 90px;*/
             font-weight: bolder;
         }
 
@@ -64,7 +65,7 @@
                 <ul>
                     <div id="category">게시판 관리</div>
                     <div id="d-category">
-                        <div class="d-category" id="boards"><a href="<%= contextPath %>/adminList.bo" class="link">전체 게시글 조회</a></div>
+                        <div class="d-category" id="boards" onclick="location.href='<%= contextPath %>/adminList.bo';">전체 게시글 조회</a></div>
                     </div>
                 </ul>
             </div>

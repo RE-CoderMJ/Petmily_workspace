@@ -5,13 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	
-	<style>
-	
+<style>
         /* 큰 틀 */
         .outer{
             width:1100px;
-            height:800px;
+            height:auto;
+            margin:auto;
         }
         .outer>div{
             float:left;
@@ -19,7 +18,7 @@
         
         /* 맨위 현재게시판이름 */
         .top{
-            width:750px;
+            width:1100px;
         }
         
         /* 버튼들(등록,수정,삭제) */
@@ -31,8 +30,9 @@
         
         /* 테이블 + 페이징 바 */
         .tablepaging{
-            width:750px;
+            width:1100px;
             float:center;
+            text-align:center;
         }
         
         /* 페이징바 */
@@ -43,12 +43,11 @@
             width: 40px;
             border-radius: 5px;
         }
-    </style>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<!-- 메뉴바 -->
@@ -104,8 +103,36 @@
         <div class="right" id="right">
             <div>
                 <a href="<%= contextPath %>/adminEnrollForm.faq" class="btn btn-sm btn-warning">등록</a>
-                <a href="" class="btn btn-sm btn-warning">수정</a>
-                <a href="" class="btn btn-sm btn-danger">삭제</a>
+                <a href="<%= contextPath %>/adminUpdateForm.faq" class="btn btn-sm btn-warning">수정</a>
+                
+                <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+    삭제
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        
+        <!-- Modal body -->
+        <div class="modal-body" align="center">
+          	정말로 삭제하시겠습니까?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+                
+                
+                
                 <br><br>
             </div>
         </div>
@@ -117,11 +144,11 @@
                     <thead>
                         <tr>
                             <th width="50"><input type="checkbox" name="" value=""></th>
-                            <th width="200">번호</th>
+                            <th width="100">번호</th>
                             <th width="200">분류</th>
-                            <th width="700">제목</th>
+                            <th width="500">제목</th>
                             <th width="150">작성자</th>
-                            <th width="200">작성일</th>
+                            <th width="100">작성일</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,7 +163,7 @@
                             <td>12</td>
                             <td>개인정보처리방침 안내</td>
                             <td>펫밀리</td>
-                            <td>2021-12-04</td>
+                            <td>21-12-04</td>
                         </tr>
                     </tbody>
                 </table>
@@ -170,7 +197,7 @@
         })
     </script>
     
-    </div>
+</div>
 
 </body>
 </html>

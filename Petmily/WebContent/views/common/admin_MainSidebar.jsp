@@ -12,6 +12,8 @@
         height: 800px; 
         float: left;
         margin:20px;
+        position: relative;
+        position: fixed;
     }
     .sidebar-area>div{
         width: 100%;
@@ -71,20 +73,21 @@
                 
                 <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
-                    <li><a href="" id=""><a href="<%= contextPath %>/adminMain.bo" id="allboards">전체 게시글 조회</a></li>
+                    <li><a href="<%= contextPath %>/adminList.bo" id="allboards">전체 게시글 조회</a></li>
                 </ul>
 
-                <div class="aMenu" id=""><a href="<%= contextPath %>/adminMain.pl" id="petlog">Petlog</div>
+                <div class="aMenu" id="">Petlog</div>
                 <ul>
-                    <li><a href="" id="ort">피드관리</a></li>
+                    <li><a href="<%= contextPath %>/adminMain.pl" id="petlog">피드관리</a></li>
                 </ul>
 
                 <div class="aMenu" id="">고객센터</div>
                 <ul>
-                    <li><a href="" id="">공지사항 관리</a></li>
+                    <li><a href="<%= contextPath %>/adminList.no" id="notice">공지사항 관리</a></li>
                     <li><a href="<%= contextPath %>/adminList.faq" id="faq">FAQ 관리</a></li>
-                    <li><a href="" id="">Q&A문의/상품문의 관리</a></li>
-                    <li><a href="" id="">리뷰 관리</a></li>
+                    <li><a href="<%= contextPath %>/adminList.qna" id="qna">Q&A문의 관리</a></li>
+                    <li><a href="<%= contextPath %>/adminList.iq" id="inquiry">상품문의 관리</a></li>
+                    <li><a href="<%= contextPath %>/adminMain.rv" id="review">리뷰 관리</a></li>
                 </ul>
 
                 <div class="aMenu" id="">신고관리</div>

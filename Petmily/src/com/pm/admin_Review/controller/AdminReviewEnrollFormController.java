@@ -27,7 +27,7 @@ public class AdminReviewEnrollFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/notice/adminNoticeEnrollForm.jsp").forward(request,response);
+		request.getRequestDispatcher("views/admin/review/adminReviewEnrollForm.jsp").forward(request,response);
 	}
 
 	/**

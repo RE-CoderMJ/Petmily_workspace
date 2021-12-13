@@ -8,29 +8,44 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:700px;
-        height:800px;
-        float:left;
+        width:1100px;
+        height:auto;
+        margin:auto;
+    }
+    .outer div{
+    	float:left;
     }
     /* 회색바 현재게시판이름*/
     .top{
-    	width:700px;
+    	width:1100px;
     	height:150px;
     }
     /* 답변 등록,삭제 버튼 2개*/
     .buttons{
-    	width:700px;
+    	width:100%;
     }
     /* 상품명 검색바*/
     .middle{
     	width:400px;
     }
     /* 리뷰 조회 테이블 */ 
-    .reviewtable{
-    	width:700px;
+    #reviewtable{
+    	width:1100px;
     	font-size:13px;
     	text-align:center;
     }
+        /* 페이징바 */
+        .paging-area{
+			margin:auto;
+		}
+        
+       .paging-area button{
+            border:  0;
+            background-color: transparent;
+            height: 40px;
+            width: 40px;
+            border-radius: 5px;
+        }
 
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -77,26 +92,27 @@
 
     	<!-- 버튼들(등록, 삭제) -->
         <div class="buttons" align="right">
-            <a href="" class="btn btn-sm btn-warning">답변 등록</a>
+            <a href="<%= contextPath %>/adminEnrollForm.rv" class="btn btn-sm btn-warning">답변 등록</a>
             <a href="" class="btn btn-sm btn-danger">답변 삭제</a>
             <br><br>
         </div>
+        
 
 
 
-		<div class="reviewtable">
+
 	    <!-- 조회 테이블 -->
-	    <div class="table table-bordered" >
+	    <div class="table table-bordered" id="reviewtable">
 	        <table>
 	            <thead>
 	                <tr>
 	                    <th width="50"><input type="checkbox" name="" value=""></th>
 	                    <th width="100">번호</th>
-	                    <th width="200">등록일</th>
+	                    <th width="100">등록일</th>
 	                    <th width="150">상품명</th>
-	                    <th width="400">리뷰 내용</th>
+	                    <th width="500">리뷰 내용</th>
 	                    <th width="100">아이디</th>
-	                    <th width="150">처리상태</th>
+	                    <th width="100">처리상태</th>
 	                </tr>
 	            </thead>
 	            <tbody>
@@ -114,12 +130,35 @@
 	                    <td>sql</td>
 	                    <td>미답변</td>
 	                </tr>
+	                <tr>
+	                    <td>v</td>
+	                    <td>12</td>
+	                    <td>2021-12-04</td>
+	                    <td>챠오츄르</td>
+	                    <td>맛있대요</td>
+	                    <td>sql</td>
+	                    <td>미답변</td>
+	                </tr>
+	                <tr>
+	                    <td>v</td>
+	                    <td>12</td>
+	                    <td>2021-12-04</td>
+	                    <td>챠오츄르</td>
+	                    <td>맛있대요</td>
+	                    <td>sql</td>
+	                    <td>미답변</td>
+	                </tr>
 	            </tbody>
+	            
+	            
+	            
 	        </table>
+	       
+	        <!-- 페이징 바 -->
+
+	        
 		</div>
-    
-    	<!-- 페이징 바 -->
-        <div class="paging-area" align="center">
+    		<div class="paging-area" align="center">
         	<button> &lt; </button>
             <button>1</button>
             <button>2</button>
@@ -128,8 +167,11 @@
             <button>5</button>
             <button> &gt; </button>
         </div>
+
     </div>
-</div>
+
+            
+
 
 	<!-- 페이징 바 -->
 	<script>

@@ -12,6 +12,7 @@
             width: 350px;
             height: 800px;
             position: relative;
+            position: fixed;
             /* margin-top: 70px; */
         }
         /* 사이드바 큰 제목 스타일 */
@@ -20,7 +21,7 @@
             font-weight: bolder;
             font-size: 25px;
             position: absolute;
-            left:90px;
+            /*left:90px;*/
         }
         /* 사이드바 스타일*/
         .d-category{
@@ -42,7 +43,7 @@
         #d-category{
             position: absolute;
             top:80px;
-            left: 90px;
+            /*left: 90px;*/
             font-weight: bolder;
         }
 
@@ -63,19 +64,19 @@
                 <ul>
                     <div id="category">고객센터</div>
                     <div id="d-category">
-                        <div class="d-category" id="notice">공지사항 관리</div>
+                        <div class="d-category" id="notice" onclick="location.href='<%= contextPath %>/adminList.no';" id="notice">공지사항 관리</div>
         
-                        <div class="d-category" id="faq">FAQ 관리</a></div>
+                        <div class="d-category" id="faq" onclick="location.href='<%= contextPath %>/adminList.faq';">FAQ 관리</a></div>
         
-                        <div class="d-category" id="qna">Q&A문의 관리</div>
+                        <div class="d-category" id="qna" onclick="location.href='<%= contextPath %>/adminList.qna';">Q&A문의 관리</div>
                         
-                        <div class="d-category" id="qna">상품문의 관리</div>
+                        <div class="d-category" id="qna" onclick="location.href='<%= contextPath %>/adminList.iq';">상품문의 관리</div>
         
-                        <div class="d-category" id="review"><!--<a href="" class="link">-->리뷰 관리</div>
+                        <div class="d-category" id="review" onclick="location.href='<%= contextPath %>/adminMain.rv';">리뷰 관리</div>
                     </div>
                 </ul>
             </div>
-            
+
         <script>
         $(function(){
             $(".d-category").click(function(){

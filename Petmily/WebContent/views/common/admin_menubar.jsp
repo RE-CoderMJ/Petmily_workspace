@@ -75,7 +75,7 @@
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
-                <a href="">
+                <a href=""><a href="<%= contextPath %>/admin.main" id="adminmain">
                 <img style="width: 350px;" src="resources/img/logo_side.png" alt="">
             	</a>
             </div>  
@@ -86,9 +86,9 @@
                 <div class="menu-box">
                     <div class="menu"><a href="<%= contextPath %>/memMg.ad">회원관리</a></div> 
                     <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
-                    <div class="menu"><a href="<%= contextPath %>/adminMain.bo">게시판관리</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/adminList.bo">게시판관리</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminMain.pl">Petlog</a></div>
-                    <div class="menu"><a href="<%= contextPath %>/main.cus">고객센터</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/adminCus.main">고객센터</a></div>
                     <div class="menu"><a href="<%= contextPath %>/nfList.ad">신고관리</a></div>
                 </div>
                 <a class="logout" href="<%= contextPath %>/login.ad">로그아웃</a>
