@@ -97,7 +97,7 @@
 				<div class="replies">
 					<div class="profile-pic"></div>
 					<div class="user-name">choco22</div>
-					<div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+					<div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
 					<a href="" class="btn delete-btn">x</a>
 					<div class="reply-info">xxxx-xx-xx &nbsp;&nbsp; <a href="">수정</a><a href="">신고</a></div>
 					
@@ -109,8 +109,8 @@
 					<div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
 					<a href="" class="btn delete-btn">x</a>
 					<div class="reply-info">xxxx-xx-xx &nbsp;&nbsp; <a href="">수정</a><a href="">신고</a></div>
-				</div>
 					<!--<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>-->
+				</div>
 			</div>
 	        
 	        <%@ include file="../bCommon/boardPagingBar.jsp" %>

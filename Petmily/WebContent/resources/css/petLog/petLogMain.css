@@ -1,0 +1,27 @@
+div{border:solid 1px black;}
+body{position:relative;}
+#outer{
+	margin-top:-71px;
+}
+#outer > div{
+    height:1000px;
+}
+#left-bar{
+    height: 1000px;
+    width: 15%;
+    background: rgb(253, 245, 213);
+    position:absolute;
+    left:0;
+}
+#right-bar{
+    height: 1000px;
+    width: 15%;
+    background: rgb(253, 245, 213);
+    position:absolute;
+    right:0;
+}
+#middle-area{
+	width:1616px;
+	height:900px;
+	margin:auto;
+}

@@ -1,5 +1,4 @@
 /* 댓글영역 */
-div{border:solid 1px black;}
 #reply-top{
     height: 32px;
     margin-bottom: 30px;
@@ -60,6 +59,7 @@ div{border:solid 1px black;}
     padding-left: 10px;
     height:auto;
 	min-height:80px;
+    overflow:hidden;
 }
 .user-name, .reply-content {
     float: left;
@@ -80,9 +80,9 @@ div{border:solid 1px black;}
 .reply-content{
     font-size: 13px;
     white-space: pre-line;
-    width:680px;
     height:auto;
-    overflow:visible;
+    margin-bottom:10px;
+    width:680px;
 }
 .delete-btn{
     margin-left: 10px;
@@ -91,7 +91,7 @@ div{border:solid 1px black;}
     font-weight: bolder;
 }
 .reply-info{
-    height: 20px;
+    height: auto;
     width: 130px;
     font-size: 11px;
     margin-left:40px;

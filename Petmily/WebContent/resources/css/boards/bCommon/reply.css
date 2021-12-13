@@ -52,13 +52,16 @@
 /* 댓글조회영역 스타일 */
 .replies{
     margin-top: 16px;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
     margin-left: -40px;
     width: 850px;
     background-color: rgb(240, 239, 239);
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
+    height:auto;
+	min-height:80px;
+    overflow:hidden;
 }
 .user-name, .reply-content {
     float: left;
@@ -78,9 +81,17 @@
 }
 .reply-content{
     font-size: 13px;
+    white-space: pre-line;
+    height:auto;
+    margin-bottom:10px;
+    width:680px;
+    text-align: left;
 }
 .delete-btn{
-    margin-right: -300px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: rgb(92, 92, 92);
+    font-weight: bolder;
 }
 .reply-info{
     width: 160px;
