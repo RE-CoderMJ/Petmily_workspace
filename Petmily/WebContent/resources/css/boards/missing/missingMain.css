@@ -225,3 +225,8 @@ cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.dpf-area >div{
+	text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}

@@ -141,9 +141,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="found-title">보호하고있어요</div>
 	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div>발견일자 : 2021년 11월 12일
-	                  <br>발견지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -155,9 +156,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="found-title">보호하고있어요</div>
 	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div>발견일자 : 2021년 11월 12일
-	                  <br>발견지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -169,9 +171,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="found-title">보호하고있어요</div>
 	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div>발견일자 : 2021년 11월 12일
-	                  <br>발견지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -183,9 +186,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="found-title">보호하고있어요</div>
 	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div>발견일자 : 2021년 11월 12일
-	                  <br>발견지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -197,9 +201,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="missing-title">찾고있어요</div>
 	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div>실종일자 : 2021년 11월 12일
-	                  <br>실종지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -211,9 +216,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="missing-title">찾고있어요</div>
 	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div>실종일자 : 2021년 11월 12일
-	                  <br>실종지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -225,9 +231,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="missing-title">찾고있어요</div>
 	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div>실종일자 : 2021년 11월 12일
-	                  <br>실종지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>
@@ -239,9 +246,10 @@
 	            <div class="content-info-area" align="left">
 	               <div class="missing-title">찾고있어요</div>
 	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div>실종일자 : 2021년 11월 12일
-	                  <br>실종지역 : 구갈동 ak플라자 앞
-	                  <br>신체특징 : 귀가 큼
+	               <div class="dpf-area">
+	               	  <div>발견일자 : 2021년 11월 12일</div>
+	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
+	                  <div>신체특징 : 귀가 큼</div>
 	               </div>
 	            </div>
 	         </div>

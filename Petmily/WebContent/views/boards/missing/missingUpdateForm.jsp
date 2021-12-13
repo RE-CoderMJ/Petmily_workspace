@@ -100,9 +100,9 @@
 	                </div>
 	                <div id="age-area">
 	                    <span style="margin-right: 49px;">나이</span>
-	                    <input type="number" name="mpAgeFrom" required>
+	                    <input type="number" min="0" name="mpAgeFrom" required>
 	                    <span>세 ~</span>
-	                    <input type="number" name="mpAgeTo" id="mpAgeTo" required>
+	                    <input type="number" min="1" name="mpAgeTo" id="mpAgeTo" required>
 	                    <span>세</span>
 	                </div>
 	                <div id="missing-date-area">

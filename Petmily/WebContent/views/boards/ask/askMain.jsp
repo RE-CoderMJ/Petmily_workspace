@@ -69,9 +69,15 @@
 	            <div class="number">1</div>
 	            <div class="photo"></div>
 	            <div class="texts">
-	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
+	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요..</div>
 	               <div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
-	               <div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
+	               <div class="text" align="left">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
+	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
+	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
+	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
+	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
+	               
+	               </div>
 	            </div>
 	         </div>
 	         <div class="contents">

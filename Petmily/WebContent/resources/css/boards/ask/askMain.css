@@ -100,7 +100,7 @@ div, img, li, a{
    width: 130px;
 }
 /* 제목, 내용, 작성날짜, 작성자, 댓글수, 조회수 */
-.texts{width:70%;}
+.texts{width:850px;}
 .texts>div{float: left;}
 .title{
    font-weight: bolder;
@@ -109,6 +109,9 @@ div, img, li, a{
    width: 60%;
    height: 21%;
    margin-top: 7px;
+   text-overflow:ellipsis;
+   white-space:nowrap;
+   overflow:hidden;
 }
 .info{
    font-size: 13px;
@@ -122,4 +125,14 @@ div, img, li, a{
 .photo{
    border: 1px solid black;
    margin-right: 25px;
+}
+.text{
+   width: 850px;
+   text-align: left;
+   text-overflow:ellipsis;
+   overflow:hidden;
+   display: -webkit-box !important;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   white-space: normal;
 }

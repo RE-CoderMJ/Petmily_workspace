@@ -93,6 +93,9 @@ div, img, li, a{
 #name-area>span{
     margin-right: 49px;
 }
+#name-area>input{
+	padding-left:5px;
+}
 /* 나이 */
 #age-area>input{
     width: 40px;
@@ -104,6 +107,7 @@ div, img, li, a{
 /* 발생장소 */
 #missing-place-area>input{
     width: 300px;
+    padding-left:5px;
 }
 #missing-place-area>div{
     font-size: 12px;
@@ -117,6 +121,7 @@ div, img, li, a{
     height: 60px;
     resize: none;
     position: absolute;
+    padding-left:5px;
 }
 #feature-area>div{
     font-size: 12px;

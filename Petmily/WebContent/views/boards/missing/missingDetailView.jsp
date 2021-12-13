@@ -89,13 +89,12 @@
 					<span>2021.11.12</span>
 				</div>
 				<div id="missing-place-area">
-					<span class="info-title">발생장소</span>
-					<span>서울시 도봉구 벚꽃아파트 101동</span>
+					<div class="adTitle info-title">발생장소</div>
+					<div class="address-content">서울시 도봉구 벚꽃아파트 101동</div>
 				</div>
 				<div class="feature-area">
 					<span class="info-title">신체특징</span>
-					<div>
-						엉덩이쪽에 큰 갈색 반점, 시츄, 겁이 많음,
+					<div>엉덩이쪽에 큰 갈색 반점, 시츄, 겁이 많음,
 						이름을 불러주면 쳐다봄
 					</div>
 				</div>
@@ -126,8 +125,8 @@
 					<span>2021.11.12</span>
 				</div>
 				<div id="missing-place-area">
-					<span class="info-titleF">발견장소</span>
-					<span>서울시 도봉구 벚꽃아파트 101동</span>
+					<div class="adTitle info-title">발견장소</div>
+					<div class="address-content">서울시 도봉구 벚꽃아파트 101동</div>
 				</div>
 				<div class="feature-area">
 					<span class="info-titleF">신체특징</span>

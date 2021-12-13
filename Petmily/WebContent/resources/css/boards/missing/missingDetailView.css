@@ -1,5 +1,6 @@
 div, img, li, a, span{
     box-sizing: border-box;
+    border: soli 1px black;
 }
 .content-area{
 	width: 1400px;
@@ -89,10 +90,11 @@ a{
 /* 내용부분 스타일 */
 #input-area{
     width: 500px;
-    height: 400px;
+    height: auto;
     margin-left: 495px;
     margin-top:60px;
-    margin-bottom:80px;
+    margin-bottom:100px;
+    min-height:400px;
 }
 #input-area>div{
     text-align: left;
@@ -102,7 +104,7 @@ a{
 .info-title{
     color: rgb(214, 94, 1);
     font-weight: bolder;
-    margin-right: 20px;
+    margin-right: 20px;   
 }
 .info-titleF{
     color: rgb(2, 68, 2);
@@ -133,13 +135,25 @@ a{
 .missing-date-area>span{
     margin-right: 36px;
 }
+/* 발생장소 */
+.adTitle{
+	width:65px;
+	float:left;
+}
+.address-content{
+	white-space: pre-wrap;
+	height:auto;
+	width:370px;
+	margin-left:80px;
+}
 /* 신체특징 */
 .feature-area>span{
     float: left;
 }
 .feature-area>div{
-    margin-left: 90px;
-    width: 350px;
-    height: 100px;
+    margin-left: 80px;
+    width: 370px;
+    height: auto;
+    white-space: pre-line;
 }
 

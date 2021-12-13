@@ -40,5 +40,6 @@ div, img, li, a{
 #content{
 	margin-top: 40px;
 	text-align: left;
-	height: 350px;
+	height: auto;
+	white-space: pre-wrap;
 }

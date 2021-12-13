@@ -46,9 +46,7 @@
 						<span class="required" id="title-required">*</span>
 					</div>
 					<div>
-						<textarea name="texts" id="texts" required>
-			
-						</textarea>
+						<textarea name="texts" id="texts" required></textarea>
 						<span class="required" id="texts-required">*</span>
 					</div>
 					

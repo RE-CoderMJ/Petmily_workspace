@@ -64,6 +64,8 @@ div, img, li, a{
    width: 700px;
    margin-top: 20px;
    margin-left: 150px;
+   padding-left: 10px;
+   padding-right: 10px;
 }
 #title-required{
    position: absolute;
@@ -77,6 +79,7 @@ div, img, li, a{
    margin-top: 30px;
    margin-left: 150px;
    resize: none;
+   padding:10px;
 }
 #texts-required{
    position: absolute;
