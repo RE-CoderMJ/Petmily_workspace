@@ -59,7 +59,7 @@
 								
 							</textarea>
 						-->
-						<input type="file">
+						<input type="file" multiple>
 					</div>
 					<div id="btn-area" align="right">
 						<button class="btn">올리기</button>

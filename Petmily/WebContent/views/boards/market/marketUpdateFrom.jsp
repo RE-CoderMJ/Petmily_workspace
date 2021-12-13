@@ -48,7 +48,7 @@
 	            </div>
 	            <div id="file-upload-area">
 	                <p>사진<br>첨부</p>
-	                <input type="file">
+	                <input type="file" multiple>
 	            </div>
 	        </div>
 	
