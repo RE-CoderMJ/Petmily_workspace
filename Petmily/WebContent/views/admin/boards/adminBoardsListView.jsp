@@ -8,8 +8,9 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:1100px;
-        height:800px;
+        width:1000px;
+        height:auto;
+        margin:auto;
     }
     .outer>div{
         float:left;
@@ -17,20 +18,21 @@
 
     /* 상단 회색바 */
     .top{
-        width:700px;
+        width:1000px;
     }
     /* 3개 게시판별 조회 */
     .middle{
-        width:700px;
+        width:1000px;
         height:120px;
     }
     .middle div{
-        width:150px;
+        width:300px;
         float:left;
         text-align:center;
         line-height:35px;
         font-weight:900;
         font-size:15px;
+        cursor:pointer;
     }
     .middle>div{
         margin:10px;
@@ -39,7 +41,7 @@
   
     /* 버튼(등록,수정,삭제), 테이블, 페이징바 */
     .bottom{
-        width:700px;
+        width:1000px;
         float:center;
         padding-top:20px;
     }
@@ -103,7 +105,40 @@
 
 			<!-- 오른쪽 버튼 -->
             <div class="adminbutton" align="right">
-                <a href="" class="btn btn-sm btn-danger">삭제</a>
+            
+            
+            
+            
+                
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+    삭제
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        
+        <!-- Modal body -->
+        <div class="modal-body" align="center">
+          	정말로 삭제하시겠습니까?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+                
+                
+                
+            
                 <br><br>
             </div>
 			
@@ -115,9 +150,9 @@
                             <th width="50"><input type="checkbox" name="" value=""></th>
                             <th width="100">번호</th>
                             <th width="100">아이디</th>
-                            <th width="300">게시판 제목</th>
-                            <th width="200">동물 분류</th>
-                            <th width="400">글 제목</th>
+                            <th width="150">게시판 제목</th>
+                            <th width="150">동물 분류</th>
+                            <th width="450">글 제목</th>
                             <th width="100">작성일</th>
                         </tr>
                     </thead>
@@ -134,7 +169,7 @@
                             <td>찾고있어요</td>
                             <td>강아지</td>
                             <td>우리집 코코를 찾아주세요</td>
-                            <td>21.11.15</td>
+                            <td>21-11-15</td>
                         </tr>
                     </tbody>
                 </table>
@@ -145,8 +180,8 @@
             <div class="adminselect">
                 <select>
                     <option>궁금해요</option>
-                    <option>중고거래</option>
                     <option>찾고있어요</option>
+                    <option>중고거래</option>
                 </select>
                 <input type="text">
                 <button type="button" class="btn btn-light">검색</button>

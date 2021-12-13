@@ -8,25 +8,26 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:1200px;
-        height: 800px;
+        width:1100px;
+        height:auto;
+        margin:auto;
     }
-    .outer>div{
+    .outer div{
         float:left;
     }
 
 
         /* 상단 회색바 */
         .top{
-            width:700px;
-            height:70px;
-            margin:15px;
+            width:1100px;
+ 
+
         }
         /* 카테고리 분류 포함 검색창 */
         .middle{
-            width:700px;
-            height:300px;
-            padding-top:30px;
+            width:1100px;
+            height:auto;
+
         }
         .middle div{
             float:left;
@@ -36,9 +37,8 @@
         }
         /* 버튼(등록,수정,삭제), 테이블, 페이징바 */
         .bottom{
-            width:700px;
+            width:1100px;
             float:center;
-
         }
         .dropdown{
             padding-right:30px;
@@ -76,13 +76,13 @@
 	
 	    <!-- 상단 회색바 (게시판 이름) -->
 	    <div class="top">
-	        <br>
-	        <h2 style="color:gray">&gt; 관리자 고객센터</h2>
+			<br>
+	        	<h2 style="color:gray">&gt; 관리자 고객센터</h2>
 	        <hr>
-	        <h5>상품문의 관리</h5>
-	        <br>
-	        
+			<br>
+	        	<h5>상품문의 관리</h5>
 	    </div>
+	    <br><br><br>
 	
 	    <!-- 카테고리 및 검색창 -->
 	    <div class="middle">
@@ -123,9 +123,39 @@
 	    <div class="bottom">
 	
 	        <div class="rightbutton" align="right">
-	            <a href="" class="btn btn-sm btn-warning">등록</a>
+	            <a href="<%= contextPath %>/adminEnrollForm.iq" class="btn btn-sm btn-warning">등록</a>
 	            <a href="" class="btn btn-sm btn-warning">수정</a>
-	            <a href="" class="btn btn-sm btn-danger">삭제</a>
+	            
+	            
+	            
+	            
+	            
+	            <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+    삭제
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        
+        <!-- Modal body -->
+        <div class="modal-body" align="center">
+          	정말로 삭제하시겠습니까?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
 	            <br><br>
 	        </div>
 	    

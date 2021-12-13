@@ -4,7 +4,7 @@
     <html>
     <head>
     <meta charset="UTF-8">
-    <title>adminMemManager</title>
+    <title>admin petlog</title>
     <style>
       /*사이드바 스타일*/
       .sidebar-area{
@@ -12,6 +12,7 @@
             width: 350px;
             height: 800px;
             position: relative;
+            position: fixed;
             /* margin-top: 70px; */
         }
         /* 사이드바 큰 제목 스타일 */
@@ -20,7 +21,7 @@
             font-weight: bolder;
             font-size: 25px;
             position: absolute;
-            left:90px;
+            /*left:90px;*/
         }
         /* 사이드바 스타일*/
         .d-category{
@@ -38,7 +39,7 @@
         #d-category{
             position: absolute;
             top:80px;
-            left: 90px;
+            /*left: 90px;*/
             font-weight: bolder;
         }
 
@@ -59,7 +60,7 @@
                 <ul>
                     <div id="category">Petlog</div>
                     <div id="d-category">
-                        <div class="d-category" id="notice">피드 관리</div>
+                        <div class="d-category" id="notice" onclick="location.href='<%= contextPath %>/adminMain.pl';">피드 관리</div>
                     </div>
                 </ul>
             </div>

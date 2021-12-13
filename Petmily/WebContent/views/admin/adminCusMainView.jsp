@@ -8,8 +8,9 @@
 <style>
         /* 큰 틀 크기 지정*/
         .outer{
-            width:100%;
-            height:100%;
+            width:1000px;
+            height:auto;
+            margin:auto;
         }
         .outer>div{
             float:left;
@@ -17,7 +18,7 @@
         
         /* 메뉴바 밑 상단 회색바 */
         .top{
-            width:70%;
+            width:1000px;
             height:70px;
         }
         /* 노란박스 (new) */
@@ -42,18 +43,18 @@
         }
         /* 게시판별 조회 목록 (더보기) */
         .board{
-            width:700px;
-            height:700px;
+            width:800px;
+            height:auto;
         }
         .board table{
         	
-        	width:300px;
-			padding-right:10px;
+        	width:400px;
+
         	
         }
         .board td{
         	
-        	width:600px;
+        	width:400px;
         }
         .board>div{
             float:left;
@@ -69,13 +70,9 @@
         }
         .maindate{
         	width:100px;
+        	padding-left:30px;
         }
-        #more{
-
-            font-size:10px;
-            text-align:right;
-
-        }
+        
         /* 회색박스 (답변처리상태) */
         .graybox{
         	width:150px;
@@ -87,7 +84,7 @@
             margin:10px;
         }
         #qnanotyet, #qnadone{
-            margin-left:20px;
+			padding-right:20px;
         }
         .graybox>div{
             padding-top:25px;
@@ -146,8 +143,7 @@
             <div>
                 <table>
                     <tr>
-                        <td class="boardcate">공지사항 관리</td>
-                        <td class="maindate" id="more">더보기</td>
+                        <td class="boardcate" colspan="2">공지사항 관리</td>
                     </tr> 
                     <tr>
                         <td>개인정보처리방침 개정 안내</td>
@@ -162,8 +158,7 @@
             <div>
                 <table>
                     <tr>
-                        <td class="boardcate">FAQ 관리</td>
-                        <td class="maindate" id="more">더보기</td>
+                        <td class="boardcate" colspan="2">FAQ 관리</td>
                     </tr>
                     <tr>
                         <td>배송관련 조회</td>
@@ -178,8 +173,7 @@
             <div>
                 <table>
                     <tr>
-                        <td class="boardcate">Q&A문의/상품문의 관리</td>
-                        <td class="maindate" id="more">더보기</td>
+                        <td class="boardcate" colspan="2">Q&A문의/상품문의 관리</td>
                     </tr>
                     <tr>
                         <td>11월 상품문의 조회</td>
@@ -194,8 +188,7 @@
             <div>
                 <table>
                     <tr>
-                        <td class="boardcate">리뷰 관리</td>
-                        <td class="maindate" id="more">더보기</td>
+                        <td class="boardcate" colspan="2">리뷰 관리</td>
                     </tr>
                     <tr>
                         <td>11월 리뷰 조회</td>

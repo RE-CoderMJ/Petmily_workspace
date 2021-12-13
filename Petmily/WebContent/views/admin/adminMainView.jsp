@@ -8,27 +8,26 @@
 	<style>
         /* 큰 틀 크기 지정 */
         .outer{
-            width:1500px;
-            height:800px;
+            width:800px;
+            height:850px;
             margin:auto;
-            margin-top:30px;
-
         }
         .outer>div{
-            float:left;
-             
+            float:left; 
         }
         #sidebar{
         	width:350px;
         }
 		#adminContent{
-			width:1000px;
+			width:800px;
 		}
         
         /* 메뉴바 밑 상단 회색바 */
         .top{
-            width:850px;
+            width:800px;
             height:70px;
+            padding-top:15px;
+            padding-bottom:15px;
         }
         /* 노란박스 (new) */
         .left{
@@ -36,11 +35,13 @@
             height:500px;
             float:left;
             margin:20px;
+            
         }
         .left div{
             text-align:center;
             line-height:50px;
             background-color:rgb(247, 198, 4);
+            
         }
         .left>div{
             width:100%;
@@ -52,6 +53,10 @@
         }
         .left div div{
             cursor:pointer;
+            
+        }
+        .left>div>div{
+        	/*box-sizing: border-box;*/
         }
         /* 게시판별 조회 목록 */
         .right{
@@ -80,19 +85,22 @@
             text-align:center;
             font-size:17px;
             font-weight: 900;
-            margin:20px;
+            margin:10px;
+            
             
         }
         .graybox>div{
-            width:170px;
+            width:190px;
             background-color: rgb(230, 235, 240);
             float:left;
             padding-top:50px;
             padding-bottom:50px;
             margin-right:10px;
+
         }
         .graybox div div{
         	cursor:pointer;
+        	/*box-sizing: border-box;*/
         	
         }
 
@@ -112,13 +120,15 @@
 	<!-- 메뉴바 -->
     <%@ include file="../common/admin_menubar.jsp" %>
     
-
-    <div class="outer">
-
-    <div id="sidebar">
+	<div id="sidebar">
     <!-- 사이드바 (관리자 전체) -->
     <%@ include file="../common/admin_MainSidebar.jsp" %>
     </div>
+
+
+    <div class="outer">
+
+
         
 	<div id="adminContent">
         <!-- 맨밑 회색 상단바 -->
