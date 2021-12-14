@@ -17,7 +17,7 @@
     /* cont-wrap */
     .cont-wrap{
         margin: 0 auto;
-        width: 1200px;
+        width: 1000px;
     }
     .title-box h3{
         font-size: 24px;
@@ -60,7 +60,8 @@
         height: 250px;
         border-radius: 250px;
         margin-bottom: 20px;
-        background-color: white;/*요건 이미지넣음 지워도돼 ㅋㅋ*/  
+        /* background-color: white;요건 이미지넣음 지워도돼 ㅋㅋ   */
+        object-fit: cover;
     }
     .pet-box p{
         margin-bottom: 20px;
@@ -101,9 +102,9 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
-    <div class="container" style="max-width:1600px;">
+    <div class="container" style="max-width:1700px;">
 
-        <%@ include file="mpSidebar.jsp" %>
+        <%@ include file="../shop\mypage/mypageSidebar.jsp" %>
         <!-- cont-wrap -->
         <div class="cont-wrap">
             <div class="title-box mt-1 pb-2">
@@ -115,8 +116,8 @@
                 <!-- 마이펫 관리 -->
                 <div class="mypet-area">
                     <div class="pet-box">
-                        <a href="" class="material-icons add">add_circle_outline</a>
-                        <img src="" alt="">
+                        <a href="<%= contextPaths %>/PetInforModify.mp" class="material-icons add">add_circle_outline</a>
+                        <img src="resources/img/bomi.jpg" alt="">
                         <div class="info">
                             <p class="name">보미</p>
                             <p class="age">푸들/암컷/8살</p>
@@ -130,7 +131,7 @@
                     <div class="pet-box pet-add"><!-- 펫등록 박스는 class="pet-add" 추가 -->
                         <p class="txt">마이펫 등록하고 펫로그를 이용해보세요</p>
                         <a href="" class="material-icons">add</a>
-                        <button class="btn btn-warning">마이펫 등록하기</button>
+                        <button class="btn btn-warning" onclick="location.href='<%= contextPaths %>/PetInforRegister.mp';">마이펫 등록하기</button>
                     </div>
                 </div>
             </div>

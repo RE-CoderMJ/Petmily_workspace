@@ -388,11 +388,11 @@
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide"><img src="resources/img/coco.jpg"></div>
-                                <div class="swiper-slide"><img src="resources/img/bomi.jpg"></div>
+                                <div class="swiper-slide"><img src="resources/img/bomi4.jpg"></div>
                                 <div class="swiper-slide"><img src="resources/img/coco2.jpg"></div>
                                 <div class="swiper-slide"><img src="resources/img/coco3.jpg"></div>
                                 <div class="swiper-slide"><img src="resources/img/coco4.jpg"></div>
-                                <div class="swiper-slide"><img src=""></div>
+                                <div class="swiper-slide"><img src="resources/img/bomi2.jpg"></div>
                             </div>
                         
                             <!-- 네비게이션 -->

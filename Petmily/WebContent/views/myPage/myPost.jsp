@@ -10,7 +10,7 @@
         .cont-wrap{
             /* margin-left: 350px; */
             margin: 0 auto;
-            width: 1200px;
+            width: 1000px;
         }
         .title-box h3{
             font-size: 24px;
@@ -82,9 +82,9 @@
 <body>
     <%@ include file="../common/menubar.jsp" %>
 
-	<div class="container" style="max-width:1600px;">
+	<div class="container" style="max-width:1700px;">
     
-        <%@ include file="mpSidebar.jsp" %>
+        <%@ include file="../shop\mypage/mypageSidebar.jsp" %>
 
         <!-- cont-wrap -->
         <div class="cont-wrap">
@@ -111,7 +111,7 @@
                 </div>
 
                 <!-- table -->
-                    <table class="table" style="width: 1160px;">
+                    <table class="table" style="width: 1000px;">
                         <thead>
                             <tr class="table-secondary">
                                 <th width="50px">No.</th>

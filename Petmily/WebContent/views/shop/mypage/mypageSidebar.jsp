@@ -155,14 +155,14 @@
     <li>
       <div class="menu">내가 쓴 게시글 조회<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu">
-        <li><a href="#">내가 쓴 게시글 조회</a></li>
+        <li><a href="<%= contextPaths %>/MyPost.mp">내가 쓴 게시글 조회</a></li>
       </ul>
     </li>
     <li>
      <li>
       <div class="menu">펫적사항<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu">
-        <li><a href="#">펫적사항</a></li>
+        <li><a href="<%= contextPaths %>/MyPetInfor.mp">펫적사항</a></li>
       </ul>
     </li>
     <li>

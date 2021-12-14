@@ -1,124 +1,421 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
-<%
-   String contextPaths = request.getContextPath();
-%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <title>Accordion Menu</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
-
-  <style>
-    /*사이드바 스타일*/
-    .sidebar-area{
-        float: left;
-        width: 250px;
-        height: 800px;
-        position: relative;
-        position: fixed;
-    }
-    /* 사이드바 큰 제목 스타일 */
-    #boardName{
-        list-style-type: none;
-        font-weight: bolder;
-        font-size: 25px;
-        position: absolute;
-        /* left:90px; */
-    }
-    /* 강아지, 고양이, 기타 카테고리 스타일*/
-    .d-category{
-        list-style-type: none;
-        font-size: 16px;
-        width: 130px;
-        font-weight: bolder;
-        cursor:pointer;
-        margin-bottom: 5px;
-    }
-    .d-category1{
-        list-style-type: none;
-        font-size: 16px;
-        width: 130px;
-        font-weight: bolder;
-        cursor:pointer;
-        margin-bottom: 5px;
-    }
-    #d-category0{
-        position: absolute;
-        top:80px;
-        /* left: 90px; */
-    }
-    /* 세부 카테고리 전체 스타일 */
-    .dd-category{
-        list-style-type: none;
-        color: darkgray;
-        font-weight: bolder;
-        font-size: 13px;
-        width: 60px;
-        display: none;
-        margin-bottom: 3px;
-        cursor: pointer;
-        margin-left: 15px;
-    }
-  </style>
-
-</style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<%@ include file="../common/links.jsp" %>
+<link href="../../resources/css/petLog/petLogMain.css" rel="stylesheet">
 </head>
-
 <body>
-   <!--  사이드바  -->
-   <div class="sidebar-area">
-    <ul>
-        <div id="boardName">마이페이지</div>
-        <div id="d-category0">
-            
-            <div class="d-category1" id="dog" onclick="location.href='<%= contextPathas %>/PetInforRegister.mp';">회원정보수정</div>
-            
-            <div class="d-category1" id="cat" onclick="location.href='<%= contextPathas %>/MyPost.mp';">내가쓴게시글조회</div>
-            
-            <div class="d-category1" id="cat" onclick="location.href='<%= contextPathas %>/MyPetInfor';">펫적사항</div>
-            
-            <div class="d-category" id="etc">쇼핑몰</div>
-            <div class="dd-category buy" onclick="location.href='<%= contextPathas %>/spErPd.ad';">살래요</div>
-            <div class="dd-category sell" onclick="location.href='<%= contextPathas %>/spPdUd.ad';">팔래요</div>
-        </div>
-    </ul>
-</div>
-    <script>
-        $(function(){
-            $(".d-category").click(function(){
-                $(this).siblings(".d-category").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                const $buy = $(this).next();
-    
-                if($buy.css("display") == "none" && $buy.next().css("display") == "none"){
-                    $(this).siblings(".buy").slideUp();
-                    $(this).siblings(".sell").slideUp();
-                    
-                    $buy.slideDown();
-                    $buy.next().slideDown();
-                }else{
-                    $buy.slideUp();
-                    $buy.next().slideUp();
-                }
-            })
-    
-            $(".dd-category").click(function(){
-                $(this).siblings(".dd-category").css("color", "darkgray").css("text-decoration", "none");
-                $(this).css("color", "orange").css("text-decoration", "underline");
-            })
-        })
-    </script>
 
+	<%@ include file="../common/menubar.jsp" %>
+	
+    <div id="right-bar"></div>
+    <div id="left-bar"></div>
+    
+    <div id="outer" align="center">
+        <div id="middle-area">
+        
+        <select name="category" id="search-condition">
+           <option value="all">전체 게시글 조회</option>
+           <option value="fContents">팔로잉 게시글 조회</option>
+        </select>
+        
+        <div id="petsroom-btn">
+        	<div id="petsroom-icon"><img src="resources/img/petlog/petsRoom.png" alt=""></div>
+        	<div>나의 펫츠룸으로 이동</div>
+        </div>
+        <div id="enroll-btn">
+        	<div id="enroll-icon"><img src="resources/img/petlog/enroll.png" alt=""></div>
+        	<div>나의 펫로그 쓰러가기</div>
+        </div>
+        
+            <div class="content-box">
+                <div class="left-part">
+                    <div class="left-top">
+                        <div class="profile-img"><img src="resources/img/petlog_logo.PNG" alt=""></div>
+                        <div class="room-name">
+                            <div>뽐뽀미</div>
+                            <div class="report-account-btn" data-toggle="modal" data-target="#reportAskModal">신고</div>
+                        </div>
+                        <button type="button" class="follow-btn">팔로우</button>
+                        <div class="like-btn"><img src="resources/img/heart.jpg" alt=""></div>
+                    </div>
+                    <div class="left-bottom">
+                        <div class="photo-area">
+
+                            <div id="" class="demo carousel" data-ride="carousel" data-interval="false">
+
+                                <!-- The slideshow -->
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src="resources/img/sp_churu.jpg" alt="">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="resources/img/sp_wheel.jpg" alt="">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="resources/img/sp_coshion.jpg" alt="">
+                                  </div>
+                                </div>
+                                
+                                <!-- Left and right controls -->
+                                <a class="carousel-control-prev" href=".demo" data-slide="prev">
+                                  <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href=".demo" data-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="date-area">2021-11-12</div>
+                    </div>
+                    
+                </div>
+                <div class="right-part">
+                    <!-- 작성자에게만 -->
+                    <button type="button" class="delete-btn" data-toggle="modal" data-target="#deleteAskModal">x</button>
+                    <div class="right-top">
+                        <div class="text-area">
+                            보미야 사랑해> <😍
+                            우리보미 산책하다가 너무 귀여워서 한 컷!
+                            ㅋㅋㅋㅋㅋㅋ 사진 찍을 줄 아는듯
+                        </div>
+                    </div>
+                    <div class="right-middle">
+                        <img src="resources/img/heart.jpg" alt="">
+                        <span>좋아요</span>
+                        <span class="like-count">33</span>
+                        <img src="resources/img/petLog/reply.png" alt="">
+                        <span>댓글</span>
+                        <span class="reply-count">2</span>
+                        <label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
+                        <label href="" class="modify-post">수정하기</label>
+                    </div>
+                    <div class="right-bottom">
+                        <div class="reply-area">
+                            <div class="write-reply">
+                                    <form action="">
+                                        <input type="text" placeholder="댓글을 남겨 보세요." required>
+                                        <button type="submit" class="reply-enrollbtn">등록</button>
+                                    </form>
+                            </div>
+                            
+                            <div class="replies">
+                                
+                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+                                <div class="user-name">choco22</div>
+                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                                <div class="reply-info">
+                                	xxxx-xx-xx<br> 
+                                	<label href="">수정</label>
+                                	<label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+                                </div>
+                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+                            </div>
+
+                            <div class="replies">
+                                
+                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+                                <div class="user-name">choco22</div>
+                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                                <div class="reply-info">xxxx-xx-xx<br> <a href="">수정</a><a href="" data-toggle="modal" data-target="#reportAskModal">신고</a></div>
+                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이징 바 -->
+                    <div class="paging-area" align="center">
+                        <button> &lt; </button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button> &gt; </button>
+                    </div>
+                    <script>
+                        $(function(){
+                            $(".paging-area button").click(function(){
+                                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                            })
+                        })
+                    </script>
+                </div>
+
+            </div>
+
+            
+            <div class="content-box">
+                <div class="left-part">
+                    <div class="left-top">
+                        <div class="profile-img"><img src="resources/img/petlog_logo.PNG" alt=""></div>
+                        <div class="room-name">
+                            <div>뽐뽀미</div>
+                            <div class="report-account-btn" data-toggle="modal" data-target="#reportAskModal">신고</div>
+                        </div>
+                        <button type="button" class="follow-btn">팔로우</button>
+                        <div class="like-btn"><img src="resources/img/heart.jpg" alt=""></div>
+                    </div>
+                    <div class="left-bottom">
+                        <div class="photo-area">
+
+                            <div id="" class="demo carousel" data-ride="carousel" data-interval="false">
+
+                                <!-- The slideshow -->
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src="resources/img/sp_churu.jpg" alt="">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="resources/img/sp_wheel.jpg" alt="">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="resources/img/sp_coshion.jpg" alt="">
+                                  </div>
+                                </div>
+                                
+                                <!-- Left and right controls -->
+                                <a class="carousel-control-prev" href=".demo" data-slide="prev">
+                                  <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href=".demo" data-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="date-area">2021-11-12</div>
+                    </div>
+                    
+                </div>
+                <div class="right-part">
+                    <!-- 작성자에게만 -->
+                    <button type="button" class="delete-btn" data-toggle="modal" data-target="#deleteAskModal">x</button>
+                    <div class="right-top">
+                        <div class="text-area">
+                            보미야 사랑해> <😍
+                            우리보미 산책하다가 너무 귀여워서 한 컷!
+                            ㅋㅋㅋㅋㅋㅋ 사진 찍을 줄 아는듯
+                        </div>
+                    </div>
+                    <div class="right-middle">
+                        <img src="resources/img/heart.jpg" alt="">
+                        <span>좋아요</span>
+                        <span class="like-count">33</span>
+                        <img src="resources/img/petLog/reply.png" alt="">
+                        <span>댓글</span>
+                        <span class="reply-count">2</span>
+                        <label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
+                        <label href="" class="modify-post">수정하기</label>
+                    </div>
+                    <div class="right-bottom">
+                        <div class="reply-area">
+                            <div class="write-reply">
+                                    <form action="">
+                                        <input type="text" placeholder="댓글을 남겨 보세요." required>
+                                        <button type="submit" class="reply-enrollbtn">등록</button>
+                                    </form>
+                            </div>
+                            
+                            <div class="replies">
+                                
+                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+                                <div class="user-name">choco22</div>
+                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                                <div class="reply-info">
+                                	xxxx-xx-xx<br> 
+                                	<label href="">수정</label>
+                                	<label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+                                </div>
+                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+                            </div>
+
+                            <div class="replies">
+                                
+                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+                                <div class="user-name">choco22</div>
+                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                                <div class="reply-info">xxxx-xx-xx<br> <a href="">수정</a><a href="" data-toggle="modal" data-target="#reportAskModal">신고</a></div>
+                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이징 바 -->
+                    <div class="paging-area" align="center">
+                        <button> &lt; </button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button> &gt; </button>
+                    </div>
+                    <script>
+                        $(function(){
+                            $(".paging-area button").click(function(){
+                                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                            })
+                        })
+                    </script>
+                </div>
+
+            </div>
+
+            <div class="content-box">
+                <div class="left-part">
+                    <div class="left-top">
+                        <div class="profile-img"><img src="resources/img/petlog_logo.PNG" alt=""></div>
+                        <div class="room-name">
+                            <div>뽐뽀미</div>
+                            <div class="report-account-btn" data-toggle="modal" data-target="#reportAskModal">신고</div>
+                        </div>
+                        <button type="button" class="follow-btn">팔로우</button>
+                        <div class="like-btn"><img src="resources/img/heart.jpg" alt=""></div>
+                    </div>
+                    <div class="left-bottom">
+                        <div class="photo-area">
+
+                            <div id="" class="demo carousel" data-ride="carousel" data-interval="false">
+
+                                <!-- The slideshow -->
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src="resources/img/sp_churu.jpg" alt="">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="resources/img/sp_wheel.jpg" alt="">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="resources/img/sp_coshion.jpg" alt="">
+                                  </div>
+                                </div>
+                                
+                                <!-- Left and right controls -->
+                                <a class="carousel-control-prev" href=".demo" data-slide="prev">
+                                  <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href=".demo" data-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="date-area">2021-11-12</div>
+                    </div>
+                    
+                </div>
+                <div class="right-part">
+                    <!-- 작성자에게만 -->
+                    <button type="button" class="delete-btn" data-toggle="modal" data-target="#deleteAskModal">x</button>
+                    <div class="right-top">
+                        <div class="text-area">
+                            보미야 사랑해> <😍
+                            우리보미 산책하다가 너무 귀여워서 한 컷!
+                            ㅋㅋㅋㅋㅋㅋ 사진 찍을 줄 아는듯
+                        </div>
+                    </div>
+                    <div class="right-middle">
+                        <img src="resources/img/heart.jpg" alt="">
+                        <span>좋아요</span>
+                        <span class="like-count">33</span>
+                        <img src="resources/img/petLog/reply.png" alt="">
+                        <span>댓글</span>
+                        <span class="reply-count">2</span>
+                        <label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
+                        <label href="" class="modify-post">수정하기</label>
+                    </div>
+                    <div class="right-bottom">
+                        <div class="reply-area">
+                            <div class="write-reply">
+                                    <form action="">
+                                        <input type="text" placeholder="댓글을 남겨 보세요." required>
+                                        <button type="submit" class="reply-enrollbtn">등록</button>
+                                    </form>
+                            </div>
+                            
+                            <div class="replies">
+                                
+                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+                                <div class="user-name">choco22</div>
+                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                                <div class="reply-info">
+                                	xxxx-xx-xx<br> 
+                                	<label href="">수정</label>
+                                	<label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+                                </div>
+                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+                            </div>
+
+                            <div class="replies">
+                                
+                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+                                <div class="user-name">choco22</div>
+                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+                                <div class="reply-info">xxxx-xx-xx<br> <a href="">수정</a><a href="" data-toggle="modal" data-target="#reportAskModal">신고</a></div>
+                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이징 바 -->
+                    <div class="paging-area" align="center">
+                        <button> &lt; </button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button> &gt; </button>
+                    </div>
+                    <script>
+                        $(function(){
+                            $(".paging-area button").click(function(){
+                                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                            })
+                        })
+                    </script>
+                </div>
+
+            </div>
+
+            
+		    <a href="#top" id="pageUp"><img src="resources/img/pageUp.png"></a>
+		    <!-- 페이징 바 -->
+                    <div id="paging-area" align="center">
+                        <button> &lt; </button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button> &gt; </button>
+                    </div>
+                    <script>
+                        $(function(){
+                            $("#paging-area button").click(function(){
+                                $(this).siblings("#paging-area button").css({background: "", color:"black"});
+                                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                            })
+                        })
+                    </script>
+        </div>
+    </div>
+    
+    
+    <%@ include file="../common/footerbar.jsp" %>
+    <%@ include file="../boards/bCommon/reportDeleteModals.jsp" %>
+    
 </body>
 </html>

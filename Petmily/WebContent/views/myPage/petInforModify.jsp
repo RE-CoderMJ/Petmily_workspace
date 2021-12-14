@@ -217,7 +217,7 @@
         <!-- cont-wrap -->
         <div class="cont-wrap">
             <div class="title-box mt-1 pb-2">
-                <h3>마이펫 등록하기</h3>
+                <h3>마이펫 수정하기</h3>
             </div>
             <div class="content">
                 <hr>

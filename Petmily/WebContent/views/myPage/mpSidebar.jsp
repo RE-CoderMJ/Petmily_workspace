@@ -20,19 +20,20 @@
         height: 800px;
         position: relative;
         position: fixed;
+        left: -20px;
     }
     /* 사이드바 큰 제목 스타일 */
     #boardName{
         list-style-type: none;
         font-weight: bolder;
-        font-size: 25px;
+        font-size: 23px;
         position: absolute;
         /* left:90px; */
     }
     /* 강아지, 고양이, 기타 카테고리 스타일*/
     .d-category{
         list-style-type: none;
-        font-size: 16px;
+        font-size: 13px;
         width: 130px;
         font-weight: bolder;
         cursor:pointer;
@@ -40,7 +41,7 @@
     }
     .d-category1{
         list-style-type: none;
-        font-size: 16px;
+        font-size: 13px;
         width: 130px;
         font-weight: bolder;
         cursor:pointer;
@@ -56,7 +57,7 @@
         list-style-type: none;
         color: darkgray;
         font-weight: bolder;
-        font-size: 13px;
+        font-size: 10px;
         width: 60px;
         display: none;
         margin-bottom: 3px;
@@ -78,26 +79,26 @@
 <body>
    <!--  사이드바  -->
    <div class="sidebar-area">
-    <ul>
-        <div id="boardName">마이페이지</div>
-        <div id="d-category">
-            
-            <div class="d-category1" id="dog">회원정보수정</div>
-            
-            <div class="d-category1" id="mypost" onclick="location.href='<%= contextPaths %>/MyPost.mp';">내가쓴게시글조회</div>
-            
-            <div class="d-category1" id="mypetinfor" onclick="location.href='<%= contextPaths %>/MyPetInfor.mp';">펫적사항</div>
-            
-            <div class="d-category" id="etc">쇼핑몰</div>
-            <p class="dd-category" onclick="location.href='<%= contextPaths %>/cart.my';">장바구니</p>
-            <p class="dd-category" onclick="location.href='<%= contextPaths %>/orderselect.my';">주문배송조회</p>
-            <p class="dd-category" onclick="location.href='<%= contextPaths %>/like.my';">찜</p>
-            <p class="dd-category" onclick="location.href='<%= contextPaths %>/point.my';">포인트조회</p>
-            <p class="dd-category" onclick="location.href='<%= contextPaths %>/exchangeapp.my';">교환/반품 신청</p>
-            <p class="dd-category" onclick="location.href='<%= contextPaths %>/cancelselect.my';">취소/환불내역 조회</p>
-        </div>
-    </ul>
-</div>
+        <ul>
+            <div id="boardName">마이페이지</div>
+            <div id="d-category">
+                
+                <div class="d-category1" id="dog">회원정보수정</div>
+                
+                <div class="d-category1" id="mypost" onclick="location.href='<%= contextPaths %>/MyPost.mp';">내가쓴게시글조회</div>
+                
+                <div class="d-category1" id="mypetinfor" onclick="location.href='<%= contextPaths %>/MyPetInfor.mp';">펫적사항</div>
+                
+                <div class="d-category" id="etc">쇼핑몰</div>
+                <p class="dd-category" onclick="location.href='<%= contextPaths %>/cart.my';">장바구니</p>
+                <p class="dd-category" onclick="location.href='<%= contextPaths %>/orderselect.my';">주문배송조회</p>
+                <p class="dd-category" onclick="location.href='<%= contextPaths %>/like.my';">찜</p>
+                <p class="dd-category" onclick="location.href='<%= contextPaths %>/point.my';">포인트조회</p>
+                <p class="dd-category" onclick="location.href='<%= contextPaths %>/exchangeapp.my';">교환/반품 신청</p>
+                <p class="dd-category" onclick="location.href='<%= contextPaths %>/cancelselect.my';">취소/환불내역 조회</p>
+            </div>
+        </ul>
+    </div>
     <script>
         $(function(){
             $(".d-category").click(function(){
