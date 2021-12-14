@@ -16,33 +16,32 @@
     /*사이드바 스타일*/
     .sidebar-area{
         float: left;
-        width: 250px;
+        width: 270px;
         height: 800px;
         position: relative;
         position: fixed;
-        left: -20px;
     }
     /* 사이드바 큰 제목 스타일 */
     #boardName{
         list-style-type: none;
         font-weight: bolder;
-        font-size: 23px;
+        font-size: 26px;
         position: absolute;
         /* left:90px; */
     }
     /* 강아지, 고양이, 기타 카테고리 스타일*/
     .d-category{
         list-style-type: none;
-        font-size: 13px;
-        width: 130px;
+        font-size: 16px;
+        width: 140px;
         font-weight: bolder;
         cursor:pointer;
         margin-bottom: 5px;
     }
     .d-category1{
         list-style-type: none;
-        font-size: 13px;
-        width: 130px;
+        font-size: 16px;
+        width: 140px;
         font-weight: bolder;
         cursor:pointer;
         margin-bottom: 5px;
@@ -57,8 +56,8 @@
         list-style-type: none;
         color: darkgray;
         font-weight: bolder;
-        font-size: 10px;
-        width: 60px;
+        font-size: 13px;
+        width: 80px;
         display: none;
         margin-bottom: 3px;
         cursor: pointer;
