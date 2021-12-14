@@ -51,14 +51,44 @@
     }
 
     .qnaEnroll {
-        margin: 50px;
-        background-color: yellow;
-        width: 1000px;
+        margin: auto;
+        margin-top: 50px;
+        width: 600px;
         height: auto;
+    }
+    
+    
+    #qnaTitle {
+        width: 600px;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        width: 600px;
+        height: 500px;
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 7px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        margin: 5px;
     }
 
     #secretCheck {
-        width: 20px;
+        transform : scale(1.5);
+        margin: 5px;
+    }
+
+    .btn {
+        margin: 5px;
     }
 </style>
 </head>
@@ -84,14 +114,28 @@
 
                     <div class="qnaEnroll" align="center">
                         <p align="left">상품 / 배송 등 쇼핑 관련 문의는 <b style="color: seagreen;">쇼핑몰의 QnA</b>를 이용해주세요</p>
-                        <div align="right">
-                            <input type="checkBox" id="secretCheck"> 비밀글
-                            <button type="button" id="saveBtn" class="btn btn-sm btn-secondary">임시저장</button>
+                        
+                        <input type="text" id="qnaTitle" placeholder="제목">
+                        <textarea id="qnaContent" style="resize: none;" placeholder="내용"></textarea>
+                        
+                        <div style="margin-top: 20px;">
+                            <p style="margin: 0px -70px 30px 40px; float: left;">파일<br>첨부</p>
+                            <input type="file" style="margin-top: 8px;">
+                        </div>
+                        
+                        <div align="right" style="margin-top: 50px;">
+                            <label for="secretCheck"><input type="checkbox" id="secretCheck"> 비밀글</label>
+                            <!-- <button type="button" id="saveBtn" class="btn btn-sm btn-secondary">임시저장</button> -->
                             <button type="submit" class="btn btn-sm btn-warning">올리기</button>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </div>
+
+        <div style="margin-top: 250px;">
+            <%@ include file="../../common/footerbar.jsp" %>
         </div>
 </body>
 </html>
