@@ -55,7 +55,7 @@
       <!--  사이드바  -->
       <div class="sidebar-area">
         <ul>
-            <div id="boardName">쇼핑몰</div>
+            <div id="boardName">스토어</div>
             <div id="d-category">
                 <div class="d-category" id="dog" onclick="location.href='<%= contextPathas %>/shop.dog'">강아지</div>
 
