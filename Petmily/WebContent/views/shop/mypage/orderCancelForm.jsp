@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PETMILY</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,16 +20,16 @@
 		}
 		     
 		.content-area{
-			width: 1400px;
+			width: 1700px;
 			height: 1200px;
-			padding:200px;
 			padding-top:5px;
-			
+			margin:auto;
 		}
         .outer{
             margin:auto;
             border: 1px solid black;
-            width:700px;
+            width:1000px;
+            height:800px;
             position: relative;
             
         }
@@ -37,59 +37,79 @@
         #title{
             text-align: center;
             vertical-align: middle;
-            background-color: gray;
+            background-color: rgb(235, 235, 235);
             margin:0px;
+            padding:10px;
             font-weight: 700;
-            height:40px;
+            font-size:25px;
+            height:50px;
             padding-top:8px ;
         }
         .smalltitle{
-            font-size:16px;
+            font-size:20px;
             font-weight: 600;
             margin:3px 0px;
         }
         #merchandise{
-            font-size:13px;
+            font-size:15px;
             color:gray;
             position: absolute;
-            right:200px;
-            top:100px;
+            right:250px;
+            top:170px;
         }
         #summoney{ 
-            font-size: large;
+            font-size: 25px;
             font-weight: 800;
             position: absolute;
-            right:60px;
+            right:80px;
         }
 
 
         #content{
-            margin-left:30px;
-            margin-right:30px;
+            margin-left:80px;
+            margin-right:80px;
             margin-bottom: 20px;
+            margin-top:50px;
         }
+        #one {
+        	margin:20px 0px;
+        	font-size:18px;
+        }
+        
+        #two{
+        	margin:20px 0px;
+        	font-size:18px;
+        }
+        #three{
+        	margin:20px 0px;
+        	font-size:18px;
+        }
+        #four{
+        	margin:20px 0px;
+        	font-size:18px;
+        }
+        
 
         th,td{
-            padding-right: 40px;
+            padding-right: 100px;
         }
         #bbtn{ 
-            color:white;
-            background-color: orange; /*색 바꾸기*/
+            background-color: rgb(247, 198, 4);
             width:100px;
             padding:7px 15px;
             border:0;
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:550px;
-            top:500px;
+            right:100px;
+            bottom:100px;
         }
         .inline-block{display:inline-block;}
     </style>
 </head>
 <body>
 <%@ include file="../../common/menubar.jsp" %>
-<%@ include file="mypageSidebar.jsp" %>
+
 
     <form action="" method="">
     <div class="content-area">
@@ -174,7 +194,7 @@
                                 <th>22,000 </th>
                             </tr>
                         </table>
-                        <button id="bbtn">취소신청</button>
+                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my">취소신청</a></button>
 
                         
                     </div>

@@ -20,7 +20,7 @@
 		}
 		     
 		.content-area{
-			width: 1400px;
+			width: 1700px;
 			height: 1200px;
 			padding:200px;
 			padding-top:5px;

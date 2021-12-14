@@ -12,7 +12,7 @@
 		     box-sizing: border-box;
 		}
 		.oouter{
-			width: 1600px;
+			width: 1700px;
 			height: 1000px;
 			margin:auto;
 		}   

@@ -4,18 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PETMILY</title>
 <style>
 div, img, li, a{
 		     box-sizing: border-box;
 		}
-		     
+		.oouter{
+			width: 1700px;
+			height: 1000px;
+			margin:auto;
+		}          
 		.content-area{
-			width: 1400px;
+			width: 1700px;
 			height: 1200px;
 			padding:200px;
 			padding-top:5px;
-			
+			margin:auto;
 		}
 
        #title{
@@ -26,9 +30,9 @@ div, img, li, a{
             margin-left:150px;
         } 
         #outer{
-            width:1000px;
+            width:1100px;
             border: 1px soild black;
-            background-color: rgb(213,213,213);
+            background-color: rgb(235, 235, 235);
             padding: 10px 20px;
             margin-left:150px;
         }
@@ -60,17 +64,16 @@ div, img, li, a{
             
         }
 
-        #button{position: absolute; top:55px; left:350px;}
+        #button{position: absolute; top:65px; left:360px;}
         .bbtn{ 
-            color:white;
-            background-color: orange; /*색 바꾸기*/
+            background-color: rgb(247, 198, 4); /*색 바꾸기*/
             width:100px;
             padding:7px 15px;
             margin: 0px 5px;
             border:0;
             border-radius: 4px;
         }
-        #money{position:absolute; right:2%; top:40px; font-size:18px;}
+        #money{position:absolute; right:2%; bottom:5%; font-size:18px;}
 
          /*총개수, 총금액 */
          #sumcount {
@@ -95,14 +98,15 @@ div, img, li, a{
 </head>
 <body>
 <%@ include file="../../common/menubar.jsp" %>
-<%@ include file="mypageSidebar.jsp" %>
 
+<div class="oouter">
+<%@ include file="mypageSidebar.jsp" %>
 <div class="content-area">
     <div id="title">주문내역 / 배송조회</div>
 
     <div id="outer">
-        <span style="font-weight: 700; font-size: 18px;">주문번호 : A-13124954</span>  <br>
-        <span style=" font-size: 17px;">
+        <span style="font-weight: 700; font-size: 23px;">주문번호 : A-13124954</span>  <br>
+        <span style=" font-size: 20px;">
         	주문일 : 21.11.15        
         </span>
 
@@ -126,7 +130,33 @@ div, img, li, a{
 
             <div class="inline-block" id="button">
                 <button class="bbtn">교환/반품</button>
-                <button class="bbtn" style="color:black; background-color: rgb(213,213,213); ">취소</button>
+                <button class="bbtn" style="color:black; background-color: rgb(213,213,213);" data-toggle="modal" data-target="#cancelOk">취소</button>
+                
+                <!-- 모달창 시작 -->
+			       <div class="modal" id="cancelOk">
+			        <div class="modal-dialog">
+			          <div class="modal-content">
+				        <!-- Modal Header -->
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					      </div>
+				      
+			            <!-- Modal body -->
+			            <div class="modal-body">
+								배송완료 상태에서는 교환/반품 가능합니다.
+			      		</div>
+			            <!-- Modal footer -->
+			            <div class="modal-footer">
+			              <a href="<%= contextPath %>/ordercancelform.my" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
+			            </div>
+			      
+			        </div>
+			      </div>
+			
+				</div>
+				<!-- 모달창 끝 -->
+				
+				
             </div>
             
             <div class="inline-block" id="money">
@@ -155,7 +185,9 @@ div, img, li, a{
 
             <div class="inline-block" id="button">
                 <button class="bbtn">교환/반품</button>
-                <button class="bbtn" style="color:black; background-color: rgb(213,213,213); ">취소</button>
+                <button class="bbtn" style="color:black; background-color: rgb(213,213,213); " data-toggle="modal" data-target="#cancelOk">
+                	취소
+                </button>
             </div>
             
             <div class="inline-block" id="money">
@@ -208,11 +240,11 @@ div, img, li, a{
 
 
 
+	
 
+</div>
 
-
-    </div>
-
+</div>
 </div>
     <%@ include file="../../common/footerbar.jsp" %>
 </body>

@@ -50,17 +50,19 @@
             width:360px;
             height:100%;
             display: inline-block;
-            
+            margin-right:25px;
         }
         #market{
             width:320px;
             height:100%;
             display: inline-block;
+            margin:0 15px;
         }
         #missing{
             width:360px;
             height:100%;
             display: inline-block;
+            margin-left:25px;
         }
         .smallTitle{
             font-size: 20px;

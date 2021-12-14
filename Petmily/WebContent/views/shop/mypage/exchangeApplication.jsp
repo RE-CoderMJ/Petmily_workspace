@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PETMILY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 		     box-sizing: border-box;
 		}
 		.oouter{
-			width: 1600px;
+			width: 1700px;
 			height: 1000px;
 			margin:auto;
 		}     
@@ -87,7 +87,7 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:1500px;
+            left:1300px;
             top:780px;
         }
         
@@ -100,7 +100,7 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:1600px;
+            left:1400px;
             top:780px;
         }
         

@@ -22,12 +22,12 @@
 		}
 		     
 		.oouter{
-			width: 1600px;
+			width: 1700px;
 			height: 1000px;
 			margin:auto;
 		}     
 		.content-area{
-			width: 1600px;
+			width: 1700px;
 			height: 1000px;
 			padding:200px;
 			padding-top:0px;
@@ -55,6 +55,7 @@
             margin:30px 0px;
             padding-top :5px;
             padding-bottom:5px;
+            cursor:pointer;
         }
         
         #c1{
@@ -103,7 +104,7 @@
 
     <div id="outer">
 
-        <div id="content">
+        <div id="content" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">
             <div class="inline-block" id="c1">21.11.15 구매</div>
             <div class="inline-block" id="c2">주문번호 : A-13124954</div>
             <div class="inline-block" id="c3">총3개</div>
