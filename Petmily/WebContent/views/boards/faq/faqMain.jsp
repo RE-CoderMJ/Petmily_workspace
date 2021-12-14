@@ -285,6 +285,17 @@
                 </table>
             </div>
         </div>
+        
+        <script>
+	         $(function(){
+	            $("tr").click(function(){
+	               //const num = $(this).children().eq(0).text();
+	               
+	               // /jsp/detail.faq?num=클릭한글번호
+	               location.href = '<%=contextPath%>/detail.faq'
+	            })
+	         })
+	      </script>
 
         <%@ include file="../bCommon/boardPagingBar.jsp" %>
     </div>
@@ -292,5 +303,6 @@
     <div style="margin-top: 200px;">
         <%@ include file="../../common/footerbar.jsp" %>
     </div>
+    
 </body>
 </html>

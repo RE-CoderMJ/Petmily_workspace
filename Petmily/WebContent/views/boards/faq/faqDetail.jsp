@@ -37,7 +37,7 @@
     #title {
         font-weight: 900;
         font-size: 45px;
-        height: 100px;
+        height: 50px;
         margin-top: -15px;
         float: left;
     }
@@ -63,18 +63,13 @@
 
     #faqlistbtn {
         height: 30px;
-        margin-top: 35px;
-    }
-
-    hr {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .detailTitle {
-        width: 100%; 
-        overflow-x: hidden; /* 이유 모를 왼쪽 마진때문에 추가 */
         font-size: 20px;
         font-weight: bold;
+        padding: 20px 0px 10px;
     }
 
     #copybtn {
@@ -87,13 +82,6 @@
         font-size: 18px;
     }
 
-    #modifybtn, #delbtn {
-        background-color: seagreen !important;
-        color: white;
-        height: 30px;
-        margin-top: 6px;
-        margin-left: 5px;
-    }
 
 </style>
 </head>
@@ -114,11 +102,11 @@
                     <button type="button" id="faqlistbtn" class="faqbtn" onclick="location.href='<%= contextPath %>/main.faq'">목록</button>
                 </div>
                 
-                <div style="border-bottom: 3px solid gray; margin-top: 45px;"></div>
+                <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
                 
                 <p class="detailTitle">[회원가입] 회원가입은 어떻게 하나요?</p>
 
-                <div style="border-bottom: 3px solid gray; margin-top: 30px;"></div>
+                <div style="border-bottom: 2px solid lightgray;"></div>
 
                 <button type="button" id="copybtn" class="faqbtn">주소 복사</button>
 
@@ -139,15 +127,11 @@
 
                     고객센터 (XXXX-XXXX, 평일10시~17시)를 통해 연락주시기 바랍니다 <br>
 
-                    ＊ 원하시는 답변을 찾지 못하셨나요?  
+			＊ 원하시는 답변을 찾지 못하셨나요?  
                 </div>
 
-                <div style="border-bottom: 3px solid gray; margin-top: 30px;"></div>
+                <div style="border-bottom: 2px solid lightgray; margin-top: 20px;"></div>
 
-                <!-- 관리자만 보여지는 btn -->
-                <button type="button" id="delbtn" class="faqbtn">삭제</button>
-                <button type="button" id="modifybtn" class="faqbtn">수정</button>
-                </div>
             </div>
         </div>
     </div>

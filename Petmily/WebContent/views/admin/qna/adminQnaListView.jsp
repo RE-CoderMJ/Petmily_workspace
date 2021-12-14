@@ -8,44 +8,52 @@
 <style>
     /* 큰 틀 */
     .outer{
-        width:1200px;
-        height: 800px;
+        width:1100px;
+        height:auto;
+        margin:auto;
     }
-    .outer>div{
+    .outer div{
         float:left;
     }
 
 
         /* 상단 회색바 */
         .top{
-            width:700px;
-            height:70px;
-            margin:15px;
+            width:1100px;
+            height:100px;
+            
+
         }
         /* 카테고리 분류 포함 검색창 */
         .middle{
-            width:700px;
-            height:300px;
-            padding-top:30px;
+            width:1100px;
+            height:audto;
+            padding-top:20px;
+
         }
         .middle div{
             float:left;
         }
+        
+        
         .table-bordered{
         	margin:none;
+        	text-align:center;
         }
         /* 버튼(등록,수정,삭제), 테이블, 페이징바 */
         .bottom{
-            width:700px;
+			width:1100px;
             float:center;
 
         }
         .dropdown{
             padding-right:30px;
         }
+        .select{
+        	float:center;
+        }
         .allselect{
         	width:100%;
-        	
         }
 
 
@@ -106,34 +114,65 @@
 	                    <button type="button" class="btn btn-light" disabled>검색어</button>                                                                                                                                                                                                                                                                                                            
 	                    <input type="text" placeholder="검색어를 입력해주세요">
 	                </div>
+	                
+	             </form> 
 	                    
 	                    <br><br><br><br><br>
+	                    
 	                    <div class="allselect" align="center">
-	                    <button type="button" class="btn btn-warning" >검색</button>
+	                    <button type="button" class="btn btn-warning">검색</button>
 	                    
 	                <hr>
 	                </div>
 	                <br><br><br><br><br>
+	               
 	                
-	                </form>
 	    </div>
 	    
 	    
 	    <!-- 버튼(등록,수정,삭제), 테이블, 페이징바 -->
-	    <div class="bottom">
-	
+	    
+			
 	        <div class="rightbutton" align="right">
-	            <a href="" class="btn btn-sm btn-warning">등록</a>
+	            <a href="<%= contextPath %>/adminEnrollForm.qna" class="btn btn-sm btn-warning">등록</a>
 	            <a href="" class="btn btn-sm btn-warning">수정</a>
-	            <a href="" class="btn btn-sm btn-danger">삭제</a>
+	            
+	            
+	            
+	            <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+    삭제
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        
+        <!-- Modal body -->
+        <div class="modal-body" align="center">
+          	정말로 삭제하시겠습니까?
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 	            <br><br>
 	        </div>
+	     
 	    
-	
-			<div style="width:100%">
+			<div class="bottom" align="right">
+		
 	            <table class="table table-bordered" style="margin:none;">
 	                <thead>
-	                    <tr align="center">
+	                    <tr>
 	                        <th width="50"><input type="checkbox" name="" value=""></th>
 	                        <th width="100">번호</th>
 	                        <th width="150">등록일</th>
@@ -159,7 +198,7 @@
 	                </tbody>
 	            </table>
 	        </div>
-	        <br>
+	        
 	        
 	        
 	
@@ -173,13 +212,17 @@
 	            <button>5</button>
 	            <button> &gt; </button>
 	        </div>
-	    </div>
+	  
 	
 	
-	</div>
+
 	
 	
-	<!-- 페이징바 -->
+
+	
+  </div>
+  
+  	<!-- 페이징바 -->
 	<script>
 	    $(function(){
 	        $(".paging-area button").click(function(){
@@ -188,6 +231,5 @@
 	        })
 	    })
 	</script>
-
 </body>
 </html>

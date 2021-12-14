@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+    String contextPathas = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,11 +57,11 @@
         <ul>
             <div id="boardName">고객센터</div>
             <div id="d-category">
-                <div class="d-category" id="notice">공지사항</div>
+                <div class="d-category" id="notice" onclick="location.href='<%= contextPathas %>/main.no'">공지사항</div>
 
-                <div class="d-category" id="faq">FAQ</div>
+                <div class="d-category" id="faq" onclick="location.href='<%= contextPathas %>/main.faq'">FAQ</div>
                 
-                <div class="d-category" id="qna">QnA</div>
+                <div class="d-category" id="qna" onclick="location.href='<%= contextPathas %>/main.qna'">QnA</div>
                 
             </div>
         </ul>

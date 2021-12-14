@@ -9,24 +9,24 @@
         /* 큰 틀 */
         .outer{
             width:1100px;
-            height:800px;
+            height:auto;
+            margin:auto;
         }
         .outer>div{
             float:left;
         }
 
         
-
         /* 맨 위 게시판이름 바 */
         .top{
-            width:750px;
-            height:70px;
+            width:1100px;
+
         }
         /* 검색창, 버튼들(등록,수정,삭제) */
         .bottom{
-            width:750px;
-            height:150px;
-            margin-top:5px;
+            width:1100px;
+            height:70px;
+
         }
         /* 검색창 */
         .noticeselect{
@@ -36,25 +36,21 @@
 
         .bottom>div{
             width:400px;
-            height:150px;
+            height:50px;
             padding-top:15px;
         }
         /* 버튼들(등록,수정,삭제) */
         .buttons{
-            width:750px;
-            height:50px;
-            /* float:right; */
-
-            padding-right:10px;        
-        }
-
-        /* 공지사항 테이블 */
-        #noticetable{
-            width:750px; 
+            width:1100px;
+            float:right;
+            padding-right:10px;
+     
         }
         /* 테이블 + 페이징바 */
         .table-paging{
+         	width:1100px;
             float:center;
+            text-align:center;
         }
         /* 페이징바 */
        .paging-area button{
@@ -119,11 +115,12 @@
             <!-- 버튼들(등록,수정,삭제) -->
             
             <div class="buttons" align="right">
-            
+            	<div>
                 <a href="<%= contextPath %>/adminEnrollForm.no" class="btn btn-sm btn-warning">등록</a>
-                <a href="" class="btn btn-sm btn-warning">수정</a>
+                <a href="<%= contextPath %>/adminUpdate.no" class="btn btn-sm btn-warning">수정</a>
                 <a href="" class="btn btn-sm btn-danger">삭제</a>
                 <br><br>
+                </div>
             </div>
         
 		<!-- 테이블 + 페이징 바 -->
@@ -135,10 +132,11 @@
                 <thead>
                     <tr>
                         <th width="50"><input type="checkbox" name="" value=""></th>
-                        <th width="200">번호</th>
-                        <th width="600">제목</th>
-                        <th width="150">작성자</th>
-                        <th width="150">작성일</th>
+                        <th width="100">번호</th>
+                        <th width="200">분류</th>
+                        <th width="550">제목</th>
+                        <th width="100">작성자</th>
+                        <th width="100">작성일</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -150,9 +148,10 @@
                     <tr>
                         <td>v</td>
                         <td>12</td>
+                        <td>찾고있어요</td>
                         <td>개인정보처리방침 안내</td>
                         <td>펫밀리</td>
-                        <td>2021-12-04</td>
+                        <td>21-12-04</td>
                     </tr>
                 </tbody>
         	</table>

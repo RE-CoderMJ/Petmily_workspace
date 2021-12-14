@@ -27,6 +27,7 @@ public class AdminFaqUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.getRequestDispatcher("views/admin/faq/adminFaqUpdateForm.jsp").forward(request,response);
 	}
 
 	/**

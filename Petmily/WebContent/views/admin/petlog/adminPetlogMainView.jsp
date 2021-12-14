@@ -8,7 +8,7 @@
     <style>
     /* 큰 틀 */
     .outer{
-        width:1000px;
+        width:1100px;
         height:auto;
         margin:auto;
     }
@@ -18,11 +18,12 @@
 
     /* 현재 게시판이름 */
     .top {
-        width:800px;
+        width:1100px;
     }
     /* 노란박스 (new) */
     .middle {
-        width:800px;
+    
+        width:1100px;
         height:100px;
         background:rgb(247, 198, 4);
         line-height:50px;
@@ -31,7 +32,8 @@
         margin:10px;
     }
     .list-area{
-        width:800px;
+    
+        width:1100px;
         
 
     }

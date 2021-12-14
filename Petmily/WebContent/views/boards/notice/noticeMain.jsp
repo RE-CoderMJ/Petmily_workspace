@@ -68,8 +68,9 @@
         display: none;
     }
 
-
-
+    .accordion.show i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
 
 </style>
 </head>
@@ -140,7 +141,7 @@
                     <div class="accordion">
                         <div class="accordion-head">
                            	 '펫밀리' 홈페이지 오픈
-                            <img src="resources/img/down-arrow.png" class="down-arrow">
+                            <i class="fa fa-chevron-down"><img src="resources/img/down-arrow.png" class="down-arrow"></i>
                             <p class="date">20XX-XX-XX</p>
                         </div>
                         <p class="accordion-body">
