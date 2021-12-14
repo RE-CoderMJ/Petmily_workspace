@@ -51,7 +51,7 @@
     <%@ include file="../../common/admin_cusmainSidebar.jsp" %>
 	
 	
-    <!-- 큰틀 -->
+    <!-- 전체 틀 -->
     <div class="outer" align="center">
         <br>
         <br>
@@ -82,9 +82,9 @@
             </table>
             <br><br>
 
-            <!-- 하단 버튼 (등록: 등록, 뒤로) -->
+            <!-- 하단 버튼 (수정: 수정, 뒤로) -->
             <div>
-                <button type="submit" class="btn btn-sm btn-warning">등록</button>
+                <button type="submit" class="btn btn-sm btn-warning">수정</button>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 

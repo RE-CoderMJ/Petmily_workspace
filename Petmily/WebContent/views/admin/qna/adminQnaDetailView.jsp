@@ -62,34 +62,36 @@
 		<table>
         	<tr>
             	<th width="70px">접수일시</th>
-                    <td>2021-11-11</td>
-                    <td>2021-11-13</td>
+                <td>2021-11-11</td>
+                <td>2021-11-13</td>
                 </tr>
-                <tr>
-                    <th width="70px">작성자</th>
-                    <td>이하늬</td>
-                    <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea></td>
-                </tr>
-                <tr>
-                    <th width="70px">문의제목</th>
-                    <td>주문 취소했는데 아직 환불 안됨</td>
-                </tr>
-                <tr>
-                	<td colspan="2">문의내용 어쩌구저쩌구</td>
-                </tr>
-            </table>
-            <br><br>
+            <tr>
+                <th width="70px">작성자</th>
+                <td>이하늬</td>
+                <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea></td>
+            </tr>
+            <tr>
+                <th width="70px">문의제목</th>
+                <td>주문 취소했는데 아직 환불 안됨</td>
+            </tr>
+            <tr>
+                <td colspan="2">문의내용 어쩌구저쩌구</td>
+            </tr>
+         </table>
+         <br><br>
 
-            <!-- 하단 버튼들 -->
-            <div>
-                <button type="submit" class="btn btn-sm btn-warning">수정</button>
-                <a href="" class="btn btn-sm btn-danger">삭제</a>
-                <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
-            </div>
+         <!-- 하단 버튼 (상세: 수정, 삭제, 뒤로) -->
+         <div>
+             <button type="submit" class="btn btn-sm btn-warning">수정</button>
+             <a href="" class="btn btn-sm btn-danger">삭제</a>
+             <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
+         </div>
 
-        </form>
+      </form>
 
 
     </div>
+    
+    
 </body>
 </html>

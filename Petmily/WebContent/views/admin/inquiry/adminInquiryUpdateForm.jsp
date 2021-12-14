@@ -14,7 +14,7 @@
         margin:auto;
         margin-top:50px;   
     }
-	/* 테이블 카테고리, 입력창 */
+	/* 테이블 카테고리,박스들 */
     #enroll-form-inquiry table td{
         width:300px;
         padding:10px;
@@ -28,7 +28,7 @@
         border-radius: 10px;
         padding:20px;
     }
-    /* Q&A 답변창 */
+    /* 테이블 카테고리,박스들 */
     #enroll-form-inquiry textarea{
         width:100%;
         box-sizing:border-box;
@@ -50,27 +50,26 @@
     <!-- 사이드바 -->
     <%@ include file="../../common/admin_cusmainSidebar.jsp" %>
 	
-	
-    <!-- 큰틀 -->
+	<!-- 전체 틀 -->
     <div class="outer" align="center">
         <br>
         <br>
         <br>
 
-        <!-- Q&A 답변 입력폼 -->
+        <!-- (상품문의) 답변 입력폼 -->
         <form action="" id="enroll-form-inquiry" method="post">
-			
-			<!-- 조회 및 입력창 -->
+
+			<!--  상품문의 답변입력창 -->
             <table>
                 <tr>
-                    <th width="70px">접수일시</th>
-                    <td>2021-11-11</td>
-                    <td>2021-11-13</td>
+                   <th width="70px">접수일시</th>
+                   <td>2021-11-11</td>
+                   <td>2021-11-13</td>
                 </tr>
                 <tr>
-                    <th width="70px">작성자</th>
-                    <td>이하늬</td>
-                    <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea></td>
+                   <th width="70px">작성자</th>
+                   <td>이하늬</td>
+                   <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea></td>
                 </tr>
                 <tr>
                     <th width="70px">문의제목</th>
@@ -82,9 +81,9 @@
             </table>
             <br><br>
 
-            <!-- 하단 버튼 (등록: 등록, 뒤로) -->
+            <!-- 하단 버튼 (수정 : 수정, 뒤로) -->
             <div>
-                <button type="submit" class="btn btn-sm btn-warning">등록</button>
+                <button type="submit" class="btn btn-sm btn-warning">수정</button>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 

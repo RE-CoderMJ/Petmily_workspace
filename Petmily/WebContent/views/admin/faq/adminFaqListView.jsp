@@ -6,73 +6,105 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-        /* 큰 틀 */
-        .outer{
-            width:1100px;
-            height:auto;
-            margin:auto;
-        }
-        .outer>div{
-            float:left;
-        }
-        
-        /* 맨위 현재게시판이름 */
-        .top{
-            width:1100px;
-        }
-        
-        /* 버튼들(등록,수정,삭제) */
-        #right{
-            float:right;
-            padding-top:50px;
-            padding-right:10px;
-        }
-        
-        /* 테이블 + 페이징 바 */
-        .tablepaging{
-            width:1100px;
-            float:center;
-            text-align:center;
-        }
-        
-        /* 페이징바 */
-       .paging-area button{
-            border:  0;
-            background-color: transparent;
-            height: 40px;
-            width: 40px;
-            border-radius: 5px;
-        }
+	/* 전체 틀 */
+   	.outer{
+       width:1100px;
+       height:auto;
+       margin:auto;
+    }
+    .outer>div{
+       float:left;
+    }
+    /* 맨위 현재게시판이름 */
+    .top{
+       width:1100px;
+    }
+    /* 버튼들(등록,수정,삭제) */
+    #right{
+       float:right;
+       padding-top:50px;
+       padding-right:10px;
+    }
+    /* 테이블 + 페이징 바 */
+    .tablepaging{
+       width:1100px;
+
+       text-align:center;
+       margin:auto;
+    }
+    /* 삭제모달창 */
+    .modalMsg-area{
+         font-weight: bolder;
+         font-size: 17px;
+         margin-top: 20px;
+         height: 70px;
+         text-align: center;
+     }
+     #deletebtn-area>*{
+         color: white;
+         font-weight: bolder;
+         font-size: 15px;
+         height: 35px;
+         line-height: 5px;
+         width: 70px;
+         margin-top: -10px;
+     }
+     #confirm-btn{
+         background-color: red;
+         margin-right: 2px;
+         line-height: 22px;
+     }
+     #closebtn{
+         background-color: gray;
+         margin-left: 2px;
+     }
+     #deleteCompletedclosebtn{
+          background-color: orange;
+          width: 100px;
+          color: white;
+          font-weight: bolder;
+     }
+    /* 페이징바 */
+    .paging-area button{
+        border:  0;
+        background-color: transparent;
+        height: 40px;
+        width: 40px;
+        border-radius: 5px;
+     }
 </style>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
 	<!-- 메뉴바 -->
     <%@ include file="../../common/admin_menubar.jsp" %>
     
     <!-- 사이드바 -->
     <%@ include file="../../common/admin_cusmainSidebar.jsp" %>
 
-    <!-- 큰 틀-->
+    <!-- 전체 틀-->
     <div class="outer">
 
-        
-
-        <!-- 맨 위 게시판 이름-->
-        <div class="top">
+    	<!-- 상단바 (현재 게시판 이름) -->
+    	<div class="top">
             <br>
-            <h2 style="color:gray">&gt; 관리자 고객센터</h2>
+            	<h2 style="color:gray">&gt; 관리자 고객센터</h2>
             <hr>
-            <h5>FAQ 관리</h3>
+            	<h5>FAQ 관리</h5>
             <br>
         </div>
 
-        <!-- 검색창 -->
+        <!-- 검색창 (카테고리, 검색어) -->
         <div class="select">
             <div align="left">
+            
+            	<!-- 카테고리, 제목 검색 입력창 -->
                 <form>
                     <div class="input-group mb-3">
                         <select name="faqcate">제목
@@ -86,11 +118,11 @@
                             <option value="coupon">쿠폰/적립금</option>
                             <option value="other">기타</option>
                         </select>
-                      <div class="input-group-prepend">
+                     <div class="input-group-prepend">
                         <span class="input-group-text" style="color:black">제목</span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="검색어를 입력해주세요">
-                      <a href="" class="btn btn-sm btn-warning">검색</a>
+                     </div>
+                     	<input type="text" class="form-control" placeholder="검색어를 입력해주세요">
+                     	<a href="" class="btn btn-sm btn-warning">검색</a>
                     </div>
                 </form>
 
@@ -105,37 +137,60 @@
                 <a href="<%= contextPath %>/adminEnrollForm.faq" class="btn btn-sm btn-warning">등록</a>
                 <a href="<%= contextPath %>/adminUpdateForm.faq" class="btn btn-sm btn-warning">수정</a>
                 
-                <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
-    삭제
-  </button>
+                
+                <!-- 삭제버튼(혜선꺼) : Button to Open the Modal -->
+               <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
+                            삭제
+               </button>
 
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+               <!-- 삭제 모달 Modal -->
+               <div class="modal fade" id="deleteModal">
+                  <div class="modal-dialog modal-dialog-centered">
+                     <div class="modal-content" style="width: 400px;">
 
-        
-        <!-- Modal body -->
-        <div class="modal-body" align="center">
-          	정말로 삭제하시겠습니까?
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
+                        <!-- Modal body -->
+                        <div class="modal-body" align="center">
+                           <div class="modalMsg-area">
+                                                  정말 삭제하시겠습니까?
+                           </div>
+                           
+                       	   <div id="deletebtn-area">
+                           	   <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                           	   <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                           </div>              
+                        </div>
+                        
+                      </div>
+                   </div>
+                </div>
+               
+               <!-- 삭제 완료 확인창 Modal -->
+               <div class="modal fade" id="deleteCompleted">
+                  <div class="modal-dialog modal-sm modal-dialog-centered">
+                     <div class="modal-content">
+
+                        <!-- Modal body -->
+                        <div class="modal-body" align="center" style="text-align: center;">
+                           <div class="modalMsg-area">
+                                                  정상적으로 삭제되었습니다.
+                           </div>
+                           
+                           <div>
+                           	  <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
+                           </div>              
+                        </div>
+                  
+                     </div>
+                  </div>
+               </div>
+               
+			<br><br>
+           	</div>
                 
                 
-                
-                <br><br>
+            <br><br>
             </div>
-        </div>
+        
 
         <!-- 테이블 + 페이징 바 -->
         <div class="tablepaging">
@@ -145,8 +200,8 @@
                         <tr>
                             <th width="50"><input type="checkbox" name="" value=""></th>
                             <th width="100">번호</th>
-                            <th width="200">분류</th>
-                            <th width="500">제목</th>
+                            <th width="150">분류</th>
+                            <th width="550">제목</th>
                             <th width="150">작성자</th>
                             <th width="100">작성일</th>
                         </tr>
@@ -165,12 +220,11 @@
                             <td>펫밀리</td>
                             <td>21-12-04</td>
                         </tr>
-                    </tbody>
-                </table>
-              </div>  
+                     </tbody>
+             	</table>
+           	 </div>  
     	
-    
-            <br><br><br>
+    		 <br><br><br>
 
 
             <!-- 페이징 바 -->

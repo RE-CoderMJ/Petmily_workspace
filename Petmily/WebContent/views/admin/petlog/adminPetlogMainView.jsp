@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <style>
-    /* 큰 틀 */
+<style>
+	/* 큰 틀 */
     .outer{
         width:1100px;
         height:auto;
@@ -15,14 +15,12 @@
     .outer div{ 
         float:left;
     }
-
     /* 현재 게시판이름 */
     .top {
         width:1100px;
     }
     /* 노란박스 (new) */
     .middle {
-    
         width:1100px;
         height:100px;
         background:rgb(247, 198, 4);
@@ -32,10 +30,7 @@
         margin:10px;
     }
     .list-area{
-    
         width:1100px;
-        
-
     }
     .middle>div{
     	width:100%;
@@ -56,7 +51,6 @@
     #thumbnail{
         width: 220px;
         height: 200px;
-
     }
     .thumbnail>p{
         width: 100%;
@@ -84,8 +78,6 @@
         text-align: right;
         line-height: 40px;
     }
-
-
     /* 페이징바 */
     .paging-area{
         width: 100%;
@@ -96,9 +88,8 @@
         height: 40px;
         width: 40px;
         border-radius: 5px;
-        
     }
-    </style>
+</style>
 </head>
 <body>
 
@@ -108,13 +99,13 @@
     <!-- 사이드바 (리뷰) -->
     <%@ include file="../../common/admin_petlogmainSidebar.jsp" %>
 
-	 <!-- 큰 틀 -->
+	<!-- 전체 틀 -->
     <div class="outer">
 
-        <!-- 현재 게시판이름 -->
+        <!-- 상단바 (현재 게시판이름) -->
         <div class="top">
             <br>
-            <h2 style="color:gray">&gt; 관리자 Petlog</h2>
+            	<h2 style="color:gray">&gt; 관리자 Petlog</h2>
             <hr>
         </div>
 

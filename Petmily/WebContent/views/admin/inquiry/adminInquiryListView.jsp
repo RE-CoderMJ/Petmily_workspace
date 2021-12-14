@@ -76,7 +76,6 @@
           color: white;
           font-weight: bolder;
      }
-
 	 /* 페이징바 */
      .paging-area button{
           border:  0;
