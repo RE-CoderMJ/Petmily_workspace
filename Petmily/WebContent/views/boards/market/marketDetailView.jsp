@@ -30,7 +30,7 @@
 	                    <a href="<%=contextPath%>/updateForm.market">수정하기</a>
 	                </div>
 	                <div id="writer">
-	                    <div style="border: 1px solid black;"id="writer-pic"><img src="" alt=""></div>
+	                    <div id="writer-pic"><img src="resources/img/profile_default.png" alt=""></div>
 	                    <span id="writer-id">bomilove3</span>
 	                </div>
 	            </div>
@@ -87,7 +87,7 @@
 					</div>
 				</div>
 				<div id="write-reply">
-					<div style="border: 1px solid black;"id="writearea-pic"><img src="" alt=""></div>
+					<div id="writearea-pic"><img src="resources/img/profile_default.png" alt=""></div>
 						<form action="">
 							<input type="text" placeholder="댓글을 남겨 보세요." required>
 							<button class="btn" id="reply-enrollbtn">등록</button>
@@ -95,7 +95,7 @@
 				</div>
 				
 				<div class="replies">
-					<div class="profile-pic"></div>
+					<div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
 					<div class="user-name">choco22</div>
 					<div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
 					<a href="" class="btn delete-btn">x</a>
@@ -104,7 +104,7 @@
 				</div>
 				
 				<div class="replies">
-					<div class="profile-pic"></div>
+					<div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
 					<div class="user-name">choco22</div>
 					<div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
 					<a href="" class="btn delete-btn">x</a>

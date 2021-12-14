@@ -1,27 +1,39 @@
 div{border:solid 1px black;}
-body{position:relative;}
-#outer{
-	margin-top:-71px;
-}
-#outer > div{
-    height:1000px;
+/* 전체구조 스타일 */
+body{
+    position:relative;
 }
 #left-bar{
     height: 1000px;
-    width: 15%;
-    background: rgb(253, 245, 213);
-    position:absolute;
-    left:0;
+    width: 280px;
+    position: absolute;
+    left: 0;
+	margin-top: -71px;
+    background: rgb(253, 240, 210);
 }
 #right-bar{
     height: 1000px;
-    width: 15%;
-    background: rgb(253, 245, 213);
-    position:absolute;
-    right:0;
+    width: 280px;
+    position: absolute;
+    right: 0;
+    margin-top: -71px;
+    background: rgb(255, 241, 207);
+}
+#outer{
+	margin-top: -71px;
 }
 #middle-area{
-	width:1616px;
-	height:900px;
-	margin:auto;
+    width: 1500px;
+    height: 1000px;
+    margin:auto;
+	padding-top:110px;
+}
+
+/* 컨텐츠 영역 스타일 */
+.content-box{
+    width: 1000px;
+    height: 600px;
+    background: url("../../img/petLog/note_small.png");
+    background-size: contain;
+    margin-bottom: 120px;
 }

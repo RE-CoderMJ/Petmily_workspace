@@ -37,6 +37,12 @@
     height: 30px;
     float: left;
     margin-right: 20px;
+    border-radius:100px;
+}
+#writearea-pic img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
 }
 #reply-enrollbtn{
     background-color: orange;
@@ -65,11 +71,16 @@
     float: left;
 }
 .profile-pic{
-    border: black solid 1px;
     width: 30px;
     height: 30px;
     float: left;
     margin-top: 4px;
+    border-radius:100px;
+}
+.profile-pic img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
 }
 .user-name{
     margin-left: 10px;

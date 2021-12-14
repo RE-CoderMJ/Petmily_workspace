@@ -13,6 +13,7 @@ div, img, li, a{
 	width: 1600px;
 	height: auto;
 	margin: auto;
+	margin-bottom:50px;
 }
 
 /* 위쪽 부분 스타일 */
