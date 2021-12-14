@@ -123,7 +123,11 @@
                                 <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
                                 <div class="user-name">choco22</div>
                                 <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-                                <div class="reply-info">xxxx-xx-xx<br> <a href="">수정</a><a href="" data-toggle="modal" data-target="#reportAskModal">신고</a></div>
+                                <div class="reply-info">
+                                	xxxx-xx-xx<br> 
+                                	<label href="">수정</label>
+                                	<label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+                                </div>
                                 <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
                                 <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
                             </div>
@@ -243,7 +247,11 @@
                                 <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
                                 <div class="user-name">choco22</div>
                                 <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-                                <div class="reply-info">xxxx-xx-xx<br> <a href="">수정</a><a href="" data-toggle="modal" data-target="#reportAskModal">신고</a></div>
+                                <div class="reply-info">
+                                	xxxx-xx-xx<br> 
+                                	<label href="">수정</label>
+                                	<label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+                                </div>
                                 <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
                                 <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
                             </div>
@@ -362,7 +370,11 @@
                                 <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
                                 <div class="user-name">choco22</div>
                                 <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-                                <div class="reply-info">xxxx-xx-xx<br> <a href="">수정</a><a href="" data-toggle="modal" data-target="#reportAskModal">신고</a></div>
+                                <div class="reply-info">
+                                	xxxx-xx-xx<br> 
+                                	<label href="">수정</label>
+                                	<label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+                                </div>
                                 <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
                                 <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
                             </div>

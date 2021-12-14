@@ -39,7 +39,6 @@ body{
 #pageUp>img{
 	width:50px;
 	height:50px;
-	
 }
 /* 상단 버튼 및 정렬 영역 */
 #search-condition{
@@ -55,6 +54,7 @@ body{
 	height:50px;
 	top:30px;
 	right:100px;
+	cursor:pointer;
 }
 #petsroom-icon{
 	float:left;
@@ -79,6 +79,7 @@ body{
 	height:50px;
 	top:30px;
 	left:150px;
+	cursor:pointer;
 }
 #enroll-icon{
 	position:absolute;
@@ -156,7 +157,7 @@ body{
     font-size: 12px;
     width: 30px;
     margin-left: 10px;
-    pointer:cursor!important;
+    cursor:pointer;
 }
 /* 팔로우 버튼 */
 .follow-btn{
@@ -368,7 +369,7 @@ body{
     left: 240px;
     top: 16px;
 }
-.reply-info a{
+.reply-info label{
     color: gray;
     font-size: 10px;
     margin-left: 7px;
