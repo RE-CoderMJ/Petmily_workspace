@@ -24,14 +24,14 @@
         </select>
         
         <div id="petsroom-btn">
-        	<div id="petsroom-icon"><img src="resources/img/petlog/petsRoom.png" alt=""></div>
+        	<div id="petsroom-icon"><img src="resources/img/petLog/petsRoom.png" alt=""></div>
         	<div>나의 펫츠룸으로 이동</div>
         </div>
         <div id="enroll-btn">
-        	<div id="enroll-icon"><img src="resources/img/petlog/enroll.png" alt=""></div>
+        	<div id="enroll-icon"><img src="resources/img/petLog/enroll.png" alt=""></div>
         	<div>나의 펫로그 쓰러가기</div>
         </div>
-        
+        	<br>
             <div class="content-box">
                 <div class="left-part">
                     <div class="left-top">

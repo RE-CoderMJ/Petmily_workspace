@@ -1,4 +1,4 @@
-div, a{border: 1px solid black;}
+div, a{}
 /* 전체구조 스타일 */
 body{
     position:relative;
@@ -46,19 +46,57 @@ body{
 	width:145px;
 	height: 30px;
 	position:absolute;
+	top:103px;
+	left:270px;
 }
 #petsroom-btn{
 	position:absolute;
-	width:200px;
-	height:60px;
+	width:240px;
+	height:50px;
+	top:30px;
+	right:100px;
 }
 #petsroom-icon{
 	float:left;
-	width:100px;
-	height:100px;
+	width:38px;
+	height:38px;
+}
+#petsroom-icon>img{
+	width:100%;
+	height:100%;
+}
+#petsroom-icon+div{
+	margin-left:px;
+	width:160px;
+	height:38px;
+	line-height:38px;
+	font-weight:bolder;
+	font-size: 18px;
 }
 #enroll-btn{
 	position:absolute;
+	width:240px;
+	height:50px;
+	top:30px;
+	left:150px;
+}
+#enroll-icon{
+	position:absolute;
+	float:left;
+	width:38px;
+	height:38px;
+}
+#enroll-icon>img{
+	width:100%;
+	height:100%;
+}
+#enroll-icon+div{
+	margin-left:px;
+	width:160px;
+	height:38px;
+	line-height:38px;
+	font-weight:bolder;
+	font-size: 18px;
 }
 /* 컨텐츠 영역 스타일 */
 .content-box{
