@@ -69,7 +69,7 @@
     .detailTitle {
         font-size: 20px;
         font-weight: bold;
-        padding: 20px 0px 10px;
+        padding: 20px 0px 0px;
     }
 
     #copybtn {
@@ -127,7 +127,7 @@
 
                     고객센터 (XXXX-XXXX, 평일10시~17시)를 통해 연락주시기 바랍니다 <br>
 
-			＊ 원하시는 답변을 찾지 못하셨나요?  
+			        ＊ 원하시는 답변을 찾지 못하셨나요?  
                 </div>
 
                 <div style="border-bottom: 2px solid lightgray; margin-top: 20px;"></div>
