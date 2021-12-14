@@ -8,7 +8,9 @@
 <style>
         /* cont-wrap */
         .cont-wrap{
-            margin-left: 350px;
+            /* margin-left: 350px; */
+            margin: 0 auto;
+            width: 1200px;
         }
         .title-box h3{
             font-size: 24px;
@@ -24,30 +26,31 @@
         .search-box{
             display: flex;
         }
-
         .selectpicker{
             width: 150px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        /* 검색 박스 */
-        .search .form-control{
-            width: 300px;
-            border: 2px solid rgb(247, 198, 4);
-            border-radius: 4px;
-            margin-left: 10px;
+        /* 검색영역 스타일 */
+        .search-area{
+            width: 900px;
         }
-        .search button{
-            width: 50px;
-            height: 50px;
-            border: 2px solid rgb(247, 198, 4);
-            border-radius: 4px;
-            line-height: 50px;
+        .search-area>input{
+            width: 600px;
+            height: 39px;
+            border: rgb(247, 198, 4) 3px solid;
+            padding-right: 50px;
+            padding-left: 5px;
         }
-        /* 버튼 박스 */
-        .btn-box{
-            text-align: right;
+        /* 검색버튼 */
+        #search-btn{
+        background-image: url("resources/img/searchImg.png");
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        margin-left: -45px;
         }
+
         /* 표 */
         table {
             text-align: center;
@@ -60,6 +63,12 @@
             width: 40px;
             border-radius: 5px;
         }
+        /* 사이드바 색 고정 */
+        #mypost{
+            background: rgb(247, 198, 4);
+            color: white;
+        }
+
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -74,6 +83,8 @@
     <%@ include file="../common/menubar.jsp" %>
 
 	<div class="container" style="max-width:1600px;">
+    
+        <%@ include file="mpSidebar.jsp" %>
 
         <!-- cont-wrap -->
         <div class="cont-wrap">
@@ -93,13 +104,9 @@
                         <option>살래요</option>
                         <option>팔래요</option>
                     </select>
-                    <div class="search">
-                        <form class="form-inline" action=" ">
-                          <input class="form-control p-4" type="text" style="width: 950px;">
-                          <button class="btn" type="submit">
-                            <span class="material-icons">search</span>                                    
-                          </button>
-                        </form>
+					<div class="search-area">
+                        <input type="text" placeholder="검색어를 입력하세요.">
+	            		<button class="btn" id="search-btn"></button>
                     </div>
                 </div>
 
@@ -154,5 +161,6 @@
             })
         </script>
     </div>
+    <br><br>
 </body>
 </html>

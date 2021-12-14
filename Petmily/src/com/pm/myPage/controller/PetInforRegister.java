@@ -1,4 +1,4 @@
-package com.pm.admin_Mem;
+package com.pm.myPage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminMemManagerController
+ * Servlet implementation class PetInforRegister
  */
-@WebServlet("/memMg.ad")
-public class AdminMemManagerController extends HttpServlet {
+@WebServlet("/PetInforRegister.mp")
+public class PetInforRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMemManagerController() {
+    public PetInforRegister() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class AdminMemManagerController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/manager/adminMemManager.jsp").forward(request, response);
+		request.getRequestDispatcher("views/myPage/petInforRegister.jsp").forward(request, response);
 	}
 
 	/**

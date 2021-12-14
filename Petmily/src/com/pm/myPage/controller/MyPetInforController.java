@@ -1,4 +1,4 @@
-package com.pm.admin_Shopping;
+package com.pm.myPage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminSpPdlistController
+ * Servlet implementation class MyPetInforController
  */
-@WebServlet("/spPdlist.ad")
-public class AdminSpPdlistController extends HttpServlet {
+@WebServlet("/MyPetInfor.mp")
+public class MyPetInforController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSpPdlistController() {
+    public MyPetInforController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class AdminSpPdlistController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/shopping/adminSoppingPdlist.jsp").forward(request, response);	
+		request.getRequestDispatcher("views/myPage/petInforMyPet.jsp").forward(request, response);
 	}
 
 	/**

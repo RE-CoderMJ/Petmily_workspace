@@ -16,7 +16,8 @@
 <style>
     /* cont-wrap */
     .cont-wrap{
-        margin-left: 350px;
+        margin: 0 auto;
+        width: 1200px;
     }
     .title-box h3{
         font-size: 24px;
@@ -39,7 +40,7 @@
         width: 46%;
         min-width: 350px;/*요거 넣음 화면 줄여도 350이하로 안 줄어들어.*/
         height: auto;
-        background-color: rgb(255, 248, 192);
+        background-color: lightyellow;
         float: left;
         margin-right: 20px;
         padding: 15px;
@@ -88,6 +89,12 @@
         margin-bottom: 20px;
         text-decoration: none;
     }
+    /* 사이드바 색 고정 */
+    #mypetinfor{
+            background: rgb(247, 198, 4);
+            color: white;
+        }
+
 
 </style>
 </head>
@@ -95,6 +102,8 @@
 	<%@ include file="../common/menubar.jsp" %>
 
     <div class="container" style="max-width:1600px;">
+
+        <%@ include file="mpSidebar.jsp" %>
         <!-- cont-wrap -->
         <div class="cont-wrap">
             <div class="title-box mt-1 pb-2">
@@ -127,5 +136,6 @@
             </div>
         </div>
     </div>
+    <br><br>
 </body>
 </html>

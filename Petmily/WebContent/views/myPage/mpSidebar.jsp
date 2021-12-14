@@ -46,7 +46,7 @@
         cursor:pointer;
         margin-bottom: 5px;
     }
-    #d-category0{
+    #d-category{
         position: absolute;
         top:80px;
         /* left: 90px; */
@@ -80,17 +80,21 @@
    <div class="sidebar-area">
     <ul>
         <div id="boardName">마이페이지</div>
-        <div id="d-category0">
+        <div id="d-category">
             
-            <div class="d-category1" id="dog" onclick="location.href='<%= contextPathas %>/PetInforRegister.mp';">회원정보수정</div>
+            <div class="d-category1" id="dog">회원정보수정</div>
             
-            <div class="d-category1" id="cat" onclick="location.href='<%= contextPathas %>/MyPost.mp';">내가쓴게시글조회</div>
+            <div class="d-category1" id="mypost" onclick="location.href='<%= contextPaths %>/MyPost.mp';">내가쓴게시글조회</div>
             
-            <div class="d-category1" id="cat" onclick="location.href='<%= contextPathas %>/MyPetInfor';">펫적사항</div>
+            <div class="d-category1" id="mypetinfor" onclick="location.href='<%= contextPaths %>/MyPetInfor.mp';">펫적사항</div>
             
             <div class="d-category" id="etc">쇼핑몰</div>
-            <div class="dd-category buy" onclick="location.href='<%= contextPathas %>/spErPd.ad';">살래요</div>
-            <div class="dd-category sell" onclick="location.href='<%= contextPathas %>/spPdUd.ad';">팔래요</div>
+            <p class="dd-category" onclick="location.href='<%= contextPaths %>/cart.my';">장바구니</p>
+            <p class="dd-category" onclick="location.href='<%= contextPaths %>/orderselect.my';">주문배송조회</p>
+            <p class="dd-category" onclick="location.href='<%= contextPaths %>/like.my';">찜</p>
+            <p class="dd-category" onclick="location.href='<%= contextPaths %>/point.my';">포인트조회</p>
+            <p class="dd-category" onclick="location.href='<%= contextPaths %>/exchangeapp.my';">교환/반품 신청</p>
+            <p class="dd-category" onclick="location.href='<%= contextPaths %>/cancelselect.my';">취소/환불내역 조회</p>
         </div>
     </ul>
 </div>
@@ -99,25 +103,36 @@
             $(".d-category").click(function(){
                 $(this).siblings(".d-category").css({background: "", color:"black"});
                 $(this).css({background: "rgb(247, 198, 4)", color:"white"});
-                const $buy = $(this).next();
-    
-                if($buy.css("display") == "none" && $buy.next().css("display") == "none"){
-                    $(this).siblings(".buy").slideUp();
-                    $(this).siblings(".sell").slideUp();
+                const $ddCategory = $(this).nextAll("p");
+                
+                if($ddCategory.css("display") == "none" ){
+                    // $(this).siblings(".buy").slideUp();
+                    // $(this).siblings(".sell").slideUp();
                     
-                    $buy.slideDown();
-                    $buy.next().slideDown();
+                    $ddCategory.slideDown();
+                    // $ddCategory.next().slideDown();
                 }else{
-                    $buy.slideUp();
-                    $buy.next().slideUp();
+                    $ddCategory.slideUp();
+                    $ddCategory.next().slideUp();
                 }
             })
-    
+            
+            $(".d-category1").click(function(){
+
+                const $ddCategory = $(this).nextAll("p");
+
+                if($ddCategory.css("display") != "none"){
+                    $ddCategory.slideUp();
+                }else{
+                }
+            })
+
             $(".dd-category").click(function(){
                 $(this).siblings(".dd-category").css("color", "darkgray").css("text-decoration", "none");
                 $(this).css("color", "orange").css("text-decoration", "underline");
             })
         })
+        
     </script>
 
 </body>

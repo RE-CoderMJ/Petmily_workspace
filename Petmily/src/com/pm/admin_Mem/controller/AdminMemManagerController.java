@@ -1,4 +1,4 @@
-package com.pm.admin_Notify;
+package com.pm.admin_Mem.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminNfWnListController
+ * Servlet implementation class adminMemManagerController
  */
-@WebServlet("/nfWnList.ad")
-public class AdminNfWnListController extends HttpServlet {
+@WebServlet("/memMg.ad")
+public class AdminMemManagerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminNfWnListController() {
+    public AdminMemManagerController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class AdminNfWnListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/notify/adminWarningList.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/manager/adminMemManager.jsp").forward(request, response);
 	}
 
 	/**

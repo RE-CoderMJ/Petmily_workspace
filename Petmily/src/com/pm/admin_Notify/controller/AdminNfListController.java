@@ -1,4 +1,4 @@
-package com.pm.admin_Shopping;
+package com.pm.admin_Notify.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminSpPmlistController
+ * Servlet implementation class AdminNfListController
  */
-@WebServlet("/spPmlist.ad")
-public class AdminSpPmlistController extends HttpServlet {
+@WebServlet("/nfList.ad")
+public class AdminNfListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminSpPmlistController() {
+    public AdminNfListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,8 @@ public class AdminSpPmlistController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/admin/shopping/adminSoppingPmlist.jsp").forward(request, response);
-		}
+		request.getRequestDispatcher("views/admin/notify/adminNotifyList.jsp").forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

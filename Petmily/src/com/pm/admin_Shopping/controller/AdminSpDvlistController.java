@@ -1,4 +1,4 @@
-package com.pm.admin_Shopping;
+package com.pm.admin_Shopping.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

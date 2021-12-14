@@ -1,4 +1,4 @@
-package com.pm.admin_Login;
+package com.pm.admin_Login.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

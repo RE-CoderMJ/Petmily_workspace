@@ -17,7 +17,9 @@
 <style>
     /* cont-wrap */
     .cont-wrap{
-		margin-left: 350px;
+		/* margin-left: 350px; */
+		margin: 0 auto;
+        width: 1200px;
 	}
 	.title-box h3{
 		font-size: 24px;
@@ -224,23 +226,23 @@
 					<h3>어떤 반려동물과 함께하시나요?</h3>
 					<div class="category">
 						<div class="item">
-							<img src="../../resources/img/bomi.jpg" alt="">
+							<img src="resources/img/bomi.jpg" alt="">
 							<div class="radio-box">
-								<input type="radio" id="dog">
+								<input type="radio" id="dog" name="dog-radio">
 								<label for="dog">강아지</label>
 							</div>
 						</div>
 						<div class="item">
-							<img src="../../resources/img/bomi.jpg" alt="">
+							<img src="resources/img/bomi.jpg" alt="">
 							<div class="radio-box">
-								<input type="radio" id="cat">
+								<input type="radio" id="cat" name="dog-radio">
 								<label for="cat">고양이</label>
 							</div>
 						</div>
 						<div class="item">
-							<img src="../../resources/img/bomi.jpg" alt="">
+							<img src="resources/img/bomi.jpg" alt="">
 							<div class="radio-box">
-								<input type="radio" id="etc">
+								<input type="radio" id="etc" name="dog-radio">
 								<label for="etc">기타</label>
 							</div>
 						</div>
@@ -249,7 +251,7 @@
 				<!-- 프로필 이미지 수정 부분 -->
 				<div class="profile">
 					<div class="img-box">
-						<img src="../../resources/img/bomi.jpg" alt="보미사진">
+						<img src="resources/img/bomi.jpg" alt="보미사진">
 						<a href="" class="material-icons icon">photo_camera</a>
 					</div>
 				</div>
@@ -266,21 +268,21 @@
                     </div>
 					<div>
 						<label class="leftText" for="">성별<span class="star">*</span></label>
-						<input type="radio" id="m">
+						<input type="radio" id="m" name="gender-radio">
 						<label class="mr-5" for="m">수컷</label>
-						<input type="radio" id="f">
+						<input type="radio" id="f" name="gender-radio">
 						<label for="f">암컷</label>
                     </div>
 					<div>
 						<label class="leftText" for="">나이<span class="star">*</span></label>
                         <div style="width: 325px;display: inline-block;"> 
-                            <input type="radio" id="month" checked>
+                            <input type="radio" id="month" name="age-radio">
 							<label class="mr-5" for="month">개월 수 입력</label>
 							<input type="text" placeholder="개월 수" style="width: 125px;">
 							<label for="">개월</label>
                         </div>
 						<div>
-                            <input type="radio" id="month" checked>
+                            <input type="radio" id="month"  name="age-radio">
 							<label class="mr-4 mt-4" for="month">생년월일 입력</label>
 							<input type="date" placeholder="생년월일" style="width: 150px;">
                         </div>
@@ -300,5 +302,6 @@
             </div>
         </div>
     </div>
+    <br><br>
 </body>
 </html>
