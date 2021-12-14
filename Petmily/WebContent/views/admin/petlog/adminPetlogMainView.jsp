@@ -134,7 +134,7 @@
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.png" alt="">
+                    <img src="resources/img/petlog_logo.PNG" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -146,7 +146,7 @@
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.png" alt="">
+                    <img src="resources/img/petlog_logo.PNG" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -157,7 +157,7 @@
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.png" alt="">
+                    <img src="resources/img/petlog_logo.PNG" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -169,7 +169,7 @@
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.png" alt="">
+                    <img src="resources/img/petlog_logo.PNG" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -180,7 +180,7 @@
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.png" alt="">
+                    <img src="resources/img/petlog_logo.PNG" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
@@ -191,7 +191,7 @@
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.png" alt="">
+                    <img src="resources/img/petlog_logo.PNG" alt="">
                     <a href="" class="nickname">뽐뽀미</a>
                     <a href="" class="report">신고</a>
                 </p>
