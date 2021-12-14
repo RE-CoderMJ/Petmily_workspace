@@ -22,7 +22,7 @@
 	.title-box h3{
 		font-size: 24px;
 		font-weight: bold;
-		color: rgb(196, 195, 195);
+		color: black;
 	}
 	.ct-tit{
 		font-size: 26px;
