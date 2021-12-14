@@ -1,34 +1,65 @@
-div{border:solid 1px black;}
+div, a{border: 1px solid black;}
 /* 전체구조 스타일 */
 body{
     position:relative;
 }
 #left-bar{
-    height: 1000px;
+    height: 2500px;
     width: 280px;
     position: absolute;
     left: 0;
-	margin-top: -71px;
-    background: rgb(253, 240, 210);
+	margin-top: -70px;
+    background: rgb(255, 242, 200);
 }
 #right-bar{
-    height: 1000px;
+    height: 2500px;
     width: 280px;
     position: absolute;
     right: 0;
-    margin-top: -71px;
-    background: rgb(255, 241, 207);
+    margin-top: -70px;
+    background: rgb(255, 242, 200);
 }
 #outer{
 	margin-top: -71px;
+    height:2500;
 }
 #middle-area{
     width: 1500px;
-    height: 1000px;
+    height: 2500px;
     margin:auto;
 	padding-top:110px;
+	position:relative;
 }
-
+#pageUp{
+	position:absolute;
+	right:120px;
+	bottom: 180px;
+	position:fixed;
+}
+#pageUp>img{
+	width:50px;
+	height:50px;
+	
+}
+/* 상단 버튼 및 정렬 영역 */
+#search-condition{
+	width:145px;
+	height: 30px;
+	position:absolute;
+}
+#petsroom-btn{
+	position:absolute;
+	width:200px;
+	height:60px;
+}
+#petsroom-icon{
+	float:left;
+	width:100px;
+	height:100px;
+}
+#enroll-btn{
+	position:absolute;
+}
 /* 컨텐츠 영역 스타일 */
 .content-box{
     width: 1000px;
@@ -36,4 +67,301 @@ body{
     background: url("../../img/petLog/note_small.png");
     background-size: contain;
     margin-bottom: 120px;
+    position:relative;
 }
+
+/* 왼쪽 영역 */
+.left-part{
+    width: 430px;
+    height: 555px;
+    position: absolute;
+    left:18px;
+    top: 20px;;
+}
+/* 왼쪽 상단영역 */
+.left-top{
+    width: 360px;
+    height: 90px;
+    margin-top: 23px;
+    position: relative;
+}
+/* 프로필 */
+.profile-img{
+    width: 80px;
+    height: 80px;
+    margin-left: 0px;
+    border-radius: 100px;
+    position: absolute;
+    top: 10px;
+}
+.profile-img img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+/* 룸이름 */
+.room-name{
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 20px;
+    position: absolute;
+    top: 15px;
+    left: 80px;
+}
+.room-name>div{
+    float: left;
+}
+/* 신고버튼 */
+.report-account-btn{
+    color: darkgray;
+    font-weight: bolder;
+    font-size: 12px;
+    width: 30px;
+    margin-left: 10px;
+    pointer:cursor!important;
+}
+/* 팔로우 버튼 */
+.follow-btn{
+    width: 70px;
+    position: absolute;
+    left: 100px;
+    top: 50px;
+    color: white;
+    font-weight: bolder;
+    background: orange;
+    font-size: 15px;
+    border-radius: 10px;
+    border:none;
+}
+/* 좋아요 버튼 */
+.like-btn{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.like-btn img{
+	object-fit: contain;
+    width:100%;
+    height:100%;
+}
+/* 왼쪽 하단영역 */
+.left-bottom{
+    width: 427px;
+    height: 430px;
+    position: relative;
+}
+/* 사진영역 */
+.photo-area{
+    width: 360px;
+    height: 360px;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+.demo{
+    width: 100%;
+    height: 360px;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+/* 날짜 영역 */
+.date-area{
+    position: absolute;
+    bottom: 2px;
+    left: 180px;
+    font-size: 14px;
+    color: rgb(106, 106, 106);
+}
+
+/* 오른쪽 영역 */
+.right-part{
+    width: 430px;
+    height: 555px;
+    position: absolute;
+    right:32px;
+    top: 20px;;
+}
+/* 오른쪽 상단 영역 */
+.right-top{
+    margin-top: 50px;
+    height:240px;
+}
+/* 삭제버튼 */
+.delete-btn{
+    background: none;
+    border: none;
+    color: rgb(106, 106, 106);
+    font-weight: bolder;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+/* 내용영역 */
+.text-area{
+    width: 360px;
+    min-height: 110px;
+    max-height: 230px;
+    text-align: left;
+    padding: 5px;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+}
+/* 좋아요, 댓글수 영역 */
+.right-middle{
+    height: 30px;
+}
+.right-middle>img{
+    width: 20px;
+    height: 19px;
+    margin-top: 9px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+.right-middle span{
+    font-weight: bolder;
+    color: rgb(70, 70, 70);
+}
+.like-count{
+    margin-right: 10px;
+}
+.reply-count{
+    margin-right: 110px;
+}
+/* 신고버튼 */
+.report-post{
+    text-decoration: none;
+    color: darkgray;
+    font-weight: bolder;
+    font-size:11px;
+    margin-right: 5px;
+    cursor:pointer;
+}
+/* 수정버튼 */
+.modify-post{
+    text-decoration: none;
+    color: darkgray;
+    font-weight: bolder;
+    font-size:11px;
+    cursor:pointer;
+}
+/* 오른쪽 하단 영역 */
+.right-bottom{
+    width: 400px;
+    height: 185px;
+    background:rgb(235, 235, 235);
+}
+/* 댓글작성영역 스타일 */
+.write-reply{
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.write-reply input{
+    width: 313px;
+    height: 25px;
+    margin-top: 10px;
+}
+.reply-enrollbtn{
+    background-color: orange;
+    font-size: 13px;
+    font-weight: bolder;
+    height: 27px;
+    margin-left: 8px;
+    padding-bottm:20px;
+    border:none;
+    border-radius:10px;
+    width:50px;
+}
+/* 댓글조회영역 스타일 */
+.replies{
+    margin-bottom: 10px;
+    width: 385px;
+    padding-left: 10px;
+    height:auto;
+	min-height:50px;
+    overflow:hidden;
+    position: relative;
+}
+.user-name, .reply-content {
+    float: left;
+}
+.profile-pic{
+    width: 19px;
+    height: 19px;
+    float: left;
+    border-radius:100px;
+}
+.profile-pic img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+.user-name{
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: 13px;
+    margin-right: 10px;
+}
+.reply-content{
+    font-size: 12px;
+    white-space: pre-line;
+    height:auto;
+    margin-bottom:10px;
+    width:265px;
+    text-align: left;
+}
+.delete-reply{
+    text-decoration: none;
+    color: rgb(92, 92, 92);
+    font-weight: bolder;
+}
+.reply-info{
+    width: 60px;
+    font-size: 11px;
+    color: gray;
+    height: 50px;
+    margin-left: -205px;
+    position: absolute;
+    left: 240px;
+    top: 16px;
+}
+.reply-info a{
+    color: gray;
+    font-size: 10px;
+    margin-left: 7px;
+    text-decoration: none!important;
+    cursor: pointer;
+}
+
+/* 댓글 페이징바 */
+.paging-area{
+    width: 400px;
+    margin-top: 5px;
+}
+.paging-area button{
+    border:  0;
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+}
+
+/* 전체 페이징바 */
+#paging-area{
+    width: 400px;
+    margin-top: 5px;
+}
+#paging-area button{
+    border:  0;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+}
+
+

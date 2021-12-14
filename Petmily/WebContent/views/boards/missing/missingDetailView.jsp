@@ -36,8 +36,16 @@
 			</div>
 	
 			<div id="photo-area">
-	            <div id="demo" class="carousel" data-ride="carousel">
-	              
+			
+	            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
+	              	
+	              	<!-- Indicators -->
+					<ul class="carousel-indicators">
+					  <li data-target="#demo" data-slide-to="0" class="active"></li>
+					  <li data-target="#demo" data-slide-to="1"></li>
+					  <li data-target="#demo" data-slide-to="2"></li>
+					</ul>
+	              	
 	                <!-- The slideshow -->
 	                <div class="carousel-inner">
 	                  <div class="carousel-item active">
