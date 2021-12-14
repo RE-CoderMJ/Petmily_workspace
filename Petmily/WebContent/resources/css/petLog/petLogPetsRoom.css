@@ -1,0 +1,135 @@
+@charset "UTF-8";
+div{border:1px solid black}
+/* 전체구조 스타일 */
+body{
+    position:relative;
+}
+#left-bar{
+    height: 1050px;
+    width: 280px;
+    position: absolute;
+    left: 0;
+	margin-top: -70px;
+    background: rgb(255, 242, 200);
+}
+#right-bar{
+    height: 1050px;
+    width: 280px;
+    position: absolute;
+    right: 0;
+    margin-top: -70px;
+    background: rgb(255, 242, 200);
+}
+#outer{
+	margin-top: -71px;
+    height:1050px;
+}
+#middle-area{
+    width: 1300px;
+    height: 800px;
+    margin:auto;
+    margin-top:150px;
+	position:relative;
+	background: url("../../img/petLog/note_big.png");
+	background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+/* 왼쪽 영역 */
+#left-part{
+    width: 565px;
+    height: 756px;
+    position: absolute;
+    left:22px;
+    top: 23px;;
+}
+/* 왼쪽 상단영역 */
+#left-top{
+    width: 565px;
+    height: 250px;
+    margin-top: 30px;
+    position: relative;
+}
+/* 프로필 */
+#profile-img{
+    width: 110px;
+    height: 110px;
+    margin-left: 32px;
+    border-radius: 100px;
+    position: absolute;
+    top: 10px;
+}
+#profile-img img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+    border-radius: 100px;
+}
+/* 룸이름 */
+#room-name{
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 100px;
+    position: absolute;
+    top: 50px;
+    left: 80px;
+}
+#room-name>div{
+    float: left;
+}
+/* 신고버튼 */
+#report-account-btn{
+    color: darkgray;
+    font-weight: bolder;
+    font-size: 12px;
+    width: 30px;
+    margin-left: 10px;
+    cursor:pointer;
+}
+/* 팔로우 버튼 */
+#follow-btn{
+    width: 80px;
+    position: absolute;
+    left: 175px;
+    top: 85px;
+    color: white;
+    font-weight: bolder;
+    background: orange;
+    font-size: 20px;
+    border-radius: 10px;
+    border:none;
+}
+/* 게시글 팔로워 팔로잉 영역 */
+#room-info{
+    height: 45px;
+    width: 233px;
+    position: absolute;
+    right: 20px;
+    top:65px;
+}
+#room-info>div{
+    float: left;
+    width: 75px;
+    height: 20px;
+    font-weight: bolder;
+}
+/* 값 */
+.count{
+    color: rgb(255, 102, 0);
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+/* 제목부분 */
+.info-title{
+    font-size: 15px;
+}
+/* bio영역 */
+#bio{
+    width: 500px;
+    height: 50px;
+    text-align: left;
+    padding: 5px;
+    margin-top: 140px;
+    font-size: 14px;
+    
+}

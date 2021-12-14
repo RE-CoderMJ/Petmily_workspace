@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="../../../resources/css/boards/ask/askDetailView.css" rel="stylesheet">
+<link href="resources/css/boards/ask/askDetailView.css" rel="stylesheet">
 <link href="resources/css/boards/bCommon/reply.css" rel="stylesheet">
 <%@ include file="../../common/links.jsp" %>
 </head>

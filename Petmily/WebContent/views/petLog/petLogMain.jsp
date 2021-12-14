@@ -23,7 +23,7 @@
            <option value="fContents">팔로잉 게시글 조회</option>
         </select>
         
-        <div id="petsroom-btn">
+        <div id="petsroom-btn" onclick="location.href='<%= contextPath %>/petsRoom.petLog'">
         	<div id="petsroom-icon"><img src="resources/img/petLog/petsRoom.png" alt=""></div>
         	<div>나의 펫츠룸으로 이동</div>
         </div>
