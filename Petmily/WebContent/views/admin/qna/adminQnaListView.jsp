@@ -156,7 +156,7 @@
 	    <div class="under">
 	        <div class="rightbutton" align="right">
 	            <a href="<%= contextPath %>/adminEnrollForm.qna" class="btn btn-sm btn-warning">등록</a>
-	            <a href="" class="btn btn-sm btn-warning">수정</a>
+	            <a href="<%= contextPath %>/adminUpdateForm.qna" class="btn btn-sm btn-warning">수정</a>
 	            
 	        	<!-- 삭제버튼(혜선꺼) : Button to Open the Modal -->
                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
