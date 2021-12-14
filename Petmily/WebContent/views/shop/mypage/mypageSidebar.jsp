@@ -166,7 +166,7 @@
       </ul>
     </li>
     <li>
-      <div class="menu">쇼핑몰<i class="fa fa-chevron-down"></i></div>
+      <div class="menu">스토어<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu">
         <li><a href="<%= contextPaths %>/cart.my">장바구니</a></li>
         <li><a href="<%= contextPaths %>/orderselect.my">주문배송조회</a></li>

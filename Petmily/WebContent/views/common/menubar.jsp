@@ -172,7 +172,7 @@ body *{
     </div>
 
     <div class="nav-area" align="center">
-        <div class="menu"><a href="">쇼핑몰</a></div>
+        <div class="menu"><a href="">스토어</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.ask?page=1">궁금해요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.missing">찾고있어요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.petLog">PetLog</a></div>
