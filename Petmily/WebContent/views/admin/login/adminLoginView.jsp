@@ -121,7 +121,7 @@
                     <div id="login_input_id_pwd">
                         <input type="text" name="userId" placeholder="UserName" required>
                         <br>
-                        <input type="text" name="userPwd" placeholder="****" required>
+                        <input type="password" name="userPwd" placeholder="****" required>
                     </div>
                 </form><br>
                 <!-- 로그인 상태 유지 -->
