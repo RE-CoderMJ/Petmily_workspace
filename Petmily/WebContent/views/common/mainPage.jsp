@@ -418,7 +418,7 @@
                 <div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="resources/img/store/dog.png">
+                            <img src="resources/img/store/dog1.png">
                         </div>
                         <br><br> 강아지
                     </div>
@@ -442,7 +442,7 @@
                     </div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="resources/img/store/bird.png">
+                            <img src="resources/img/store/bird2.png">
                         </div>
                         <br><br> 새
                     </div>
