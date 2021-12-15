@@ -1,4 +1,4 @@
-#middle-area div{border: 1px solid black;}
+#middle-area div{border: 1px solid white;}
 /* 전체구조 스타일 */
 body{
     position:relative;
@@ -100,7 +100,7 @@ body{
     border:none;
 }
 /* 팔로잉 버튼 */
-#following{
+#following-btn{
     width: 80px;
     position: absolute;
     left: 175px;
@@ -136,6 +136,9 @@ body{
 .info-title{
     font-size: 15px;
 }
+.follower, .following{
+    cursor: pointer;
+}
 /* bio영역 */
 #bio{
     width: 500px;
@@ -143,7 +146,7 @@ body{
     text-align: left;
     padding: 5px;
     margin-top: 140px;
-    font-size: 14px;  
+    font-size: 14px;
 }
 /* 프로필 수정 버튼 */
 #edit-profile{
@@ -207,13 +210,12 @@ body{
 #pictures-area{
     margin-top: 90px;
     padding-left: 50px;
-    padding-top: 40px;
     height: 620px;
 }
 .pictures{
     width: 140px;
     height: 140px;
-    margin-bottom:50px;
+    margin-top: 50px;
     margin-right: 20px;
     float: left;
     overflow: hidden;
@@ -231,12 +233,21 @@ body{
     position: absolute;
     right: 40px;
     top:50px;
+    cursor:pointer;
 }
 
 /* 프로필 수정 모달 */
+.modal-body{
+    margin-bottom: 20px;
+}
+#close-profile{
+    margin-left: 430px;
+    margin-top: 20px;
+}
+/* 프로필 사진 */
 #edit-profile-img{
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     overflow: hidden;
     border-radius: 100px;
 }
@@ -245,7 +256,142 @@ body{
     height: 100%;
     object-fit: cover;
 }
+/* 룸이름 */
+#roomname-area{
+    margin-top: 20px;
+    margin-left: -20px;
+}
 #room-name2{
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+/* 사진첨부 */
+#file-upload-area{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+#file-upload-area>p{
+    float: left;
+    margin-left: 101px;
+    margin-right: 5px;
+    font-weight: bolder;
+    font-size: 14px;
+}
+#file-upload-area>input{
+    font-size: 14px;
+    margin-top:5px;
+}
+/* 소개글 */
+#bio-contents{
+    font-size: 14px;
+    font-weight: bolder;
+    margin-right: 220px;
+    margin-bottom: 10px;
+}
+#bio-contents+textarea{
+    resize: none;
+    width: 260px;
+    height: 100px;
+}
+/* 업로드 버튼 */
+#upload-btn{
+    background: rgb(247, 198, 4);
+    font-size: 14px;
+    font-weight: bolder;
+    width: 75px;
+    height: 33px;
+    margin-top: 20px;
+}
+
+/* 팔로워, 팔로잉 모달창 */
+/* 공통 */
+.list-title{
+    margin-bottom: 30px;
+}
+.list-title>span{
+    font-weight: bolder;
+}
+.title{
+    font-size: 22px;
+    margin-right: 20px;
+}
+.countNo{
+    font-size: 25px;
+    color: rgb(255, 111, 0);
+}
+.list-area{
+    width: 200px;
+    margin-bottom: 20px;
+}
+.profile-pic{
+    width: 30px;
+    height: 30px;
+    float: left;
+    overflow: hidden;
+    border-radius: 100px;
+    margin-left: -10px;
+    margin-top: -3px;
+}
+.profile-pic>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100px;
+}
+.userId{
+    font-weight: bolder;
+    font-size: 17px;
+    float: left;
+    margin-left: 15px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    width: 120px;
+    text-align: left;
+}
+.follow-lst-btn{
+    font-weight: bolder;
+    color: white;
+    background: orange;
+    width: 60px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 150px;
+}
+.modal-content{
+    overflow-y: initial !important
+}
+.list-body{
+    height: 250px;
+    overflow-y: auto;
+}
+.following-lst-btn{
+    font-weight: bolder;
+    color: orange;
+    background: white;
+    border: 3px solid orange;
+    width: 60px;
+    height: 27px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 150px;
+}
+#follower button, #following button{
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+/* 페이징바 */
+#paging-area{
+    width: 400px;
+    margin-top: -20px;
+}
+#paging-area button{
+    border:  0;
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
 }

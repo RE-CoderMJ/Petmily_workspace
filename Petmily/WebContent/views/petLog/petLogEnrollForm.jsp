@@ -19,6 +19,7 @@
    .cont-wrap{
         margin: 0 auto;
         width: 1000px;
+        margin-bottom:230px;
     }
     /* 제일 상단 */
     .title-box{
@@ -139,7 +140,7 @@
 </style>
 </head>
 <body>
-    <%@ include file="../../common/menubar.jsp" %>
+    <%@ include file="../common/menubar.jsp" %>
     <br><br> 
     <div class="container" style="max-width:1600px;">
         
@@ -148,7 +149,7 @@
                 
             </div> -->
             <div class="content">
-                <hr>
+                
                 <!-- 마이펫 관리 -->
                 <div class="mypet-area">
                     <div class="pet-box">
@@ -156,20 +157,20 @@
                             <p class="titles"><span class="required">*</span> 필수입력사항</p>
                             <a href="" class="material-icons ">undo</a>
                         </div>
-                        <div href="<%= contextPaths %>/PetInforModify.mp" class="material-icons add"></div>
+                        <div href="<%= contextPath %>/PetInforModify.mp" class="material-icons add"></div>
                         <div id="photo-area">
-                            <div id="demo" class="carousel" data-ride="carousel" style="width: 390px;">
+                            <div id="demo" class="carousel" data-ride="carousel" data-interval="false" style="width: 390px;">
                               
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                    <img src="../../resources/img/bomi3.jpg" alt="" width="390px;">
+                                    <img src="resources/img/bomi3.jpg" alt="" width="390px;">
                                   </div>
                                   <div class="carousel-item">
-                                    <img src="../../resources/img/bomi2.jpg" alt="" width="390px;">
+                                    <img src="resources/img/bomi2.jpg" alt="" width="390px;">
                                   </div>
                                   <div class="carousel-item">
-                                    <img src="../../resources/img/bomi4.jpg" alt="" width="390px;">
+                                    <img src="resources/img/bomi4.jpg" alt="" width="390px;">
                                   </div>
                                 </div>
                               
@@ -180,18 +181,18 @@
                                 <a class="carousel-control-next" href="#demo" data-slide="next">
                                   <span class="carousel-control-next-icon"></span>
                                 </a>
-                                
-                                <div id="text-area">
-                                    <textarea name="text" placeholder="내용을 입력해주세요"></textarea>
-                                </div>
-                                <div id="file-upload-area">
-                                    <span class="titles2">파일</span>
-	                                <span class="required">*</span><br>
-                                    <span class="titles2">첨부&nbsp;&nbsp;&nbsp;</span>
-                                </div>
-                                    <input id="file2" type="file" multiple>
-                            </div>
+                             </div> 
                         </div>
+                        <div id="text-area">
+                             <textarea name="text" placeholder="내용을 입력해주세요"></textarea>
+                        </div>
+                        <div id="file-upload-area">
+                                <span class="titles2">파일</span>
+                                <span class="required">*</span><br>
+                                <span class="titles2">첨부&nbsp;&nbsp;&nbsp;</span>
+                        </div>
+                        <input id="file2" type="file" multiple>
+                         
                         <div id="enroll-btn-area"><button class= "btn">올리기</button></div>
                     </div>
                 </div>
@@ -199,5 +200,6 @@
         </div>
     <br><br>
     </div>
+    <%@ include file="../common/footerbar.jsp" %>
 </body>
 </html>
