@@ -106,6 +106,7 @@
         .md-box .btn-box button{
             background-color: #d4d4d4;
         }
+        .modal-backdrop { opacity:0.3 !important; }
         /* 사이드바 색 고정 */
         #memInfor{
             background: rgb(247, 198, 4);

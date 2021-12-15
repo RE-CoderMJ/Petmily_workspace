@@ -139,6 +139,8 @@
             color: white;
             font-weight: bolder;
         }
+        .modal-backdrop { opacity:0.3 !important; }
+        
         /* 사이드바 색 고정 */
         #nfWnList{
             background: rgb(247, 198, 4);

@@ -142,6 +142,8 @@
             color: white;
             font-weight: bolder;
         }
+        .modal-backdrop { opacity:0.3 !important; }
+        
         #spPdUd{
             background: rgb(247, 198, 4);
             color: white;

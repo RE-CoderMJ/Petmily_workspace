@@ -133,6 +133,8 @@
             height: 50px;
             color: white;
         }
+        .modal-backdrop { opacity:0.3 !important; }
+        
         /* 사이드바 색 고정 */
         #nfList{
             background: rgb(247, 198, 4);

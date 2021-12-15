@@ -113,6 +113,9 @@
         .modal-footer button{
             width: 100px;
         }
+        .modal-backdrop { opacity:0.3 !important; }
+
+        /* 사이드바 */
         #memPoint{
             background: rgb(247, 198, 4);
             color: white;

@@ -93,6 +93,7 @@
             color: white;
             font-weight: bolder;
         }
+        .modal-backdrop { opacity:0.3 !important; }
 
 
 

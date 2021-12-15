@@ -77,6 +77,8 @@
             height: 70px;
             text-align: center;
         }
+        .modal-backdrop { opacity:0.3 !important; }
+        
         #statusChangebtn-area-area>*{
             color: white;
             font-weight: bolder;

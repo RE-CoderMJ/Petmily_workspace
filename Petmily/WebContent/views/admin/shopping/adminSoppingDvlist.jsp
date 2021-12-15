@@ -130,7 +130,9 @@
             color: white;
             font-weight: bolder;
         }
-        /* 발생, 발견일 스타일*/
+        .modal-backdrop { opacity:0.3 !important; }
+
+        /* 날짜 스타일*/
         #missing-date-area>p{
         float: left;
         text-align: left;
