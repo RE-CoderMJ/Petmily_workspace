@@ -87,9 +87,45 @@
         height: 30px;
         margin:auto;
         }
+        
+		/*주문내역 상품정보 슬라이드*/  
+		.orderProduct {
+            display: none;
+            overflow: hidden;
+            font-size: 20px;
+            position:relative;
+            left:400px;
+            border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+            width:500px;
+            height:100px;
+            border-radius: 10px;
+            margin-top:5px;
+		}
+
 		
 
         .inline-block{display:inline-block;}
+        
+         #content-img{
+			width:80px;
+			height:80px;
+            position:absolute; 
+            top:50%; 
+            left:5%;
+            margin-top:-40px; 
+        }
+
+        #cart-option{
+            width:350px;
+            position:absolute;
+            margin-left: 10px;
+            top:20px;
+            right:10px;
+        }
+        
+         #money{position:absolute; right:2%; bottom:5%; font-size:18px;}
+        
     </style>
 </head>
 <body>
@@ -104,15 +140,60 @@
 
     <div id="outer">
 
-        <div id="content" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">
+        <div id="content">
             <div class="inline-block" id="c1">21.11.15 구매</div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
+            <div class="inline-block" id="c2" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">주문번호 : A-13124954</div>
+            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">총3개</div>
             <div class="inline-block" id="c4">60,000원</div>
-            <button class="btn"> 
+            <button class="btn" data-toggle="modal" data-target="#my80sizeModal"> 
             	<img src="resources/img/down-arrow.png" class="down-arrow">
             </button>
+            
+            <div class="orderProduct">
+				<div class="inline-block" >	             
+	                <img src=""  id="content-img">    
+	        	</div>
+	            
+	            <div class="inline-block"  id="cart-option" >	                
+	               	 상품명
+	                <br>
+	             	  블루1개 (옵션)	
+	            </div>
+	            <div class="inline-block" id="money">
+	                <h3>20,000 원</h3>
+	            </div>
+			</div>
+            
+            
         </div>
+
+        <div id="content">
+            <div class="inline-block" id="c1">21.11.15 구매  </div>
+            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
+            <div class="inline-block" id="c3">총3개</div>
+            <div class="inline-block" id="c4">60,000원</div>
+            <button> ▼ </button>
+            
+            
+        </div>
+
+        <div id="content">
+            <div class="inline-block" id="c1">21.11.15 구매  </div>
+            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
+            <div class="inline-block" id="c3">총3개</div>
+            <div class="inline-block" id="c4">60,000원</div>
+            <button> ▼ </button>
+        </div>
+
+
+        <div id="content">
+            <div class="inline-block" id="c1">21.11.15 구매  </div>
+            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
+            <div class="inline-block" id="c3">총3개</div>
+            <div class="inline-block" id="c4">60,000원</div>
+            <button> ▼ </button>
+        </div>
+
 
         <div id="content">
             <div class="inline-block" id="c1">21.11.15 구매  </div>
@@ -128,39 +209,24 @@
             <div class="inline-block" id="c3">총3개</div>
             <div class="inline-block" id="c4">60,000원</div>
             <button> ▼ </button>
+			
         </div>
-
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-        </div>
-
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-        </div>
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-        </div>
+        
 
     </div>
 </div>
 
 
 </div>
+
+<script>
+
+$("button").click(function() {
+	   $(this).next(".orderProduct").stop().slideToggle(300);
+	  $(this).toggleClass('on').siblings().removeClass('on');
+	  $(this).next(".orderProduct").siblings(".orderProduct").slideUp(300); // 1개씩 펼치기
+	});
+</script>
 
 <%@ include file="../../common/footerbar.jsp" %>
 </body>

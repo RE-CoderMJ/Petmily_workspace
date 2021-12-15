@@ -116,13 +116,13 @@ div, img, li, a{
             <div class="inline-block" >
               
                 <img src=""  id="content-img" width="80px" height="80px">    
-            </div>
+        	</div>
             
             <div class="inline-block"  id="cart-option" >
                 
-                상품명
+               	 상품명
                 <br>
-                블루1개 (옵션)
+             	  블루1개 (옵션)
                 <br>
                 <br>
                 <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>

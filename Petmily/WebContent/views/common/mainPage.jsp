@@ -65,7 +65,7 @@
             margin-left:25px;
         }
         .smallTitle{
-            font-size: 20px;
+            font-size: 23px;
             font-weight: 700;
             text-align: left;
             margin-left:10px;
@@ -173,13 +173,13 @@
             color:rgb(78, 78, 78);
 
         }
-        .storecontentimg{
+        .storecontentimg img{
             display: inline-block;
-            width:100px;
-            height:100px;
+            width:110px;
+            height:110px;
             border-radius: 100px;
             display: inline-block;
-            background:pink;
+            background:#FAE6B9;
         }
 
         /*궁금해요 게시판*/
@@ -418,37 +418,37 @@
                 <div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="">
+                            <img src="resources/img/store/dog.png">
                         </div>
                         <br><br> 강아지
                     </div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="">
+                            <img src="resources/img/store/cat.png">
                         </div>
                         <br><br> 고양이
                     </div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="">
+                            <img src="resources/img/store/hamster.png">
                         </div>
                         <br><br> 햄스터
                     </div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="">
+                            <img src="resources/img/store/fish.png">
                         </div>
                         <br><br> 물고기
                     </div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="">
+                            <img src="resources/img/store/bird.png">
                         </div>
                         <br><br> 새
                     </div>
                     <div class="storecontent">
                         <div class="storecontentimg">
-                            <img src="">
+                            <img src="resources/img/store/go.png">
                         </div>
                         <br><br> 고슴도치
                     </div>

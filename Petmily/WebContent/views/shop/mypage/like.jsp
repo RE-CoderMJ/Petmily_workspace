@@ -48,7 +48,7 @@
 
 <div class="content-area">
 
-    <img src="resources/img/nullheart.png" width="60px" height="60px" alt="" style="margin-left:100px; margin-bottom:20px;">
+    <img src="resources/img/nullheart.png" width="60px" height="60px" alt="" style="margin-left:150px; margin-bottom:20px;">
     
     <div id="outer">
 

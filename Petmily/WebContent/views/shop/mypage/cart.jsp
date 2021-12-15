@@ -51,7 +51,7 @@
             margin-bottom: 20px;
             vertical-align: middle;
         }
-        #cart-checkbox{width:700px; margin:auto;}
+        #cart-checkbox{width:700px; margin:auto; font-size:20px;}
 
         input[type=checkbox] { vertical-align:middle; }
         #content-img{
