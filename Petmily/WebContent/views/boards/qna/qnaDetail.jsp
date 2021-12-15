@@ -14,9 +14,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
-    div {
-        /* border: 1px solid green; */
-    }
 
 	.inner {
         width: 1300px;
@@ -227,7 +224,7 @@
                 <div class="btns">
                     <a href="<%= contextPath %>/main.qna" class="btn btn-sm btn-secondary">목록</a>
                     <a data-toggle="modal" data-target="#delModal" class="btn btn-sm btn-secondary">글 삭제</a>
-                    <a href="" class="btn btn-sm btn-secondary">글 수정</a>
+                    <a href="<%= contextPath %>/update.qna" class="btn btn-sm btn-secondary">글 수정</a>
                 </div>
 
                 <div class="replyArea">
