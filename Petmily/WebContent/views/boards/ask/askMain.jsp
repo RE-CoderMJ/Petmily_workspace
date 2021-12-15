@@ -67,7 +67,7 @@
 	         
 	         <div class="contents">
 	            <div class="number">1</div>
-	            <div class="photo"></div>
+	            <div class="photo"><img src="" alt=""></div>
 	            <div class="texts">
 	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요..</div>
 	               <div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>

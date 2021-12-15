@@ -78,7 +78,6 @@
 	                <!--<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>-->
 	            </div>
 	        </div>
-	        <%@ include file="../bCommon/boardPagingBar.jsp" %>
 	        
 	    </div>
 		

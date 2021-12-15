@@ -55,7 +55,7 @@
 	        <div id="market-content-area">
 	            <div class="content-box-area">
 	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
+	                <div class="photo-box"><img src="" alt=""></div>
 	                <div class="content-title" align="left">고양이 화장실</div>
 	                <div class="sell-price" align="right">12,000원</div> 
 	            </div>

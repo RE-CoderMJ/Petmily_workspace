@@ -74,6 +74,7 @@ a{
     width: 35px;
     height: 35px;
     border-radius:100px;
+    overflow: hidden;
 }
 #writer-pic img{
     object-fit: cover;
@@ -86,6 +87,10 @@ a{
     width: 500px;
     height: 370px;
     margin-top: 60px;
+    overflow: hidden;
+}
+#photo-area>img{
+	object-fit:cover;
 }
 
 /* 내용영역 */

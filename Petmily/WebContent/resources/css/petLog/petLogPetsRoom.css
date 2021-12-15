@@ -1,5 +1,4 @@
-@charset "UTF-8";
-div{border:1px solid black}
+#middle-area div{border: 1px solid black;}
 /* 전체구조 스타일 */
 body{
     position:relative;
@@ -58,6 +57,7 @@ body{
     border-radius: 100px;
     position: absolute;
     top: 10px;
+    overflow: hidden;
 }
 #profile-img img{
     object-fit: cover;
@@ -99,6 +99,19 @@ body{
     border-radius: 10px;
     border:none;
 }
+/* 팔로잉 버튼 */
+#following{
+    width: 80px;
+    position: absolute;
+    left: 175px;
+    top: 85px;
+    color: orange;
+    font-weight: bolder;
+    font-size: 20px;
+    border-radius: 10px;
+    border:orange solid 3px;
+    background: white;
+}
 /* 게시글 팔로워 팔로잉 영역 */
 #room-info{
     height: 45px;
@@ -130,6 +143,109 @@ body{
     text-align: left;
     padding: 5px;
     margin-top: 140px;
-    font-size: 14px;
-    
+    font-size: 14px;  
+}
+/* 프로필 수정 버튼 */
+#edit-profile{
+    margin-top: 10px;
+    width: 510px;
+    height: 34px;
+    border: 4px orange solid;
+    border-radius: 5px;
+    font-weight: bolder;
+    color: rgb(255, 111, 0);
+    background: white;
+    font-size: 15px;
+}
+/* 왼쪽 아래 영역 */
+#left-bottom{
+    width: 565px;
+    height: 460px;
+    margin-top: 10px;
+}
+/* bestpic영역 */
+#bestpic-title{
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: left;
+    padding-left: 30px;
+    margin-top: 10px;
+}
+#left-bottom>hr{
+    width: 510px;
+    margin-top: px;
+    color: rgb(179, 178, 178);
+}
+#bp-content-area{
+    width: 500px;
+    height: 380px;
+    margin-top: 30px;
+    padding-left: 30px;
+}
+.bp-content{
+    width: 130px;
+    height: 130px;
+    margin-bottom:50px;
+    margin-right: 25px;
+    float: left;
+    overflow: hidden;
+}
+#bp-content-area img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 오른쪽 영역 */
+#right-part{
+    width: 565px;
+    height: 756px;
+    position: absolute;
+    right:34px;
+    top: 23px;;
+}
+#pictures-area{
+    margin-top: 90px;
+    padding-left: 50px;
+    padding-top: 40px;
+    height: 620px;
+}
+.pictures{
+    width: 140px;
+    height: 140px;
+    margin-bottom:50px;
+    margin-right: 20px;
+    float: left;
+    overflow: hidden;
+}
+.pictures>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#enroll-btn{
+    background-image: url("../../img/petLog/enroll.png");
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    position: absolute;
+    right: 40px;
+    top:50px;
+}
+
+/* 프로필 수정 모달 */
+#edit-profile-img{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 100px;
+}
+#edit-profile-img>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#room-name2{
+    font-weight: bolder;
+    font-size: 18px;
 }
