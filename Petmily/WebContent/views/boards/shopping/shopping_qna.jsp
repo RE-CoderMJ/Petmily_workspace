@@ -14,6 +14,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
+    div {
+        /* border: 1px solid green; */
+    }
 
 	.inner {
         width: 1300px;
@@ -63,25 +66,7 @@
         margin: 5px;
         
     }
-
-    #search { 
-        float: right;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        height: 40px;
-        width: 300px;
-        margin-top: 7px;
-        padding: 10px;
-    }
-
-    #searchImg {
-        float: right;
-        width: 40px;
-        height: 40px;
-        margin: 7px;
-        cursor: pointer;
-    }
-
+   
     table {
         text-align: center;
     }
@@ -99,7 +84,7 @@
 
 <body>
 	<%@ include file="../../common/menubar.jsp" %>
-    <%@ include file="../notice/noticeSidebar.jsp" %>
+    <%@ include file="../shoppingSidebar.jsp" %>
     
     <div class="outer">
         
@@ -109,20 +94,17 @@
             <div class="qna-top">
 
                 <div>
-                    <p id="title">QnA</p>
-                    <span id="title_sm">1:1</span>
+                    <p id="title">상품 문의</p>
+                    <span id="title_sm">Q&A</span>
                     <button type="button" id="enrollBtn" class="btn btn-sm btn-warning"
-                            onclick="location.href='<%= contextPath %>/enrollForm.qna'">글쓰기</button>
+                            onclick="location.href='<%= contextPath %>/shop.qna'">문의하기</button>
                 </div>
                 
                 <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
                 
                 <div class="titleBottom">
-                   <p id="notify">궁금하신 사항을 먼저 FAQ에 있는지 확인하시면 문의없이 좀 더 빠른 답변을 얻으실 수 있습니다. <br>
-                    펫밀리에 대해 궁금하신 점이나 의견을 남겨주시면 최대한 신속하고 자세히 답변드리겠습니다.</p>
-                    <img src="resources/img/searchImg.png" id="searchImg">
-                    <input type="text" id="search" placeholder="검색어를 입력해주세요">
-                </div>
+                   <p id="notify">구매하시려는 상품에 대해 궁금한 점이 있으신 경우 문의해주세요.</p>
+                                  </div>
 
 
                 <table class="table table-hover">
@@ -140,81 +122,81 @@
                     <tbody>
     
                         <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
+                            <td class="tdNo">10</td>
+                            <td class="tdTitle">이번주에 구매하면 유통기한이 언제까지일까요? <span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">서머</td>
                             <td class="tdDate">20xx-xx-xx</td>
                             <td class="tdCount">4</td>
                         </tr>
     
                         <tr>
-                            <td class="tdNo">1</td>
+                            <td class="tdNo">9</td>
                             <td class="tdTitle">비밀 문의글입니다 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
+                            <td class="tdWriter">쭈니</td>
                             <td class="tdDate">20xx-xx-xx</td>
                             <td class="tdCount">4</td>
                         </tr>
     
                         <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
+                            <td class="tdNo">8</td>
+                            <td class="tdTitle">제공량이 하루 제공량인가요? <span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">뽀야미</td>
                             <td class="tdDate">20xx-xx-xx</td>
                             <td class="tdCount">4</td>
                         </tr>
     
                         <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
+                            <td class="tdNo">7</td>
+                            <td class="tdTitle">재입고 언제 되나요<span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">애플</td>
                             <td class="tdDate">20xx-xx-xx</td>
                             <td class="tdCount">4</td>
                         </tr>
     
                         <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
+                            <td class="tdNo">6</td>
+                            <td class="tdTitle">품절 언제 풀리나여<span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">미애</td>
+                            <td class="tdDate">20xx-xx-xx</td>
+                            <td class="tdCount">4</td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdNo">5</td>
+                            <td class="tdTitle">재입고<span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">핑키</td>
+                            <td class="tdDate">20xx-xx-xx</td>
+                            <td class="tdCount">4</td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdNo">4</td>
+                            <td class="tdTitle">배송 언제쯤 되나요 <span class="tdreply">(1)</span></td>
+                            <td class="tdWriter"차차</td>
+                            <td class="tdDate">20xx-xx-xx</td>
+                            <td class="tdCount">4</td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdNo">3</td>
+                            <td class="tdTitle">상품 받았는데 유통기한이<span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">동글이</td>
+                            <td class="tdDate">20xx-xx-xx</td>
+                            <td class="tdCount">4</td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdNo">2</td>
+                            <td class="tdTitle">지금 막 주문 넣었어요 유통기한 넉넉한걸로 부탁드려여<span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">집사</td>
                             <td class="tdDate">20xx-xx-xx</td>
                             <td class="tdCount">4</td>
                         </tr>
 
                         <tr>
                             <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">어디로 가야하죠 펫밀리 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">땅콩집사</td>
+                            <td class="tdTitle">사료 알갱이 크기 좀 알려주세요 강쥐가 예민해서요  <span class="tdreply">(1)</span></td>
+                            <td class="tdWriter">달리</td>
                             <td class="tdDate">20xx-xx-xx</td>
                             <td class="tdCount">4</td>
                         </tr>
@@ -222,7 +204,7 @@
                     </tbody>
                 </table>
 
-                <%@ include file="../bCommon/boardPagingBar.jsp" %>
+                <%@ include file="../../common/pagingBar.jsp" %>
             </div>
             
             <script>

@@ -126,7 +126,7 @@
                         <div align="right" style="margin-top: 50px;">
                             <label for="secretCheck"><input type="checkbox" id="secretCheck"> 비밀글</label>
                             <!-- <button type="button" id="saveBtn" class="btn btn-sm btn-secondary">임시저장</button> -->
-                            <button type="submit" class="btn btn-sm btn-warning">올리기</button>
+                            <button type="submit" class="btn btn-sm btn-warning">수정하기</button>
                         </div>
                     </div>
 
