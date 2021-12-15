@@ -93,7 +93,7 @@
                         <span>댓글</span>
                         <span class="reply-count">2</span>
                         <label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
-                        <label href="" class="modify-post">수정하기</label>
+                        <label onclick="location.href='<%=contextPath %>/update.petLog'" class="modify-post">수정하기</label>
                     </div>
                     <div class="right-bottom">
                         <div class="reply-area">
