@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
         <style>
+
             /* 페이징바 */
             .paging-area button{
                  border:  0;
@@ -16,6 +17,40 @@
                  width: 40px;
                  border-radius: 5px;
             }
+
+            /*장바구니 모달창*/
+            
+            .modalMsg-area{
+            font-weight: bolder;
+            font-size: 17px;
+            margin-top: 20px;
+            height: 70px;
+            }
+            #cart-area>*{
+                color: white;
+                font-weight: bolder;
+                font-size: 15px;
+                height: 35px;
+                line-height: 5px;
+                width: 100px;
+                margin-top: -10px;
+            }
+            #confirm-btn{
+                background-color: gray;
+                margin-right: 2px;
+                line-height: 22px;
+            }
+            #closebtn{
+                background-color: orange;
+                margin-left: 2px;
+            }
+            #deleteCompletedclosebtn{
+                background-color: orange;
+                width: 250px;
+                color: white;
+                font-weight: bolder;
+            }
+
             </style>
             
         <!-- Favicon-->
@@ -68,17 +103,17 @@
                     <input type="checkbox" name="chk_info" value="dog" checked="checked">강아지
                     <input type="checkbox" name="chk_info" value="cat">고양이
                     <input type="checkbox" name="chk_info" value="etc">기타
-                                                    </div>
-                                                    <div id="middle-bar">
-                                                        <div align="right">
-                                                           <select name="orderBy" id="orderBy">
-                                                              <option value="date">판매인기순</option>
-                                                              <option value="count">낮은 가격순</option>
-                                                              <option value="reply">높은 가격순</option>
-                                                              <option value="reply">등록순</option>
-                                                              <option value="reply">리뷰 많은 순</option>
-                                                           </select>
-                                                        </div>
+                      </div>
+                    <div id="middle-bar">
+                     <div align="right">
+                     <select name="orderBy" id="orderBy">
+                     <option value="date">판매인기순</option>
+                     <option value="count">낮은 가격순</option>
+                     <option value="reply">높은 가격순</option>
+                     <option value="reply">등록순</option>
+                     <option value="reply">리뷰 많은 순</option>
+                     </select>
+                      </div>
                                
             </div>
                 <!-- Section-->
@@ -100,7 +135,8 @@
                             </div>
                                    <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -114,14 +150,16 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">맛난 사료</h5>
-                                                                    <!-- Product price-->
+
+                                     <!-- Product price-->
                             
                                  15,000원
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -136,12 +174,13 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">사료77</h5>
                                     <!-- Product price-->
-                                                                     10,000원
+                                     10,000원
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -154,13 +193,14 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">인기 사료</h5>
-                                                                      <!-- Product price-->
+                                     <!-- Product price-->
                                     21,000원
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                    <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -180,7 +220,8 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                    <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -199,7 +240,8 @@
                             </div>
                                     <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                    <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -218,7 +260,8 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                    <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
@@ -237,12 +280,28 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">장바구니</a></div>
+                                <div class="text-center">
+                                    <button type="button" a class="btn btn-outline-dark mt-auto" href="#" data-toggle="modal" data-target="#cartModal">장바구니</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 장바구니 Modal -->
+       <div class="modal fade" id="cartModal">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body" align="center">
+                    <div class="modalMsg-area">
+                                        장바구니에 추가되었습니다.
+                    </div>
+                    <div id="cart-area">
+                      <button type="button" class="btn" data-dismiss="modal" id="closebtn" onclick="location.href='<%= contextPathas %>/cart.my'">이동</button>
+                      <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
+                    </div>         
         </section>
              <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
