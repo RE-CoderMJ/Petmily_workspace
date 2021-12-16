@@ -213,7 +213,6 @@
                         <th width="200">분류</th>
                         <th width="550">제목</th>
                         <th width="100">작성자</th>
-                        <th width="100">작성일</th>
                     </tr>
                 </thead>
                 
@@ -240,7 +239,7 @@
         	</table>
     	</div>
     	
-    	<br><br><br>
+    	
 
 		<!-- 페이징 바-->
 	    <script>
@@ -251,6 +250,8 @@
 	            })
 	        })
 	    </script>
+	    
+	    <br><br><br>
 
 	    
 	    <!-- 페이징 바 -->

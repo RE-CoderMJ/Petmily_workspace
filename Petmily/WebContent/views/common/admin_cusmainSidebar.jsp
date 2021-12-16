@@ -67,7 +67,7 @@
                     <div id="d-category">
                         <div class="d-category" id="notice" onclick="location.href='<%= request.getContextPath() %>/adminList.no?cpage=1';" id="notice">공지사항 관리</div>
         
-                        <div class="d-category" id="faq" onclick="location.href='<%= request.getContextPath() %>/adminList.faq?cpage=1';" id="faq">FAQ 관리</a></div>
+                        <div class="d-category" id="faq" onclick="location.href='<%= request.getContextPath() %>/adminList.faq?cpage=1';" id="faq">FAQ 관리</div>
         
                         <div class="d-category" id="qna" onclick="location.href='<%= contextPath %>/adminList.qna';">Q&A문의 관리</div>
                         
