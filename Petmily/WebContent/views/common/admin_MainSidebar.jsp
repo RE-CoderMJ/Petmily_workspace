@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String contextPathms = request.getContextPath();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,43 +60,43 @@
 
                 <div class="aMenu" id="">회원관리</div>
                 <ul>
-                    <li><a href="<%= contextPath %>/memMg.ad" id="">회원정보 조회/수정/삭제</a></li>
-                    <li><a href="<%= contextPath %>/memPoint.ad" id="">회원 포인트 관리</a></li>
-                    <li><a href="<%= contextPath %>/memWarning.ad" id="">회원 포인트 관리</a></li>
+                    <li><a href="<%= contextPathms %>/memMg.ad" id="">회원정보 조회/수정/삭제</a></li>
+                    <li><a href="<%= contextPathms %>/memPoint.ad" id="">회원 포인트 관리</a></li>
+                    <li><a href="<%= contextPathms %>/memWarning.ad" id="">회원 포인트 관리</a></li>
                 </ul>
                 
                 <div class="aMenu" id="">쇼핑몰</div>
                 <ul>
-                    <li><a href="<%= contextPath %>/spErPd.ad">상품등록</a></li>
-                    <li><a href="<%= contextPath %>/spPdUd.ad" id="">상품관리(수정,삭제)</a></li>
-                    <li><a href="<%= contextPath %>/spDvlist.ad" id="">주문/배송조회</a></li>
-                    <li><a href="<%= contextPath %>/spPdlist.ad" id="">취소/환불/교환/반품 내역 조회</a></li>
-                    <li><a href="<%= contextPath %>/spPmlist.ad" id="">결제 내역 조회</a></li>
+                    <li><a href="<%= contextPathms %>/spErPd.ad">상품등록</a></li>
+                    <li><a href="<%= contextPathms %>/spPdUd.ad" id="">상품관리(수정,삭제)</a></li>
+                    <li><a href="<%= contextPathms %>/spDvlist.ad" id="">주문/배송조회</a></li>
+                    <li><a href="<%= contextPathms %>/spPdlist.ad" id="">취소/환불/교환/반품 내역 조회</a></li>
+                    <li><a href="<%= contextPathms %>/spPmlist.ad" id="">결제 내역 조회</a></li>
                 </ul>
                 
                 <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
-                    <li><a href="<%= contextPath %>/adminList.bo" id="allboards">전체 게시글 조회</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.bo" id="allboards">전체 게시글 조회</a></li>
                 </ul>
 
                 <div class="aMenu" id="">Petlog</div>
                 <ul>
-                    <li><a href="<%= contextPath %>/adminMain.pl" id="petlog">피드관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminMain.pl" id="petlog">피드관리</a></li>
                 </ul>
 
                 <div class="aMenu" id="">고객센터</div>
                 <ul>
-                    <li><a href="<%= contextPath %>/adminList.no" id="notice">공지사항 관리</a></li>
-                    <li><a href="<%= contextPath %>/adminList.faq" id="faq">FAQ 관리</a></li>
-                    <li><a href="<%= contextPath %>/adminList.qna" id="qna">Q&A문의 관리</a></li>
-                    <li><a href="<%= contextPath %>/adminList.iq" id="inquiry">상품문의 관리</a></li>
-                    <li><a href="<%= contextPath %>/adminMain.rv" id="review">리뷰 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.no" id="notice">공지사항 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.faq" id="faq">FAQ 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.qna" id="qna">Q&A문의 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.iq" id="inquiry">상품문의 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminMain.rv" id="review">리뷰 관리</a></li>
                 </ul>
 
                 <div class="aMenu" id="">신고관리</div>
                 <ul>
-                    <li><a href="<%= contextPath %>/nfList.ad" id="">신고 내역 조회</a></li>
-                    <li><a href="<%= contextPath %>/nfWnList.ad" id="">신고 회원 관리</a></li>
+                    <li><a href="<%= contextPathms %>/nfList.ad" id="">신고 내역 조회</a></li>
+                    <li><a href="<%= contextPathms %>/nfWnList.ad" id="">신고 회원 관리</a></li>
                 </ul>
          </div>
    
