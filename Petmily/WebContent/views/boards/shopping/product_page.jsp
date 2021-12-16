@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
     <head>
@@ -134,7 +137,7 @@
                                                      <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#likeModal">찜</button>&nbsp
                                                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cartModal">장바구니</button>
                                                                                                      
-                                                     <button type="button" class="btn btn-warning">구매하기</button>
+                                                     <button type="button" class="btn btn-warning" onclick="location.href='<%= contextPathas %>/shop.order'">구매하기</button>
                         </div>
                     </div>
                     
