@@ -1,11 +1,17 @@
 package com.pm.shop.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.common.model.vo.PageInfo;
+import com.pm.shop.model.service.PointService;
+import com.pm.shop.model.vo.Point;
 
 /**
  * Servlet implementation class MpPointController
@@ -136,8 +142,8 @@ public class MpPointController extends HttpServlet {
 		// * 페이징바를 만들때 필요한 객체
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		// * 현재 요청한 페이지(currentPage)에 보여질 게시글 리스트 boardLimit수만큼 조회해가기
-		ArrayList<Board> list = new BoardService().selectList( pi);
+		// * 현재 요청한 페이지(currentPage)에 보여질 <포인트 사용내역 리스트> boardLimit수만큼 조회해가기
+		ArrayList<Point> list = new PointService().selectList( pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
