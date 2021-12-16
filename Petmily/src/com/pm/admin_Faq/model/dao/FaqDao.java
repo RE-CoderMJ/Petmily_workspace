@@ -1,6 +1,7 @@
 package com.pm.admin_Faq.model.dao;
 
 import static com.pm.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -78,7 +79,7 @@ public class FaqDao {
 								 rset.getString("faq_title"),
 								 rset.getString("faq_content"),
 								 rset.getString("faq_cate"),
-								 rset.getString("faq_status"),
+								 rset.getString("status"),
 								 rset.getInt("manager_no")));
 			}
 

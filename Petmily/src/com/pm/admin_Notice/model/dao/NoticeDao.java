@@ -1,6 +1,7 @@
 package com.pm.admin_Notice.model.dao;
 
 import static com.pm.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,7 +16,7 @@ import com.pm.common.model.vo.PageInfo;
 
 public class NoticeDao {
 	
-private Properties prop = new Properties();
+	private Properties prop = new Properties();
 	
 	public NoticeDao() {
 		
