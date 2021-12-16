@@ -205,9 +205,8 @@
                             <th width="50"><input type="checkbox" name="" value=""></th>
                             <th width="100">번호</th>
                             <th width="150">분류</th>
-                            <th width="550">제목</th>
+                            <th width="650">제목</th>
                             <th width="150">작성자</th>
-                            <th width="100">작성일</th>
                         </tr>
                     </thead>
                     <tbody>
