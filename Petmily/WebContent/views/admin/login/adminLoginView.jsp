@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.admin_Login.model.vo.AdminMember"%>
 <%
     String contextPathal = request.getContextPath();
+
+	AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
  %>
     <!DOCTYPE html>
     <html>
@@ -85,7 +89,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
-
+		<% if(alertMsg != null){ %>
+		<script>
+			alert("<%=alertMsg%>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>
+	<% } %>
+		
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">
@@ -103,8 +113,7 @@
             <div class="menu"><a href=""></a></div>
             <div class="menu"><a href=""></a></div> -->
         </div>
-    
-        <form action="<%= contextPathal %>/admin.main" class="body">
+        <form action="<%= contextPathal %>/adlogin.ad" class="body" method="post">
             <!-- 발바닥 이미지 -->
             <div id="logo2">
                 <a href="">
@@ -119,9 +128,9 @@
             <div id="login_form">
                 <form action id="login_form_input">
                     <div id="login_input_id_pwd">
-                        <input type="text" name="userId" placeholder="UserName" required>
+                        <input type="text" name="managerId" placeholder="UserName" required>
                         <br>
-                        <input type="password" name="userPwd" placeholder="****" required>
+                        <input type="password" name="managerPwd" placeholder="****" required>
                     </div>
                 </form><br>
                 <!-- 로그인 상태 유지 -->
@@ -135,6 +144,5 @@
                 </div>
             </div>
         </form>
-    
     </body>
     </html>
