@@ -112,6 +112,17 @@ div, img, li, a{
      border-radius: 5px;
 }
 
+.text {
+   float: left;
+   text-align: left;
+   width: 700px;
+}
+
+.star {
+   float: right;
+   margin-left: 30px;
+}
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -160,13 +171,17 @@ div, img, li, a{
                <div class="title">잘 먹네요</div>
                <div class="info">쭈니 &nbsp;&nbsp;2021.11.10</div>
                <div class="text">여러 사료를 찾다가 구매하게 됐어요. 입맛이 까다로워서 잘 안먹어서 힘들었는데 요건 잘 먹네요</div>
-              
-               <!-- 별점 정렬 수정 필요 ㅠㅠ -->
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
+               
+               <!-- 별점 -->
+               <div class="star">
+
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+
+               </div>
               
             </div>
          </div>
@@ -176,13 +191,23 @@ div, img, li, a{
             <div class="texts">
                <div class="title">만족</div>
                <div class="info">잭슨 &nbsp;&nbsp;2021.11.10</div>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <div class="text">기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ</div>
-              
+               
+               
+
+               <div class="text">기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
+                     기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
+                     기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
+                     기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
+               </div>
+               <div class="star">
+   
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+   
+               </div>
             </div>
          </div>
          <div class="contents">
@@ -192,11 +217,15 @@ div, img, li, a{
                <div class="title">배송 빨랐어요</div>
                <div class="info">뽀야미&nbsp;&nbsp;2021.11.10</div>
                <div class="text">원래 닥터독 먹이다가 기호성이 넘 떨어져서 바꿨는데 잘 먹습니다. ^^</div>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
+               <div class="star">
+   
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+
+               </div>
             </div>
          </div>
          <div class="contents">
@@ -206,11 +235,15 @@ div, img, li, a{
                <div class="title">쏘쏘</div>
                <div class="info">밍키&nbsp;&nbsp;2021.11.10</div>
                <div class="text">후기가 좋아서 산건데 저희 집 밍키는 그냥저냥 먹네요 눈물자국은 지켜보려구요 </div>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star"></span>
+               <div class="star">
+   
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+
+               </div>
                
             </div>
          </div>
@@ -221,11 +254,15 @@ div, img, li, a{
                <div class="title">벌써 세번째 구매</div>
                <div class="info">철이 &nbsp;&nbsp;2021.11.10</div>
                <div class="text">우리 철이가 너무 잘 먹어서 계속 재구매하네요 문제는 너무 많이 먹어서 계속 시켜야 하네여 ㅋ</div>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
+               <div class="star">
+   
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+
+               </div>
             </div>
          </div>
       </div>

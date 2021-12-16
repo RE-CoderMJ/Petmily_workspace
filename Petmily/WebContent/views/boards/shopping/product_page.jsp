@@ -49,7 +49,13 @@
         <link href="styles1.css" rel="stylesheet" />
     </head>
     <body>
-               
+
+    <!-- 메뉴바 -->
+	<%@ include file="../../common/menubar.jsp"%>
+
+	<!-- 사이드바  -->
+	<%@ include file="shoppingsidebar.jsp"%>
+ 
                     <form class="d-flex">
                      
                     </form>
@@ -62,10 +68,10 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
                     <div class="col-md-5">
-                          <h4 class="display- fw-bolder">댕댕랜드 닭가슴살 오리지널 30g</h4>
+                          <h4 class="display- fw-bolder">댕댕랜드 오리지널 사료 5kg</h4>
                         
                                                      <span><b>10,000원</b></span>
-                                                     <p><span>식욕을 돋우는 훈제향, 고기 안에 육즙이 한가득!</span></p> <hr>
+                                                     <p><span>기호성이 우수하고 소화가 잘되는 가수분해 사료</span></p> <hr>
                                                    
                                              <p><span data-ke-size="size23"><b><span style="color: #f3c000;">배송비</span></b></span> 2500원 (20,000원 이상 무료배송)</p>
                                             <hr>
@@ -73,7 +79,7 @@
                                                 <th width="130px">상품 옵션</th>
                                                 <td>
                                                     <select class="selectpicker show-tick p-1">
-                                                        <option>댕댕랜드 닭가슴살 오리지널 30g</option>
+                                                        <option>댕댕랜드 오리지널 사료 5kg</option>
                                                         <option>추가 상품) 덴탈껌</option>  </select>
                                                         <br> <br> 
                                                         <body onload="init();">
