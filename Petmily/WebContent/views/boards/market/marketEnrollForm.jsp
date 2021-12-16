@@ -34,10 +34,10 @@
                       
                       <!-- Left and right controls -->
                       <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
-                      		 <img src="resources/img/left-arrow.png" style="width:20px; height:20px;">
+                      		 <img src="resources/img/left_arrow.png" id="left-controller">
                       </a>
 					  <a class="right carousel-control" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">
-					  		 <img src="resources/img/right-arrow.png" style="width:20px; height:20px;">
+					  		 <img src="resources/img/right_arrow.png" id="right-controller">
 					  </a>
                    </div>
 		           
@@ -79,7 +79,7 @@
 	                    <textarea name="content" placeholder="내용을 입력해주세요"></textarea>
 	                </div>
 	            </div>    
-	            <div align="right" id="enroll-btn-area"><button class= "btn" type="button">올리기</button></div>
+	            <div align="right" id="enroll-btn-area"><button class= "btn" type="submit">올리기</button></div>
 	        </form>
     	</div>
     </div>

@@ -55,20 +55,20 @@ public class MarketEnrollController extends HttpServlet {
 			m.setMarketContent(multiRequest.getParameter("content"));
 			
 			ArrayList<Attachment> list = new ArrayList<>();
-			
-			for(int i=1; i<=list.size(); i++) {
-				String key="file" + i;
-				if(multiRequest.getOriginalFileName(key) != null) {
-					
+			int keyNo = 1;
+			String key="file" + String.valueOf(keyNo);
+			while(multiRequest.getOriginalFileName(key) != null) {
+				
 					Attachment at = new Attachment();
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
 					at.setFilePath("resources/boards_upfiles/market_upfiles/");
 					
 					list.add(at);
-				}
+				
+				keyNo++;
 			}
-			
+
 			int result = new MarketService().enrollMarket(m, list);
 			
 			if(result > 0) {

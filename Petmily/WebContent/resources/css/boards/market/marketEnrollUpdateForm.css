@@ -49,6 +49,22 @@ div, img, li, a{
     height: 100%;
     object-fit:cover;
 }
+#right-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:190px;
+	left:370px;
+	opacity:0.8;
+}
+#left-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:190px;
+	left:15px;
+	opacity:0.8;
+}
 #file-upload-area>p{
     float: left;
     font-weight: bolder;
