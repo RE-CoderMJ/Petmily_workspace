@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
 <%
    String contextPath = request.getContextPath();
+   Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -141,43 +142,48 @@ body *{
                 <img src="resources/img/logo_side.png" alt="">
             </a>
         </div>
+        
         <div id="right">
-            <!--로그인 전-->
-            <div id="loginBtn">
-                <a href="<%= contextPath %>/loginForm.me">로그인</a>
-            </div>
-            <div id="register">
-                <a href="<%= contextPath %>/joinForm.me">회원가입</a>
-            </div>
-            
-            <!-- 로그인 후
-            <div id="userName">
-                <b>xxxx</b>님, 반가워요! &nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div id="logout">
-                <a href="">로그아웃</a>
-            </div>
-            -->
-            <div id="heart">
-                <a href="<%= contextPath %>/like.my">
-                    <img src="resources/img/heart.jpg" alt="">
-                </a> 
-            </div>
-            <div id="shoppingCart">
-                <a href="<%= contextPath %>/cart.my">
-                    <img src="resources/img/shopping_cart.png" alt="">
-                </a>
-            </div>
+        
+        	<% if(loginUser == null) { %>
+	            <!--로그인 전-->
+	            <div id="loginBtn">
+	                <a href="<%= contextPath %>/loginForm.me">로그인</a>
+	            </div>
+	            <div id="register">
+	                <a href="<%= contextPath %>/joinForm.me">회원가입</a>
+	            </div>
+	            
+	        <% } else { %>
+	            <!-- 로그인 후 -->
+	            <div id="userName">
+	                <b><%= loginUser.getMemName() %></b>님, 반가워요! &nbsp;&nbsp;&nbsp;&nbsp;
+	            </div>
+	            <div id="logout">
+	                <a href="<%= contextPath %>/logout.me">로그아웃</a>
+	            </div>
+	            
+	            <div id="heart">
+	                <a href="<%= contextPath %>/like.my">
+	                    <img src="resources/img/heart.jpg" alt="">
+	                </a> 
+	            </div>
+	            <div id="shoppingCart">
+	                <a href="<%= contextPath %>/cart.my">
+	                    <img src="resources/img/shopping_cart.png" alt="">
+	                </a>
+	            </div>
+	        <% } %>
         </div>
     </div>
 
     <div class="nav-area" align="center">
-        <div class="menu"><a href="">스토어</a></div>
+        <div class="menu"><a href="<%= contextPath %>/">스토어</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.ask?page=1">궁금해요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.missing">찾고있어요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.petLog">PetLog</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.market">중고거래</a></div>
-        <div class="menu"><a href="">MyPage</a></div>
+        <div class="menu"><a href="<%= contextPath %>/">MyPage</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.no">고객센터</a></div>
     </div>
 

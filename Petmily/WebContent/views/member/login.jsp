@@ -91,18 +91,19 @@
           </a>
         </div>
         
-        <form action="/action_page.php" class="needs-validation" novalidate>
+       <%-- <form action="/action_page.php" class="needs-validation" novalidate> --%>
+        	<form action="<%= contextPath %>/login.me" method="post">
             <!-- Email 인풋 null일 때-->
             <div class="form-group">
               <input type="text" class="form-control" id="userEmail" placeholder="E-mail" name="userEmail" required>
-              <div class="valid-feedback"></div>
-              <div class="invalid-feedback">이메일을 입력해주세요</div>
+              <%-- <div class="valid-feedback"></div>
+              <div class="invalid-feedback">이메일을 입력해주세요</div> --%>
             </div>
             <!-- 비밀번호 인풋 null일 때-->
             <div class="form-group">
-              <input type="password" class="form-control" id="userPwd" placeholder="Password" name="userpwd" required>
-              <div class="valid-feedback"></div>
-              <div class="invalid-feedback">비밀번호를 입력해주세요</div>
+              <input type="password" class="form-control" id="userPwd" placeholder="Password" name="userPwd" required>
+              <%-- <div class="valid-feedback"></div>
+              <div class="invalid-feedback">비밀번호를 입력해주세요</div> --%>
             </div>
 
             <!--
