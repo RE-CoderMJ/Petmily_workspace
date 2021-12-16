@@ -122,6 +122,36 @@ div, img, li, a{
    float: right;
    margin-left: 30px;
 }
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -310,9 +340,7 @@ div, img, li, a{
         
         <!-- Modal body -->
         <div class="modal-body">
-      
-    
-  </head>
+           
   <body class="shopping" style="overflow-y:scroll">
     <div id=MAIN_CONTENT_ROOT_ID><div class="" data-reactroot="">
 <div id="MODAL_ROOT_ID"></div><div><header class="_1eiZSxfMdh"><a href="#" role="button" class="_2GFmOgYde3 N=a:wrtmnt.hdcls"></a>
@@ -331,20 +359,23 @@ div, img, li, a{
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
-      <link rel="stylesheet" href="index.css">
-  </head>
+      </head>
   <body>
-  <form name="myform" id="myform" method="post" action="./save">
-      <fieldset>
-          <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
-          <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
-          <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
-          <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
-          <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
-      </fieldset>
-  </form>
-  </body>
-  </html>
+   <div class="star-rating space-x-4 mx-auto">
+      <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+      <label for="5-stars" class="star pr-4">★</label>
+      <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+      <label for="4-stars" class="star">★</label>
+      <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+      <label for="3-stars" class="star">★</label>
+      <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+      <label for="2-stars" class="star">★</label>
+      <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+      <label for="1-star" class="star">★</label>
+   </div>
+        
+   </body>
+ <br>
 <strong class="_3y9Ly2IiVh">어떤 점이 좋았나요?</strong>
 <div class="ystMZ36gvH"><div class="_30-j0z23yB _2CEGIJbJ0M">
 <textarea class="_2mqbEheJIc" id="reviewInput" cols="50" style="height:100px"></textarea><div class="_2WdOh6YXC8"><em class="_3LoikG0PPT"></div></div></div>

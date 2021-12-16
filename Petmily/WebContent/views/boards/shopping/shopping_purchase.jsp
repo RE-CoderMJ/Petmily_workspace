@@ -41,11 +41,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
           
 
-         <!-- 메뉴바 -->
-    <%@ include file="../common/admin_menubar.jsp" %>
-    
-        <!-- 사이드바-->
-        <%@ include file="../common/shoppingsidebar.jsp" %>
+  <!-- 메뉴바 -->
+	<%@ include file="../../common/menubar.jsp"%>
+
+	<!-- 사이드바  -->
+	<%@ include file="shoppingsidebar.jsp"%>
        
        
         <div class="content-area">
@@ -59,7 +59,7 @@
      </div>
      <div>
          <table class="payadd_table"> 
-         <col width="150px"><col width="300px"><col width="150px">
+            <col width="150px"><col width="300px"><col width="100px"><col width="150px"><col width="150px">
              <tr>
                 <tr class="pay_tr">
                     <th>주문하시는 분<span class="star">*</span></th><td colspan="4">
@@ -160,8 +160,7 @@
             <label class="form-check-label" for="flexRadioDefault2">
               일반 결제
             </label>
-        </div>   <input type="checkbox" name="checkpay">상기 결제정보를 확인하였으며, 구매진행에 동의합니다.
-          <br><hr>
+        </div>  <hr>
           
           <!-- 포인트 -->
           <tr class="h2_padding">
@@ -170,16 +169,15 @@
             전체 포인트 0원 할인적용
             <br> <br>
    사용 포인트 500원 할인적용
-            
-    
-            
+           
+                
         </tr>
      </div><hr>
      <!-- 약관 -->
      <div class="h2_padding">
                  <input type="checkbox" name="checkpay">상기 결제정보를 확인하였으며, 구매진행에 동의합니다.
             <br>
-         <input type="checkbox" name="checkpay">주문할 상품의 상품명, 상품 가격, 배송 정보를 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제8조 2항)
+         <input type="checkbox" name="checkpay"> 주문할 상품의 상품명, 상품 가격, 배송 정보를 확인하였으며, 구매에 동의하시겠습니까? (전자상거래법 제8조 2항)
      </div>		
      <hr>
 
