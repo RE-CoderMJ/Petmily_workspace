@@ -1,5 +1,16 @@
 package com.pm.admin_Faq.model.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Properties;
+
+import com.pm.admin_Faq.model.vo.Faq;
+
 public class FaqDao {
 
 	private Properties prop = new Properties();

@@ -1,5 +1,11 @@
 package com.pm.admin_Faq.model.service;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import com.pm.admin_Faq.model.dao.FaqDao;
+import com.pm.admin_Faq.model.vo.Faq;
+
 public class FaqService {
 	
 	public int selectListCount() {
