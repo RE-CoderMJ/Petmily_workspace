@@ -1,4 +1,4 @@
-package com.pm.admin_Faq.model.dao;
+package com.pm.admin_Notice.model.dao;
 
 import static com.pm.common.JDBCTemplate.close;
 import java.io.FileInputStream;
@@ -10,17 +10,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.pm.admin_Faq.model.vo.Faq;
+import com.pm.admin_Notice.model.vo.Notice;
 import com.pm.common.model.vo.PageInfo;
 
-public class FaqDao {
-
-	private Properties prop = new Properties();
+public class NoticeDao {
 	
-	public FaqDao() {
+private Properties prop = new Properties();
+	
+	public NoticeDao() {
 		
 		try {
-			prop.loadFromXML(new FileInputStream(FaqDao.class.getResource("/db/sql/admin/faq-mapper.xml").getPath() ));
+			prop.loadFromXML(new FileInputStream(NoticeDao.class.getResource("/db/sql/admin/notice-mapper.xml").getPath() ));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,8 +55,8 @@ public class FaqDao {
 	}
 	
 
-	public ArrayList<Faq> selectList(Connection conn, PageInfo pi) {
-		ArrayList<Faq> list = new ArrayList<>();
+	public ArrayList<Notice> selectList(Connection conn, PageInfo pi) {
+		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -74,12 +74,13 @@ public class FaqDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Faq(rset.getInt("faq_no"),
-								 rset.getString("faq_title"),
-								 rset.getString("faq_content"),
-								 rset.getString("faq_cate"),
-								 rset.getString("faq_status"),
-								 rset.getInt("manager_no")));
+				list.add(new Notice(rset.getInt("notice_no"),
+								 	rset.getString("notice_title"),
+								 	rset.getString("notice_content"),
+								 	rset.getDate("notice_date"),
+								 	rset.getString("notice_cate"),
+								 	rset.getString("status"),
+								 	rset.getInt("manager_no")));
 			}
 
 			
@@ -93,4 +94,6 @@ public class FaqDao {
 		return  list;
 		
 	}
+
+
 }

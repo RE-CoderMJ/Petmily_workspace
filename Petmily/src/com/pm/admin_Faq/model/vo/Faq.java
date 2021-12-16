@@ -21,6 +21,8 @@ public class Faq {
 		this.managerNo = managerNo;
 	}
 
+	
+
 	public int getFaqNo() {
 		return faqNo;
 	}

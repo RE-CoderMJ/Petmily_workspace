@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Faq.model.vo.Faq" %>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,18 +223,17 @@
                     <% if(list.isEmpty()) { %>
                         <!--1. 게시글 없을 경우-->
                         <tr>
-                            <td colspan="6">조회된 게시글이 없습니다</td>
+                            <td colspan="6">조회된 게시글이 없습니다!</td>
                         </tr>
                     <% }else { %>
                         <!--2. 게시글 있을 경우-->
 					<% for(Faq f : list) { %>
                         <tr>
-                            <td>v</td>
-                            <td>주문/결제</td>
-                            <td>12</td>
-                            <td>개인정보처리방침 안내</td>
-                            <td>펫밀리</td>
-                            <td>21-12-04</td>
+                            <td><input type="checkbox" name="" value=""></td>
+                            <td><%= f.getFaqCate() %></td>
+                            <td><%= f.getFaqNo() %></td>
+                            <td><%= f.getFaqTitle() %></td>
+                            <td><%= f.getManagerNo() %></td>
                         </tr>
                       <% } %>
 					<% } %>

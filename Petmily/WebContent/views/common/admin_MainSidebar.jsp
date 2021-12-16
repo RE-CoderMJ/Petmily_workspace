@@ -76,21 +76,21 @@
                 
                 <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
-                    <li><a href="<%= contextPathms %>/adminList.bo" id="allboards">전체 게시글 조회</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.bo?cpage=1" id="allboards">전체 게시글 조회</a></li>
                 </ul>
 
                 <div class="aMenu" id="">Petlog</div>
                 <ul>
-                    <li><a href="<%= contextPathms %>/adminMain.pl" id="petlog">피드관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminMain.pl?cpage=1" id="petlog">피드관리</a></li>
                 </ul>
 
                 <div class="aMenu" id="">고객센터</div>
                 <ul>
-                    <li><a href="<%= contextPathms %>/adminList.no" id="notice">공지사항 관리</a></li>
-                    <li><a href="<%= contextPathms %>/adminList.faq" id="faq">FAQ 관리</a></li>
-                    <li><a href="<%= contextPathms %>/adminList.qna" id="qna">Q&A문의 관리</a></li>
-                    <li><a href="<%= contextPathms %>/adminList.iq" id="inquiry">상품문의 관리</a></li>
-                    <li><a href="<%= contextPathms %>/adminMain.rv" id="review">리뷰 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.no?cpage=1" id="notice">공지사항 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.faq?cpage=1" id="faq">FAQ 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.qna?cpage=1" id="qna">Q&A문의 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.iq?cpage=1" id="inquiry">상품문의 관리</a></li>
+                    <li><a href="<%= contextPathms %>/adminMain.rv?cpage=1" id="review">리뷰 관리</a></li>
                 </ul>
 
                 <div class="aMenu" id="">신고관리</div>

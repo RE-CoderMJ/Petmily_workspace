@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Notice.model.vo.Notice" %>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,19 +218,24 @@
                 </thead>
                 
                 <tbody>
+                <% if(list.isEmpty()) { %>
                     <!--1. 게시글 없을 경우-->
                     <tr>
                         <td colspan="6">조회된 게시글이 없습니다</td>
                     </tr>
+                <% }else { %>
                     <!--2. 게시글 있을 경우-->
+                <% for(Notice n : list) { %>
                     <tr>
-                        <td>v</td>
-                        <td>12</td>
-                        <td>찾고있어요</td>
-                        <td>개인정보처리방침 안내</td>
-                        <td>펫밀리</td>
-                        <td>21-12-04</td>
+                        <td><input type="checkbox" name="" value=""></td>
+                        <td><%= n.getNoticeNo() %></td>
+                        <td><%= n.getNoticeCate() %></td>
+                        <td><%= n.getNoticeTitle() %></td>
+                        <td><%= n.getManagerNo() %></td>
+                        <td><%= n.getNoticeDate() %></td>
                     </tr>
+                  <% } %>
+				<% } %>
                 </tbody>
         	</table>
     	</div>
@@ -248,6 +263,28 @@
 	            })
 	        })
 	    </script>
+	    
+	    <br><br><br>
+	    
+	    <!-- 페이징 바 -->
+            <div class="paging-area" align="center">
+            <% if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.notice?cpage=<%=currentPage-1%>';"> &lt; </button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++) { %>
+            	<% if(p== currentPage) { %>
+                <button disabled><%= p %></button>
+                <% }else { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.notice?cpage=<%= p %>';"><%= p %></button>
+                <% } %>
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/adminList.notice?cpage=<%=currentPage+1%>';"> &gt; </button>
+			<% } %>
+            </div>
+        </div>
     
 
 	</div>

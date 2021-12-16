@@ -1,11 +1,17 @@
 package com.pm.admin_Faq.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.admin_Faq.model.service.FaqService;
+import com.pm.admin_Faq.model.vo.Faq;
+import com.pm.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class AdminFaqListController
@@ -36,7 +42,7 @@ public class AdminFaqListController extends HttpServlet {
 		int endPage;
 		
 		/* 총 게시글 갯수 */
-		listCount = new BoardService().selectListCount();
+		listCount = new FaqService().selectListCount();
 		
 		/* 현재 페이지 */
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
@@ -45,7 +51,7 @@ public class AdminFaqListController extends HttpServlet {
 		pageLimit = 5;
 		
 		/* 게시글 최대 갯수 */
-		boardLimit = 12;
+		boardLimit = 10;
 		
 		maxPage = (int)Math.ceil( (double)listCount / boardLimit);
 		
@@ -53,8 +59,8 @@ public class AdminFaqListController extends HttpServlet {
 		
 		endPage = startPage + pageLimit - 1;
 		
-		if(endPage > maxpage) {
-			endpage = maxPage;
+		if(endPage > maxPage) {
+			endPage = maxPage;
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
     <!DOCTYPE html>
     <html>
     <head>
@@ -64,9 +65,9 @@
                 <ul>
                     <div id="category">고객센터</div>
                     <div id="d-category">
-                        <div class="d-category" id="notice" onclick="location.href='<%= contextPath %>/adminList.no';" id="notice">공지사항 관리</div>
+                        <div class="d-category" id="notice" onclick="location.href='<%= request.getContextPath() %>/adminList.no?cpage=1';" id="notice">공지사항 관리</div>
         
-                        <div class="d-category" id="faq" onclick="location.href='<%= contextPath %>/adminList.faq';">FAQ 관리</a></div>
+                        <div class="d-category" id="faq" onclick="location.href='<%= request.getContextPath() %>/adminList.faq?cpage=1';" id="faq">FAQ 관리</a></div>
         
                         <div class="d-category" id="qna" onclick="location.href='<%= contextPath %>/adminList.qna';">Q&A문의 관리</div>
                         
