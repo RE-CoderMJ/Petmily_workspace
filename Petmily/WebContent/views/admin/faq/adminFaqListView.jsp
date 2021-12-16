@@ -105,18 +105,22 @@
             <div align="left">
             
             	<!-- 카테고리, 제목 검색 입력창 -->
-                <form>
+
                     <div class="input-group mb-3">
                         <select name="faqcate">제목
                             <option value="all" selected>전체</option>
-                            <option value="order">주문/결제</option>
-                            <option value="ship">배송관련</option>
-                            <option value="cancel">취소/환불</option>
+                            <option value="join">회원가입</option>
+                            <option value="pwd">비밀번호 재설정</option>
+                            <option value="meminfo">회원정보</option>
+                            <option value="delete">탈퇴 및 재가입</option>
+                            <option value="order">상품 주문/결제</option>
+                            <option value="store">스토어 입점 제휴</option>
                             <option value="return">반품/교환</option>
-                            <option value="member">회원정보</option>
-                            <option value="product">상품문의</option>
-                            <option value="coupon">쿠폰/적립금</option>
-                            <option value="other">기타</option>
+                            <option value="cancle">취소/환불</option>
+                            <option value="board">게시글 등록</option>
+                            <option value="pic">사진/영상</option>
+                            <option value="pet">펫적사항</option>
+                            <option value="point">포인트</option>                                                                                                           <option value="other">취소/환불</option>
                         </select>
                      <div class="input-group-prepend">
                         <span class="input-group-text" style="color:black">제목</span>
@@ -124,7 +128,7 @@
                      	<input type="text" class="form-control" placeholder="검색어를 입력해주세요">
                      	<a href="" class="btn btn-sm btn-warning">검색</a>
                     </div>
-                </form>
+
 
                 <br><br>
             </div>
@@ -207,11 +211,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <% if(list.isEmpty()) { %>
                         <!--1. 게시글 없을 경우-->
                         <tr>
                             <td colspan="6">조회된 게시글이 없습니다</td>
                         </tr>
+                    <% }else { %>
                         <!--2. 게시글 있을 경우-->
+					<% for(Faq f : list) { %>
                         <tr>
                             <td>v</td>
                             <td>주문/결제</td>
@@ -220,36 +227,48 @@
                             <td>펫밀리</td>
                             <td>21-12-04</td>
                         </tr>
+                      <% } %>
+					<% } %>
                      </tbody>
              	</table>
            	 </div>  
+           	 
+           	<!-- 페이징 바 -->
+		    <script>
+		        $(function(){
+		            $(".paging-area button").click(function(){
+		                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+		                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+		            })
+		        })
+		    </script>
     	
     		 <br><br><br>
 
 
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
+            <% if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.faq?cpage=<%=currentPage-1%>';"> &lt; </button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++) { %>
+            	<% if(p== currentPage) { %>
+                <button disabled><%= p %></button>
+                <% }else { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.faq?cpage=<%= p %>';"><%= p %></button>
+                <% } %>
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/adminList.faq?cpage=<%=currentPage+1%>';"> &gt; </button>
+			<% } %>
             </div>
         </div>
 
     
     
-    <!-- 페이징 바 -->
-    <script>
-        $(function(){
-            $(".paging-area button").click(function(){
-                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-            })
-        })
-    </script>
+
     
 </div>
 
