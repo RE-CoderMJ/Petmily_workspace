@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -46,7 +46,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                  <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="styles1.css" rel="stylesheet" />
+        <link href="styles.css" rel="stylesheet" />
     </head>
     <body>
 
@@ -162,7 +162,7 @@
                                         장바구니에 추가되었습니다.
                     </div>
                     <div id="cart-area">
-                      <button type="button" class="btn" data-dismiss="modal" id="closebtn" onclick="location='cart.jsp'">이동</button>
+                      <button type="button" class="btn" data-dismiss="modal" id="closebtn" onclick="location.href='<%= contextPathas %>/cart.my'">이동</button>
                       <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
                     </div>              
                 </div>
@@ -183,7 +183,7 @@
                                        찜 목록에 추가되었습니다.
                     </div>
                     <div id="like-area">
-                      <button type="button" class="btn" data-dismiss="modal" id="closebtn" onclick="location='like.jsp'">이동</button>
+                      <button type="button" class="btn" data-dismiss="modal" id="closebtn" onclick="location.href='<%= contextPathas %>/like.my'">이동</button>
                       <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
                     </div>              
                 </div>
