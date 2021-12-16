@@ -104,7 +104,7 @@
             <div class="menu"><a href=""></a></div> -->
         </div>
     
-        <form action="<%= contextPathal %>/memMg.ad" class="body">
+        <form action="<%= contextPathal %>/admin.main" class="body">
             <!-- 발바닥 이미지 -->
             <div id="logo2">
                 <a href="">

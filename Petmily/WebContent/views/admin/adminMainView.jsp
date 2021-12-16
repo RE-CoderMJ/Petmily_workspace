@@ -8,18 +8,19 @@
 	<style>
         /* 큰 틀 크기 지정 */
         .outer{
-            width:800px;
+            /* width:800px; */
             height:850px;
             margin:auto;
         }
         .outer>div{
-            float:left; 
+            /* float:left; */
         }
         #sidebar{
         	width:350px;
         }
 		#adminContent{
 			width:800px;
+            margin:auto;
 		}
         
         /* 메뉴바 밑 상단 회색바 */
@@ -120,15 +121,15 @@
 	<!-- 메뉴바 -->
     <%@ include file="../common/admin_menubar.jsp" %>
     
-	<div id="sidebar">
-    <!-- 사이드바 (관리자 전체) -->
-    <%@ include file="../common/admin_MainSidebar.jsp" %>
-    </div>
-
-
-    <div class="outer">
-
-
+    
+    
+    <div class="outer" style="width: 1400px;">
+        
+        
+        <div id="sidebar">
+        <!-- 사이드바 (관리자 전체) -->
+        <%@ include file="../common/admin_MainSidebar.jsp" %>
+        </div>
         
 	<div id="adminContent">
         <!-- 맨밑 회색 상단바 -->

@@ -53,7 +53,7 @@
 </head>
 <body>
       <!--  사이드바  -->
-      <div class="sidebar-area">
+      <div class="sidebar-area mt-5">
 
                 <div class="aMenu" id="">회원관리</div>
                 <ul>
