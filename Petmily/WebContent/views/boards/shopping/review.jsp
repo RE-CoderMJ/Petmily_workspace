@@ -272,7 +272,7 @@ div, img, li, a{
                //const num = $(this).children().eq(0).text();
                
                // /jsp/detail.no?num=클릭한글번호
-               location.href = '<%=contextPath%>/detail.ask';
+               location.href = '<%=contextPath%>/';
             })
          })
       </script>
@@ -347,7 +347,7 @@ div, img, li, a{
   </html>
 <strong class="_3y9Ly2IiVh">어떤 점이 좋았나요?</strong>
 <div class="ystMZ36gvH"><div class="_30-j0z23yB _2CEGIJbJ0M">
-<textarea class="_2mqbEheJIc" id="reviewInput" cols="60" style="height:100px"></textarea><div class="_2WdOh6YXC8"><em class="_3LoikG0PPT"></div></div></div>
+<textarea class="_2mqbEheJIc" id="reviewInput" cols="50" style="height:100px"></textarea><div class="_2WdOh6YXC8"><em class="_3LoikG0PPT"></div></div></div>
 
 <div class="_3DpEZeFAIG">
 <a href="#" class="_3vyujQUKFF N=a:wrtmnt.ath">사진/동영상 첨부하기</a>
