@@ -1,6 +1,7 @@
 package com.pm.boards.market.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.pm.boards.market.model.service.MarketService;
+import com.pm.boards.market.model.vo.Market;
 import com.pm.common.MyFileRenamePolicy;
 import com.pm.common.model.vo.Attachment;
 
@@ -43,13 +46,36 @@ public class MarketEnrollController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
-			String category = multiRequest.getParameter("cateogry");
-			String dCategory = multiRequest.getParameter("d-category");
-			String marketTitle = multiRequest.getParameter("title");
-			int price = Integer.parseInt(multiRequest.getParameter("price"));
-			String marketContent = multiRequest.getParameter("content");
+			Market m = new Market();
+			m.setMarketWriter(multiRequest.getParameter("userNo"));
+			m.setCategory(multiRequest.getParameter("category"));
+			m.setdCategory(multiRequest.getParameter("d-category"));
+			m.setMarketTitle(multiRequest.getParameter("title"));
+			m.setPrice(Integer.parseInt(multiRequest.getParameter("price")));
+			m.setMarketContent(multiRequest.getParameter("content"));
 			
-			Attachment at = null;
+			ArrayList<Attachment> list = new ArrayList<>();
+			
+			for(int i=1; i<=list.size(); i++) {
+				String key="file" + i;
+				if(multiRequest.getOriginalFileName(key) != null) {
+					
+					Attachment at = new Attachment();
+					at.setOriginName(multiRequest.getOriginalFileName(key));
+					at.setChangeName(multiRequest.getFilesystemName(key));
+					at.setFilePath("resources/boards_upfiles/market_upfiles/");
+					
+					list.add(at);
+				}
+			}
+			
+			int result = new MarketService().enrollMarket(m, list);
+			
+			if(result > 0) {
+				response.sendRedirect(request.getContextPath() + "/main.market?page=1");
+			}else {
+				
+			}
 		}
 		
 		

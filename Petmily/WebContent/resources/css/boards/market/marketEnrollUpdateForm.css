@@ -28,9 +28,15 @@ div, img, li, a{
 /* 사진 부분 스타일 */
 #photo-area{
     width: 400px;
-    height: 500px;
-    margin-top: 60px;
+    min-height: 500px;
+    height:auto;
+    margin-top: 0px;
     float: left;
+}
+.carousel-inner{
+	border:solid 1px black;
+	width: 400px;
+    min-height: 400px;
 }
 .carousel-item{
     width: 100%;
@@ -47,12 +53,32 @@ div, img, li, a{
     float: left;
     font-weight: bolder;
     color: rgb(106, 106, 106);
+    margin-top:-10px;
 }
 #file-upload-area{
     margin-top: 40px;
+    heigth:auto;
 }
-#file-upload-area>input{
-    margin-top: 8px;
+#add-area{
+	margin-left:30px;
+	height:auto;
+	margin-bottom:30px;
+}
+#add-area>input{
+	margin-bottom:10px;
+}
+#add-btn{
+	width:30px;
+	height:30px;
+	border:none;
+	background:orange;
+	font-weight:bolder;
+	font-size:20px;
+	line-height:2px;
+	position:absolute;
+	left:820px;
+	border-radius:5px;
+	bottom:360px;
 }
 
 /* 입력부분 스타일 */

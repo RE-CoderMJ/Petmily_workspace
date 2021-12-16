@@ -39,33 +39,22 @@
 			
 	            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
 	              	
-	              	<!-- Indicators -->
-					<ul class="carousel-indicators">
-					  <li data-target="#demo" data-slide-to="0" class="active"></li>
-					  <li data-target="#demo" data-slide-to="1"></li>
-					  <li data-target="#demo" data-slide-to="2"></li>
-					</ul>
-	              	
 	                <!-- The slideshow -->
 	                <div class="carousel-inner">
 	                  <div class="carousel-item active">
-	                    <img src="" alt="">
+	                    <img src="resources/img/1nam.jpg" alt="">
 	                  </div>
 	                  <div class="carousel-item">
-	                    <img src="" alt="">
+	                    <img src="resources/img/1nam2.jpg" alt="">
 	                  </div>
 	                  <div class="carousel-item">
-	                    <img src="" alt="">
+	                    <img src="resources/img/bomi2.jpg" alt="">
 	                  </div>
 	                </div>
 	              
 	                <!-- Left and right controls -->
-	                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-	                  <span class="carousel-control-prev-icon"></span>
-	                </a>
-	                <a class="carousel-control-next" href="#demo" data-slide="next">
-	                  <span class="carousel-control-next-icon"></span>
-	                </a>
+	                <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">‹</a>
+					<a class="right carousel-control" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">›</a>
 	              
 	            </div>
 	        </div>

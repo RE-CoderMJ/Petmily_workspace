@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertMarket">
+		INSERT
+		  INTO MARKET
+		  (
+		    MARKET_NO
+		  , MARKET_WRITER
+		  , CATEGORY
+		  , D_CATEGORY
+		  , MARKET_TITLE
+		  , MARKET_CONTENT
+		  , PRICE
+		  )
+		  VALUES
+		  (
+		    SEQ_MARNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<entry key="insertAttachmentList">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 2
+		  , SEQ_MARNO.CURRVAL
+		  , ?
+		  )
+	</entry>
+</properties>
