@@ -15,8 +15,9 @@
 
 <style>
 
-    div {
-        /* border: 1px solid blue; */
+    .outer {
+        width: 1600px;
+        margin: auto;
     }
     
     .inner {
@@ -87,9 +88,9 @@
 </head>
 <body>
     <%@ include file="../../common/menubar.jsp" %>
-    <%@ include file="../notice/noticeSidebar.jsp" %>
     
     <div class="outer">
+        <%@ include file="../notice/noticeSidebar.jsp" %>
         
         
         <div class="inner">

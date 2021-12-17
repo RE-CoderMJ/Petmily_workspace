@@ -14,9 +14,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
-    
+
+    .outer {
+        width: 1400px;
+        margin: auto;
+    }
+
     .inner {
-        width: 1300px;
+        width: 800px;
         height: auto;
         margin: auto;
     }
@@ -49,7 +54,7 @@
 
     .search-back {
         background-color: rgb(235, 235, 235);
-        width: 700px;
+        width: 670px;
         height: 120px;
         margin: auto;
         margin-top: 60px;
@@ -57,12 +62,12 @@
 
     .search-in {
         position: relative;
-        left: 55px;
+        left: 10px;
         top: 30px;
     }
 
     #searchBox {
-        width: 500px;
+        width: 400px;
         height: 35px;
         border-radius: 5px;
         border: 1px solid lightgray;
@@ -77,7 +82,8 @@
     #keyword-title {
         float: left;
         font-weight: bold;
-        margin: 10px 10px;
+        margin: 10px 5px 0px 90px;
+        font-size: 15px;
     }
 
     .keyword-tag {
@@ -97,13 +103,13 @@
 
     .menuform {
         float: left;
-        width: 360px;
-        padding: 70px;
+        width: 220px;
+        margin-top: 60px;
     }
 
     .vertical-line {
         float: left;
-        border-right: 1px solid lightgray;
+        border-left: 1px solid lightgray;
         height: 200px;
         margin-top: 60px;
 
@@ -118,10 +124,13 @@
 
     .menulist {
         font-size: 20px;
+        margin-left: 30px;
+        margin-bottom: 60px;
     }
 
     .menulist>ul>li>a {
         text-decoration-line: none !important;
+        font-size: 15px;
         color: black;
     }
 
@@ -129,18 +138,19 @@
         font-size: 20px;
         font-weight: bold;
         padding-left: 10px;
+        
     }
 
     .tdTitle {
-        width: 300px;
+        width: 200px;
         text-align: center;
-        font-size: 18px;
+        font-size: 15px;
         cursor: pointer;
     }
 
     .tdContent { 
         text-align: center;
-        font-size: 18px;
+        font-size: 15px;
         cursor: pointer;
     }
 
@@ -149,9 +159,9 @@
 </head>
 <body>
     <%@ include file="../../common/menubar.jsp" %>
-    <%@ include file="../notice/noticeSidebar.jsp" %>
     
     <div class="outer">
+        <%@ include file="../notice/noticeSidebar.jsp" %>
         
         
         <div class="inner">
@@ -217,8 +227,8 @@
                         <ul>
                             <li><a href="">상품 주문 / 결제</a></li>
                             <li><a href="">스토어 입점 제휴</a></li>
-                            <li><a href="">반품 / 교환</a></li>
-                            <li><a href="">취소 / 환불</a></li>
+                            <li><a href="">교환 / 환불</a></li>
+                            <li><a href="">포인트</a></li>
                         </ul>
                     </div>
 
@@ -237,7 +247,7 @@
                             <li><a href="">게시물 등록</a></li>
                             <li><a href="">사진 / 영상</a></li>
                             <li><a href="">펫적사항</a></li>
-                            <li><a href="">포인트</a></li>
+                            <li><a href="">기타</a></li>
                         </ul>
                     </div>
 
@@ -287,15 +297,15 @@
         </div>
         
         <script>
-	         $(function(){
-	            $("tr").click(function(){
-	               //const num = $(this).children().eq(0).text();
-	               
-	               // /jsp/detail.faq?num=클릭한글번호
-	               location.href = '<%=contextPath%>/detail.faq'
-	            })
-	         })
-	      </script>
+            $(function(){
+               $("tr").click(function(){
+                  //const num = $(this).children().eq(0).text();
+                  
+                  // /jsp/detail.faq?num=클릭한글번호
+                  location.href = '<%=contextPath%>/detail.faq'
+               })
+            })
+         </script>
 
         <%@ include file="../bCommon/boardPagingBar.jsp" %>
     </div>

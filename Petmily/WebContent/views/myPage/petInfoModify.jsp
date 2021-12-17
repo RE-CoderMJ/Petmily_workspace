@@ -18,7 +18,7 @@
     /* cont-wrap */
     .cont-wrap{
 		/* margin-left: 350px; */
-		margin: 0 auto;
+        margin: 0 auto;
         width: 1200px;
 	}
 	.title-box h3{
@@ -104,7 +104,6 @@
 		margin-right: 5px;
 	}
 
-	/* 훔쳐옴ㅋㅋ */
     .leftText {
         float: left;
         width: 160px;
@@ -141,7 +140,7 @@
         float: right;
         height: 40px;
         width: 140px;
-        border: 1px solid lightgray;
+        border: 1px solid lightgray !important;
         border-radius: 5px;
         cursor: pointer;
     }
@@ -176,9 +175,15 @@
     }
 
     .checkText {
-        padding-left: 10px;
+		padding-left: 10px;
         font-size: 15px;
     }
+
+	input[type=date] {
+		width: 150px; 
+		margin-left: 13px; 
+		color: gray;
+	}
 
     .smallSpan {
         font-size: 13px;
@@ -217,7 +222,7 @@
         <!-- cont-wrap -->
         <div class="cont-wrap">
             <div class="title-box mt-1 pb-2">
-                <h3>마이펫 등록하기</h3>
+                <h3>마이펫 수정하기</h3>
             </div>
             <div class="content">
                 <hr>
@@ -297,11 +302,14 @@
                             <input type="text" name="address2" placeholder="주소">
                         </div>
                     </div>
-					<button type="submit" class="joinButton btn-warning">마이펫 등록하기</button>
+					<button type="submit" class="joinButton btn-warning">마이펫 수정하기</button>
                 </form>
             </div>
         </div>
     </div>
     <br><br>
+	<div style="margin-top: 200px;">
+        <%@ include file="../common/footerbar.jsp" %>
+    </div>
 </body>
 </html>

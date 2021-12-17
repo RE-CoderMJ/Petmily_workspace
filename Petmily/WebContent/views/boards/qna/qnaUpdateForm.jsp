@@ -14,8 +14,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
-    div {
-        /* border: 1px solid green; */
+    .outer {
+        width: 1600px;
+        margin: auto;
     }
 
 	.inner {
@@ -96,9 +97,9 @@
 
     <body>
         <%@ include file="../../common/menubar.jsp" %>
-        <%@ include file="../notice/noticeSidebar.jsp" %>
         
         <div class="outer">
+            <%@ include file="../notice/noticeSidebar.jsp" %>
             
             
             <div class="inner">

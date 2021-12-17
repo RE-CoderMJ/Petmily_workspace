@@ -36,9 +36,9 @@
             width: 900px;
         }
         .search-area>input{
-            width: 600px;
+            width: 845px;
             height: 39px;
-            border: rgb(247, 198, 4) 3px solid;
+            border: rgb(247, 198, 4) 2px solid;
             padding-right: 50px;
             padding-left: 5px;
         }
@@ -55,6 +55,11 @@
         table {
             text-align: center;
         }
+
+        table td {
+            cursor: pointer;
+        }
+
         /* 페이징바 */
         .paging-area button{
             border:  0;
@@ -110,10 +115,10 @@
                     </div>
                 </div>
 
-                <!-- table -->
-                    <table class="table" style="width: 1000px;">
+        
+                    <table class="table table-hover" style="width: 1000px;">
                         <thead>
-                            <tr class="table-secondary">
+                            <tr style="background-color: lightgray;">
                                 <th width="50px">No.</th>
                                 <th width="150px">분류</th>
                                 <th width="450px">제목</th>
@@ -140,6 +145,7 @@
                     </table>
                 </div>
             </div>
+
         </div>
         <br><br><br><br>
         <!-- 페이징 바 -->
@@ -152,6 +158,12 @@
             <button>5</button>
             <button> &gt; </button>
         </div>
+
+        <div style="margin-top: 200px;">
+            
+            <%@ include file="../common/footerbar.jsp" %>
+        </div>
+        
         <script>
             $(function(){
                 $(".paging-area button").click(function(){
@@ -159,7 +171,7 @@
                     $(this).css({background: "rgb(247, 198, 4)", color:"black"});
                 })
             })
-        </script>
+            </script>
     </div>
     <br><br>
 </body>

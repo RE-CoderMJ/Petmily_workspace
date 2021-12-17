@@ -15,6 +15,11 @@
 
 <style>
 
+    .outer {
+        width: 1600px;
+        margin: auto;
+    }
+
 	.inner {
         width: 1300px;
         height: auto;
@@ -99,9 +104,9 @@
 
 <body>
 	<%@ include file="../../common/menubar.jsp" %>
-    <%@ include file="../notice/noticeSidebar.jsp" %>
     
     <div class="outer">
+        <%@ include file="../notice/noticeSidebar.jsp" %>
         
         
         <div class="inner">

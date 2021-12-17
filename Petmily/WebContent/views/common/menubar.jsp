@@ -183,7 +183,7 @@ body *{
         <div class="menu"><a href="<%= contextPath %>/main.missing">찾고있어요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.petLog">PetLog</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.market">중고거래</a></div>
-        <div class="menu"><a href="<%= contextPath %>/">MyPage</a></div>
+        <div class="menu"><a href="<%= contextPath %>/infoUpdateForm.my">MyPage</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.no">고객센터</a></div>
     </div>
 

@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MyPetInforController
  */
-@WebServlet("/MyPetInfor.mp")
-public class MyPetInforController extends HttpServlet {
+@WebServlet("/myPetInfo.mp")
+public class MyPetInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPetInforController() {
+    public MyPetInfoController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class MyPetInforController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/myPage/petInforMyPet.jsp").forward(request, response);
+		request.getRequestDispatcher("views/myPage/petInfoMyPet.jsp").forward(request, response);
 	}
 
 	/**

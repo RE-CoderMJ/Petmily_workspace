@@ -56,8 +56,8 @@
     }
     .pet-box img{
         margin-top: 40px;
-        width: 250px;/* 가로세로 크기도 너가 다시 조정하면됨 ㅋㅋ*/
-        height: 250px;
+        width: 200px;/* 가로세로 크기도 너가 다시 조정하면됨 ㅋㅋ*/
+        height: 200px;
         border-radius: 250px;
         margin-bottom: 20px;
         /* background-color: white;요건 이미지넣음 지워도돼 ㅋㅋ   */
@@ -116,7 +116,7 @@
                 <!-- 마이펫 관리 -->
                 <div class="mypet-area">
                     <div class="pet-box">
-                        <a href="<%= contextPaths %>/PetInforModify.mp" class="material-icons add">add_circle_outline</a>
+                        <a href="<%= contextPaths %>/petInfoModify.mp" class="material-icons add">add_circle_outline</a>
                         <img src="resources/img/bomi.jpg" alt="">
                         <div class="info">
                             <p class="name">보미</p>
@@ -130,13 +130,17 @@
                     </div>
                     <div class="pet-box pet-add"><!-- 펫등록 박스는 class="pet-add" 추가 -->
                         <p class="txt">마이펫 등록하고 펫로그를 이용해보세요</p>
-                        <a href="" class="material-icons">add</a>
-                        <button class="btn btn-warning" onclick="location.href='<%= contextPaths %>/PetInforRegister.mp';">마이펫 등록하기</button>
+                        <a class="material-icons" style="text-decoration-line: none; cursor: default;">add</a>
+                        <button class="btn btn-warning" onclick="location.href='<%= contextPaths %>/petInfoRegister.mp';">마이펫 등록하기</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <br><br>
+
+    <div style="margin-top: 1000px;">
+        <%@ include file="../common/footerbar.jsp" %>
+    </div>
 </body>
 </html>

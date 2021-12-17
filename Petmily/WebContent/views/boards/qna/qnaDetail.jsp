@@ -15,6 +15,11 @@
 
 <style>
 
+    .outer {
+        width: 1600px;
+        margin: auto;
+    }
+
 	.inner {
         width: 1300px;
         height: auto;
@@ -51,6 +56,7 @@
         float: right;
         margin-top: 20px;
         font-size: 15px;
+        font-weight: bold;
     }
 
     .detailTitle {
@@ -67,6 +73,7 @@
     .qnaContentTop > a {
         text-decoration-line: none !important;
         font-size: 14px;
+        font-weight: bold;
         color: gray;
     }
 
@@ -92,6 +99,7 @@
         background-color: lightgray;
         border: none;
         font-size: 15px;
+        font-weight: bold;
         color: black;
     }
 
@@ -119,6 +127,8 @@
         width: 50px;
         height: 35px;
         margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 15px;
     }
 
     .replies {
@@ -182,9 +192,9 @@
 
 <body>
     <%@ include file="../../common/menubar.jsp" %>
-    <%@ include file="../notice/noticeSidebar.jsp" %>
     
     <div class="outer">
+        <%@ include file="../notice/noticeSidebar.jsp" %>
         
         
         <div class="inner">
@@ -240,7 +250,7 @@
 
                     <div class="replies">
                         
-                        <div class="replyProfile" style="border: 1px solid red; line-height: normal;" >
+                        <div class="replyProfile">
                             <img src="resources/img/profile_default.png" class="profileImg">
                             <b class="replyId">choco22</b>
                         </div>

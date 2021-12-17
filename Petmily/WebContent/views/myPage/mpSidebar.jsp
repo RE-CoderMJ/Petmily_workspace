@@ -82,11 +82,11 @@
             <div id="boardName">마이페이지</div>
             <div id="d-category">
                 
-                <div class="d-category1" id="dog">회원정보수정</div>
+                <div class="d-category1">회원정보수정</div>
                 
-                <div class="d-category1" id="mypost" onclick="location.href='<%= contextPaths %>/MyPost.mp';">내가쓴게시글조회</div>
+                <div class="d-category1" onclick="location.href='<%= contextPaths %>/myPost.mp'">내가 쓴 게시글조회</div>
                 
-                <div class="d-category1" id="mypetinfor" onclick="location.href='<%= contextPaths %>/MyPetInfor.mp';">펫적사항</div>
+                <div class="d-category1" onclick="location.href='<%= contextPaths %>/myPetInfo.mp'">펫적사항</div>
                 
                 <div class="d-category" id="etc">쇼핑몰</div>
                 <p class="dd-category" onclick="location.href='<%= contextPaths %>/cart.my';">장바구니</p>
