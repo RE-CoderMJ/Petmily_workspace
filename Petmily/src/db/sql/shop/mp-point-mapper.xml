@@ -5,19 +5,27 @@
 <entry key="selectListCount">
 	SELECT
 	       COUNT(*) COUNT
-	  FROM SPMY_POINT;
+	  FROM SPMY_POINT
 
 </entry>
 
 <entry key="selectList">
-	SELECT
-	       POINT_NO
-	     , SUM(POINT) "SUM_POINT"
-	     , POINT
-	     , POINT_CONTENT
-	     , TO_CHAR(POINT_DATE, 'YYYY/MM/DD') "POINT_DATE"
-	FROM SPMY_POINT
-	GROUP BY POINT_NO,POINT, POINT_CONTENT, POINT_DATE
+
+	SELECT *
+	  FROM (
+	        SELECT ROWNUM RNUM, A.*
+	          FROM (
+	                SELECT
+					       POINT_NO
+					     , POINT
+					     , POINT_CONTENT
+					     , TO_CHAR(POINT_DATE, 'YYYY/MM/DD') "POINT_DATE"
+					  FROM SPMY_POINT
+	                  ORDER 
+	                     BY POINT_NO DESC
+	                ) A
+	        )
+	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
 

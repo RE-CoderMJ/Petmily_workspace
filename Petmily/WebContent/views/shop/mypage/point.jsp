@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.shop.model.vo.Point" %>
+ <%
+ 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+ 	ArrayList<Point> list = (ArrayList<Point>)request.getAttribute("list");
+ 	
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ 	
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,70 +124,39 @@
     <div class="inline-block" id="point1">보유</div>
     <div class="inline-block" id="point2">7,000p</div>
 </div>
+<% if(list.isEmpty()) { %>
+	<div>포인트 내역이 없습니다.</div>
+<% } else { %>
+	<% for(Point p : list) { %>
+	
+		<div class="outer">
+		    <div class="inline-block" id="date">
+		        <%= p.getPointDate() %>
+		    </div>
+		    
+		    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
+		        <img src="" alt="" width="50px" height="50px">
+		        <div class="inline-block" id="content">
+		            <%= p.getPoint() %>
+		            <br> 
+		            <%= p.getPointContent() %>
+		        </div>
+		        
+		    </div>
+		</div>
+		
+	<% } %>
+<% } %>
 
-<div class="outer">
-    <div class="inline-block" id="date">
-        21.11.12
-    </div>
-    
-    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
-        <img src="" alt="" width="50px" height="50px">
-        <div class="inline-block" id="content">
-            +500p 
-            <br> 
-            리뷰 작성 적립
-        </div>
-        <br>
-        <br>
-        <img src="" alt="" width="50px" height="50px">
-        <div class="inline-block" id="content">
-            +500p 
-            <br> 
-            리뷰 작성 적립
-        </div>
-        
-    </div>
-</div>
-
-
-<div class="outer">
-    <div class="inline-block" id="date">
-        21.11.11
-    </div>
-    
-    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
-        <img src="" alt="" width="50px" height="50px">
-        <div class="inline-block" id="content">
-            -1300p
-            <br> 
-            결제 시 사용
-        </div>
-    </div>
-</div>
-
-<div class="outer">
-    <div class="inline-block" id="date">
-        21.11.9
-    </div>
-    
-    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
-        <img src="" alt="" width="50px" height="50px">
-        <div class="inline-block" id="content">
-            +5000p
-            <br> 
-            가입 환영 포인트
-        </div>
-    </div>
-</div>
 
  <!-- 페이징 바 -->
       <div class="paging-area" >
             <button> &lt; </button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
+		   	<button>1</button>
+		   	<button>2</button>
+		   	<button>3</button>
+		   	<button>4</button>
+		   	<button>5</button>
             <button> &gt; </button>
     </div>
 

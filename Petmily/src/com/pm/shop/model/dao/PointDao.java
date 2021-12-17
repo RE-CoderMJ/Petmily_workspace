@@ -20,7 +20,7 @@ public class PointDao {
 	
 	public PointDao() {
 		try {
-			prop.loadFromXML(new FileInputStream( PointDao.class.getResource("/db/sql/mp-point-mapper.xml").getPath() ));
+			prop.loadFromXML(new FileInputStream( PointDao.class.getResource("/db/sql/shop/mp-point-mapper.xml").getPath() ));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,13 +65,7 @@ public class PointDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			rset = pstmt.executeQuery();
-			
 			/*
-			 * currentPage : 1  => 시작값 : 1  |  끝값 : 10
-			 * currentPage : 2  => 시작값 : 11 |  끝값 : 20
-			 * currentPage : 3  => 시작값 : 21 |  끝값 : 30
-			 * 
 			 * 시작값 : (currentPage - 1) * boardLimit + 1
 			 * 끝값 : 시작값 + boardLimit - 1
 			 *  
@@ -86,8 +80,7 @@ public class PointDao {
 		
 			while(rset.next()) {
 				list.add(new Point(rset.getInt("point_no"),
-								   //rset.getInt("sum_point"),  sum함수 어떻게 할지 고민
-								   rset.getInt("point"),
+								   rset.getString("point"),
 								   rset.getString("point_content"),
 								   rset.getDate("point_date")
 						    	   ));
@@ -101,11 +94,7 @@ public class PointDao {
 			close(pstmt);
 		}
 		return list;
-		
-		
-		
-		
-		
+
 		
 	}
 }
