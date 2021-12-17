@@ -34,7 +34,7 @@ public class NoticeService {
 	
 	public int insertNotice(Notice n) {
 		Connection conn = getConnection();
-		int result = new NoticeDao().insertBoard(conn, n);
+		int result = new NoticeDao().insertNotice(conn, n);
 		close(conn);
 		return result;
 

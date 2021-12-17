@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import com.pm.admin_Faq.model.dao.FaqDao;
 import com.pm.admin_Faq.model.vo.Faq;
+import com.pm.admin_Notice.model.dao.NoticeDao;
+import com.pm.admin_Notice.model.vo.Notice;
 import com.pm.common.model.vo.PageInfo;
 
 public class FaqService {
@@ -28,5 +30,13 @@ public class FaqService {
 		close(conn);
 		return list;
 	}
+	
+	public Faq selectFaq(int faqNo) {
+		Connection conn = getConnection();
+		Faq f = new FaqDao().selectFaq(conn, faqNo);
+		close(conn);
+		return f;
+	}
+	
 
 }

@@ -69,11 +69,11 @@
                     <th width="10px"></th>
                     <td>공지사항 분류</td>
                     <td>
-                    	<select name="" id="">
-                    	    <option value="" selected>선택사항없음</option>
-                            <option value="">궁금해요</option>
-                            <option value="">찾고있어요</option>
-                            <option value="">중고거래</option>
+                    	<select name="noticecate" id="">
+                            <option value="1">궁금해요</option>
+                            <option value="2">중고거래</option>
+                            <option value="3">찾고있어요</option>
+                            <option value="4" selected>고객센터 공지사항</option>
                         </select>
                     </td>
                 </tr>

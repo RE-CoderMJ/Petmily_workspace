@@ -82,7 +82,7 @@ public class NoticeDao {
 								 	rset.getString("notice_date"),
 								 	rset.getString("notice_cate"),
 								 	rset.getString("status"),
-								 	rset.getString("manager_no")));
+								 	rset.getString("manager_id")));
 			}
 
 			
@@ -97,7 +97,7 @@ public class NoticeDao {
 		
 	}
 	
-	public int insertBoard(Connection conn, Notice n) {
+	public int insertNotice(Connection conn, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertNotice");
@@ -107,7 +107,7 @@ public class NoticeDao {
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
 			pstmt.setString(3,n.getNoticeCate());
-			pstmt.setString(4,(n.getManagerNo()));
+			pstmt.setString(4,n.getManagerNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -146,6 +146,7 @@ public class NoticeDao {
 		Notice n = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		String sql = prop.getProperty("selectNotice");
 		
 		try {
@@ -156,15 +157,11 @@ public class NoticeDao {
 			
 			if(rset.next()) {
 				n = new Notice(rset.getInt("notice_no"),
-							  rset.getString("notice_title"),
-							  rset.getString("notice_content"),
-							  rset.getString("create_date"),
-							  rset.getString("notice_cate"),
-							  rset.getString("manager_no"));
-
-
-
-
+							   rset.getString("notice_title"),
+							   rset.getString("notice_content"),
+							   rset.getString("create_date"),
+							   rset.getString("notice_cate"),
+							   rset.getString("manager_no"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

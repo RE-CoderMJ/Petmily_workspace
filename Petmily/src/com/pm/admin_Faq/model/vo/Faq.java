@@ -7,11 +7,11 @@ public class Faq {
 	private String faqContent;
 	private String faqCate;
 	private String status;
-	private int managerNo;
+	private String managerNo;
 
 	public Faq() {}
 
-	public Faq(int faqNo, String faqTitle, String faqContent, String faqCate, String status, int managerNo) {
+	public Faq(int faqNo, String faqTitle, String faqContent, String faqCate, String status, String managerNo) {
 		super();
 		this.faqNo = faqNo;
 		this.faqTitle = faqTitle;
@@ -21,7 +21,24 @@ public class Faq {
 		this.managerNo = managerNo;
 	}
 
+	public Faq(int faqNo, String faqTitle, String faqCate, String managerNo) {
+		super();
+		this.faqNo = faqNo;
+		this.faqTitle = faqTitle;
+		this.faqCate = faqCate;
+		this.managerNo = managerNo;
+	}
 	
+	
+
+	public Faq(int faqNo, String faqTitle, String faqContent, String faqCate, String managerNo) {
+		super();
+		this.faqNo = faqNo;
+		this.faqTitle = faqTitle;
+		this.faqContent = faqContent;
+		this.faqCate = faqCate;
+		this.managerNo = managerNo;
+	}
 
 	public int getFaqNo() {
 		return faqNo;
@@ -63,11 +80,11 @@ public class Faq {
 		this.status = status;
 	}
 
-	public int getManagerNo() {
+	public String getManagerNo() {
 		return managerNo;
 	}
 
-	public void setManagerNo(int managerNo) {
+	public void setManagerNo(String managerNo) {
 		this.managerNo = managerNo;
 	}
 
@@ -76,6 +93,10 @@ public class Faq {
 		return "Faq [faqNo=" + faqNo + ", faqTitle=" + faqTitle + ", faqContent=" + faqContent + ", faqCate=" + faqCate
 				+ ", status=" + status + ", managerNo=" + managerNo + "]";
 	}
+	
+	
+
+	
 	
 	
 	

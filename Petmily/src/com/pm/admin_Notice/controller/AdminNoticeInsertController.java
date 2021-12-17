@@ -37,21 +37,25 @@ public class AdminNoticeInsertController extends HttpServlet {
 		
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
+		String managerNo = request.getParameter("managerNo");
+		String noticeCate = request.getParameter("noticecate");
 		
 		HttpSession session = request.getSession();
-		int managerNo = ((AdminMember)session.getAttribute("loginUser")).getManagerNo();
+		int ManagerNo = ((AdminMember)session.getAttribute("loginAdmin")).getManagerNo();
 		
 		Notice n = new Notice();
 		n.setNoticeTitle(noticeTitle);
 		n.setNoticeContent(noticeContent);
-		n.setManagerNo(String.valueOf(managerNo)); // 무조건 String으로 만들어줌 .valueOf()
+		n.setManagerNo(String.valueOf(ManagerNo)); // 무조건 String으로 만들어줌 .valueOf()
+		n.setNoticeCate(noticeCate);
+
 		
 		int result = new NoticeService().insertNotice(n);
 		
 		if(result > 0) { 
 			
 			session.setAttribute("alertMsg", "성공적으로  공지사항 등록되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/list.no");
+			response.sendRedirect(request.getContextPath() + "/adminList.no?cpage=1");
 			
 		}else {	// 실패 => 에러문구(공지사항 등록 실패) 담아서 에러페이지 보여지게끔 포워딩!!
 			request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다!");

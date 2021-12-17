@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Notice.model.vo.Notice" %>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Notice.model.vo.Notice, com.pm.admin_Login.model.vo.AdminMember" %>
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+   AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
  
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
  	int endPage = pi.getEndPage();
  	int maxPage = pi.getMaxPage();
- %>   
+ %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +128,7 @@
         </div>
 
         <br><br><br><br><br>
-     <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
+     <% if(loginAdmin != null && loginAdmin.getManagerId().equals("admin")) { %>
         <!-- 검색창 -->
         <div class="bottom">
             <div class="noticeselect">
@@ -197,7 +200,7 @@
                
 			<br><br>
            	</div>
-        <% } %>    
+        <% } %>   
           
         
 		<!-- 테이블 + 페이징 바 -->
@@ -228,7 +231,26 @@
                     <tr>
                         <td><input type="checkbox" name="" value=""></td>
                         <td><%= n.getNoticeNo() %></td>
-                        <td><%= n.getNoticeCate() %></td>
+                        
+                        
+                        
+                        <% 
+                        String category = "";
+                        
+                        switch(Integer.parseInt(n.getNoticeCate())) {
+                        case 1: category="궁금해요"; break;
+                        case 2: category="중고거래"; break;
+                        case 3: category="찾고있어요"; break;
+                        case 4: category="고객센터 공지사항"; break;
+                        }
+                        %>
+                        <td><%= category %></td>
+                        
+                        
+                        
+                        
+                        
+                        
                         <td><%= n.getNoticeTitle() %></td>
                         <td><%= n.getManagerNo() %></td>
                     </tr>
@@ -256,19 +278,19 @@
 	    <!-- 페이징 바 -->
             <div class="paging-area" align="center">
             <% if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.notice?cpage=<%=currentPage-1%>';"> &lt; </button>
+                <button onclick="location.href='<%=contextPath%>/adminList.no?cpage=<%=currentPage-1%>';"> &lt; </button>
             <% } %>
             
             <% for(int p=startPage; p<=endPage; p++) { %>
             	<% if(p== currentPage) { %>
                 <button disabled><%= p %></button>
                 <% }else { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.notice?cpage=<%= p %>';"><%= p %></button>
+                <button onclick="location.href='<%=contextPath%>/adminList.no?cpage=<%= p %>';"><%= p %></button>
                 <% } %>
 			<% } %>
 			
 			<% if(currentPage != maxPage){ %>
-            	<button onclick="location.href='<%=contextPath%>/adminList.notice?cpage=<%=currentPage+1%>';"> &gt; </button>
+            	<button onclick="location.href='<%=contextPath%>/adminList.no?cpage=<%=currentPage+1%>';"> &gt; </button>
 			<% } %>
             </div>
         </div>

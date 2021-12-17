@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Faq.model.vo.Faq" %>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Faq.model.vo.Faq, com.pm.admin_Login.model.vo.AdminMember" %>
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
+   AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
  
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
@@ -230,8 +231,29 @@
 					<% for(Faq f : list) { %>
                         <tr>
                             <td><input type="checkbox" name="" value=""></td>
-                            <td><%= f.getFaqCate() %></td>
                             <td><%= f.getFaqNo() %></td>
+                            
+                            <% 
+                        	String category = "";
+                        
+                        	switch(Integer.parseInt(f.getFaqCate())) {
+                        	case 1: category="회원가입"; break;
+                        	case 2: category="비밀번호재설정"; break;
+                        	case 3: category="회원정보"; break;
+                        	case 4: category="탈퇴및재가입"; break;
+                        	case 5: category="주문결제"; break;
+                        	case 6: category="입점제휴"; break;
+                        	case 7: category="포인트"; break;
+                        	case 8: category="교환환불"; break;
+                        	case 9: category="게시물등록"; break;
+                        	case 10: category="사진영상"; break;
+                        	case 11: category="펫적사항"; break;
+                        	case 12: category="기타"; break;
+                        	}
+                        	%>
+                        	<td><%= category %></td>
+                            
+                            
                             <td><%= f.getFaqTitle() %></td>
                             <td><%= f.getManagerNo() %></td>
                         </tr>
@@ -271,6 +293,7 @@
 			<% if(currentPage != maxPage){ %>
             	<button onclick="location.href='<%=contextPath%>/adminList.faq?cpage=<%=currentPage+1%>';"> &gt; </button>
 			<% } %>
+		
             </div>
         </div>
 

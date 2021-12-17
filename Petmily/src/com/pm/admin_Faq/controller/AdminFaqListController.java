@@ -71,6 +71,7 @@ public class AdminFaqListController extends HttpServlet {
 		request.setAttribute("list", list);
 
 		
+		
 		request.getRequestDispatcher("views/admin/faq/adminFaqListView.jsp").forward(request, response);
 
 	}

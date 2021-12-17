@@ -78,9 +78,9 @@ public class FaqDao {
 				list.add(new Faq(rset.getInt("faq_no"),
 								 rset.getString("faq_title"),
 								 rset.getString("faq_content"),
-								 rset.getString("faq_cate"),
-								 rset.getString("status"),
-								 rset.getInt("manager_no")));
+							 	 rset.getString("faq_cate"),
+							 	 rset.getString("status"),
+								 rset.getString("manager_id")));
 			}
 
 			
@@ -93,5 +93,38 @@ public class FaqDao {
 		
 		return  list;
 		
+	}
+	
+	public Faq selectFaq(Connection conn, int faqNo) {
+		Faq f = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, faqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				f = new Faq(rset.getInt("faq_no"),
+							  rset.getString("faq_title"),
+							  rset.getString("faq_content"),
+							  rset.getString("faq_cate"),
+							  rset.getString("manager_no"));
+
+
+
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return f;
 	}
 }

@@ -43,7 +43,7 @@ public class AdminNoticeListController extends HttpServlet {
 		int endPage;
 		
 		/* 총 게시글 갯수 */
-		listCount = new FaqService().selectListCount();
+		listCount = new NoticeService().selectListCount();
 		
 		/* 현재 페이지 */
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
@@ -70,6 +70,7 @@ public class AdminNoticeListController extends HttpServlet {
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		
 		
 		request.getRequestDispatcher("views/admin/notice/adminNoticeListView.jsp").forward(request,response);
 	}
