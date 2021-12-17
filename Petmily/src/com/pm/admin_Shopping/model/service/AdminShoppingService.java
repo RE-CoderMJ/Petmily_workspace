@@ -1,8 +1,34 @@
 package com.pm.admin_Shopping.model.service;
 
+import static com.pm.common.JDBCTemplate.close;
+import static com.pm.common.JDBCTemplate.commit;
+import static com.pm.common.JDBCTemplate.getConnection;
+import static com.pm.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
+import java.util.ArrayList;
+
+import com.pm.admin_Shopping.model.dao.AdminShoppingDao;
+import com.pm.admin_Shopping.model.vo.AdminShopping;
+import com.pm.common.model.vo.Attachment;
 
 public class AdminShoppingService {
 	
-	
+	public int insertShoppingPd(AdminShopping as, ArrayList<Attachment> list) {
+
+		Connection conn = getConnection();
+		
+		int result1 = new AdminShoppingDao().insertShoppingPd(conn, as);
+		int result2 = new AdminShoppingDao().insertAttachmentList(conn, list);
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
+	}
 }

@@ -113,17 +113,19 @@
                 </div>
                 <div class="content product-reg">
                     <hr>
+                    <input type="hidden" name="managerNo" value="<%=loginAdmin.getManagerNo()%>">
                     <p class="ct-tit pb-3">상품 등록</p>
-                    <form id="update-form" action="<%=contextPath%>/spErPd.ad" method="post" enctype="multipart/form-data">
+                    <form id="update-form" action="<%=contextPath%>/spErPdst.ad" method="post" enctype="multipart/form-data">
+                        
                         <table>
                             <tbody>
                                 <tr>
                                     <th width="130px">*카테고리</th>
                                     <td>
-                                        <select class="selectpicker show-tick p-2">
-                                            <option>강아지</option>
-                                            <option>고양이</option>
-                                            <option>기타</option>
+                                        <select name="category" class="selectpicker show-tick p-2">
+                                            <option value="1">강아지</option>
+                                            <option value="2">고양이</option>
+                                            <option value="3">기타</option>
                                         </select>
                                         <!-- <select class="selectpicker show-tick p-2">
                                             <option>1차</option>
@@ -135,13 +137,13 @@
                                 <tr>
                                     <th width="130px">* 상품명</th>
                                     <td>
-                                        <input class="form-control" type="text" placeholder="상품명을 입력하세요.">
+                                        <input name="title" class="form-control" type="text" placeholder="상품명을 입력하세요." required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="130px">상품 옵션</th>
                                     <td id="form0" style="width: 100px">
-                                        <input class="form-control" type="text" placeholder="옵션1" id="basic1" style="width: 130px;">
+                                        <input class="form-control" type="text" placeholder="옵션1" name="basic1" style="width: 130px;">
                                         
                                         <div class="btn-box">
                                             <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button>
@@ -153,34 +155,34 @@
                                 <tr>
                                     <th width="130px">* 판매가</th>
                                     <td>
-                                        <input class="form-control" type="text" placeholder="판매가를 입력해주세요">
+                                        <input class="form-control" type="number" placeholder="판매가를 입력해주세요" name="price" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="130px">한줄평</th>
                                     <td>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="explain">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="130px">* 기본이미지</th>
                                     <td>
                                         <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
-                                        <input type="file" class="mt-3">
+                                        <input type="file" class="mt-3" name="file1" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="130px">상품상세정보</th>
                                     <td>
                                         <!-- <input class="form-control" type="text"> -->
-                                        <input type="file" class="mt-1">
+                                        <input type="file" name="file2" class="mt-1">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="130px">세부 이미지1</th>
                                     <td>
                                         <!-- <input class="form-control" type="text"> -->
-                                        <input type="file" class="mt-3">
+                                        <input type="file" name="file3" class="mt-3">
                                         <!-- <button class="btn btn-sm btn-primary ml-3">파일선택</button> -->
                                     </td>
                                 </tr>
@@ -188,19 +190,20 @@
                                     <th width="130px">세부 이미지2</th>
                                     <td>
                                         <!-- <input class="form-control" type="text"> -->
-                                        <input type="file" class="mt-3">
+                                        <input type="file" name="file4" class="mt-3">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th width="130px">* 수량</th>
                                     <td>
-                                        <input class="form-control" type="text" placeholder="수량을 입력해주세요">
+                                        <input class="form-control" type="number" placeholder="수량을 입력해주세요" name="amount" required>
                                     </td>
                                 </tr>
                             </tbody>    
                         </table>
                         <div style="width: 800px; text-align: center;" align="center">
                             <br><br><br><br>
+                            
                             <button class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" href="#uploadCompleted">확인</button>
                             <button type="button" class="btn btn-light" style="width: 80px;">취소</button>
                         </div>
@@ -234,7 +237,7 @@
                             var no = 2;
                             $("#add").click(function(){
                                 $("#form0").append
-                                ("<input type='text' placeholder='옵션" + no + "' class='mr-2' style='width: 130px;' id='basic" + no + "'>"); 
+                                ("<input type='text' placeholder='옵션" + no + "' class='mr-2' style='width: 130px;' name='basic" + no + "'>"); 
                                 no++;
                             });
                         });

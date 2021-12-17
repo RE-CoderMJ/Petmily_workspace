@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<%@ include file="../admin_menubar.jsp" %>
+	<%@ include file="../admin_loginMenubar.jsp" %>
 	
 	<br><br>
 

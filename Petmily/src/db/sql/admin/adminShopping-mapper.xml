@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-	<entry key="loginAdmin">
+	<entry key="insertShoppingPd">
 		INSERT
 		  INTO TB_PRODUCT_UD
 		  (
@@ -12,10 +12,8 @@
 		  , PRODUCT_OP
 		  , PRICE
 		  , EXPLAIN
-		  , BASIC_IMG
 		  , DETAIL
           , AMOUNT
-          , MANAGER_NO
 		  )
 		  VALUES
 		  (
@@ -27,8 +25,28 @@
 		  , ?
 		  , ?
           , ?
-          , ?
-          , ?
+		  )
+	</entry>
+	
+	<entry key="insertAttachmentList">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 4
+		  , SEQ_PNO.CURRVAL
+		  , ?
 		  )
 	</entry>
 	
