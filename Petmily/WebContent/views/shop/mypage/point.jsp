@@ -125,7 +125,7 @@
     <div class="inline-block" id="point2">7,000p</div>
 </div>
 <% if(list.isEmpty()) { %>
-	<div>포인트 내역이 없습니다.</div>
+	<div align="center">포인트 내역이 없습니다.</div>
 <% } else { %>
 	<% for(Point p : list) { %>
 	
@@ -151,13 +151,20 @@
 
  <!-- 페이징 바 -->
       <div class="paging-area" >
-            <button> &lt; </button>
-		   	<button>1</button>
-		   	<button>2</button>
-		   	<button>3</button>
-		   	<button>4</button>
-		   	<button>5</button>
-            <button> &gt; </button>
+            <% if(currentPage != startPage) { %>
+            	<button onclick="location.href='<%=contextPath%>/point.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
+            <% } %>		
+            <% for(int pp=startPage; pp<=endPage; pp++){ %>
+            	<% if(pp == currentPage) { %> 
+            		<button disabled><%=pp %></button>
+            	<% } else { %>
+            		<button onclick="location.href='<%=contextPath %>/point.my?cpage=<%=pp%>';"><%=pp %></button>
+            	<% } %>	
+            <% } %>
+
+			<% if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/point.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
+			<% } %>	
     </div>
 
 </div>

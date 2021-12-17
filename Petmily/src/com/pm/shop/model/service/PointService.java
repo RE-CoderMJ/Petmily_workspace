@@ -13,14 +13,10 @@ public class PointService {
 	
 	public int selectListCount() {
 		Connection conn = getConnection();
-		int result = new PointDao().selectListCount(conn);
-		if(result>0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
+		int listCount = new PointDao().selectListCount(conn);
+
 		close(conn);
-		return result;
+		return listCount;
 	}
 	
 	public ArrayList<Point> selectList(PageInfo pi){
