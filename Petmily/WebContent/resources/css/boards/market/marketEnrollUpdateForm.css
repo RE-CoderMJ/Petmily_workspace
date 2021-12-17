@@ -34,9 +34,13 @@ div, img, li, a{
     float: left;
 }
 .carousel-inner{
-	border:solid 1px black;
+	border:solid 1px darkgray;
 	width: 400px;
     min-height: 400px;
+    background: url("../../../img/default-img.png");
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .carousel-item{
     width: 100%;

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.boards.market.model.vo.Market"%>
+<%
+	ArrayList<Market> list = (ArrayList<Market>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,11 +43,13 @@
 	        <div id="middle-area">
 	            <div align="left" id="selectBy">
 	               <!-- 선택한 카테고리에 따라 문구 변경됨 -->
-	               전체 xxx건
+	               전체 <%= list.size() %>건
 	            </div>
-	            <div align="right">
-	               <button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.market';">글쓰기</button>
-	            </div>
+	            <% if(loginUser != null) { %>
+		            <div align="right">
+		               <button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.market';">글쓰기</button>
+		            </div>
+	            <% } %>
 	            <br><br><hr style="border: solid 1px rgb(179, 178, 178);">
 	        </div>
 	        <div class="notice-area" align="left">
@@ -53,97 +58,37 @@
 	        </div>
 
 	        <div id="market-content-area">
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"><img src="" alt=""></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill sell-icon">팔래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">고양이 화장실</div>
-	                <div class="sell-price" align="right">12,000원</div> 
-	            </div>
-	            <!-- 살래요게시글 -->
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
-	            <div class="content-box-area">
-	                <span class="badge badge-pill buy-icon">살래요</span>
-	                <div class="photo-box"></div>
-	                <div class="content-title" align="left">강아지 밥그릇</div>
-	                <div class="buy-price" align="right">10,000원</div> 
-	            </div>
+	        	<% for(Market m : list) { %>
+		            <div class="content-box-area">
+		            	<% if(m.getTitleImg() == null) { %>
+		            		<% if(m.getdCategory().equals("1")) { %>
+				                <span class="badge badge-pill buy-icon">살래요</span>
+				                <div class="photo-box"></div>
+				                <div class="content-title" align="left"><%=m.getMarketTitle() %></div>
+				                <div class="buy-price" align="right"><%= m.getPrice() %>원</div> 
+		            		<% } else{ %>           	
+				                <span class="badge badge-pill sell-icon">팔래요</span>
+				                <div class="photo-box"></div>
+				                <div class="content-title" align="left"><%=m.getMarketTitle() %></div>
+				                <div class="sell-price" align="right"><%=m.getPrice() %>원</div>
+				        	<% } %>
+				        <% } else {%>
+				        
+			        		<% if(m.getdCategory().equals("1")) { %>
+				                <span class="badge badge-pill buy-icon">살래요</span>
+				                <div class="photo-box"><img src="<%= contextPath %>/<%=m.getTitleImg() %>" alt=""></div>
+				                <div class="content-title" align="left"><%=m.getMarketTitle() %></div>
+				                <div class="buy-price" align="right"><%= m.getPrice() %>원</div> 
+			            	<% } else{ %>           	
+				                <span class="badge badge-pill sell-icon">팔래요</span>
+				                <div class="photo-box"><img src="<%= contextPath %>/<%=m.getTitleImg() %>" alt=""></div>
+				                <div class="content-title" align="left"><%=m.getMarketTitle() %></div>
+				                <div class="sell-price" align="right"><%=m.getPrice() %>원</div>
+					        <% } %>
+					        
+					    <% } %>
+			         </div>
+			    <% } %>
 	        </div>
 
 	        <script>

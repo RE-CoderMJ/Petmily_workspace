@@ -31,4 +31,13 @@ public class MarketService {
 		
 		return result1 * result2;
 	}
+	
+	public ArrayList<Market> selectMarketList(){
+		Connection conn = getConnection();
+		ArrayList<Market> list = new MarketDao().selectMarketList(conn);
+		
+		close(conn);
+		
+		return list;
+	}
 }

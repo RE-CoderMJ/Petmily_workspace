@@ -120,8 +120,12 @@ cursor: pointer;
 .photo-box{
     width: 120px;
     height: 120px;
-    border: 1px solid black;
+    border: 1px solid darkgray;
     overflow:hidden;
+    background: url("../../../img/default-img.png");
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .photo-box>img{
 	width:100%;

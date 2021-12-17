@@ -46,4 +46,24 @@
 		  , ?
 		  )
 	</entry>
+	
+	<entry key="selectMarketList">
+		SELECT
+		       MARKET_NO
+		     , CATEGORY
+		     , D_CATEGORY
+		     , MARKET_TITLE
+		     , MARKET_CONTENT
+		     , PRICE
+		     , (SELECT 
+		               FILE_PATH || CHANGE_NAME
+		          FROM ATTACHMENT 
+		         WHERE REF_NO = M.MARKET_NO
+		           AND REF_BOARD_NO = 2
+		           AND ROWNUM = 1) "TITLEIMG"
+		  FROM MARKET M
+		 WHERE M.STATUS = 'Y'
+		 ORDER
+		    BY MARKET_NO DESC
+	</entry>
 </properties>

@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -56,6 +57,9 @@ public class MarketDao {
 	
 	public int insertAttachmentList(Connection conn, ArrayList<Attachment> list) {
 		
+		if(list.isEmpty()) {
+			return 1;
+		}
 		int result = 0;
 	
 		PreparedStatement pstmt = null;
@@ -78,5 +82,38 @@ public class MarketDao {
 		}
 		
 		return result;
+	}
+	
+	public ArrayList<Market> selectMarketList(Connection conn){
+		ArrayList<Market> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMarketList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Market m = new Market();
+				
+				m.setMarketNo(rset.getInt("market_no"));
+				m.setCategory(rset.getString("category"));
+				m.setdCategory(rset.getString("d_category"));
+				m.setMarketTitle(rset.getString("market_title"));
+				m.setMarketContent(rset.getString("market_content"));
+				m.setPrice(rset.getInt("price"));
+				m.setTitleImg(rset.getString("titleImg"));
+				
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 }

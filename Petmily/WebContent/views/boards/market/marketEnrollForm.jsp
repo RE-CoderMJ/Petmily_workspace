@@ -44,8 +44,9 @@
 		            <div id="file-upload-area">
 		                <p>사진<br>첨부</p>
 		                <div id="add-area">
-			                <input name="file1" class="file" type="file" onchange="loadImg(this);">
+			                <input name="file1" class="file" type="file" onchange="loadImg(this);" value="1">
 		                </div>
+		                <input type="hidden" id="file-count" name="file-count">
 		            </div>
 		            <button id="add-btn" type="button">+</button>
 		        </div>
@@ -98,6 +99,7 @@
 				$("#add-area").append("<input class='file' type='file' onchange='loadImg(this);'>");
 				$("#add-area").children("input").last().attr('name', 'file' + result);
 				maxAppend++;
+				$("#file-count").val(maxAppend);
 			});						
 		})
 	</script>

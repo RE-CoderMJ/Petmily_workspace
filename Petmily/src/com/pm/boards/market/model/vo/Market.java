@@ -12,6 +12,7 @@ public class Market {
 	private int count;
 	private String status;
 	private String enrollDate;
+	private String titleImg;
 	
 	public Market () {}
 
@@ -28,6 +29,15 @@ public class Market {
 		this.count = count;
 		this.status = status;
 		this.enrollDate = enrollDate;
+	}
+
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
 	public int getMarketNo() {

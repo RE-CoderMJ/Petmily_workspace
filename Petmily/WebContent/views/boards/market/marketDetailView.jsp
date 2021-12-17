@@ -41,15 +41,14 @@
 	              
 	                <!-- The slideshow -->
 	                <div class="carousel-inner">
+	                <!-- 
 	                  <div class="carousel-item active">
-	                    <img src="" alt="">
+	                    <img src="resources/img/1nam.jpg" alt="">
 	                  </div>
 	                  <div class="carousel-item">
-	                    <img src="" alt="">
+	                    <img src="resources/img/1nam2.jpg" alt="">
 	                  </div>
-	                  <div class="carousel-item">
-	                    <img src="" alt="">
-	                  </div>
+	                -->
 	                </div>
 	              
 	                <!-- Left and right controls -->
