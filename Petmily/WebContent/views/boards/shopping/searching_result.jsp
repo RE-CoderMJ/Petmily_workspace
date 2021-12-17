@@ -75,7 +75,7 @@
         <%@ include file="../common/menubar.jsp" %>
                     
         <!-- 사이드바  -->
-        <%@ include file="../shoppiongsidebar.jsp" %>
+        <%@ include file="shoppingsidebar.jsp"%>
             
         <!-- Navigation-->
       

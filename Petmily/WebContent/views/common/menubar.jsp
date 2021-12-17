@@ -178,7 +178,7 @@ body *{
     </div>
 
     <div class="nav-area" align="center">
-        <div class="menu"><a href="<%= contextPath %>/">스토어</a></div>
+        <div class="menu"><a href="<%= contextPath %>/shop.main">스토어</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.ask?page=1">궁금해요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.missing">찾고있어요</a></div>
         <div class="menu"><a href="<%= contextPath %>/main.petLog">PetLog</a></div>
