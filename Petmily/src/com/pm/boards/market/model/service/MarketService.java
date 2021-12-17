@@ -40,4 +40,34 @@ public class MarketService {
 		
 		return list;
 	}
+	
+	public int increaseCount(int marketNo) {
+		
+		Connection conn = getConnection();
+		int result = new MarketDao().increaseCount(conn, marketNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+	
+	public Market selectMarket(int marketNo) {
+		Connection conn = getConnection();
+		Market m = new MarketDao().selectMarket(conn, marketNo);
+		
+		close(conn);
+		return m;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(int marketNo){
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new MarketDao().selectAttachmentList(conn, marketNo);
+		close(conn);
+		return list;
+	}
 }

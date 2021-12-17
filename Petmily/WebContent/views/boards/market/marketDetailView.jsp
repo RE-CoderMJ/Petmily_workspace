@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
+<%@ page import="java.util.ArrayList, com.pm.boards.market.model.vo.Market, com.pm.common.model.vo.Attachment"%>
+<%
+	Market m = (Market)request.getAttribute("m");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,56 +24,69 @@
 	    <div class="content-area">
 	    	<div id="top">
 				<div id="title-area">
-					<div id="title">제목이 들어갈 위치입니다.</div>
-	                <button type="button" class="btn" id="enroll" onclick="location.href='<%= contextPath %>/enrollForm.market';">글쓰기</button>
+					<div id="title"><%= m.getMarketTitle() %> </div>
+					<% if(loginUser != null) { %>
+	                	<button type="button" class="btn" id="enroll" onclick="location.href='<%= contextPath %>/enrollForm.market';">글쓰기</button>
+	                <% } %>
 				</div>
 				<hr style="border: solid 1px rgb(179, 178, 178);">
 	            <div id="info-area">
 	                <div id="info">
-	                    2021-11-12 17:00 &nbsp;&nbsp;&nbsp;&nbsp;조회 63&nbsp;&nbsp;&nbsp;
-	                    <a data-toggle="modal" data-target="#reportAskModal">신고</a> &nbsp;
-	                    <a href="<%=contextPath%>/updateForm.market">수정하기</a>
+	                    <%= m.getEnrollDate() %> &nbsp;&nbsp;&nbsp;&nbsp;조회 <%= m.getCount() %>&nbsp;&nbsp;&nbsp;
+	                    <% if(loginUser != null) {%>
+	                    	<a data-toggle="modal" data-target="#reportAskModal">신고</a> &nbsp;
+	                    <% } %>
+	                    <% if(loginUser != null && loginUser.getNickname().equals(m.getMarketWriter())) {%>
+	                    	<a href="<%=contextPath%>/updateForm.market">수정하기</a>
+	                    <% } %>
 	                </div>
 	                <div id="writer">
 	                    <div id="writer-pic"><img src="resources/img/profile_default.png" alt=""></div>
-	                    <span id="writer-id">bomilove3</span>
+	                    <span id="writer-id"><%= m.getMarketWriter() %></span>
 	                </div>
 	            </div>
 			</div>
 	
 			<div id="photo-area">
-	            <div id="demo" class="carousel" data-ride="carousel">
+	            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
 	              
 	                <!-- The slideshow -->
 	                <div class="carousel-inner">
-	                <!-- 
-	                  <div class="carousel-item active">
-	                    <img src="resources/img/1nam.jpg" alt="">
-	                  </div>
-	                  <div class="carousel-item">
-	                    <img src="resources/img/1nam2.jpg" alt="">
-	                  </div>
-	                -->
+	                <% if(!list.isEmpty()) { %>
+	                	<% for(int i=0; i<list.size(); i++) { %>
+	                		<% if(i == 0) { %>
+	                			<div class="carousel-item active">
+	                    			<img src="<%= contextPath %>/<%= list.get(0).getFilePath() + list.get(0).getChangeName() %>" alt="">
+	                  			</div>
+	                  		<% }else { %>
+	                  			<div class="carousel-item">
+	                    			<img src="<%= contextPath %>/<%= list.get(i).getFilePath() + list.get(i).getChangeName() %>" alt="">
+	                  			</div>
+	                  		<% } %>
+	                	<% } %>
+	                <% } %>
+	                
 	                </div>
 	              
-	                <!-- Left and right controls -->
-	                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-	                  <span class="carousel-control-prev-icon"></span>
-	                </a>
-	                <a class="carousel-control-next" href="#demo" data-slide="next">
-	                  <span class="carousel-control-next-icon"></span>
-	                </a>
+	                <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
+                    	<img src="resources/img/left_arrow.png" id="left-controller">
+                    </a>
+					<a class="right carousel-control" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">
+						<img src="resources/img/right_arrow.png" id="right-controller">
+					</a>
 	              
 	           </div> 
 	       </div>
 	       
 	       <div id="input-area">
 	       		<!-- 카테고리에 따라서 색이 다름 인라인으로 하기 -->
-				<div id="price-area">30,000원</div>
+	       		<% if(m.getdCategory().equals("1")) { %>
+					<div id="price-area" style="color:darkgreen"><%= m.getPrice() %>원</div>
+				<% }else { %>
+					<div id="price-area" style="color:orange"><%= m.getPrice() %>원</div>
+				<% } %>
 				<div id="text-area">
-					구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이 황금시대의 가치를 충분히 발휘하기 위하여 이 황금시대를
-					구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이 황금시대의 가치를 충분히 발휘하기 위하여 이 황금시대를
-					구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이 황금시대의 가치를 충분히 발휘하기 위하여 이 황금시대를
+					<%= m.getMarketContent() %>
 				</div>
 	       </div>
 	       
@@ -81,7 +99,9 @@
 						<span id="reply-count">2</span>
 					</div>
 					<div id="btn-area">
+					<% if(loginUser != null && loginUser.getNickname().equals(m.getMarketWriter())) {%>
 						<button type="button" class="btn" data-toggle="modal" data-target="#deleteAskModal">글삭제</button>
+					<% } %>
 						<a href="<%=contextPath%>/main.missing?page=1" class="btn">목록</a>
 					</div>
 				</div>

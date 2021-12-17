@@ -54,7 +54,7 @@
 		     , D_CATEGORY
 		     , MARKET_TITLE
 		     , MARKET_CONTENT
-		     , PRICE
+		     , TO_CHAR(PRICE, '999,999,999') AS "PRICE"
 		     , (SELECT 
 		               FILE_PATH || CHANGE_NAME
 		          FROM ATTACHMENT 
@@ -65,5 +65,39 @@
 		 WHERE M.STATUS = 'Y'
 		 ORDER
 		    BY MARKET_NO DESC
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE
+			   MARKET
+		   SET COUNT = COUNT+1
+		 WHERE MARKET_NO = ?
+		   AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectMarket">
+		SELECT
+		       MARKET_NO
+		     , NICKNAME
+		     , CATEGORY
+		     , D_CATEGORY
+		     , MARKET_TITLE
+		     , MARKET_CONTENT
+		     , TO_CHAR(PRICE, '999,999,999') "PRICE"
+		     , COUNT
+		     , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD HH24:MI') "ENROLL_DATE"
+		  FROM MARKET
+		  JOIN TB_MEMBER ON (MARKET_WRITER = MEM_NO)
+		 WHERE MARKET_NO = ?
+	</entry>
+	
+	<entry key="selectAttachmentList">
+		SELECT
+		       ATTACHMENT_NO
+		     , CHANGE_NAME
+		     , FILE_PATH
+		  FROM ATTACHMENT
+		 WHERE REF_BOARD_NO = 2
+		   AND REF_NO = ?
 	</entry>
 </properties>

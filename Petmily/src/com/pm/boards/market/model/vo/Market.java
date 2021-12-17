@@ -8,7 +8,7 @@ public class Market {
 	private String dCategory;// 작성기능시 카테고리번호 | 조회기능시 카테고리명
 	private String marketTitle;
 	private String marketContent;
-	private int price;
+	private String price;
 	private int count;
 	private String status;
 	private String enrollDate;
@@ -17,7 +17,7 @@ public class Market {
 	public Market () {}
 
 	public Market(int marketNo, String marketWriter, String category, String dCategory, String marketTitle,
-			String marketContent, int price, int count, String status, String enrollDate) {
+			String marketContent, String price, int count, String status, String enrollDate) {
 		super();
 		this.marketNo = marketNo;
 		this.marketWriter = marketWriter;
@@ -32,6 +32,21 @@ public class Market {
 	}
 
 	
+	
+	public Market(int marketNo, String marketWriter, String category, String dCategory, String marketTitle,
+			String marketContent, String price, int count, String enrollDate) {
+		super();
+		this.marketNo = marketNo;
+		this.marketWriter = marketWriter;
+		this.category = category;
+		this.dCategory = dCategory;
+		this.marketTitle = marketTitle;
+		this.marketContent = marketContent;
+		this.price = price;
+		this.count = count;
+		this.enrollDate = enrollDate;
+	}
+
 	public String getTitleImg() {
 		return titleImg;
 	}
@@ -88,11 +103,11 @@ public class Market {
 		this.marketContent = marketContent;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

@@ -60,6 +60,7 @@
 	        <div id="market-content-area">
 	        	<% for(Market m : list) { %>
 		            <div class="content-box-area">
+		            	<input type="hidden" value="<%= m.getMarketNo() %>">
 		            	<% if(m.getTitleImg() == null) { %>
 		            		<% if(m.getdCategory().equals("1")) { %>
 				                <span class="badge badge-pill buy-icon">살래요</span>
@@ -70,7 +71,7 @@
 				                <span class="badge badge-pill sell-icon">팔래요</span>
 				                <div class="photo-box"></div>
 				                <div class="content-title" align="left"><%=m.getMarketTitle() %></div>
-				                <div class="sell-price" align="right"><%=m.getPrice() %>원</div>
+				                <div class="sell-price" align="right"><%= m.getPrice() %>원</div>
 				        	<% } %>
 				        <% } else {%>
 				        
@@ -83,7 +84,7 @@
 				                <span class="badge badge-pill sell-icon">팔래요</span>
 				                <div class="photo-box"><img src="<%= contextPath %>/<%=m.getTitleImg() %>" alt=""></div>
 				                <div class="content-title" align="left"><%=m.getMarketTitle() %></div>
-				                <div class="sell-price" align="right"><%=m.getPrice() %>원</div>
+				                <div class="sell-price" align="right"><%= m.getPrice() %>원</div>
 					        <% } %>
 					        
 					    <% } %>
@@ -97,7 +98,7 @@
 	                  //const num = $(this).children().eq(0).text();
 	                  
 	                  // /jsp/detail.no?num=클릭한글번호
-	                  location.href = '<%=contextPath%>/detail.market';
+	                  location.href = "<%=contextPath%>/detail.market?mno=" + $(this).children("input").val();
 	               })
 	            })
 	         </script>

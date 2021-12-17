@@ -25,7 +25,7 @@
 		        <input type="hidden" value=<%=loginUser.getMemNo() %>>
 		        <div id="photo-area">
 		        <input type="hidden" name="userNo" value="1" >
-		            <div id="demo" class="demo carousel" data-ride="carousel" data-interval="false">
+		            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
 
                       <!-- The slideshow -->
                       <div class="carousel-inner">
@@ -34,19 +34,19 @@
                       
                       <!-- Left and right controls -->
                       <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
-                      		 <img src="resources/img/left_arrow.png" id="left-controller">
+                      		<img src="resources/img/left_arrow.png" id="left-controller">
                       </a>
 					  <a class="right carousel-control" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">
-					  		 <img src="resources/img/right_arrow.png" id="right-controller">
+					  		<img src="resources/img/right_arrow.png" id="right-controller">
 					  </a>
                    </div>
 		           
 		            <div id="file-upload-area">
 		                <p>사진<br>첨부</p>
 		                <div id="add-area">
-			                <input name="file1" class="file" type="file" onchange="loadImg(this);" value="1">
+			                <input name="file1" class="file" type="file" onchange="loadImg(this);">
 		                </div>
-		                <input type="hidden" id="file-count" name="file-count">
+		                <input type="hidden" id="file-count" name="file-count"  value="1">
 		            </div>
 		            <button id="add-btn" type="button">+</button>
 		        </div>
@@ -87,14 +87,14 @@
     
     <script>
 		$(function(){
-			var maxAppend = 1;
+			let maxAppend = 1;
 			
 			$("#add-btn").click(function (){
 				if(maxAppend >= 5){
 					alert("사진은 5개까지 업로드가 가능합니다.");
 					return;
 				}
-				var $num = ($("#add-area").children("input").last().attr('name')).substring(4);
+				let $num = ($("#add-area").children("input").last().attr('name')).substring(4);
 				let result = Number($num)+1;
 				$("#add-area").append("<input class='file' type='file' onchange='loadImg(this);'>");
 				$("#add-area").children("input").last().attr('name', 'file' + result);

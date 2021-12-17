@@ -51,7 +51,7 @@ public class MarketEnrollController extends HttpServlet {
 			m.setCategory(multiRequest.getParameter("category"));
 			m.setdCategory(multiRequest.getParameter("d-category"));
 			m.setMarketTitle(multiRequest.getParameter("title"));
-			m.setPrice(Integer.parseInt(multiRequest.getParameter("price")));
+			m.setPrice(multiRequest.getParameter("price"));
 			m.setMarketContent(multiRequest.getParameter("content"));
 			
 			ArrayList<Attachment> list = new ArrayList<>();
