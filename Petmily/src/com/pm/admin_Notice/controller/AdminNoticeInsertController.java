@@ -1,11 +1,17 @@
 package com.pm.admin_Notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.pm.admin_Login.model.vo.AdminMember;
+import com.pm.admin_Notice.model.service.NoticeService;
+import com.pm.admin_Notice.model.vo.Notice;
 
 /**
  * Servlet implementation class AdminNoticeInsertController
@@ -26,8 +32,38 @@ public class AdminNoticeInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String noticeTitle = request.getParameter("title");
+		String noticeContent = request.getParameter("content");
+		
+		HttpSession session = request.getSession();
+		int managerNo = ((AdminMember)session.getAttribute("loginUser")).getManagerNo();
+		
+		Notice n = new Notice();
+		n.setNoticeTitle(noticeTitle);
+		n.setNoticeContent(noticeContent);
+		n.setManagerNo(String.valueOf(managerNo)); // 무조건 String으로 만들어줌 .valueOf()
+		
+		int result = new NoticeService().insertNotice(n);
+		
+		if(result > 0) { 
+			
+			session.setAttribute("alertMsg", "성공적으로  공지사항 등록되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/list.no");
+			
+		}else {	// 실패 => 에러문구(공지사항 등록 실패) 담아서 에러페이지 보여지게끔 포워딩!!
+			request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다!");
+			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
+			
+			
+		}
+		
+		
+	
+			
+		
 	}
 
 	/**

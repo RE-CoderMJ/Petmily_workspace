@@ -82,11 +82,6 @@
                     <td>안녕하세요. 공지사항 제목입니다.</td>
                 </tr>
                 <tr>
-                    <th width="10px">&nbsp</th>
-                    <td>파일첨부</td>
-                    <td><img src="" "width="300px" height="100px"></td>
-                </tr>
-                <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 내용</td>
                     <td>

@@ -7,15 +7,15 @@ public class Notice {
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
-	private Date noticeDate;
+	private String noticeDate;
 	private String noticeCate;
 	private String status;
-	private int managerNo;
+	private String managerNo;
 	
 	public Notice() {}
 
-	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, String noticeCate,
-			String status, int managerNo) {
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeDate, String noticeCate,
+			String status, String managerNo) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
@@ -23,6 +23,17 @@ public class Notice {
 		this.noticeDate = noticeDate;
 		this.noticeCate = noticeCate;
 		this.status = status;
+		this.managerNo = managerNo;
+	}
+
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeDate, String noticeCate,
+			String managerNo) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeDate = noticeDate;
+		this.noticeCate = noticeCate;
 		this.managerNo = managerNo;
 	}
 
@@ -50,11 +61,11 @@ public class Notice {
 		this.noticeContent = noticeContent;
 	}
 
-	public Date getNoticeDate() {
+	public String getNoticeDate() {
 		return noticeDate;
 	}
 
-	public void setNoticeDate(Date noticeDate) {
+	public void setNoticeDate(String noticeDate) {
 		this.noticeDate = noticeDate;
 	}
 
@@ -74,11 +85,11 @@ public class Notice {
 		this.status = status;
 	}
 
-	public int getManagerNo() {
+	public String getManagerNo() {
 		return managerNo;
 	}
 
-	public void setManagerNo(int managerNo) {
+	public void setManagerNo(String managerNo) {
 		this.managerNo = managerNo;
 	}
 
@@ -88,6 +99,7 @@ public class Notice {
 				+ ", noticeDate=" + noticeDate + ", noticeCate=" + noticeCate + ", status=" + status + ", managerNo="
 				+ managerNo + "]";
 	}
+
 	
 	
 

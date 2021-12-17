@@ -125,7 +125,7 @@
         </div>
 
         <br><br><br><br><br>
-        
+     <% if(loginUser != null && loginUser.getUserId().equals("admin")) { %>
         <!-- 검색창 -->
         <div class="bottom">
             <div class="noticeselect">
@@ -197,7 +197,7 @@
                
 			<br><br>
            	</div>
-                
+        <% } %>    
           
         
 		<!-- 테이블 + 페이징 바 -->
@@ -211,7 +211,7 @@
                         <th width="50"><input type="checkbox" name="" value=""></th>
                         <th width="100">번호</th>
                         <th width="200">분류</th>
-                        <th width="550">제목</th>
+                        <th width="650">제목</th>
                         <th width="100">작성자</th>
                     </tr>
                 </thead>
@@ -231,7 +231,6 @@
                         <td><%= n.getNoticeCate() %></td>
                         <td><%= n.getNoticeTitle() %></td>
                         <td><%= n.getManagerNo() %></td>
-                        <td><%= n.getNoticeDate() %></td>
                     </tr>
                   <% } %>
 				<% } %>
