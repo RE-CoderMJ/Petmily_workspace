@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="loginAdmin">
+		INSERT
+		  INTO TB_PRODUCT_UD
+		  (
+            PRODUCT_NO
+		  , CATEGORY
+		  , PRODUCT_NAME
+		  , PRODUCT_OP
+		  , PRICE
+		  , EXPLAIN
+		  , BASIC_IMG
+		  , DETAIL
+          , AMOUNT
+          , MANAGER_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_PNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+          , ?
+          , ?
+          , ?
+		  )
+	</entry>
+	
+</properties>

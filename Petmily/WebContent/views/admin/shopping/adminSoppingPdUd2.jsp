@@ -147,12 +147,23 @@
                             </tr>
                             <tr>
                                 <th width="130px">상품 옵션</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="옵션1">
+                                <td id="form" width="150">
+                                    <input class="form-control" type="text" placeholder="옵션1" id="form1" style="width: 130px;">
                                     <div class="btn-box">
-                                        <button onclick="plus();" class="btn btn-sm material-icons">add</button>
-                                        <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
+                                        <button onclick="plus();" class="btn btn-sm material-icons" id="add">add</button>
+                                        <!-- <button onclick="minus();" class="btn btn-sm material-icons">remove</button> -->
                                     </div>
+                                    <!--  class='mr-2' style='width: 130px;' id=|'test'+no+'|'/>"); -->
+                                    <script>
+                                        $(document).ready(function(){
+                                            var no = 2;
+                                            $("#add").click(function(){
+                                                $("#form").append
+                                                ("<input type='text' placeholder='옵션" + no + "' class='mr-2' style='width: 130px;' id='form" + no + "'>"); 
+                                                no++;
+                                            });
+                                        });
+                                    </script>
                                 </td>
                             </tr>
                             <tr>
@@ -175,6 +186,13 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th width="130px">상품상세정보</th>
+                                <td>
+                                    <input class="form-control" type="text">
+                                    <button class="btn btn-sm btn-primary">파일선택</button>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th width="130px">세부 이미지1</th>
                                 <td>
                                     <input class="form-control" type="text">
@@ -183,13 +201,6 @@
                             </tr>
                             <tr>
                                 <th width="130px">세부 이미지2</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">상품상세정보</th>
                                 <td>
                                     <input class="form-control" type="text">
                                     <button class="btn btn-sm btn-primary">파일선택</button>

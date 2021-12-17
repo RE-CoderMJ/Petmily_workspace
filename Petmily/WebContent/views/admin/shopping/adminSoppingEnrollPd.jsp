@@ -7,18 +7,6 @@
     <title>adminSoppingEnrollPd</title>
     <style>
         
-        /* 세부 카테고리 전체 스타일 */
-        .dd-category{
-            list-style-type: none;
-            color: darkgray;
-            font-weight: bolder;
-            font-size: 13px;
-            width: 60px;
-            display: none;
-            margin-bottom: 3px;
-            cursor: pointer;
-            margin-left: 15px;
-        }
         /* cont-wrap */
         .cont-wrap{
             margin-left: 350px;
@@ -28,8 +16,8 @@
             font-weight: bold;
             color: rgb(196, 195, 195);
         }
-        .product-reg input{
-            width: 300px;
+        .form-control{
+            /* width: 300px !important; */
             border: 1px solid #ddd;
             border-radius: 4px;
 
@@ -44,7 +32,7 @@
             display: flex;
         }
         .selectpicker{
-            width: 150px;
+            width: 130px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
@@ -62,13 +50,17 @@
             display: flex;
             margin-bottom: 20px;
         }
-        table tbody td input{
-         margin-right: 20px;
-        }
+        /* table tbody td input{
+          margin-right: 20px; 
+          } */
         #spErPd{
             background: rgb(247, 198, 4);
             color: white;
         }
+        /* #form{ 
+            width: 20px;
+        }*/
+
         /* 상품 업로드 완료 모달창 */
         .modalMsg-area{
             font-weight: bolder;
@@ -122,114 +114,132 @@
                 <div class="content product-reg">
                     <hr>
                     <p class="ct-tit pb-3">상품 등록</p>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th width="130px">*카테고리</th>
-                                <td>
-                                    <select class="selectpicker show-tick p-2">
-                                        <option>1차</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                    <select class="selectpicker show-tick p-2">
-                                        <option>1차</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 상품명</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="상품명을 입력하세요.">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">상품 옵션</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="옵션1">
-                                    <div class="btn-box">
-                                        <button onclick="plus();" class="btn btn-sm material-icons">add</button>
-                                        <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 판매가</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="판매가를 입력해주세요">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">한줄평</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 기본이미지</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="상품이미지를 등록하세요.">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">세부 이미지1</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">세부 이미지2</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">상품상세정보</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 수량</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="수량을 입력해주세요">
-                                </td>
-                            </tr>
-                        </tbody>    
-                    </table>
-                    <div style="width: 800px; text-align: center;" align="center">
-                        <br><br><br><br>
-                        <button class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" href="#uploadCompleted">확인</button>
-                        <button class="btn btn-light" style="width: 80px;">취소</button>
-                    </div>
-                    <!-- 상품 등록 완료 Modal -->
-                    <div class="modal fade" id="uploadCompleted">
-                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                            <div class="modal-content">
-
-                                <!-- Modal body -->
-                                <div class="modal-body" align="center" style="text-align: center;">
-                                    <div class="modalMsg-area">
-                                        정상적으로 <br>상품이 등록 되었습니다.
-                                    </div>
-                                    <div>
-                                    <button type="button" class="btn" data-dismiss="modal" id="uploadCompletedclosebtn">닫기</button>
-                                    </div>              
-                                </div>
-                        
-                            </div>
+                    <form id="update-form" action="<%=contextPath%>/spErPd.ad" method="post" enctype="multipart/form-data">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th width="130px">*카테고리</th>
+                                    <td>
+                                        <select class="selectpicker show-tick p-2">
+                                            <option>강아지</option>
+                                            <option>고양이</option>
+                                            <option>기타</option>
+                                        </select>
+                                        <!-- <select class="selectpicker show-tick p-2">
+                                            <option>1차</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>-->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">* 상품명</th>
+                                    <td>
+                                        <input class="form-control" type="text" placeholder="상품명을 입력하세요.">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">상품 옵션</th>
+                                    <td id="form0" style="width: 100px">
+                                        <input class="form-control" type="text" placeholder="옵션1" id="basic1" style="width: 130px;">
+                                        
+                                        <div class="btn-box">
+                                            <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button>
+                                            <!-- <button onclick="minus();" class="btn btn-sm material-icons">remove</button> -->
+                                        </div>
+                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">* 판매가</th>
+                                    <td>
+                                        <input class="form-control" type="text" placeholder="판매가를 입력해주세요">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">한줄평</th>
+                                    <td>
+                                        <input class="form-control" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">* 기본이미지</th>
+                                    <td>
+                                        <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
+                                        <input type="file" class="mt-3">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">상품상세정보</th>
+                                    <td>
+                                        <!-- <input class="form-control" type="text"> -->
+                                        <input type="file" class="mt-1">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">세부 이미지1</th>
+                                    <td>
+                                        <!-- <input class="form-control" type="text"> -->
+                                        <input type="file" class="mt-3">
+                                        <!-- <button class="btn btn-sm btn-primary ml-3">파일선택</button> -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">세부 이미지2</th>
+                                    <td>
+                                        <!-- <input class="form-control" type="text"> -->
+                                        <input type="file" class="mt-3">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th width="130px">* 수량</th>
+                                    <td>
+                                        <input class="form-control" type="text" placeholder="수량을 입력해주세요">
+                                    </td>
+                                </tr>
+                            </tbody>    
+                        </table>
+                        <div style="width: 800px; text-align: center;" align="center">
+                            <br><br><br><br>
+                            <button class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" href="#uploadCompleted">확인</button>
+                            <button type="button" class="btn btn-light" style="width: 80px;">취소</button>
                         </div>
+                        
+                    </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <br><br>
+        
+        <!-- 상품 등록 완료 Modal 
+        <div class="modal fade" id="uploadCompleted">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                    
+                    <Modal body>
+                    <div class="modal-body" align="center" style="text-align: center;">
+                        <div class="modalMsg-area">
+                            정상적으로 <br>상품이 등록 되었습니다.
+                        </div>
+                        <div>
+                            <button type="button" class="btn" data-dismiss="modal" id="uploadCompletedclosebtn">닫기</button>
+                        </div>              
+                    </div>
+                    
+                </div>
+            </div>
+        </div>-->
+                    <!-- 옵션 추가 -->
+                    <script>
+                        $(document).ready(function(){
+                            var no = 2;
+                            $("#add").click(function(){
+                                $("#form0").append
+                                ("<input type='text' placeholder='옵션" + no + "' class='mr-2' style='width: 130px;' id='basic" + no + "'>"); 
+                                no++;
+                            });
+                        });
+                    </script>
+      <br><br>
     </body>
     </html>
    

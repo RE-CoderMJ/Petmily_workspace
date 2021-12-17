@@ -258,8 +258,8 @@
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
                                     <th width="150px">상품 코드</th>
-                                    <th width="350px">상품명</th>
-                                    <th width="300px">업체명</th>
+                                    <th width="150px">카테고리</th>
+                                    <th width="450px">상품명</th>
                                     <th width="200px">가격</th>
                                     <th width="100px">수량</th>
                                 </tr>
@@ -274,8 +274,8 @@
                                     <td><input type="checkbox" name="" value=""></td>
                                     <td>1</td>
                                     <td>code</td>
+                                    <td>category</td>
                                     <td>pdname</td>
-                                    <td>company</td>
                                     <td>price</td>
                                     <td>number</td>
                                 </tr>
