@@ -381,8 +381,9 @@ div, img, li, a{
 <textarea class="_2mqbEheJIc" id="reviewInput" cols="50" style="height:100px"></textarea><div class="_2WdOh6YXC8"><em class="_3LoikG0PPT"></div></div></div>
 
 <div class="_3DpEZeFAIG">
-<a href="#" class="_3vyujQUKFF N=a:wrtmnt.ath">사진/동영상 첨부하기</a>
+     <input type="file" style="margin-top: 8px;">
 
+     <br>
 <p>상품과 무관한 사진/동영상을 첨부한 리뷰는 통보없이 삭제 및 적립 혜택이 회수됩니다.</p>
 </div></div></div><div class="-OcYLr6Qe6"><div class="_2FL-GHAhIL"><div class="_3SQqSVM0EV">
         </div>
