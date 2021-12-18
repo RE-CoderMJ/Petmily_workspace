@@ -90,6 +90,11 @@
          color: white;
          font-weight: bolder;
      }
+     /* 마우스로 선택한 줄 항목 */
+     .list-area>tbody>tr:hover{
+    	 background:gray;
+    	 cursor:pointer;
+     }
      /* 페이징바 */
      .paging-area button{
          border:  0;
@@ -168,7 +173,7 @@
                            </div>
                            
                        	   <div id="deletebtn-area">
-                           	   <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                           	   <a type="button" onclick=location.replace="deleteUrl" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
                            	   <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
                            </div>              
                         </div>
@@ -259,6 +264,24 @@
         	</table>
     	</div>
     	
+    	
+    	<!-- 삭제 모달 (미완성) -->
+    	<script>
+    	$(document).ready(function(){
+    		$('#deleteModal').on('')
+    	});
+    	</script>
+    	
+    	<!-- 글 클릭시 상세페이지 조회 (미완성) -->
+    	<script>
+    	$(function(){
+    		$("#noticetable>tbody>tr").click(function(){
+    			const num = $(this).children().eq(0).text();
+    			
+    			location.href = '<%=contextPath%>/adminDetail.no?num=' + num;
+    		})
+    	})
+    	</script>
     	
 
 		<!-- 페이징 바-->

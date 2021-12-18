@@ -109,7 +109,8 @@
             	<h5>FAQ 관리</h5>
             <br>
         </div>
-
+        
+		<% if(loginAdmin != null && loginAdmin.getManagerId().equals("admin")) { %>
         <!-- 검색창 (카테고리, 검색어) -->
         <div class="select">
             <div align="left">
@@ -204,7 +205,7 @@
                 
             <br><br>
             </div>
-        
+        	<% } %>
 
         <!-- 테이블 + 페이징 바 -->
         <div class="tablepaging">

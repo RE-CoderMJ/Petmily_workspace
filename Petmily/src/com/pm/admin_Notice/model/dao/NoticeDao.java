@@ -29,6 +29,7 @@ public class NoticeDao {
 		
 	}
 	
+	/* 1. notice 전체게시글 수 */
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		
@@ -55,7 +56,7 @@ public class NoticeDao {
 		return listCount;
 	}
 	
-
+	/* 2. 최신글순으로 페이징바에 맞게 조회 */
 	public ArrayList<Notice> selectList(Connection conn, PageInfo pi) {
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -96,6 +97,7 @@ public class NoticeDao {
 		
 	}
 	
+	/* 3. notice 등록 */
 	public int insertNotice(Connection conn, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -121,7 +123,7 @@ public class NoticeDao {
 	}
 	
 
-	
+	/*4. notice 조회 */
 	public Notice selectNotice(Connection conn, int noticeNo) {
 		Notice n = null;
 		PreparedStatement pstmt = null;
@@ -151,6 +153,74 @@ public class NoticeDao {
 		
 		return n;
 		
+	}
+	
+	/* 5. notice 조회수 (여기서부터 수정)*/
+	public int increaseCount(Connection conn, int noticeNo) {
+		// update문  => 처리된행수 => 트랜잭션 처리
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	/* 6. notice 수정 */
+	public int updateNotice(Connection conn, Notice n) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeContent());
+			pstmt.setString(3, n.getNoticeCate());
+			pstmt.setInt(4, n.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/* 7. notice 삭제 */
+	public int deleteNotice(Connection conn, int noticeNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 

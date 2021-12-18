@@ -31,8 +31,6 @@ public class AdminNoticeDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/notice/adminNoticeDetailView.jsp").forward(request,response);
-		
 		int noticeNo = Integer.parseInt(request.getParameter("nno"));
 		
 		NoticeService nService = new NoticeService();

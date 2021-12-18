@@ -41,12 +41,54 @@ public class NoticeService {
 
 	}
 
-	/*4. notice 조회*/
+	/*4. notice 조회 */
 	public Notice selectNotice(int noticeNo) {
 		Connection conn = getConnection();
 		Notice n = new NoticeDao().selectNotice(conn, noticeNo);
 		close(conn);
 		return n;
+	}
+	
+	/*5. notice 카운트 (여기부터 수정중) */ 
+	public int increaseCount(int noticeNo) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().increaseCount(conn, noticeNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/* 6. notice 수정 */
+	public int updateNotice(Notice n) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().updateNotice(conn, n);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/* 7. notice 삭제 */
+	public int deleteNotice(int noticeNo) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().deleteNotice(conn, noticeNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 	
 	
