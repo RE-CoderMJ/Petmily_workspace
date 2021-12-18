@@ -158,7 +158,7 @@
 
             <div class="content">
 
-                <form action="" id="joinForm" method="post">
+                <form action="<%= contextPath %>/insert.me" id="joinForm" method="post">
                     
                     <div>
                         <div>
@@ -166,9 +166,9 @@
                         </div>
 
                         <div>
-                            <input type="text" name="userEmail" placeholder="이메일" style="width: 150px;" required>
+                            <input type="text" id="userEmail" name="userEmail" placeholder="이메일" style="width: 150px;" required>
                             @
-                            <select name="email_select" aria-placeholder="선택해주세요">
+                            <select name="emailDomain" aria-placeholder="선택해주세요">
                                 <option selected disabled>선택해주세요</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="hanmail.com">hanmail.com</option>
@@ -216,7 +216,7 @@
                         </div>
 
                         <div>
-                            <input type="password" name="userPwd" placeholder="비밀번호" required>
+                            <input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" required>
                         </div>
                         <span class="tip">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요</span>
                     </div>
@@ -228,7 +228,7 @@
                         </div>
 
                         <div>
-                            <input type="password" name="userPwd2" placeholder="비밀번호 확인" required>
+                            <input type="password" id="userPwd2" name="userPwd2" placeholder="비밀번호 확인" required>
                         </div>
                     </div>
 
@@ -239,7 +239,7 @@
                         </div>
 
                         <div>
-                            <input type="text" name="userName" placeholder="이름" required>
+                            <input type="text" id="userName" name="userName" placeholder="이름" required>
                         </div>
                         <span class="tip">한글, 영문으로만 2~15자로 입력해주세요</span>
                         <!-- 닉네임 중복버튼 클릭 시 중복일 때 -->
@@ -249,15 +249,15 @@
 
                     <div>
                         <div>
-                            <label class="leftText" for="Phone">전화번호<span class="star">*</span></label>
+                            <label class="leftText" for="phone1">전화번호<span class="star">*</span></label>
                         </div>
 
                         <div>
-                            <input type="text" name="Phone" style="width: 80px" placeholder="010" required>
+                            <input type="text" id="phone1" name="phone1" maxlength='3' style="width: 80px" placeholder="000" required>
                             -
-                            <input type="text" name="Phone2" style="width: 105px" placeholder="0000" required>
+                            <input type="text" name="phone2" maxlength='4' style="width: 105px" placeholder="0000" required>
                             -
-                            <input type="text" name="Phone3" style="width: 105px" placeholder="0000" required>
+                            <input type="text" name="phone3" maxlength='4' style="width: 105px" placeholder="0000" required>
                         </div>
                     </div>
 
@@ -268,7 +268,7 @@
                         </div>
 
                         <div>
-                            <input type="text" name="nickname" placeholder="닉네임" required>
+                            <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
                             <button type="button" class="rightBtn btn-sm btn-light">중복 확인</button>
                         </div>
                         <span class="tip">한글, 영문, 숫자로만 2~15자로 입력해주세요</span>
@@ -278,11 +278,11 @@
 
                     <div>
                         <div>
-                            <label class="leftText" for="address">주소</label>
+                            <label class="leftText" for="address3">주소</label>
                         </div>
 
                         <div>
-                            <input type="text" name="address" placeholder="우편번호">
+                            <input type="text" name="address1" placeholder="우편번호">
                             <button type="button" class="rightBtn btn-sm btn-light">우편번호 찾기</button>
                         </div>
 

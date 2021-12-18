@@ -26,5 +26,35 @@
 		   AND MEM_STATUS = 'Y'
 		   
 	</entry>
+	
+	
+	<entry key="insertMember">
+	
+		INSERT TB_MEMBER
+		(
+		  MEM_NO
+		, MEM_EMAIL
+		, MEM_PWD
+		, MEM_NAME
+		, MEM_TEL
+		, NICKNAME
+		, POSTAL_CODE
+		, ADDRESS
+		, DETAIL_ADDRESS
+		)
+		VALUES
+		(
+		  SEQ_MNO.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+		)
+	
+	</entry>
 
 </properties>

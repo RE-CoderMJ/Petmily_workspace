@@ -44,6 +44,20 @@ public class Member {
 		this.memBlock = memBlock;
 		this.memImg = memImg;
 	}
+	
+
+	public Member(String memEmail, String memPwd, String memName, String memTel, String nickname, String postalCode,
+			String address, String detailAddress) {
+		super();
+		this.memEmail = memEmail;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.memTel = memTel;
+		this.nickname = nickname;
+		this.postalCode = postalCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+	}
 
 	public int getMemNo() {
 		return memNo;
