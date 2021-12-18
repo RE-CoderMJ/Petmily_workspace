@@ -41,7 +41,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");		
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
-			System.out.println("일단 확인 테스트...죽고싶네 다음생엔 보미로 태어난다 이것도 출력안되면 걍 머리박음");
+			//System.out.println("일단 확인 테스트...죽고싶네 다음생엔 보미로 태어난다 이것도 출력안되면 걍 머리박음");
 		
 			int maxSize = 10*1024*1024;
 			
@@ -51,7 +51,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 			//System.out.println(savePath);
 			
 			AdminShopping as = new AdminShopping();
-			//as.setManagerNo(Integer.parseInt(multiRequest.getParameter("ManagerNo")));
+			as.setManagerNo(Integer.parseInt(multiRequest.getParameter("managerNo")));
 			as.setCategory(multiRequest.getParameter("category"));
 			as.setProductName(multiRequest.getParameter("productName"));
 			as.setProductOp(multiRequest.getParameter("productOp"));
@@ -62,9 +62,11 @@ public class AdminSpEnrollPdController extends HttpServlet {
 			//as.setBasicImg(multiRequest.getParameter("basicImg"));
 			
 			//첨부파일
+			//ArrayList<Attachment> list = new ArrayList<>();
 			ArrayList<Attachment> list = new ArrayList<>();
 			
 			for(int i=1; i<=4; i++) {
+				
 				String key = "file" + i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
@@ -76,9 +78,9 @@ public class AdminSpEnrollPdController extends HttpServlet {
 					at.setFilePath("resources/admin/adminSp_upfiles/");
 					
 					if(i == 1) { // 대표이미지
-						//at.setFileLevel(1);
+						at.setFileLevel(1);
 					}else { // 상세이미지
-						//at.setFileLevel(2);
+						at.setFileLevel(2);
 					}
 					list.add(at);
 					
@@ -90,7 +92,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 				if(result > 0) {
 					// 성공 => /jsp/list.th	url요청 => 목록페이지
 					request.getSession().setAttribute("alertMsg", "쇼핑몰 등록 성공 ㅊㅋ");
-					response.sendRedirect(request.getContextPath() + "/list.th");
+					response.sendRedirect(request.getContextPath() + "/spPdUd.ad");
 				}else {
 					request.setAttribute("errorMsg", "님아 쇼핑몰 등록 실패요 ㅋㅋ");
 				}

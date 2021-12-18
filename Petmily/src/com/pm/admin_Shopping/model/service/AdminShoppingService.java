@@ -21,14 +21,14 @@ public class AdminShoppingService {
 		int result1 = new AdminShoppingDao().insertShoppingPd(conn, as);
 		int result2 = new AdminShoppingDao().insertAttachmentList(conn, list);
 		
-		if(result1 > 0 && result2 > 0) {
+		if(result1 >0 && result2 >0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
-		
 		close(conn);
 		
 		return result1 * result2;
 	}
+	
 }
