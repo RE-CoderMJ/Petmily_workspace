@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.admin_Notice.model.vo.Notice;
-import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
 
 public class NoticeDao {
@@ -121,25 +120,6 @@ public class NoticeDao {
 		
 	}
 	
-	public int increaseCount(Connection conn, int noticeNo) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("increaseCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, noticeNo);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
 
 	
 	public Notice selectNotice(Connection conn, int noticeNo) {
@@ -159,7 +139,6 @@ public class NoticeDao {
 				n = new Notice(rset.getInt("notice_no"),
 							   rset.getString("notice_title"),
 							   rset.getString("notice_content"),
-							   rset.getString("create_date"),
 							   rset.getString("notice_cate"),
 							   rset.getString("manager_no"));
 			}

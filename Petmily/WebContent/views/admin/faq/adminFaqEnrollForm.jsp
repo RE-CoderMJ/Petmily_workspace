@@ -62,22 +62,26 @@
         <br>
         
         <!-- FAQ 등록 폼 -->
-        <form action="<%= contextPath %>/admininsert.faq" id="enroll-form-faq" method="post">
+        <form action="<%= contextPath %>/adminInsert.faq" id="enroll-form-faq" method="post">
 			<!-- 입력 테이블 -->
             <table>
                 <tr>
-                    <th width="10px">&nbsp</th>
+                    <th width="10px"></th>
                     <td>분류</td>
                     <td>
-                        <select name="" id="">
-                            <option value="">전체</option>
-                            <option value="">취소/환불</option>
-                            <option value="">배송관련</option>
-                            <option value="">반품/교환</option>
-                            <option value="">회원정보</option>
-                            <option value="">상품문의</option>
-                            <option value="">쿠폰/적립금</option>
-                            <option value="">기타</option>
+                        <select name="faqcate" id="">
+                            <option value="1">회원가입</option>
+                            <option value="2">비밀번호재설정</option>
+                            <option value="3">회원정보</option>
+                            <option value="4">탈퇴및재가입</option>
+                            <option value="5">주문결제</option>
+                            <option value="6">입점제휴</option>
+                            <option value="7">포인트</option>
+                            <option value="8">교환환불</option>
+                            <option value="9">게시물등록</option>
+                            <option value="10">사진영상</option>
+                            <option value="11">펫적사항</option>
+                            <option value="12">기타</option>
                         </select>
                     </td>
                 </tr>
@@ -99,7 +103,7 @@
             <!-- 하단 버튼 -->
             <div>
                 <button type="submit" class="btn btn-sm btn-warning">등록</button>
-                <button type="reset" class="btn btn-sm btn-secondary">취소</button>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 
         </form>

@@ -26,13 +26,13 @@ public class Notice {
 		this.managerNo = managerNo;
 	}
 
-	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeDate, String noticeCate,
-			String managerNo) {
+	
+
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeCate, String managerNo) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
-		this.noticeDate = noticeDate;
 		this.noticeCate = noticeCate;
 		this.managerNo = managerNo;
 	}

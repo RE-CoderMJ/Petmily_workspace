@@ -15,11 +15,11 @@
         margin-top:50px;   
     }
 	/* 별표 */
-    #enroll-form-faq table th{
+    #enroll-form-notice table th{
         width:10px;
     }
     /* 테이블 카테고리,박스들 */
-    #enroll-form-faq table td{
+    #enroll-form-notice table td{
         width:300px;
         padding:10px;
         text-align:left;
@@ -27,14 +27,14 @@
         font-family: 'Gowun Dodum', sans-serif;
     }
     /* 테이블 테두리 */
-    #enroll-form-faq table{
+    #enroll-form-notice table{
         border:2px solid lightgray;
         border-collapse: separate;
         border-radius: 10px;
         padding:20px;
     }
     /* 테이블 카테고리,박스들 */
-    #enroll-form-faq input, #enroll-form-faq textarea{
+    #enroll-form-notice input, #enroll-form-notice textarea{
         width:100%;
         box-sizing:border-box;
     }
@@ -62,7 +62,7 @@
         <br>
 
         <!-- Notice 등록 폼 -->
-        <form action="<%= contextPath %>/adminInsert.no" id="enroll-form-faq" method="post">
+        <form action="<%= contextPath %>/adminInsert.no" id="enroll-form-notice" method="post">
 
             <table>
             	<tr>
