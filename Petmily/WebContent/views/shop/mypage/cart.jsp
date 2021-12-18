@@ -139,7 +139,7 @@
             <div class="cart-content" >
                 
                 <div class="inline-block" >
-                    <input type="checkbox" style="margin-top: 10px; margin-left:15px;"> 
+                    <input type="checkbox" name="cartCk" value="결제창에넘길값" style="margin-top: 10px; margin-left:15px;"> 
                     <img src=""  id="content-img" width="80px" height="80px">    
                 </div>
                 
