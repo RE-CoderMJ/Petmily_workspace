@@ -37,7 +37,7 @@ div, img, li{
     margin-right: 12px; 
 }
 /* 사용자 이름 뜨는 부분 */
-#userName{
+#memName{
     font-size: 20px; 
     width: 40%; 
     margin-left: 20px; 
@@ -156,7 +156,7 @@ body *{
 	            
 	        <% } else { %>
 	            <!-- 로그인 후 -->
-	            <div id="userName">
+	            <div id="memName">
 	                <b><%= loginUser.getMemName() %></b>님, 반가워요! &nbsp;&nbsp;&nbsp;&nbsp;
 	            </div>
 	            <div id="logout">

@@ -149,7 +149,7 @@
     <li>
       <div class="menu">회원정보수정<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu">
-        <li><a href="#">회원정보수정</a></li>
+        <li><a href="<%= contextPaths %>/infoUpdateForm.my">회원정보수정</a></li>
       </ul>
     </li>
     <li>

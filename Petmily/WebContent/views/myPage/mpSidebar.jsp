@@ -82,7 +82,7 @@
             <div id="boardName">마이페이지</div>
             <div id="d-category">
                 
-                <div class="d-category1">회원정보수정</div>
+                <div class="d-category1" onclick="location.href='<%= contextPaths %>/infoUpdateForm.my'">회원정보수정</div>
                 
                 <div class="d-category1" onclick="location.href='<%= contextPaths %>/myPost.mp'">내가 쓴 게시글조회</div>
                 

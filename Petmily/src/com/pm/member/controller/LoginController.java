@@ -2,7 +2,6 @@ package com.pm.member.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,8 +47,9 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 			
-			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-			view.forward(request, response);
+			// RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+			// view.forward(request, response);
+			response.sendRedirect(request.getContextPath());
 		}
 	}
 

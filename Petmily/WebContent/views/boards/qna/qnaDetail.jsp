@@ -204,8 +204,10 @@
                 <div>
                     <p id="title">QnA</p>
                     <span id="title_sm">1:1</span>
-                    <button type="button" id="enrollBtn" class="btn btn-sm btn-warning"
-                            onclick="location.href='<%= contextPath %>/enrollForm.qna'">글쓰기</button>
+                    <% if(loginUser != null) { %>
+	                    <button type="button" id="enrollBtn" class="btn btn-sm btn-warning"
+	                            onclick="location.href='<%= contextPath %>/enrollForm.qna'">글쓰기</button>
+	                <% } %>
                 </div>
                 
                 <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
