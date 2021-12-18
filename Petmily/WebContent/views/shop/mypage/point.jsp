@@ -70,10 +70,11 @@
         /*포인트 내역*/
         .outer{
             width:1000px;
-            border: 1px soild black;
-            background-color: rgb(213,213,213);
-            padding: 10px 20px;
+            background-color:#E5E5E4;
+            border-radius:2px;
+            padding: 10px 60px;
             margin-left:100px;
+            margin:auto;
             margin-bottom: 20px;
         }
         #date{
@@ -96,6 +97,7 @@
 		.paging-area{
 		margin:auto;
 		text-align:center;
+		margin-top:30px;
 		}
 		/* 페이징바 */
 		.paging-area button{
@@ -138,14 +140,22 @@
 		    </div>
 		    
 		    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
-		        <img src="" alt="" width="50px" height="50px">
-		        
-		<!-- <% while(p.getPointDate().equals() { %> -->
+		    
+		    <% 
+		    String point= p.getPoint();
+		    String str = point.subString(0,0); 
+		    %>
+		    
+		    <% if(str.equals("+")){ %>
+		        <img src="resources/img/mypage/point-plus.png" alt="" width="50px" height="50px">
+		    <% } else { %> 
+		    	<img src="resources/img/mypage/point-minus.png" alt="" width="50px" height="50px">
+		    <% } %>   
+		    
 		        <div class="inline-block" id="content">
-		            <%= p.getPoint() %>
+		            <%= p.getPoint() %> p
 		            <br> 
-		            <%= p.getPointContent() %>
-		<!-- <% } %> -->        
+		            <%= p.getPointContent() %>     
 		
 		        </div>
 		    </div>

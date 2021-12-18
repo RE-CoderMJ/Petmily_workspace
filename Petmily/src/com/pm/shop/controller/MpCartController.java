@@ -1,11 +1,16 @@
 package com.pm.shop.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.shop.model.service.CartService;
+import com.pm.shop.model.vo.Cart;
 
 /**
  * Servlet implementation class MpCartController
@@ -26,7 +31,11 @@ public class MpCartController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		ArrayList<Cart> list = new CartService().selectList();
+		
+		request.setAttribute("list", list);
+		
 		request.getRequestDispatcher("views/shop/mypage/cart.jsp").forward(request, response);
 	}
 

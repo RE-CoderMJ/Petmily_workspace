@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import=" java.util.ArrayList, com.pm.shop.model.vo.Cart" %>
+ <%
+ 	ArrayList<Cart> list = (ArrayList<Cart>)request.getAttribute("list");
+ %> 
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +38,7 @@
         } 
         #outer{
             width:1000px;
+            min-height:500px;
             border: 1px soild black;
             background-color:rgb(235, 235, 235);
             padding: 10px 20px;
@@ -100,6 +106,11 @@
 
         .inline{display:inline;}
         .inline-block{display:inline-block;}
+        #nullcase{
+        	height:300px;
+        	font-size:20px;
+        	margin-top:30px;
+        }
     </style>
 </head>
 <body>
@@ -111,6 +122,7 @@
 <div class="content-area">
 <div id="title"  >장바구니</div>
 <div id="outer">
+<input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
 
     <form action="">
         <div>
@@ -118,7 +130,12 @@
                 <input type="checkbox" name="" id=""> <label for="">모두선택</label>  
                 <div class="inline" style="float:right;"><input type="checkbox" name="" id="" > <label for="">모두선택해제</label>  </div>
             </div>
-
+            
+	<% if(list.isEmpty()) { %>
+		<div align="center" id="nullcase">장바구니에 상품이 없습니다.</div>
+	<% } else { %>
+		<% for(Cart c : list) { %>
+	
             <div class="cart-content" >
                 
                 <div class="inline-block" >
@@ -128,10 +145,11 @@
                 
                 <div class="inline-block"  id="cart-option" >
                     
-                   	 상품명
+                   	<%= c.getProductName() %>
                     <br>
                     <hr>
-                    <input type="number" name="" id="" placeholder="1" style="width:30px;">
+                    <%= c.getProductOp() %>
+                    <input type="number" name="" id="" placeholder="1" style="width:30px;" value="<%= c.getAmount() %>">
                     <input type="button" value="옵션변경">
                     <input type="button" value="바로구매">
 
@@ -140,99 +158,13 @@
                   	  무료배송 | 2500원
                 </div>
                 <div class="inline-block" id="money">
-                    <h3>20,000 원</h3>
+                    <h3><%= c.getProductName() %></h3>
                 </div>
 
                 
             </div>
 
 
-            <div class="cart-content" >
-
-                <div class="inline-block" >
-                    <input type="checkbox"  style="margin-top: 10px; margin-left:15px;"> 
-                    <img src=""  id="content-img" width="80px" height="80px">    
-                </div>
-                
-                <div class="inline-block"  id="cart-option" >
-                    
-                    상품명
-                    <br>
-                    <hr>
-                    <input type="number" name="" id="" style="width:30px;">
-                    <input type="button" value="옵션변경">
-                    <input type="button" value="바로구매">
-
-                </div>
-                <div class="inline-block" id="delivery">
-                    무료배송 | 2500원
-                </div>
-                <div class="inline-block" id="money">
-                    <h3>20,000 원</h3>
-                </div>
-
-                
-            </div>
-
-
-            <div class="cart-content" >
-
-                <div class="inline-block" >
-                    <input type="checkbox"  style="margin-top: 10px;margin-left:15px;"> 
-                    <img src=""  id="content-img" width="80px" height="80px">    
-                </div>
-                <div class="inline-block"  id="cart-option" >
-                    
-                    상품명
-                    <br>
-                    <hr>
-                    <input type="number" name="" id="" style="width:30px;">
-                    <input type="button" value="옵션변경">
-                    <input type="button" value="바로구매">
-
-                </div>
-                <div class="inline-block" id="delivery">
-                    무료배송 | 2500원
-                </div>
-                <div class="inline-block" id="money">
-                    <h3>20,000 원</h3>
-                </div>
-
-                
-            </div>
-            
-            
-            
-            
-            
-            
-            
-             <div class="cart-content" >
-
-                <div class="inline-block" >
-                    <input type="checkbox"  style="margin-top: 10px;margin-left:15px;"> 
-                    <img src=""  id="content-img" width="80px" height="80px">    
-                </div>
-                <div class="inline-block"  id="cart-option" >
-                    
-                    상품명
-                    <br>
-                    <hr>
-                    <input type="number" name="" id="" style="width:30px;">
-                    <input type="button" value="옵션변경">
-                    <input type="button" value="바로구매">
-
-                </div>
-                <div class="inline-block" id="delivery">
-                    무료배송 | 2500원
-                </div>
-                <div class="inline-block" id="money">
-                    <h3>20,000 원</h3>
-                </div>
-
-                
-            </div>
-            
             
             
 
@@ -252,6 +184,9 @@
             <br both="clear">
             <br>
             <br>
+            
+           <% } %>
+	<% } %>
 
         </div>
     </form>

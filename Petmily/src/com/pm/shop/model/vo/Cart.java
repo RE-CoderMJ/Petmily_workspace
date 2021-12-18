@@ -6,13 +6,25 @@ public class Cart {
 	private String productOp;
 	private int amount;
 	private int price;
+	private String productName;
 	
+
 	public Cart() {}
 
-	public Cart(int memNo, int productNo, String productOp, int amount, int price) {
+	public Cart(int memNo, int productNo, String productOp, int amount, int price, String productName) {
 		super();
 		this.memNo = memNo;
 		this.productNo = productNo;
+		this.productOp = productOp;
+		this.amount = amount;
+		this.price = price;
+		this.productName = productName;
+	}
+
+
+	public Cart(String productName, String productOp, int amount, int price) {
+		super();
+		this.productName= productName;
 		this.productOp = productOp;
 		this.amount = amount;
 		this.price = price;
@@ -58,11 +70,21 @@ public class Cart {
 		this.price = price;
 	}
 
+	public String getProductName() {
+		return productName;
+	}
+	
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 	@Override
 	public String toString() {
 		return "Cart [memNo=" + memNo + ", productNo=" + productNo + ", productOp=" + productOp + ", amount=" + amount
-				+ ", price=" + price + "]";
+				+ ", price=" + price + ", productName=" + productName + "]";
 	}
+	
+
 	
 	
 }
