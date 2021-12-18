@@ -4,7 +4,6 @@
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
-   AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
  
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
@@ -199,7 +198,7 @@
                   </div>
                </div>
                
-			<br><br>
+			
            	</div>
                 
                 
@@ -209,15 +208,15 @@
 
         <!-- 테이블 + 페이징 바 -->
         <div class="tablepaging">
-            <div class="table table-bordered" >
+            <div class="table table-bordered" id="faqtable">
                 <table>
                     <thead>
                         <tr>
                             <th width="50"><input type="checkbox" name="" value=""></th>
                             <th width="100">번호</th>
-                            <th width="150">분류</th>
+                            <th width="200">분류</th>
                             <th width="650">제목</th>
-                            <th width="150">작성자</th>
+                            <th width="100">작성자</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.admin_Notice.model.vo.Notice" %>
+<%
+	Notice n = (Notice)request.getAttribute("notice");
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,34 +72,45 @@
                     <th width="10px"></th>
                     <td>공지사항 분류</td>
                     <td>
-                    	<select name="" id="">
-                    	    <option value="" selected>선택사항없음</option>
-                            <option value="">궁금해요</option>
-                            <option value="">찾고있어요</option>
-                            <option value="">중고거래</option>
-                        </select>
-                    </td>
+                    	<% 
+                        String category = "";
+                        
+                        switch(Integer.parseInt(n.getNoticeCate())) {
+                        case 1: category="궁금해요"; break;
+                        case 2: category="중고거래"; break;
+                        case 3: category="찾고있어요"; break;
+                        case 4: category="고객센터 공지사항"; break;
+                        }
+                        %>
+                        <td><%= category %></td>
+                     </td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 제목</td>
-                    <td>안녕하세요. 공지사항 제목입니다.</td>
+                    <td><%= n.getNoticeTitle() %></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 내용</td>
                     <td>
-                        <textarea rows="10" name="content" style="resize:none" required>안녕하세요. 공지사항 내용입니다.</textarea>
+                        <textarea rows="10" name="content" style="resize:none" required><%= n.getNoticeContent() %></textarea>
                     </td>
                 </tr>
             </table>
             <br><br>
 
-            <!-- 하단 버튼 (상세: 수정, 삭제, 취소) -->
+            <!-- 하단 버튼 (상세: 수정, 삭제, 뒤로) -->
             <div>
-                <a href="" class="btn btn-sm btn-warning">수정</a>
-                <a href="" class="btn btn-sm btn-danger">삭제</a>
+            
+            	<a href="<%=contextPath%>/adminList.no" class="btn btn-sm btn-secondary">목록으로</a>
+            	
+            	<% if(loginAdmin != null && loginAdmin.getManagerId().equals(n.getManagerNo())) { %>
+            
+                <a href="<%= contextPath %>/adminUpdateForm.no?num=<%= n.getNoticeNo() %>" class="btn btn-sm btn-warning">수정</a>
+                <a href="<%= contextPath %>/adminDelete.no?num=<%= n.getNoticeNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
+            	<% } %>
             </div>
 		</div>
     

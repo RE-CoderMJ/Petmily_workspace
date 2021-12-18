@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.admin_Faq.model.vo.Faq;
+import com.pm.admin_Notice.model.vo.Notice;
 import com.pm.common.model.vo.PageInfo;
 
 public class FaqDao {
@@ -95,10 +96,36 @@ public class FaqDao {
 		
 	}
 	
+	public int insertFaq(Connection conn, Faq f) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, f.getFaqTitle());
+			pstmt.setString(2, f.getFaqContent());
+			pstmt.setString(3, f.getFaqCate());
+			pstmt.setString(4, f.getManagerNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
 	public Faq selectFaq(Connection conn, int faqNo) {
 		Faq f = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		String sql = prop.getProperty("selectFaq");
 		
 		try {

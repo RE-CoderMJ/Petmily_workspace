@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.admin_Notice.model.vo.Notice" %>
+<%
+	Notice n = (Notice)request.getAttribute("n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +19,11 @@
         margin-top:50px;   
      }
 	/* 별표 */
-    #enroll-form-notice table th{
+    #update-form-notice table th{
         width:10px;
     }
     /* 테이블 카테고리,박스들 */
-    #enroll-form-notice table td{
+    #update-form-notice table td{
         width:300px;
         padding:10px;
         text-align:left;
@@ -27,14 +31,14 @@
         font-family: 'Gowun Dodum', sans-serif;
     }
     /* 테이블 테두리 */
-    #enroll-form-notice table{
+    #update-form-notice table{
          border:2px solid lightgray;
          border-collapse: separate;
          border-radius: 10px;
          padding:20px;
     }
     /* 테이블 카테고리,박스들 */
-    #enroll-form-notice input, #enroll-form-notice textarea{
+    #update-form-notice input, #update-form-notice textarea{
          width:100%;
          box-sizing:border-box;
     }
@@ -62,8 +66,10 @@
         <br>
 
         <!-- 공지사항 폼 -->
-        <form action="<%= contextPath %>/adminUpdate.no" id="enroll-form-notice" method="post">
+        <form action="<%= contextPath %>/adminUpdate.no" id="update-form-notice" method="post">
 
+			<input type="hidden" name="num" value="<%= n.getNoticeNo() %>">
+			
             <table>
             	<tr>
                     <th width="10px"></th>
@@ -80,18 +86,13 @@
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 제목</td>
-                    <td><input type="text" name="title" required value="입점 제휴 문의 안내"></td>
-                </tr>
-                <tr>
-                    <th width="10px">&nbsp</th>
-                    <td>파일첨부</td>
-                    <td><input type="file" name="upfile"></td>
+                    <td><input type="text" name="title" required value="<%=n.getNoticeTitle()%>"></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 내용</td>
                     <td>
-                        <textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea>
+                        <textarea rows="10" name="content" style="resize:none" required><%= n.getNoticeContent() %></textarea>
                     </td>
                 </tr>
             </table>

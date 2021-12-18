@@ -4,7 +4,6 @@
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
-   AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
  
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
