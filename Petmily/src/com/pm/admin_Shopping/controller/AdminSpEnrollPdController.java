@@ -76,9 +76,9 @@ public class AdminSpEnrollPdController extends HttpServlet {
 					at.setFilePath("resources/admin/adminSp_upfiles/");
 					
 					if(i == 1) { // 대표이미지
-						at.setFileLevel(1);
+						//at.setFileLevel(1);
 					}else { // 상세이미지
-						at.setFileLevel(2);
+						//at.setFileLevel(2);
 					}
 					list.add(at);
 					

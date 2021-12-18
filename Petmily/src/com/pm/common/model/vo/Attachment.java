@@ -12,6 +12,7 @@ public class Attachment {
 	private String filePath;
 	private Date uploadDate;
 	private String status;
+	private int fileLevel;
 	
 	public Attachment () {}
 
@@ -26,6 +27,20 @@ public class Attachment {
 		this.filePath = filePath;
 		this.uploadDate = uploadDate;
 		this.status = status;
+	}
+	
+	public Attachment(int attachmentNo, String originName, String changeName, int refBoardNo, int refNo,
+			String filePath, Date uploadDate, String status, int fileLevel) {
+		super();
+		this.attachmentNo = attachmentNo;
+		this.originName = originName;
+		this.changeName = changeName;
+		this.refBoardNo = refBoardNo;
+		this.refNo = refNo;
+		this.filePath = filePath;
+		this.uploadDate = uploadDate;
+		this.status = status;
+		this.fileLevel = fileLevel;
 	}
 
 	public int getAttachmentNo() {
@@ -91,13 +106,21 @@ public class Attachment {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public int getFileLevel() {
+		return fileLevel;
+	}
+
+	public void setFileLevel(int fileLevel) {
+		this.fileLevel = fileLevel;
+	}
 
 	@Override
 	public String toString() {
 		return "Attachment [attachmentNo=" + attachmentNo + ", originName=" + originName + ", changeName=" + changeName
 				+ ", refBoardNo=" + refBoardNo + ", refNo=" + refNo + ", filePath=" + filePath + ", uploadDate="
-				+ uploadDate + ", status=" + status + "]";
+				+ uploadDate + ", status=" + status + ", fileLevel=" + fileLevel + "]";
 	}
-	
+
 	
 }
