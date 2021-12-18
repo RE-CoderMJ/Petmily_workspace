@@ -124,6 +124,9 @@
     <div class="inline-block" id="point1">보유</div>
     <div class="inline-block" id="point2">7,000p</div>
 </div>
+
+<input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
+
 <% if(list.isEmpty()) { %>
 	<div align="center">포인트 내역이 없습니다.</div>
 <% } else { %>
@@ -136,12 +139,15 @@
 		    
 		    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
 		        <img src="" alt="" width="50px" height="50px">
+		        
+		<!-- <% while(p.getPointDate().equals() { %> -->
 		        <div class="inline-block" id="content">
 		            <%= p.getPoint() %>
 		            <br> 
 		            <%= p.getPointContent() %>
+		<!-- <% } %> -->        
+		
 		        </div>
-		        
 		    </div>
 		</div>
 		

@@ -16,10 +16,10 @@
 	        SELECT ROWNUM RNUM, A.*
 	          FROM (
 	                SELECT
-					       POINT_NO
+	                	   POINT_NO
 					     , POINT
 					     , POINT_CONTENT
-					     , TO_CHAR(POINT_DATE, 'YYYY/MM/DD') "POINT_DATE"
+					     , TO_CHAR(POINT_DATE, 'yyyy-mm-dd') "POINT_DATE"
 					  FROM SPMY_POINT
 	                  ORDER 
 	                     BY POINT_NO DESC
