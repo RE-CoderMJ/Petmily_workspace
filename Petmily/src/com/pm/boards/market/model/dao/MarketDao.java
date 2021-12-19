@@ -155,7 +155,8 @@ public class MarketDao {
 						       rset.getString("d_category"),
 						       rset.getString("market_title"),
 						       rset.getString("market_content"),
-						       rset.getString("price"),
+						       rset.getString("pricetxt"),
+						       rset.getInt("price"),
 						       rset.getInt("count"),
 						       rset.getString("enroll_date"));
 			}
@@ -182,6 +183,7 @@ public class MarketDao {
 			
 			while(rset.next()) {
 				Attachment at = new Attachment();
+				at.setOriginName(rset.getString("origin_name"));
 				at.setChangeName(rset.getString("change_name"));
 				at.setFilePath(rset.getString("file_path"));
 				

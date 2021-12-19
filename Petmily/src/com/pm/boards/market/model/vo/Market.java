@@ -9,6 +9,7 @@ public class Market {
 	private String marketTitle;
 	private String marketContent;
 	private String price;
+	private int updatePrice;
 	private int count;
 	private String status;
 	private String enrollDate;
@@ -34,7 +35,7 @@ public class Market {
 	
 	
 	public Market(int marketNo, String marketWriter, String category, String dCategory, String marketTitle,
-			String marketContent, String price, int count, String enrollDate) {
+			String marketContent, String price, int updatePrice, int count, String enrollDate) {
 		super();
 		this.marketNo = marketNo;
 		this.marketWriter = marketWriter;
@@ -43,8 +44,17 @@ public class Market {
 		this.marketTitle = marketTitle;
 		this.marketContent = marketContent;
 		this.price = price;
+		this.updatePrice = updatePrice;
 		this.count = count;
 		this.enrollDate = enrollDate;
+	}
+
+	public int getUpdatePrice() {
+		return updatePrice;
+	}
+
+	public void setUpdatePrice(int updatePrice) {
+		this.updatePrice = updatePrice;
 	}
 
 	public String getTitleImg() {
