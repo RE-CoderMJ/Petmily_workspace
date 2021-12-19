@@ -37,7 +37,7 @@
 	                    	<a data-toggle="modal" data-target="#reportAskModal">신고</a> &nbsp;
 	                    <% } %>
 	                    <% if(loginUser != null && loginUser.getNickname().equals(m.getMarketWriter())) {%>
-	                    	<a href="<%=contextPath%>/updateForm.market">수정하기</a>
+	                    	<a href="<%=contextPath%>/updateForm.market?mno=<%=m.getMarketNo()%>">수정하기</a>
 	                    <% } %>
 	                </div>
 	                <div id="writer">
@@ -67,7 +67,13 @@
 	                <% } %>
 	                
 	                </div>
-	              
+	              	<script>
+	              		$(function(){
+		              		if(<%= !list.isEmpty()%>){
+		              			$(".carousel-inner").css({"background":"url('')"});
+		              		}	              			
+	              		})
+	              	</script>
 	                <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
                     	<img src="resources/img/left_arrow.png" id="left-controller">
                     </a>

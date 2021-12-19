@@ -1,11 +1,17 @@
 package com.pm.boards.market.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.boards.market.model.service.MarketService;
+import com.pm.boards.market.model.vo.Market;
+import com.pm.common.model.vo.Attachment;
 
 /**
  * Servlet implementation class MarketUpdateFormController
@@ -26,6 +32,18 @@ public class MarketUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int marketNo = Integer.parseInt(request.getParameter("mno"));
+		/*
+		int categoryNo = Integer.parseInt(request.getParameter("cno"));
+		int dCategoryNo = Integer.parseInt(request.getParameter("dcno"));
+		*/
+		Market m = new MarketService().selectMarket(marketNo);
+		ArrayList<Attachment> list = new MarketService().selectAttachmentList(marketNo);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("m", m);
+		
 		request.getRequestDispatcher("views/boards/market/marketUpdateForm.jsp").forward(request, response);
 	}
 

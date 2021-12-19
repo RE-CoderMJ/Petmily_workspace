@@ -102,7 +102,16 @@
 	               })
 	            })
 	         </script>
-         
+         	<script>
+           		$(function(){
+	               $(".photo-box").each(function(){
+	            	   if($(this).html()){
+	            		   $(this).css({"background":"url('')"});   
+	            	   }
+	               })
+           				
+           		})
+           	</script>
          	<!-- <div>등록된 게시글이 없습니다.</div> -->
          
          	<%@ include file="../bCommon/boardPagingBar.jsp" %>
