@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.admin_Faq.model.vo.Faq;
-import com.pm.admin_Notice.model.vo.Notice;
 import com.pm.common.model.vo.PageInfo;
 
 public class FaqDao {

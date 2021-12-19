@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Inquiry.model.vo.Inquiry, com.pm.admin_Login.model.vo.AdminMember" %>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Inquiry> list = (ArrayList<Inquiry>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -219,39 +229,38 @@
                    </thead>
                    
                    <tbody>
+                   <% if(list.isEmpty()) { %>
                        <!--1. 게시글 없을 경우-->
                        <tr align="center">
                            <td colspan="7">조회된 게시글이 없습니다</td>
                        </tr>
-                       
+                   <% }else { %>   
                        <!--2. 게시글 있을 경우-->
+                   <% for(Inquiry i : list) { %>
                        <tr align="center">
-                           <td>v</td>
-                           <td>12</td>
-                           <td>2021-12-04</td>
-                           <td>번호 변경이 되지 않아요</td>
-                           <td>강동원</td>
-                           <td>미답변</td>
+                           <td><input type="checkbox" name="" value=""></td>
+                           <td><%= i.getPinquiryNo() %></td>
+                           <td><%= i.getPinquiryDate() %></td>
+                           <td><%= i.getPinquiryTitle() %></td>
+                           <td><%= i.getMemberNick() %></td>
+
+                    <% if (i.getReplyContent() == null && i.getReplyContent() == "") { %>
+	                       <td>미답변</td>
+	                <% }else { %>
+	                    <td>답변완료</td>
+	                <% } %>
+	                <% } %>
+	                <% } %>
                        </tr>
                    </tbody>
-               	   </table>
+               	 </table>
           	 </div>
-           	 <br>
+           	 
            
         <!-- bottom 버튼 끝 -->
-       	</div>
+       	
       
-      
-      	<!-- 페이징 바 -->
-	    <div class="paging-area" align="center">
-	       <button> &lt; </button>
-	       <button>1</button>
-	       <button>2</button>
-	       <button>3</button>
-	       <button>4</button>
-	       <button>5</button>
-	       <button> &gt; </button>
-	    </div>
+
 	    
 	   <!-- 페이징바 -->
 	   <script>
@@ -263,8 +272,30 @@
 	       })
 	   </script>
 	   
+	   <br><br><br>
+	   
+	   <!-- 페이징 바 -->
+            <div class="paging-area" align="center">
+            <% if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.iq?cpage=<%=currentPage-1%>';"> &lt; </button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++) { %>
+            	<% if(p== currentPage) { %>
+                <button disabled><%= p %></button>
+                <% }else { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.iq?cpage=<%= p %>';"><%= p %></button>
+                <% } %>
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/adminList.iq?cpage=<%=currentPage+1%>';"> &gt; </button>
+			<% } %>
+            </div>
+
 	   
 	   
+	   </div>
 	   
 	   
    </div>

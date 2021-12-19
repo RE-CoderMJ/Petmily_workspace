@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Qna.model.vo.Qna, com.pm.admin_Login.model.vo.AdminMember" %>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -224,19 +234,28 @@
 	             </thead>
 	             
 	             <tbody>
+	             <% if(list.isEmpty()) { %>
 	                <!--1. 게시글 없을 경우-->
 	                <tr align="center">
 	                    <td colspan="7">조회된 게시글이 없습니다</td>
 	                </tr>
-	                
+	             <% }else { %>
 	                <!--2. 게시글 있을 경우-->
+	                <% for(Qna q : list) { %>
 	                <tr align="center">
-	                    <td>v</td>
-	                    <td>12</td>
-	                    <td>2021-12-04</td>
-	                    <td>번호 변경이 되지 않아요</td>
-	                    <td>강동원</td>
+	                    <td><input type="checkbox" name="" value=""></td>
+	                    <td><%= q.getQnaNo() %></td>
+	                    <td><%= q.getQnaDate() %></td>
+	                    <td><%= q.getQnaTitle() %></td>
+	                    <td><%= q.getMemNo() %></td>
+	                    
+	                    <% if (q.getQnaReplyContent() == null && q.getQnaReplyContent() == "") { %>
 	                    <td>미답변</td>
+	                    <% }else { %>
+	                    <td>답변완료</td>
+	                    <% } %>
+	                  <% } %>
+	                <% } %>
 	                </tr>
 	              </tbody>
 	         </table>
@@ -262,9 +281,32 @@
 	          })
 	      })
 	  	  </script>
+	  	  
+	  	  <br><br><br>
+
+	    
+	    <!-- 페이징 바 -->
+            <div class="paging-area" align="center">
+            <% if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.qna?cpage=<%=currentPage-1%>';"> &lt; </button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++) { %>
+            	<% if(p== currentPage) { %>
+                <button disabled><%= p %></button>
+                <% }else { %>
+                <button onclick="location.href='<%=contextPath%>/adminList.qna?cpage=<%= p %>';"><%= p %></button>
+                <% } %>
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/adminList.qna?cpage=<%=currentPage+1%>';"> &gt; </button>
+			<% } %>
+            </div>
+        </div>
 
 	
-  	</div>
+  	
   	<!-- .outer 닫음 -->
   
   	

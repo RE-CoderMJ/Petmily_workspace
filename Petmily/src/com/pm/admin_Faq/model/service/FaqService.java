@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 import com.pm.admin_Faq.model.dao.FaqDao;
 import com.pm.admin_Faq.model.vo.Faq;
-import com.pm.admin_Notice.model.dao.NoticeDao;
-import com.pm.admin_Notice.model.vo.Notice;
 import com.pm.common.model.vo.PageInfo;
 
 public class FaqService {

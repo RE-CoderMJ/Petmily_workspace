@@ -263,15 +263,7 @@
              	</table>
            	 </div>  
            	 
-           	<!-- 페이징 바 -->
-		    <script>
-		        $(function(){
-		            $(".paging-area button").click(function(){
-		                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-		                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-		            })
-		        })
-		    </script>
+           	
     	
     		 <br><br><br>
 
@@ -295,6 +287,16 @@
 			<% } %>
 		
             </div>
+            
+            <!-- 페이징 바 -->
+		    <script>
+		        $(function(){
+		            $(".paging-area button").click(function(){
+		                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+		                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+		            })
+		        })
+		    </script>
         </div>
 
     

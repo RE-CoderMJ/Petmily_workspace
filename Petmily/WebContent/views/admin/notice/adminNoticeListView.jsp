@@ -91,7 +91,7 @@
          font-weight: bolder;
      }
      /* 마우스로 선택한 줄 항목 */
-     .list-area>tbody>tr:hover{
+     #noticetable>tbody>tr:hover{
     	 background:gray;
     	 cursor:pointer;
      }
@@ -255,7 +255,7 @@
                         
                         
                         
-                        <td><%= n.getNoticeTitle() %></td>
+                        <td id="admintitleclick"><%= n.getNoticeTitle() %></td>
                         <td><%= n.getManagerNo() %></td>
                     </tr>
                   <% } %>
@@ -266,19 +266,18 @@
     	
     	
     	<!-- 삭제 모달 (미완성) -->
-    	<script>
+    	<!-- <script>
     	$(document).ready(function(){
     		$('#deleteModal').on('')
     	});
-    	</script>
+    	</script> -->
     	
     	<!-- 글 클릭시 상세페이지 조회 (미완성) -->
     	<script>
     	$(function(){
     		$("#noticetable>tbody>tr").click(function(){
-    			const num = $(this).children().eq(0).text();
+    			location.href = '<%=contextPath%>/adminDetail.no?nno=' + $(this).children().eq(0).text();
     			
-    			location.href = '<%=contextPath%>/adminDetail.no?num=' + num;
     		})
     	})
     	</script>
