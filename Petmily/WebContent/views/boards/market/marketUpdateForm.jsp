@@ -26,10 +26,9 @@
 				<hr style="border: solid 1px rgb(179, 178, 178);">
 			</div>
 	
-	        <form action="<%=contextPath%>/enroll.market" method="post" enctype="multipart/form-data">
-		        <input type="hidden" value=<%=loginUser.getMemNo() %>>
+	        <form action="<%=contextPath%>/update.market" method="post" enctype="multipart/form-data">
+		        <input name="userNo" type="hidden" value=<%=loginUser.getMemNo() %>>
 		        <div id="photo-area">
-		        <input type="hidden" name="userNo" value="1" >
 		            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
 
                       <!-- The slideshow -->
@@ -66,7 +65,7 @@
 	                        	<!--현재 이 게시글에 딸린 첨부파일이 있을 경우 반복문사용해보기-->
 	                        	<% for(int i=0; i<list.size(); i++) { %>
 	                        		<div align="left" class="originName"><%= list.get(i).getOriginName() %></div>
-	                        		<input type="hidden" name="originFileNo" value="<%= list.get(i).getAttachmentNo() %>">
+	                        		<input type="hidden" name="originAttNo" value="<%= list.get(i).getAttachmentNo() %>">
 	                        		<input name="file<%= i+1 %>" class="file" type="file" onchange="loadImg(this);">
 	                        	<% } %>
                     		<% } %>

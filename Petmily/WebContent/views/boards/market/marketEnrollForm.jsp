@@ -22,9 +22,8 @@
 			</div>
 	
 	        <form action="<%=contextPath%>/enroll.market" method="post" enctype="multipart/form-data">
-		        <input type="hidden" value=<%=loginUser.getMemNo() %>>
+		        <input type="hidden" name="userNo" value=<%=loginUser.getMemNo() %>>
 		        <div id="photo-area">
-		        <input type="hidden" name="userNo" value="1" >
 		            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
 
                       <!-- The slideshow -->

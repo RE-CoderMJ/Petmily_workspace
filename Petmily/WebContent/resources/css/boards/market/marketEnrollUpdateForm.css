@@ -1,6 +1,6 @@
 div, img, li, a{
     box-sizing: border-box;
-    
+    border: 1px solid black;
 }
 .content-area{
 	width: 1400px;
@@ -73,7 +73,7 @@ div, img, li, a{
     float: left;
     font-weight: bolder;
     color: rgb(106, 106, 106);
-    margin-top:5px;
+    margin-top:-20px;
 }
 #file-upload-area{
     margin-top: 40px;
@@ -102,13 +102,21 @@ div, img, li, a{
 	bottom:360px;
 }
 .originName{
-	width: 320px;
+	width: 300px;
 	height:26px;
 	text-overflow:ellipsis;
    	white-space:nowrap;
    	overflow:hidden;
+   	margin-left:-30px;
 }
-
+.file{
+	width: 300px;
+	height: 40px;
+	text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
+   	margin-left:-30px;
+}
 /* 입력부분 스타일 */
 #input-area{
     width: 500px;
