@@ -54,4 +54,10 @@
 		  )
 	</entry>
 	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM TB_PRODUCT_UD;
+	</entry>
+	
 </properties>

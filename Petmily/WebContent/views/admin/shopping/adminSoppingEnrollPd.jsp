@@ -143,7 +143,8 @@
                                 <tr>
                                     <th width="130px">상품 옵션</th>
                                     <td id="form0" style="width: 100px">
-                                        <input class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
+                                    	<!-- <input type="hidden" name="opcount" value=""> -->
+                                        <input class="form-control" type="text" placeholder="옵션1" name="productOp1" style="width: 130px;">
                                         
                                         <div class="btn-box">
                                             <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button>
@@ -182,7 +183,7 @@
                                     <th width="130px">세부 이미지1</th>
                                     <td>
                                         <!-- <input class="form-control" type="text"> -->
-                                        <input type="file" name="file3" class="mt-3">
+                                        <input type="file" name="file2" class="mt-3">
                                         <!-- <button class="btn btn-sm btn-primary ml-3">파일선택</button> -->
                                     </td>
                                 </tr>
@@ -190,7 +191,7 @@
                                     <th width="130px">세부 이미지2</th>
                                     <td>
                                         <!-- <input class="form-control" type="text"> -->
-                                        <input type="file" name="file4" class="mt-3">
+                                        <input type="file" name="file3" class="mt-3">
                                     </td>
                                 </tr>
                                 <tr>
@@ -238,6 +239,7 @@
                             $("#add").click(function(){
                                 $("#form0").append
                                 ("<input type='text' placeholder='옵션" + no + "' name='productOp' class='mr-2' style='width: 130px;' id='basic" + no + "'>"); 
+                                $("input[name=opcount]").val(no);
                                 no++;
                             });
                         });

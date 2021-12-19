@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.pm.admin_Shopping.model.dao.AdminShoppingDao;
 import com.pm.admin_Shopping.model.vo.AdminShopping;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 
 public class AdminShoppingService {
 	
@@ -29,6 +30,19 @@ public class AdminShoppingService {
 		close(conn);
 		
 		return result1 * result2;
+	}
+	
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new AdminShoppingDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	public ArrayList<AdminShopping> selectList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<AdminShopping> list = new AdminShoppingDao().selectList(conn, pi);
+		close(conn);
+		return list;
 	}
 	
 }

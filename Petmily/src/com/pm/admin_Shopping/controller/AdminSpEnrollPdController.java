@@ -61,6 +61,8 @@ public class AdminSpEnrollPdController extends HttpServlet {
 			as.setAmount(Integer.parseInt(multiRequest.getParameter("amount")));
 			//as.setBasicImg(multiRequest.getParameter("basicImg"));
 			
+			//int opcount = 
+			
 			//첨부파일
 			//ArrayList<Attachment> list = new ArrayList<>();
 			ArrayList<Attachment> list = new ArrayList<>();
