@@ -194,7 +194,7 @@
 
                 <div class="paging-area" align="center">
 					<% if(currentPage != 1) { %> <!-- 1번 페이지 아닐 경우 이전버튼이 보여진다 -->
-		            	<button onclick="location.href='<%= contextPath %>/list.qna?cpage=<%=currentPage-1%>';"> &lt; </button>
+		            	<button onclick="location.href='<%= contextPath %>/main.qna?cpage=<%=currentPage-1%>';"> &lt; </button>
 					<% } %> <!-- 1번 페이지일 경우 이전버튼이 없다  -->
 		
 					<% for(int p=startPage; p<=endPage; p++) { %>            
@@ -202,12 +202,12 @@
 		            		<button disabled><%= p %></button> <!-- 클릭 안되는 버튼으로 -->
 		            	<% } else { %>
 		            		<!-- 숫자 클릭 시 페이지 요청 -->
-		            		<button onclick="location.href='<%= contextPath %>/list.qna?cpage=<%= p %>';"><%= p %></button>
+		            		<button onclick="location.href='<%= contextPath %>/main.qna?cpage=<%= p %>';"><%= p %></button>
 		            	<% } %>
 		            <% } %>
 		            
 		            <% if(currentPage != maxPage) { %> <!-- 마지막 페이지 버튼 아닐 경우 다음버튼이 보여진다 -->
-		            	<button onclick="location.href='<%= contextPath %>/list.qna?cpage=<%= currentPage+1 %>';"> &gt; </button>
+		            	<button onclick="location.href='<%= contextPath %>/main.qna?cpage=<%= currentPage+1 %>';"> &gt; </button>
 					<% } %> <!-- 마지막 페이지일 경우 다음버튼이 없다 -->
 		        </div>
 		        

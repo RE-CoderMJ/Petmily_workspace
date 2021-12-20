@@ -33,7 +33,7 @@ public class MemberInsertController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String userEmailId = request.getParameter("userEamil");
+		String userEmailId = request.getParameter("userEmail");
 		String emailDomain = request.getParameter("emailDomain");
 		String userEmail = userEmailId + "@" + emailDomain;
 		
@@ -56,10 +56,8 @@ public class MemberInsertController extends HttpServlet {
 		int result = new MemberService().insertMember(m);
 
 		
-		System.out.println(result);
-		
 		if(result > 0) {
-			response.sendRedirect(request.getContextPath() + "/loginForm.me");
+			request.getRequestDispatcher("views/member/joinSuccess.jsp").forward(request, response);;
 		} else {
 			// 실패할 때 응답 뭐할까요..
 		

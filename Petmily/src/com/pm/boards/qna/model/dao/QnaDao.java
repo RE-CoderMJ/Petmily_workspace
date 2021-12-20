@@ -21,7 +21,7 @@ public class QnaDao {
 	public QnaDao() {
 		
 		try {
-			prop.loadFromXML(new FileInputStream(QnaDao.class.getResource("/db/sql/qna-mapper.xml").getPath()));
+			prop.loadFromXML(new FileInputStream(QnaDao.class.getResource("/db/sql/boards/qna-mapper.xml").getPath()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

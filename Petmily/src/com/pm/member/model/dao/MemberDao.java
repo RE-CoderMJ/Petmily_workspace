@@ -88,6 +88,8 @@ public class MemberDao {
 			pstmt.setString(7, m.getAddress());
 			pstmt.setString(8, m.getDetailAddress());
 			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -73,7 +73,7 @@
             </div>
 
             <div align="center">
-                <button type="button" class="btn btn-warning" onclick="location.href='<%= contextPath%>/login.jsp'">로그인 하러 가기</button>
+                <button type="button" class="btn btn-warning" onclick="location.href='<%= contextPath%>/loginForm.jsp'">로그인 하러 가기</button>
             </div>
 
         </div>

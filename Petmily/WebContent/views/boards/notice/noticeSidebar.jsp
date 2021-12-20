@@ -61,7 +61,7 @@
 
                 <div class="d-category" id="faq" onclick="location.href='<%= contextPathas %>/main.faq'">FAQ</div>
                 
-                <div class="d-category" id="qna" onclick="location.href='<%= contextPathas %>/main.qna'">QnA</div>
+                <div class="d-category" id="qna" onclick="location.href='<%= contextPathas %>/main.qna?cpage=1'">QnA</div>
                 
             </div>
         </ul>
