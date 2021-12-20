@@ -59,6 +59,15 @@ public class Member {
 		this.detailAddress = detailAddress;
 	}
 
+	public Member(int memNo, String memName, String memEmail, String memTel, String nickname) {
+		super();
+		this.memNo = memNo;
+		this.memName = memName;
+		this.memEmail = memEmail;
+		this.memTel = memTel;
+		this.nickname = nickname;
+	}
+
 	public int getMemNo() {
 		return memNo;
 	}

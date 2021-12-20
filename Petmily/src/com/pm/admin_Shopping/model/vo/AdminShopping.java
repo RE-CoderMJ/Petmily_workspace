@@ -29,6 +29,15 @@ public class AdminShopping {
 		this.basicImg = basicImg;
 		this.managerNo = managerNo;
 	}
+	
+	public AdminShopping(int productNo, String category, String productName, int price, int amount) {
+		super();
+		this.productNo = productNo;
+		this.category = category;
+		this.productName = productName;
+		this.price = price;
+		this.amount = amount;
+	}
 
 	public int getProductNo() {
 		return productNo;

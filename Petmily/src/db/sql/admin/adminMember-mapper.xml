@@ -12,4 +12,27 @@
 		   AND MANAGER_PWD = ?
 	</entry>
 	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) COUNT
+		  FROM TB_MEMBER
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                	   MEM_NO
+		                     , MEM_NAME
+		                     , MEM_EMAIL
+		                     , MEM_TEL
+		                     , NICKNAME
+		                 FROM TB_MEMBER
+		                ) A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 </properties>

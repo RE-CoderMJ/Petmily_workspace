@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.member.model.vo.Member" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+
+	System.out.println(pi);
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -149,7 +161,7 @@
                     <!-- 회원 조회 -->
                     <div class="search-box pb-5">
                         <select class="selectpicker show-tick p-2">
-                            <option>회원 아이디</option>
+                            <option>회원 no</option>
                             <option>회원 이름</option>
                             <option>회원 이메일</option>
                         </select>
@@ -212,26 +224,33 @@
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
-                                    <th width="150px">회원 ID</th>
+                                    <th width="150px">회원 no.</th>
                                     <th width="150px">회원 이름</th>
-                                    <th width="500px">회원 이메일</th>
+                                    <th width="300px">회원 이메일</th>
                                     <th width="300px">회원 전화번호</th>
+                                    <th width="200px">회원 닉네임</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!--1. 게시글 없을 경우-->
+                                <% if(list.isEmpty()) { %>
                                 <tr style="display:none">
                                     <td colspan="6">조회된 게시글이 없습니다</td>
                                 </tr>
                                 <!--2. 게시글 있을 경우-->
+                                <% }else { %>
+                                <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
-                                    <td>1</td>
-                                    <td>id</td>
-                                    <td>name</td>
-                                    <td>email</td>
-                                    <td>phone</td>
+                                    <td><%= i+1 %></td>
+                                    <td><%= list.get(i).getMemNo() %></td>
+                                    <td><%= list.get(i).getMemName() %></td>
+                                    <td><%= list.get(i).getMemEmail() %></td>
+                                    <td><%= list.get(i).getMemTel() %></td>
+                                    <td><%= list.get(i).getNickname() %></td>
                                 </tr>
+                                <% } %>
+							<% } %>
                             </tbody>
                         </table>
                     </div>
@@ -240,22 +259,32 @@
             <br><br><br><br>
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
-            </div>
-            <script>
+                 <% if(currentPage != 1) {%>
+                 <button onclick="location.href='<%=contextPath%>/memPoint.ad?cpage=<%=currentPage-1%>';"> &lt; </button>
+                 <% } %>
+                            
+               <% for(int p=startPage; p<=endPage; p++) {%>
+			      <% if(p == currentPage) { %>
+			      <button disabled><%= p %></button>
+			      <% }else { %>
+						<button onclick="location.href='<%= contextPath %>/memPoint.ad?cpage=<%= p %>';"><%= p %></button>
+			            	<% } %>
+			            <% } %>
+			            
+			       <% if(currentPage != maxPage) {%>
+			       <button onclick="location.href='<%=contextPath%>/memPoint.ad?cpage=<%=currentPage+1%>';">&gt; </button>
+					<% } %>
+			
+                   <button> &gt; </button>
+              </div>
+              <script>
                 $(function(){
-                    $(".paging-area button").click(function(){
-                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-                    })
-                })
-            </script>
+                  $(".paging-area button").click(function(){
+                    $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                    $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                      })
+                  })
+             </script>
         </div>
 
     </body>

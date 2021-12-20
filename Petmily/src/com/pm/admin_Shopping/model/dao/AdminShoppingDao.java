@@ -138,9 +138,9 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new AdminShopping(rset.getInt("productNo"),
+				list.add(new AdminShopping(rset.getInt("product_No"),
 								   rset.getString("category"),
-								   rset.getString("productName"),
+								   rset.getString("product_Name"),
 								   rset.getInt("price"),
 								   rset.getInt("amount")));
 			}

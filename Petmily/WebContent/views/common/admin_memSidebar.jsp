@@ -62,9 +62,9 @@
             <ul>
                 <div id="category">회원관리</div>
                 <div id="d-category">
-                    <div class="d-category" id="memInfor" onclick="location.href='<%= contextPathas %>/memMg.ad';">회원정보 조회/수정/삭제</div>
+                    <div class="d-category" id="memInfor" onclick="location.href='<%= contextPathas %>/memMg.ad?cpage=1';">회원정보 조회/수정/삭제</div>
     
-                    <div class="d-category" id="memPoint" onclick="location.href='<%= contextPathas %>/memPoint.ad';">회원 포인트 관리</div>
+                    <div class="d-category" id="memPoint" onclick="location.href='<%= contextPathas %>/memPoint.ad?cpage=1';">회원 포인트 관리</div>
                     
                     <div class="d-category" id="memWarning" onclick="location.href='<%= contextPathas %>/memWarning.ad';">블랙리스트 관리</div>
                     

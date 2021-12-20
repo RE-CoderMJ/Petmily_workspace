@@ -65,7 +65,7 @@
                 <div id="d-category">
                     <div class="d-category" id="spErPd" onclick="location.href='<%= contextPathas %>/spErPd.ad';">상품 등록</div>
     
-                    <div class="d-category" id="spPdUd" onclick="location.href='<%= contextPathas %>/spPdUd.ad';">상품 관리(수정,삭제)</div>
+                    <div class="d-category" id="spPdUd" onclick="location.href='<%= contextPathas %>/spPdUd.ad?cpage=1';">상품 관리(수정,삭제)</div>
                     
                     <div class="d-category" id="spDvlist" onclick="location.href='<%= contextPathas %>/spDvlist.ad';">주문/배송 조회</div>
 

@@ -87,7 +87,7 @@
         <div class="nav-area" align="center">
             <div class="inner" style="width: 1600px; margin: 0 auto;">
                 <div class="menu-box">
-                    <div class="menu"><a href="<%= contextPath %>/memMg.ad">회원관리</a></div> 
+                    <div class="menu"><a href="<%= contextPath %>/memMg.ad?cpage=1">회원관리</a></div> 
                     <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminList.bo">게시판관리</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminMain.pl">Petlog</a></div>

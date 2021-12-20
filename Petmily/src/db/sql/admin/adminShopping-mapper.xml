@@ -57,7 +57,26 @@
 	<entry key="selectListCount">
 		SELECT
 		       COUNT(*) COUNT
-		  FROM TB_PRODUCT_UD;
+		  FROM TB_PRODUCT_UD
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                	   PRODUCT_NO
+		                     , CATEGORY
+		                     , PRODUCT_NAME
+		                     , PRICE
+		                     , AMOUNT
+		                 FROM TB_PRODUCT_UD 
+		                ORDER
+		                   BY PRODUCT_NO DESC
+		                ) A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 </properties>

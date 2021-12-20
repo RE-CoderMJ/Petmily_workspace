@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Shopping.model.vo.AdminShopping" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<AdminShopping> list = (ArrayList<AdminShopping>)request.getAttribute("list");
+
+	System.out.println(pi);
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -204,7 +216,7 @@
                          </div>
                          
                         <div class="btn-box">
-                            <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>
+                            <!-- <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>-->
                             <!-- btn-box -->
                             <div class="pb-5">
                                 <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal" onclick="location.href='<%= contextPath %>/spPdUd2.ad';">수정</button>
@@ -240,7 +252,7 @@
                                         <!-- Modal body -->
                                         <div class="modal-body" align="center" style="text-align: center;">
                                             <div class="modalMsg-area">
-                                                정상적으로 삭제되었습니다.
+                                                	정상적으로 삭제되었습니다.
                                             </div>
                                             <div>
                                             <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
@@ -266,30 +278,45 @@
                             </thead>
                             <tbody>
                                 <!--1. 게시글 없을 경우-->
+                            	<% if(list.isEmpty()) { %>
                                 <tr style="display:none">
                                     <td colspan="6">조회된 게시글이 없습니다</td>
                                 </tr>
                                 <!--2. 게시글 있을 경우-->
+                                <% }else { %>
+                                <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
-                                    <td>1</td>
-                                    <td>code</td>
-                                    <td>category</td>
-                                    <td>pdname</td>
-                                    <td>price</td>
-                                    <td>number</td>
+                                    <td><%= i+1 %></td>
+                                    <td><%= list.get(i).getProductNo() %></td>
+                                    <td><%= list.get(i).getCategory() %></td>
+                                    <td><%= list.get(i).getProductName() %></td>
+                                    <td><%= list.get(i).getPrice() %></td>
+                                    <td><%= list.get(i).getAmount() %></td>
                                 </tr>
+                               <% } %>
+							<% } %>
                             </tbody>
                         </table>
                         <br><br><br><br><br>
                         <!-- 페이징 바 -->
                         <div class="paging-area" align="center">
-                            <button> &lt; </button>
-                            <button>1</button>
-                            <button>2</button>
-                            <button>3</button>
-                            <button>4</button>
-                            <button>5</button>
+                            <% if(currentPage != 1) {%>
+                            <button onclick="location.href='<%=contextPath%>/spPdUd.ad?cpage=<%=currentPage-1%>';"> &lt; </button>
+                            <% } %>
+                            
+                        <% for(int p=startPage; p<=endPage; p++) {%>
+			            	<% if(p == currentPage) { %>
+			            	<button disabled><%= p %></button>
+			            	<% }else { %>
+								<button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=<%= p %>';"><%= p %></button>
+			            	<% } %>
+			            <% } %>
+			            
+			            <% if(currentPage != maxPage) {%>
+			            	<button onclick="location.href='<%=contextPath%>/spPdUd.ad?cpage=<%=currentPage+1%>';">&gt; </button>
+						<% } %>
+			
                             <button> &gt; </button>
                         </div>
                         <script>
