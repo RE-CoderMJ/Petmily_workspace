@@ -5,7 +5,7 @@
 <entry key="selectListCount">
 	SELECT
 	       COUNT(*) COUNT
-	  FROM SPMY_POINT
+	  FROM SP_ORDERPRODUCT
 
 </entry>
 
@@ -16,13 +16,17 @@
 	        SELECT ROWNUM RNUM, A.*
 	          FROM (
 	                SELECT
-	                	   POINT_NO
-					     , POINT
-					     , POINT_CONTENT
-					     , TO_CHAR(POINT_DATE, 'yyyy-mm-dd') "POINT_DATE"
-					  FROM SPMY_POINT
+	                	   ORDER_NO
+	                	 , PRODUCT_NAME
+	                	 , ORDER_POPTION
+	                	 , ORDER_PAMOUNT
+	                	 , PRICE
+					     , TO_CHAR(ORDER_DATE, 'yyyy-mm-dd') "ORDER_DATE"
+					  FROM SP_ORDERPRODUCT
+					  JOIN SPMY_ORDER USING(ORDER_NO)
+					  JOIN TB_PRODUCT_UD USING(PRODUCT_NO)
 	                  ORDER 
-	                     BY POINT_DATE DESC
+	                     BY ORDER_DATE DESC
 	                ) A
 	        )
 	 WHERE RNUM BETWEEN ? AND ?
