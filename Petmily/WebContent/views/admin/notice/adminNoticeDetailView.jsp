@@ -80,9 +80,8 @@
                         case 3: category="찾고있어요"; break;
                         case 4: category="고객센터공지사항"; break;
                         }
-                        %>
+                    %>
                     <td><%= category %></td>
-                    
                      
                 </tr>
                 <tr>
@@ -106,8 +105,8 @@
             	<a href="<%=contextPath%>/adminList.no" class="btn btn-sm btn-secondary">목록으로</a>
 
             
-                <a href="<%= contextPath %>/adminUpdateForm.no?num=<%= n.getNoticeNo() %>" class="btn btn-sm btn-warning">수정</a>
-                <a href="<%= contextPath %>/adminDelete.no?num=<%= n.getNoticeNo() %>" class="btn btn-sm btn-danger">삭제</a>
+                <a href="<%= contextPath %>/adminUpdateForm.no?num=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정</a>
+                <a href="<%= contextPath %>/adminDelete.no?num=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
 
             </div>

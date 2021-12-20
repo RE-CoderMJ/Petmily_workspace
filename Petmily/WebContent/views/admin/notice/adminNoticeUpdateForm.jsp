@@ -76,7 +76,6 @@
                     <td>공지사항 분류</td>
                     <td>
                     	<select name="cate" id="">
-
                             <option value="1">궁금해요</option>
                             <option value="2">중고거래</option>
                             <option value="3">찾고있어요</option>

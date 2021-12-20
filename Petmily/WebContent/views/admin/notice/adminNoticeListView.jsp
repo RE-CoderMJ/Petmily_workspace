@@ -180,16 +180,13 @@
                 <% if(list.isEmpty()) { %>
                     <!--1. 게시글 없을 경우-->
                     <tr>
-                        <td colspan="6">조회된 게시글이 없습니다</td>
+                        <td colspan="4">조회된 게시글이 없습니다</td>
                     </tr>
                 <% }else { %>
                     <!--2. 게시글 있을 경우-->
                 <% for(Notice n : list) { %>
                     <tr>
                         <td><%= n.getNoticeNo() %></td>
-                        
-                        
-                        
                         <% 
                         String category = "";
                         
@@ -197,16 +194,10 @@
                         case 1: category="궁금해요"; break;
                         case 2: category="중고거래"; break;
                         case 3: category="찾고있어요"; break;
-                        case 4: category="고객센터 공지사항"; break;
+                        case 4: category="고객센터공지사항"; break;
                         }
                         %>
-                        <td><%= category %></td>
-                        
-                        
-                        
-                        
-                        
-                        
+                    	<td><%= category %></td>
                         <td id="admintitleclick"><%= n.getNoticeTitle() %></td>
                         <td><%= n.getManagerNo() %></td>
                     </tr>
@@ -228,8 +219,7 @@
     	<script>
     	$(function(){
     		$("#noticetable>tbody>tr").click(function(){
-    			location.href = '<%=contextPath%>/adminDetail.no?num=' + $(this).children().eq(1).text();
-    			console.log(num);
+    			location.href = '<%=contextPath%>/adminDetail.no?num=' + $(this).children().eq(0).text();
     		})
     	})
     	</script>

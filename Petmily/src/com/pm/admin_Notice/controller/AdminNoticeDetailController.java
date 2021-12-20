@@ -33,11 +33,10 @@ public class AdminNoticeDetailController extends HttpServlet {
 		
 		int noticeNo = Integer.parseInt(request.getParameter("num"));
 		
-		
+		System.out.println(noticeNo);
 
 			Notice n = new NoticeService().selectNotice(noticeNo);
 			
-			System.out.println(n);
 			
 
 			request.setAttribute("notice", n);
