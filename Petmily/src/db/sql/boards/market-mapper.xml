@@ -136,6 +136,16 @@
 		  )
 	</entry>
 	
+	<entry key="updateAttachment">
+		UPDATE 
+		  	   ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , FILE_PATH = ?
+		 WHERE ATTACHMENT_NO = ?
+		   	
+	</entry>
+	
 	<entry key="deleteMarket">	
 		UPDATE
 			   MARKET

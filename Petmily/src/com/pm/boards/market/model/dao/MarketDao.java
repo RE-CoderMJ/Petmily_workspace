@@ -254,10 +254,19 @@ public class MarketDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setString(3, att.getFilePath());
+			pstmt.setInt(4, att.getAttachmentNo());
 			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
+		
+		return result;
 	}
 	
 	public int deleteMarket(Connection conn, int marketNo) {

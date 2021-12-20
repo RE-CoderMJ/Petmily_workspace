@@ -63,11 +63,11 @@ public class MarketUpdateController extends HttpServlet {
 				att.setChangeName(multiRequest.getFilesystemName(key));
 				att.setFilePath("resources/boards_upfiles/market_upfiles/");
 				
-				if(multiRequest.getParameter(originAttNo) != null) {
+				if(multiRequest.getParameter(originAttNo) != null) { // 기존 첨부파일 있었을 경우
 					att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
-				}else {
-					att.setRefNo(marketNo);
 				}
+				
+				att.setRefNo(marketNo);
 
 				list.add(att);					
 			}

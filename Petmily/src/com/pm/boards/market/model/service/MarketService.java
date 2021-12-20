@@ -85,10 +85,23 @@ public class MarketService {
 				}else {
 					result2 = new MarketDao().insertNewAttachment(conn, att);
 				}
+				
+				if(!(result2>0)){
+					   result2 = 0;
+					   break; // for문 돌면서 sql문 실행시키는걸 빠져나가도록
+				}
 			}
 		}
 		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		
+		close(conn);
+		
+		return result1 * result2;
 	}
 	
 	public int deleteMarket(int marketNo) {
