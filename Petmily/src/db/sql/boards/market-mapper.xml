@@ -114,6 +114,28 @@
 		 WHERE MARKET_NO = ?
 	</entry>
 	
+	<entry key="insertNewAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 2
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
 	<entry key="deleteMarket">	
 		UPDATE
 			   MARKET

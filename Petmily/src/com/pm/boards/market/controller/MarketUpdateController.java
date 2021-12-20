@@ -50,7 +50,7 @@ public class MarketUpdateController extends HttpServlet {
 		m.setPrice(multiRequest.getParameter("price"));
 		m.setMarketContent(multiRequest.getParameter("content"));
 		
-		ArrayList<Attachment> list = null;
+		ArrayList<Attachment> list = new ArrayList<>();
 		
 		int fileCount = Integer.parseInt(multiRequest.getParameter("file-count"));
 		

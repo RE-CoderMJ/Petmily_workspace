@@ -7,12 +7,13 @@ div, img, li, a{
 	margin: auto;
 	padding:200px;
 	padding-top:35px;
-	margin-bottom:70px;
+	margin-bottom:100px;
 }
 #outer{
 	width: 1600px;
 	height: auto;
 	margin: auto;
+	position:relative;
 }
 /* 목록버튼 스타일 */
 #list-btn{
@@ -32,6 +33,7 @@ div, img, li, a{
     height:auto;
     margin-top: 0px;
     float: left;
+    margin-bottom:150px;
 }
 .carousel-inner{
 	border:solid 1px darkgray;
@@ -72,16 +74,16 @@ div, img, li, a{
     float: left;
     font-weight: bolder;
     color: rgb(106, 106, 106);
-    margin-top:-20px;
+    margin-top:px;
 }
 #file-upload-area{
     margin-top: 40px;
     heigth:auto;
+    margin-bottom:35px;
 }
 #add-area{
 	margin-left:30px;
 	height:auto;
-	margin-bottom:30px;
 	margin-top:-15px;
 }
 #add-area>input{
@@ -96,9 +98,9 @@ div, img, li, a{
 	font-size:20px;
 	line-height:2px;
 	position:absolute;
-	left:820px;
+	left:660px;
 	border-radius:5px;
-	bottom:360px;
+	bottom:300px;
 }
 .originName{
 	width: 300px;

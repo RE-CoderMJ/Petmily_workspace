@@ -65,7 +65,6 @@
 	                        	<% for(int i=0; i<list.size(); i++) { %>
 	                        		<div align="left" class="originName"><%= list.get(i).getOriginName() %></div>
 	                        		<input type="hidden" name="originAttNo<%= i+1 %>" value="<%= list.get(i).getAttachmentNo() %>">
-	                        		<input type="hidden" name="originCount" value="<%= i %>">
 	                        		<input name="file<%= i+1 %>" class="file" type="file" onchange="loadImg(this);">
 	                        	<% } %>
                     		<% } %>
@@ -130,19 +129,19 @@
     
     <script>
 		$(function(){
-			let maxAppend = 1;
+			let $maxAppend = Number(($("#add-area").children("input").last().attr('name')).substring(4));
 			
 			$("#add-btn").click(function (){
-				if(maxAppend >= 5){
+				if($maxAppend >= 5){
 					alert("사진은 5개까지 업로드가 가능합니다.");
 					return;
 				}
-				let $num = ($("#add-area").children("input").last().attr('name')).substring(4);
-				let result = Number($num)+1;
+				//let $num = ($("#add-area").children("input").last().attr('name')).substring(4);
+				let result = $maxAppend+1;
 				$("#add-area").append("<input class='file' type='file' onchange='loadImg(this);'>");
 				$("#add-area").children("input").last().attr('name', 'file' + result);
-				maxAppend++;
-				$("#file-count").val(maxAppend);
+				$maxAppend++;
+				$("#file-count").val($maxAppend);
 			});						
 		})
 	</script>
