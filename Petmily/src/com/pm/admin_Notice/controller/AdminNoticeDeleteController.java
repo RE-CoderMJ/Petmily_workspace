@@ -30,7 +30,7 @@ public class AdminNoticeDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int noticeNo = Integer.parseInt(request.getParameter("num"));
+		int noticeNo = Integer.parseInt(request.getParameter("nno"));
     	
 		int result = new NoticeService().deleteNotice(noticeNo);
 		

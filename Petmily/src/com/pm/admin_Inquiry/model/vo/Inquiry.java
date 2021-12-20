@@ -17,12 +17,13 @@ public class Inquiry {
 	private String replyDate;
 	private String secret;
 	private int count;
+	private String status;
 	
 	public Inquiry() {}
 
 	public Inquiry(int pinquiryNo, String memNo, String memberNick, String productNo, String productName,
 			String pinquiryTitle, String pinquiryContent, String pinquiryDate, String managerNo, String replyContent,
-			String replyDate, String secret, int count) {
+			String replyDate, String secret, int count, String status) {
 		super();
 		this.pinquiryNo = pinquiryNo;
 		this.memNo = memNo;
@@ -37,6 +38,7 @@ public class Inquiry {
 		this.replyDate = replyDate;
 		this.secret = secret;
 		this.count = count;
+		this.status = status;
 	}
 
 	public int getPinquiryNo() {
@@ -143,12 +145,21 @@ public class Inquiry {
 		this.count = count;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Inquiry [pinquiryNo=" + pinquiryNo + ", memNo=" + memNo + ", memberNick=" + memberNick + ", productNo="
 				+ productNo + ", productName=" + productName + ", pinquiryTitle=" + pinquiryTitle + ", pinquiryContent="
 				+ pinquiryContent + ", pinquiryDate=" + pinquiryDate + ", managerNo=" + managerNo + ", replyContent="
-				+ replyContent + ", replyDate=" + replyDate + ", secret=" + secret + ", count=" + count + "]";
+				+ replyContent + ", replyDate=" + replyDate + ", secret=" + secret + ", count=" + count + ", status="
+				+ status + "]";
 	}
 
 	

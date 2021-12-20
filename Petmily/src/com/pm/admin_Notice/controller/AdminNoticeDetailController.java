@@ -31,7 +31,7 @@ public class AdminNoticeDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
+		int noticeNo = Integer.parseInt(request.getParameter("num"));
 		
 		NoticeService nService = new NoticeService();
 		

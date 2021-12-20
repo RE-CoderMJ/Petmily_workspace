@@ -82,8 +82,9 @@
                         case 4: category="고객센터 공지사항"; break;
                         }
                         %>
+                    </td>
                         <td><%= category %></td>
-                     </td>
+                     
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>

@@ -92,7 +92,7 @@
      }
      /* 마우스로 선택한 줄 항목 */
      #noticetable>tbody>tr:hover{
-    	 background:gray;
+    	 background:rgb(220, 220, 220);
     	 cursor:pointer;
      }
      /* 페이징바 */
@@ -157,7 +157,7 @@
                 <a href="<%= contextPath %>/adminUpdate.no" class="btn btn-sm btn-warning">수정</a>
                 
                 <!-- 삭제버튼(혜선꺼) : Button to Open the Modal -->
-               <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
+               <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="<%= contextPath %>/adminDelete.no">
                             삭제
                </button>
 
@@ -173,7 +173,7 @@
                            </div>
                            
                        	   <div id="deletebtn-area">
-                           	   <a type="button" onclick=location.replace="deleteUrl" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                           	   <a type="button" onclick="" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
                            	   <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
                            </div>              
                         </div>
@@ -211,11 +211,11 @@
 		<div class="table-paging">
 
         <!-- 테이블 -->
-        <div class="table table-bordered" id="noticetable">
-            <table>
+        <div class="table table-bordered">
+            <table  id="noticetable">
                 <thead>
                     <tr>
-                        <th width="50"><input type="checkbox" name="" value=""></th>
+                        <th width="50"><input type="checkbox" name="" value="" id="" onclick=""></th>
                         <th width="100">번호</th>
                         <th width="200">분류</th>
                         <th width="650">제목</th>
@@ -233,7 +233,7 @@
                     <!--2. 게시글 있을 경우-->
                 <% for(Notice n : list) { %>
                     <tr>
-                        <td><input type="checkbox" name="" value=""></td>
+                        <td><input type="checkbox" name="num" value="" onclick=""></td>
                         <td><%= n.getNoticeNo() %></td>
                         
                         
@@ -281,7 +281,25 @@
     		})
     	})
     	</script>
+    	  
+    	<!-- 삭제 모달창을 통해 삭제  -->
+    	<!--<script>
+    		$(function(){
+    			$("").click(function()){
+    				if(confirm("확인")==true){
+    					location.href =
+    				}
+    			})
+    			
+    		})
+    	</script>
     	
+    	<script>
+    		$(alldelete(){
+    			
+    		})
+    	</script>
+    	-->
 
 		<!-- 페이징 바-->
 	    <script>

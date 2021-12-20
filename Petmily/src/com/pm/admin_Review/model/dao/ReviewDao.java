@@ -1,4 +1,4 @@
-package com.pm.admin_Inquiry.model.dao;
+package com.pm.admin_Review.model.dao;
 
 import static com.pm.common.JDBCTemplate.close;
 
@@ -11,25 +11,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.pm.admin_Inquiry.model.vo.Inquiry;
-import com.pm.admin_Inquiry.model.dao.InquiryDao;
+import com.pm.admin_Review.model.vo.Review;
 import com.pm.common.model.vo.PageInfo;
 
-public class InquiryDao {
+public class ReviewDao {
 	
-private Properties prop = new Properties();
+	private Properties prop = new Properties();
 	
-	public InquiryDao() {
-		
-		try {
-			prop.loadFromXML(new FileInputStream(InquiryDao.class.getResource("/db/sql/admin/inquiry-mapper.xml").getPath() ));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
+	public ReviewDao() {
+	
+	try {
+		prop.loadFromXML(new FileInputStream(ReviewDao.class.getResource("/db/sql/admin/review-mapper.xml").getPath() ));
+	} catch (IOException e) {
+		e.printStackTrace();
 	}
 	
+	
+}
+
+	/* 1. Review 전체게시글 수 */
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		
@@ -45,7 +45,7 @@ private Properties prop = new Properties();
 			if(rset.next()) {
 				listCount = rset.getInt("count");
 			}
-
+	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -56,9 +56,9 @@ private Properties prop = new Properties();
 		return listCount;
 	}
 	
-
-	public ArrayList<Inquiry> selectList(Connection conn, PageInfo pi) {
-		ArrayList<Inquiry> list = new ArrayList<>();
+	/* 2. 최신글순으로 페이징바에 맞게 조회 */
+	public ArrayList<Review> selectList(Connection conn, PageInfo pi) {
+		ArrayList<Review> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -76,22 +76,21 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Inquiry(rset.getInt("pinquiry_no"),
-					 				 rset.getString("mem_no"),
-					 				 rset.getString("member_nick"),
-					 				 rset.getString("product_no"),
-					 				 rset.getString("product_name"),
-					 				 rset.getString("pinquiry_title"),
-					 				 rset.getString("pinquiry_content"),
-					 				 rset.getString("pinquiry_date"),
-					 				 rset.getString("manager_no"),
-					 				 rset.getString("reply_content"),
-					 				 rset.getString("reply_date"),
-					 				 rset.getString("secret"),
-					 				 rset.getInt("count"),
-					 				 rset.getString("status")));
+				list.add(new Review(rset.getInt("review_no"),
+								 	rset.getString("product_no"),
+								 	rset.getString("product_name"),
+								 	rset.getString("mem_no"),
+								 	rset.getString("mem_nick"),
+								 	rset.getString("review_content"),
+								 	rset.getString("review_grade"),
+								 	rset.getString("review_date"),
+								 	rset.getString("manager_no"),
+								 	rset.getString("reply_content"),
+								 	rset.getString("reply_date"),
+								 	rset.getInt("count"),
+								 	rset.getString("status")));
 			}
-
+	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,4 +102,5 @@ private Properties prop = new Properties();
 		return  list;
 		
 	}
+	
 }
