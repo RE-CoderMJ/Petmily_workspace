@@ -144,6 +144,25 @@
 	</div>
 	
 	<%@ include file="../bCommon/reportDeleteModals.jsp" %>
+	
+	<script>
+		function deleteContent(){
+
+			$.ajax({
+				url: "delete.market",
+				type:"post",
+				data: {mno : <%=m.getMarketNo()%>},
+				success:function(result){
+					if(result>0){
+						window.location="main.market?page=1";
+					}
+				},
+				error:function(){
+					console.log("게시글 삭제 실패!");
+				}
+			})
+		}
+	</script>
     <%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>

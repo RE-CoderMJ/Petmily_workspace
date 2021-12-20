@@ -39,7 +39,7 @@ public class MarketUpdateController extends HttpServlet {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/boards_upfiles/market_upfiles/");
 		MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 		
-		int marketNo = Integer.parseInt(multiRequest.getParameter("marketNo")); 
+		int marketNo = Integer.parseInt(multiRequest.getParameter("mno")); 
 		
 		Market m = new Market();
 		m.setMarketNo(marketNo);
@@ -50,26 +50,26 @@ public class MarketUpdateController extends HttpServlet {
 		m.setPrice(multiRequest.getParameter("price"));
 		m.setMarketContent(multiRequest.getParameter("content"));
 		
-		ArrayList<Attachment> list = new ArrayList<>();
+		ArrayList<Attachment> list = null;
 		
 		int fileCount = Integer.parseInt(multiRequest.getParameter("file-count"));
 		
 		for(int i=1; i<=fileCount; i++) {
 			String key = "file" + i;
-			
+			String originAttNo = "originAttNo" + i;
 			if(multiRequest.getOriginalFileName(key) != null) {
-				Attachment at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName(key));
-				at.setChangeName(multiRequest.getFilesystemName(key));
-				at.setFilePath("resources/boards_upfiles/market_upfiles/");
+				Attachment att = new Attachment();
+				att.setOriginName(multiRequest.getOriginalFileName(key));
+				att.setChangeName(multiRequest.getFilesystemName(key));
+				att.setFilePath("resources/boards_upfiles/market_upfiles/");
 				
-				if(multiRequest.getParameter("originAttNo") != null) {
-					at.setAttachmentNo(Integer.parseInt(multiRequest.getParameter("originAttNo")));
+				if(multiRequest.getParameter(originAttNo) != null) {
+					att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
 				}else {
-					at.setRefNo(marketNo);
+					att.setRefNo(marketNo);
 				}
 
-				list.add(at);					
+				list.add(att);					
 			}
 		}
 		
@@ -77,6 +77,8 @@ public class MarketUpdateController extends HttpServlet {
 		
 		if(result >0) {
 			response.sendRedirect(request.getContextPath() + "/detail.market?mno=" + marketNo);
+		}else {
+			
 		}
 	}
 

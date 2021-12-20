@@ -102,4 +102,22 @@
 		 WHERE REF_BOARD_NO = 2
 		   AND REF_NO = ?
 	</entry>
+	
+	<entry key="updateMarket">
+		UPDATE 
+			   MARKET
+		   SET CATEGORY = ?
+		     , D_CATEGORY = ?
+		     , MARKET_TITLE = ?
+		     , MARKET_CONTENT =?
+		     , PRICE = ?
+		 WHERE MARKET_NO = ?
+	</entry>
+	
+	<entry key="deleteMarket">	
+		UPDATE
+			   MARKET
+		   SET STATUS = 'N'
+		 WHERE MARKET_NO = ?
+	</entry>
 </properties>

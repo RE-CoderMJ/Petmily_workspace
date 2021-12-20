@@ -70,4 +70,40 @@ public class MarketService {
 		close(conn);
 		return list;
 	}
+	
+	public int updateMarket(Market m, ArrayList<Attachment> list) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new MarketDao().updateMarket(conn, m);
+		
+		int result2 = 1;
+		if(!list.isEmpty()) {
+			for(Attachment att: list) {
+				if(att.getAttachmentNo()!= 0) {
+					result2 = new MarketDao().updateAttachment(conn, att);
+				}else {
+					result2 = new MarketDao().insertNewAttachment(conn, att);
+				}
+			}
+		}
+		
+		
+	}
+	
+	public int deleteMarket(int marketNo) {
+		
+		Connection conn = getConnection();
+		int result = new MarketDao().deleteMarket(conn, marketNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 }

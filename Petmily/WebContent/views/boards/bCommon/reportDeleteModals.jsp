@@ -26,7 +26,7 @@
                                         정말 삭제하시겠습니까?
                     </div>
                     <div id="deletebtn-area">
-                      <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
+                      <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted" onclick="deleteContent();">확인</a>
                       <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
                     </div>              
                 </div>

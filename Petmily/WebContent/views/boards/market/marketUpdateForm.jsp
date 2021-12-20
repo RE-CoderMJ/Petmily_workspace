@@ -60,12 +60,12 @@
 		            <div id="file-upload-area">
 		                <p>사진<br>첨부</p>
 		                <div id="add-area">
-			                <!-- <input name="file1" class="file" type="file" onchange="loadImg(this);"> -->
 			                <% if(!list.isEmpty()) { %>
 	                        	<!--현재 이 게시글에 딸린 첨부파일이 있을 경우 반복문사용해보기-->
 	                        	<% for(int i=0; i<list.size(); i++) { %>
 	                        		<div align="left" class="originName"><%= list.get(i).getOriginName() %></div>
-	                        		<input type="hidden" name="originAttNo" value="<%= list.get(i).getAttachmentNo() %>">
+	                        		<input type="hidden" name="originAttNo<%= i+1 %>" value="<%= list.get(i).getAttachmentNo() %>">
+	                        		<input type="hidden" name="originCount" value="<%= i %>">
 	                        		<input name="file<%= i+1 %>" class="file" type="file" onchange="loadImg(this);">
 	                        	<% } %>
                     		<% } %>

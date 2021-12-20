@@ -198,4 +198,53 @@ public class MarketDao {
 		
 		return list;
 	}
+	
+	public int updateMarket(Connection conn, Market m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMarket");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getCategory());
+			pstmt.setString(2, m.getdCategory());
+			pstmt.setString(3, m.getMarketTitle());
+			pstmt.setString(4, m.getMarketContent());
+			pstmt.setInt(5, Integer.parseInt(m.getPrice()));
+			pstmt.setInt(6, m.getMarketNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertNewAttachment(Connection conn, Attachment att, ArrayList<Attachment> list) {
+		
+	}
+	
+	public int deleteMarket(Connection conn, int marketNo) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteMarket");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, marketNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
