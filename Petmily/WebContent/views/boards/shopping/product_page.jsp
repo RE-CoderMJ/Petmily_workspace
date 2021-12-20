@@ -9,8 +9,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Shop Item - Start Bootstrap Template</title>
-        <style> 
 
+           <style> 
+      
         .modalMsg-area{
     font-weight: bolder;
     font-size: 17px;
@@ -41,7 +42,56 @@
     color: white;
     font-weight: bolder;
 }
-                 </style>
+
+.outer { 
+    width: 1600px;
+    height: auto;
+    margin: auto;
+}
+
+.content-area {
+	width: 1400px;
+	height: auto;
+	padding: 200px;
+	padding-top: 5px;
+    margin: auto;
+}
+
+.accordion { 
+        margin-bottom: 20px;
+    }
+
+    .accordion-head {
+        height: 50px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .down-arrow {
+        float: right;
+        width: 20px;
+        height: 20px;
+    }
+
+    .accordion-body {
+        background-color: rgb(235, 235, 235);
+        border-radius: 5px;
+        margin-top: 5px;
+        padding: 20px;
+        display: none;
+    }
+
+    .accordion.show i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+
+    </style>
+
+    <!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <!-- Favicon-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -142,18 +192,55 @@
                     </div>
                     
                 </div>
-            </div><hr style="border: solid 1px rgb(179, 178, 178);">
-            <b>상품 정보 &nbsp&nbsp 후기 &nbsp&nbsp Q&A </b>
-        </section>
+                <div class="outer">
+                    <div class="content-area">
+                        
+            <hr style="border: solid 1px rgb(179, 178, 178);">
+           <button type="button" class="btn"">
+            <a href="#tag1">상세 정보</a>
+            </button>
+            <button type="button" class="btn" onclick="location.href='<%= contextPathas %>/shop.rev'">상품 후기</button>
+            <button type="button" class="btn" onclick="location.href='<%= contextPathas %>/shop.qna'">상품 문의</button>
+       
+            <br> <br>
+
         <div style="text-align : center;">
 
-            <img src="resources/img/sp_product.jpg">
-       
-       </div>
-        </section>
-          
-        
-                  <!-- 장바구니 Modal -->
+            <img src="resources/img/sp_product.jpg"> </div>
+            <br>
+
+            <div class="accordion">
+            <div class="accordion-head">
+                <a name="#tag1">상품정보 제공 고시</a>	 
+                <img src="resources/img/down-arrow.png" class="down-arrow">
+                
+            </div>
+            <p class="accordion-body">
+                <b>주원료</b> 생선/해산물, 칠면조, 닭 <br>
+                <b>기능</b> 영양공급, 다이어트/중성화, 면역력강화, 식욕증진 <br>
+                <b>중량</b> 5kg <br>
+                <b>급여 대상</b> 어덜트, 시니어, 퍼피 <br>
+            </p>                
+        </div>
+            <div class="accordion">
+                <div class="accordion-head">
+                    거래 조건에 관한 정보
+                    <img src="resources/img/down-arrow.png" class="down-arrow">
+                    
+                </div>
+                <p class="accordion-body">
+                    전자상거래등에서의소비자보호에관한법률 등에 의한 제품의 하자 또는 오배송 등으로 인한 청약철회의 경우에는 상품 수령 후 3개월 이내, 
+                    그 사실을 안 날 또는 알 수 있었던 날로부터 30일 이내에 청약철회를 할 수 있으며, 반품 비용은 통신판매업자가 부담합니다.
+                    <br> <br>
+                    소비자피해보상의 처리, 재화등에 대한 불만 처리 및 소비자와 사업자 사이의 분쟁처리에 관한 사항은
+                    소비자분쟁해결기준(공정거래위원회 고시) 및 관계법령에 따릅니다.
+                </p>                
+            </div>
+
+
+            <%@ include file="../../common/footerbar.jsp" %>
+  
+  
        <!-- 장바구니 Modal -->
        <div class="modal fade" id="cartModal">
         <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -191,11 +278,32 @@
                     </div>              
                 </div>
    
+
+      <script>
+        $(function(){
+            $(".accordion-head").click(function(){  
+                
+                const $p = $(this).next(); 
+                // var img = document.getElementsByClassName("down-arrow");
+
+                if($p.css("display") == "none"){
+                    
+                    // $(this).siblings("p").slideUp();
+                    
+                    $p.slideDown();
+                    // img.style.transform = 'rotate()';
+                } else {
+                    
+                    $p.slideUp();
+                    // img.style.transform = 'rotate(180deg)';
+                }
+                
+            })
+        })
+        </script>
+
+    
      
+</body>
 
-
-    </body>
-
-     <!-- Core theme JS-->
-<script src="js/product.js"></script>
 </html>

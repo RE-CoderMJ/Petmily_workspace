@@ -118,7 +118,7 @@
 					<script>
               $(function(){
                   $(".category-area button").click(function(){
-                      $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                      $(this).siblings(".category-area button").css({background: "", color:"black"});
                       $(this).css({background: "rgb(247, 198, 4)", color:"black"});
                   })
               })

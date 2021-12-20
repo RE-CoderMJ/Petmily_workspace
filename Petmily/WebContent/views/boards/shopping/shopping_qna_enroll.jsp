@@ -110,13 +110,17 @@ div, img, li, a{
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <body>
 	
-	<%@ include file="../../common/menubar.jsp" %>
-	<%@ include file="askSidebar.jsp" %>
+    <!-- 메뉴바 -->
+	<%@ include file="../../common/menubar.jsp"%>
+
+	<!-- 사이드바  -->
+	<%@ include file="shoppingsidebar.jsp"%>
+ 
 
 	<div class="content-area" align="center">
 		<div id="top">
 			<div id="list-btn" align="right">
-				<button type="button" class="btn btn-secondary" id="list">목록</button>
+				<button type="button" class="btn btn-secondary" id="list"  onclick="location.href='<%= contextPathas %>/shop.qna'">목록</button>
 			</div>
 			<hr style="border: solid 1px rgb(179, 178, 178);">
 			<div id="required-area" align="right">

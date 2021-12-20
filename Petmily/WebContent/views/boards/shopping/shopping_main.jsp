@@ -159,7 +159,7 @@ line-height: 3px;
 	      </div>
 	
 	      <div id="middle-area">
-	         <div align="left">
+	         <div class="category-area" align="left">
 	         <b>베스트</b> <br> <br>
 
 				<button type="button" class="btn btn-light btn-sm">전체</button>
@@ -173,6 +173,14 @@ line-height: 3px;
 	         
 	         <br><br>
 	      </div>
+		  <script>
+			$(function(){
+				$(".category-area button").click(function(){
+					$(this).siblings(".category-area button").css({background: "", color:"black"});
+					$(this).css({background: "rgb(247, 198, 4)", color:"black"});
+				})
+			})
+		</script>
 	      <div class="notice-area" align="left">
 	       
 	      </div>
@@ -247,7 +255,7 @@ line-height: 3px;
 							</div>	
 						</div>
 						<div id="middle-area">
-							<div align="left">
+							<div class="category-area" align="left">
 							<b>신상</b> <br> <br>
 			   
 							   <button type="button" class="btn btn-light btn-sm">전체</button>

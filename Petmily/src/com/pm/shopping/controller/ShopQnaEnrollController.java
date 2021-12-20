@@ -8,25 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ShopQnaController
+ * Servlet implementation class ShopQnaEnrollController
  */
-@WebServlet("/shop.qna")
-public class ShopQnaController extends HttpServlet {
+@WebServlet("/shop.qnaenroll")
+public class ShopQnaEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopQnaController() {
+    public ShopQnaEnrollController() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    /**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/boards/shopping/shopping_qna.jsp").forward(request, response);
+		request.getRequestDispatcher("views/boards/shopping/shopping_qna_enroll.jsp").forward(request, response);
 	}
     
 	/**

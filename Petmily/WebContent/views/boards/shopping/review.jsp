@@ -62,6 +62,29 @@ div, img, li, a{
       width: 130px;
    }
    
+   /*아코디언*/
+
+   .accordion { 
+        margin-bottom: 5px;
+    }
+
+    .accordion-head {
+           
+        cursor: pointer;
+        
+    }
+        .accordion-body {
+         font-size: 13px;
+        background-color: rgb(251, 255, 239);
+        border-radius: 4px;
+        margin-top: 4px;
+        padding: 10px;
+        display: none;
+        
+    }
+
+  
+
    /* 리뷰 제목, 내용, 작성날짜, 작성자, 별점 */
    .texts{width:70%;}
    .texts>div{float: left;}
@@ -94,6 +117,17 @@ div, img, li, a{
 
    }
    
+/*호버 효과*/
+.hover11 figure {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover11 figure:hover {
+	opacity: .5;
+}
+
+
 
    .checked {
       color: orange;
@@ -190,12 +224,13 @@ div, img, li, a{
              리뷰 수 20 사용자 평점 4.9/5
 			 	
 		</div>
-            
+      
+      
       <div id="content-area">
         
          <div class="contents">
   
-            
+       
             <div class="photo"></div>
             <div class="texts">
                <div class="title">잘 먹네요</div>
@@ -210,24 +245,31 @@ div, img, li, a{
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
+                 
+                  <div class="accordion"> 
+                     <div class="accordion-head"> 
+                        답변 </div>                                            
 
-               </div>
-              
-            </div>
+                     <p class="accordion-body">
+                          <b>└</b> 안녕하세요 고객님 :D 소중한 구매 후기 감사드립니다. 앞으로도 좋은 상품으로 고객님께 만족감 드리기 위해 항상 노력하겠습니다!
+                     </p>                
+                 </div>
+                  
+               </div>  
+                       </div>
          </div>
+         
          <div class="contents">
             
             <div class="nophoto"></div>
             <div class="texts">
                <div class="title">만족</div>
                <div class="info">잭슨 &nbsp;&nbsp;2021.11.10</div>
-               
-               
+                             
 
                <div class="text">기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
-                     기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
-                     기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
-                     기존에 먹이던 사료 일부러 섞어줬는데 요것만 골라먹네요ㅜㅋ
+                    
+                     
                </div>
                <div class="star">
    
@@ -237,6 +279,15 @@ div, img, li, a{
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
    
+                  <div class="accordion"> 
+                     <div class="accordion-head"> 
+                        답변 </div>                                            
+
+                     <p class="accordion-body">
+                          <b>└</b> 안녕하세요 고객님 :D 소중한 구매 후기 감사드립니다. 앞으로도 좋은 상품으로 고객님께 만족감 드리기 위해 항상 노력하겠습니다!
+                     </p>                
+                 </div>
+
                </div>
             </div>
          </div>
@@ -254,7 +305,14 @@ div, img, li, a{
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
+                  <div class="accordion"> 
+                     <div class="accordion-head"> 
+                        답변 </div>                                            
 
+                     <p class="accordion-body">
+                          <b>└</b> 안녕하세요 고객님 :D 소중한 구매 후기 감사드립니다. 앞으로도 좋은 상품으로 고객님께 만족감 드리기 위해 항상 노력하겠습니다!
+                     </p>                
+                 </div>
                </div>
             </div>
          </div>
@@ -272,7 +330,14 @@ div, img, li, a{
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
+                  <div class="accordion"> 
+                     <div class="accordion-head"> 
+                        답변 </div>                                            
 
+                     <p class="accordion-body">
+                          <b>└</b> 안녕하세요 고객님 :D 소중한 구매 후기 감사드립니다. 앞으로도 좋은 상품으로 고객님께 만족감 드리기 위해 항상 노력하겠습니다!
+                     </p>                
+                 </div>
                </div>
                
             </div>
@@ -291,21 +356,42 @@ div, img, li, a{
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
+                  <div class="accordion"> 
+                     <div class="accordion-head"> 
+                        답변 </div>                                            
 
+                     <p class="accordion-body">
+                          <b>└</b> 안녕하세요 고객님 :D 소중한 구매 후기 감사드립니다. 앞으로도 좋은 상품으로 고객님께 만족감 드리기 위해 항상 노력하겠습니다!
+                     </p>                
+                 </div>
                </div>
             </div>
          </div>
       </div>
+
       <script>
          $(function(){
-            $(".contents").click(function(){
-               //const num = $(this).children().eq(0).text();
-               
-               // /jsp/detail.no?num=클릭한글번호
-               location.href = '<%=contextPath%>/';
-            })
+             $(".accordion-head").click(function(){  
+                 
+                 const $p = $(this).next(); 
+                 // var img = document.getElementsByClassName("down-arrow");
+ 
+                 if($p.css("display") == "none"){
+                     
+                     // $(this).siblings("p").slideUp();
+                     
+                     $p.slideDown();
+                     // img.style.transform = 'rotate()';
+                 } else {
+                     
+                     $p.slideUp();
+                     // img.style.transform = 'rotate(180deg)';
+                 }
+                 
+             })
          })
-      </script>
+         </script>
+     
 
       <!-- 페이징 바 -->
       <div class="paging-area" align="center">

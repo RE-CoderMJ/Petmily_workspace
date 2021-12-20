@@ -83,9 +83,12 @@
 </head>
 
 <body>
-	<%@ include file="../../common/menubar.jsp" %>
-    <%@ include file="../shoppingSidebar.jsp" %>
-    
+    <!-- 메뉴바 -->
+	<%@ include file="../../common/menubar.jsp"%>
+
+	<!-- 사이드바  -->
+	<%@ include file="shoppingsidebar.jsp"%>
+ 
     <div class="outer">
         
         
@@ -97,7 +100,7 @@
                     <p id="title">상품 문의</p>
                     <span id="title_sm">Q&A</span>
                     <button type="button" id="enrollBtn" class="btn btn-sm btn-warning"
-                            onclick="location.href='<%= contextPath %>/shop.qna'">문의하기</button>
+                            onclick="location.href='<%= contextPath %>/shop.qnaenroll'">문의하기</button>
                 </div>
                 
                 <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
@@ -213,7 +216,7 @@
 	                //const num = $(this).children().eq(0).text();
 	               
 	                // /jsp/detail.qna?num=클릭한글번호
-	                location.href = '<%=contextPath%>/detail.qna'
+	                location.href = '<%=contextPath%>/'
 	                })
 	            })
 	        </script>
