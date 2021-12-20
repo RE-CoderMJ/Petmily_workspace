@@ -155,31 +155,8 @@ public class NoticeDao {
 		
 	}
 	
-	/* 5. notice 조회수 (여기서부터 수정)*/
-	public int increaseCount(Connection conn, int noticeNo) {
-		// update문  => 처리된행수 => 트랜잭션 처리
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("increaseCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
-			
-			pstmt.setInt(1, noticeNo);
-			
-			result = pstmt.executeUpdate();
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
 	
-	/* 6. notice 수정 */
+	/* 5. notice 수정 */
 	public int updateNotice(Connection conn, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -202,7 +179,7 @@ public class NoticeDao {
 		return result;
 	}
 	
-	/* 7. notice 삭제 */
+	/* 6. notice 삭제 */
 	public int deleteNotice(Connection conn, int noticeNo) {
 		
 		int result = 0;

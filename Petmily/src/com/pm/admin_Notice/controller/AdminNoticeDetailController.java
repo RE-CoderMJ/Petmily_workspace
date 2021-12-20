@@ -35,23 +35,14 @@ public class AdminNoticeDetailController extends HttpServlet {
 		
 		NoticeService nService = new NoticeService();
 		
-		int result = nService.increaseCount(noticeNo);
-		
-		if(result > 0) { // 성공 == 조회가능한 공지사항 맞다 => 상세페이지 응답
-			
-			// 해당 공지사항 조회용 서비스
+
 			Notice n = new NoticeService().selectNotice(noticeNo);
 			
 			request.setAttribute("notice", n);
 			request.getRequestDispatcher("views/admin/notice/adminNoticeDetailView.jsp").forward(request, response);
 			
 			
-		}else {	// 실패 == 조회불가능한 공지사항(삭제되었거나 작성되지 않은 글번호)
-			// => 에러문구 보여지는 에러페이지
-			request.setAttribute("errorMsg", "공지사항 상세조회에 실패하였습니다.");
-			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
-			
-		}
+
 	}
 
 	/**
