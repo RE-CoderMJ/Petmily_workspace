@@ -30,6 +30,15 @@ public class PointService {
 		
 	}
 	
+	public int selectPointSum() {
+		Connection conn = getConnection();
+		int pointSum = new PointDao().selectPointSum(conn);
+
+		close(conn);
+		return pointSum; 
+		
+	}
+	
 	
 
 }

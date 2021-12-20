@@ -28,5 +28,17 @@
 	 WHERE RNUM BETWEEN ? AND ?
 </entry>
 
+<entry key="selectPointSum">
+	SELECT SUM(POINT) POINTSUM
+	  FROM (SELECT
+	              POINT_NO
+	            , MEM_NO
+	            , ORDER_NO
+	            , POINT
+	            , POINT_CONTENT
+	            , POINT_DATE
+	        FROM SPMY_POINT)
+</entry>
+
 
 </properties>

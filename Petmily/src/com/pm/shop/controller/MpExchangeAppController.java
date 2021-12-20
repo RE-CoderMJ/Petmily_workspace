@@ -26,6 +26,12 @@ public class MpExchangeAppController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int orderNo = Integer.parseInt(request.getParameter(""));
+		
+		new ExchangeService().select();
+		
+		
 		request.getRequestDispatcher("views/shop/mypage/exchangeApplication.jsp").forward(request, response);
 	}
 

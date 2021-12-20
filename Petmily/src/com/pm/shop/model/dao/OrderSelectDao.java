@@ -81,10 +81,10 @@ public class OrderSelectDao {
 			rset = pstmt.executeQuery();
 		
 			while(rset.next()) {
-				list.add(new OrderSelect(rset.getInt("order_no"),
+				list.add(new OrderSelect(rset.getInt("order_se_no"),
 										 rset.getString("product_name"),
-								   		 rset.getString("order_poption"),
-								   		 rset.getInt("order_pamount"),
+								   		 rset.getString("order_se_poption"),
+								   		 rset.getInt("order_se_pamount"),
 								   		 rset.getInt("price"),
 								   		 rset.getDate("order_date")
 										));

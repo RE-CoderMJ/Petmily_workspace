@@ -4,6 +4,7 @@
  <%
  	PageInfo pi = (PageInfo)request.getAttribute("pi");
  	ArrayList<Point> list = (ArrayList<Point>)request.getAttribute("list");
+ 	int pointSum = (int)request.getAttribute("pointSum");
  	
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
@@ -25,12 +26,12 @@
 		     
 		.oouter{
 			width: 1700px;
-			height: 1000px;
+			height: 1300px;
 			margin:auto;
 		}     
 		.content-area{
 			width: 1700px;
-			height: 1000px;
+			min-height: 1000px;
 			padding:200px;
 			padding-top:0px;
 			margin:auto;
@@ -55,7 +56,7 @@
             margin-bottom:20px;
         }
         #point1{
-            font-size:14px;
+            font-size:18px;
             position:absolute;
             top:10px;
             left:10px;
@@ -64,7 +65,7 @@
             font-size: 50px;
             position: absolute;
             top:20px;
-            left:100px;
+            left:80px;
         }
 
         /*포인트 내역*/
@@ -99,7 +100,7 @@
             top:15px;
             left:160px;
             font-size:18px;
-            font-weight:800;
+            font-weight:600;
             color:orange;
             
         }
@@ -137,7 +138,7 @@
 
 <div class="inline-block" id="pointview">
     <div class="inline-block" id="point1">보유</div>
-    <div class="inline-block" id="point2">7,000p</div>
+    <div class="inline-block" id="point2"><%= pointSum %>p</div>
 </div>
 
 <input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">

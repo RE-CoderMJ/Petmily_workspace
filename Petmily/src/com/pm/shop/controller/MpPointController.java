@@ -145,11 +145,14 @@ public class MpPointController extends HttpServlet {
 		// * 현재 요청한 페이지(currentPage)에 보여질 <포인트 사용내역 리스트> boardLimit수만큼 조회해가기
 		ArrayList<Point> list = new PointService().selectList( pi);
 
+		// 상단 포인트 총합계
+		int pointSum = new PointService().selectPointSum();
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		request.setAttribute("pointSum", pointSum);
 		
-		System.out.println(list);
+		//System.out.println(list);
 		
 		
 		request.getRequestDispatcher("views/shop/mypage/point.jsp").forward(request, response);
