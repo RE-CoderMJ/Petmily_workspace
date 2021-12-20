@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.shop.model.vo.OrderSelect" %>
+ <%
+ 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+ 	ArrayList<OrderSelect> list = (ArrayList<OrderSelect>)request.getAttribute("list");
+ 	
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ 	
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,15 +147,19 @@
 <%@ include file="mypageSidebar.jsp" %>
     
 <div class="content-area">
-    <div id="title">주문내역 / 배송조회</div>
+    <div id="title">주문내역조회</div>
 
+<% if(list.isEmpty()) { %>
+	<div align="center" id="nullcase">주문 내역이 없습니다.</div>
+<% } else { %>
+	<% for(OrderSelect os : list) { %>
+	
     <div id="outer">
-
         <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매</div>
-            <div class="inline-block" id="c2" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
+            <div class="inline-block" id="c1"><%= os.getOrderDate() %> 구매</div>
+            <div class="inline-block" id="c2" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">주문번호 : <%= os.getOrderNo() %></div>
+            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my'">총 x개</div>
+            <div class="inline-block" id="c4">총 xxxx원</div>
             <button class="btn" data-toggle="modal" data-target="#my80sizeModal"> 
             	<img src="resources/img/down-arrow.png" class="down-arrow">
             </button>
@@ -155,65 +170,20 @@
 	        	</div>
 	            
 	            <div class="inline-block"  id="cart-option" >	                
-	               	 상품명
+	               	 <%=os.getProductName() %>
 	                <br>
-	             	  블루1개 (옵션)	
+	             	  <%= os.getpOption() %>	
 	            </div>
 	            <div class="inline-block" id="money">
-	                <h3>20,000 원</h3>
+	                <h3><%= os.getPrice() %> 원</h3>
 	            </div>
 			</div>
-            
-            
         </div>
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-            
-            
-        </div>
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-        </div>
-
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-        </div>
-
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-        </div>
-
-        <div id="content">
-            <div class="inline-block" id="c1">21.11.15 구매  </div>
-            <div class="inline-block" id="c2">주문번호 : A-13124954</div>
-            <div class="inline-block" id="c3">총3개</div>
-            <div class="inline-block" id="c4">60,000원</div>
-            <button> ▼ </button>
-			
-        </div>
-        
-
     </div>
+    
+    <% } %>
+<% } %>   
+    
 </div>
 
 

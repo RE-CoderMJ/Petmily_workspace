@@ -82,13 +82,26 @@
             font-size: 14px;
         }
         #pointcontent{
+        	margin-top:30px;
             margin-left: 30px;
-
+		    position:relative;
         }
         
-        #content{
+         #getPoint{
             position: absolute;
-            margin-left:10px;
+            top:10px;
+            margin-left:20px;
+            font-size:23px;
+            font-weight:700;
+        }
+        #getPointContent{
+            position: absolute;
+            top:15px;
+            left:160px;
+            font-size:18px;
+            font-weight:800;
+            color:orange;
+            
         }
 
 
@@ -132,36 +145,65 @@
 <% if(list.isEmpty()) { %>
 	<div align="center">포인트 내역이 없습니다.</div>
 <% } else { %>
-	<% for(Point p : list) { %>
+
+
+	<% int i=0; %>
+   <% while(i < list.size() - 1){ // i가 마지막 인덱스일때는 더이상 블럭이 안만들어지도록  %>
+   
+      <!-- 우선 회색 블럭을 하나 만들고 -->
+      <div class="outer">
+          <div class="inline-block" id="date">
+              <%= list.get(i).getPointDate() %> <!-- 현재 인덱스의 포인트 날짜가 한번 보여지도록 -->
+          </div>
+          
+          <!-- 회색 블럭이 만들어지면 기본적으로 포인트 하나의 정보는 보여줘야됨 무조건 현재 i번째 인덱스 Point 정보는 먼저 보여지도록 -->
+          <div  id="pointcontent">
+	              <% if(list.get(i).getPoint().substring(0,1).equals("+")){ %>
+	                 <img src="resources/img/mypage/point-plus.png" alt="" width="50px" height="50px">
+	              <% } else { %> 
+	                 <img src="resources/img/mypage/point-minus.png" alt="" width="50px" height="50px">
+	              <% } %>   
+	              
+	              <div class="inline-block" id="getPoint">
+	                 <%= list.get(i).getPoint() %>p
+	              </div>
+	               <div class="inline-block" id="getPointContent">
+	                 - <%= list.get(i).getPointContent() %>
+	              </div>
+          </div>
+          
+          <!-- 현재 i번째 인덱스 Point와 그 "다음 Point"와 날짜를 비교하면서 일치하면 반복적으로 div요소가 만들어지도록 for문 -->
+          <% for(int j=i+1; j<list.size(); j++) { // j=i+1로 다음 요소를 선택할 수 있도록%>
+               <% if(list.get(i).getPointDate().equals(list.get(j).getPointDate())) { // 현재 i번째와 그 다음요소의 날짜가 일치할경우 %>
+	                <div id="pointcontent">
+		                   <% if(list.get(j).getPoint().substring(0,1).equals("+")){ %>
+		                       <img src="resources/img/mypage/point-plus.png" alt="" width="50px" height="50px">
+		                   <% } else { %> 
+		                       <img src="resources/img/mypage/point-minus.png" alt="" width="50px" height="50px">
+		                   <% } %>   
+		                   
+		                  <div class="inline-block" id="getPoint">
+			                 <%= list.get(i).getPoint() %>p
+			              </div>
+			               <div class="inline-block" id="getPointContent">
+			                 - <%= list.get(i).getPointContent() %>
+			              </div>
+	                </div>
+                	<% i++; %>
+	             <% }%>
+	             
+	           <% 
+	           	if(!list.get(i).getPointDate().equals(list.get(j).getPointDate())) { 
+	           	  i++; break;
+	            } %>  
+	             
+          <% } %>
+       </div>
+       
+   <% } %>
+   
+   
 	
-		<div class="outer">
-		    <div class="inline-block" id="date">
-		        <%= p.getPointDate() %>
-		    </div>
-		    
-		    <div class="inline-block" id="pointcontent" style="margin-top:30px;">
-		    
-		    <% 
-		    String point= p.getPoint();
-		    String str = point.subString(0,0); 
-		    %>
-		    
-		    <% if(str.equals("+")){ %>
-		        <img src="resources/img/mypage/point-plus.png" alt="" width="50px" height="50px">
-		    <% } else { %> 
-		    	<img src="resources/img/mypage/point-minus.png" alt="" width="50px" height="50px">
-		    <% } %>   
-		    
-		        <div class="inline-block" id="content">
-		            <%= p.getPoint() %> p
-		            <br> 
-		            <%= p.getPointContent() %>     
-		
-		        </div>
-		    </div>
-		</div>
-		
-	<% } %>
 <% } %>
 
 

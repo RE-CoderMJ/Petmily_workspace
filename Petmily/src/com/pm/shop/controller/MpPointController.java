@@ -149,6 +149,8 @@ public class MpPointController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
+		System.out.println(list);
+		
 		
 		request.getRequestDispatcher("views/shop/mypage/point.jsp").forward(request, response);
 	}
