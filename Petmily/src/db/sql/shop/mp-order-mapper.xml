@@ -16,7 +16,7 @@
 	        SELECT ROWNUM RNUM, A.*
 	          FROM (
 	                SELECT
-	                	   O.ORDER_NO AS ORDER_SE_NO
+	                	   ORDER_NO
 	                	 , PRODUCT_NAME
 	                	 , O.ORDER_POPTION AS ORDER_SE_POPTION
 	                	 , O.ORDER_PAMOUNT AS ORDER_SE_PAMOUNT
@@ -30,6 +30,22 @@
 	                ) A
 	        )
 	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectDetailList">
+
+	SELECT
+     	   ORDER_NO
+     	 , PRODUCT_NAME
+     	 , O.ORDER_POPTION AS ORDER_SE_POPTION
+     	 , O.ORDER_PAMOUNT AS ORDER_SE_PAMOUNT
+     	 , SPMY_ORDER.PRICE
+  		 , TO_CHAR(ORDER_DATE, 'yyyy-mm-dd') "ORDER_DATE"
+	FROM SP_ORDERPRODUCT O
+	JOIN SPMY_ORDER USING(ORDER_NO)
+	JOIN TB_PRODUCT_UD USING(PRODUCT_NO)	
+	WHERE ORDER_NO = ?
+
 </entry>
 
 

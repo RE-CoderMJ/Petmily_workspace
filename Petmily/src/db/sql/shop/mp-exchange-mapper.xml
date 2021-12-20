@@ -1,1 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="selectOrderProduct">
+
+	SELECT 
+	       ORDER_POPTION
+	     , ORDER_PAMOUNT
+	     , PRICE
+	     , PRODUCT_NAME    
+	  FROM SP_ORDERPRODUCT
+	  JOIN TB_PRODUCT_UD USING(PRODUCT_NO)
+	 WHERE ORDER_PNUM = ?
+
+</entry>
+
+
+
+
+
+</properties>

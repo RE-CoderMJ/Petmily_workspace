@@ -11,6 +11,7 @@ import com.pm.shop.model.dao.OrderSelectDao;
 import com.pm.shop.model.vo.OrderSelect;
 
 public class OrderSelectService {
+	
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = new OrderSelectDao().selectListCount(conn);
@@ -28,5 +29,14 @@ public class OrderSelectService {
 		return list;
 		
 		
+	}
+	
+	public ArrayList<OrderSelect> selectDetailList(int orderNo){
+		Connection conn = getConnection();
+		ArrayList<OrderSelect> osdetail = new OrderSelectDao().selectDetailList(conn, orderNo);
+		
+		close(conn);
+		
+		return osdetail;
 	}
 }

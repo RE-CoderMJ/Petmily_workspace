@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.shop.model.vo.*"%>
+<%
+	OrderProduct op = (OrderProduct)request.getAttribute("op");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +90,7 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:1300px;
+            left:1200px;
             top:780px;
         }
         
@@ -100,7 +103,7 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:1400px;
+            left:1300px;
             top:780px;
         }
         
@@ -122,8 +125,11 @@
 
     <div id="title"  >교환 / 반품 신청</div>
 
-    <div id="outer">
+<div id="outer">
 
+<% if(op == null) { %>
+	<div align="center" id="nullcase">상품이 없습니다.</div>
+<% } else { %>
         <div id="one">
             <div class="inline-block" >
                 <img src=""  id="content-img" width="80px" height="80px">    
@@ -131,17 +137,18 @@
             
             <div class="inline-block"  id="onecontent" >
                         
-               	 상품명
+               	 <%= op.getProduct_name() %>
                 <br>
 
-                <div id="option" style="font-size:12px; margin-top: 5px;">블루 1개</div>
+                <div id="option" style="font-size:12px; margin-top: 5px;"><%= op.getOrderPoption() %></div>
     
             </div>
             
             <div class="inline-block" id="money">
-                <h3>20,000 원</h3>
+                <h3><%= op.getPrice() %></h3>
             </div>
         </div>
+<% } %> 
         <hr>
         <div id="two">
             <div class="smalltitle">배송지정보</div>
@@ -272,16 +279,13 @@
           </div>
         </div>
       </div>
-    
-
-
             <br>
             <br>
 
-            
         </div>
     </div>
 
+ 
 </div>
 </div>
 

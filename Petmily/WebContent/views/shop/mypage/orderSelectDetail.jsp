@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.shop.model.vo.*"%>
+<%
+	OrderProduct op = (OrderProduct)request.getAttribute("op");
+	ArrayList<OrderSelect> osdetail = (ArrayList<OrderSelect>)request.getAttribute("osdetail");
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,12 +107,22 @@ div, img, li, a{
 <div class="oouter">
 <%@ include file="mypageSidebar.jsp" %>
 <div class="content-area">
-    <div id="title">주문내역 / 배송조회</div>
+<div id="title">주문내역 / 배송조회</div>
 
-    <div id="outer">
-        <span style="font-weight: 700; font-size: 23px;">주문번호 : A-13124954</span>  <br>
+
+<div id="outer">
+
+
+    <% if(osdetail.isEmpty()) { %>
+		<div align="center" id="nullcase">주문 내역이 없습니다.(잘 들어왔는지 테스트해보기 위해 있는 문구)</div>
+	<% } else { %>
+		<% for(OrderSelect osd : osdetail) { %>
+		
+<input type="hidden" name="orderno" value="<%= osd.getOrderNo() %>">
+
+        <span style="font-weight: 700; font-size: 23px;">주문번호 : <%= osd.getOrderNo() %></span>  <br>
         <span style=" font-size: 20px;">
-        	주문일 : 21.11.15        
+        	주문일 : <%= osd.getOrderDate() %>    
         </span>
 
 
@@ -120,19 +135,45 @@ div, img, li, a{
             
             <div class="inline-block"  id="cart-option" >
                 
-               	 상품명
+               	 <%= osd.getProductName() %>
                 <br>
-             	  블루1개 (옵션)
+             	 옵션
                 <br>
                 <br>
                 <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>
             </div>
 
             <div class="inline-block" id="button">
-                <button class="bbtn">교환/반품</button>
+                <button class="bbtn" data-toggle="modal" data-target="#exchangeOk">교환/반품</button>
                 <button class="bbtn" style="color:black; background-color: rgb(213,213,213);" data-toggle="modal" data-target="#cancelOk">취소</button>
                 
-                <!-- 모달창 시작 -->
+                <!-- 교환 모달창 시작 -->
+			       <div class="modal" id="exchangeOk">
+			        <div class="modal-dialog">
+			          <div class="modal-content">
+				        <!-- Modal Header -->
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					      </div>
+				      
+			            <!-- Modal body -->
+			            <div class="modal-body">
+								배송준비중 상태에서는 취소만 가능합니다.
+			      		</div>
+			            <!-- Modal footer -->
+			            <div class="modal-footer">
+			              <!-- <a href="<%= contextPath %>/exchangeapp.my?pno=<%= op.getOrderPnum() %>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a> -->
+			            </div>
+			      
+			        </div>
+			      </div>
+			
+				</div>
+				<!-- 모달창 끝 -->
+                
+                
+                
+                <!-- 취소 모달창 시작 -->
 			       <div class="modal" id="cancelOk">
 			        <div class="modal-dialog">
 			          <div class="modal-content">
@@ -147,8 +188,8 @@ div, img, li, a{
 			      		</div>
 			            <!-- Modal footer -->
 			            <div class="modal-footer">
-			              <a href="<%= contextPath %>/ordercancelform.my" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
-			            </div>
+			              <!-- <a href="<%= contextPath %>/ordercancelform.my?pno=<%= op.getOrderPnum()%>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
+			            </div> -->
 			      
 			        </div>
 			      </div>
@@ -160,89 +201,23 @@ div, img, li, a{
             </div>
             
             <div class="inline-block" id="money">
-                <h3>20,000 원</h3>
+                <h3><%= osd.getPrice() %> 원</h3>
             </div>
         </div>
 
 
-        <div class="cart-content" >
-                
-            <div class="inline-block" >
-              
-                <img src=""  id="content-img" width="80px" height="80px">    
-            </div>
-            
-            <div class="inline-block"  id="cart-option" >
-                
-                상품명
-                <br>
-                블루1개 (옵션)
-                <br>
-                <br>
-
-                <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>
-            </div>
-
-            <div class="inline-block" id="button">
-                <button class="bbtn">교환/반품</button>
-                <button class="bbtn" style="color:black; background-color: rgb(213,213,213); " data-toggle="modal" data-target="#cancelOk">
-                	취소
-                </button>
-            </div>
-            
-            <div class="inline-block" id="money">
-                <h3>20,000 원</h3>
-            </div>
-        </div>
-
-
-
-        <div class="cart-content" >
-                
-            <div class="inline-block" >
-              
-                <img src=""  id="content-img" width="80px" height="80px">    
-            </div>
-            
-            <div class="inline-block"  id="cart-option" >
-                
-                상품명
-                <br>
-                블루1개 (옵션)
-                <br>
-                <br>
-                <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>
-            </div>
-
-            <div class="inline-block" id="button">
-                <button class="bbtn">교환/반품</button>
-                <button class="bbtn" style="color:black; background-color: rgb(213,213,213); ">취소</button>
-            </div>
-            
-            <div class="inline-block" id="money">
-                <h3>20,000 원</h3>
-            </div>    
-        </div>
-
-
-        
-        <div class="inline-block" style="float:left; margin-left:50px;">
-            운송장번호 : 164237235
-        </div>
-        <br>
-        <div id="foot">
-            
+        <div id="foot">            
             <span id="sumcount">총개수 : xx개</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span id="summoney">총금액 : xxxxx원</span>
         </div>
-        <br>
-        <br>
-
-
-
-	
-
+        <br><br>
+        
+        <% } %>
+	<% } %>
 </div>
+
+
+
 
 </div>
 </div>

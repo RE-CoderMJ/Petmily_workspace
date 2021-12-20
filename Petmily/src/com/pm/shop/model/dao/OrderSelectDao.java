@@ -81,7 +81,7 @@ public class OrderSelectDao {
 			rset = pstmt.executeQuery();
 		
 			while(rset.next()) {
-				list.add(new OrderSelect(rset.getInt("order_se_no"),
+				list.add(new OrderSelect(rset.getInt("order_no"),
 										 rset.getString("product_name"),
 								   		 rset.getString("order_se_poption"),
 								   		 rset.getInt("order_se_pamount"),
@@ -103,6 +103,43 @@ public class OrderSelectDao {
 	}
 	
 	
+	public ArrayList<OrderSelect> selectDetailList(Connection conn, int orderNo) {
+		// select문 => resultset(여러행) => ArrayList<Point>
+
+		ArrayList<OrderSelect> osdetail = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderNo);
+			
+			rset = pstmt.executeQuery();
+		
+			while(rset.next()) {
+				osdetail.add(new OrderSelect(rset.getInt("order_no"),
+										 rset.getString("product_name"),
+								   		 rset.getString("order_se_poption"),
+								   		 rset.getInt("order_se_pamount"),
+								   		 rset.getInt("price"),
+								   		 rset.getDate("order_date")
+										));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return osdetail;
+
+		
+	}
+		
+		
 	
 	
 	
@@ -115,5 +152,5 @@ public class OrderSelectDao {
 	
 	
 	
+}//service() 끝
 	
-}

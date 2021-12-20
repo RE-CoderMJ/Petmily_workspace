@@ -1,11 +1,15 @@
 package com.pm.shop.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.shop.model.service.ExchangeService;
+import com.pm.shop.model.vo.OrderProduct;
 
 /**
  * Servlet implementation class MpExchangeAppController
@@ -27,10 +31,14 @@ public class MpExchangeAppController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int orderNo = Integer.parseInt(request.getParameter(""));
+		int orderPnum = Integer.parseInt(request.getParameter("pno"));
 		
-		new ExchangeService().select();
+		OrderProduct op = new ExchangeService().selectOrderProduct(orderPnum);
 		
+		//Exchange ec = new ExchangeService().select();
+		
+		
+		request.setAttribute("op", op);
 		
 		request.getRequestDispatcher("views/shop/mypage/exchangeApplication.jsp").forward(request, response);
 	}
