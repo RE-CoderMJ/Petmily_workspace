@@ -34,13 +34,16 @@ public class AdminNoticeUpdateController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int noticeNo = Integer.parseInt(request.getParameter("num"));
+		String noticeCate = request.getParameter("cate");
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
 		
 		Notice n = new Notice();
+		n.setNoticeCate(noticeCate);
 		n.setNoticeNo(noticeNo);
 		n.setNoticeTitle(noticeTitle);
 		n.setNoticeContent(noticeContent);
+		
 		
 		int result = new NoticeService().updateNotice(n);
 		
@@ -59,7 +62,6 @@ public class AdminNoticeUpdateController extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("views/admin/notice/adminNoticeUpdateForm.jsp").forward(request,response);
 	}
 
 	/**

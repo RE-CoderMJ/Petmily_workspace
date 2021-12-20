@@ -71,19 +71,18 @@
             	<tr>
                     <th width="10px"></th>
                     <td>공지사항 분류</td>
-                    <td>
-                    	<% 
+                    <% 
                         String category = "";
                         
                         switch(Integer.parseInt(n.getNoticeCate())) {
                         case 1: category="궁금해요"; break;
                         case 2: category="중고거래"; break;
                         case 3: category="찾고있어요"; break;
-                        case 4: category="고객센터 공지사항"; break;
+                        case 4: category="고객센터공지사항"; break;
                         }
                         %>
-                    </td>
-                        <td><%= category %></td>
+                    <td><%= category %></td>
+                    
                      
                 </tr>
                 <tr>
@@ -105,13 +104,12 @@
             <div>
             
             	<a href="<%=contextPath%>/adminList.no" class="btn btn-sm btn-secondary">목록으로</a>
-            	
-            	<% if(loginAdmin != null && loginAdmin.getManagerId().equals(n.getManagerNo())) { %>
+
             
                 <a href="<%= contextPath %>/adminUpdateForm.no?num=<%= n.getNoticeNo() %>" class="btn btn-sm btn-warning">수정</a>
                 <a href="<%= contextPath %>/adminDelete.no?num=<%= n.getNoticeNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
-            	<% } %>
+
             </div>
 		</div>
     

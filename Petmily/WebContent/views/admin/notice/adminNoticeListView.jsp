@@ -156,53 +156,7 @@
             	<a href="<%= contextPath %>/adminEnrollForm.no" class="btn btn-sm btn-warning">등록</a>
                 <a href="<%= contextPath %>/adminUpdate.no" class="btn btn-sm btn-warning">수정</a>
                 
-                <!-- 삭제버튼(혜선꺼) : Button to Open the Modal -->
-               <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="<%= contextPath %>/adminDelete.no">
-                            삭제
-               </button>
-
-               <!-- 삭제 모달 Modal -->
-               <div class="modal fade" id="deleteModal">
-                  <div class="modal-dialog modal-dialog-centered">
-                     <div class="modal-content" style="width: 400px;">
-
-                        <!-- Modal body -->
-                        <div class="modal-body" align="center">
-                           <div class="modalMsg-area">
-                                                  정말 삭제하시겠습니까?
-                           </div>
-                           
-                       	   <div id="deletebtn-area">
-                           	   <a type="button" onclick="" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
-                           	   <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
-                           </div>              
-                        </div>
-                        
-                     </div>
-                  </div>
-               </div>
-               
-               <!-- 삭제 완료 확인창 Modal -->
-               <div class="modal fade" id="deleteCompleted">
-                  <div class="modal-dialog modal-sm modal-dialog-centered">
-                     <div class="modal-content">
-
-                        <!-- Modal body -->
-                        <div class="modal-body" align="center" style="text-align: center;">
-                           <div class="modalMsg-area">
-                                                  정상적으로 삭제되었습니다.
-                           </div>
-                           
-                           <div>
-                           <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
-                           </div>              
-                        </div>
-                  
-                     </div>
-                  </div>
-               </div>
-               
-			<br><br>
+                
            	</div>
         <% } %>   
           
@@ -212,13 +166,12 @@
 
         <!-- 테이블 -->
         <div class="table table-bordered">
-            <table  id="noticetable">
+	          <table  id="noticetable">
                 <thead>
                     <tr>
-                        <th width="50"><input type="checkbox" name="" value="" id="" onclick=""></th>
                         <th width="100">번호</th>
                         <th width="200">분류</th>
-                        <th width="650">제목</th>
+                        <th width="700">제목</th>
                         <th width="100">작성자</th>
                     </tr>
                 </thead>
@@ -233,7 +186,6 @@
                     <!--2. 게시글 있을 경우-->
                 <% for(Notice n : list) { %>
                     <tr>
-                        <td><input type="checkbox" name="num" value="" onclick=""></td>
                         <td><%= n.getNoticeNo() %></td>
                         
                         
@@ -276,8 +228,8 @@
     	<script>
     	$(function(){
     		$("#noticetable>tbody>tr").click(function(){
-    			location.href = '<%=contextPath%>/adminDetail.no?nno=' + $(this).children().eq(0).text();
-    			
+    			location.href = '<%=contextPath%>/adminDetail.no?num=' + $(this).children().eq(1).text();
+    			console.log(num);
     		})
     	})
     	</script>
@@ -337,6 +289,6 @@
 
 	</div>
 
-
+</div>
 </body>
 </html>

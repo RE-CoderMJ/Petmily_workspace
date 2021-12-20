@@ -57,7 +57,7 @@ public class AdminNoticeInsertController extends HttpServlet {
 			session.setAttribute("alertMsg", "성공적으로  공지사항 등록되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/adminList.no?cpage=1");
 			
-		}else {	// 실패 => 에러문구(공지사항 등록 실패) 담아서 에러페이지 보여지게끔 포워딩!!
+		}else {
 			request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다!");
 			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
 			

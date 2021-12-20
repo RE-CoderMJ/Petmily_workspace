@@ -30,13 +30,13 @@ public class AdminNoticeDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int noticeNo = Integer.parseInt(request.getParameter("nno"));
+		int noticeNo = Integer.parseInt(request.getParameter("num"));
     	
 		int result = new NoticeService().deleteNotice(noticeNo);
 		
     	if(result > 0) {
     		request.getSession().setAttribute("alertMsg", "성공적으로 공지사항을 삭제하였습니다.");
-    		response.sendRedirect(request.getContextPath() + "/adminList.no");
+    		response.sendRedirect(request.getContextPath() + "/adminList.no?cpage=1");
     		
     	}else {
     		request.setAttribute("errorMsg", "공지사항 삭제 실패");
