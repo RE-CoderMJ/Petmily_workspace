@@ -92,7 +92,7 @@ public class MarketService {
 				}
 			}
 		}
-		
+		System.out.println(result1);System.out.println(result2);
 		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {

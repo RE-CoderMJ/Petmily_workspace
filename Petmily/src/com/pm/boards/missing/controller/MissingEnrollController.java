@@ -1,4 +1,4 @@
-package com.pm.petLog.controller;
+package com.pm.boards.missing.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PetLogEnrollFormController
+ * Servlet implementation class MissingEnrollController
  */
-@WebServlet("/enrollForm.petLog")
-public class PetLogEnrollFormController extends HttpServlet {
+@WebServlet("/enroll.missing")
+public class MissingEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PetLogEnrollFormController() {
+    public MissingEnrollController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,8 @@ public class PetLogEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/petLog/petLogEnrollForm.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

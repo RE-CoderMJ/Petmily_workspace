@@ -47,5 +47,35 @@ public class FaqService {
 		return f;
 	}
 	
+	/* 5. faq 수정 */
+	public int updateFaq(Faq f) {
+		Connection conn = getConnection();
+		int result = new FaqDao().updateFaq(conn, f);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/* 6. faq 삭제 */
+	public int deleteFaq(int faqNo) {
+		Connection conn = getConnection();
+		int result = new FaqDao().deleteFaq(conn, faqNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	
+	
 
 }

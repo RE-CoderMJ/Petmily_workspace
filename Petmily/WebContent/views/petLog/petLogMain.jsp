@@ -27,7 +27,7 @@
         	<div id="petsroom-icon"><img src="resources/img/petLog/petsRoom.png" alt=""></div>
         	<div>나의 펫츠룸으로 이동</div>
         </div>
-        <div id="enroll-btn" onclick="location.href='<%= contextPath %>/enroll.petLog'">
+        <div id="enroll-btn" onclick="location.href='<%= contextPath %>/enrollForm.petLog'">
         	<div id="enroll-icon"><img src="resources/img/petLog/enroll.png" alt=""></div>
         	<div>나의 펫로그 쓰러가기</div>
         </div>

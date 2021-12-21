@@ -31,29 +31,16 @@ public class AdminFaqDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int faqNo = Integer.parseInt(request.getParameter("fno"));
+		int faqNo = Integer.parseInt(request.getParameter("num"));
 		
+		Faq f = new FaqService().selectFaq(faqNo);
 
-		
-		int result = new FaqService().increaseCount(faqNo);
-		
-		if(result > 0) {
-			
-			Faq f = new FaqService().selectBoard(faqNo);
 			
 			request.setAttribute("faq", f);
 			request.getRequestDispatcher("views/admin/faq/adminFaqDetailView.jsp").forward(request, response);
 			
-			
-		} else { 
-			
-			request.setAttribute("errorMsg", "FAQ 상세조회에 실패하였습니다...")
-			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
-		}
-	}
-
-	}
-
+	}	
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

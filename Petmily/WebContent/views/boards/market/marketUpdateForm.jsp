@@ -122,7 +122,7 @@
 	                    <span>원</span>
 	                </div>
 	                <div id="text-area">
-	                    <textarea name="content" placeholder="내용을 입력해주세요"><%=m.getMarketContent()%></textarea>
+	                    <textarea name="content" placeholder="내용을 입력해주세요" required><%=m.getMarketContent()%></textarea>
 	                </div>
 	            </div>    
 	            <div align="right" id="enroll-btn-area"><button class= "btn" type="submit">수정하기</button></div>
@@ -133,10 +133,10 @@
     <script>
 		$(function(){
 			let $maxAppend = Number(($("#add-area").children("input").last().attr('name')).substring(4));
-			
+			$("#file-count").val($maxAppend);
 			$("#add-btn").click(function (){
-				if($maxAppend >= 3){
-					alert("사진은 3개까지 업로드가 가능합니다.");
+				if($maxAppend >= 5){
+					alert("사진은 5개까지 업로드가 가능합니다.");
 					return;
 				}
 				//let $num = ($("#add-area").children("input").last().attr('name')).substring(4);
@@ -149,6 +149,7 @@
 			});						
 		})
 	</script>
+	
 	<script>
 		  //let clickCount = 0;
 		  let $imgCount = Number(($("#add-area").children("input").last().attr('name')).substring(4));
@@ -231,16 +232,7 @@
           }
           	
 	</script>
-	<script>
-	jQuery(window).load(function() {
-		 
-	    /*
-	        Stop carousel
-	    */
-	    $('.carousel').carousel('pause');
-	 
-	});
-	</script>
+	
 		            
 
 	<%@ include file="../../common/footerbar.jsp" %>

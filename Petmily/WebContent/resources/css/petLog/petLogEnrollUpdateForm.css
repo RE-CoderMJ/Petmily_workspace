@@ -1,124 +1,178 @@
 @charset "UTF-8";
 /* cont-wrap */
-   .cont-wrap{
-        margin: 0 auto;
-        width: 1000px;
-        margin-bottom:230px;
-    }
-    /* 제일 상단 */
-    .title-box{
-        padding: 10px;
-        width: 100%;
-        height: 40px;
-    }
-    .title-box .titles{
-        float: left;
-    }
-    .title-box a{
-        float: right;
-        color: rgb(247, 198, 4);
-        text-decoration: none;
-        cursor: pointer;
-    }
-    /* * 필수 입력사항 글씨 */
-    .required{
-        margin-right: 0px!important;
-        color: orange!important;
-    }
-    .titles{
-        font-size: 13px;
-        color: gray;
-    }
-    /* 파일첨부 글씨 */
-    .titles2{
-        font-weight: bolder;
-        margin-left: 110px;
-    }
-    .ct-tit{
-        font-size: 26px;
-        font-weight: bold;
-    }
+.cont-wrap{
+     margin: 0 auto;
+     width: 1000px;
+     margin-bottom:230px;
+ }
+ /* 제일 상단 */
+.title-box{
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+}
+.title-box .titles{
+    float: left;
+}
+.title-box a{
+    float: right;
+    color: rgb(247, 198, 4);
+    text-decoration: none;
+    cursor: pointer;
+}
+/* * 필수 입력사항 글씨 */
+.required{
+    margin-left: 10px!important;
+    color: orange!important;
+}
+.star{
+	margin-left: 140px!important;
+    color: orange!important;
+}
+.titles{
+    font-size: 13px;
+    color: gray;
+}
+/* 파일첨부 글씨 */
+.titles2{
+    font-weight: bolder;
+    margin-left: 110px;
+}
+.ct-tit{
+    font-size: 26px;
+    font-weight: bold;
+}
 
-    /* 마이펫 관리 */
-    .mypet-area{
-        /* background-color: burlywood; */
-        margin: auto;
-        width: 100%;
-    }
-    .mypet-area .pet-box{
-        position: relative;
-        width: 590px;
-        min-width: 250px;
-        height: 850px;
-        background-color: white;
-        border: 1px solid lightgray;
-        /* margin-right: 0px; */
-        text-align: center;
-        box-shadow: 5px 5px 5px lightgray;
-    }
-    .carousel-inner{
-        margin: auto;
-        width: 390px;
-        height: 350px;
-    } 
-    /* 사진 부분 스타일 */
-    #demo{
-        width: 390px;
-        height: 350px;
-        border: 1px solid lightgray;
-        margin-left: 100px;
-        border-radius: 4px;
-    }
-    .info{
-        margin-top: 20px;
-        /* margin-left: 70px; */
-    }
-    #photo-area{
-        width: 390px;
-        height: 350px;
-        margin-top: 20px;
-    }
-    .carousel-inner img {
-        width: 100%;
-        height: 100%;
-    }
-    #file-upload-area>p{
-        float: left;
-        font-weight: bolder;
-        color: rgb(106, 106, 106);
-    }
-    #file-upload-area{
-        margin-top: 30px;
-        /* margin-left: 70px; */
-        float: left;
-    }
-    #file-upload-area>input{
+/* 마이펫 관리 */
+.form-area{
+    margin: auto;
+    width: 100%;
+}
+.form-area .write-box{
+    position: relative;
+    width: 590px;
+    min-width: 250px;
+    min-height: 850px;
+    height:auto;
+    background-color: white;
+    border: 1px solid lightgray;
+    /* margin-right: 0px; */
+    text-align: center;
+    box-shadow: 5px 5px 5px lightgray;
+}
+.carousel-inner{
+    margin: auto;
+    width: 390px;
+    height: 350px;
+} 
+/* 사진 부분 스타일 */
+#demo{
+    width: 390px;
+    height: 350px;
+    border: 1px solid lightgray;
+    margin-left: 100px;
+    border-radius: 4px;
+}
+.info{
+    margin-top: 20px;
+    /* margin-left: 70px; */
+}
+#photo-area{
+    width: 390px;
+    height: 350px;
+    margin-top: 20px;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+#file-upload-area>span{
+    float: left;
+    font-weight: bolder;
+    color: rgb(106, 106, 106);
+    margin-right:-145px;
+}
+/* #file-upload-area{
+    margin-top: 30px;
+    margin-left: 70px;
+    float: left;
+}
+#file-upload-area>input{
         margin-top: 8px;
-    }
-
+} */
+#file-upload-area{
+    margin-top: 40px;
+    heigth:auto;
+    margin-bottom:35px;
+}
+#add-area{
+	height:auto;
+	margin-top:-15px;
+}
+#add-area>input{
+	margin-bottom:10px;
+}
+#add-btn{
+	width:30px;
+	height:30px;
+	border:none;
+	background:orange;
+	font-weight:bolder;
+	font-size:20px;
+	line-height:2px;
+	position:absolute;
+	left:500px;
+	border-radius:5px;
+	bottom:120px;
+}
+#right-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:160px;
+	left:370px;
+	opacity:0.8;
+}
+#left-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:160px;
+	left:15px;
+	opacity:0.8;
+}
+.file{
+	width: 300px;
+	height: 40px;
+	text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
+   	margin-left:35px;
+}
     /* 내용 */
-    #text-area>textarea{
-        width: 390px;
-        height: 200px;
-        resize: none;
-        padding: 10px;
-        margin-top: 20px;
-        border-radius: 4px;
-        border: 1px solid lightgray;    
-    }
-    /* 파일선택 부분 */
-    #file2{
-        margin-top: 39px;
-    }
-    
-    /* 올리기 버튼 */
-    #enroll-btn-area{
-        margin-top: 50px;
-        margin-left: 460px;
-    }
-    #enroll-btn-area>button{
-        background: rgb(247, 198, 4);
-        font-weight: bolder;
-        height: 30px;
-        line-height: 2px;
-    }
+#text-area>textarea{
+    width: 390px;
+    height: 200px;
+    resize: none;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 4px;
+    border: 1px solid lightgray;    
+}
+/* 파일선택 부분 */
+#file2{
+    margin-top: 39px;
+}
+
+/* 올리기 버튼 */
+#enroll-btn-area{
+    margin-top: 50px;
+    margin-left: 460px;
+    margin-bottom: 30px;
+}
+#enroll-btn-area>button{
+    background: rgb(247, 198, 4);
+    font-weight: bolder;
+    height: 30px;
+    line-height: 2px;
+}

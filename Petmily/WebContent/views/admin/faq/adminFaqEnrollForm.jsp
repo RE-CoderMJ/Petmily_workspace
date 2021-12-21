@@ -100,7 +100,7 @@
             </table>
             <br><br>
 
-            <!-- 하단 버튼 -->
+            <!-- 하단 버튼 (등록 : 등록, 취소) -->
             <div>
                 <button type="submit" class="btn btn-sm btn-warning">등록</button>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
