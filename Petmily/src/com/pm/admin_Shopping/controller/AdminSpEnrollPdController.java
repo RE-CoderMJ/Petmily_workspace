@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -41,30 +42,53 @@ public class AdminSpEnrollPdController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");		
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
-			//System.out.println("일단 확인 테스트...죽고싶네 다음생엔 보미로 태어난다 이것도 출력안되면 걍 머리박음");
 		
 			int maxSize = 10*1024*1024;
 			
 			// 저장시킬 폴더 경로
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/admin/adminSp_upfiles/");
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-			//System.out.println(savePath);
 			
+			/*
 			AdminShopping as = new AdminShopping();
 			as.setManagerNo(Integer.parseInt(multiRequest.getParameter("managerNo")));
 			as.setCategory(multiRequest.getParameter("category"));
 			as.setProductName(multiRequest.getParameter("productName"));
-			as.setProductOp(multiRequest.getParameter("productOp"));
+			as.setProductOpArr(multiRequest.getParameter("productOp"));
 			as.setPrice(Integer.parseInt(multiRequest.getParameter("price")));
 			as.setExplain(multiRequest.getParameter("explain"));
 			as.setDetail(multiRequest.getParameter("detail"));
 			as.setAmount(Integer.parseInt(multiRequest.getParameter("amount")));
 			//as.setBasicImg(multiRequest.getParameter("basicImg"));
+			*/
 			
-			//int opcount = 
+			int managerNo = Integer.parseInt(multiRequest.getParameter("managerNo"));
+			String category = multiRequest.getParameter("category"); 
+			String productName = multiRequest.getParameter("productName");
+			String[] productOpArr = multiRequest.getParameterValues("productOp"); 
+			int price = Integer.parseInt(multiRequest.getParameter("price")); 
+			String explain = multiRequest.getParameter("explain"); 
+			String detail = multiRequest.getParameter("detail"); 
+			int amount = Integer.parseInt(multiRequest.getParameter("amount"));
+
+			String productOp = "";
 			
-			//첨부파일
-			//ArrayList<Attachment> list = new ArrayList<>();
+			if(productOpArr != null) {
+				productOp = String.join(",", productOpArr);
+			}
+			
+			//기본생성자로 생성 후 setter 메소드 이용해서 담기			
+			AdminShopping as = new AdminShopping();
+			as.setManagerNo(managerNo);
+			as.setCategory(category);
+			as.setProductName(productName);
+			as.setProductOp(productOp);
+			as.setPrice(price);
+			as.setExplain(explain);
+			as.setDetail(detail);
+			as.setAmount(amount);
+			
+			
 			ArrayList<Attachment> list = new ArrayList<>();
 			
 			for(int i=1; i<=4; i++) {
@@ -93,7 +117,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 				
 				if(result > 0) {
 					// 성공 => /jsp/list.th	url요청 => 목록페이지
-					request.setAttribute("alertMsg", "쇼핑몰 등록 성공 ㅊㅋ");
+					request.getSession().setAttribute("alertMsg", "쇼핑몰 등록 성공 ㅊㅋ");
 					response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 				}else {
 					request.setAttribute("errorMsg", "님아 쇼핑몰 등록 실패요 ㅋㅋ");

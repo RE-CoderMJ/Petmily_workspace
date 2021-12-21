@@ -144,7 +144,7 @@
                                     <th width="130px">상품 옵션</th>
                                     <td id="form0" style="width: 100px">
                                     	<!-- <input type="hidden" name="opcount" value=""> -->
-                                        <input class="form-control" type="text" placeholder="옵션1" name="productOp1" style="width: 130px;">
+                                        <input class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
                                         
                                         <div class="btn-box">
                                             <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button>
@@ -239,7 +239,7 @@
                             $("#add").click(function(){
                                 $("#form0").append
                                 ("<input type='text' placeholder='옵션" + no + "' name='productOp' class='mr-2' style='width: 130px;' id='basic" + no + "'>"); 
-                                $("input[name=opcount]").val(no);
+                                //$("input[name=opcount]").val(no);
                                 no++;
                             });
                         });
