@@ -211,6 +211,93 @@ public class QnaDao {
 		return at;
 		
 	}
+
+	public int updateQna(Connection conn, Qna q) {
+		int qResult = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateQna");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, q.getQnaTitle());
+			pstmt.setString(2, q.getQnaContent());
+			pstmt.setInt(3, q.getQnaNo());
+			
+			qResult = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			close(pstmt);
+		}
+		
+		return qResult;
+	}
+
+	public int updateAttachment(Connection conn, Attachment at) {
+		int atResult = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setInt(4, at.getAttachmentNo());
+			
+			atResult = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return atResult;
+	}
+
+	public int insertNewAttachment(Connection conn, Attachment at) {
+		int atResult = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, at.getRefBoardNo());
+			pstmt.setInt(2, at.getRefNo());
+			pstmt.setString(3, at.getOriginName());
+			pstmt.setString(4, at.getChangeName());
+			pstmt.setString(5, at.getFilePath());
+			
+			atResult = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return atResult; 
+	}
+
+	public int deleteQna(Connection conn, int qnaNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteQna");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnaNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.pm.boards.qna.model.vo.Qna, com.pm.common.model.vo.Attachment"%>
+    pageEncoding="UTF-8" %>
+<%@ page import="com.pm.boards.qna.model.vo.Qna, com.pm.common.model.vo.Attachment" %>
 <%
 	Qna q = (Qna)request.getAttribute("q");
 	Attachment at = (Attachment)request.getAttribute("at");
@@ -246,7 +247,7 @@
                     <a href="<%= contextPath %>/main.qna?cpage=1" class="btn btn-sm btn-secondary">목록</a>
                     <% if(loginUser != null && loginUser.getNickname().equals(q.getMemNo())) { %>
                     	<a data-toggle="modal" data-target="#delModal" class="btn btn-sm btn-secondary">글 삭제</a>
-                    	<a href="<%= contextPath %>/update.qna" class="btn btn-sm btn-secondary">글 수정</a>
+                    	<a href="<%= contextPath %>/updateForm.qna?qno=<%= q.getQnaNo() %>" class="btn btn-sm btn-secondary">글 수정</a>
                     <% } %>
                 </div>
 
@@ -289,23 +290,48 @@
     <!-- The Modal -->
     <div class="modal fade" id="delModal">
         <div class="modal-dialog modal-sm">
+	        <div class="modal-content">
+	            
+	           <!-- Modal body -->
+	           <div class="modal-body">
+	            <br>
+	            게시글을 정말 삭제하시겠습니까?
+	            </div>
+	            
+	            <!-- Modal footer -->
+	            <form action="<%= contextPath %>/delete.qna" method="post">
+	            	<input type="hidden" name="qno" value="<%= q.getQnaNo() %>">
+		            <div class="modal-footer">
+		            <%-- <button type="submit" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" data-target="#delSuccessModal">삭제</button> --%>
+		            <button type="submit" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal">삭제</button>
+		            <button type="button" class="btn btn-warning" data-dismiss="modal">취소</button>
+		            </div>
+		        </form>
+	            
+	        </div>
+        </div>
+    </div>
+    
+    <%-- 
+    <!-- The Modal -->
+    <div class="modal fade" id="delSuccessModal">
+        <div class="modal-dialog modal-sm">
         <div class="modal-content">
             
             <!-- Modal body -->
             <div class="modal-body">
             <br>
-            게시글을 정말 삭제하시겠습니까?
+            게시글이 삭제되었습니다
             </div>
             
             <!-- Modal footer -->
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">삭제</button>
-            <button type="button" class="btn btn-warning" data-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">확인</button>
             </div>
             
         </div>
         </div>
     </div>
-
+	--%>
 </body>
 </html>

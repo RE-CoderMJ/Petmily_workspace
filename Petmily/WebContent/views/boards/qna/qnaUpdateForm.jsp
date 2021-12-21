@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.boards.qna.model.vo.Qna, com.pm.common.model.vo.Attachment" %>
+<%
+	Qna q = (Qna)request.getAttribute("q");
+	Attachment at = (Attachment)request.getAttribute("at");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,25 +116,34 @@
                         <span id="title_sm">1:1</span>
                     </div>
                     
-                    <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
-
-                    <div class="qnaEnroll" align="center">
-                        <p align="left">상품 / 배송 등 쇼핑 관련 문의는 <b style="color: seagreen;">쇼핑몰의 QnA</b>를 이용해주세요</p>
-                        
-                        <input type="text" id="qnaTitle" placeholder="제목">
-                        <textarea id="qnaContent" style="resize: none;" placeholder="내용"></textarea>
-                        
-                        <div style="margin-top: 20px;">
-                            <p style="margin: 0px -70px 30px 40px; float: left;">파일<br>첨부</p>
-                            <input type="file" style="margin-top: 8px;">
-                        </div>
-                        
-                        <div align="right" style="margin-top: 50px;">
-                            <label for="secretCheck"><input type="checkbox" id="secretCheck"> 비밀글</label>
-                            <!-- <button type="button" id="saveBtn" class="btn btn-sm btn-secondary">임시저장</button> -->
-                            <button type="submit" class="btn btn-sm btn-warning">수정하기</button>
-                        </div>
-                    </div>
+                    <form id="enroll-form" action="<%= contextPath %>/update.qna" method="post" enctype="multipart/form-data">
+                    
+	                    <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
+	
+	                    <div class="qnaEnroll" align="center">
+	                        <p align="left">상품 / 배송 등 쇼핑 관련 문의는 <b style="color: seagreen;">쇼핑몰의 QnA</b>를 이용해주세요</p>
+	                        
+	                        <input type="hidden" name="qno" value="<%= q.getQnaNo() %>">
+	                        
+	                        <input type="text" id="qnaTitle" name="qnaTitle" value="<%= q.getQnaTitle() %>">
+	                        <textarea id="qnaContent" name="qnaContent" style="resize: none;"><%= q.getQnaContent() %></textarea>
+	                        
+	                        <div style="margin-top: 20px;">
+	                            <p style="margin: 0px -70px 30px 40px; float: left;">파일<br>첨부</p>
+	                            <% if(at != null) { %>
+	                            	<%= at.getOriginName() %> &ensp;
+	                            	<input type="hidden" name="originFileNo" value="<%= at.getAttachmentNo() %>">
+	                           	<% } %>
+	                            	<input type="file" name="upfile" style="margin-top: 8px;">
+	                        </div>
+	                        
+	                        <div align="right" style="margin-top: 50px;">
+	                            <label for="secretCheck"><input type="checkbox" id="secretCheck"> 비밀글</label>
+	                            <!-- <button type="button" id="saveBtn" class="btn btn-sm btn-secondary">임시저장</button> -->
+	                            <button type="submit" class="btn btn-sm btn-warning">수정하기</button>
+	                        </div>
+	                    </div>
+	                </form>
 
                 </div>
             </div>

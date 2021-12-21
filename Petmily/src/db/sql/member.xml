@@ -71,5 +71,6 @@
 		    SEQ_MNO.CURRVAL
 		  )
 	</entry>
+	
 
 </properties>

@@ -9,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pm.boards.qna.model.service.QnaService;
-import com.pm.boards.qna.model.vo.Qna;
-import com.pm.common.model.vo.Attachment;
 
 /**
- * Servlet implementation class QnaUpdateFormController
+ * Servlet implementation class QnaDeleteController
  */
-@WebServlet("/updateForm.qna")
-public class QnaUpdateFormController extends HttpServlet {
+@WebServlet("/delete.qna")
+public class QnaDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaUpdateFormController() {
+    public QnaDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +32,14 @@ public class QnaUpdateFormController extends HttpServlet {
 		
 		int qnaNo = Integer.parseInt(request.getParameter("qno"));
 		
-		Qna q = new QnaService().selectQna(qnaNo);
-		Attachment at = new QnaService().selectAttachment(qnaNo);
+		int result = new QnaService().deleteQna(qnaNo);
 		
-		request.setAttribute("q", q);
-		request.setAttribute("at", at);
-		
-		request.getRequestDispatcher("views/boards/qna/qnaUpdateForm.jsp").forward(request, response);
+		System.out.println(result);
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath() + "/detail.qna?cpage=1");
+		} else { 
+			
+		}
 	}
 
 	/**

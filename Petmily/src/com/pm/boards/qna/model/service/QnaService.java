@@ -79,5 +79,43 @@ public class QnaService {
 		return at;
 	}
 
+	public int updateQna(Qna q, Attachment at) {
+		Connection conn = getConnection();
+		
+		int qResult = new QnaDao().updateQna(conn, q);
+		
+		int atResult = 1;
+		if(at != null) {
+			
+			if(at.getAttachmentNo() != 0) { // 기존 첨부파일 있을 경우 => UPDATE				
+				atResult = new QnaDao().updateAttachment(conn, at);
+			} else { // 없을 경우 => INSERT
+				atResult = new QnaDao().insertNewAttachment(conn, at);
+			}
+		}
+		
+		if(qResult * atResult > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return qResult * atResult;
+	}
+
+	public int deleteQna(int qnaNo) {
+		Connection conn = getConnection();
+		
+		int result = new QnaDao().deleteQna(conn, qnaNo);
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
+
 
 }
