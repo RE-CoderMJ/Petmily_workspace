@@ -1,5 +1,7 @@
 package com.pm.boards.qna.model.dao;
 
+import static com.pm.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,9 +12,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.boards.qna.model.vo.Qna;
+import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
-
-import static com.pm.common.JDBCTemplate.*;
 
 public class QnaDao {
 	
@@ -85,5 +86,133 @@ public class QnaDao {
 		}
 		return list;
 	}
+
+	public int insertQna(Connection conn, Qna q) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertQna");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(q.getMemNo()));
+			pstmt.setString(2, q.getQnaTitle());
+			pstmt.setString(3, q.getQnaContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int increaseCount(Connection conn, int qnaNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnaNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Qna selectQna(Connection conn, int qnaNo) {
+		Qna q = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectQna");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnaNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				q = new Qna(rset.getInt("qna_no"),
+							rset.getString("nickname"),
+							rset.getString("qna_title"),
+							rset.getString("qna_content"),
+							rset.getString("qna_date"),
+							rset.getInt("count")
+						   );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return q;
+	}
+
+	public Attachment selectAttachment(Connection conn, int qnaNo) {
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qnaNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				at = new Attachment();
+				at.setAttachmentNo(rset.getInt("attachment_no"));
+				at.setOriginName(rset.getString("origin_name"));
+				at.setChangeName(rset.getString("change_name"));
+				at.setFilePath(rset.getString("file_path"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return at;
+		
+	}
+	
+	
+	
 
 }

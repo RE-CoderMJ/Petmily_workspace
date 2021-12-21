@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.boards.qna.model.vo.Qna, com.pm.common.model.vo.Attachment"%>
+<%
+	Qna q = (Qna)request.getAttribute("q");
+	Attachment at = (Attachment)request.getAttribute("at");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,32 +215,39 @@
                 </div>
                 
                 <div style="border-bottom: 2px solid lightgray; margin-top: 30px;"></div>
-
-                <p class="detailTitle">웹사이트에 관련해 문의드립니다</p>
+				
+                <p class="detailTitle" name="qnaTitle"><%= q.getQnaTitle() %></p>
 
                 <div style="border-bottom: 2px solid lightgray;"></div>
 
                 <div class="qnaContentTop">
-                    <p>20XX-XX-XX xx:xx</p>
-                    <p>조회 63</p>
+                    <p name="qnaDate"><%= q.getQnaDate() %></p>
+                    <p name="count">조회 <%= q.getCount() %></p>
                     <a href="">신고</a>
                     <div id="writer" style="float:right;">
                         <img src="resources/img/profile_default.png" class="profileImg">
-                        <span>땅콩집사</span>
+                        <span name="qnaWriter"><%= q.getMemNo() %></span>
                     </div>
                 </div>
 
-                <p class="detailContent">
-                    아니 사이트를 너무 잘만드셨네요 <br>
-                    어떻게 하신거죠?
+                <p class="detailContent" name="qnaContent">
+                    <%= q.getQnaContent() %>
                 </p>
+                
+				<% if(at == null) { %>
+                	<p><b>첨부파일</b>&ensp;<span>첨부파일이 없습니다</span></p>
+               	<% } else { %>
+               		<p><b>첨부파일</b>&ensp;<a href="<%= contextPath %>/<%= at.getFilePath() + at.getChangeName() %>"><%= at.getOriginName() %></a></p>
+                <% } %>
 
                 <div style="border-bottom: 2px solid lightgray;"></div>
 
                 <div class="btns">
-                    <a href="<%= contextPath %>/main.qna" class="btn btn-sm btn-secondary">목록</a>
-                    <a data-toggle="modal" data-target="#delModal" class="btn btn-sm btn-secondary">글 삭제</a>
-                    <a href="<%= contextPath %>/update.qna" class="btn btn-sm btn-secondary">글 수정</a>
+                    <a href="<%= contextPath %>/main.qna?cpage=1" class="btn btn-sm btn-secondary">목록</a>
+                    <% if(loginUser != null && loginUser.getNickname().equals(q.getMemNo())) { %>
+                    	<a data-toggle="modal" data-target="#delModal" class="btn btn-sm btn-secondary">글 삭제</a>
+                    	<a href="<%= contextPath %>/update.qna" class="btn btn-sm btn-secondary">글 수정</a>
+                    <% } %>
                 </div>
 
                 <div class="replyArea">

@@ -36,6 +36,17 @@ public class Qna {
 		this.qnaDate = qnaDate;
 		this.count = count;
 	}
+	
+
+	public Qna(int qnaNo, String memNo, String qnaTitle, String qnaContent, String qnaDate, int count) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaContent = qnaContent;
+		this.qnaDate = qnaDate;
+		this.count = count;
+	}
 
 
 	public int getQnaNo() {
