@@ -1,6 +1,6 @@
 package com.pm.shop.model.dao;
 
-import static com.pm.common.JDBCTemplate.*;
+import static com.pm.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import com.pm.shop.model.vo.OrderProduct;
+import com.pm.shop.model.vo.OrderSelect;
 
 public class ExchangeDao {
 	
@@ -25,9 +26,9 @@ public class ExchangeDao {
 	}
 	
 	
-	public OrderProduct selectOrderProduct(Connection conn, int orderPnum) {
-		// select문 -> ResultSet(한행) ->OrderProduct
-		OrderProduct op = null;
+	public OrderSelect selectOrderProduct(Connection conn, int orderPnum) {
+		// select문 -> ResultSet(한행) ->OrderSelect
+		OrderSelect o = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectOrderProduct");
@@ -38,7 +39,7 @@ public class ExchangeDao {
 						
 			rset = pstmt.executeQuery();
 			
-			op = new OrderProduct(rset.getString("order_poption")
+			o = new OrderSelect(rset.getString("order_poption")
 					            , rset.getInt("order_pamount")
 					            , rset.getInt("price")
 					            , rset.getString("product_name"));
@@ -49,7 +50,7 @@ public class ExchangeDao {
 			close(pstmt);
 			
 		}
-		 return op;
+		 return o;
 		
 		
 	}

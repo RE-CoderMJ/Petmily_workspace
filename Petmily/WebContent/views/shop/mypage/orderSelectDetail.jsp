@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.shop.model.vo.*"%>
 <%
-	OrderProduct op = (OrderProduct)request.getAttribute("op");
+	//OrderSelect o = (OrderSelect)request.getAttribute("o");
 	ArrayList<OrderSelect> osdetail = (ArrayList<OrderSelect>)request.getAttribute("osdetail");
 %>    
 
@@ -137,7 +137,7 @@ div, img, li, a{
                 
                	 <%= osd.getProductName() %>
                 <br>
-             	 옵션
+             	 옵션<%= osd.getOrderPoption() %>
                 <br>
                 <br>
                 <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>
@@ -212,11 +212,11 @@ div, img, li, a{
         </div>
         <br><br>
         
+		</div>
         <% } %>
 	<% } %>
+
 </div>
-
-
 
 
 </div>

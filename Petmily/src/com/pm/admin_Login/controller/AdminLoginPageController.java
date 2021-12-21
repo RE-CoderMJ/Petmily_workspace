@@ -1,27 +1,23 @@
-package com.pm.shop.controller;
+package com.pm.admin_Login.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.shop.model.service.ExchangeService;
-import com.pm.shop.model.vo.OrderSelect;
-
 /**
- * Servlet implementation class MpExchangeAppController
+ * Servlet implementation class AdminLoginPageController
  */
-@WebServlet("/exchangeapp.my")
-public class MpExchangeAppController extends HttpServlet {
+@WebServlet("/login.ad")
+public class AdminLoginPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MpExchangeAppController() {
+    public AdminLoginPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +26,8 @@ public class MpExchangeAppController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int orderPnum = Integer.parseInt(request.getParameter("pno"));
-		
-		OrderSelect o = new ExchangeService().selectOrderProduct(orderPnum);
-		
-		//Exchange ec = new ExchangeService().select();
-		
-		
-		request.setAttribute("o", o);
-		
-		request.getRequestDispatcher("views/shop/mypage/exchangeApplication.jsp").forward(request, response);
-	}
+		request.getRequestDispatcher("views/admin/login/adminLoginView.jsp").forward(request, response);
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

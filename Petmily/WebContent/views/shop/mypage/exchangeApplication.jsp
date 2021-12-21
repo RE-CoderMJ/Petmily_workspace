@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.pm.shop.model.vo.*"%>
 <%
-	OrderProduct op = (OrderProduct)request.getAttribute("op");
+	OrderSelect o = (OrderSelect)request.getAttribute("o");
 %>
 <!DOCTYPE html>
 <html>
@@ -127,7 +127,7 @@
 
 <div id="outer">
 
-<% if(op == null) { %>
+<% if(o == null) { %>
 	<div align="center" id="nullcase">상품이 없습니다.</div>
 <% } else { %>
         <div id="one">
@@ -137,15 +137,15 @@
             
             <div class="inline-block"  id="onecontent" >
                         
-               	 <%= op.getProduct_name() %>
+               	 <%= o.getProductName() %>
                 <br>
 
-                <div id="option" style="font-size:12px; margin-top: 5px;"><%= op.getOrderPoption() %></div>
+                <div id="option" style="font-size:12px; margin-top: 5px;"><%= o.getOrderPoption() %></div>
     
             </div>
             
             <div class="inline-block" id="money">
-                <h3><%= op.getPrice() %></h3>
+                <h3><%= o.getPrice() %></h3>
             </div>
         </div>
 <% } %> 

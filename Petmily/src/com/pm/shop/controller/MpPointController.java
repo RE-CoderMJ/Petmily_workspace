@@ -153,7 +153,7 @@ public class MpPointController extends HttpServlet {
 		request.setAttribute("pointSum", pointSum);
 		
 		//System.out.println(list);
-		
+		//System.out.println(pi);
 		
 		request.getRequestDispatcher("views/shop/mypage/point.jsp").forward(request, response);
 	}

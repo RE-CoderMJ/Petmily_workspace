@@ -3,19 +3,25 @@ package com.pm.shop.model.vo;
 import java.sql.Date;
 
 public class OrderSelect {
-	private int orderPnum;
-	private int orderNo;
-	private int productNo;
-	private String pOption;
-	private int pAmount;
-	private String productName;
-	private int price;
-	private Date orderDate;
+	private int orderPnum; 			// 주문별 상품번호
+	private int orderNo; 			// 주문번호
+	private int productNo; 			// 상품번호
+	private String pOption; 		// 상품옵션
+	private int pAmount; 			// 상품수량
+	private String productName; 	// 상품명
+	private int price; 				// 가격
+	private Date orderDate; 		// 주문날짜
+
+	private String orderPoption; 	// 주문상품 옵션
+	private int orderPamount; 		// 주문상품 수량
+
+
 	
 	public OrderSelect() {}
 
+
 	public OrderSelect(int orderPnum, int orderNo, int productNo, String pOption, int pAmount, String productName,
-			int price, Date orderDate) {
+			int price, Date orderDate, String orderPoption, int orderPamount) {
 		super();
 		this.orderPnum = orderPnum;
 		this.orderNo = orderNo;
@@ -25,9 +31,9 @@ public class OrderSelect {
 		this.productName = productName;
 		this.price = price;
 		this.orderDate = orderDate;
+		this.orderPoption = orderPoption;
+		this.orderPamount = orderPamount;
 	}
-	
-	
 
 
 
@@ -39,6 +45,14 @@ public class OrderSelect {
 		this.pAmount = pAmount;
 		this.price = price;
 		this.orderDate = orderDate;
+	}
+	
+	public OrderSelect(String orderPoption, int orderPamount, int price, String product_name) {
+		super();
+		this.orderPoption = orderPoption;
+		this.orderPamount = orderPamount;
+		this.price = price;
+		this.productName = product_name;
 	}
 
 	public int getOrderPnum() {
@@ -105,13 +119,36 @@ public class OrderSelect {
 		this.orderDate = orderDate;
 	}
 
+
+	public String getOrderPoption() {
+		return orderPoption;
+	}
+
+
+	public void setOrderPoption(String orderPoption) {
+		this.orderPoption = orderPoption;
+	}
+
+
+	public int getOrderPamount() {
+		return orderPamount;
+	}
+
+
+	public void setOrderPamount(int orderPamount) {
+		this.orderPamount = orderPamount;
+	}
+
+
 	@Override
 	public String toString() {
 		return "OrderSelect [orderPnum=" + orderPnum + ", orderNo=" + orderNo + ", productNo=" + productNo
 				+ ", pOption=" + pOption + ", pAmount=" + pAmount + ", productName=" + productName + ", price=" + price
-				+ ", orderDate=" + orderDate + "]";
+				+ ", orderDate=" + orderDate + ", orderPoption=" + orderPoption + ", orderPamount=" + orderPamount
+				+ "]";
 	}
 
+	
 	
 	
 	

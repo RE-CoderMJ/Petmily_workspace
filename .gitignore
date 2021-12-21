@@ -114,3 +114,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,eclipse
+Petmily/src/com/pm/admin_Faq/model/dao/test

@@ -6,16 +6,16 @@ import static com.pm.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 
 import com.pm.shop.model.dao.ExchangeDao;
-import com.pm.shop.model.vo.OrderProduct;
+import com.pm.shop.model.vo.OrderSelect;
 
 public class ExchangeService {
 
-	public OrderProduct selectOrderProduct(int orderPnum) {
+	public OrderSelect selectOrderProduct(int orderPnum) {
 		Connection conn = getConnection();
-		OrderProduct op = new ExchangeDao().selectOrderProduct(conn, orderPnum);
+		OrderSelect o = new ExchangeDao().selectOrderProduct(conn, orderPnum);
 
 		close(conn);
-		return op;
+		return o;
 		
 	}
 	
