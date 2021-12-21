@@ -79,4 +79,29 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="selectProduct">
+		SELECT
+		       PRODUCT_NO
+		     , CATEGORY
+		     , PRODUCT_NAME
+		     , PRODUCT_OP
+		     , PRICE
+		     , EXPLAIN
+		     , DETAIL
+		     , AMOUNT
+		 FROM TB_PRODUCT_UD
+		WHERE PRODUCT_NO = ?
+	</entry>
+	
+	<entry key="selectAttachmentList">
+		SELECT
+		       ATTACHMENT_NO
+		     , ORIGIN_NAME  
+		     , CHANGE_NAME
+		     , FILE_PATH
+		  FROM ATTACHMENT
+		 WHERE REF_BOARD_NO = 2
+		   AND REF_NO = ?
+	</entry>
+	
 </properties>

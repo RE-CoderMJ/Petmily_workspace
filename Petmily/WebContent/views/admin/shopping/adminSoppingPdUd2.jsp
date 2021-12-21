@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Shopping.model.vo.AdminShopping, com.pm.common.model.vo.Attachment" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<AdminShopping> aslist = (ArrayList<AdminShopping>)request.getAttribute("aslist");
+	AdminShopping as = (AdminShopping)request.getAttribute("as");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+	
+	System.out.println(pi);
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -116,131 +130,110 @@
             
             <!-- cont-wrap -->
             <div class="cont-wrap">
-                <div class="title-box mt-5 pb-2">
+                <div class="title-box mt-1 pb-2">
                     <h3 class="mt-2">> 관리자 쇼핑몰</h3>
                 </div>
                 <div class="content product-reg">
                     <hr>
                     <p class="ct-tit pb-3">상품 수정</p>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th width="130px">*카테고리</th>
-                                <td>
-                                    <select class="selectpicker show-tick p-2">
-                                        <option>1차</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                    <select class="selectpicker show-tick p-2">
-                                        <option>1차</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 상품명</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="상품명을 입력하세요.">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">상품 옵션</th>
-                                <td id="form" width="150">
-                                    <input class="form-control" type="text" placeholder="옵션1" id="form1" style="width: 130px;">
-                                    <div class="btn-box">
-                                        <button onclick="plus();" class="btn btn-sm material-icons" id="add">add</button>
-                                        <!-- <button onclick="minus();" class="btn btn-sm material-icons">remove</button> -->
-                                    </div>
-                                    <!--  class='mr-2' style='width: 130px;' id=|'test'+no+'|'/>"); -->
-                                    <script>
-                                        $(document).ready(function(){
-                                            var no = 2;
-                                            $("#add").click(function(){
-                                                $("#form").append
-                                                ("<input type='text' placeholder='옵션" + no + "' class='mr-2' style='width: 130px;' id='form" + no + "'>"); 
-                                                no++;
-                                            });
-                                        });
-                                    </script>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 판매가</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="판매가를 입력해주세요">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">한줄평</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 기본이미지</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="상품이미지를 등록하세요.">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">상품상세정보</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">세부 이미지1</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">세부 이미지2</th>
-                                <td>
-                                    <input class="form-control" type="text">
-                                    <button class="btn btn-sm btn-primary">파일선택</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th width="130px">* 수량</th>
-                                <td>
-                                    <input class="form-control" type="text" placeholder="수량을 입력해주세요">
-                                </td>
-                            </tr>
-                        </tbody>    
-                    </table>
-                    <div style="width: 550px; text-align: center;">
-                        <br><br>
-                        <button class="btn btn-warning mr-3" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">확인</button>
-                        <button class="btn btn-light">취소</button>
-                    </div>
-                    <!-- 수정완료 Modal -->
-                    <div class="modal fade" id="changeCompleted">
-                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                            <div class="modal-content">
-
-                                <!-- Modal body -->
-                                <div class="modal-body" align="center" style="text-align: center;">
-                                    <div class="modalMsg-area">
-                                        정상적으로 <br>상품이 수정 되었습니다.
-                                    </div>
-                                    <div>
-                                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal" id="changeCompletedclosebtn">닫기</button>
-                                    </div>              
-                                </div>
-                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
+                    <form id="update-form" action="<%=contextPath%>/spErPdst.ad" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="managerNo" value="<%=loginAdmin.getManagerNo()%>"> 
+                         <table>
+                             <tbody>
+                                 <tr>
+                                     <th width="130px">*카테고리</th>
+                                     <td>
+                                         <select name="category" class="selectpicker show-tick p-2">
+                                             <option value="1">강아지</option>
+                                             <option value="2">고양이</option>
+                                             <option value="3">기타</option>
+                                         </select>
+                                         <!-- <select class="selectpicker show-tick p-2">
+                                             <option>1차</option>
+                                             <option>2</option>
+                                             <option>3</option>
+                                         </select>-->
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">* 상품명</th>
+                                     <td>
+                                         <input name="productName" class="form-control" type="text" placeholder="상품명을 입력하세요." required>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">상품 옵션</th>
+                                     <td id="form0" style="width: 100px">
+                                         <!-- <input type="hidden" name="opcount" value=""> -->
+                                         <input class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
+                                         
+                                         <div class="btn-box">
+                                             <!-- <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button> -->
+                                             <!-- <button onclick="minus();" class="btn btn-sm material-icons">remove</button> -->
+                                         </div>
+                                     
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">* 판매가</th>
+                                     <td>
+                                         <input class="form-control" type="number" placeholder="판매가를 입력해주세요" name="price" required>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">한줄평</th>
+                                     <td>
+                                         <input class="form-control" type="text" name="explain">
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">* 기본이미지</th>
+                                     <td>
+                                         <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
+                                         <input type="file" class="mt-3" name="file1" required>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">상품상세정보</th>
+                                     <td>
+                                         <!-- <input class="form-control" type="text"> -->
+                                         <textarea class="form-control" type="text" name="detail" class="mt-1" style="height: 160px; width: 300px; resize: none;"></textarea>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">세부 이미지1</th>
+                                     <td>
+                                         <!-- <input class="form-control" type="text"> -->
+                                         <input type="file" name="file2" class="mt-3">
+                                         <!-- <button class="btn btn-sm btn-primary ml-3">파일선택</button> -->
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">세부 이미지2</th>
+                                     <td>
+                                         <!-- <input class="form-control" type="text"> -->
+                                         <input type="file" name="file3" class="mt-3">
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <th width="130px">* 수량</th>
+                                     <td>
+                                         <input class="form-control" type="number" placeholder="수량을 입력해주세요" name="amount" required>
+                                     </td>
+                                 </tr>
+                             </tbody>    
+                         </table>
+                         <div style="width: 800px; text-align: center;" align="center">
+                             <br><br><br><br>
+                             
+                             <button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=1';" class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" type="submit">확인</button>
+                             <button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=1';" type="button" class="btn btn-light" style="width: 80px;">취소</button>
+                         </div>
+                         
+                     </form>
+                     </div>
+                 </div>
+             </div>
     </body>
     </html>
    

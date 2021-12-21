@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import static com.pm.common.JDBCTemplate.*;
 
 import com.pm.admin_Shopping.model.vo.AdminShopping;
+import com.pm.boards.market.model.vo.Market;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
 
@@ -113,7 +114,7 @@ private Properties prop = new Properties();
 	
 	public ArrayList<AdminShopping> selectList(Connection conn, PageInfo pi){
 		// select문 => ResultSet (여러행) => ArrayList<Board>
-		ArrayList<AdminShopping> list = new ArrayList<>();
+		ArrayList<AdminShopping> aslist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectList");
@@ -138,7 +139,7 @@ private Properties prop = new Properties();
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new AdminShopping(rset.getInt("product_No"),
+				aslist.add(new AdminShopping(rset.getInt("product_No"),
 								   rset.getString("category"),
 								   rset.getString("product_Name"),
 								   rset.getInt("price"),
@@ -151,8 +152,70 @@ private Properties prop = new Properties();
 			close(rset);
 			close(pstmt);
 		}
-		return list;
+		return aslist;
 		
+	}
+	public AdminShopping selectProduct(Connection conn, int ProductNo) {
+			
+			AdminShopping as = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("selectProduct");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, ProductNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					as = new AdminShopping(rset.getInt("product_no"),
+									       rset.getString("category"),
+									       rset.getString("product_name"),
+									       rset.getString("product_op"),
+									       rset.getInt("price"),
+									       rset.getString("explain"),
+									       rset.getString("detail"),
+									       rset.getInt("amount")
+									       );
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return as;
+		}
+	
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, int ProductNo){
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ProductNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment at = new Attachment();
+				at.setOriginName(rset.getString("origin_name"));
+				at.setChangeName(rset.getString("change_name"));
+				at.setFilePath(rset.getString("file_path"));
+				
+				list.add(at);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 	
 }

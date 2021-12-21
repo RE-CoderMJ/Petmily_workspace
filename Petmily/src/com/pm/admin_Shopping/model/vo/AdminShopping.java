@@ -39,6 +39,19 @@ public class AdminShopping {
 		this.amount = amount;
 	}
 
+	public AdminShopping(int productNo, String category, String productName, String productOp, int price,
+			String explain, String detail, int amount) {
+		super();
+		this.productNo = productNo;
+		this.category = category;
+		this.productName = productName;
+		this.productOp = productOp;
+		this.price = price;
+		this.explain = explain;
+		this.detail = detail;
+		this.amount = amount;
+	}
+
 	public int getProductNo() {
 		return productNo;
 	}

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.pm.admin_Shopping.model.dao.AdminShoppingDao;
 import com.pm.admin_Shopping.model.vo.AdminShopping;
+import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
 
@@ -40,7 +41,20 @@ public class AdminShoppingService {
 	}
 	public ArrayList<AdminShopping> selectList(PageInfo pi){
 		Connection conn = getConnection();
-		ArrayList<AdminShopping> list = new AdminShoppingDao().selectList(conn, pi);
+		ArrayList<AdminShopping> aslist = new AdminShoppingDao().selectList(conn, pi);
+		close(conn);
+		return aslist;
+	}
+	public AdminShopping selectProduct(int ProductNo) {
+		Connection conn = getConnection();
+		AdminShopping as = new AdminShoppingDao().selectProduct(conn, ProductNo);
+		close(conn);
+		return as;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(int ProductNo) {
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new MarketDao().selectAttachmentList(conn, ProductNo);
 		close(conn);
 		return list;
 	}

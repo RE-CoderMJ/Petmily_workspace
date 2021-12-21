@@ -3,8 +3,9 @@
 <%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Shopping.model.vo.AdminShopping" %>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<AdminShopping> list = (ArrayList<AdminShopping>)request.getAttribute("list");
-
+	ArrayList<AdminShopping> aslist = (ArrayList<AdminShopping>)request.getAttribute("aslist");
+	AdminShopping as = (AdminShopping)request.getAttribute("as");
+	
 	System.out.println(pi);
 	
 	int currentPage = pi.getCurrentPage();
@@ -219,7 +220,7 @@
                             <!-- <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>-->
                             <!-- btn-box -->
                             <div class="pb-5">
-                                <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal" onclick="location.href='<%= contextPath %>/spPdUd2.ad';">수정</button>
+                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno=<%= as.getProductNo() %>';" class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">수정</button>
                             </div>
                             
                             <div class="pb-5">
@@ -278,21 +279,21 @@
                             </thead>
                             <tbody>
                                 <!--1. 게시글 없을 경우-->
-                            	<% if(list.isEmpty()) { %>
+                            	<% if(aslist.isEmpty()) { %>
                                 <tr style="display:none">
                                     <td colspan="6">조회된 게시글이 없습니다</td>
                                 </tr>
                                 <!--2. 게시글 있을 경우-->
                                 <% }else { %>
-                                <% for(int i=0; i<list.size(); i++) {%>
+                                <% for(int i=0; i<aslist.size(); i++) {%>
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
                                     <td><%= i+1 %></td>
-                                    <td><%= list.get(i).getProductNo() %></td>
-                                    <td><%= list.get(i).getCategory() %></td>
-                                    <td><%= list.get(i).getProductName() %></td>
-                                    <td><%= list.get(i).getPrice() %></td>
-                                    <td><%= list.get(i).getAmount() %></td>
+                                    <td><%= aslist.get(i).getProductNo() %></td>
+                                    <td><%= aslist.get(i).getCategory() %></td>
+                                    <td><%= aslist.get(i).getProductName() %></td>
+                                    <td><%= aslist.get(i).getPrice() %></td>
+                                    <td><%= aslist.get(i).getAmount() %></td>
                                 </tr>
                                <% } %>
 							<% } %>
