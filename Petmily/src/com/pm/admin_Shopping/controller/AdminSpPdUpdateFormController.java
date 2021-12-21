@@ -38,7 +38,7 @@ public class AdminSpPdUpdateFormController extends HttpServlet {
 		AdminShoppingService aService = new AdminShoppingService();
 		
 		AdminShopping as = aService.selectProduct(ProductNo);
-		ArrayList<Attachment> list = aService.selectAttachment(ProductNo);
+		ArrayList<Attachment> list = aService.selectAttachmentList(ProductNo);
 
 		request.setAttribute("as", as);
 		request.setAttribute("list", list);

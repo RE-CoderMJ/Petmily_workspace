@@ -220,7 +220,7 @@
                             <!-- <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>-->
                             <!-- btn-box -->
                             <div class="pb-5">
-                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno=<%= as.getProductNo() %>';" class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">수정</button>
+                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno=';" class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">수정</button>
                             </div>
                             
                             <div class="pb-5">

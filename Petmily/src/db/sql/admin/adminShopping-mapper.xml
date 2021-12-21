@@ -100,8 +100,53 @@
 		     , CHANGE_NAME
 		     , FILE_PATH
 		  FROM ATTACHMENT
-		 WHERE REF_BOARD_NO = 2
+		 WHERE REF_BOARD_NO = 4
 		   AND REF_NO = ?
+	</entry>
+	
+	<entry key="updateProduct">
+		UPDATE
+		       TB_PRODUCT_UD
+		   SET CATEGORY = ?
+		     , PRODUCT_NAME = ?
+		     , PRODUCT_OP = ?
+             , PRICE = ?
+		     , EXPLAIN = ?
+             , DETAIL = ?
+		     , AMOUNT = ?
+		 WHERE PRODUCT_NO = ?
+	</entry>
+	
+	<entry key="updateAttachment">
+		UPDATE 
+		  	   ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , FILE_PATH = ?
+		 WHERE ATTACHMENT_NO = ?
+		   	
+	</entry>
+	
+	<entry key="insertNewAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 4
+		  , ?
+		  , ?
+		  )
 	</entry>
 	
 </properties>

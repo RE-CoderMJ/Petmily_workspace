@@ -137,6 +137,7 @@
                     <hr>
                     <p class="ct-tit pb-3">상품 수정</p>
                     <form id="update-form" action="<%=contextPath%>/spErPdst.ad" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="ProductNo" value="<%=as.getProductNo()%>"> 
                         <input type="hidden" name="managerNo" value="<%=loginAdmin.getManagerNo()%>"> 
                          <table>
                              <tbody>
@@ -148,6 +149,15 @@
                                              <option value="2">고양이</option>
                                              <option value="3">기타</option>
                                          </select>
+                                         <script>
+					                    	$(function(){
+					                    		$("select[name=category] option").each(function(){
+					                    			if($(this).val() == "<%= as.getCategory()%>"){
+					                    				$(this).attr("selected", true);
+					                    			}
+					                    		})
+					                    	})
+					                    </script>
                                          <!-- <select class="selectpicker show-tick p-2">
                                              <option>1차</option>
                                              <option>2</option>
@@ -158,14 +168,14 @@
                                  <tr>
                                      <th width="130px">* 상품명</th>
                                      <td>
-                                         <input name="productName" class="form-control" type="text" placeholder="상품명을 입력하세요." required>
+                                         <input value="<%= as.getProductName() %>" name="productName" class="form-control" type="text" placeholder="상품명을 입력하세요." required>
                                      </td>
                                  </tr>
                                  <tr>
                                      <th width="130px">상품 옵션</th>
                                      <td id="form0" style="width: 100px">
                                          <!-- <input type="hidden" name="opcount" value=""> -->
-                                         <input class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
+                                         <input value="<%= as.getProductOp() %>" class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
                                          
                                          <div class="btn-box">
                                              <!-- <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button> -->
@@ -177,19 +187,24 @@
                                  <tr>
                                      <th width="130px">* 판매가</th>
                                      <td>
-                                         <input class="form-control" type="number" placeholder="판매가를 입력해주세요" name="price" required>
+                                         <input value="<%= as.getPrice() %>" class="form-control" type="number" placeholder="판매가를 입력해주세요" name="price" required>
                                      </td>
                                  </tr>
                                  <tr>
                                      <th width="130px">한줄평</th>
                                      <td>
-                                         <input class="form-control" type="text" name="explain">
+                                         <input value="<%= as.getExplain() %>" class="form-control" type="text" name="explain">
                                      </td>
                                  </tr>
                                  <tr>
                                      <th width="130px">* 기본이미지</th>
                                      <td>
                                          <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
+                                         <% if(list != null) {%>
+					                        <!-- 현재 이 게시글에 딸린 첨부파일이 있을경우 -->
+					                        <%= list.getOriginName() %>
+					                        <input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>">
+										<% } %>
                                          <input type="file" class="mt-3" name="file1" required>
                                      </td>
                                  </tr>
@@ -197,7 +212,7 @@
                                      <th width="130px">상품상세정보</th>
                                      <td>
                                          <!-- <input class="form-control" type="text"> -->
-                                         <textarea class="form-control" type="text" name="detail" class="mt-1" style="height: 160px; width: 300px; resize: none;"></textarea>
+                                         <textarea value="<%= as.getDetail() %>" class="form-control" type="text" name="detail" class="mt-1" style="height: 160px; width: 300px; resize: none;"></textarea>
                                      </td>
                                  </tr>
                                  <tr>
@@ -218,7 +233,7 @@
                                  <tr>
                                      <th width="130px">* 수량</th>
                                      <td>
-                                         <input class="form-control" type="number" placeholder="수량을 입력해주세요" name="amount" required>
+                                         <input value="<%= as.getAmount() %>" class="form-control" type="number" placeholder="수량을 입력해주세요" name="amount" required>
                                      </td>
                                  </tr>
                              </tbody>    

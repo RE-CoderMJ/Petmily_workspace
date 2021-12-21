@@ -58,5 +58,37 @@ public class AdminShoppingService {
 		close(conn);
 		return list;
 	}
-	
+	public int updateProduct(AdminShopping as, ArrayList<Attachment> list) {
+		
+		Connection conn = getConnection();
+		int result1 = new AdminShoppingDao().updateProduct(conn, as);
+		
+		int result2 = 1;
+		
+		if(list != null) { // 새로운 첨부파일이 있었을 경우
+			
+			for(Attachment at2: list) {
+				
+				if(at2.getAttachmentNo()!= 0) { // 기존의 첨부파일이 있었을 경우
+					result2 = new AdminShoppingDao().updateAttachment(conn, at2);
+				}else { // => Attachment Insert
+					result2 = new AdminShoppingDao().insertNewAttachment(conn, at2);
+				}
+				if(!(result2>0)){
+					   result2 = 0;
+					   break;
+				}
+			}
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result1 * result2;
+		
+	}
 }

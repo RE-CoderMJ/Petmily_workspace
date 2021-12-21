@@ -217,5 +217,76 @@ private Properties prop = new Properties();
 		
 		return list;
 	}
+	public int updateProduct(Connection conn, AdminShopping as) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(as.getCategory()));
+			pstmt.setString(2, as.getProductName());
+			pstmt.setString(3, as.getProductOp());
+			pstmt.setInt(4, as.getPrice());
+			pstmt.setString(5, as.getExplain());
+			pstmt.setString(6, as.getDetail());
+			pstmt.setInt(7, as.getAmount());
+			pstmt.setInt(7, as.getProductNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	public int updateAttachment(Connection conn, Attachment at2) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at2.getOriginName());
+			pstmt.setString(2, at2.getChangeName());
+			pstmt.setString(3, at2.getFilePath());
+			pstmt.setInt(4, at2.getAttachmentNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	public int insertNewAttachment(Connection conn, Attachment at2) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at2.getOriginName());
+			pstmt.setString(2, at2.getChangeName());
+			pstmt.setInt(3, at2.getRefNo());
+			pstmt.setString(4, at2.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	
 }
