@@ -98,7 +98,28 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public int insertPetsroom(Connection conn) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertPetsroom");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
+	
+
 	
 
 }

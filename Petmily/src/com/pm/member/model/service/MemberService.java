@@ -16,7 +16,8 @@ public class MemberService {
 		close(conn);
 		return m;
 	}
-
+	
+	/*
 	public int insertMember(Member m) {
 		Connection conn = getConnection();
 		int result = new MemberDao().insertMember(conn, m);
@@ -28,6 +29,32 @@ public class MemberService {
 		}
 		
 		return result;
+	}
+	
+
+	public int insertPetsroom() {
+		Connection conn = getConnection();
+		int result = new MemberDao().insertPetsroom(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	*/
+	
+	public int insertMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().insertMember(conn, m);
+		
+		int pResult = new MemberDao().insertPetsroom(conn);
+		
+		if(result * pResult > 0) {
+			commit(conn);
+		} else { 
+			rollback(conn);
+		}
+		
+		return result * pResult;
 	}
 
 }

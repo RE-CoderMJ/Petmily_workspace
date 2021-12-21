@@ -58,5 +58,18 @@
 			 )
 	
 	</entry>
+	
+	
+	<entry key="insertPetsroom">
+		INSERT
+		  INTO PETSROOM
+		  (
+		    MEM_NO
+		  )
+		  VALUES
+		  (
+		    SEQ_MNO.CURRVAL
+		  )
+	</entry>
 
 </properties>
