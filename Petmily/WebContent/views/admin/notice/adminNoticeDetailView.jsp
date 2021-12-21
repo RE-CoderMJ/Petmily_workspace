@@ -102,9 +102,6 @@
             <!-- 하단 버튼 (상세: 수정, 삭제, 뒤로) -->
             <div>
             
-            	<a href="<%=contextPath%>/adminList.no" class="btn btn-sm btn-secondary">목록으로</a>
-
-            
                 <a href="<%= contextPath %>/adminUpdateForm.no?num=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정</a>
                 <a href="<%= contextPath %>/adminDelete.no?num=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>

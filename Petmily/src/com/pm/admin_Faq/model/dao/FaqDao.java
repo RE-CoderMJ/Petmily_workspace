@@ -29,6 +29,7 @@ public class FaqDao {
 		
 	}
 	
+	/* 1. faq 전체게시글 수 */
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		
@@ -55,7 +56,7 @@ public class FaqDao {
 		return listCount;
 	}
 	
-
+	/* 2. 최신글순으로 페이징바에 맞게 조회 */
 	public ArrayList<Faq> selectList(Connection conn, PageInfo pi) {
 		ArrayList<Faq> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -95,6 +96,7 @@ public class FaqDao {
 		
 	}
 	
+	/* 3. faq 등록 */
 	public int insertFaq(Connection conn, Faq f) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -119,7 +121,7 @@ public class FaqDao {
 		
 	}
 	
-	
+	/* 4. faq 조회*/
 	public Faq selectFaq(Connection conn, int faqNo) {
 		Faq f = null;
 		PreparedStatement pstmt = null;
@@ -135,14 +137,10 @@ public class FaqDao {
 			
 			if(rset.next()) {
 				f = new Faq(rset.getInt("faq_no"),
-							  rset.getString("faq_title"),
-							  rset.getString("faq_content"),
-							  rset.getString("faq_cate"),
-							  rset.getString("manager_no"));
-
-
-
-
+							rset.getString("faq_title"),
+							rset.getString("faq_content"),
+							rset.getString("faq_cate"),
+							rset.getString("manager_no"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -152,5 +150,49 @@ public class FaqDao {
 		}
 		
 		return f;
+	}
+	
+	/* 5. faq 수정 */
+	public int updateFaq(Connection conn, Faq f) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, f.getFaqTitle());
+			pstmt.setString(2, f.getFaqContent());
+			pstmt.setString(3, f.getFaqCate());
+			pstmt.setInt(4, f.getFaqNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/* 6. faq 삭제 */
+	public int deleteFaq(Connection conn, int faqNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, faqNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

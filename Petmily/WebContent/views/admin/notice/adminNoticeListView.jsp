@@ -58,38 +58,6 @@
         float:center;
         text-align:center;
     }
-    /* 삭제모달창 */
-    .modalMsg-area{
-         font-weight: bolder;
-         font-size: 17px;
-         margin-top: 20px;
-         height: 70px;
-         text-align: center;
-     }
-     #deletebtn-area>*{
-         color: white;
-         font-weight: bolder;
-         font-size: 15px;
-         height: 35px;
-         line-height: 5px;
-         width: 70px;
-         margin-top: -10px;
-     }
-     #confirm-btn{
-         background-color: red;
-         margin-right: 2px;
-         line-height: 22px;
-     }
-     #closebtn{
-         background-color: gray;
-         margin-left: 2px;
-     }
-     #deleteCompletedclosebtn{
-         background-color: orange;
-         width: 100px;
-         color: white;
-         font-weight: bolder;
-     }
      /* 마우스로 선택한 줄 항목 */
      #noticetable>tbody>tr:hover{
     	 background:rgb(220, 220, 220);
@@ -132,7 +100,7 @@
         </div>
 
         <br><br><br><br><br>
-     <% if(loginAdmin != null && loginAdmin.getManagerId().equals("admin")) { %>
+     <%--<% if(loginAdmin != null && loginAdmin.getManagerId().equals("admin")) {%> --%> 
         <!-- 검색창 -->
         <div class="bottom">
             <div class="noticeselect">
@@ -150,15 +118,15 @@
             </div>
         </div>
             
-        <!-- 버튼 (등록,수정,삭제) -->
+        <!-- 버튼 (등록) -->
         <div class="buttons" align="right">
         	<div>
             	<a href="<%= contextPath %>/adminEnrollForm.no" class="btn btn-sm btn-warning">등록</a>
-                <a href="<%= contextPath %>/adminUpdate.no" class="btn btn-sm btn-warning">수정</a>
-                
+
+                <br><br>
                 
            	</div>
-        <% } %>   
+        <%--<% } --%>   
           
         
 		<!-- 테이블 + 페이징 바 -->
@@ -206,16 +174,9 @@
                 </tbody>
         	</table>
     	</div>
+
     	
-    	
-    	<!-- 삭제 모달 (미완성) -->
-    	<!-- <script>
-    	$(document).ready(function(){
-    		$('#deleteModal').on('')
-    	});
-    	</script> -->
-    	
-    	<!-- 글 클릭시 상세페이지 조회 (미완성) -->
+    	<!-- 글 클릭시 상세페이지 조회 -->
     	<script>
     	$(function(){
     		$("#noticetable>tbody>tr").click(function(){
@@ -223,25 +184,6 @@
     		})
     	})
     	</script>
-    	  
-    	<!-- 삭제 모달창을 통해 삭제  -->
-    	<!--<script>
-    		$(function(){
-    			$("").click(function()){
-    				if(confirm("확인")==true){
-    					location.href =
-    				}
-    			})
-    			
-    		})
-    	</script>
-    	
-    	<script>
-    		$(alldelete(){
-    			
-    		})
-    	</script>
-    	-->
 
 		<!-- 페이징 바-->
 	    <script>

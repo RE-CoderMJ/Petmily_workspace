@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.admin_Faq.model.vo.Faq" %>
+<%
+	Faq f = (Faq)request.getAttribute("faq");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,23 +65,31 @@
         <br>
         <br>
         
+        <div class="detail-area">
         <!-- FAQ 상세테이블  -->
             <table>
                 <tr>
-                	<th width="10px">&nbsp</th>
+                	<th width="10px"></th>
                     <td>분류</td>
-                    <td>
-                        <select name="" id="">
-                            <option value="">전체</option>
-                            <option value="">취소/환불</option>
-                            <option value="">배송관련</option>
-                            <option value="">반품/교환</option>
-                            <option value="">회원정보</option>
-                            <option value="">상품문의</option>
-                            <option value="">쿠폰/적립금</option>
-                            <option value="">기타</option>
-                        </select>
-                    </td>
+                    <% 
+                        String category = "";
+                        
+                        switch(Integer.parseInt(f.getFaqCate())) {
+                        case 1: category="회원가입"; break;
+                        case 2: category="비밀번호재설정"; break;
+                        case 3: category="회원정보"; break;
+                        case 4: category="탈퇴및재가입"; break;
+                        case 5: category="주문결제"; break;
+                        case 6: category="입점제휴"; break;
+                        case 7: category="포인트"; break;
+                        case 8: category="교환환불"; break;
+                        case 9: category="게시물등록"; break;
+                        case 10: category="사진영상"; break;
+                        case 11: category="펫적사항"; break;
+                        case 12: category="기타"; break;
+                        }
+                    %>
+                    <td><%= category %></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
@@ -96,13 +108,14 @@
 
             <!-- 하단 버튼 (상세: 수정,삭제,뒤로) -->
             <div>
-                <button type="submit" class="btn btn-sm btn-warning">수정</button>
-                <button type="reset" class="btn btn-sm btn-danger">삭제</button>
+            	
+                <a href="<%= contextPath %>/adminUpdateForm.faq?num=<% f.getfaqNo() %>" class="btn btn-sm btn-warning">수정</a>
+                <a href="<%= contextPath %>/adminDelete.faq?num=<% f.getfaqNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 
 
-
+		</div>
     </div>
 
 </body>

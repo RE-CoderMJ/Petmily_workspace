@@ -42,37 +42,10 @@
        text-align:center;
        margin:auto;
     }
-    /* 삭제모달창 */
-    .modalMsg-area{
-         font-weight: bolder;
-         font-size: 17px;
-         margin-top: 20px;
-         height: 70px;
-         text-align: center;
-     }
-     #deletebtn-area>*{
-         color: white;
-         font-weight: bolder;
-         font-size: 15px;
-         height: 35px;
-         line-height: 5px;
-         width: 70px;
-         margin-top: -10px;
-     }
-     #confirm-btn{
-         background-color: red;
-         margin-right: 2px;
-         line-height: 22px;
-     }
-     #closebtn{
-         background-color: gray;
-         margin-left: 2px;
-     }
-     #deleteCompletedclosebtn{
-          background-color: orange;
-          width: 100px;
-          color: white;
-          font-weight: bolder;
+     /* 마우스로 선택한 줄 항목 */
+     #faqtable>tbody>tr:hover{
+    	 background:rgb(220, 220, 220);
+    	 cursor:pointer;
      }
     /* 페이징바 */
     .paging-area button{
@@ -110,13 +83,13 @@
             <br>
         </div>
         
-		<% if(loginAdmin != null && loginAdmin.getManagerId().equals("admin")) { %>
+		<%-- <% if(loginAdmin != null && loginAdmin.getManagerId().equals("admin")) { --%>
         <!-- 검색창 (카테고리, 검색어) -->
         <div class="select">
             <div align="left">
             
             	<!-- 카테고리, 제목 검색 입력창 -->
-
+				<form>
                     <div class="input-group mb-3">
                         <select name="faqcate">제목
                             <option value="all" selected>전체</option>
@@ -139,100 +112,50 @@
                      	<input type="text" class="form-control" placeholder="검색어를 입력해주세요">
                      	<a href="" class="btn btn-sm btn-warning">검색</a>
                     </div>
-
+				</form>
 
                 <br><br>
             </div>
         </div>
 
 		
-        <!-- 버튼들(등록, 수정,삭제) -->
-        <div class="right" id="right">
+        <!-- 버튼들(등록) -->
+        <div class="right" id="right" align="right">
             <div>
                 <a href="<%= contextPath %>/adminEnrollForm.faq" class="btn btn-sm btn-warning">등록</a>
-                <a href="<%= contextPath %>/adminUpdateForm.faq" class="btn btn-sm btn-warning">수정</a>
-                
-                
-                <!-- 삭제버튼(혜선꺼) : Button to Open the Modal -->
-               <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
-                            삭제
-               </button>
-
-               <!-- 삭제 모달 Modal -->
-               <div class="modal fade" id="deleteModal">
-                  <div class="modal-dialog modal-dialog-centered">
-                     <div class="modal-content" style="width: 400px;">
-
-                        <!-- Modal body -->
-                        <div class="modal-body" align="center">
-                           <div class="modalMsg-area">
-                                                  정말 삭제하시겠습니까?
-                           </div>
-                           
-                       	   <div id="deletebtn-area">
-                           	   <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
-                           	   <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
-                           </div>              
-                        </div>
-                        
-                      </div>
-                   </div>
-                </div>
-               
-               <!-- 삭제 완료 확인창 Modal -->
-               <div class="modal fade" id="deleteCompleted">
-                  <div class="modal-dialog modal-sm modal-dialog-centered">
-                     <div class="modal-content">
-
-                        <!-- Modal body -->
-                        <div class="modal-body" align="center" style="text-align: center;">
-                           <div class="modalMsg-area">
-                                                  정상적으로 삭제되었습니다.
-                           </div>
-                           
-                           <div>
-                           	  <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
-                           </div>              
-                        </div>
-                  
-                     </div>
-                  </div>
-               </div>
-               
-			
-           	</div>
-                
+                   
                 
             <br><br>
             </div>
-        	<% } %>
+         <%-- <% } %> --%>
+        	
 
         <!-- 테이블 + 페이징 바 -->
         <div class="tablepaging">
-            <div class="table table-bordered" id="faqtable">
-                <table>
+        
+        	<!-- 테이블 -->
+            <div class="table table-bordered">
+                <table id="faqtable">
                     <thead>
                         <tr>
-                            <th width="50"><input type="checkbox" name="" value=""></th>
                             <th width="100">번호</th>
                             <th width="200">분류</th>
-                            <th width="650">제목</th>
+                            <th width="700">제목</th>
                             <th width="100">작성자</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                     <% if(list.isEmpty()) { %>
                         <!--1. 게시글 없을 경우-->
                         <tr>
-                            <td colspan="6">조회된 게시글이 없습니다!</td>
+                            <td colspan="4">조회된 게시글이 없습니다</td>
                         </tr>
                     <% }else { %>
                         <!--2. 게시글 있을 경우-->
 					<% for(Faq f : list) { %>
                         <tr>
-                            <td><input type="checkbox" name="" value=""></td>
                             <td><%= f.getFaqNo() %></td>
-                            
                             <% 
                         	String category = "";
                         
@@ -252,9 +175,7 @@
                         	}
                         	%>
                         	<td><%= category %></td>
-                            
-                            
-                            <td><%= f.getFaqTitle() %></td>
+                            <td id="admintitleclick"><%= f.getFaqTitle() %></td>
                             <td><%= f.getManagerNo() %></td>
                         </tr>
                       <% } %>
@@ -262,11 +183,29 @@
                      </tbody>
              	</table>
            	 </div>  
-           	 
-           	
-    	
-    		 <br><br><br>
 
+    		 
+    		 
+    		<!-- 글 클릭시 상세페이지 조회 -->
+	    	<script>
+	    	$(function(){
+	    		$("#faqtable>tbody>tr").click(function(){
+	    			location.href = '<%=contextPath%>/adminDetail.faq?num=' + $(this).children().eq(0).text();
+	    		})
+	    	})
+	    	</script>
+	    	
+	    	<!-- 페이징 바 -->
+		    <script>
+		        $(function(){
+		            $(".paging-area button").click(function(){
+		                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+		                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+		            })
+		        })
+		    </script>
+		    
+		    <br><br><br>
 
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
@@ -288,20 +227,12 @@
 		
             </div>
             
-            <!-- 페이징 바 -->
-		    <script>
-		        $(function(){
-		            $(".paging-area button").click(function(){
-		                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-		                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-		            })
-		        })
-		    </script>
+
         </div>
 
     
     
-
+	</div>
     
 </div>
 

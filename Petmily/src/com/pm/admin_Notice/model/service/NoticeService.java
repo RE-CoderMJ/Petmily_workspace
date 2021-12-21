@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import com.pm.admin_Notice.model.dao.NoticeDao;
 import com.pm.admin_Notice.model.vo.Notice;
-import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
 
 
