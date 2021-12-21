@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertPetLog">
+		INSERT
+		  INTO PETLOG
+		  (
+		    PETLOG_NO
+		  , MEM_NO
+		  , PETLOG_CONTENT
+		  )
+		  VALUES
+		  (
+		    SEQ_PETLOGNO.NEXTVAL
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<entry key="insertAttachmentList">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 6
+		  , SEQ_PETLOGNO.CURRVAL
+		  , ?
+		  )
+	</entry>
+	<entry key="selectPetLogList">
+		SELECT
+			   PETLOG_NO
+			 , MEM_NO
+			 , ENROLL_DATE
+			 , PETLOG_CONTENT
+			 , ROOM_NAME
+		  FROM PETLOG
+		  JOIN PETSROOM USING (MEM_NO)
+	     WHERE STATUS = 'Y'
+	</entry>
+</properties>

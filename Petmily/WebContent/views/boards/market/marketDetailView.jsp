@@ -92,7 +92,9 @@
 					<div id="price-area" style="color:orange"><%= m.getPrice() %>원</div>
 				<% } %>
 				<div id="text-area">
+				<% if(m.getMarketContent() != null) { %>
 					<%= m.getMarketContent() %>
+				<% } %>
 				</div>
 	       </div>
 	       

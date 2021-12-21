@@ -183,6 +183,7 @@ public class MarketDao {
 			
 			while(rset.next()) {
 				Attachment at = new Attachment();
+				at.setAttachmentNo(rset.getInt("attachment_no"));
 				at.setOriginName(rset.getString("origin_name"));
 				at.setChangeName(rset.getString("change_name"));
 				at.setFilePath(rset.getString("file_path"));
