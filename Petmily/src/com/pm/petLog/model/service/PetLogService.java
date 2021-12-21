@@ -31,14 +31,15 @@ public class PetLogService {
 		return result1 * result2;
 	}
 	
-	public ArrayList<PetLog> selectPetLogList(){
+	public ArrayList<PetLog> selectPetLogList(int memNo){
 		Connection conn = getConnection();
-		ArrayList<PetLog> list = new PetLogDao().selectPetLogList(conn);
+		ArrayList<PetLog> list = new PetLogDao().selectPetLogList(conn, memNo);
 		close(conn);
 		return list;
 	}
 	
-	public PetsRoom selectPetsRoom() {
-		
+	public PetsRoom selectPetsRoom(int memNo) {
+		Connection conn = getConnection();
+		PetsRoom pr = new PetLogDao().selectPetsRoom(conn, memNo);
 	}
 }

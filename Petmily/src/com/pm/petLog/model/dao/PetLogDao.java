@@ -6,12 +6,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.common.model.vo.Attachment;
 import com.pm.petLog.model.vo.PetLog;
+import com.pm.petLog.model.vo.PetsRoom;
 
 public class PetLogDao {
 	
@@ -68,18 +70,50 @@ public class PetLogDao {
 		return result;
 	}
 	
-	public ArrayList<PetLog> selectPetLogList(Connection conn){
+	public ArrayList<PetLog> selectPetLogList(Connection conn, int memNo){
 		ArrayList<PetLog> list = new ArrayList<>();
-		
+		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("selectPetLogList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				PetLog pl = new PetLog();
+				pl.setPetLogNo(rset.getInt("petlog_no"));
+				pl.setMemNo(rset.getString("mem_no"));
+				pl.setEnrollDate(rset.getString("enroll_date"));
+				pl.setRoomName(rset.getString("room_name"));
+				
+				list.add(pl);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
+		
+		return list;
+	}
+	
+	public PetsRoom selectPetsRoom(Connection conn, int memNo) {
+		PetsRoom pr = new PetsRoom();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectPetsRoom");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 } 

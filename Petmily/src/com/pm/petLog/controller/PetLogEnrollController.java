@@ -67,7 +67,7 @@ public class PetLogEnrollController extends HttpServlet {
 			int result = new PetLogService().enrollPetLog(pl, list);
 			
 			if (result > 0) {
-				request.getRequestDispatcher("views/petLog/petLogPetsRoom.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath()+ "/petsRoom.petLog?memNo=" + pl.getMemNo());
 			}
 		}
 	}

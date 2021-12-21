@@ -7,6 +7,7 @@ public class PetLog {
 	private String petLogContent;
 	private String status;
 	private String titleImg;
+	private String roomName;
 
 	public PetLog () {}
 
@@ -20,6 +21,14 @@ public class PetLog {
 	}
 
 	
+	public String getRoomName() {
+		return roomName;
+	}
+
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
 	public String getTitleImg() {
 		return titleImg;
 	}
@@ -71,11 +80,9 @@ public class PetLog {
 	@Override
 	public String toString() {
 		return "PetLog [petLogNo=" + petLogNo + ", memNo=" + memNo + ", enrollDate=" + enrollDate + ", petLogContent="
-				+ petLogContent + ", status=" + status + ", titleImg=" + titleImg + "]";
+				+ petLogContent + ", status=" + status + ", titleImg=" + titleImg + ", roomName=" + roomName + "]";
 	}
 
-	
-	
 	
 }
 

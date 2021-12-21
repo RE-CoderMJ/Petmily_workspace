@@ -33,8 +33,9 @@ public class PetLogPetsRoomController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<PetLog> list = new PetLogService().selectPetLogList();
-		PetsRoom pr = new PetLogService().selectPetsRoom();
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
+		ArrayList<PetLog> list = new PetLogService().selectPetLogList(memNo);
+		PetsRoom pr = new PetLogService().selectPetsRoom(memNo);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/petLog/petLogPetsRoom.jsp").forward(request, response);

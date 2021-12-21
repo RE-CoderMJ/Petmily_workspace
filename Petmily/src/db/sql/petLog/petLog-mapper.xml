@@ -48,5 +48,6 @@
 		  FROM PETLOG
 		  JOIN PETSROOM USING (MEM_NO)
 	     WHERE STATUS = 'Y'
+	       AND MEM_NO = ?
 	</entry>
 </properties>
