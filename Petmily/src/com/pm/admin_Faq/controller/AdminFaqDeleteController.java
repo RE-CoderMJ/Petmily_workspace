@@ -36,10 +36,10 @@ public class AdminFaqDeleteController extends HttpServlet {
 		
     	if(result > 0) {
     		request.getSession().setAttribute("alertMsg", "성공적으로 FAQ를 삭제하였습니다.");
-    		response.sendRedirect(request.getContextPath() + "/adminList.no?cpage=1");
+    		response.sendRedirect(request.getContextPath() + "/adminList.faq?cpage=1");
     		
     	}else {
-    		request.setAttribute("errorMsg", "공지사항 삭제 실패");
+    		request.setAttribute("errorMsg", "FAQ 삭제 실패");
     		request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
     		
     	}

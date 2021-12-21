@@ -82,7 +82,6 @@
                     <td>공지사항 제목</td>
                     <td><input type="text" name="title" required></td>
                 </tr>
-
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>공지사항 내용</td>

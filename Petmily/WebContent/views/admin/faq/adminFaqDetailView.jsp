@@ -19,11 +19,11 @@
         margin-top:50px;
     }
     /* 필수상항 (별표) */
-    #enroll-form-faq table th{
+    .detail-area table th{
         width:10px;
     }
     /* 테이블 카테고리, 박스 */
-    #enroll-form-faq table td{
+    .detail-area table td{
         width:300px;
         padding:10px;
         text-align:left;
@@ -31,14 +31,15 @@
         font-family: 'Gowun Dodum', sans-serif;
     }
     /* 테이블 테두리 */
-    #enroll-form-faq table{
+    .detail-area{
+    	width:700px;
         border:2px solid lightgray;
         border-collapse: separate;
         border-radius: 10px;
         padding:20px;
     }
     /* 테이블 내 입력창 */
-    #enroll-form-faq input, #enroll-form-faq textarea{
+    .detail-area input, .detail-area textarea{
         width:100%;
         box-sizing:border-box;
     }
@@ -70,7 +71,7 @@
             <table>
                 <tr>
                 	<th width="10px"></th>
-                    <td>분류</td>
+                    <td>FAQ 분류</td>
                     <% 
                         String category = "";
                         
@@ -94,13 +95,13 @@
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>FAQ 질문</td>
-                    <td><input type="text" name="title" required></td>
+                    <td><%= f.getFaqTitle() %></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>FAQ 답변</td>
                     <td>
-                        <textarea rows="10" name="content" style="resize:none" required></textarea>
+                        <textarea rows="10" name="content" style="resize:none" required><%= f.getFaqContent() %></textarea>
                     </td>
                 </tr>
             </table>
@@ -108,9 +109,8 @@
 
             <!-- 하단 버튼 (상세: 수정,삭제,뒤로) -->
             <div>
-            	
-                <a href="<%= contextPath %>/adminUpdateForm.faq?num=<% f.getfaqNo() %>" class="btn btn-sm btn-warning">수정</a>
-                <a href="<%= contextPath %>/adminDelete.faq?num=<% f.getfaqNo() %>" class="btn btn-sm btn-danger">삭제</a>
+                <a href="<%= contextPath %>/adminUpdateForm.faq?num=<%= f.getFaqNo() %>" class="btn btn-sm btn-warning">수정</a>
+                <a href="<%= contextPath %>/adminDelete.faq?num=<%= f.getFaqNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 

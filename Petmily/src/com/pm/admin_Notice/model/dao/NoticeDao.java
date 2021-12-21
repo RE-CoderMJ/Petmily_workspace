@@ -107,8 +107,8 @@ public class NoticeDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
-			pstmt.setString(3,n.getNoticeCate());
-			pstmt.setString(4,n.getManagerNo());
+			pstmt.setString(3, n.getNoticeCate());
+			pstmt.setString(4, n.getManagerNo());
 			
 			result = pstmt.executeUpdate();
 			

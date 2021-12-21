@@ -43,8 +43,7 @@ public class AdminFaqUpdateController extends HttpServlet {
 		f.setFaqNo(faqNo);
 		f.setFaqTitle(faqTitle);
 		f.setFaqContent(faqContent);
-		
-		
+
 		int result = new FaqService().updateFaq(f);
 		
 		if (result > 0) {

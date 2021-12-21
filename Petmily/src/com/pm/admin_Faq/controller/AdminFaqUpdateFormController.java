@@ -34,7 +34,7 @@ public class AdminFaqUpdateFormController extends HttpServlet {
 		int faqNo = Integer.parseInt(request.getParameter("num"));
 		
 		FaqService fService = new FaqService();
-		Faq f = fService.selectNotice(faqNo);
+		Faq f = fService.selectFaq(faqNo);
 		
 		request.setAttribute("f", f);
 		

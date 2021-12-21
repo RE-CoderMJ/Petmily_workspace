@@ -39,7 +39,7 @@
         padding:20px;
      }
      /* 테이블 카테고리,박스들 */
-     .detail-area input, .detail-area img, .detail-area textarea{
+     .detail-area input, .detail-area textarea{
         width:100%;
         box-sizing:border-box;
      }
@@ -81,8 +81,7 @@
                         case 4: category="고객센터공지사항"; break;
                         }
                     %>
-                    <td><%= category %></td>
-                     
+                    <td><%= category %></td> 
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
@@ -100,8 +99,7 @@
             <br><br>
 
             <!-- 하단 버튼 (상세: 수정, 삭제, 뒤로) -->
-            <div>
-            
+            <div>   
                 <a href="<%= contextPath %>/adminUpdateForm.no?num=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정</a>
                 <a href="<%= contextPath %>/adminDelete.no?num=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>

@@ -74,7 +74,7 @@
             <table>
                 <tr>
                 	<th width="10px"></th>
-                    <td>분류</td>
+                    <td>FAQ 분류</td>
                     <td>
                         <select name="cate" id="">
                             <option value="1">회원가입</option>
@@ -95,13 +95,13 @@
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>FAQ 질문</td>
-                    <td><input type="text" name="title" required></td>
+                    <td><input type="text" name="title" required value="<%= f.getFaqTitle() %>"></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px">*</th>
                     <td>FAQ 답변</td>
                     <td>
-                        <textarea rows="10" name="content" style="resize:none" required></textarea>
+                        <textarea rows="10" name="content" style="resize:none" required><%= f.getFaqContent() %></textarea>
                     </td>
                 </tr>
             </table>
@@ -110,7 +110,7 @@
             <!-- 하단 버튼 (수정 : 수정, 뒤로) -->
             <div>
                 <button type="submit" class="btn btn-sm btn-warning">수정</button>
-                <button type="reset" class="btn btn-sm btn-secondary">취소</button>
+                <button type="reset" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 
         </form>

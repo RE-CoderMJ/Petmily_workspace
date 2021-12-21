@@ -38,7 +38,8 @@ public class AdminNoticeInsertController extends HttpServlet {
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
 		String managerNo = request.getParameter("managerNo");
-		String noticeCate = request.getParameter("noticecate");
+		String noticeCate = request.getParameter("cate");
+
 		
 		HttpSession session = request.getSession();
 		int ManagerNo = ((AdminMember)session.getAttribute("loginAdmin")).getManagerNo();
@@ -49,17 +50,11 @@ public class AdminNoticeInsertController extends HttpServlet {
 		n.setManagerNo(String.valueOf(ManagerNo)); // 무조건 String으로 만들어줌 .valueOf()
 		n.setNoticeCate(noticeCate);
 
-		
 		int result = new NoticeService().insertNotice(n);
-		
-		if(result > 0) { 
-			
-			session.setAttribute("alertMsg", "성공적으로  공지사항 등록되었습니다.");
+		 
+
 			response.sendRedirect(request.getContextPath() + "/adminList.no?cpage=1");
-			
-		}else {
-			request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다!");
-			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
+
 			
 			
 		}
@@ -68,7 +63,7 @@ public class AdminNoticeInsertController extends HttpServlet {
 	
 			
 		
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
