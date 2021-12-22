@@ -91,16 +91,11 @@ public class AdminSpPdUpdateController extends HttpServlet {
 					at2.setChangeName(multiRequest.getFilesystemName(key));
 					at2.setFilePath("resources/admin/adminSp_upfiles/");
 					
-					if(i == 1) { // 대표이미지
-						at2.setFileLevel(1);
-					}else { // 상세이미지
-						at2.setFileLevel(2);
-					}
-					
 					if(multiRequest.getParameter("originFileNo") != null) {
 						// 기존의 첨부파일이 있었을 경우 => Update Attachment (기존첨부파일번호)
 						at2.setAttachmentNo(Integer.parseInt(multiRequest.getParameter("originFileNo")));
 					}
+					
 					at2.setRefNo(ProductNo);
 					
 					list.add(at2);

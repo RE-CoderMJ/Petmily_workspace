@@ -202,6 +202,7 @@
                                          <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
                                          <% if(list != null) {%>
 					                        <!-- 현재 이 게시글에 딸린 첨부파일이 있을경우 -->
+					                        <% for(int i=0; i<4; i++) { %>
 					                        <%= list.getOriginName() %>
 					                        <input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>">
 										<% } %>

@@ -74,10 +74,8 @@ public class AdminShoppingService {
 				}else { // => Attachment Insert
 					result2 = new AdminShoppingDao().insertNewAttachment(conn, at2);
 				}
-				if(!(result2>0)){
-					   result2 = 0;
-					   break;
-				}
+				
+				
 			}
 		}
 		
