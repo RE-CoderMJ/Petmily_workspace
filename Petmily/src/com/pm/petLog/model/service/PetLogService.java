@@ -72,4 +72,37 @@ public class PetLogService {
 		close(conn);
 		return result;
 	}
+	
+	public int updatePetLog(PetLog pl, ArrayList<Attachment> list) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new PetLogDao().updatePetLog(conn, pl);
+		
+		int result2 = 1;
+		if(!list.isEmpty()) {
+			for(Attachment att: list) {
+				if(att.getAttachmentNo()!= 0) {
+					result2 = new PetLogDao().updateAttachment(conn, att);
+				}else {
+					result2 = new PetLogDao().insertNewAttachment(conn, att);
+				}
+				
+				if(!(result2>0)) {
+					result2 = 0;
+					break;
+				}
+			}
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+	
+		close(conn);
+		
+		return result1*result2;
+	}
 }

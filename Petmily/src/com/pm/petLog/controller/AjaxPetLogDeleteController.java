@@ -29,7 +29,7 @@ public class AjaxPetLogDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int petLogNo = Integer.parseInt(request.getParameter("pno"));
+		int petLogNo = Integer.parseInt(request.getParameter("petLogNo"));
 		
 		int result = new PetLogService().deletePetLog(petLogNo);
 		

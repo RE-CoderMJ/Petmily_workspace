@@ -107,6 +107,7 @@
                 </script>
                 <div id="detail-area" style="display:none">
 	                <a id="back-icon" class="material-icons ">undo</a>
+	                <input type="hidden" id="petLogNo">
 	                <div class="photo-area">
 	                    <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
 	
@@ -139,9 +140,21 @@
 	                    <img src="resources/img/petLog/reply.png" alt="">
 	                    <span>댓글</span>
 	                    <span class="reply-count">2</span>
-	                    <label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
-	                    <label onclick="location.href='<%=contextPath %>/update.petLog'" class="modify-post">수정하기</label>
+	                    <% if(loginUser != null) { %>
+	                    	<label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
+	                    <% } %>
+	                    <% if(loginUser.getMemNo() == pr.getMemNo()) { %>
+	                    	<label class="modify-post">수정하기</label>
+	                    	<label data-toggle="modal" data-target="#deleteAskModal" class="delete-btn">X</label>
+	                    <% } %>
 	                </div>
+	                <script>
+	                	$(function(){
+	                		$(".modify-post").click(function(){
+	                			location.href='<%=contextPath%>/updateForm.petLog?petLogNo=' + $("#petLogNo").val();
+	                		})
+	                	})
+	                </script>
 	                <div class="right-bottom">
 	                    <div class="reply-area">
 	                        <div class="write-reply">
@@ -212,10 +225,10 @@
 						$(".carousel-inner").empty();
 						$("#list-area").hide();
 						$("#detail-area").show();
-						
+						console.log(datas.pl.petLogNo)
 						$(".date-area").html(datas.pl.enrollDate);
 						$(".text-area").html(datas.pl.petLogContent);
-						
+						$("#petLogNo").val(value);
 						if(datas.list != null) {
 	                		for(let i=0; i<datas.list.length; i++){
 								let path1 = datas.list[i].filePath;
@@ -334,6 +347,31 @@
       </div>
 
     <%@ include file="../boards/bCommon/reportDeleteModals.jsp" %>
+    <script>
+		function deleteContent(){
+
+			$.ajax({
+				url: "delete.petLog",
+				type:"post",
+				data: {petLogNo : $("#petLogNo").val()},
+				success:function(result){
+					if(result>0){
+						$("#deleteCompleted").modal('show');
+					}
+				},
+				error:function(){
+					console.log("게시글 삭제 실패!");
+				}
+			})
+		}
+		
+		$(function(){
+			$("#deleteCompletedclosebtn").click(function(){
+				location.href="<%=contextPath%>/petsRoom.petLog?memNo=<%=pr.getMemNo()%>";
+			})
+		})
+	</script>
+    
     <%@ include file="../common/footerbar.jsp" %>
 </body>
 </html>

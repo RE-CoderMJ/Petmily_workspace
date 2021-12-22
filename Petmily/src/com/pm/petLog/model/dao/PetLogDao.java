@@ -198,4 +198,68 @@ public class PetLogDao {
 		
 		return result;
 	}
+	
+	public int updatePetLog(Connection conn, PetLog pl) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePetLog");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pl.getPetLogContent());
+			pstmt.setInt(2, pl.getPetLogNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertNewAttachment(Connection conn, Attachment att) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setInt(3, att.getRefNo());
+			pstmt.setString(4, att.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int updateAttachment(Connection conn, Attachment att) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setString(3, att.getFilePath());
+			pstmt.setInt(4, att.getAttachmentNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 } 
