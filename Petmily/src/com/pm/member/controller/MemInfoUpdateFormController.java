@@ -32,8 +32,8 @@ public class MemInfoUpdateFormController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("loginUser")  == null) { 
-			// session.setAttribute("alert", "로그인 후 이용해주세요");
-			// response.sendRedirect(request.getContextPath());
+			session.setAttribute("alert", "로그인 후 이용해주세요");
+			response.sendRedirect(request.getContextPath());
 			
 		} else {
 			request.getRequestDispatcher("views/myPage/memInfoUpdateForm.jsp").forward(request, response);
