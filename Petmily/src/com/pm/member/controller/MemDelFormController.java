@@ -1,4 +1,4 @@
-package com.pm.myPage.controller;
+package com.pm.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

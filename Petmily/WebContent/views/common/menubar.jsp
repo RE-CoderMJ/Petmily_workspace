@@ -3,6 +3,7 @@
 <%
    String contextPath = request.getContextPath();
    Member loginUser = (Member)session.getAttribute("loginUser");
+   String alert = (String)session.getAttribute("alert");
 %>
 <!DOCTYPE html>
 <html>
@@ -135,6 +136,14 @@ body *{
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+	<% if(alert != null) { %>
+		<script>
+			alert("<%= alert %>");
+		</script>
+		<% session.removeAttribute("alert"); %>
+	<% } %>
+	
     <div class="header">
         <div id="left"></div>
         <div id="logo">

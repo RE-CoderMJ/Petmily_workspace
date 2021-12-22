@@ -15,13 +15,13 @@ import com.pm.member.model.vo.Member;
  * Servlet implementation class MemberInsertController
  */
 @WebServlet("/insert.me")
-public class MemberInsertController extends HttpServlet {
+public class MemInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInsertController() {
+    public MemInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }

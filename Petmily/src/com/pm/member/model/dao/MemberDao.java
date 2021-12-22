@@ -17,7 +17,7 @@ public class MemberDao {
 	
 	public MemberDao() {
 		
-		String filePath = MemberDao.class.getResource("/db/sql/member.xml").getPath();
+		String filePath = MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath();
 		
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));

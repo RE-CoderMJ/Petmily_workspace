@@ -148,6 +148,15 @@
 
 <body>
     <%@ include file="../common/menubar.jsp" %>
+    
+    
+    <%
+    	String postalCode = (loginUser.getPostalCode() == null) ? "" : loginUser.getPostalCode();
+    	String address = (loginUser.getAddress() == null) ? "" : loginUser.getAddress();
+    	String detailAddress = (loginUser.getDetailAddress() == null) ? "" : loginUser.getDetailAddress();
+    %>
+   
+   
 	<div class="outer">
         <%@ include file="../shop/mypage/mypageSidebar.jsp" %>
         
@@ -171,17 +180,7 @@
                         
 
                         <div>
-                            <input type="text" name="userEmail" placeholder="이메일" style="width: 150px;" readonly>
-                            @
-                            <select name="emailDomain" aria-placeholder="선택해주세요">
-                                <option selected disabled>선택해주세요</option>
-                                <option disabled="disabled" value="naver.com">naver.com</option>
-                                <option disabled="disabled" value="hanmail.com">hanmail.com</option>
-                                <option disabled="disabled" value="daum.net">daum.net</option>
-                                <option disabled="disabled" value="gmail.com">gmail.com</option>
-                                <option disabled="disabled" value="nate.com">nate.com</option>
-                                <option disabled="disabled" value="1">직접입력</option>
-                            </select>
+                            <input type="text" name="userEmail" placeholder="이메일" value="<%= loginUser.getMemEmail() %>" style="width: 325px;" readonly>
 
                         </div>
                         <span class="tip">이메일을 변경하시려면 FAQ에 문의글을 남겨주세요</span>
@@ -217,7 +216,7 @@
                         </div>
 
                         <div>
-                            <input type="text" id="userName" name="userName" placeholder="이름" required>
+                            <input type="text" id="userName" name="userName" placeholder="이름" value="<%= loginUser.getMemName() %>" required>
                         </div>
                         <span class="tip">한글, 영문으로만 2~15자로 입력해주세요</span>
                         <!-- 닉네임 중복버튼 클릭 시 중복일 때 -->
@@ -227,16 +226,13 @@
 
                     <div>
                         <div>
-                            <label class="leftText" for="phone1">전화번호<span class="star">*</span></label>
+                            <label class="leftText" for="phone">전화번호<span class="star">*</span></label>
                         </div>
 
                         <div>
-                            <input type="text" id="phone1" name="phone1" maxlength='3' style="width: 80px" placeholder="000" required>
-                            -
-                            <input type="text" name="phone2" maxlength='4' style="width: 105px" placeholder="0000" required>
-                            -
-                            <input type="text" name="phone3" maxlength='4' style="width: 105px" placeholder="0000" required>
+                            <input type="text" id="phone" name="phone" maxlength='13' placeholder="전화번호" value="<%= loginUser.getMemTel() %>" style="width: 325px">
                         </div>
+                        <span class="tip">수정 시 -(하이픈)을 넣어서 입력해주세요</span>
                     </div>
 
                 
@@ -246,7 +242,7 @@
                         </div>
 
                         <div>
-                            <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
+                            <input type="text" id="nickname" name="nickname" placeholder="닉네임" value="<%= loginUser.getNickname() %>" required>
                             <button type="button" class="rightBtn btn-sm btn-light">중복 확인</button>
                         </div>
                         <span class="tip">한글, 영문, 숫자로만 2~15자로 입력해주세요</span>
@@ -260,22 +256,22 @@
                         </div>
 
                         <div>
-                            <input type="text" name="address1" placeholder="우편번호">
+                            <input type="text" name="address1" placeholder="우편번호" value="<%= postalCode %>">
                             <button type="button" class="rightBtn btn-sm btn-light">우편번호 찾기</button>
                         </div>
 
                         <div style="margin : 10px 160px">
-                            <input type="text" name="address2" placeholder="주소">
+                            <input type="text" name="address2" placeholder="주소" value="<%= address %>">
                         </div>
 
                         <div style="margin : 10px 160px">
-                            <input type="text" name="address3" placeholder="상세주소">
+                            <input type="text" name="address3" placeholder="상세주소" value="<%= detailAddress %>">
                         </div>
                     </div>
 
                     <div>
                         <div>
-                            <label class="leftText" for="userPwd2">프로필 이미지</label>
+                            <label class="leftText" for="imgFile">프로필 이미지</label>
                         </div>
 
                         <div>
@@ -286,7 +282,7 @@
                             <label class="leftText"></label>
                         </div>
 
-                        <input type="file" name="file" id="file" style="margin-top: 20px;" onchange="loadImg(this);">
+                        <input type="file" name="file" id="file" style="margin-top: 20px;" onchange="loadImg(this);" value="<%= loginUser.getMemImg() %>">
                     </div>
 
                     <script>

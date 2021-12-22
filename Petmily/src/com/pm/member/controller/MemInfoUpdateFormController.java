@@ -1,11 +1,13 @@
-package com.pm.myPage.controller;
+package com.pm.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MemInfoUpdateFormController
@@ -26,7 +28,17 @@ public class MemInfoUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/myPage/memInfoUpdateForm.jsp").forward(request, response);
+		
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("loginUser")  == null) { 
+			// session.setAttribute("alert", "로그인 후 이용해주세요");
+			// response.sendRedirect(request.getContextPath());
+			
+		} else {
+			request.getRequestDispatcher("views/myPage/memInfoUpdateForm.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**
