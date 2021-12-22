@@ -123,7 +123,7 @@
         <div class="right" id="right" align="right">
             <div>
                 <a href="<%= contextPath %>/adminEnrollForm.faq" class="btn btn-sm btn-warning">등록</a>
-                   
+
                 
             <br><br>
             </div>

@@ -39,17 +39,21 @@ public class AdminFaqInsertController extends HttpServlet {
 		String faqTitle = request.getParameter("title");
 		String faqContent = request.getParameter("content");
 		String managerNo = request.getParameter("managerNo");
-		String faqCate = request.getParameter("faqcate");
+		String faqCate = request.getParameter("cate");
+		
 		
 		HttpSession session = request.getSession();
 		int ManagerNo = ((AdminMember)session.getAttribute("loginAdmin")).getManagerNo();
 		
 		Faq f = new Faq();
+
 		f.setFaqTitle(faqTitle);
 		f.setFaqContent(faqContent);
-		f.setManagerNo(String.valueOf(ManagerNo)); // 무조건 String으로 만들어줌 .valueOf()
+		f.setManagerNo(String.valueOf(managerNo)); // 무조건 String으로 만들어줌 .valueOf()
 		f.setFaqCate(faqCate);
 
+		
+	
 		int result = new FaqService().insertFaq(f);
 		
 		if(result > 0) { 
@@ -62,8 +66,7 @@ public class AdminFaqInsertController extends HttpServlet {
 			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
 			
 			
-		}
-		
+		}	
 	}
 
 	/**

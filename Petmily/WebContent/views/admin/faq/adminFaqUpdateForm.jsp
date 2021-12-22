@@ -90,6 +90,15 @@
                             <option value="11">펫적사항</option>
                             <option value="12">기타</option>
                         </select>
+                        <script>
+                          $(function(){
+                             $("select[name=cate] option").each(function(){
+                                if($(this).val() == "<%= f.getFaqCate()%>"){
+                                   $(this).attr("selected", true);
+                                }
+                             })
+                          })
+                       </script>
                     </td>
                 </tr>
                 <tr>

@@ -81,6 +81,15 @@
                             <option value="3">찾고있어요</option>
                             <option value="4">고객센터 공지사항</option>
                         </select>
+                        <script>
+                          $(function(){
+                             $("select[name=cate] option").each(function(){
+                                if($(this).val() == "<%= n.getNoticeCate()%>"){
+                                   $(this).attr("selected", true);
+                                }
+                             })
+                          })
+                       </script>
                     </td>
                 </tr>
                 <tr>

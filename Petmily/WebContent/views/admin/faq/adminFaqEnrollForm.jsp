@@ -63,13 +63,15 @@
         
         <!-- FAQ 등록 폼 -->
         <form action="<%= contextPath %>/adminInsert.faq" id="enroll-form-faq" method="post">
+        
+		<input type="hidden" name="managerNo" value="<%= loginAdmin.getManagerNo() %>">
 			<!-- 입력 테이블 -->
             <table>
                 <tr>
                     <th width="10px"></th>
                     <td>분류</td>
                     <td>
-                        <select name="faqcate" id="">
+                        <select name="cate" id="">
                             <option value="1">회원가입</option>
                             <option value="2">비밀번호재설정</option>
                             <option value="3">회원정보</option>

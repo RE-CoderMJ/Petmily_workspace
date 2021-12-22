@@ -35,6 +35,7 @@ public class AdminNoticeInsertController extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
+		
 		String noticeTitle = request.getParameter("title");
 		String noticeContent = request.getParameter("content");
 		String managerNo = request.getParameter("managerNo");
@@ -51,13 +52,18 @@ public class AdminNoticeInsertController extends HttpServlet {
 		n.setNoticeCate(noticeCate);
 
 		int result = new NoticeService().insertNotice(n);
-		 
-
+		
+		if(result > 0) { 
+			session.setAttribute("alertMsg", "성공적으로  공지사항 등록되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/adminList.no?cpage=1");
 
+		}else {
+			request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다!");	
+			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
 			
 			
-		}
+		}	
+	}
 		
 		
 	
