@@ -19,6 +19,14 @@ public class ExchangeService {
 		
 	}
 	
+	public OrderSelect selectOrderDelivery(int orderNo) {
+		Connection conn = getConnection();
+		OrderSelect od = new ExchangeDao().selectOrderDelivery(conn, orderNo);
+
+		close(conn);
+		return od;
+	}
+	
 	
 	
 	/*

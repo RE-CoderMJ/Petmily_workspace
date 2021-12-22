@@ -15,6 +15,18 @@
 
 </entry>
 
+<entry key="selectOrderDelivery">
+
+	SELECT 
+	       MEM_NAME
+         , O.PHONE
+         , O.ADDRESS
+         , O.DELIVERY_MEMO
+	  FROM SPMY_ORDER O
+	  JOIN TB_MEMBER USING(MEM_NO)
+	 WHERE ORDER_NO = ?
+
+</entry>
 
 
 

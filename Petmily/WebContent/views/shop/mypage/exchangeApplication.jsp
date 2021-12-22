@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.shop.model.vo.*"%>
 <%
 	OrderSelect o = (OrderSelect)request.getAttribute("o");
+	OrderSelect od = (OrderSelect)request.getAttribute("od");
 
 	//ArrayList<OrderSelect> osdetail=(ArrayList<OrderSelect>)request.getAttribute("osdetail");
 %>
@@ -135,8 +136,7 @@
 
 <div id="outer">
 	
-<input type="hidden" name="orderno" value="<%= o.getOrderNo() %>">	<!-- 없애야되나 -->
-<input type="hidden" name="pno" value="<%= o.getOrderPnum() %>">
+
 
         <div id="one">
             <div class="inline-block" >
@@ -164,19 +164,19 @@
             <table>
                 <tr>
                     <td>이름 </td>
-                    <td>xxx님</td>
+                    <td><%= od.getMemName() %>님</td>
                 </tr>
                 <tr>
                     <td>주소 </td>
-                    <td>서울시 용산구</td>
+                    <td><%= od.getAdderess() %></td>
                 </tr>
                 <tr>
                     <td>휴대폰 </td>
-                    <td>010-xxxx-xxxx</td>
+                    <td><%= od.getPhone() %></td>
                 </tr>
                 <tr>
                     <td>배송메모 </td>
-                    <td>dfdfdfdf</td>
+                    <td><%= od.getDeliveryMemo() %></td>
                 </tr>
             </table>
 

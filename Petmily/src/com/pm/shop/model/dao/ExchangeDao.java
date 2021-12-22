@@ -58,30 +58,35 @@ public class ExchangeDao {
 	
 	
 	
-	/*
-	public Exchange select(Connection conn) {
-		// select문 -> ResultSet(한행) ->Exchange
-		Exchange ec = null;
+	public OrderSelect selectOrderDelivery(Connection conn, int orderNo) {
+		// select문 -> ResultSet(한행) ->OrderSelect
+		OrderSelect od = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("select");
+		String sql = prop.getProperty("selectOrderDelivery");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderNo);
 			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				ec.add(new rset)
+				od = new OrderSelect(rset.getString("mem_name")
+								  , rset.getString("phone")
+								  , rset.getString("address")
+								  , rset.getString("delivery_memo"));
 			}
 			
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
 		}
 		
+		return od;
 	}
-	
-	*/
 	
 	
 	

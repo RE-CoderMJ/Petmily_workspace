@@ -14,7 +14,10 @@ public class OrderSelect {
 
 	private String orderPoption; 	// 주문상품 옵션
 	private int orderPamount; 		// 주문상품 수량
-
+	private String memName;
+	private String phone;
+	private String adderess;
+	private String deliveryMemo;
 
 	
 	public OrderSelect() {}
@@ -35,6 +38,27 @@ public class OrderSelect {
 		this.orderPamount = orderPamount;
 	}
 
+
+
+	public OrderSelect(int orderPnum, int orderNo, int productNo, String pOption, int pAmount, String productName,
+			int price, Date orderDate, String orderPoption, int orderPamount, String memName, String phone,
+			String adderess, String deliveryMemo) {
+		super();
+		this.orderPnum = orderPnum;
+		this.orderNo = orderNo;
+		this.productNo = productNo;
+		this.pOption = pOption;
+		this.pAmount = pAmount;
+		this.productName = productName;
+		this.price = price;
+		this.orderDate = orderDate;
+		this.orderPoption = orderPoption;
+		this.orderPamount = orderPamount;
+		this.memName = memName;
+		this.phone = phone;
+		this.adderess = adderess;
+		this.deliveryMemo = deliveryMemo;
+	}
 
 
 	public OrderSelect(int orderNo, String productName, String orderPoption, int orderPamount, int price, Date orderDate, int orderPnum) {
@@ -68,6 +92,17 @@ public class OrderSelect {
 		this.productName = product_name;
 		
 	}
+	
+	
+
+	public OrderSelect(String memName, String phone, String adderess, String deliveryMemo) {
+		super();
+		this.memName = memName;
+		this.phone = phone;
+		this.adderess = adderess;
+		this.deliveryMemo = deliveryMemo;
+	}
+
 
 	public int getOrderPnum() {
 		return orderPnum;
@@ -153,17 +188,56 @@ public class OrderSelect {
 		this.orderPamount = orderPamount;
 	}
 
+	
+
+	public String getMemName() {
+		return memName;
+	}
+
+
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+	public String getAdderess() {
+		return adderess;
+	}
+
+
+	public void setAdderess(String adderess) {
+		this.adderess = adderess;
+	}
+
+
+	public String getDeliveryMemo() {
+		return deliveryMemo;
+	}
+
+
+	public void setDeliveryMemo(String deliveryMemo) {
+		this.deliveryMemo = deliveryMemo;
+	}
+
 
 	@Override
 	public String toString() {
 		return "OrderSelect [orderPnum=" + orderPnum + ", orderNo=" + orderNo + ", productNo=" + productNo
 				+ ", pOption=" + pOption + ", pAmount=" + pAmount + ", productName=" + productName + ", price=" + price
 				+ ", orderDate=" + orderDate + ", orderPoption=" + orderPoption + ", orderPamount=" + orderPamount
-				+ "]";
+				+ ", memName=" + memName + ", phone=" + phone + ", adderess=" + adderess + ", deliveryMemo="
+				+ deliveryMemo + "]";
 	}
 
-	
-	
-	
-	
+
 }
