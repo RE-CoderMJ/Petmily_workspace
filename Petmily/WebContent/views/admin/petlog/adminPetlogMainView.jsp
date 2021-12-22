@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Petlog.model.vo.Petlog, com.pm.admin_Login.model.vo.AdminMember" %>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Petlog> list = (ArrayList<Petlog>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,102 +128,72 @@
         <!-- 리스트 -->
         <div class="list-area">
 
+		<% for (Petlog p : list) { %>
             <!-- 썸네일 -->
             <div class="thumbnail">
+            <input type="hidden" value="<%= p.getPetlogNo() %>">
                 <div id="thumbnail">
-                    <img src="" alt="">
+                    <img src="<%= contextPath %>/<%= p.getTitleImg() %>"  alt="대표이미지">
                 </div>    
 
                 <p>
-                    <img src="resources/img/petlog_logo.PNG" alt="">
-                    <a href="" class="nickname">뽐뽀미</a>
+                    <img src="resources/img/petlog_logo.PNG" alt="프로필기본이미지">
+                    <a href="" class="nickname"><%= p.getMemNo() %></a>
                     <a href="" class="report">신고</a>
                 </p>
             </div>
-
-            <div class="thumbnail">
-                <div id="thumbnail">
-                    <img src="" alt="">
-                </div>    
-
-                <p>
-                    <img src="resources/img/petlog_logo.PNG" alt="">
-                    <a href="" class="nickname">뽐뽀미</a>
-                    <a href="" class="report">신고</a>
-                </p>
-            </div>
-            <div class="thumbnail">
-                <div id="thumbnail">
-                    <img src="" alt="">
-                </div>    
-
-                <p>
-                    <img src="resources/img/petlog_logo.PNG" alt="">
-                    <a href="" class="nickname">뽐뽀미</a>
-                    <a href="" class="report">신고</a>
-                </p>
-            </div>
-
-            <div class="thumbnail">
-                <div id="thumbnail">
-                    <img src="" alt="">
-                </div>    
-
-                <p>
-                    <img src="resources/img/petlog_logo.PNG" alt="">
-                    <a href="" class="nickname">뽐뽀미</a>
-                    <a href="" class="report">신고</a>
-                </p>
-            </div>
-            <div class="thumbnail">
-                <div id="thumbnail">
-                    <img src="" alt="">
-                </div>    
-
-                <p>
-                    <img src="resources/img/petlog_logo.PNG" alt="">
-                    <a href="" class="nickname">뽐뽀미</a>
-                    <a href="" class="report">신고</a>
-                </p>
-            </div>
-            <div class="thumbnail">
-                <div id="thumbnail">
-                    <img src="" alt="">
-                </div>    
-
-                <p>
-                    <img src="resources/img/petlog_logo.PNG" alt="">
-                    <a href="" class="nickname">뽐뽀미</a>
-                    <a href="" class="report">신고</a>
-                </p>
-            </div>
+		<% } %>
             
             
 
 
-            <!-- 페이징 바 / 중간 정렬 (안먹히네)-->
+            <!-- 페이징 바 -->
+		    <script>
+		        $(function(){
+		            $(".paging-area button").click(function(){
+		                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+		                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+		            })
+		        })
+		    </script>
+		    
+		    <br><br><br>
+
+            <!-- 페이징 바 --> 
             <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
+            <% if(currentPage != 1) { %>
+                <button onclick="location.href='<%=contextPath%>/adminMain.pl?cpage=<%=currentPage-1%>';"> &lt; </button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++) { %>
+            	<% if(p== currentPage) { %>
+                <button disabled><%= p %></button>
+                <% }else { %>
+                <button onclick="location.href='<%=contextPath%>/adminMain.pl?cpage=<%= p %>';"><%= p %></button>
+                <% } %>
+			<% } %>
+			
+			<% if(currentPage != maxPage){ %>
+            	<button onclick="location.href='<%=contextPath%>/adminMain.pl?cpage=<%=currentPage+1%>';"> &gt; </button>
+			<% } %>
+			
+			<!-- <>/주소 적어두기
+			<script>   
+    		$(function(){
+    			$(".thumbnail").click(function(){
+    				location.href = "<>/petsRoomDetail.petLog?bno=" + $(this).children("input").val();
+    			})
+    		})
+    		</script>
+    		-->
+		
             </div>
+            
         </div>
 
     </div>
 
-    <!-- 페이징바 -->
-    <script>
-        $(function(){
-        $(".paging-area button").click(function(){
-            $(this).siblings(".paging-area button").css({background: "", color:"black"});
-            $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-            })
-        })
-    </script>
+
 
 </body>
 </html>
