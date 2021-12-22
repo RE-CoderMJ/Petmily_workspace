@@ -108,7 +108,7 @@ public class AdminSpPdUpdateController extends HttpServlet {
 			
 			if(result >0) {
 				request.getSession().setAttribute("alertMsg", "성공적으로 수정 완.");
-				response.sendRedirect(request.getContextPath() + "/spPdUd2.ad?pno=" + ProductNo);
+				response.sendRedirect(request.getContextPath() + "//spPdUd.ad");
 			}else {
 				request.setAttribute("errorMsg", "쇼핑몰 수정 실패 ㅋㅋ");
 			}

@@ -168,7 +168,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>\
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
@@ -222,11 +222,11 @@
                             <!-- <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>-->
                             <!-- btn-box -->
                             <div class="pb-5">
-                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno=260';" class="btn btn-sm btn-warning mr-2" id="updateBtn" data-toggle="modal" data-target="#myModal">수정</button>
+                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno='+pno;" class="btn btn-sm btn-warning mr-2" id="updateBtn" data-toggle="modal" data-target="#myModal">수정</button>
                             </div>
                             
                             <div class="pb-5">
-                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
+                                <button id="deleteBtn" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
                             </div>
                             <!-- 삭제모달 -->
                             <div class="modal fade" id="deleteModal">
@@ -291,7 +291,7 @@
                                 <tr>
                                     <td><input type="checkbox" name="selectCheck" id="selectCheck" value=""></td>
                                     <td><%= i+1 %></td>
-                                    <td><%= aslist.get(i).getProductNo() %></td>
+                                    <td id="pno"><%= aslist.get(i).getProductNo() %></td>
                                     <td><%= aslist.get(i).getCategory() %></td>
                                     <td><%= aslist.get(i).getProductName() %></td>
                                     <td><%= aslist.get(i).getPrice() %></td>
@@ -301,14 +301,47 @@
 							<% } %>
                             </tbody>
                         </table>
-                        <!-- <script>
-                            $('#updateBtn').click(function(){
+                        <script>
+                            $(function(){
+                                $('input:checkbox[name="selectCheck"]').click(function(){
+                                    if($('input:checkbox[name="selectCheck"]').is(':checked')){
+                                        console.log("확인");
+                                        clickEvent(event);
+                                    }else{
+                                        console.log("체크해제");
+                                    }
+                                })
+                            });
+
+                            function clickEvent(event) {
+                                console.log('target ::', $(event.target));
+
+                                var row = $(event.target).closest('tr');
+
+                                var columns = row.find('#pno');
+
+                                console.log('row::', row);
+                                console.log('columns::', columns);
+
+                                var values = "";
+
+                                //var value = $('columns').val();
+                                $.each(columns, function(idx, item){
+                                   pno = item.innerHTML;
+                                });
+                                console.log(pno);
+                            }
+
+                        </script>
+                         <!--<script>
+                            $('#deleteBtn').click(function(){
                                 if($("input:checkbox[name='selectCheck']:checked").length === 0){
                                     alert("수정할 버튼을 선택하세요.");
                                     return;
-                                }else($("input:checkbox[name='selectCheck']:checked").length === 1)
-                                    alert("버튼한개클릭");
-                            })
+                                }
+                                $("input:checkbox[name='selectCheck']:checked").each(function(k,kVal){
+                                    
+                            });
                         </script>
                         <script>
                             $(function(){
@@ -316,7 +349,7 @@
                                     alert("버튼한개클릭");
                                 })
                             })
-                        </script>-->
+                        </script> -->
                         <br><br><br><br><br>
                         <!-- 페이징 바 -->
                         <div class="paging-area" align="center">

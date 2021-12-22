@@ -120,7 +120,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 					request.setAttribute("alertMsg", "쇼핑몰 등록 성공 ㅊㅋ");
 					response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 				}else {
-					request.setAttribute("errorMsg", "님아 쇼핑몰 등록 실패요 ㅋㅋ");
+					request.setAttribute("errorMsg", "쇼핑몰 등록 실패");
 				}
 			}
 	

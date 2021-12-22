@@ -4,7 +4,6 @@
 <%
 	AdminShopping as = (AdminShopping)request.getAttribute("as");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
-	
 %>
     <!DOCTYPE html>
     <html>
@@ -116,10 +115,9 @@
     </head>
     <body>
         <%@ include file="../../common/admin_menubar.jsp" %>
-        <script>
-        	console.log(<%= as%>);
-        	console.log(<%= list%>);
-        </script>
+        
+        <!-- String explain = (as.getExplain() == null) ? "" : as.getExplain(); %>-->
+    	
         <div class="container" style="max-width:1600px;">
             <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
             
