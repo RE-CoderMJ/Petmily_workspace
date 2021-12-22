@@ -177,7 +177,9 @@
     <body>
 
         <%@ include file="../../common/admin_menubar.jsp" %>
-        
+        <script>
+        	console.log(<%= as %>);
+        </script>
         <div class="container" style="max-width:1600px;">
             <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
             
@@ -220,7 +222,7 @@
                             <!-- <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>-->
                             <!-- btn-box -->
                             <div class="pb-5">
-                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno=';" class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">수정</button>
+                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno=260';" class="btn btn-sm btn-warning mr-2" id="updateBtn" data-toggle="modal" data-target="#myModal">수정</button>
                             </div>
                             
                             <div class="pb-5">
@@ -268,7 +270,7 @@
                         <table style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th width="30px"><input type="checkbox" name="" value=""></th>
+                                    <th width="30px"><input type="checkbox" name="allCheck" id="allCheck" value=""></th>
                                     <th width="50px">No.</th>
                                     <th width="150px">상품 코드</th>
                                     <th width="150px">카테고리</th>
@@ -287,7 +289,7 @@
                                 <% }else { %>
                                 <% for(int i=0; i<aslist.size(); i++) {%>
                                 <tr>
-                                    <td><input type="checkbox" name="" value=""></td>
+                                    <td><input type="checkbox" name="selectCheck" id="selectCheck" value=""></td>
                                     <td><%= i+1 %></td>
                                     <td><%= aslist.get(i).getProductNo() %></td>
                                     <td><%= aslist.get(i).getCategory() %></td>
@@ -299,6 +301,22 @@
 							<% } %>
                             </tbody>
                         </table>
+                        <!-- <script>
+                            $('#updateBtn').click(function(){
+                                if($("input:checkbox[name='selectCheck']:checked").length === 0){
+                                    alert("수정할 버튼을 선택하세요.");
+                                    return;
+                                }else($("input:checkbox[name='selectCheck']:checked").length === 1)
+                                    alert("버튼한개클릭");
+                            })
+                        </script>
+                        <script>
+                            $(function(){
+                                $("input:checkbox[name='selectCheck']:checked").click(function(){
+                                    alert("버튼한개클릭");
+                                })
+                            })
+                        </script>-->
                         <br><br><br><br><br>
                         <!-- 페이징 바 -->
                         <div class="paging-area" align="center">

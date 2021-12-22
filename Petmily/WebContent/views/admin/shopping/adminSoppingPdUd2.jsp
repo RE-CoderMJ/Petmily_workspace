@@ -1,18 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Shopping.model.vo.AdminShopping, com.pm.common.model.vo.Attachment" %>
+<%@ page import="java.util.ArrayList, com.pm.admin_Shopping.model.vo.AdminShopping, com.pm.common.model.vo.Attachment" %>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<AdminShopping> aslist = (ArrayList<AdminShopping>)request.getAttribute("aslist");
 	AdminShopping as = (AdminShopping)request.getAttribute("as");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 	
-	System.out.println(pi);
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 %>
     <!DOCTYPE html>
     <html>
@@ -124,7 +116,10 @@
     </head>
     <body>
         <%@ include file="../../common/admin_menubar.jsp" %>
-        
+        <script>
+        	console.log(<%= as%>);
+        	console.log(<%= list%>);
+        </script>
         <div class="container" style="max-width:1600px;">
             <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
             
@@ -202,9 +197,10 @@
                                          <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
                                          <% if(list != null) {%>
 					                        <!-- 현재 이 게시글에 딸린 첨부파일이 있을경우 -->
-					                        <% for(int i=0; i<4; i++) { %>
-					                        <%= list.getOriginName() %>
-					                        <input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>">
+					                        <% for(int i=0; i<list.size(); i++) { %>
+					                        <%= list.get(i).getOriginName() %>
+					                        <input type="hidden" name="originFileNo" value="<%= list.get(i).getAttachmentNo() %>">
+											<% } %>
 										<% } %>
                                          <input type="file" class="mt-3" name="file1" required>
                                      </td>

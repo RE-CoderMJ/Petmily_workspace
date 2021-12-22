@@ -185,7 +185,7 @@ private Properties prop = new Properties();
 				close(rset);
 				close(pstmt);
 			}
-			
+			//System.out.println(as);
 			return as;
 		}
 	
@@ -232,7 +232,7 @@ private Properties prop = new Properties();
 			pstmt.setString(5, as.getExplain());
 			pstmt.setString(6, as.getDetail());
 			pstmt.setInt(7, as.getAmount());
-			pstmt.setInt(7, as.getProductNo());
+			pstmt.setInt(8, as.getProductNo());
 			
 			result = pstmt.executeUpdate();
 			

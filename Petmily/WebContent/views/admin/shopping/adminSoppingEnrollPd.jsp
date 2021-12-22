@@ -222,7 +222,7 @@
                     <Modal body>
                     <div class="modal-body" align="center" style="text-align: center;">
                         <div class="modalMsg-area">
-                            정상적으로 <br>상품이 등록 되었습니다.
+                            	정상적으로 <br>상품이 등록 되었습니다.
                         </div>
                         <div>
                             <button type="button" class="btn" data-dismiss="modal" id="uploadCompletedclosebtn">닫기</button>
@@ -231,7 +231,7 @@
                     
                 </div>
             </div>
-        </div>-->
+        </div> -->
                     <!-- 옵션 추가 -->
                     <script>
                         $(document).ready(function(){

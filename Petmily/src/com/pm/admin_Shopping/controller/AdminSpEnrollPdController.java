@@ -91,7 +91,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 			
 			ArrayList<Attachment> list = new ArrayList<>();
 			
-			for(int i=1; i<=4; i++) {
+			for(int i=1; i<=list.size(); i++) {
 				
 				String key = "file" + i;
 				
@@ -117,7 +117,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 				
 				if(result > 0) {
 					// 성공 => /jsp/list.th	url요청 => 목록페이지
-					request.getSession().setAttribute("alertMsg", "쇼핑몰 등록 성공 ㅊㅋ");
+					request.setAttribute("alertMsg", "쇼핑몰 등록 성공 ㅊㅋ");
 					response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 				}else {
 					request.setAttribute("errorMsg", "님아 쇼핑몰 등록 실패요 ㅋㅋ");
