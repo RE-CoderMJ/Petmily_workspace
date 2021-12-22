@@ -168,12 +168,11 @@
     <li>
       <div class="menu">스토어<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu">
+        <li><a href="<%= contextPaths %>/like.my">찜</a></li>
         <li><a href="<%= contextPaths %>/cart.my">장바구니</a></li>
         <li><a href="<%= contextPaths %>/orderselect.my?cpage=1">주문내역조회</a></li>
-        <li><a href="<%= contextPaths %>/like.my">찜</a></li>
         <li><a href="<%= contextPaths %>/point.my?cpage=1">포인트조회</a></li>
-        <li><a href="<%= contextPaths %>/exchangeapp.my">교환/반품 신청</a></li>
-        <li><a href="<%= contextPaths %>/cancelselect.my">취소/환불내역 조회</a></li>
+        <li><a href="<%= contextPaths %>/cancelselect.my?cpage=1">취소/환불내역 조회</a></li>
       </ul>
     </li>
   </ul>

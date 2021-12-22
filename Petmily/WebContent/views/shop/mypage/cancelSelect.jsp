@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.shop.model.vo.Cancel" %>
+ <%
+ 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+ 	ArrayList<Cancel> list = (ArrayList<Cancel>)request.getAttribute("list");
+ 	
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ 	
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,7 +144,10 @@
     <div id="outer">
     	 <div class="title">취소/환불 내역 조회</div>
          <hr>
-
+<% if(list.isEmpty()) { %>
+	<div align="center" id="nullcase">취소/환불 내역이 없습니다.</div>
+<% } else { %>
+	<% for(Cancel c : list) { %>
          <div class="div1">
             <div class="div2 inline-block">1주일</div>
             <div class="div2 inline-block">1개월</div>
@@ -148,16 +162,16 @@
                 <th>진행상태</th>
             </tr>
             <tr>
-                <td>주문번호 : A-13124954 
-                    <br> 주문일 : 21.11.15
+                <td>주문번호 : <%= c.getOrderNo() %> 
+                    <br> 주문일 : <%= c.getOrderDate() %>
                 </td>
                 <td>
-                    상품명 <br>
-                    1개 / 블루 / 20,000원 <br>
-                    결제수단 : 신용카드
+                   <%= c.getProductName() %> <br>
+                    <%= c.getOrderPamount() %>개 / <%= c.getOrderPoption() %> / <%= c.getPrice() %>원 <br>
+                    결제수단 : <%= c.getCcPayment() %>
                 </td>
                 <td>
-                    취소완료
+                    <%= c.getCcSledding() %>
                 </td>
             </tr>
     
@@ -184,7 +198,8 @@
             </tr>
     
         </table>
-
+	        <% } %>
+	<% } %>  
        <br><br>
 	 <!-- 페이징 바 -->
 	    <div class="paging-area" >
@@ -229,18 +244,13 @@
                       있습니다.</p>
             </div>
         </div>
-    </div>
-       
         
-
-
-
-
-
-
-
-
+ 
     </div>
+      
+</div>
+    
+    
 <%@ include file="../../common/footerbar.jsp" %>
 </div>
     <script>

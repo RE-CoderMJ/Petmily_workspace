@@ -70,8 +70,8 @@ public class MpOrderSelectController extends HttpServlet {
 		// * 페이징바를 만들때 필요한 객체
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		// * 현재 요청한 페이지(currentPage)에 보여질 <포인트 사용내역 리스트> boardLimit수만큼 조회해가기
-		ArrayList<OrderSelect> list = new OrderSelectService().selectList( pi);
+		// * 현재 요청한 페이지(currentPage)에 보여질 <주문내역 리스트> boardLimit수만큼 조회해가기
+		ArrayList<OrderSelect> list = new OrderSelectService().selectList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

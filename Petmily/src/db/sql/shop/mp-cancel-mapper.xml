@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+
+<entry key="selectListCount">
+	SELECT
+	       COUNT(*) COUNT
+	  FROM SP_ORDERPRODUCT
+
+</entry>
+
+<entry key="selectList">
+
+	SELECT *
+	  FROM (
+	        SELECT ROWNUM RNUM, A.*
+	          FROM (
+	                SELECT
+					       CC.ORDER_NO "CANCEL_ONO"
+					     , P.PRODUCT_NAME "CANCEL_PNAME"
+					     , OP.ORDER_POPTION "CANCEL_OPOPTION"
+					     , OP.ORDER_PAMOUNT "CANCEL_OPAMOUNT"
+					     , O.PRICE "CANCEL_PRICE" 
+					     , TO_CHAR(O.ORDER_DATE, 'yyyy-mm-dd') "ORDER_DATE"
+				         , CC_SLEDDING
+					  FROM SPMY_CANCEL CC, SPMY_ORDER O, SP_ORDERPRODUCT OP, TB_PRODUCT_UD P
+					 WHERE 
+					       CC.ORDER_NO = O.ORDER_NO
+					   AND CC.ORDER_PNUM = OP.ORDER_PNUM
+					   AND CC.PRODUCT_NO = P.PRODUCT_NO
+					  ORDER 
+					     BY ORDER_DATE DESC
+	                ) A
+	        )
+	 WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+
+
+</properties>

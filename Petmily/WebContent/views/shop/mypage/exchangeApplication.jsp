@@ -264,17 +264,20 @@
             <!-- Modal body -->
             <div class="modal-body">
                 
-                <div class="dropdown" align="center">
-                    <button type="button" id="dropdown" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: white;">
+                <div align="center">
+                   <form>
                         반품사유
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">고객변심</a>
-                      <a class="dropdown-item" href="#">상품불만족</a>
-                      <a class="dropdown-item" href="#">고객주문오류</a>
-                      <a class="dropdown-item" href="#">불량반품</a>
-                      <a class="dropdown-item" href="#">기타</a>
-                    </div>
+                    
+                    <select class="dropdown-menu" name="rtreason">
+                      <option class="dropdown-item" value="rtreson1">고객변심</option>
+                      <option class="dropdown-item" value="rtreson2">상품불만족</option>
+                      <option class="dropdown-item" value="rtreson3">고객주문오류</option>
+                      <option class="dropdown-item" value="rtreson4">불량반품</option>
+                      <option class="dropdown-item" value="rtreson5">기타</option>
+                    </select>
+                    
+                    
+				      </form>
                   </div>
     
                 
@@ -284,7 +287,6 @@
             <div class="modal-footer">
               <a href="" class="btn btn-danger">확인</a>
             </div>
-      
           </div>
         </div>
       </div>

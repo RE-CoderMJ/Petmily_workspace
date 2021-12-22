@@ -129,7 +129,6 @@ div, img, li, a{
         <div class="cart-content" >
                 
             <div class="inline-block" >
-              
                 <img src=""  id="content-img" width="80px" height="80px">    
         	</div>
             
@@ -189,7 +188,7 @@ div, img, li, a{
 			            <!-- Modal footer -->
 			            <div class="modal-footer">
 			              <a href="<%= contextPath %>/ordercancelform.my?pno=<%= osd.getOrderPnum()%>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
-			            </div> -->
+			            </div>
 			      
 			        </div>
 			      </div>
