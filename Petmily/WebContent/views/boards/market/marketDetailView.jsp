@@ -13,6 +13,7 @@
 <%@ include file="../../common/links.jsp" %>
 <link href="resources/css/boards/market/marketDetailView.css" rel="stylesheet">
 <link href="resources/css/boards/market/marketReply.css" rel="stylesheet">
+<link href="resources/css/boards/bCommon/reportDeleteModals.css" rel="stylesheet">
 
 </head>
 <body>
@@ -146,7 +147,6 @@
 	</div>
 	
 	<%@ include file="../bCommon/reportDeleteModals.jsp" %>
-	
 	<script>
 		function deleteContent(){
 
@@ -156,7 +156,7 @@
 				data: {mno : <%=m.getMarketNo()%>},
 				success:function(result){
 					if(result>0){
-						window.location="main.market?page=1";
+						$("#deleteCompleted").modal('show');
 					}
 				},
 				error:function(){
@@ -164,7 +164,14 @@
 				}
 			})
 		}
+		
+		$(function(){
+			$("#deleteCompletedclosebtn").click(function(){
+				location.href="main.market?page=1";
+			})
+		})
 	</script>
+
     <%@ include file="../../common/footerbar.jsp" %>
 </body>
 </html>

@@ -41,7 +41,7 @@
 				                      </div>
 				                      
 				                      <!-- Left and right controls -->
-				                      <a class="left carousel-control" href="#demo" data-slide="next">
+				                      <a class="left carousel-control" href="#demo" data-slide="prev">
 				                      		<img src="resources/img/left_arrow.png" id="left-controller">
 				                      </a>
 									  <a class="right carousel-control" href="#demo" data-slide="next">
@@ -78,8 +78,8 @@
          let maxAppend = 1;
          
          $("#add-btn").click(function (){
-            if(maxAppend >= 4){
-               alert("사진은 4개까지 업로드가 가능합니다.");
+            if(maxAppend >= 5){
+               alert("사진은 5개까지 업로드가 가능합니다.");
                return;
             }
             let $num = ($("#add-area").children("input").last().attr('name')).substring(4);

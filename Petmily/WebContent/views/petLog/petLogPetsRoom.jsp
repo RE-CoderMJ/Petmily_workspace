@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.pm.petLog.model.vo.PetsRoom, com.pm.petLog.model.vo.PetLog" %>
+<%
+	PetsRoom pr = (PetsRoom)request.getAttribute("pr");
+	ArrayList<PetLog> list = (ArrayList<PetLog>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +12,8 @@
 <title>Insert title here</title>
 <%@ include file="../common/links.jsp" %>
 <link href="resources/css/petLog/petLogPetsRoom.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <%@ include file="../common/menubar.jsp" %>
@@ -20,13 +27,13 @@
                 <div id="left-top">
                     <div id="profile-img"><img src="resources/img/petlog_logo.PNG" alt=""></div>
                     <div id="room-name">
-                        <div>뽐뽀미</div>
+                        <div><%= pr.getRoomName() %></div>
                         <div id="report-account-btn" data-toggle="modal" data-target="#reportAskModal">신고</div>
                     </div>
                     <button type="button" id="follow-btn">팔로우</button>
                     <!-- <button type="button" id="following-btn">팔로잉</button> -->
                     <div id="room-info">
-                        <div class="count info">17</div>
+                        <div class="count info"><%= list.size() %></div>
                         <div class="count info follower" data-toggle="modal" data-target="#follower">10</div>
                         <div class="count info following" data-toggle="modal" data-target="#following">5</div>
                         <div class="info-title info">게시글</div>
@@ -34,8 +41,7 @@
                         <div class="info-title info following" data-toggle="modal" data-target="#following">팔로잉</div>
                     </div>
                     <div id="bio">
-                        안녕하세요 뽐뽀미 룸에 오신 것을 환영합니다:-)
-                        귀여운 보미의 공간!!ㅎㅎ
+                       <%=pr.getBio() == null ? "" : pr.getBio()%>
                     </div>
                     <button type="button" id="edit-profile" data-toggle="modal" data-target="#profile-edit-modal">프로필 수정하기</button>
                 </div>
@@ -65,44 +71,31 @@
                 </div>
             </div>
             <div id="right-part">
-                <div align="right" id="enroll-btn" onclick="location.href='<%=contextPath%>/enroll.petLog'"></div>
-                <div id="pictures-area">
-                    <div class="pictures" onclick="location.href='<%=contextPath %>/petsRoomDetail.petLog'">
-                        <img src="resources/img/bomi3.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/coco.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/coco2.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/coco3.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/bomi2.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/bomi4.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/bomi3.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/coco.jpg" alt="">
-                    </div>
-                    <div class="pictures">
-                        <img src="resources/img/coco2.jpg" alt="">
-                    </div>
-                </div>
-                <div id="paging-area" align="center">
-                    <button> &lt; </button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button> &gt; </button>
+	            	<% if(loginUser != null) { %>
+	            		<% if(pr.getMemNo() == loginUser.getMemNo()) { %>
+	                		<div align="right" id="enroll-btn" onclick="location.href='<%=contextPath%>/enrollForm.petLog'"></div>
+	                	<% } %>
+	                <% } %>
+            	<div id="list-area">
+	                <div id="pictures-area">
+	                <% if(!list.isEmpty()) { %>
+	                	<% for(PetLog pl:list) { %>
+	                    	<div class="pictures">
+	                        	<img src=<%= pl.getTitleImg()%> alt="">
+	                        	<input type="hidden" value=<%=pl.getPetLogNo() %>>
+	                    	</div>
+	                	<% } %>
+	                <% } %>
+	                </div>
+	                <div id="paging-area" align="center">
+	                    <button> &lt; </button>
+	                    <button>1</button>
+	                    <button>2</button>
+	                    <button>3</button>
+	                    <button>4</button>
+	                    <button>5</button>
+	                    <button> &gt; </button>
+	                </div>
                 </div>
                 <script>
                     $(function(){
@@ -112,10 +105,145 @@
                         })
                     })
                 </script>
+                <div id="detail-area" style="display:none">
+	                <a id="back-icon" class="material-icons ">undo</a>
+	                <div class="photo-area">
+	                    <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
+	
+	                        <!-- The slideshow -->
+	                        <div class="carousel-inner">
+	                          
+	                        </div>
+	                        
+	                        <!-- Left and right controls -->
+		                    <a class="carousel-control-prev" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
+		                           <span class="carousel-control-prev-icon"></span>
+		                    </a>
+		                    <a class="carousel-control-next" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">
+		                           <span class="carousel-control-next-icon"></span>
+		                    </a>
+	                    </div>
+	
+	                </div>
+	                <div class="date-area"></div>
+	
+	                <div class="right-top">
+	                    <div class="text-area">
+	                       
+	                    </div>
+	                </div>
+	                <div class="right-middle">
+	                    <img src="resources/img/heart.jpg" alt="">
+	                    <span>좋아요</span>
+	                    <span class="like-count">33</span>
+	                    <img src="resources/img/petLog/reply.png" alt="">
+	                    <span>댓글</span>
+	                    <span class="reply-count">2</span>
+	                    <label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
+	                    <label onclick="location.href='<%=contextPath %>/update.petLog'" class="modify-post">수정하기</label>
+	                </div>
+	                <div class="right-bottom">
+	                    <div class="reply-area">
+	                        <div class="write-reply">
+	                                <form action="">
+	                                    <input type="text" placeholder="댓글을 남겨 보세요." required>
+	                                    <button type="submit" class="reply-enrollbtn">등록</button>
+	                                </form>
+	                        </div>
+	                        
+	                        <div id="scroll-area">
+	                            <div class="replies">
+	                                
+	                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+	                                <div class="user-name">choco22</div>
+	                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+	                                <div class="reply-info">
+	                                    xxxx-xx-xx<br> 
+	                                    <label href="">수정</label>
+	                                    <label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+	                                </div>
+	                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+	                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+	                            </div>
+	                            <div class="replies">
+	                                
+	                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+	                                <div class="user-name">choco22</div>
+	                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+	                                <div class="reply-info">
+	                                    xxxx-xx-xx<br> 
+	                                    <label href="">수정</label>
+	                                    <label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+	                                </div>
+	                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+	                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+	                            </div>
+	                            <div class="replies">
+	                                
+	                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
+	                                <div class="user-name">choco22</div>
+	                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
+	                                <div class="reply-info">
+	                                    xxxx-xx-xx<br> 
+	                                    <label href="">수정</label>
+	                                    <label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
+	                                </div>
+	                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
+	                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+                </div>
             </div>
         </div>
     </div>
-
+	<!-- 상세페이지 ajax -->
+	<script>
+		$(function(){
+			
+			$(".pictures").click(function selectPetLog(){
+				const value = $(this).children("input").val();
+				
+				$.ajax({
+					url:"detail.petLog",
+					data:{petLogNo:value},
+					success:function(datas){
+						$(".carousel-inner").empty();
+						$("#list-area").hide();
+						$("#detail-area").show();
+						
+						$(".date-area").html(datas.pl.enrollDate);
+						$(".text-area").html(datas.pl.petLogContent);
+						
+						if(datas.list != null) {
+	                		for(let i=0; i<datas.list.length; i++){
+								let path1 = datas.list[i].filePath;
+								let path2 = datas.list[i].changeName;
+	                			let path3 = "/PM/" + path1 + path2;
+	                			console.log(path3);
+	                			if(i == 0) {
+	                				$(".carousel-inner").append("<div class='carousel-item active'><img src='' alt=''></div>");
+	                				$(".carousel-item").children("img").attr("src", path3);
+	                			}else{
+	                				$(".carousel-inner").append("<div class='carousel-item'><img src='' alt=''></div>");
+	                				$(".carousel-item").last().children("img").attr("src", path3);
+	                			}
+	                		}
+						}
+						$("#back-icon").click(function(){
+							$("#list-area").show();
+							$("#detail-area").hide();
+							$(".carousel-inner").empty();
+						});
+					},error:function(){
+						console.log("게시글 상세조회용 ajax 통신 실패");
+					}
+				})
+			})
+			
+		})
+	</script>
     <!-- 프로필 수정 모달창 -->
     <div class="container">
 

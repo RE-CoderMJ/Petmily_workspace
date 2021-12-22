@@ -1,7 +1,6 @@
 package com.pm.petLog.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pm.petLog.model.service.PetLogService;
-import com.pm.petLog.model.vo.PetLog;
-import com.pm.petLog.model.vo.PetsRoom;
 
 /**
- * Servlet implementation class PetLogPetsRoomController
+ * Servlet implementation class AjaxPetLogDeleteController
  */
-@WebServlet("/petsRoom.petLog")
-public class PetLogPetsRoomController extends HttpServlet {
+@WebServlet("/delete.petLog")
+public class AjaxPetLogDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PetLogPetsRoomController() {
+    public AjaxPetLogDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +29,15 @@ public class PetLogPetsRoomController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int petLogNo = Integer.parseInt(request.getParameter("pno"));
 		
-		int memNo = Integer.parseInt(request.getParameter("memNo"));
-		ArrayList<PetLog> list = new PetLogService().selectPetLogList(memNo);
-		PetsRoom pr = new PetLogService().selectPetsRoom(memNo);
+		int result = new PetLogService().deletePetLog(petLogNo);
 		
-		request.setAttribute("list", list);
-		request.setAttribute("pr", pr);
-		request.getRequestDispatcher("views/petLog/petLogPetsRoom.jsp").forward(request, response);
+		if(result > 0) {
+			response.getWriter().print(result);
+		}else {
+			
+		}
 	}
 
 	/**

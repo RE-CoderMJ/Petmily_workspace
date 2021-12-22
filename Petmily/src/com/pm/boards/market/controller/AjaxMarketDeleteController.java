@@ -1,7 +1,6 @@
-package com.pm.petLog.controller;
+package com.pm.boards.market.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.petLog.model.service.PetLogService;
-import com.pm.petLog.model.vo.PetLog;
-import com.pm.petLog.model.vo.PetsRoom;
+import com.pm.boards.market.model.service.MarketService;
 
 /**
- * Servlet implementation class PetLogPetsRoomController
+ * Servlet implementation class MarketDeleteController
  */
-@WebServlet("/petsRoom.petLog")
-public class PetLogPetsRoomController extends HttpServlet {
+@WebServlet("/delete.market")
+public class AjaxMarketDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PetLogPetsRoomController() {
+    public AjaxMarketDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +30,15 @@ public class PetLogPetsRoomController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int memNo = Integer.parseInt(request.getParameter("memNo"));
-		ArrayList<PetLog> list = new PetLogService().selectPetLogList(memNo);
-		PetsRoom pr = new PetLogService().selectPetsRoom(memNo);
+		int marketNo = Integer.parseInt(request.getParameter("mno"));
 		
-		request.setAttribute("list", list);
-		request.setAttribute("pr", pr);
-		request.getRequestDispatcher("views/petLog/petLogPetsRoom.jsp").forward(request, response);
+		int result = new MarketService().deleteMarket(marketNo);
+		
+		if(result > 0) {
+			response.getWriter().print(result);
+		}else {
+			
+		}
 	}
 
 	/**

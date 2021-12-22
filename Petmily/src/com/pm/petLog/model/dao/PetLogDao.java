@@ -34,7 +34,7 @@ public class PetLogDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, pl.getMemNo());
+			pstmt.setInt(1, Integer.parseInt(pl.getMemNo()));
 			pstmt.setString(2, pl.getPetLogContent());
 			
 			result = pstmt.executeUpdate();
@@ -86,12 +86,14 @@ public class PetLogDao {
 				pl.setMemNo(rset.getString("mem_no"));
 				pl.setEnrollDate(rset.getString("enroll_date"));
 				pl.setRoomName(rset.getString("room_name"));
+				pl.setTitleImg(rset.getString("titleimg"));
 				
 				list.add(pl);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			close(rset);
 			close(pstmt);
 		}
 		
@@ -109,11 +111,91 @@ public class PetLogDao {
 			pstmt.setInt(1, memNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				
+				pr.setMemNo(rset.getInt("mem_no"));
+				pr.setpProfileImg("p_profile_img");
+				pr.setRoomName(rset.getString("room_name"));
+				pr.setBio(rset.getString("bio"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
+		return pr;
+	}
+	
+	public PetLog selectPetLog(Connection conn, int petLogNo) {
+		PetLog pl = new PetLog();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectPetLog");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, petLogNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				pl.setPetLogNo(rset.getInt("petlog_no"));
+				pl.setEnrollDate(rset.getString("enroll_date"));
+				pl.setPetLogContent(rset.getString("petlog_content"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return pl;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, int petLogNo){
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, petLogNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Attachment att = new Attachment();
+				att.setAttachmentNo(rset.getInt("attachment_no"));
+				att.setOriginName(rset.getString("origin_name"));
+				att.setChangeName(rset.getString("change_name"));
+				att.setFilePath(rset.getString("file_path"));
+				
+				list.add(att);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public int deletePetLog(Connection conn, int petLogNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deletePetLog");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, petLogNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 } 

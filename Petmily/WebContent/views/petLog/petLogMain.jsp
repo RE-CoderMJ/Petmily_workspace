@@ -22,8 +22,8 @@
            <option value="all">전체 게시글 조회</option>
            <option value="fContents">팔로잉 게시글 조회</option>
         </select>
-        
-        <div id="petsroom-btn" onclick="location.href='<%= contextPath %>/petsRoom.petLog'">
+        <%if(loginUser != null) { %>
+        <div id="petsroom-btn" onclick="location.href='<%= contextPath %>/petsRoom.petLog?memNo=<%=loginUser.getMemNo()%>'">
         	<div id="petsroom-icon"><img src="resources/img/petLog/petsRoom.png" alt=""></div>
         	<div>나의 펫츠룸으로 이동</div>
         </div>
@@ -31,6 +31,7 @@
         	<div id="enroll-icon"><img src="resources/img/petLog/enroll.png" alt=""></div>
         	<div>나의 펫로그 쓰러가기</div>
         </div>
+        <% } %>
         	<br>
             <div class="content-box">
                 <div class="left-part">

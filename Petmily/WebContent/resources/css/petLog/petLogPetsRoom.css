@@ -51,7 +51,7 @@ body{
 }
 /* 프로필 */
 #profile-img{
-    width: 110px;
+    width: 90px;
     height: 110px;
     margin-left: 32px;
     border-radius: 100px;
@@ -233,9 +233,215 @@ body{
     background-size: cover;
     position: absolute;
     right: 40px;
-    top:50px;
+    top:100px;
     cursor:pointer;
 }
+
+/* 상세조회 영역 스타일 */
+/* 사진영역 */
+.photo-area{
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    left: 130px;
+    top: 50px;
+}
+.carousel-item{
+    width: 100%;
+    height: 320px;
+    overflow:hidden;
+}
+.carousel-item>img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+/* 날짜 영역 */
+.date-area{
+    position: absolute;
+    bottom: 350px;
+    left: 255px;
+    font-size: 14px;
+    color: rgb(106, 106, 106);
+}
+/* 오른쪽 상단 영역 */
+.right-top{
+    margin-top: 420px;
+    height:275px;
+}
+#back-icon{
+	position:absolute;
+	right:38px;
+	top:50px;
+	text-decoration:none;
+	color:orange;
+	font-weight:bolder;
+	font-size:40px;
+	cursor:pointer;
+}
+/* 삭제버튼 */
+.delete-btn{
+    background: none;
+    border: none;
+    color: rgb(106, 106, 106);
+    font-weight: bolder;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+/* 내용영역 */
+.text-area{
+    width: 500px;
+    min-height: 90px;
+    max-height: 90px;
+    text-align: center;
+    padding: 5px;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+/* 좋아요, 댓글수 영역 */
+.right-middle{
+    height: 40px;
+    margin-top: -180px;
+}
+.right-middle>img{
+    width: 20px;
+    height: 19px;
+    margin-top: 9px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+.right-middle span{
+    font-weight: bolder;
+    color: rgb(70, 70, 70);
+}
+.like-count{
+    margin-right: 10px;
+}
+.reply-count{
+    margin-right: 110px;
+}
+/* 신고버튼 */
+.report-post{
+    text-decoration: none;
+    color: darkgray;
+    font-weight: bolder;
+    font-size:11px;
+    margin-right: 5px;
+    cursor:pointer;
+    margin-left: 80px;
+}
+/* 수정버튼 */
+.modify-post{
+    text-decoration: none;
+    color: darkgray;
+    font-weight: bolder;
+    font-size:11px;
+    cursor:pointer;
+}
+/* 오른쪽 하단 영역 */
+.right-bottom{
+    width: 500px;
+    height: 170px;
+    background:rgb(235, 235, 235);
+}
+/* 댓글영역 스타일 */
+.reply-area *{
+	border:none!important;
+}
+/* 댓글작성영역 스타일 */
+.write-reply{
+    height: 30px;
+    margin-bottom: 15px;
+}
+.write-reply input{
+    width: 430px;
+    height: 25px;
+    margin-top: 7px;
+}
+.reply-enrollbtn{
+    background-color: orange;
+    font-size: 13px;
+    font-weight: bolder;
+    height: 27px;
+    margin-left: 8px;
+    border:none;
+    border-radius:10px;
+    width:50px;
+}
+/* 댓글조회영역 스타일 */
+.replies{
+    margin-bottom: 5px;
+    margin-top:10px;
+    margin-left:10px;
+    width: 485px;
+    padding-left: 10px;
+    height:auto;
+	min-height:52px;
+    overflow:hidden;
+    position: relative;
+}
+.user-name, .reply-content {
+    float: left;
+}
+.profile-pic{
+    width: 19px;
+    height: 19px;
+    float: left;
+    border-radius:100px;
+    over-flow:hidden;
+}
+.profile-pic img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+.user-name{
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: 13px;
+    margin-right: 10px;
+}
+.reply-content{
+    font-size: 12px;
+    white-space: pre-line;
+    height:auto;
+    margin-bottom:10px;
+    width:355px;
+    text-align: left;
+}
+.delete-reply{
+    text-decoration: none;
+    color: rgb(92, 92, 92);
+    font-weight: bolder;
+}
+.reply-info{
+    width: 60px;
+    font-size: 11px;
+    color: gray;
+    height: 50px;
+    margin-left: -205px;
+    position: absolute;
+    left: 240px;
+    top: 16px;
+}
+.reply-info label{
+    color: gray;
+    font-size: 10px;
+    margin-left: 7px;
+    text-decoration: none!important;
+    cursor: pointer;
+}
+#scroll-area{
+    overflow-y: auto;
+    height: 125px;
+    width: 497px;
+}
+
+
 
 /* 프로필 수정 모달 */
 .modal-body{

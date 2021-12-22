@@ -41,5 +41,35 @@ public class PetLogService {
 	public PetsRoom selectPetsRoom(int memNo) {
 		Connection conn = getConnection();
 		PetsRoom pr = new PetLogDao().selectPetsRoom(conn, memNo);
+		close(conn);
+		return pr;
+	}
+	
+	public PetLog selectPetLog(int petLogNo) {
+		Connection conn = getConnection();
+		PetLog pl = new PetLogDao().selectPetLog(conn, petLogNo);
+		close(conn);
+		return pl;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(int petLogNo){
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new PetLogDao().selectAttachmentList(conn, petLogNo);
+		close(conn);
+		return list;
+	}
+	
+	public int deletePetLog(int petLogNo) {
+		Connection conn = getConnection();
+		int result = new PetLogDao().deletePetLog(conn, petLogNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
 	}
 }

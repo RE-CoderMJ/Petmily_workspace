@@ -45,9 +45,50 @@
 			 , ENROLL_DATE
 			 , PETLOG_CONTENT
 			 , ROOM_NAME
-		  FROM PETLOG
+			 , (SELECT
+			           FILE_PATH || CHANGE_NAME
+			      FROM ATTACHMENT
+			     WHERE REF_NO = P.PETLOG_NO
+			       AND REF_BOARD_NO = 6
+			       AND ROWNUM = 1) "TITLEIMG"
+		  FROM PETLOG P
 		  JOIN PETSROOM USING (MEM_NO)
-	     WHERE STATUS = 'Y'
+	     WHERE P.STATUS = 'Y'
 	       AND MEM_NO = ?
+	     ORDER
+	        BY PETLOG_NO DESC
+	</entry>
+	<entry key="selectPetsRoom">
+		SELECT
+			   MEM_NO
+			 , P_PROFILE_IMG
+			 , ROOM_NAME
+			 , BIO
+		  FROM PETSROOM
+		 WHERE MEM_NO = ?
+	</entry>
+	<entry key="selectPetLog">
+		SELECT
+		       PETLOG_NO
+		     , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
+		     , PETLOG_CONTENT
+		  FROM PETLOG
+		 WHERE PETLOG_NO = ?
+	</entry>
+	<entry key="selectAttachmentList">
+		SELECT
+			   ATTACHMENT_NO
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , FILE_PATH
+	      FROM ATTACHMENT
+	     WHERE REF_BOARD_NO = 6
+	       AND REF_NO = ?
+	</entry>
+	<entry key="deletePetLog">
+		UPDATE
+			   PETLOG
+		   SET STATUS = 'N'
+		 WHERE PETLOG_NO = ?
 	</entry>
 </properties>
