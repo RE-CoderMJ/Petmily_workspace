@@ -101,6 +101,7 @@
     <script>
 		$(function(){
 			let $maxAppend = Number(($("#add-area").children("input").last().attr('name')).substring(4));
+			console.log($maxAppend);
 			$("#file-count").val($maxAppend);
 			$("#add-btn").click(function (){
 				if($maxAppend >= 5){
@@ -110,9 +111,9 @@
 				//let $num = ($("#add-area").children("input").last().attr('name')).substring(4);
 				//let result = $maxAppend+1;
 				$("#add-area").append("<input class='file' type='file'>");
+				$maxAppend++;
 				$("#add-area").children("input").last().attr('name', 'file' + $maxAppend);
 				$("#add-area").children("input").last().on("change", function(){loadImg(this, $maxAppend)});
-				$maxAppend++;
 				$("#file-count").val($maxAppend);
 			});						
 		})

@@ -56,7 +56,7 @@ public class PetLogUpdateController extends HttpServlet {
 				Attachment att = new Attachment();
 				att.setOriginName(multiRequest.getOriginalFileName(key));
 				att.setChangeName(multiRequest.getFilesystemName(key));
-				att.setFilePath("resources/petLog_upfiles/post_upfiles");
+				att.setFilePath("resources/petLog_upfiles/post_upfiles/");
 				
 				if(multiRequest.getParameter(originAttNo) != null) {
 					att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
