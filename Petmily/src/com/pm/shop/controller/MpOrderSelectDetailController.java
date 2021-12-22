@@ -38,6 +38,8 @@ public class MpOrderSelectDetailController extends HttpServlet {
 		
 		request.setAttribute("osdetail", osdetail);
 		
+		System.out.println(osdetail);
+		
 		request.getRequestDispatcher("views/shop/mypage/orderSelectDetail.jsp").forward(request, response);
 	}
 

@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.pm.shop.model.vo.OrderProduct;
 import com.pm.shop.model.vo.OrderSelect;
 
 public class ExchangeDao {
@@ -39,10 +38,12 @@ public class ExchangeDao {
 						
 			rset = pstmt.executeQuery();
 			
-			o = new OrderSelect(rset.getString("order_poption")
-					            , rset.getInt("order_pamount")
-					            , rset.getInt("price")
-					            , rset.getString("product_name"));
+			if(rset.next()) {
+				o = new OrderSelect(rset.getString("order_poption")
+								  , rset.getInt("order_pamount")
+								  , rset.getInt("price")
+								  , rset.getString("product_name"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -123,7 +123,8 @@ public class OrderSelectDao {
 								   		 rset.getString("order_se_poption"),
 								   		 rset.getInt("order_se_pamount"),
 								   		 rset.getInt("price"),
-								   		 rset.getDate("order_date")
+								   		 rset.getDate("order_date"),
+								   		 rset.getInt("order_pnum")
 										));
 			}
 			

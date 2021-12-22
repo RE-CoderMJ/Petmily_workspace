@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.shop.model.vo.*"%>
 <%
-	//OrderSelect o = (OrderSelect)request.getAttribute("o");
+	OrderSelect o = (OrderSelect)request.getAttribute("o");
 	ArrayList<OrderSelect> osdetail = (ArrayList<OrderSelect>)request.getAttribute("osdetail");
 %>    
 
@@ -107,7 +107,7 @@ div, img, li, a{
 <div class="oouter">
 <%@ include file="mypageSidebar.jsp" %>
 <div class="content-area">
-<div id="title">주문내역 / 배송조회</div>
+<div id="title">주문내역 상세조회</div>
 
 
 <div id="outer">
@@ -137,7 +137,7 @@ div, img, li, a{
                 
                	 <%= osd.getProductName() %>
                 <br>
-             	 옵션<%= osd.getOrderPoption() %>
+             	 <%= osd.getOrderPoption() %>
                 <br>
                 <br>
                 <span style="color:forestgreen;">배송준비중 | 배송중 | 배송완료</span>
@@ -162,7 +162,7 @@ div, img, li, a{
 			      		</div>
 			            <!-- Modal footer -->
 			            <div class="modal-footer">
-			              <!-- <a href="<%= contextPath %>/exchangeapp.my?pno=<%= op.getOrderPnum() %>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a> -->
+			              <a href="<%= contextPath %>/exchangeapp.my?orderno=<%= osd.getOrderNo() %>&pno=<%= osd.getOrderPnum() %>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
 			            </div>
 			      
 			        </div>
@@ -188,7 +188,7 @@ div, img, li, a{
 			      		</div>
 			            <!-- Modal footer -->
 			            <div class="modal-footer">
-			              <!-- <a href="<%= contextPath %>/ordercancelform.my?pno=<%= op.getOrderPnum()%>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
+			              <a href="<%= contextPath %>/ordercancelform.my?pno=<%= osd.getOrderPnum()%>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
 			            </div> -->
 			      
 			        </div>

@@ -37,22 +37,36 @@ public class OrderSelect {
 
 
 
-	public OrderSelect(int orderNo, String productName, String pOption, int pAmount, int price, Date orderDate) {
+	public OrderSelect(int orderNo, String productName, String orderPoption, int orderPamount, int price, Date orderDate, int orderPnum) {
 		super();
 		this.orderNo = orderNo;
 		this.productName = productName;
-		this.pOption = pOption;
-		this.pAmount = pAmount;
+		this.orderPoption = orderPoption;
+		this.orderPamount = orderPamount;
+		this.price = price;
+		this.orderDate = orderDate;
+		this.orderPnum = orderPnum;
+	}
+	
+	
+	public OrderSelect(int orderNo, String productName, String orderPoption, int orderPamount, int price, Date orderDate) {
+		super();
+		this.orderNo = orderNo;
+		this.productName = productName;
+		this.orderPoption = orderPoption;
+		this.orderPamount = orderPamount;
 		this.price = price;
 		this.orderDate = orderDate;
 	}
-	
+
+
 	public OrderSelect(String orderPoption, int orderPamount, int price, String product_name) {
 		super();
 		this.orderPoption = orderPoption;
 		this.orderPamount = orderPamount;
 		this.price = price;
 		this.productName = product_name;
+		
 	}
 
 	public int getOrderPnum() {

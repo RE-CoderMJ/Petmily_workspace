@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.pm.shop.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.shop.model.vo.*"%>
 <%
 	OrderSelect o = (OrderSelect)request.getAttribute("o");
+
+	//ArrayList<OrderSelect> osdetail=(ArrayList<OrderSelect>)request.getAttribute("osdetail");
 %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +46,7 @@
             border-radius: 10px;
             padding: 50px 20px;
             margin:auto;
-
+			position:relative;
         }
        
         
@@ -55,7 +57,13 @@
             font-size: 20px;
             margin-left: 30px;
         }
-        #money{position:relative; left:500px; top:30px; font-size:18px;}
+        #money{
+        	position:relative; 
+        	left:500px; 
+        	top:30px; 
+        	font-size:18px;
+        	font-weight: 800;
+        }
 
         #two{
             margin:10px 30px;
@@ -90,8 +98,8 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:1200px;
-            top:780px;
+            left:700px;
+            top:500px;
         }
         
         #bbtn2{ 
@@ -103,8 +111,8 @@
             border-radius: 4px;
             float:right;
             position: absolute;
-            left:1300px;
-            top:780px;
+            left:800px;
+            top:500px;
         }
         
         .modal-backdrop { opacity:0.1 !important; }
@@ -126,10 +134,10 @@
     <div id="title"  >교환 / 반품 신청</div>
 
 <div id="outer">
+	
+<input type="hidden" name="orderno" value="<%= o.getOrderNo() %>">	<!-- 없애야되나 -->
+<input type="hidden" name="pno" value="<%= o.getOrderPnum() %>">
 
-<% if(o == null) { %>
-	<div align="center" id="nullcase">상품이 없습니다.</div>
-<% } else { %>
         <div id="one">
             <div class="inline-block" >
                 <img src=""  id="content-img" width="80px" height="80px">    
@@ -145,10 +153,11 @@
             </div>
             
             <div class="inline-block" id="money">
-                <h3><%= o.getPrice() %></h3>
+                <h3><%= o.getPrice() %>원</h3>
             </div>
         </div>
-<% } %> 
+
+
         <hr>
         <div id="two">
             <div class="smalltitle">배송지정보</div>

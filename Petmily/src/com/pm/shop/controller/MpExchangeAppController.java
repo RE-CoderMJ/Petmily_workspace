@@ -35,9 +35,6 @@ public class MpExchangeAppController extends HttpServlet {
 		
 		OrderSelect o = new ExchangeService().selectOrderProduct(orderPnum);
 		
-		//Exchange ec = new ExchangeService().select();
-		
-		
 		request.setAttribute("o", o);
 		
 		request.getRequestDispatcher("views/shop/mypage/exchangeApplication.jsp").forward(request, response);
