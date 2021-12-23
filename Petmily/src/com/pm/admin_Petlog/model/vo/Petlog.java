@@ -62,6 +62,16 @@ public class Petlog {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
+
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
 
 	@Override
 	public String toString() {

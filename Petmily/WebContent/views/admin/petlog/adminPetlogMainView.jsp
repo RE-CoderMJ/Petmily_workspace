@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Petlog.model.vo.Petlog, com.pm.admin_Login.model.vo.AdminMember" %>
 <%
-   PageInfo pi = (PageInfo)request.getAttribute("pi");
-   ArrayList<Petlog> list = (ArrayList<Petlog>)request.getAttribute("list");
- 
- 	int currentPage = pi.getCurrentPage();
- 	int startPage = pi.getStartPage();
- 	int endPage = pi.getEndPage();
- 	int maxPage = pi.getMaxPage();
- %>    
+  PageInfo pi = (PageInfo)request.getAttribute("pi");
+  ArrayList<Petlog> list = (ArrayList<Petlog>)request.getAttribute("list");
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,7 +130,7 @@
 		<% for (Petlog p : list) { %>
             <!-- 썸네일 -->
             <div class="thumbnail">
-            <input type="hidden" value="<%= p.getPetlogNo() %>">
+            <input type="hidden" name="num" value="<%= p.getPetlogNo() %>">
                 <div id="thumbnail">
                     <img src="<%= contextPath %>/<%= p.getTitleImg() %>"  alt="대표이미지">
                 </div>    
@@ -177,15 +176,17 @@
             	<button onclick="location.href='<%=contextPath%>/adminMain.pl?cpage=<%=currentPage+1%>';"> &gt; </button>
 			<% } %>
 			
-			<!-- <>/주소 적어두기
+			
+			
+			<%--
 			<script>   
     		$(function(){
     			$(".thumbnail").click(function(){
-    				location.href = "<>/petsRoomDetail.petLog?bno=" + $(this).children("input").val();
+    				location.href = "<%= contextPath %>/petsRoomDetail.petLog?bno=" + $(this).children("input").val();
     			})
     		})
     		</script>
-    		-->
+    		--%> 
 		
             </div>
             

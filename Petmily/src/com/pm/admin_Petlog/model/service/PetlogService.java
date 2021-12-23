@@ -20,6 +20,7 @@ public class PetlogService {
 		close(conn);
 		return listCount;
 	}
+	 
 	
 	/* 2. 최신글순으로 페이징바에 맞게 조회 */
 	public ArrayList<Petlog> selectList(PageInfo pi) {
@@ -29,6 +30,7 @@ public class PetlogService {
 		return list;
 		
 	}
+	
 	
 	/* 3-1. petlog 조회 */
 	public Petlog selectPetlog(int petlogNo) {

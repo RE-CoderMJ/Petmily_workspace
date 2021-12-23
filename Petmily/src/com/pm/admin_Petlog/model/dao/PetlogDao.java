@@ -57,6 +57,9 @@ public class PetlogDao {
 		return listCount;
 	}
 	
+
+	
+	/* 2. petlog 페이징바에 맞게 정렬(최신순) 조회 */
 	public ArrayList<Petlog> selectList(Connection conn, PageInfo pi) {
 		ArrayList<Petlog> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -93,6 +96,7 @@ public class PetlogDao {
 		
 	}
 	
+	/* 3. petlog 조회 */
 	public Petlog selectPetlog(Connection conn, int petlogNo) {
 		Petlog p = null;
 		PreparedStatement pstmt = null;
@@ -123,6 +127,7 @@ public class PetlogDao {
 		
 	}
 	
+	/* 3-2. 첨부파일 조회 */
 	public Attachment selectAttachment(Connection conn, int petlogNo) {
 		Attachment at = null;
 		PreparedStatement pstmt = null;
@@ -153,9 +158,10 @@ public class PetlogDao {
 		return at;
 
 	}
-	/**/
+	
+	/* 4. 썸네일리스트 조회*/
 	public ArrayList<Petlog> selectThumbnailList(Connection conn){
-		ArrayList<Petlog> list = new ArrayList<>();
+		ArrayList<Petlog> thumblist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectThumbnailList");
@@ -168,9 +174,8 @@ public class PetlogDao {
 				Petlog p = new Petlog();
 				p.setMemNo(rset.getString("mem_no"));
 				p.setTitleImg(rset.getString("titleimg"));
-				p.setFileLevel(rset.getInt("file_level"));
 				
-				list.add(p);
+				thumblist.add(p);
 			}
 			
 		} catch (SQLException e) {
@@ -180,10 +185,10 @@ public class PetlogDao {
 			close(pstmt);
 		}
 		
-		return list;
+		return thumblist;
 	}
 	
-	
+	/* 4-2. 첨부파일 조회 */
 	public ArrayList<Attachment> selectAttachmentList(Connection conn, int petlogNo) {
 		ArrayList<Attachment> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -214,5 +219,6 @@ public class PetlogDao {
 		return list;
 		
 	}
+	
 
 }
