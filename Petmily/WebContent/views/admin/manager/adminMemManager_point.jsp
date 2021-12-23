@@ -107,7 +107,7 @@
             text-align: center;
         }
         .md-box input{
-            width: 220px;
+            width: 100px;
             margin-top: 25px;
             padding: 10px;
             border: 1px solid rgb(186, 186, 186);
@@ -189,8 +189,10 @@
                                 <!-- Modal body -->
                                 <div class="modal-body">
                                     <div class="md-box">
-                                        <h4 class="modal-title" style="font-size: 20px;">전체(선택) 회원에게 포인트를 <br>적립/차감 합니다.</h4>
-                                        <input type="number" placeholder="포인트를 입력하세요.">
+                                        <h4 class="modal-title" style="font-size: 18px;">전체(선택) 회원에게 포인트를 <br>적립/차감 합니다.</h4>
+                                        <input id="point1" type="number">
+                                        <button onclick="plus();" style="margin-right: 5px;" class="btn btn-sm material-icons">add</button>
+                                        <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
                                     </div>
                                 </div>
                                 <!-- Modal footer -->
@@ -200,6 +202,28 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 회원 포인트 +,- 구현 -->
+                        <script>
+                            function plus(){
+                                
+                                const p1 = document.getElementById("point1").value;
+
+                                const sum = Number(p1) + Number(100);
+
+                                document.getElementById("point1").value = sum;
+
+                            }
+                        </script>
+                        <script>
+                            function minus(){
+
+                                const m1 = document.getElementById("point1").value;
+
+                                const minus = Number(m1) - Number(100);
+
+                                document.getElementById("point1").value = minus;
+                            }
+                        </script>
                     </div>
                     <!-- 처리완료 Modal -->
                     <div class="modal fade" id="changeCompleted">

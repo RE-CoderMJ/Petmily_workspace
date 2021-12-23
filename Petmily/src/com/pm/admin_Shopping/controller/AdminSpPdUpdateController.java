@@ -77,31 +77,51 @@ public class AdminSpPdUpdateController extends HttpServlet {
 			
 			
 			ArrayList<Attachment> list = new ArrayList<>();
-			
+
 			for(int i=1; i<=3; i++) {
 				
 				String key = "file" + i;
+				String originFileNo = "originFileNo" + i;
+				Attachment at2 = new Attachment();
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
-					// 첨부파일이 존재할 경우
-					// Attachment 생성 + 원본명, 수정명, 폴더경로, 파일레벨 담아서(대표1상세2) => list에 쌓기
-					Attachment at2 = new Attachment();
-					at2.setOriginName(multiRequest.getOriginalFileName(key));
-					at2.setChangeName(multiRequest.getFilesystemName(key));
-					at2.setFilePath("resources/admin/adminSp_upfiles/");
 					
-					if(multiRequest.getParameter("originFileNo") != null) {
-						// 기존의 첨부파일이 있었을 경우 => Update Attachment (기존첨부파일번호)
-						at2.setAttachmentNo(Integer.parseInt(multiRequest.getParameter("originFileNo")));
+					if(key.equals("file1")) {
+						// 기본이미지 = file1 
+						at2.setOriginName(multiRequest.getOriginalFileName(key));
+						at2.setChangeName(multiRequest.getFilesystemName(key));
+						at2.setFilePath("resources/admin/adminSp_upfiles/");
+	
+						at2.setAttachmentNo(Integer.parseInt(multiRequest.getParameter((originFileNo))));
+						
+						at2.setFileLevel(1);
+						
+						System.out.println("origin확인:" + multiRequest.getOriginalFileName(key));
+						
+					}else {
+						// 세부이미지
+						at2.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originFileNo)));
+						at2.setOriginName(multiRequest.getOriginalFileName(key));
+						at2.setChangeName(multiRequest.getFilesystemName(key));
+						
+						if(multiRequest.getParameter(originFileNo) != null) {
+							// 기존의 첨부파일이 있었을 경우 => Update Attachment (기존첨부파일번호)
+							at2.setFilePath("resources/admin/adminSp_upfiles/");
+							
+							System.out.println("세부origin확인:" + multiRequest.getOriginalFileName(key));
+	
+						}else {
+							// 기존 첨부파일 없었을 경우 => Insert Attachment (현재게시글 번호 필요)
+							at2.setRefNo(ProductNo);
+						}
+						at2.setFileLevel(2);
 					}
-					
-					at2.setRefNo(ProductNo);
 					
 					list.add(at2);
 					
-				}
-			
+					}
 			}
+				
 				
 			int result = new AdminShoppingService().updateProduct(as, list);
 			
@@ -110,6 +130,7 @@ public class AdminSpPdUpdateController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 			}else {
 				request.setAttribute("errorMsg", "쇼핑몰 수정 실패 ㅋㅋ");
+			
 			}
 		}
 	}

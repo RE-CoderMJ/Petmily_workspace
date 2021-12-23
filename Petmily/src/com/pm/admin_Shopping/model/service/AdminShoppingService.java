@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import com.pm.admin_Shopping.model.dao.AdminShoppingDao;
 import com.pm.admin_Shopping.model.vo.AdminShopping;
-import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
 
@@ -65,16 +64,22 @@ public class AdminShoppingService {
 		
 		int result2 = 1;
 		
-		if(list != null) { // 새로운 첨부파일이 있었을 경우
-			
+		if(!list.isEmpty()) { // 새로운 첨부파일이 있었을 경우
+			// for(int i=0; i<list.size(); i++) {
+			// Attachment at2 = new Attachment();
 			for(Attachment at2: list) {
 				
-				if(at2.getAttachmentNo()!= 0) { // 기존의 첨부파일이 있었을 경우
+				if(at2.getAttachmentNo()!=0) {
 					result2 = new AdminShoppingDao().updateAttachment(conn, at2);
-				}else { // => Attachment Insert
+				}else {
 					result2 = new AdminShoppingDao().insertNewAttachment(conn, at2);
+					//if(at2.getAttachmentNo() != 0) {
+						//result2 = new AdminShoppingDao().updateAttachment(conn, at2);
+					//}else {
+					//}
 				}
 			}
+			
 		}
 		
 		if(result1 > 0 && result2 > 0) {

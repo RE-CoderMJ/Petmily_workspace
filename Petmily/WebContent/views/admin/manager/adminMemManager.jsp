@@ -208,6 +208,9 @@
                             <div class="pb-5">
                                 <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">회원수정</button>
                             </div>
+                            
+                            
+                            
                             <!-- 회원수정 Modal -->
                             <div class="modal" id="myModal">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -223,8 +226,8 @@
                                             <input type="text" value="id">
                                         </div>
                                         <div class="md-box">
-                                            <p>이름 / 성별</p>
-                                            <input type="text" value="name / gender">
+                                            <p>이름</p>
+                                            <input type="text" value="name">
                                         </div>
                                         <div class="md-box">
                                             <p>회원 이메일</p>
@@ -235,6 +238,10 @@
                                             <input type="text" value="phone">
                                         </div>
                                         <div class="md-box">
+                                            <p>회원 닉네임</p>
+                                            <input type="text" value="nickname">
+                                        </div>
+                                        <!--<div class="md-box">
                                             <p>회원 포인트</p>
                                             <input id="point1" class="point" type="number" value="3000">
                                             
@@ -243,7 +250,7 @@
                                                 <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
                                             </div>
                                         </div>
-                                        <!-- 회원 포인트 +,- 구현 -->
+                                        		회원 포인트 +,- 구현
                                         <script>
                                             function plus(){
                                                 
@@ -264,7 +271,7 @@
 
                                                 document.getElementById("point1").value = minus;
                                             }
-                                        </script>
+                                        </script>-->
 
                                     </div>
                                     <!-- Modal footer -->
