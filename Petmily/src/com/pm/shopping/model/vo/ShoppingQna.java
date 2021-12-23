@@ -38,6 +38,15 @@ public class ShoppingQna {
 		this.count = count;
 		this.status = status;
 	}
+	
+	public ShoppingQna(int pinquiryNo, String memberNick, String pinquiryTitle, String pinquiryDate, int count) {
+		super();
+		this.pinquiryNo = pinquiryNo;
+		this.memberNick = memberNick;
+		this.pinquiryTitle = pinquiryTitle;
+		this.pinquiryDate = pinquiryDate;
+		this.count = count;
+	}
 
 	public int getPinquiryNo() {
 		return pinquiryNo;
