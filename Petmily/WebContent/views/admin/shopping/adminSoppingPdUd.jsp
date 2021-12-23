@@ -222,11 +222,11 @@
                             <!-- <p style="margin-right: 25%; background: rgb(247, 198, 4); margin-top: 33px; font-weight: bold; font-size: 18px;">상품코드:A-전체/C-고양이/D-강아지/M-기타</p>-->
                             <!-- btn-box -->
                             <div class="pb-5">
-                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno='+pno;" class="btn btn-sm btn-warning mr-2" id="updateBtn" data-toggle="modal" data-target="#myModal">수정</button>
+                                <button onclick="location.href='<%= contextPath %>/spPdUd2.ad?pno='+pno2;" class="btn btn-sm btn-warning mr-2" id="updateBtn" data-toggle="modal" data-target="#myModal">수정</button>
                             </div>
                             
                             <div class="pb-5">
-                                <button id="deleteBtn" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
+                                <button onclick="location.href='<%= contextPath %>/spDelete.ad?pno='+pno2;" id="deleteBtn" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
                             </div>
                             <!-- 삭제모달 -->
                             <div class="modal fade" id="deleteModal">
@@ -236,7 +236,7 @@
                                         <!-- Modal body -->
                                         <div class="modal-body" align="center">
                                             <div class="modalMsg-area">
-                                                                정말 삭제하시겠습니까?
+                                                                	정말 삭제하시겠습니까?
                                             </div>
                                             <div id="deletebtn-area">
                                               <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
@@ -308,7 +308,7 @@
                                         console.log("확인");
                                         clickEvent(event);
                                     }else{
-                                        console.log("체크해제");
+                                        console.log("체크해제확인");
                                     }
                                 })
                             });
@@ -327,9 +327,9 @@
 
                                 //var value = $('columns').val();
                                 $.each(columns, function(idx, item){
-                                   pno = item.innerHTML;
+                                   pno2 = item.innerHTML;
                                 });
-                                console.log(pno);
+                                console.log(pno2);
                             }
 
                         </script>

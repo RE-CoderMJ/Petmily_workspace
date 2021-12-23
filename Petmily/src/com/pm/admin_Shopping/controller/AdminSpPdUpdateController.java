@@ -15,7 +15,6 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 import com.pm.admin_Shopping.model.service.AdminShoppingService;
 import com.pm.admin_Shopping.model.vo.AdminShopping;
-import com.pm.boards.market.model.service.MarketService;
 import com.pm.common.MyFileRenamePolicy;
 import com.pm.common.model.vo.Attachment;
 
@@ -79,7 +78,7 @@ public class AdminSpPdUpdateController extends HttpServlet {
 			
 			ArrayList<Attachment> list = new ArrayList<>();
 			
-			for(int i=1; i<=4; i++) {
+			for(int i=1; i<=3; i++) {
 				
 				String key = "file" + i;
 				
@@ -107,8 +106,8 @@ public class AdminSpPdUpdateController extends HttpServlet {
 			int result = new AdminShoppingService().updateProduct(as, list);
 			
 			if(result >0) {
-				request.getSession().setAttribute("alertMsg", "성공적으로 수정 완.");
-				response.sendRedirect(request.getContextPath() + "//spPdUd.ad");
+				request.getSession().setAttribute("alert", "성공적으로 수정 완.");
+				response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 			}else {
 				request.setAttribute("errorMsg", "쇼핑몰 수정 실패 ㅋㅋ");
 			}

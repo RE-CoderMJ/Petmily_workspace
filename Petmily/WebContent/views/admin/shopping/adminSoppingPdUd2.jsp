@@ -4,6 +4,7 @@
 <%
 	AdminShopping as = (AdminShopping)request.getAttribute("as");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+	System.out.println(list);
 %>
     <!DOCTYPE html>
     <html>
@@ -116,7 +117,11 @@
     <body>
         <%@ include file="../../common/admin_menubar.jsp" %>
         
-        <!-- String explain = (as.getExplain() == null) ? "" : as.getExplain(); %>-->
+        <% 
+        String productOp = (as.getProductOp() == null) ? "" : as.getProductOp();
+        String detail = (as.getDetail() == null) ? "" : as.getDetail();
+        String explain = (as.getExplain() == null) ? "" : as.getExplain();
+        %>
     	
         <div class="container" style="max-width:1600px;">
             <%@ include file="../../common/admin_shoppingSidebar.jsp" %>
@@ -168,7 +173,7 @@
                                      <th width="130px">상품 옵션</th>
                                      <td id="form0" style="width: 100px">
                                          <!-- <input type="hidden" name="opcount" value=""> -->
-                                         <input value="<%= as.getProductOp() %>" class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
+                                         <input value="<%= productOp %>" class="form-control" type="text" placeholder="옵션1" name="productOp" style="width: 130px;">
                                          
                                          <div class="btn-box">
                                              <!-- <button type="button" onclick="plus();" class="btn btn-sm material-icons" id="add">add</button> -->
@@ -186,35 +191,37 @@
                                  <tr>
                                      <th width="130px">한줄평</th>
                                      <td>
-                                         <input value="<%= as.getExplain() %>" class="form-control" type="text" name="explain">
+                                         <input value="<%= explain %>" class="form-control" type="text" name="explain">
                                      </td>
                                  </tr>
                                  <tr>
                                      <th width="130px">* 기본이미지</th>
                                      <td>
                                          <!-- <input class="form-control" type="text" placeholder="상품이미지를 등록하세요."> -->
-                                         <% if(list != null) {%>
-					                        <!-- 현재 이 게시글에 딸린 첨부파일이 있을경우 -->
-					                        <% for(int i=0; i<list.size(); i++) { %>
-					                        <%= list.get(i).getOriginName() %>
-					                        <input type="hidden" name="originFileNo" value="<%= list.get(i).getAttachmentNo() %>">
-											<% } %>
-										<% } %>
-                                         <input type="file" class="mt-3" name="file1" required>
+                                         
+				                        <!-- 현재 이 게시글에 딸린 첨부파일이 있을경우 -->
+				                        
+				                        <%= list.get(0).getOriginName() %>
+				                        <input type="hidden" name="originFileNo1" value="<%= list.get(0).getAttachmentNo() %>">
+										<input type="file" class="mt-3" name="file1" required>
                                      </td>
                                  </tr>
                                  <tr>
                                      <th width="130px">상품상세정보</th>
                                      <td>
                                          <!-- <input class="form-control" type="text"> -->
-                                         <textarea value="<%= as.getDetail() %>" class="form-control" type="text" name="detail" class="mt-1" style="height: 160px; width: 300px; resize: none;"></textarea>
+                                         <textarea value="<%= detail %>" class="form-control" type="text" name="detail" class="mt-1" style="height: 160px; width: 300px; resize: none;"></textarea>
                                      </td>
                                  </tr>
                                  <tr>
                                      <th width="130px">세부 이미지1</th>
                                      <td>
                                          <!-- <input class="form-control" type="text"> -->
-                                         <input type="file" name="file2" class="mt-3">
+                                         <% if(1 < list.size()) { %>
+                                         	<%= list.get(1).getOriginName() %>
+				                        	<input type="hidden" name="originFileNo2" value="<%= list.get(1).getAttachmentNo() %>">
+                                         <% } %>
+											<input type="file" name="file2" class="mt-3">
                                          <!-- <button class="btn btn-sm btn-primary ml-3">파일선택</button> -->
                                      </td>
                                  </tr>
@@ -222,6 +229,10 @@
                                      <th width="130px">세부 이미지2</th>
                                      <td>
                                          <!-- <input class="form-control" type="text"> -->
+                                         <% if(2 < list.size()) { %>
+                                         	<%= list.get(2).getOriginName() %>
+				                        	<input type="hidden" name="originFileNo3" value="<%= list.get(2).getAttachmentNo() %>">
+                                         <% } %>
                                          <input type="file" name="file3" class="mt-3">
                                      </td>
                                  </tr>
@@ -236,7 +247,7 @@
                          <div style="width: 800px; text-align: center;" align="center">
                              <br><br><br><br>
                              
-                             <button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=1';" class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" type="submit">확인</button>
+                             <button class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" type="submit">확인</button>
                              <button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=1';" type="button" class="btn btn-light" style="width: 80px;">취소</button>
                          </div>
                          

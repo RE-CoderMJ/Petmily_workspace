@@ -71,7 +71,8 @@
 		                     , PRODUCT_NAME
 		                     , PRICE
 		                     , AMOUNT
-		                 FROM TB_PRODUCT_UD 
+		                 FROM TB_PRODUCT_UD
+		                WHERE STATUS = 'Y' 
 		                ORDER
 		                   BY PRODUCT_NO DESC
 		                ) A
@@ -147,6 +148,13 @@
 		  , ?
 		  , ?
 		  )
+	</entry>
+	
+	<entry key="spDelete">
+		UPDATE
+			   TB_PRODUCT_UD
+		   SET STATUS = 'N'
+		 WHERE PRODUCT_NO = ?
 	</entry>
 	
 </properties>

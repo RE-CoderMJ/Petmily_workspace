@@ -5,6 +5,7 @@
 
 	AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
 
+	String alert = (String)session.getAttribute("alert");
  %>
     <!DOCTYPE html>
     <html>
@@ -75,6 +76,12 @@
     </head>
     
     <body>
+    	<% if(alert != null) { %>
+			<script>
+				alert("<%= alert %>");
+			</script>
+			<% session.removeAttribute("alert"); %>
+		<% } %>
         <!-- 상단 로고 -->
         <div class="header">
             <div id="logo">

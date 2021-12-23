@@ -190,6 +190,8 @@ private Properties prop = new Properties();
 		}
 	
 	public ArrayList<Attachment> selectAttachmentList(Connection conn, int ProductNo){
+		
+		System.out.println(ProductNo);
 		ArrayList<Attachment> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -202,6 +204,7 @@ private Properties prop = new Properties();
 			
 			while(rset.next()) {
 				Attachment at = new Attachment();
+				at.setAttachmentNo(rset.getInt("attachment_no"));
 				at.setOriginName(rset.getString("origin_name"));
 				at.setChangeName(rset.getString("change_name"));
 				at.setFilePath(rset.getString("file_path"));
@@ -287,6 +290,23 @@ private Properties prop = new Properties();
 		}
 		return result;
 	}
-	
+	public int spDelete(Connection conn, int productNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("spDelete");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, productNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 }

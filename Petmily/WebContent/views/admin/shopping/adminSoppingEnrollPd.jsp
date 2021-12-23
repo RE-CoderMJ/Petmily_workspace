@@ -205,7 +205,7 @@
                         <div style="width: 800px; text-align: center;" align="center">
                             <br><br><br><br>
                             
-                            <button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=1';" class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" type="submit">확인</button>
+                            <button class="btn btn-warning mr-3" style="width: 80px;" data-dismiss="modal" data-toggle="modal" type="submit">확인</button>
                             <button onclick="location.href='<%= contextPath %>/spPdUd.ad?cpage=1';" type="button" class="btn btn-light" style="width: 80px;">취소</button>
                         </div>
                         

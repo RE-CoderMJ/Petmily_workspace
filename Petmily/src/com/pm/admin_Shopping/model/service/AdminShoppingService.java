@@ -54,7 +54,7 @@ public class AdminShoppingService {
 	
 	public ArrayList<Attachment> selectAttachmentList(int ProductNo) {
 		Connection conn = getConnection();
-		ArrayList<Attachment> list = new MarketDao().selectAttachmentList(conn, ProductNo);
+		ArrayList<Attachment> list = new AdminShoppingDao().selectAttachmentList(conn, ProductNo);
 		close(conn);
 		return list;
 	}
@@ -85,6 +85,21 @@ public class AdminShoppingService {
 		close(conn);
 		
 		return result1 * result2;
+		
+	}
+	public int spDelete(int productNo) {
+		Connection conn = getConnection();
+		int result = new AdminShoppingDao().spDelete(conn, productNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 		
 	}
 }
