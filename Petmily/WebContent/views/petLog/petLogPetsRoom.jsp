@@ -25,7 +25,11 @@
         <div id="middle-area">
 			<div id="left-part">
                 <div id="left-top">
-                    <div id="profile-img"><img src="resources/img/petlog_logo.PNG" alt=""></div>
+                    <div id="profile-img">
+                    <% if(pr.getpProfileImg() != null) { %>
+                    	<img alt="" src="<%= contextPath %>/<%=pr.getpProfileImg() %>">
+                    <% } %>
+                    </div>
                     <div id="room-name">
                         <div><%= pr.getRoomName() %></div>
                         <div id="report-account-btn" data-toggle="modal" data-target="#reportAskModal">신고</div>
@@ -43,7 +47,7 @@
                     <div id="bio">
                        <%=pr.getBio() == null ? "" : pr.getBio()%>
                     </div>
-                    <button type="button" id="edit-profile" data-toggle="modal" data-target="#profile-edit-modal">프로필 수정하기</button>
+                    <button type="button" id="edit-profile" data-toggle="modal" data-target="#profile-edit-modal" onclick="getPrInfo(<%=pr.getMemNo()%>);">프로필 수정하기</button>
                 </div>
                 <div id="left-bottom">
                     <div id="bestpic-title">BEST! PIC!</div>
@@ -266,21 +270,23 @@
             <div class="modal-content" align="center">
 
             <button type="button" id="close-profile" class="close" data-dismiss="modal">&times;</button>
-            <form action="">
+            <form action="<%=contextPath%>/update.petsRoom" method="post" enctype="multipart/form-data">
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div id="edit-profile-img"><img src="resources/img/petlog_logo.PNG" alt=""></div>
+                    <div id="edit-profile-img"></div>
                     <div id="roomname-area">
+                    <input type="hidden" name="memNo" value="<%=pr.getMemNo()%>">
                         <span id="room-name2">룸 이름</span>
-                        <input type="text">
+                        <input type="text" id="input-roomname" name="roomName">
                       </div>
                     <div id="file-upload-area">
                       <p>사진<br>첨부</p>
-                      <input type="file">
+                      <input type='hidden' name='originFileNo' id='originFileNo' value='0'>
+                      <input type="file" id="pfImg" name="pfImg" onchange="loadImg(this);">
                     </div>
                     <div id="bio-area">
                       <div id="bio-contents">소개글</div>
-                      <textarea name="" id="" cols="30" rows="10"></textarea>
+                      <textarea name="bio" id="bio-edit" cols="30" rows="10"></textarea>
                     </div>
                     <button class="btn" id="upload-btn">업로드</button>
                 </div>
@@ -290,6 +296,47 @@
         </div>
 
       </div>
+      <script>
+	      function getPrInfo(memNo){
+	
+				$.ajax({
+					url: "select.petsRoom",
+					type:"post",
+					data:{memNo : memNo},
+					success:function(info){
+						$("#input-roomname").val(info.pr.roomName);
+						$("#edit-profile-img").append("<img src='' alt=''>");
+						$("#edit-profile-img").children("img").attr("src", "/PM/" + info.pr.pProfileImg);
+						$("#originFileNo").val(info.att.attachmentNo);														
+						/* if(info.att.attachmentNo != 0){
+							$("#file-upload-area").append("<input type='hidden' id='originFileNo' name='o'")
+						} */
+						$("#bio-edit").val(info.pr.bio);
+						console.log(info.att.attachmentNo);
+					},
+					error:function(){
+						console.log("게시글 삭제 실패!");
+					}
+				})
+			}
+	     
+          function loadImg(inputFile){
+         
+              if(inputFile.files.length == 1) {
+
+                  const reader = new FileReader();
+
+                  reader.readAsDataURL(inputFile.files[0]);
+
+                  reader.onload = function(e){
+                	  $("#edit-profile-img").children("img").attr("src", e.target.result);
+                  }
+
+              	}else{
+              		$("#edit-profile-img").children("img").attr("src", "/PM/<%=pr.getpProfileImg()%>");
+          		}
+          }
+      </script>
 
       <!-- 팔로워 리스트 모달창 -->
       <div class="container">

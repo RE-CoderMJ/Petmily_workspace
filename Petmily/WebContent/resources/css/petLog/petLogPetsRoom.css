@@ -58,6 +58,10 @@ body{
     position: absolute;
     top: 10px;
     overflow: hidden;
+    background-image: url("../../img/petlog_logo.PNG");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #profile-img img{
     object-fit: cover;
@@ -157,8 +161,8 @@ body{
     border-radius: 5px;
     font-weight: bolder;
     color: rgb(255, 111, 0);
-    background: white;
     font-size: 15px;
+    background-color:white;
 }
 /* 왼쪽 아래 영역 */
 #left-bottom{
@@ -459,6 +463,10 @@ body{
     height: 160px;
     overflow: hidden;
     border-radius: 100px;
+    background-image: url("../../img/petlog_logo.PNG");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #edit-profile-img>img{
     width: 100%;
@@ -502,6 +510,7 @@ body{
     resize: none;
     width: 260px;
     height: 100px;
+    margin-top:0px;
 }
 /* 업로드 버튼 */
 #upload-btn{

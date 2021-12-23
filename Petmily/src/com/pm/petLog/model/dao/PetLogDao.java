@@ -112,9 +112,9 @@ public class PetLogDao {
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				pr.setMemNo(rset.getInt("mem_no"));
-				pr.setpProfileImg("p_profile_img");
 				pr.setRoomName(rset.getString("room_name"));
 				pr.setBio(rset.getString("bio"));
+				pr.setpProfileImg(rset.getString("p_profile_img"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -180,24 +180,6 @@ public class PetLogDao {
 		return list;
 	}
 	
-	public int deletePetLog(Connection conn, int petLogNo) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("deletePetLog");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, petLogNo);
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
 	
 	public int updatePetLog(Connection conn, PetLog pl) {
 		int result = 0;
@@ -228,8 +210,9 @@ public class PetLogDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, att.getOriginName());
 			pstmt.setString(2, att.getChangeName());
-			pstmt.setInt(3, att.getRefNo());
-			pstmt.setString(4, att.getFilePath());
+			pstmt.setInt(3, 6);
+			pstmt.setInt(4, att.getRefNo());
+			pstmt.setString(5, att.getFilePath());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -262,4 +245,116 @@ public class PetLogDao {
 		
 		return result;
 	}
+	 
+	public int updatePetsRoom(Connection conn, PetsRoom pr) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePetsRoom");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pr.getRoomName());
+			pstmt.setString(2, pr.getBio());
+			pstmt.setInt(3, pr.getMemNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertPfNewAttachment(Connection conn, Attachment att) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setInt(3, 7);
+			pstmt.setInt(4, att.getRefNo());
+			pstmt.setString(5, att.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	/*
+	public int updatePfAttachment(Connection conn, Attachment att) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setString(3, att.getFilePath());
+			pstmt.setInt(4, att.getAttachmentNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	*/
+	
+	public Attachment selectAttachment(Connection conn, int memNo) {
+		Attachment att = new Attachment();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				att.setAttachmentNo(rset.getInt("attachment_no"));
+				att.setOriginName(rset.getString("origin_name"));
+				att.setChangeName(rset.getString("change_name"));
+				att.setFilePath(rset.getString("file_path"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return att;
+	}
+	
+	public int deletePetLog(Connection conn, int petLogNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deletePetLog");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, petLogNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 } 

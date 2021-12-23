@@ -61,9 +61,13 @@
 	<entry key="selectPetsRoom">
 		SELECT
 			   MEM_NO
-			 , P_PROFILE_IMG
 			 , ROOM_NAME
 			 , BIO
+			 , (SELECT
+			           FILE_PATH || CHANGE_NAME
+			      FROM ATTACHMENT
+			     WHERE REF_NO = MEM_NO
+			       AND REF_BOARD_NO = 7) "P_PROFILE_IMG"
 		  FROM PETSROOM
 		 WHERE MEM_NO = ?
 	</entry>
@@ -83,6 +87,16 @@
 			 , FILE_PATH
 	      FROM ATTACHMENT
 	     WHERE REF_BOARD_NO = 6
+	       AND REF_NO = ?
+	</entry>
+	<entry key="selectAttachment">
+		SELECT
+			   ATTACHMENT_NO
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , FILE_PATH
+	      FROM ATTACHMENT
+	     WHERE REF_BOARD_NO = 7
 	       AND REF_NO = ?
 	</entry>
 	<entry key="updatePetLog">
@@ -107,7 +121,7 @@
 		    SEQ_ATT.NEXTVAL
 		  , ?
 		  , ?
-		  , 6
+		  , ?
 		  , ?
 		  , ?
 		  )
@@ -119,6 +133,13 @@
 		     , CHANGE_NAME = ?
 		     , FILE_PATH = ?
 		 WHERE ATTACHMENT_NO = ?
+	</entry>
+	<entry key="updatePetsRoom">
+		UPDATE
+			   PETSROOM
+		   SET ROOM_NAME = ?
+		     , BIO = ?
+		 WHERE MEM_NO = ? 
 	</entry>
 	<entry key="deletePetLog">
 		UPDATE

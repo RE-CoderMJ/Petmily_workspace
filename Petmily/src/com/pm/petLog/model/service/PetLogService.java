@@ -105,4 +105,37 @@ public class PetLogService {
 		
 		return result1*result2;
 	}
+	
+	public int updatePetsRoom(PetsRoom pr, Attachment att) {
+		Connection conn = getConnection();
+		
+		int result1 = new PetLogDao().updatePetsRoom(conn, pr);
+		
+		int result2 = 1;
+		if(att != null) {
+			if(att.getAttachmentNo() != 0) {
+				result2 = new PetLogDao().updateAttachment(conn, att);
+			}else {
+				result2 = new PetLogDao().insertPfNewAttachment(conn, att);
+			}
+		}
+		
+		if(result1>0 && result2 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
+	}
+	
+	public Attachment selectAttachment(int memNo) {
+		Connection conn = getConnection();
+		Attachment att = new PetLogDao().selectAttachment(conn, memNo);
+		close(conn);
+		return att;
+	}
+	
 }
