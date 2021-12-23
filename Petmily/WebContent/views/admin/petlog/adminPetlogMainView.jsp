@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Petlog.model.vo.Petlog, com.pm.admin_Login.model.vo.AdminMember" %>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Petlog.model.vo.Petlog, com.pm.common.model.vo.Attachment, com.pm.admin_Login.model.vo.AdminMember" %>
 <%
   PageInfo pi = (PageInfo)request.getAttribute("pi");
   ArrayList<Petlog> list = (ArrayList<Petlog>)request.getAttribute("list");
@@ -126,6 +126,7 @@
 
         <!-- 리스트 -->
         <div class="list-area">
+		
 
 		<% for (Petlog p : list) { %>
             <!-- 썸네일 -->
@@ -141,7 +142,8 @@
                     <a href="" class="report">신고</a>
                 </p>
             </div>
-		<% } %>
+            <% } %>
+		
             
             
 

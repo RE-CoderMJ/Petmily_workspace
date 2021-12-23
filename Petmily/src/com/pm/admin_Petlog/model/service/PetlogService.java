@@ -23,9 +23,9 @@ public class PetlogService {
 	 
 	
 	/* 2. 최신글순으로 페이징바에 맞게 조회 */
-	public ArrayList<Petlog> selectList(PageInfo pi) {
+	public ArrayList<Petlog> selectThumbnailList(PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<Petlog> list = new PetlogDao().selectList(conn, pi);
+		ArrayList<Petlog> list = new PetlogDao().selectThumbnailList(conn, pi);
 		close(conn);
 		return list;
 		
@@ -49,15 +49,7 @@ public class PetlogService {
 		
 	}
 	
-	/* 4-1. petlog 썸네일 리스트 조회 */
-	public ArrayList<Petlog> selectThumbnailList() {
-		Connection conn = getConnection();
-		ArrayList<Petlog> list = new PetlogDao().selectThumbnailList(conn);
-		
-		close(conn);
-		return list;
-	}
-	
+
 	
 	/* 4-2. petlog 첨부파일 리스트 조회 */
 	public ArrayList<Attachment> selectAttachmentList(int petlogNo) {

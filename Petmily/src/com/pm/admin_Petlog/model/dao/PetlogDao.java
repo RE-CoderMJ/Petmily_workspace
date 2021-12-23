@@ -60,29 +60,26 @@ public class PetlogDao {
 
 	
 	/* 2. petlog 페이징바에 맞게 정렬(최신순) 조회 */
-	public ArrayList<Petlog> selectList(Connection conn, PageInfo pi) {
+	public ArrayList<Petlog> selectThumbnailList(Connection conn, PageInfo pi) {
 		ArrayList<Petlog> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("selectThumbnailList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() +1;
 			int endRow = startRow + pi.getBoardLimit() -1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+//			pstmt.setInt(1, startRow);
+//			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Petlog(rset.getInt("petlog_no"),
-								    rset.getString("mem_no"),
-								    rset.getString("enroll_date"),
-								    rset.getString("petlog_content"),
-								    rset.getString("status")));
+				list.add(new Petlog(rset.getString("nickname"),
+								    rset.getString("titleimg")));
 			}
 
 		} catch (SQLException e) {
@@ -91,9 +88,10 @@ public class PetlogDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+		System.out.println(pi);
 		return  list;
 		
+			
 	}
 	
 	/* 3. petlog 조회 */
@@ -159,34 +157,7 @@ public class PetlogDao {
 
 	}
 	
-	/* 4. 썸네일리스트 조회*/
-	public ArrayList<Petlog> selectThumbnailList(Connection conn){
-		ArrayList<Petlog> thumblist = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectThumbnailList");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Petlog p = new Petlog();
-				p.setMemNo(rset.getString("mem_no"));
-				p.setTitleImg(rset.getString("titleimg"));
-				
-				thumblist.add(p);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return thumblist;
-	}
+	
 	
 	/* 4-2. 첨부파일 조회 */
 	public ArrayList<Attachment> selectAttachmentList(Connection conn, int petlogNo) {

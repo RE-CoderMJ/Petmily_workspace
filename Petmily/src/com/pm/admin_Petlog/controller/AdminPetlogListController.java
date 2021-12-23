@@ -67,23 +67,21 @@ public class AdminPetlogListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Petlog> paging = new PetlogService().selectList(pi);
+		ArrayList<Petlog> list = new PetlogService().selectThumbnailList(pi);
 		
 		request.setAttribute("pi", pi);
-		request.setAttribute("paging", paging);
-		
-		
-		
-		
-		ArrayList<Petlog> list = new PetlogService().selectThumbnailList();
-		
 		request.setAttribute("list", list);
 		
-		
+		System.out.println(list);
 		
 		
 		request.getRequestDispatcher("views/admin/petlog/adminPetlogMainView.jsp").forward(request, response);
 		
+		
+		
+
+		
+
 	}
 
 	/**

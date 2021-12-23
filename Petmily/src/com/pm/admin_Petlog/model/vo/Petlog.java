@@ -23,6 +23,12 @@ public class Petlog {
 	
 	
 
+	public Petlog(String memNo, String titleImg) {
+		super();
+		this.memNo = memNo;
+		this.titleImg = titleImg;
+	}
+
 	public int getPetlogNo() {
 		return petlogNo;
 	}
