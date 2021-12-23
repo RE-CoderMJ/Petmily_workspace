@@ -102,4 +102,34 @@ private Properties prop = new Properties();
 
 		
 	}
+	
+	
+	public ArrayList<Cancel> selectTermList(Connection conn, int search){
+		// select문 -> ResultSet(여러행) -> ArrayList<Cancel>
+		ArrayList<Cancel> termList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		if(search == 7) {
+			String sql = prop.getProperty("selectTermListA");
+		} else if(search == 1) {
+			String sql = prop.getProperty("selectTermListB");
+		}else if(search == 3) {
+			String sql = prop.getProperty("selectTermListC");
+		}else {
+			String sql = prop.getProperty("selectTermListD");
+		}
+
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 }

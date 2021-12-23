@@ -19,6 +19,7 @@ public class CancelService {
 		return listCount;
 	}
 	
+	//전체 리스트
 	public ArrayList<Cancel> selectList(PageInfo pi){
 		Connection conn = getConnection();
 		ArrayList<Cancel> list = new CancelDao().selectList(conn, pi);
@@ -28,5 +29,14 @@ public class CancelService {
 		return list;
 		
 		
+	}
+	
+	// 기간별 조회리스트
+	public ArrayList<Cancel> selectTermList(int search){
+		Connection conn = getConnection();
+		ArrayList<Cancel> termList = new CancelDao().selectTermList(conn, search);
+		
+		close(conn);
+		return(termList);
 	}
 }

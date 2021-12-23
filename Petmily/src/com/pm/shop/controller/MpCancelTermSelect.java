@@ -1,11 +1,16 @@
 package com.pm.shop.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.shop.model.service.CancelService;
+import com.pm.shop.model.vo.Cancel;
 
 /**
  * Servlet implementation class MpCancelTermSelect
@@ -26,8 +31,12 @@ public class MpCancelTermSelect extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		int search;	// 사용자가 요청한 기간( 7, 1, 3, 6)
+		
+		search = Integer.parseInt(request.getParameter("search"));
+		
+		ArrayList<Cancel> termList = new CancelService().selectTermList(search);
 	}
 
 	/**

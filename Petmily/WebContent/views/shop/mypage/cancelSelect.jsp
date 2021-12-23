@@ -149,10 +149,14 @@
 <% } else { %>
 	<% for(Cancel c : list) { %>
          <div class="div1">
-            <div class="div2 inline-block">1주일</div>
-            <div class="div2 inline-block">1개월</div>
-            <div class="div2 inline-block">3개월</div>
-            <div class="div2 inline-block">6개월</div>
+            <div class="div2 inline-block" 
+            onclick="location.href='<%= contextPath %>/term.my?search=7'">1주일</div>
+            <div class="div2 inline-block" 
+             onclick="location.href='<%= contextPath %>/term.my?search=1'">1개월</div>
+            <div class="div2 inline-block"
+             onclick="location.href='<%= contextPath %>/term.my?search=3'">3개월</div>
+            <div class="div2 inline-block"
+             onclick="location.href='<%= contextPath %>/term.my?search=6'">6개월</div>
           </div>
 
           <table id="cancel-content" style="border-spacing: 10px;">
