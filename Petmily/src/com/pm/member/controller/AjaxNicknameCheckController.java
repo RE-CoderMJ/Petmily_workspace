@@ -1,4 +1,4 @@
-package com.pm.boards.qna.controller;
+package com.pm.member.controller;
 
 import java.io.IOException;
 
@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.boards.qna.model.service.QnaService;
+import com.pm.member.model.service.MemberService;
 
 /**
- * Servlet implementation class QnaDeleteController
+ * Servlet implementation class AjaxNicknameCheckController
  */
-@WebServlet("/delete.qna")
-public class QnaDeleteController extends HttpServlet {
+@WebServlet("/nicknameCheck.me")
+public class AjaxNicknameCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaDeleteController() {
+    public AjaxNicknameCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,15 +30,14 @@ public class QnaDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int qnaNo = Integer.parseInt(request.getParameter("qno"));
+		String checkNick = request.getParameter("checkNick");
 		
-		int result = new QnaService().deleteQna(qnaNo);
+		int count = new MemberService().nicknameCheck(checkNick);
 		
-		System.out.println(result);
-		if(result > 0) {
-			response.sendRedirect(request.getContextPath() + "/detail.qna?cpage=1");
+		if(count > 0) {
+			response.getWriter().print("NNNNN");
 		} else { 
-			
+			response.getWriter().print("NNNNY");
 		}
 	}
 

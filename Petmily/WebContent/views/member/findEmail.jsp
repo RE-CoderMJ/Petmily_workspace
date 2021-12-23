@@ -95,33 +95,35 @@
 
         <div class="form">
             
-            <div align="center" style="margin-bottom: 50px;">
-                <h3 style="font-weight: bold">이메일 찾기</h3>
-            </div>
+            <form action="findEmail.me" method="post">
+            
+	            <div align="center" style="margin-bottom: 50px;">
+	                <h3 style="font-weight: bold">이메일 찾기</h3>
+	            </div>
+	
+	            <div align="center">
+	                <p class="inputP">회원정보에 등록한 이름을 입력해주세요</p>
+	                <input type="text" name="userName" required placeholder="이름">
+	                <br>
+	                <p class="inputP">회원정보에 등록한 전화번호를 입력해주세요</p>
+	                <input type="text" name="phone1" placeholder="000" maxlength='3' style="width: 60px;" required>
+	                -
+	                <input type="text" name="phone2" placeholder="0000" maxlength='4' style="width: 90px;" required>
+	                -
+	                <input type="text" name="phone3" placeholder="0000" maxlength='4' style="width: 90px;" required>
+	                
+	                <!-- 일치하는 정보 없을 때 나타나는 div -->
+	                <!-- <div id="notify">
+	                    <p class="notifyRed">일치하는 정보가 없습니다</p>
+	                    <a class="notifyOrange" href="<%= contextPath %>/joinForm.me">회원가입하기</a>
+	                </div> -->
+	            </div>
 
-            <div align="center">
-                <p class="inputP">회원정보에 등록한 이름을 입력해주세요</p>
-                <input type="text" name="userName" required placeholder="이름">
-                <br>
-                <p class="inputP">회원정보에 등록한 전화번호를 입력해주세요</p>
-                <input type="text" name="phone" placeholder="010" style="width: 60px;" required>
-                -
-                <input type="text" name="phone2" placeholder="0000" style="width: 90px;" required>
-                -
-                <input type="text" name="phone3" placeholder="0000" style="width: 90px;" required>
-                
-                <!-- 일치하는 정보 없을 때 나타나는 div -->
-                <!-- <div id="notify">
-                    <p class="notifyRed">일치하는 정보가 없습니다</p>
-                    <a class="notifyOrange" href="<%= contextPath %>/joinForm.me">회원가입하기</a>
-                </div> -->
-            </div>
 
-           
-
-            <div align="center">
-                <button type="submit" class="btn btn-warning">이메일 찾기</button>
-            </div>
+	            <div align="center">
+	                <button type="submit" class="btn btn-warning">이메일 찾기</button>
+	            </div>
+            </form>
 
             <div align="center" class="btnBottom">
                 <p id="bb_p1">회원가입 시 입력한 정보가 기억나지 않는다면?</p>

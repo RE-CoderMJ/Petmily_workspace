@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
+<%
+	String email = (String)request.getAttribute("email");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +79,7 @@
             </div>
 
             <div class="emailP" align="center">
-                <p>김뫄뫄님의 이메일 계정은 <br> <span>pet-mily@naver.com</span>입니다.</p>
+                <p>회원님의 이메일 계정은 <br> <span><%= email %></span>입니다.</p>
             </div>
 
             <div align="center">

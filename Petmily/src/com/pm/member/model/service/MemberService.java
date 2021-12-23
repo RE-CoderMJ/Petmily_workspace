@@ -1,8 +1,10 @@
 package com.pm.member.model.service;
 
-import java.sql.Connection;
-
 import static com.pm.common.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
 import com.pm.member.model.dao.MemberDao;
 import com.pm.member.model.vo.Member;
 
@@ -56,5 +58,62 @@ public class MemberService {
 		
 		return result * pResult;
 	}
+
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateMember(conn, m);
+		
+		/*
+		int atResult = 1;
+		
+		if(at != null) {
+			if(at.getAttachmentNo() != 0) {
+				atResult = new MemberDao().updateProfileImg(conn, at);
+				System.out.println("3");
+			} else { 
+				atResult = new MemberDao().insertNewProfileImg(conn, at);
+				System.out.println("4");				
+			}
+		}
+		*/
+		
+		Member updateMem = null;	
+		int memNo = m.getMemNo();
+		
+		if(result > 0) {
+			commit(conn);
+			updateMem = new MemberDao().selectMember(conn, memNo);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return updateMem;
+	}
+
+	public int nicknameCheck(String checkNick) {
+		Connection conn = getConnection();
+		int count = new MemberDao().nicknameCheck(conn, checkNick);
+		
+		close(conn);
+		return count;
+	}
+
+	public String findEmail(String userName, String phone) {
+		Connection conn = getConnection();
+		String email = new MemberDao().findEmail(conn, userName, phone); 
+		
+		close(conn);
+		return email;
+	}
+
+	
+
+	
+	
+	
+	
+
+	
 
 }

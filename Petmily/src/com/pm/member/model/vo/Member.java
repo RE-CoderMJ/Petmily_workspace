@@ -67,6 +67,43 @@ public class Member {
 		this.memTel = memTel;
 		this.nickname = nickname;
 	}
+	
+
+	public Member(int memNo, String memEmail, String memPwd, String memName, String memTel, String nickname,
+			String postalCode, String address, String detailAddress) {
+		super();
+		this.memNo = memNo;
+		this.memEmail = memEmail;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.memTel = memTel;
+		this.nickname = nickname;
+		this.postalCode = postalCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+	}
+
+	
+	public Member(int memNo, String memEmail, String memPwd, String memName, String memTel, String nickname,
+			String postalCode, String address, String detailAddress, String memImg) {
+		super();
+		this.memNo = memNo;
+		this.memEmail = memEmail;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.memTel = memTel;
+		this.nickname = nickname;
+		this.postalCode = postalCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+		this.memImg = memImg;
+	}
+
+	public Member(String memEmail, String memName) {
+		super();
+		this.memEmail = memEmail;
+		this.memName = memName;
+	}
 
 	public int getMemNo() {
 		return memNo;

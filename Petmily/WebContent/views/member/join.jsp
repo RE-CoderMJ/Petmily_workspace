@@ -269,7 +269,7 @@
 
                         <div>
                             <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
-                            <button type="button" class="rightBtn btn-sm btn-light">중복 확인</button>
+                            <button type="button" class="rightBtn btn-sm btn-light" onclick="nicknameCheck();">중복 확인</button>
                         </div>
                         <span class="tip">한글, 영문, 숫자로만 2~15자로 입력해주세요</span>
                         
@@ -338,6 +338,38 @@
             </div>
             
         </div>
+        
+        <script>
+    	function nicknameCheck(){
+    		// 중복확인 버튼 클릭 시 사용자가 입력한 아이디값을 넘겨서 조회 => 응답데이터 돌려받기(존재|비존재)
+    		// 1) 사용 불가능할 경우 => alert로 메세지출력, 다시 입력하도록 유도
+    		// 2) 사용 가능할 경우 => 사용할 것인지 한번 더 확인(confirm메소드)
+    		//					 > 사용하겠다는 경우 => 더 이상 수정 못하고 회원가입버튼 활성화
+    		//					 > 사용 안하겠다는 경우 => 다시 입력하도록 유도, 회원가입버튼 비활성화 유지
+    		
+    		// 아이디 입력하는 input요소 객체
+    		const $nicknameInput = $("#joinForm input[name=nickname]");
+    		
+    		$.ajax({
+    			url: "nicknameCheck.me",
+    			data: {checkNick: $nicknameInput.val()},
+    			success: function(result){
+    				if(result == 'NNNNN') {
+    					alert("이미 존재하거나 탈퇴한 회원의 닉네임입니다");
+    					$nicknameInput.focus();
+    				} else {
+    					alert("사용가능한 닉네임입니다.");
+    				}
+   
+    			}, 
+    			error: function() {
+    				console.log("닉네임 중복체크용 ajax 통신실패");
+    			}
+    		});
+    		
+    	}
+    
+    </script>
        
         
     <!-- terms1 Modal -->

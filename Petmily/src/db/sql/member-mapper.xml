@@ -72,5 +72,98 @@
 		  )
 	</entry>
 	
-
+	
+	<entry key="updateMember">
+		UPDATE
+		       TB_MEMBER
+		   SET MEM_PWD = ?
+		     , MEM_NAME = ?
+		     , MEM_TEL = ?
+		     , NICKNAME = ?
+		     , POSTAL_CODE = ?
+		     , ADDRESS = ?
+		     , DETAIL_ADDRESS = ?
+		     , MEM_IMG = ?
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	
+	<entry key="selectMember">
+		SELECT 
+		       MEM_NO
+		     , MEM_EMAIL
+		     , MEM_PWD
+		     , MEM_NAME
+		     , MEM_TEL
+		     , NICKNAME
+		     , POSTAL_CODE
+		     , ADDRESS
+		     , DETAIL_ADDRESS
+		     , MEM_ENROLLDATE
+		     , MEM_STATUS
+		     , MEM_DEL_DATE
+		     , MEM_DEL_DETAIL
+		     , MEM_BLOCK
+		     , MEM_IMG
+		  FROM TB_MEMBER
+		 WHERE MEM_NO = ?
+		 
+		 
+	</entry>
+	
+	<!--  
+	<entry key="updateProfileImg">
+		 UPDATE
+		       ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , FILE_PATH = ?
+		 WHERE ATTACHMENT_NO = ?
+	</entry>
+	-->
+	
+	<!-- 
+	<entry key="insertNewProfileImg">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ.ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 9
+		  , ?
+		  , ?
+		  )
+	</entry>
+	-->
+	
+	<entry key="nicknameCheck">
+	
+		SELECT
+		       COUNT(*) "COUNT"
+		  FROM TB_MEMBER
+		 WHERE NICKNAME = ?
+	
+	</entry>
+	
+	
+	<entry key="findEmail">
+	
+		SELECT
+		       MEM_EMAIL
+		  FROM TB_MEMBER
+		 WHERE MEM_NAME = ?
+		   AND MEM_TEL = ?
+	
+	</entry>
+	
 </properties>

@@ -150,12 +150,13 @@
     <%@ include file="../common/menubar.jsp" %>
     
     
+    
     <%
     	String postalCode = (loginUser.getPostalCode() == null) ? "" : loginUser.getPostalCode();
     	String address = (loginUser.getAddress() == null) ? "" : loginUser.getAddress();
     	String detailAddress = (loginUser.getDetailAddress() == null) ? "" : loginUser.getDetailAddress();
     %>
-   
+    
    
 	<div class="outer">
         <%@ include file="../shop/mypage/mypageSidebar.jsp" %>
@@ -171,8 +172,10 @@
 
             <div class="content">
 
-                <form action="" id="updateForm" method="post" enctype="multipart/form-data">
+
+                <form action="<%= contextPath %>/infoUpdate.my" id="updateForm" method="post" enctype="multipart/form-data">
                     
+                    <input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
                     <div>
                         <div>
                             <label class="leftText" for="userEmail">이메일<span class="star">*</span></label>
@@ -275,14 +278,20 @@
                         </div>
 
                         <div>
-                            <img id="imgFile" width="250" height="250">
+                        	<% if(loginUser.getMemImg() == null){ %>
+                            	<img id="imgFile" width="250" height="250">
+                            <% }else{ %>
+                            	<img id="imgFile" width="250" height="250" src="<%=contextPath%>/<%=loginUser.getMemImg()%>">
+                            <% } %>
                         </div>
                         
                         <div>
                             <label class="leftText"></label>
                         </div>
-
-                        <input type="file" name="file" id="file" style="margin-top: 20px;" onchange="loadImg(this);" value="<%= loginUser.getMemImg() %>">
+                        	<%-- - <% if(at != null) { %>
+								<input type="hidden" name="originFileNo" value="<%= at.getAttachmentNo() %>">
+							<% } %> --%>
+                        	<input type="file" name="userFile" id="file" style="margin-top: 20px;" onchange="loadImg(this);">
                     </div>
 
                     <script>
@@ -306,8 +315,8 @@
                     <button type="submit" class="updateButton btn-warning">회원정보 수정</button>
                         
                         
-                    
                 </form>
+                    
 
             </div>
             

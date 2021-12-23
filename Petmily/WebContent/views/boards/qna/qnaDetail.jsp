@@ -303,7 +303,7 @@
 	            	<input type="hidden" name="qno" value="<%= q.getQnaNo() %>">
 		            <div class="modal-footer">
 		            <%-- <button type="submit" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" data-target="#delSuccessModal">삭제</button> --%>
-		            <button type="submit" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal">삭제</button>
+		            <button type="submit" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" onclick="deleteQna();">삭제</button>
 		            <button type="button" class="btn btn-warning" data-dismiss="modal">취소</button>
 		            </div>
 		        </form>
@@ -312,7 +312,25 @@
         </div>
     </div>
     
-    <%-- 
+    <script>
+    	function deleteQna() {
+    		$.ajax({
+    			url: "delete.qna",
+    			type: "post",
+    			data: {qno: <%= q.getQnaNo() %>},
+    			success: function(result) {
+    				if(result > 0) {
+    					$("#delSuccessModal").modal('show');
+    				}
+    			},
+    			error: function(){
+    				console.log("게시글 삭제 실패");
+    			}
+    		})
+    	}
+    </script>
+    
+    
     <!-- The Modal -->
     <div class="modal fade" id="delSuccessModal">
         <div class="modal-dialog modal-sm">
@@ -326,12 +344,12 @@
             
             <!-- Modal footer -->
             <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">확인</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="location.href='<%= contextPath%>/main.qna?cpage=1'">확인</button>
             </div>
             
         </div>
         </div>
     </div>
-	--%>
+	
 </body>
 </html>
