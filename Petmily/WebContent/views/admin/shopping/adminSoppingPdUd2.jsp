@@ -134,7 +134,7 @@
                 <div class="content product-reg">
                     <hr>
                     <p class="ct-tit pb-3">상품 수정</p>
-                    <form id="update-form" action="<%=contextPath%>/adSpUdfin.ad?pno=370" method="post" enctype="multipart/form-data">
+                    <form id="update-form" action="<%= contextPath %>/adSpUdfin.ad?pno=<%= as.getProductNo() %>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="ProductNo" value="<%=as.getProductNo()%>"> 
                         <input type="hidden" name="managerNo" value="<%=loginAdmin.getManagerNo()%>"> 
                          <table>

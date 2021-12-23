@@ -328,8 +328,10 @@
                                 //var value = $('columns').val();
                                 $.each(columns, function(idx, item){
                                    pno2 = item.innerHTML;
+                                 //let link = "/PM/adSpUdfin.ad?pno="+pno2;
                                 });
                                 console.log(pno2);
+                              //$("#update-form").attr("action", link);
                             }
 
                         </script>
