@@ -130,7 +130,7 @@
 		<% for (Petlog p : list) { %>
             <!-- 썸네일 -->
             <div class="thumbnail">
-            <input type="hidden" name="num" value="<%= p.getPetlogNo() %>">
+            <input type="hidden" value="<%= p.getPetlogNo() %>">
                 <div id="thumbnail">
                     <img src="<%= contextPath %>/<%= p.getTitleImg() %>"  alt="대표이미지">
                 </div>    
