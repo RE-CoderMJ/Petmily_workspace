@@ -147,4 +147,37 @@
 		   SET STATUS = 'N'
 		 WHERE PETLOG_NO = ?
 	</entry>
+	<entry key="selectPetsRoomList">
+		SELECT
+			   MEM_NO
+			 , ROOM_NAME
+			 , BIO
+			 , (SELECT
+			           FILE_PATH || CHANGE_NAME
+			      FROM ATTACHMENT
+			     WHERE REF_NO = MEM_NO
+			       AND REF_BOARD_NO = 7) "P_PROFILE_IMG"
+		  FROM PETSROOM
+	</entry>
+	<entry key="selectAllPetLogList">
+		SELECT
+			   PETLOG_NO
+			 , MEM_NO
+			 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
+			 , PETLOG_CONTENT
+		  FROM PETLOG
+	     WHERE STATUS = 'Y'
+	     ORDER
+	        BY ENROLL_DATE DESC
+	</entry>
+	<entry key="selectAllAttachmentList">
+		SELECT
+			   ATTACHMENT_NO
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , FILE_PATH
+			 , REF_NO
+	      FROM ATTACHMENT
+	     WHERE REF_BOARD_NO = 6
+	</entry>
 </properties>

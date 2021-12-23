@@ -35,7 +35,7 @@ public class PetLogMainPageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<PetsRoom> prList = new PetLogService().selectPetsRoomList();
-		ArrayList<PetLog> plList = new PetLogService().selectPetLogList;
+		ArrayList<PetLog> plList = new PetLogService().selectAllPetLogList();
 		ArrayList<Attachment> attList = new PetLogService().selectAllAttachmentList();
 		
 		request.setAttribute("prList", prList);

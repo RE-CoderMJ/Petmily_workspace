@@ -3,6 +3,7 @@ package com.pm.petLog.model.vo;
 public class PetLog {
 	private int petLogNo;
 	private String memNo; //작성자 회원번호, 펫룸이름으로 조회됨
+	private int memNo2;
 	private String enrollDate;
 	private String petLogContent;
 	private String status;
@@ -21,6 +22,29 @@ public class PetLog {
 	}
 
 	
+	
+	public PetLog(int petLogNo, String memNo, int memNo2, String enrollDate, String petLogContent, String status,
+			String titleImg, String roomName) {
+		super();
+		this.petLogNo = petLogNo;
+		this.memNo = memNo;
+		this.memNo2 = memNo2;
+		this.enrollDate = enrollDate;
+		this.petLogContent = petLogContent;
+		this.status = status;
+		this.titleImg = titleImg;
+		this.roomName = roomName;
+	}
+
+	
+	public int getMemNo2() {
+		return memNo2;
+	}
+
+	public void setMemNo2(int memNo2) {
+		this.memNo2 = memNo2;
+	}
+
 	public String getRoomName() {
 		return roomName;
 	}

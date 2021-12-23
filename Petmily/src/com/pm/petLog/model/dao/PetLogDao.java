@@ -357,4 +357,91 @@ public class PetLogDao {
 		return result;
 	}
 
+	public ArrayList<PetsRoom> selectPetsRoomList(Connection conn){
+		ArrayList<PetsRoom> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPetsRoomList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PetsRoom pr = new PetsRoom();
+				pr.setMemNo(rset.getInt("mem_no"));
+				pr.setRoomName(rset.getString("room_name"));
+				pr.setBio(rset.getString("bio"));
+				pr.setpProfileImg(rset.getString("p_profile_img"));
+				
+				list.add(pr);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<PetLog> selectAllPetLogList(Connection conn) {
+		ArrayList<PetLog> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllPetLogList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PetLog pl = new PetLog();
+				pl.setPetLogNo(rset.getInt("petlog_no"));
+				pl.setMemNo2(rset.getInt("mem_no"));
+				pl.setEnrollDate(rset.getString("enroll_date"));
+				pl.setPetLogContent(rset.getString("petlog_content"));
+				
+				list.add(pl);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Attachment> selectAllAttachmentList(Connection conn) {
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment att = new Attachment();
+				att.setAttachmentNo(rset.getInt("attachment_no"));
+				att.setOriginName(rset.getString("origin_name"));
+				att.setChangeName(rset.getString("change_name"));
+				att.setFilePath(rset.getString("file_path"));
+				att.setRefNo(rset.getInt("ref_no"));
+				
+				list.add(att);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 } 

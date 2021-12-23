@@ -139,9 +139,24 @@ public class PetLogService {
 	}
 
 	public ArrayList<PetsRoom> selectPetsRoomList() {
-		
-		
-		return null;
+		Connection conn = getConnection();
+		ArrayList<PetsRoom> list = new PetLogDao().selectPetsRoomList(conn);
+		close(conn);
+		return list;
+	}
+
+	public ArrayList<PetLog> selectAllPetLogList() {
+		Connection conn = getConnection();
+		ArrayList<PetLog> list = new PetLogDao().selectAllPetLogList(conn);
+		close(conn);
+		return list;
+	}
+
+	public ArrayList<Attachment> selectAllAttachmentList() {
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new PetLogDao().selectAllAttachmentList(conn);
+		close(conn);
+		return list;
 	}
 	
 }
