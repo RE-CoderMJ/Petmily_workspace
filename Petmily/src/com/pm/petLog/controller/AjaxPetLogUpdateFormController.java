@@ -17,13 +17,13 @@ import com.pm.petLog.model.vo.PetLog;
  * Servlet implementation class PetLogUpdateFormController
  */
 @WebServlet("/updateForm.petLog")
-public class PetLogUpdateFormController extends HttpServlet {
+public class AjaxPetLogUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PetLogUpdateFormController() {
+    public AjaxPetLogUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -137,5 +137,11 @@ public class PetLogService {
 		close(conn);
 		return att;
 	}
+
+	public ArrayList<PetsRoom> selectPetsRoomList() {
+		
+		
+		return null;
+	}
 	
 }
