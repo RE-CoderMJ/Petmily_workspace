@@ -49,7 +49,8 @@ public class Cancel {
 
 
 
-	public Cancel(int orderNo, String productName, String orderPoption, int orderPamount, int price, Date orderDate, String ccSledding) {
+	public Cancel(int orderNo, String productName, String orderPoption, int orderPamount, int price, Date orderDate,
+			String ccSledding, String ccPayment) {
 		super();
 		this.orderNo = orderNo;
 		this.productName = productName;
@@ -58,6 +59,7 @@ public class Cancel {
 		this.price = price;
 		this.orderDate = orderDate;
 		this.ccSledding = ccSledding;
+		this.ccPayment = ccPayment;
 	}
 
 	public int getCcNo() {

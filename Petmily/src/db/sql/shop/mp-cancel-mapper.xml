@@ -24,6 +24,7 @@
 					     , O.PRICE "CANCEL_PRICE" 
 					     , TO_CHAR(O.ORDER_DATE, 'yyyy-mm-dd') "ORDER_DATE"
 				         , CC_SLEDDING
+				         , CC_PAYMENT
 					  FROM SPMY_CANCEL CC, SPMY_ORDER O, SP_ORDERPRODUCT OP, TB_PRODUCT_UD P
 					 WHERE 
 					       CC.ORDER_NO = O.ORDER_NO

@@ -177,27 +177,7 @@
     
         </table>
 
-        <table id="cancel-content" style="border-spacing: 10px;">
-            <tr style="background-color: rgb(213,213,213);">
-                <th>주문번호/주문일 </th>
-                <th>상품정보</th>
-                <th>진행상태</th>
-            </tr>
-            <tr>
-                <td>주문번호 : A-13124954 
-                    <br> 주문일 : 21.11.15
-                </td>
-                <td>
-                    상품명 <br>
-                    1개 / 블루 / 20,000원 <br>
-                    결제수단 : 신용카드
-                </td>
-                <td>
-                    취소완료
-                </td>
-            </tr>
-    
-        </table>
+
 	        <% } %>
 	<% } %>  
        <br><br>
@@ -253,6 +233,9 @@
     
 <%@ include file="../../common/footerbar.jsp" %>
 </div>
+
+
+
     <script>
         var div2 = document.getElementsByClassName("div2");
 
@@ -289,7 +272,9 @@
                 $(this).css({background: "rgb(247, 198, 4)", color:"black"});
             })
         })
-
+        
+        
+    
     </script>
     
 

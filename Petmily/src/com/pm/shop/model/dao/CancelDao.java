@@ -86,7 +86,8 @@ private Properties prop = new Properties();
 						   		 rset.getInt("cancel_opamount"),
 						   		 rset.getInt("cancel_price"),
 						   		 rset.getDate("order_date"),
-						   		 rset.getString("cc_sledding")
+						   		 rset.getString("cc_sledding"),
+						   		 rset.getString("cc_payment")
 										));
 			}
 			
