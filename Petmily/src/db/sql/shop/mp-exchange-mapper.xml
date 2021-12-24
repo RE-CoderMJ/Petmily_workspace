@@ -22,9 +22,31 @@
          , O.PHONE
          , O.ADDRESS
          , O.DELIVERY_MEMO
+         , O.PAYMENT
 	  FROM SPMY_ORDER O
 	  JOIN TB_MEMBER USING(MEM_NO)
 	 WHERE ORDER_NO = ?
+
+</entry>
+
+<entry key="insertExchange">
+	INSERT 
+		  INTO SPMY_EXCHANGE
+		  (
+		    EC_CODE
+			, ORDER_PNUM
+			, ECREASON
+			, EC_PAYMENT
+			, DELIVERY_MEMO
+		  )
+		  VALUES
+		  (
+			  ?
+			, ?
+			, ?
+			, ?
+			, ?
+		  )
 
 </entry>
 

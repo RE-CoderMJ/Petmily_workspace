@@ -75,7 +75,7 @@
         <div align="center" id="text2">요청 확인 후 고객센터에서 반품 관련 안내 드리겠습니다.</div>
     
         <br><br><br>
-        <button id="btnshop">쇼핑 계속하기</button>
+        <button id="btnshop" onclick="location.href='<%=contextPath%>/shop.main';">쇼핑 계속하기</button>
 
     </div>
 </body>

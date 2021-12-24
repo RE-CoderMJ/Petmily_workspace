@@ -36,9 +36,9 @@ public class MpExchangeInsertController extends HttpServlet {
 		// 3. DB에 기록할 데이터를 뽑아서 vo에 주섬주섬 담기
 		//    > 상품번호, 교환내용, 결제방식, 배송메모 뽑아서 Board 테이블 insert
 		
-		int orderPnum = request.getParameter("pno");
+		int orderPnum = Integer.parseInt(request.getParameter("pno"));
 		String ecreason = request.getParameter("ecreason");
-		String payment = request.getParameter(("payment");
+		String payment = request.getParameter("payment");
 		String deliveryMemo = request.getParameter("deliveryMemo");
 		
 		Exchange ec = new Exchange();
@@ -55,16 +55,16 @@ public class MpExchangeInsertController extends HttpServlet {
 		if(result > 0) {
 			//  성공 => /jsp/list.bo?cpage=1    url 재요청 => 목록페이지
 			request.getSession().setAttribute("alertMsg", "일반게시글 작성 성공");
-			response.sendRedirect(request.getContextPath() + "/list.bo?cpage=1"); // 바꾸기(교환완료페이지)
+			response.sendRedirect(request.getContextPath() + "/exchangeComplete.my"); // (교환완료페이지)
 			
 		}else {
 
-			request.setAttribute("errorMsg", "게시글 작성 실패");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			request.setAttribute("errorMsg", "교환 요청 실패");
+			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
 			
 		}
 	}
-	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

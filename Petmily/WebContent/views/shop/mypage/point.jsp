@@ -161,7 +161,7 @@
           </div>
           
           <!-- 회색 블럭이 만들어지면 기본적으로 포인트 하나의 정보는 보여줘야됨 무조건 현재 i번째 인덱스 Point 정보는 먼저 보여지도록 -->
-          <div  id="pointcontent">
+          <div id="pointcontent">
               <% if(list.get(i).getPoint().substring(0,1).equals("+")){ %>
                  <img src="resources/img/mypage/point-plus.png" alt="" width="50px" height="50px">
               <% } else { %> 

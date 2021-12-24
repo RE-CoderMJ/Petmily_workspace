@@ -76,7 +76,8 @@ public class ExchangeDao {
 				od = new OrderSelect(rset.getString("mem_name")
 								  , rset.getString("phone")
 								  , rset.getString("address")
-								  , rset.getString("delivery_memo"));
+								  , rset.getString("delivery_memo")
+								  , rset.getString("payment"));
 			}
 			
 		} catch (SQLException e) {
@@ -90,17 +91,34 @@ public class ExchangeDao {
 	}
 
 
-	public int insertBoard(Connection conn, Exchange ec) {
+	public int insertExchange(Connection conn, Exchange ec) {
+		// insert문 => 처리된행수 => 트랜잭션처리
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertExchange");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, ec.getEcCode());
+			pstmt.setInt(2, ec.getOrderPnum());
+			pstmt.setString(3, ec.getEcreason());
+			pstmt.setString(4, ec.getPayment());
+			pstmt.setString(5, ec.getDeliveryMemo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
 
-		
-		
-		
-		
-		
-		
 	}
-	
-	
-	
+
 	
 }

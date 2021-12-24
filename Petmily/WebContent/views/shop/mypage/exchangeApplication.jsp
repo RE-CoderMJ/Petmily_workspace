@@ -150,8 +150,9 @@
     <div id="title"  >교환 / 반품 신청</div>
 
 <div id="outer">
+<input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
 	
-<form id="enroll-form" action="<%=contextPath %>/exchangeapp.my" method="post" enctype="multipart/form-data">
+
 
         <div id="one">
             <div class="inline-block" >
@@ -205,11 +206,15 @@
             <table>
                 <tr>
                     <td>상품금액</td>
-                    <td>20,000원</td>
+                    <td><%= od.getPrice() %> 원</td>
                 </tr>
                 <tr>
                     <td>배송비</td>
                     <td>2,500원</td>
+                </tr>
+                 <tr>
+                    <td>결제수단</td>
+                    <td><%= od.getPayment() %></td>
                 </tr>
                 <tr>
                     <td>포인트</td>
@@ -227,11 +232,11 @@
 	    교환
 	  </button>
 	  
-	
 	  <div class="modal" id="myModal">
 	    <div class="modal-dialog">
 	      <div class="modal-content" style="background-color: gray;">
 	  
+	<form id="enroll-form" action="<%=contextPath %>/exchangeinsert.my" method="post">
 	        <!-- Modal Header -->
 	        <div class="modal-header" >
 	          <h4 class="modal-title" style="color: white;">교환 내용</h4>
@@ -240,9 +245,13 @@
 	  
 	        <!-- Modal body -->
 	        <div class="modal-body">
+	        <input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
+	        <input type="hidden" name="pno" value="<%= od.getOrderPnum() %>">
+	        <input type="hidden" name="payment" value="<%= od.getPayment() %>">
+	        <input type="hidden" name="deliveryMemo" value="<%= od.getDeliveryMemo() %>">
 	            <p  style="color: white;">※불량 교환시 [불량 교환] 기재 부탁드립니다.</p> 
 	              <hr>
-	          <textarea name="" id="" cols="30" rows="10" style="margin-left:50px; width:350px; resize: none;">
+	          <textarea name="ecreason" id="" cols="30" rows="10" style="margin-left:50px; width:350px; resize: none;">
 	
 	              
 	
@@ -253,7 +262,7 @@
 	       <div class="modal-footer">
               <button type="submit" id="donebtn" >확인</button>
             </div>
-	  
+	</form> 
 	      </div>
 	    </div>
 	  </div>
@@ -313,7 +322,7 @@
 </div>
 </div>
 
-</form>
+
     
 <%@ include file="../../common/footerbar.jsp" %>
 </body>

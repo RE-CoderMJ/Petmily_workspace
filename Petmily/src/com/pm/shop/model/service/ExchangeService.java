@@ -30,7 +30,7 @@ public class ExchangeService {
 	public int insertExchanage(Exchange ec) {
 		Connection conn = getConnection();
 		
-		int result = new ExchangeDao().insertBoard(conn, ec);
+		int result = new ExchangeDao().insertExchange(conn, ec);
 		
 		if(result > 0) {
 			commit(conn);

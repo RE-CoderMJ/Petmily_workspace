@@ -18,13 +18,14 @@ public class OrderSelect {
 	private String phone;
 	private String adderess;
 	private String deliveryMemo;
+	private String payment;
 
 	
 	public OrderSelect() {}
 
-
 	public OrderSelect(int orderPnum, int orderNo, int productNo, String pOption, int pAmount, String productName,
-			int price, Date orderDate, String orderPoption, int orderPamount) {
+			int price, Date orderDate, String orderPoption, int orderPamount, String memName, String phone,
+			String adderess, String deliveryMemo, String payment) {
 		super();
 		this.orderPnum = orderPnum;
 		this.orderNo = orderNo;
@@ -36,8 +37,12 @@ public class OrderSelect {
 		this.orderDate = orderDate;
 		this.orderPoption = orderPoption;
 		this.orderPamount = orderPamount;
+		this.memName = memName;
+		this.phone = phone;
+		this.adderess = adderess;
+		this.deliveryMemo = deliveryMemo;
+		this.payment = payment;
 	}
-
 
 
 	public OrderSelect(int orderPnum, int orderNo, int productNo, String pOption, int pAmount, String productName,
@@ -95,12 +100,13 @@ public class OrderSelect {
 	
 	
 
-	public OrderSelect(String memName, String phone, String adderess, String deliveryMemo) {
+	public OrderSelect(String memName, String phone, String adderess, String deliveryMemo, String payment) {
 		super();
 		this.memName = memName;
 		this.phone = phone;
 		this.adderess = adderess;
 		this.deliveryMemo = deliveryMemo;
+		this.payment = payment;
 	}
 
 
@@ -228,7 +234,16 @@ public class OrderSelect {
 	public void setDeliveryMemo(String deliveryMemo) {
 		this.deliveryMemo = deliveryMemo;
 	}
+	
 
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
 
 	@Override
 	public String toString() {
