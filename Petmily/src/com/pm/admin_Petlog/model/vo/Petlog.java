@@ -23,6 +23,13 @@ public class Petlog {
 	
 	
 
+	public Petlog(String memNo, String enrollDate, String titleImg) {
+		super();
+		this.memNo = memNo;
+		this.enrollDate = enrollDate;
+		this.titleImg = titleImg;
+	}
+
 	public Petlog(String memNo, String titleImg) {
 		super();
 		this.memNo = memNo;

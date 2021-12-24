@@ -53,7 +53,7 @@ public class AdminPetlogListController extends HttpServlet {
 		pageLimit = 5;
 		
 		/* 게시글 최대 갯수 */
-		boardLimit = 9;
+		boardLimit = 8;
 		
 		maxPage = (int)Math.ceil( (double)listCount / boardLimit);
 		
@@ -65,22 +65,19 @@ public class AdminPetlogListController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
+		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+
 		
 		ArrayList<Petlog> list = new PetlogService().selectThumbnailList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
-		System.out.println(list);
-		
-		
-		request.getRequestDispatcher("views/admin/petlog/adminPetlogMainView.jsp").forward(request, response);
-		
-		
-		
 
 		
+		request.getRequestDispatcher("views/admin/petlog/adminPetlogMainView.jsp").forward(request, response);
+
 
 	}
 

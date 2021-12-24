@@ -66,9 +66,19 @@
         height: 50px;
         margin: 0;
         box-sizing: border-box;
+        font-size:8px;
     }
-    .thumbnail>p>img, .thumbnail>p>a{
+    .thumbnaila{
+    	font-size: 8px;
+    }
+    .thumbnail>p>img{
         width: 66px;
+        height: 100%;
+        float: left;
+        box-sizing: border-box;
+    }
+    .thumbnail>p>a{
+        width: 100px;
         height: 100%;
         float: left;
         box-sizing: border-box;
@@ -117,12 +127,14 @@
             	<h2 style="color:gray">&gt; 관리자 Petlog</h2>
             <hr>
         </div>
+        
 
         <!-- 중간 노란박스 -->
         <div class="middle">
             <div>새로 추가된 피드</div>
-            <div>102</div>
+            <div>0</div>
         </div>
+
 
         <!-- 리스트 -->
         <div class="list-area">
@@ -133,14 +145,16 @@
             <div class="thumbnail">
             <input type="hidden" value="<%= p.getPetlogNo() %>">
                 <div id="thumbnail">
-                    <img src="<%= contextPath %>/<%= p.getTitleImg() %>"  alt="대표이미지">
+                    <img src="<%= contextPath %>/<%= p.getTitleImg() %>" width="200" height="200" alt="대표이미지">
                 </div>    
 
                 <p>
                     <img src="resources/img/petlog_logo.PNG" alt="프로필기본이미지">
-                    <a href="" class="nickname"><%= p.getMemNo() %></a>
-                    <a href="" class="report">신고</a>
+                    <a href="" class="nickname" width="100"><%= p.getMemNo() %></a>
+                    <!--  <a href="" class="report">신고</a>-->
                 </p>
+                
+                <br><br><br><br><br>
             </div>
             <% } %>
 		

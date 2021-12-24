@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Boards> list = (ArrayList<Boards>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>  
 <!DOCTYPE html>
 <html>
 <head>

@@ -72,8 +72,8 @@ public class PetlogDao {
 			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() +1;
 			int endRow = startRow + pi.getBoardLimit() -1;
 			
-//			pstmt.setInt(1, startRow);
-//			pstmt.setInt(2, endRow);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -88,7 +88,7 @@ public class PetlogDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println(pi);
+		
 		return  list;
 		
 			
@@ -156,6 +156,8 @@ public class PetlogDao {
 		return at;
 
 	}
+	
+
 	
 	
 	
