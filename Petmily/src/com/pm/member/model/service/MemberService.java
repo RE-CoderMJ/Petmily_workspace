@@ -3,7 +3,6 @@ package com.pm.member.model.service;
 import static com.pm.common.JDBCTemplate.*;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import com.pm.member.model.dao.MemberDao;
 import com.pm.member.model.vo.Member;
@@ -104,15 +103,10 @@ public class MemberService {
 		String email = new MemberDao().findEmail(conn, userName, phone); 
 		
 		close(conn);
+		
+		
 		return email;
 	}
-
-	
-
-	
-	
-	
-	
 
 	
 

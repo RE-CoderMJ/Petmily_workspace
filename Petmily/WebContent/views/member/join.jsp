@@ -158,18 +158,18 @@
 
             <div class="content">
 
-                <form action="<%= contextPath %>/insert.me" id="joinForm" method="post">
+                <form action="<%= contextPath %>/insert.me" id="joinForm" method="post" onsubmit="joinCheck()">
                     
                     <div>
                         <div>
-                            <label class="leftText" for="userEmail">이메일<span class="star">*</span></label>
+                            <label class="leftText" for="userEmail" onKeyup="this.value=this.value.replace(/[^a-z0-9]/g,'');">이메일<span class="star">*</span></label>
                         </div>
 
                         <div>
                             <input type="text" id="userEmail" name="userEmail" placeholder="이메일" style="width: 150px;" required>
                             @
-                            <select name="emailDomain" aria-placeholder="선택해주세요">
-                                <option selected disabled>선택해주세요</option>
+                            <select name="emailDomain" aria-placeholder="선택해주세요" required>
+                                <option value="">선택해주세요</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="hanmail.com">hanmail.com</option>
                                 <option value="daum.net">daum.net</option>
@@ -220,7 +220,7 @@
                         </div>
                         <span class="tip">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요</span>
                     </div>
-
+                    
 
                     <div>
                         <div>
@@ -253,11 +253,11 @@
                         </div>
 
                         <div>
-                            <input type="text" id="phone1" name="phone1" maxlength='3' style="width: 80px" placeholder="000" required>
+                            <input type="text" id="phone1" name="phone1" maxlength='3' style="width: 80px" placeholder="000" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
                             -
-                            <input type="text" name="phone2" maxlength='4' style="width: 105px" placeholder="0000" required>
+                            <input type="text" name="phone2" maxlength='4' style="width: 105px" placeholder="0000" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
                             -
-                            <input type="text" name="phone3" maxlength='4' style="width: 105px" placeholder="0000" required>
+                            <input type="text" name="phone3" maxlength='4' style="width: 105px" placeholder="0000" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required>
                         </div>
                     </div>
 
@@ -274,6 +274,37 @@
                         <span class="tip">한글, 영문, 숫자로만 2~15자로 입력해주세요</span>
                         
                     </div>
+                    
+                    <script>
+				    	function nicknameCheck(){
+				    		
+				    		const $nicknameInput = $("#joinForm input[name=nickname]");
+				    		
+				    		$.ajax({
+				    			url: "nicknameCheck.me",
+				    			data: {checkNick: $nicknameInput.val()},
+				    			success: function(result){
+				    				var nickCheck = RegExp(/^[가-힣a-zA-Z0-9]{2,15}$/);
+				    				
+				    				if(result == 'NNNNN') {
+				    					alert("이미 존재하거나 탈퇴한 회원의 닉네임입니다");
+				    					$nicknameInput.focus();
+				    				} else if (!nickCheck.test($("#nickname").val())) {	
+				    					alert("한글, 영문, 숫자로만 2~15자로 입력해주세요");
+				    					$nicknameInput.focus();
+				    				} else {
+				    					alert("사용가능한 닉네임입니다.");
+				    				}
+				   
+				    			}, 
+				    			error: function() {
+				    				console.log("닉네임 중복체크용 ajax 통신실패");
+				    			}
+				    		});
+				    		
+				    	}
+				    
+				    </script>
 
 
                     <div>
@@ -305,14 +336,27 @@
                         <div id="termsBox">
 
                             <div class="termsCheck">
-                                        <input type="checkbox" name="agreeAll">
+                                        <input type="checkbox" id="agreeAll">
                                         <span class="checkText">전체 동의</span>
                             </div>
+                            
+                            <script>
+	                            $(function() {
+								    $("#agreeAll").click(function(){
+								        if($(this).is(":checked")){
+								            $(".agreeCheck").prop('checked', true);
+								        } else {
+								            $(".agreeCheck").prop('checked', false);
+								        }
+								    });
+								});
+                            </script>
+
                             
                             <hr style="width: 300px;">
                             
                             <div class="termsCheck">
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="agreeCheck" required>
                                         <a href="" class="checkText" data-toggle="modal" data-target="#terms1">이용 약관</a> 
                                         <span class="smallSpan">(필수)</span><span class="star">*</span>
                                 
@@ -321,7 +365,7 @@
                             
 
                             <div class="termsCheck">
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="agreeCheck" required>
                                         <a href="" class="checkText" data-toggle="modal" data-target="#terms2">개인정보 수집 및 이용동의</a> 
                                         <span class="smallSpan">(필수)</span><span class="star">*</span>
                                 
@@ -339,36 +383,11 @@
             
         </div>
         
-        <script>
-    	function nicknameCheck(){
-    		// 중복확인 버튼 클릭 시 사용자가 입력한 아이디값을 넘겨서 조회 => 응답데이터 돌려받기(존재|비존재)
-    		// 1) 사용 불가능할 경우 => alert로 메세지출력, 다시 입력하도록 유도
-    		// 2) 사용 가능할 경우 => 사용할 것인지 한번 더 확인(confirm메소드)
-    		//					 > 사용하겠다는 경우 => 더 이상 수정 못하고 회원가입버튼 활성화
-    		//					 > 사용 안하겠다는 경우 => 다시 입력하도록 유도, 회원가입버튼 비활성화 유지
-    		
-    		// 아이디 입력하는 input요소 객체
-    		const $nicknameInput = $("#joinForm input[name=nickname]");
-    		
-    		$.ajax({
-    			url: "nicknameCheck.me",
-    			data: {checkNick: $nicknameInput.val()},
-    			success: function(result){
-    				if(result == 'NNNNN') {
-    					alert("이미 존재하거나 탈퇴한 회원의 닉네임입니다");
-    					$nicknameInput.focus();
-    				} else {
-    					alert("사용가능한 닉네임입니다.");
-    				}
-   
-    			}, 
-    			error: function() {
-    				console.log("닉네임 중복체크용 ajax 통신실패");
-    			}
-    		});
-    		
-    	}
+    <script>
     
+         function joinCheck() {
+        	 
+         }
     </script>
        
         
@@ -409,10 +428,8 @@
             </div>
             </div>
         </div>
-    </div>
 
     <!-- terms1 Modal2 -->
-    </div>
 
     <div class="modal" id="terms2">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -447,7 +464,6 @@
             
         </div>
         </div>
-    </div>
     </div>
 </body>
 </html>

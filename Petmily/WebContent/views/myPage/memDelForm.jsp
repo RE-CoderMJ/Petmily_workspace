@@ -56,13 +56,21 @@ input[type=checkbox] {
 
 .delContent>input {
 	margin: 10px;
+	transform: scale(1.5);
 }
 
 textarea {
-	width: 700px;
+	width: 670px;
 	height: 200px;
 	resize: none !important;
 	padding: 20px;
+}
+
+input[type=password] {
+	width: 200px;
+	height: 30px;
+	border: 1px solid lightgray;
+	padding: 10px;
 }
 </style>
 </head>
@@ -104,34 +112,46 @@ textarea {
                         </div>
                     </p>
     
-                    <input type="checkbox" name="confirm" style="transform: scale(1.5);">위 내용을 모두 확인하였습니다. 
+                    <input type="checkbox" name="confirm" style="transform: scale(1.5);" required>위 내용을 모두 확인하였습니다. 
                     <span style="color: red; font-size: 12px;">필수</span>
-    
+    				
+    				<!-- 
                     <script>
-                        function checkForm() { 
-                            if(delForm.confirm.checked == false) {
-                                delForm.confirm.focus();
-                                
-                                alert("필수 체크란에 체크해주세요"); 
-                                return false; 
-                            } 
+                        function checkForm() {
+                        	
+                        	if(!$("input:checkbox[name='confirm']").is(":checked")){
+                        		alert("필수 체크란에 체크해주세요");
+                        		$(this).focus;
+                        		return false;
+                        	}	
+                        	
+                        	//if($('#confirm').val() == null) {
+                        		//alert("필수 체크란에 체크해주세요"); 
+                        		//$(this).focus;
+                        		//return false; 
+                        	//}
+                            // if(delForm.confirm.checked == false) {
+                               // delForm.confirm.focus();
                         }
 
                     </script>
+                     -->
     
                     <br><br><br>
     
-                    <p class="delTitle">PETMILY 회원 탈퇴하려는 이유가 무엇인가요? (복수선택 가능) <span style="color: red; font-size: 12px;">필수</span>
-                        <div class="delContent">
-                            <input type="checkbox" style="transform: scale(1.5);">이용빈도 낮음<br>
-                            <input type="checkbox" style="transform: scale(1.5);">재가입<br>
-                            <input type="checkbox" style="transform: scale(1.5);">콘텐츠/제품정보/상품 부족<br>
-                            <input type="checkbox" style="transform: scale(1.5);">개인정보보호<br>
-                            <input type="checkbox" style="transform: scale(1.5);">회원특혜/쇼핑혜택 부족<br>
-                            <input type="checkbox" style="transform: scale(1.5);">기타
-                        </div>
-                    </p>
-    
+                    <p class="delTitle">PETMILY 회원 탈퇴하려는 이유가 무엇인가요? (복수선택 가능) <span style="color: red; font-size: 12px;">필수</span></p>
+                    <div class="delContent">
+					
+
+						<input type="checkbox" class="ck" id="ck1" name="ck1" value="이용빈도 낮음|">이용빈도 낮음<br>
+						<input type="checkbox" class="ck" id="ck2" name="ck2" value="재가입|">재가입<br>
+						<input type="checkbox" class="ck" id="ck3" name="ck3" value="콘텐츠/제품정보/상품부족|">콘텐츠/제품정보/상품 부족<br>
+						<input type="checkbox" class="ck" id="ck4" name="ck4" value="개인정보보호|">개인정보보호<br>
+						<input type="checkbox" class="ck" id="ck5" name="ck5" value="회원특혜/쇼핑혜택부족|">회원특혜/쇼핑혜택 부족<br>
+						<input type="checkbox" class="ck" id="ck6" name="ck6" value="기타|">기타
+
+                    </div>
+
                     <br><br>
     
                     <p class="delTitle">PETMILY 서비스 이용 중 어떤 부분이 불편하셨나요? <span style="color: gray; font-size: 12px;">선택</span>
@@ -142,10 +162,10 @@ textarea {
     
                     <div align="center" style="margin-top: 50px;">
                         <button type="submit" class="btn btn-sm btn-secondary">탈퇴 신청</button>
+                        <button type="button" data-toggle="modal" data-target="#delModal" style="display: none;"></button>
                     </div>
-
-
                 </form>
+                
                 
             </div>
 
@@ -157,6 +177,52 @@ textarea {
 	<div style="margin-top: 200px;">
 
 		<%@ include file="../common/footerbar.jsp"%>
+	</div>
+
+	<div class="modal" id="delModal">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+		  
+			<!-- Modal Header -->
+			<div class="modal-header">
+			  <h4 class="modal-title" style="margin-left: 170px; font-weight: bold;">회원 탈퇴</h4>
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
+			<!-- Modal body -->
+			<div class="modal-body" style="margin: auto; text-align: center; padding: 30px;">
+			  
+			  탈퇴 후 복구가 불가능합니다. <br>
+			  정말로 <b>탈퇴</b>하시겠습니까? <br><br>
+			  <input type="password" name="userPwd" required> <br><br>
+			  <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
+			</div>
+			
+		  </div>
+		</div>
+	</div>
+
+	<div class="modal" id="delSuccessModal">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+		  
+			<!-- Modal Header -->
+			<div class="modal-header">
+			  <h4 class="modal-title" style="margin-left: 170px; font-weight: bold;">탈퇴 완료</h4>
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body" style="margin: auto; text-align: center; padding: 30px;">
+			  
+			  그 동안 펫밀리를 이용해주셔서 감사합니다 <br>
+			  더 좋은 서비스로 다시 찾아뵙겠습니다 <br><br>
+			  <button type="submit" class="btn btn-sm btn-warning">확인</button>
+			</div>
+			
+		  </div>
+		</div>
 	</div>
 
 

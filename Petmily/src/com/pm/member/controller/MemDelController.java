@@ -1,26 +1,23 @@
 package com.pm.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.member.model.service.MemberService;
-
 /**
- * Servlet implementation class FindEmailController
+ * Servlet implementation class MemDelController
  */
-@WebServlet("/findEmail.me")
-public class FindEmailController extends HttpServlet {
+@WebServlet("/delete.me")
+public class MemDelController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindEmailController() {
+    public MemDelController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +27,8 @@ public class FindEmailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String userName = request.getParameter("userName");
-		
-		String phone1 = request.getParameter("phone1");
-		String phone2 = request.getParameter("phone2");
-		String phone3 = request.getParameter("phone3");
-		String phone = phone1 + "-" + phone2 + "-" + phone3;
-		
-		String email = new MemberService().findEmail(userName, phone);
-		
-		request.setAttribute("email", email);
-		request.setAttribute("userName", userName);
-		
-		request.getRequestDispatcher("views/member/findEmailSuccess.jsp").forward(request, response);
+		String userNo = request.getParameter("userNo");
+		String userPwd = request.getParameter("userPwd");
 	}
 
 	/**

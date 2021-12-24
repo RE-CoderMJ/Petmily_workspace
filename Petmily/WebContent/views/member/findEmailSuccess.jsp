@@ -2,8 +2,9 @@
     pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
 <%
 	String email = (String)request.getAttribute("email");
-
+	String userName = (String)request.getAttribute("userName");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,7 @@
             </div>
 
             <div class="emailP" align="center">
-                <p>회원님의 이메일 계정은 <br> <span><%= email %></span>입니다.</p>
+                <p><%= userName %>님의 이메일 계정은 <br> <span><%= email %></span>입니다.</p>
             </div>
 
             <div align="center">

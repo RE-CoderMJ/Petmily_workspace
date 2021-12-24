@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
 <%
    String contextPaths = request.getContextPath();
+   Member loginUsers = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -84,7 +85,7 @@
                 
                 <div class="d-category1" onclick="location.href='<%= contextPaths %>/infoUpdateForm.my'">회원정보수정</div>
                 
-                <div class="d-category1" onclick="location.href='<%= contextPaths %>/myPost.mp'">내가 쓴 게시글조회</div>
+                <div class="d-category1" onclick="location.href='<%= contextPaths %>/myPost.mp?cpage=1&userNo=<%= loginUsers.getMemNo() %>'">내가 쓴 게시글조회</div>
                 
                 <div class="d-category1" onclick="location.href='<%= contextPaths %>/myPetInfo.mp'">펫적사항</div>
                 

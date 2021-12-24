@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="selectList">
+		SELECT *     
+		  FROM (        
+		        SELECT ROWNUM RNUM, A.*      
+		          FROM (
+		                SELECT 
+				               ASK_TITLE "TITLE"
+				             , ENROLL_DATE "ENROLL_DATE"
+				             , COUNT 
+				             , MEM_NO
+				             , '궁금해요' "CATEGORY"
+				          FROM ASK
+				          JOIN TB_MEMBER
+				            ON MEM_NO = ASK_WRITER
+				         
+				         UNION
+				         
+				        SELECT 
+				               PNAME "TITLE"
+				             , ENROLL_DATE "ENROLL_DATE"
+				             , COUNT
+				             , MEM_NO
+				             , '찾고있어요'
+				          FROM TB_MISSING
+				          JOIN TB_MEMBER
+				            ON MEM_NO = MISSING_WRITER
+				         
+				         UNION
+				         
+				        SELECT
+				               MARKET_TITLE "TITLE"
+				             , ENROLL_DATE "ENROLL_DATE"
+				             , COUNT
+				             , MEM_NO
+				             , '중고거래'
+				          FROM MARKET
+				          JOIN TB_MEMBER
+				            ON MEM_NO = MARKET_WRITER
+				         
+				         UNION
+				         
+				        SELECT
+				               PINQUIRY_TITLE "TITLE"
+				             , PINQUIRY_DATE "ENROLL_DATE"
+				             , COUNT
+				             , MEM_NO
+				             , '상품문의'
+				          FROM TB_PINQUIRY
+				          JOIN TB_MEMBER
+				         USING (MEM_NO)
+				         
+				         UNION
+				         
+				        SELECT
+				               PRODUCT_NAME "TITLE"
+				             , REVIEW_DATE "ENROLL_DATE"
+				             , COUNT
+				             , MEM_NO
+				             , '상품리뷰'
+				          FROM TB_REVIEW
+				          JOIN TB_MEMBER
+				         USING (MEM_NO)
+				          
+				         UNION
+				         
+				        SELECT
+				               QNA_TITLE "TITLE"
+				             , QNA_DATE "ENROLL_DATE"
+				             , COUNT
+				             , MEM_NO
+				             , 'QnA'
+				          FROM TB_QNA
+				          JOIN TB_MEMBER
+				         USING (MEM_NO)
+				         )
+				   WHERE MEM_NO = ?
+				   ORDER 
+				      BY ENROLL_DATE DESC
+		           ) A
+		       )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+</properties>

@@ -43,7 +43,7 @@ public class QnaMainController extends HttpServlet {
 		int startPage;
 		int endPage;
 				
-		listCount = new QnaService().selectListCount(); // 총 게시글 갯수 조회
+		listCount = new QnaService().selectListCount(); 
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 				
 		pageLimit = 5;

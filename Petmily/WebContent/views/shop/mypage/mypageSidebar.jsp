@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.pm.member.model.vo.Member"%>
 <%
    String contextPaths = request.getContextPath();
+   Member loginUsers = (Member)session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -155,7 +156,7 @@
     <li>
       <div class="menu">내가 쓴 게시글 조회<i class="fa fa-chevron-down"></i></div>
       <ul class="submenu">
-        <li><a href="<%= contextPaths %>/myPost.mp">내가 쓴 게시글 조회</a></li>
+        <li><a href="<%= contextPaths %>/myPost.mp?cpage=1&userNo=<%= loginUsers.getMemNo() %>">내가 쓴 게시글 조회</a></li>
       </ul>
     </li>
     <li>

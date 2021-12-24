@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.pm.common.JDBCTemplate.*;
@@ -294,12 +293,6 @@ public class MemberDao {
 		}
 		return email;
 	}
-
-	
-
-	
-	
-	
 
 	
 
