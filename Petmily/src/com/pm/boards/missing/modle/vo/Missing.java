@@ -4,8 +4,8 @@ public class Missing {
 	
 	private int missingNo;
 	private String missingWriter;
-	private String category;
-	private String dCategory;
+	private int category;
+	private int dCategory;
 	private String enrollDate;
 	private String pName;
 	private String pGender;
@@ -20,7 +20,7 @@ public class Missing {
 	
 	public Missing () {}
 	
-	public Missing(int missingNo, String missingWriter, String category, String dCategory, String enrollDate,
+	public Missing(int missingNo, String missingWriter, int category, int dCategory, String enrollDate,
 			String pName, String pGender, String missingImg, String missingDate, int pAgeFrom, int pAgeTo,
 			String location, String feature, int count, String status) {
 		super();
@@ -57,19 +57,19 @@ public class Missing {
 		this.missingWriter = missingWriter;
 	}
 
-	public String getCategory() {
+	public int getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(int category) {
 		this.category = category;
 	}
 
-	public String getdCategory() {
+	public int getdCategory() {
 		return dCategory;
 	}
 
-	public void setdCategory(String dCategory) {
+	public void setdCategory(int dCategory) {
 		this.dCategory = dCategory;
 	}
 

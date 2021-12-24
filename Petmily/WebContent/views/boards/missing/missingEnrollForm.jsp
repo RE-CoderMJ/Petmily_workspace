@@ -41,6 +41,7 @@
 	                </a>
 	              
 	            </div>
+	        <form action="<%=contextPath%>/enroll.missing?uno=<%=loginUser.getMemNo() %>" method="post" enctype="multipart/form-data">
 	            <div id="file-upload-area">
 	                <p>사진<br>첨부</p>
 	                <div id="add-area">
@@ -51,32 +52,30 @@
 	            <button id="add-btn" type="button">+</button>
 	        </div>
 	
-	        <!-- 찾고있어요 작성폼 -->
-	        <form action="" id="form-area">
 		        <div id="missing-area">
 		            <div class="input-area">
 		                <div class="select-ddcategory">
 		                    <span>구분</span>
 		                    <select name="d-category" class="select-dcategory">
-		                    <option value="missing">찾고있어요</option>
-		                    <option value="found">보호하고있어요</option>
+		                    <option value="1">찾고있어요</option>
+		                    <option value="2">보호하고있어요</option>
 		                    </select>
 		                </div>
 		                <div class="category-select-area">
 		                    <span>대상</span>
 		                    <div class="form-check-inline">
 		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="category" checked>강아지
+		                        <input type="radio" class="form-check-input" name="category" value="1" checked>강아지
 		                    </label>
 		                    </div>
 		                    <div class="form-check-inline">
 		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="category">고양이
+		                        <input type="radio" class="form-check-input" name="category" value="2">고양이
 		                    </label>
 		                    </div>
 		                    <div class="form-check-inline">
 		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="category">기타
+		                        <input type="radio" class="form-check-input" name="category" value="3">기타
 		                    </label>
 		                    </div>
 		                </div>
@@ -84,12 +83,12 @@
 		                    <span>성별</span>
 		                    <div class="form-check-inline">
 		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="gender" checked>암컷
+		                        <input type="radio" class="form-check-input" name="gender" value="F" checked>암컷
 		                    </label>
 		                    </div>
 		                    <div class="form-check-inline">
 		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="gender">수컷
+		                        <input type="radio" class="form-check-input" name="gender" value="M">수컷
 		                    </label>
 		                    </div>
 		                </div>
@@ -105,11 +104,13 @@
 		                    <span>세</span>
 		                </div>
 		                <div class="missing-date-area">
-		                    <span>발생일</span>
-		                    <input type="date" required>
+		                    <span class="missing-t">발생일</span>
+		                    <span class="found-t" style="display:none;">발견일</span>
+		                    <input type="date" name="miDate" required>
 		                </div>
 		                <div class="missing-place-area">
-		                    <span>발생장소</span>
+		                    <span class="missing-t">발생장소</span>
+		                    <span class="found-t" style="display:none;">발견장소</span>
 		                    <input type="text" name="mpPlace" required>
 		                    <div>
 		                    ex) 서울시 용산구 갈월동 놀이터 앞
@@ -129,83 +130,6 @@
 		        </div>
 	        </form>
 		
-		<div id="hidden" style="display:none"></div>
-	        	<!-- 보호하고있어요 작성폼 -->
-	        	<div id="found-area" style="display:none">
-		            <div class="input-area">
-		                <div class="select-ddcategory">
-		                    <span>구분</span>
-		                    <select name="d-category" class="select-dcategory">
-		                    <option value="found">보호하고있어요</option>
-		                    <option value="missing">찾고있어요</option>
-		                    </select>
-		                </div>
-		                <div class="category-select-area">
-		                    <span>대상</span>
-		                    <div class="form-check-inline">
-		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="category" checked>강아지
-		                    </label>
-		                    </div>
-		                    <div class="form-check-inline">
-		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="category">고양이
-		                    </label>
-		                    </div>
-		                    <div class="form-check-inline">
-		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="category">기타
-		                    </label>
-		                    </div>
-		                </div>
-		                <div class="gender-select-area">
-		                    <span>성별</span>
-		                    <div class="form-check-inline">
-		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="gender" checked>암컷
-		                    </label>
-		                    </div>
-		                    <div class="form-check-inline">
-		                    <label class="form-check-label">
-		                        <input type="radio" class="form-check-input" name="gender">수컷
-		                    </label>
-		                    </div>
-		                </div>
-		                <div class="name-area">
-		                    <span>이름</span>
-		                    <input type="text" name="mpName">
-		                </div>
-		                <div class="age-area">
-		                    <span style="margin-right: 49px;">나이</span>
-		                    <input type="number" name="mpAgeFrom" required>
-		                    <span>세 ~</span>
-		                    <input type="number" name="mpAgeTo" id="mpAgeTo" required>
-		                    <span>세</span>
-		                </div>
-		                <div class="missing-date-area">
-		                    <span>발견일</span>
-		                    <input type="date" required>
-		                </div>
-		                <div class="missing-place-area">
-		                    <span>발견장소</span>
-		                    <input type="text" name="mpPlace" required>
-		                    <div style="color: darkgreen;">
-		                        ex) 서울시 용산구 갈월동 놀이터 앞
-		                        <br>상세주소로 검색이 가능합니다.
-		                    </div>
-		                </div>
-		                <div class="feature-area">
-		                    <span>신체특징</span>
-		                    <textarea name="feature"></textarea>
-		                    <div style="color: darkgreen;">
-		                    ex)'시츄', '파란색 눈', '초록색 줄무늬 옷'
-		                    <br>키워드로 검색이 가능합니다.
-		                    </div>
-		                </div>
-		            </div>    
-		            <div align="right" id="enroll-btn-area"><button class= "btn">올리기</button></div>
-	        	</div>
-		
 	    </div>
     	
     </div>
@@ -216,19 +140,12 @@
     		$(".select-dcategory").on("change", function(){
 	    		var option = $(".select-dcategory option:selected").val();
 	    		console.log(option);
-	    		/* $("#hidden").after($("#found-area").detach()); */
 	    		if(option == "found"){
-	    			$("#form-area").append($("#found-area").after($("#hidden")));
-	    			$("#hidden").after($("#missing-area").detach());
-	    			$("#found-area").show();
-	    			$("#missing-area").hide();
+	    			$(".missing-t").hide();
+	    			$(".found-t").show();
 	    		}else{
-	    			$("#form-area").append($("#missing-area").after($("#hidden")));
-	    			$("#hidden").after($("#found-area").detach());
-	    			/* $("#form-area").append.after($("#hidden")); */
-	    			/* $("#missing-area").after($("#hidden")); */
-	    			$("#missing-area").show();
-	    			$("#found-area").hide();
+	    			$(".missing-t").show();
+	    			$(".found-t").hide();
 	    		}    		    			
     		})
     	})
