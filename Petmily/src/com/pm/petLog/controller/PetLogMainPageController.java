@@ -39,8 +39,8 @@ public class PetLogMainPageController extends HttpServlet {
 		ArrayList<Attachment> attList = new PetLogService().selectAllAttachmentList();
 		
 		request.setAttribute("prList", prList);
-		request.setAttribute("plList", prList);
-		request.setAttribute("attList", prList);
+		request.setAttribute("plList", plList);
+		request.setAttribute("attList", attList);
 		request.getRequestDispatcher("views/petLog/petLogMain.jsp").forward(request, response);
 	}
 

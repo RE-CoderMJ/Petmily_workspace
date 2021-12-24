@@ -66,10 +66,12 @@
 		                                <div class="carousel-inner">
 				                    	<% for(Attachment att: attList) { %>
 				                    		<% if(att.getRefNo() == plList.get(i).getPetLogNo()) { %>
-				                                  <div class="carousel-item active">
+				                                  <div class="carousel-item">
 				                                    <img src="<%=contextPath%>/<%=att.getFilePath()%><%=att.getChangeName() %>" alt="">
 				                                  </div>
-				                                </div>
+				                            <% } %>    
+										<% } %>
+	                                	</div>
 				                                <!-- Left and right controls -->
 				                                <a class="carousel-control-prev" href="#no<%=i%>" data-slide="prev">
 				                                  <span class="carousel-control-prev-icon"></span>
@@ -77,8 +79,6 @@
 				                                <a class="carousel-control-next" href="#no<%=i%>" data-slide="next">
 				                                  <span class="carousel-control-next-icon"></span>
 				                                </a>
-				                            <% } %>    
-										<% } %>
 		                            </div>
 		                        </div>
 		                        <div class="date-area"><%=plList.get(i).getEnrollDate() %></div>
@@ -87,7 +87,7 @@
 		                </div>
 		                <div class="right-part">
 		                    <% if(loginUser != null && loginUser.getMemNo() == plList.get(i).getMemNo2()) { %>
-		                    <button type="button" class="delete-btn" data-toggle="modal" data-target="#deleteAskModal">x</button>
+		                    <button type="button" class="delete-btn" data-toggle="modal" data-target="#deleteAskModal" onclick="getNo(<%=plList.get(i).getPetLogNo()%>);">x</button>
 		                    <% } %>
 		                    <div class="right-top">
 		                        <div class="text-area">
@@ -105,7 +105,7 @@
 		                        	<label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
 		                        <% } %>
 		                        <% if(loginUser != null && loginUser.getMemNo() == plList.get(i).getMemNo2()) { %>
-		                        	<label onclick="location.href='<%=contextPath %>/update.petLog'" class="modify-post">수정하기</label>
+		                        	<label onclick="location.href='<%=contextPath %>/updateForm.petLog?petLogNo=<%=plList.get(i).getPetLogNo() %>'" class="modify-post">수정하기</label>
 		                        <% } %>
 		                    </div>
 		                    <div class="right-bottom">
@@ -171,7 +171,49 @@
             <% } %>
         </div>
     </div>
+    <input type="hidden" id="deleteNo">
+    <script>
+    	$(function(){
+    		$(".carousel-inner div:first-child").addClass("active");
+    	})
+    </script>
     
+     <script>
+	    function getNo(clickedId){
+	  		$("#deleteNo").val(clickedId);
+	  		console.log($("#deleteNo").val());
+	  	}
+     
+		function deleteContent(){
+
+			$.ajax({
+				url: "delete.petLog",
+				type:"post",
+				data: {petLogNo : $("#deleteNo").val()},
+				success:function(result){
+					if(result>0){
+						$("#deleteCompleted").modal('show');
+					}
+				},
+				error:function(){
+					console.log("게시글 삭제 실패!");
+				}
+			})
+		}
+		
+		$(function(){
+			$("#deleteCompletedclosebtn").click(function(){
+				location.href="<%=contextPath%>/main.petLog?page=1";
+			})
+		})
+	</script>
+	
+	<script>
+	$(function(){
+     	
+ 		
+ 	})
+	</script>
     
     <%@ include file="../common/footerbar.jsp" %>
     <%@ include file="../boards/bCommon/reportDeleteModals.jsp" %>
