@@ -199,6 +199,36 @@ public class MissingDao {
 		return list;
 	}
 	
+	public int updateMissing(Connection conn, Missing mi) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMissing");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mi.getCategory());
+			pstmt.setInt(2, mi.getdCategory());
+			pstmt.setString(3, mi.getpName());
+			pstmt.setString(4, mi.getpGender());
+			pstmt.setString(5, mi.getMissingDate());
+			pstmt.setInt(6, mi.getpAgeFrom());
+			pstmt.setInt(7, mi.getpAgeTo());
+			pstmt.setString(8, mi.getLocation());
+			pstmt.setString(9, mi.getFeature());
+			pstmt.setInt(10, mi.getMissingNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
 	public int deleteMissing(Connection conn, int miNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;

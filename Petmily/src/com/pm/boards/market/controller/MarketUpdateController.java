@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.pm.boards.market.model.service.MarketService;
 import com.pm.boards.market.model.vo.Market;
@@ -35,50 +37,53 @@ public class MarketUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int maxSize = 30 * 1024 * 1024;
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/boards_upfiles/market_upfiles/");
-		MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-		
-		int marketNo = Integer.parseInt(multiRequest.getParameter("mno")); 
-		
-		Market m = new Market();
-		m.setMarketNo(marketNo);
-		m.setMarketWriter(multiRequest.getParameter("userNo"));
-		m.setCategory(multiRequest.getParameter("category"));
-		m.setdCategory(multiRequest.getParameter("d-category"));
-		m.setMarketTitle(multiRequest.getParameter("title"));
-		m.setPrice(multiRequest.getParameter("price"));
-		m.setMarketContent(multiRequest.getParameter("content"));
-		
-		ArrayList<Attachment> list = new ArrayList<>();
-		
-		int fileCount = Integer.parseInt(multiRequest.getParameter("file-count"));
-		
-		for(int i=1; i<=fileCount; i++) {
-			String key = "file" + i;
-			String originAttNo = "originAttNo" + i;
-			if(multiRequest.getOriginalFileName(key) != null) {
-				Attachment att = new Attachment();
-				att.setOriginName(multiRequest.getOriginalFileName(key));
-				att.setChangeName(multiRequest.getFilesystemName(key));
-				att.setFilePath("resources/boards_upfiles/market_upfiles/");
-				
-				if(multiRequest.getParameter(originAttNo) != null) { // 기존 첨부파일 있었을 경우
-					att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
-				}
-				
-				att.setRefNo(marketNo);
-
-				list.add(att);					
-			}
-		}
-		
-		int result = new MarketService().updateMarket(m, list);
-		
-		if(result >0) {
-			response.sendRedirect(request.getContextPath() + "/detail.market?mno=" + marketNo);
-		}else {
+		if(ServletFileUpload.isMultipartContent(request)) {
 			
+			int maxSize = 30 * 1024 * 1024;
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/boards_upfiles/market_upfiles/");
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			
+			int marketNo = Integer.parseInt(multiRequest.getParameter("mno")); 
+			
+			Market m = new Market();
+			m.setMarketNo(marketNo);
+			m.setMarketWriter(multiRequest.getParameter("userNo"));
+			m.setCategory(multiRequest.getParameter("category"));
+			m.setdCategory(multiRequest.getParameter("d-category"));
+			m.setMarketTitle(multiRequest.getParameter("title"));
+			m.setPrice(multiRequest.getParameter("price"));
+			m.setMarketContent(multiRequest.getParameter("content"));
+			
+			ArrayList<Attachment> list = new ArrayList<>();
+			
+			int fileCount = Integer.parseInt(multiRequest.getParameter("file-count"));
+			
+			for(int i=1; i<=fileCount; i++) {
+				String key = "file" + i;
+				String originAttNo = "originAttNo" + i;
+				if(multiRequest.getOriginalFileName(key) != null) {
+					Attachment att = new Attachment();
+					att.setOriginName(multiRequest.getOriginalFileName(key));
+					att.setChangeName(multiRequest.getFilesystemName(key));
+					att.setFilePath("resources/boards_upfiles/market_upfiles/");
+					
+					if(multiRequest.getParameter(originAttNo) != null) { // 기존 첨부파일 있었을 경우
+						att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
+					}
+					
+					att.setRefNo(marketNo);
+					
+					list.add(att);					
+				}
+			}
+			
+			int result = new MarketService().updateMarket(m, list);
+			
+			if(result >0) {
+				response.sendRedirect(request.getContextPath() + "/detail.market?mno=" + marketNo);
+			}else {
+				
+			}
 		}
 	}
 

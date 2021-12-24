@@ -36,7 +36,7 @@
 	                    <a data-toggle="modal" data-target="#reportAskModal">신고</a> &nbsp;
 	                    <% }%>
 	                    <% if(loginUser != null && loginUser.getNickname().equals(mi.getMissingWriter())) { %>
-	                    <a href="<%=contextPath%>/updateForm.missing">수정하기</a>
+	                    <a href="<%=contextPath%>/updateForm.missing?miNo=<%=mi.getMissingNo()%>">수정하기</a>
 	                    <% } %>
 	                </div>
 	                <div id="writer">

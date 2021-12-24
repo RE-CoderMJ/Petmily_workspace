@@ -34,10 +34,7 @@ public class MarketUpdateFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int marketNo = Integer.parseInt(request.getParameter("mno"));
-		/*
-		int categoryNo = Integer.parseInt(request.getParameter("cno"));
-		int dCategoryNo = Integer.parseInt(request.getParameter("dcno"));
-		*/
+		
 		Market m = new MarketService().selectMarket(marketNo);
 		ArrayList<Attachment> list = new MarketService().selectAttachmentList(marketNo);
 		

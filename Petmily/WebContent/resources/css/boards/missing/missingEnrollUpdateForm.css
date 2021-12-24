@@ -7,12 +7,13 @@ div, img, li, a{
 	margin: auto;
 	padding:200px;
 	padding-top:35px;
-	margin-bottom:70px;
+	margin-bottom:100px;
 }
 #outer{
 	width: 1600px;
 	height: auto;
 	margin: auto;
+	position:relative;
 }
 /* 목록버튼 스타일 */
 #list-btn{
@@ -27,9 +28,12 @@ div, img, li, a{
 /* 사진 부분 스타일 */
 #photo-area{
     width: 400px;
-    height: 500px;
-    margin-top: 60px;
+    min-height: 500px;
+    height:auto;
+    margin-top: 0px;
     float: left;
+    margin-bottom:150px;
+    margin-top:45px;
 }
 .carousel-inner{
 	border:solid 1px darkgray;
@@ -50,16 +54,32 @@ div, img, li, a{
     height: 100%;
     object-fit:cover;
 }
+#right-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:190px;
+	left:370px;
+	opacity:0.8;
+}
+#left-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:190px;
+	left:15px;
+	opacity:0.8;
+}
 #file-upload-area>p{
     float: left;
     font-weight: bolder;
     color: rgb(106, 106, 106);
+    margin-top:px;
 }
 #file-upload-area{
     margin-top: 40px;
-}
-#file-upload-area>input{
-    margin-top: 8px;
+    heigth:auto;
+    margin-bottom:35px;
 }
 #add-area{
 	margin-left:30px;
@@ -78,9 +98,25 @@ div, img, li, a{
 	font-size:20px;
 	line-height:2px;
 	position:absolute;
-	left:820px;
+	left:670px;
 	border-radius:5px;
-	bottom:360px;
+	bottom:280px;
+}
+.originName{
+	width: 300px;
+	height:26px;
+	text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
+   	margin-left:-30px;
+}
+.file{
+	width: 300px;
+	height: 40px;
+	text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
+   	margin-left:-30px;
 }
 /* 입력부분 스타일 */
 .input-area{

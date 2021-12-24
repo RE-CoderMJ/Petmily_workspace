@@ -112,6 +112,20 @@
 		 WHERE REF_BOARD_NO = 3
 		   AND REF_NO = ?
 	</entry>
+	<entry key="updateMissing">
+		UPATE
+		      TB_MISSING
+		  SET CATEGORY = ?
+		    , D_CATEGORY = ?
+		    , PNAME = ?
+		    , GENDER = ?
+		    , MI_DATE = ?
+		    , AGE_FROM = ?
+		    , AGE_TO = ?
+		    , LOCATION = ?
+		    , FEATURE = ?
+	    WEHRE MISSING_NO = ?
+	</entry>
 	<entry key="deleteMissing">
 		UPDATE
 		       TB_MISSING
