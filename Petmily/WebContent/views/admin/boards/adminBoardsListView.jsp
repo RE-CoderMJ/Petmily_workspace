@@ -198,7 +198,7 @@
 			
 			<!-- 조회 테이블 -->
             <div class="table table-bordered">
-                <table>
+                <table id ="boardstable">
                     <thead>
                         <tr>
                             <th width="50"><input type="checkbox" name="" value=""></th>
