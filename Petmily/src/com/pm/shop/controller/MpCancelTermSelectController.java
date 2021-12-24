@@ -15,16 +15,16 @@ import com.pm.shop.model.service.PointService;
 import com.pm.shop.model.vo.Cancel;
 
 /**
- * Servlet implementation class MpCancelSelect
+ * Servlet implementation class MpCancelTermSelect
  */
-@WebServlet("/cancelselect.my")
-public class MpCancelSelectController extends HttpServlet {
+@WebServlet("/term.my")
+public class MpCancelTermSelectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MpCancelSelectController() {
+    public MpCancelTermSelectController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,6 @@ public class MpCancelSelectController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		// ------- 페이징 처리 ---------
 		int listCount; 		// 현재 총 게시글 개수
 		int currentPage; 	// 현재 페이지 (즉, 사용자가 요청한 페이지)
@@ -68,14 +67,23 @@ public class MpCancelSelectController extends HttpServlet {
 		// com.kh.common.model.vo.PageInfo
 		// * 페이징바를 만들때 필요한 객체
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
+				
 		// ---------------------------페이징 끝---------------------------
-		ArrayList<Cancel> list = new CancelService().selectList(pi);
+		
+		// 사용자가 요청한 기간( 7, 1, 3, 6)
+		int search;	
+		
+		search = Integer.parseInt(request.getParameter("search"));
+		
+		ArrayList<Cancel> termList = new CancelService().selectTermList(search, pi);
 		
 		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
-
+		request.setAttribute("list", termList);
+		request.setAttribute("search", search);
+		
 		request.getRequestDispatcher("views/shop/mypage/cancelSelect.jsp").forward(request, response);
+		//response.sendRedirect(request.getContextPath() + "/cancelselect.my?cpage=1");
+		
 	}
 
 	/**

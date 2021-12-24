@@ -14,14 +14,14 @@ import com.pm.shop.model.vo.OrderSelect;
 /**
  * Servlet implementation class MpExchangeAppController
  */
-@WebServlet("/exchangeapp.my")
-public class MpExchangeAppController extends HttpServlet {
+@WebServlet("/exchangeselect.my")
+public class MpExchangeSelectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MpExchangeAppController() {
+    public MpExchangeSelectController() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -161,7 +161,7 @@ div, img, li, a{
 			      		</div>
 			            <!-- Modal footer -->
 			            <div class="modal-footer">
-			              <a href="<%= contextPath %>/exchangeapp.my?orderno=<%= osd.getOrderNo() %>&pno=<%= osd.getOrderPnum() %>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
+			              <a href="<%= contextPath %>/exchangeselect.my?orderno=<%= osd.getOrderNo() %>&pno=<%= osd.getOrderPnum() %>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
 			            </div>
 			      
 			        </div>

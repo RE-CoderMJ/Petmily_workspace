@@ -4,6 +4,9 @@
  <%
  	PageInfo pi = (PageInfo)request.getAttribute("pi");
  	ArrayList<Cancel> list = (ArrayList<Cancel>)request.getAttribute("list");
+ 	//ArrayList<Cancel> termList = (ArrayList<Cancel>)request.getAttribute("termList");
+ 	
+ 	String search = (String)String.valueOf(request.getAttribute("search"));
  	
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
@@ -47,6 +50,7 @@
             font-weight: 900;
             margin-bottom:20px;
 			margin-left:10px;
+			cursor:pointer;
         } 
         .div1{
         margin-left:40px;
@@ -142,23 +146,29 @@
 	
     <div class="content-area">
     <div id="outer">
-    	 <div class="title">취소/환불 내역 조회</div>
+    	 <div class="title" 
+    	 		onclick="location.href='<%=contextPath%>/cancelselect.my?cpage=1'">
+    	 	취소/환불 내역 조회
+    	 </div>
          <hr>
-<% if(list.isEmpty()) { %>
-	<div align="center" id="nullcase">취소/환불 내역이 없습니다.</div>
-<% } else { %>
-	<% for(Cancel c : list) { %>
+
          <div class="div1">
             <div class="div2 inline-block" 
-            onclick="location.href='<%= contextPath %>/term.my?search=7'">1주일</div>
+            onclick="location.href='<%= contextPath %>/term.my?search=7&cpage=1'">1주일</div>
             <div class="div2 inline-block" 
-             onclick="location.href='<%= contextPath %>/term.my?search=1'">1개월</div>
+             onclick="location.href='<%= contextPath %>/term.my?search=1&cpage=1'">1개월</div>
             <div class="div2 inline-block"
-             onclick="location.href='<%= contextPath %>/term.my?search=3'">3개월</div>
+             onclick="location.href='<%= contextPath %>/term.my?search=3&cpage=1'">3개월</div>
             <div class="div2 inline-block"
-             onclick="location.href='<%= contextPath %>/term.my?search=6'">6개월</div>
+             onclick="location.href='<%= contextPath %>/term.my?search=6&cpage=1'">6개월</div>
           </div>
 
+    
+ <input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
+	<% if(list.isEmpty()) { %>
+		<div align="center" id="nullcase">취소/환불 내역이 없습니다.</div>
+	<% } else { %>
+		<% for(Cancel c : list) { %>
           <table id="cancel-content" style="border-spacing: 10px;">
             <tr style="background-color: rgb(213,213,213);">
                 <th>주문번호/주문일 </th>
@@ -184,17 +194,45 @@
 
 	        <% } %>
 	<% } %>  
+
        <br><br>
-	 <!-- 페이징 바 -->
-	    <div class="paging-area" >
-            <button> &lt; </button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button> &gt; </button>
-	    </div>
+
+ <!-- 페이징 바 -->
+      <div class="paging-area" >
+      <% if( search != null) { %>
+      		<% if(currentPage != startPage) { %>
+            	<button onclick="location.href='<%=contextPath%>/term.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
+            <% } %>	
+            	
+            <% for(int pp=startPage; pp<=endPage; pp++){ %>
+            	<% if(pp == currentPage) { %> 
+            		<button disabled><%=pp %></button>
+            	<% } else { %>
+            		<button onclick="location.href='<%=contextPath %>/cancelselect.my?cpage=<%=pp%>';"><%=pp %></button>
+            	<% } %>	
+            <% } %>
+
+			<% if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/cancelselect.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
+			<% } %>	
+		<% } else { %>	
+            <% if(currentPage != startPage) { %>
+            	<button onclick="location.href='<%=contextPath%>/cancelselect.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
+            <% } %>	
+            	
+            <% for(int pp=startPage; pp<=endPage; pp++){ %>
+            	<% if(pp == currentPage) { %> 
+            		<button disabled><%=pp %></button>
+            	<% } else { %>
+            		<button onclick="location.href='<%=contextPath %>/cancelselect.my?cpage=<%=pp%>';"><%=pp %></button>
+            	<% } %>	
+            <% } %>
+
+			<% if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/cancelselect.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
+			<% } %>	
+		<% } %>	
+    </div>
 
 
         <br><br>

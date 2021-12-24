@@ -149,12 +149,12 @@
 <div class="content-area">
     <div id="title">주문내역조회</div>
 
+    <div id="outer">
 <% if(list.isEmpty()) { %>
 	<div align="center" id="nullcase">주문 내역이 없습니다.</div>
 <% } else { %>
 	<% for(OrderSelect os : list) { %>
 	
-    <div id="outer">
         <div id="content">
             <div class="inline-block" id="c1"><%= os.getOrderDate() %> 구매</div>
             <div class="inline-block" id="c2" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno=<%= os.getOrderNo() %>'">주문번호 : <%= os.getOrderNo() %></div>
@@ -179,11 +179,11 @@
 	            </div>
 			</div>
         </div>
-    </div>
     
     <% } %>
 <% } %>   
     
+    </div>
 </div>
 
 

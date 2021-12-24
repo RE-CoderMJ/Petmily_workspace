@@ -117,6 +117,21 @@
         }
         
         .modal-backdrop { opacity:0.1 !important; }
+        #rtreason{
+         width:180px;
+         height:40px;
+         font-size:18px;
+         border-radius:3px;
+         
+        }
+        
+        #donebtn{
+        	width:80px;
+        	height:40px;
+        	background-color:orange;
+        	border:none;
+        	border-radius:5px;
+        }
 
        
         .inline-block{display:inline-block;}
@@ -136,7 +151,7 @@
 
 <div id="outer">
 	
-
+<form id="enroll-form" action="<%=contextPath %>/exchangeapp.my" method="post" enctype="multipart/form-data">
 
         <div id="one">
             <div class="inline-block" >
@@ -219,7 +234,7 @@
 	  
 	        <!-- Modal Header -->
 	        <div class="modal-header" >
-	          <h4 class="modal-title" style="color: white;">교환 사유</h4>
+	          <h4 class="modal-title" style="color: white;">교환 내용</h4>
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
 	        </div>
 	  
@@ -235,9 +250,9 @@
 	        </div>
 	  
 	        <!-- Modal footer -->
-	        <div class="modal-footer">
-	          <a href="" class="btn btn-danger">확인</a>
-	        </div>
+	       <div class="modal-footer">
+              <button type="submit" id="donebtn" >확인</button>
+            </div>
 	  
 	      </div>
 	    </div>
@@ -265,19 +280,17 @@
             <div class="modal-body">
                 
                 <div align="center">
-                   <form>
-                        반품사유
-                    
-                    <select class="dropdown-menu" name="rtreason">
-                      <option class="dropdown-item" value="rtreson1">고객변심</option>
-                      <option class="dropdown-item" value="rtreson2">상품불만족</option>
-                      <option class="dropdown-item" value="rtreson3">고객주문오류</option>
-                      <option class="dropdown-item" value="rtreson4">불량반품</option>
-                      <option class="dropdown-item" value="rtreson5">기타</option>
+
+                    <select id="rtreason" name="rtreason">
+                      <option value="rtreson1">고객변심</option>
+                      <option value="rtreson2">상품불만족</option>
+                      <option value="rtreson3">고객주문오류</option>
+                      <option value="rtreson4">불량반품</option>
+                      <option value="rtreson5">기타</option>
                     </select>
                     
                     
-				      </form>
+				      
                   </div>
     
                 
@@ -285,7 +298,7 @@
       
             <!-- Modal footer -->
             <div class="modal-footer">
-              <a href="" class="btn btn-danger">확인</a>
+              <button type="submit" id="donebtn">확인</button>
             </div>
           </div>
         </div>
@@ -300,6 +313,7 @@
 </div>
 </div>
 
+</form>
     
 <%@ include file="../../common/footerbar.jsp" %>
 </body>

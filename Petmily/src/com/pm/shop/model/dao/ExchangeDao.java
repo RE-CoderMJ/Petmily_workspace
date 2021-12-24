@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import com.pm.shop.model.vo.Exchange;
 import com.pm.shop.model.vo.OrderSelect;
 
 public class ExchangeDao {
@@ -86,6 +87,17 @@ public class ExchangeDao {
 		}
 		
 		return od;
+	}
+
+
+	public int insertBoard(Connection conn, Exchange ec) {
+
+		
+		
+		
+		
+		
+		
 	}
 	
 	

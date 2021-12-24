@@ -1,11 +1,11 @@
 package com.pm.shop.model.service;
 
-import static com.pm.common.JDBCTemplate.close;
-import static com.pm.common.JDBCTemplate.getConnection;
+import static com.pm.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 
 import com.pm.shop.model.dao.ExchangeDao;
+import com.pm.shop.model.vo.Exchange;
 import com.pm.shop.model.vo.OrderSelect;
 
 public class ExchangeService {
@@ -25,6 +25,22 @@ public class ExchangeService {
 
 		close(conn);
 		return od;
+	}
+
+	public int insertExchanage(Exchange ec) {
+		Connection conn = getConnection();
+		
+		int result = new ExchangeDao().insertBoard(conn, ec);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 	
 	

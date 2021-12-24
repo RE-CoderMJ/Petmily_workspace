@@ -32,9 +32,9 @@ public class CancelService {
 	}
 	
 	// 기간별 조회리스트
-	public ArrayList<Cancel> selectTermList(int search){
+	public ArrayList<Cancel> selectTermList(int search, PageInfo pi){
 		Connection conn = getConnection();
-		ArrayList<Cancel> termList = new CancelDao().selectTermList(conn, search);
+		ArrayList<Cancel> termList = new CancelDao().selectTermList(conn, search, pi);
 		
 		close(conn);
 		return(termList);

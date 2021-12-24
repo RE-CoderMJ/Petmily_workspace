@@ -104,29 +104,53 @@ private Properties prop = new Properties();
 	}
 	
 	
-	public ArrayList<Cancel> selectTermList(Connection conn, int search){
+	public ArrayList<Cancel> selectTermList(Connection conn, int search, PageInfo pi){
 		// select문 -> ResultSet(여러행) -> ArrayList<Cancel>
 		ArrayList<Cancel> termList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		String sql = "";
 		if(search == 7) {
-			String sql = prop.getProperty("selectTermListA");
+			sql = prop.getProperty("selectTermListA");
 		} else if(search == 1) {
-			String sql = prop.getProperty("selectTermListB");
+			sql = prop.getProperty("selectTermListB");
 		}else if(search == 3) {
-			String sql = prop.getProperty("selectTermListC");
+			sql = prop.getProperty("selectTermListC");
 		}else {
-			String sql = prop.getProperty("selectTermListD");
+			sql = prop.getProperty("selectTermListD");
 		}
 
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			int startRow = (pi.getCurrentPage() -1 ) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1,  startRow);
+			pstmt.setInt(2,  endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				termList.add(new Cancel(rset.getInt("cancel_ono"),
+								 rset.getString("cancel_pname"),
+						   		 rset.getString("cancel_opoption"),
+						   		 rset.getInt("cancel_opamount"),
+						   		 rset.getInt("cancel_price"),
+						   		 rset.getDate("order_date"),
+						   		 rset.getString("cc_sledding"),
+						   		 rset.getString("cc_payment")
+										));
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
+		return termList;
 	}
 	
 	
