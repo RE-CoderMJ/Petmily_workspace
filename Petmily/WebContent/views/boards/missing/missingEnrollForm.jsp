@@ -111,7 +111,7 @@
 		                <div class="missing-place-area">
 		                    <span class="missing-t">발생장소</span>
 		                    <span class="found-t" style="display:none;">발견장소</span>
-		                    <input type="text" name="mpPlace" required>
+		                    <input type="text" name="mpPlace" id="mpPlace" placeholder="50자 내외로 입력" required>
 		                    <div>
 		                    ex) 서울시 용산구 갈월동 놀이터 앞
 		                    <br>상세주소로 검색이 가능합니다.
@@ -119,7 +119,7 @@
 		                </div>
 		                <div class="feature-area">
 		                    <span>신체특징</span>
-		                    <textarea name="feature"></textarea>
+		                    <textarea name="feature" id="features" placeholder="300자 내외"></textarea>
 		                    <div>
 		                    ex)'시츄', '파란색 눈', '초록색 줄무늬 옷'
 		                    <br>키워드로 검색이 가능합니다.
@@ -210,6 +210,28 @@
           }
              
    </script>
+   
+   <script>
+ 
+    $(document).ready(function() {
+        $('#mpPlace').on('keyup', function() {
+ 
+            if($(this).val().length > 50) {
+                $(this).val($(this).val().substring(0, 50));
+            }
+        });
+    });
+    
+    $(document).ready(function() {
+        $('#features').on('keyup', function() {
+ 
+            if($(this).val().length > 300) {
+                $(this).val($(this).val().substring(0, 300));
+            }
+        });
+    });
+        
+    </script>
 
 	<%@ include file="../../common/footerbar.jsp" %>
 </body>

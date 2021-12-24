@@ -62,6 +62,7 @@
 		
 		                            <div id="no<%=i %>" class="carousel" data-ride="carousel" data-interval="false">
 
+		                    		<% int ptCount = 0; %>
 		                                <!-- The slideshow -->
 		                                <div class="carousel-inner">
 				                    	<% for(Attachment att: attList) { %>
@@ -69,9 +70,11 @@
 				                                  <div class="carousel-item">
 				                                    <img src="<%=contextPath%>/<%=att.getFilePath()%><%=att.getChangeName() %>" alt="">
 				                                  </div>
+				                             	  <% ptCount++; %>
 				                            <% } %>    
 										<% } %>
 	                                	</div>
+	                                	<%if(ptCount > 1) { %>
 				                                <!-- Left and right controls -->
 				                                <a class="carousel-control-prev" href="#no<%=i%>" data-slide="prev">
 				                                  <span class="carousel-control-prev-icon"></span>
@@ -79,6 +82,7 @@
 				                                <a class="carousel-control-next" href="#no<%=i%>" data-slide="next">
 				                                  <span class="carousel-control-next-icon"></span>
 				                                </a>
+				                        <% } %>
 		                            </div>
 		                        </div>
 		                        <div class="date-area"><%=plList.get(i).getEnrollDate() %></div>

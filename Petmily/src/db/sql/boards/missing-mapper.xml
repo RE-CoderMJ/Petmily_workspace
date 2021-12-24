@@ -53,4 +53,69 @@
 		  , ?
 		  )
 	</entry>
+	<entry key="increaseCount">
+		UPDATE
+			   TB_MISSING
+		   SET COUNT = COUNT+1
+		 WHERE MISSING_NO = ?
+		   AND STATUS = 'Y'
+	</entry>
+	<entry key="selectMissingList">
+		SELECT
+			   MISSING_NO
+			 , MISSING_WRITER
+			 , CATEGORY
+			 , D_CATEGORY
+			 , PNAME
+			 , GENDER
+			 , MI_DATE
+			 , AGE_FROM
+			 , LOCATION
+			 , FEATURE
+			 , (SELECT 
+		               FILE_PATH || CHANGE_NAME
+		          FROM ATTACHMENT 
+		         WHERE REF_NO = MI.MISSING_NO
+		           AND REF_BOARD_NO = 3
+		           AND ROWNUM = 1) "TITLEIMG"
+		  FROM TB_MISSING MI
+		 WHERE STATUS = 'Y'
+		 ORDER
+		    BY MISSING_NO DESC
+	</entry>
+	<entry key="selectMissing">
+		SELECT
+			   MISSING_NO
+			 , NICKNAME
+			 , CATEGORY
+			 , D_CATEGORY
+			 , PNAME
+			 , GENDER
+			 , MI_DATE
+			 , AGE_FROM
+			 , AGE_TO
+			 , LOCATION
+			 , FEATURE
+			 , COUNT
+			 , ENROLL_DATE
+		  FROM TB_MISSING
+		  JOIN TB_MEMBER ON (MISSING_WRITER = MEM_NO)
+		 WHERE MISSING_NO = ?
+	</entry>
+	<entry key="selectAttachmentList">
+		SELECT
+		       ATTACHMENT_NO
+		     , ORIGIN_NAME  
+		     , CHANGE_NAME
+		     , FILE_PATH
+		  FROM ATTACHMENT
+		 WHERE REF_BOARD_NO = 3
+		   AND REF_NO = ?
+	</entry>
+	<entry key="deleteMissing">
+		UPDATE
+		       TB_MISSING
+		   SET STATUS = 'N'
+		 WHERE MISSING_NO = ?
+	</entry>
 </properties>

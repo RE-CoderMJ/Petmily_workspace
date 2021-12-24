@@ -1,7 +1,6 @@
 package com.pm.boards.missing.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pm.boards.missing.model.service.MissingService;
-import com.pm.boards.missing.model.vo.Missing;
 
 /**
- * Servlet implementation class MissingMainPageController
+ * Servlet implementation class AjaxMissingDeleteController
  */
-@WebServlet("/main.missing")
-public class MissingMainPageController extends HttpServlet {
+@WebServlet("/delete.missing")
+public class AjaxMissingDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MissingMainPageController() {
+    public AjaxMissingDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +29,15 @@ public class MissingMainPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int miNo = Integer.parseInt(request.getParameter("miNo"));
 		
-		ArrayList<Missing> list = new MissingService().selectMissingList();
+		int result = new MissingService().deleteMissing(miNo);
 		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/boards/missing/missingMain.jsp").forward(request, response);
+		if(result > 0) {
+			response.getWriter().print(result);
+		}else {
+			
+		}
 	}
 
 	/**

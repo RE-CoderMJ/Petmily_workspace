@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.pm.boards.missing.modle.service.MissingService;
-import com.pm.boards.missing.modle.vo.Missing;
+import com.pm.boards.missing.model.service.MissingService;
+import com.pm.boards.missing.model.vo.Missing;
 import com.pm.common.MyFileRenamePolicy;
 import com.pm.common.model.vo.Attachment;
 

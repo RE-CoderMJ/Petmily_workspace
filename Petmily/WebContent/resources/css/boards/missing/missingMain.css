@@ -230,6 +230,9 @@ cursor: pointer;
     font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
 }
 .dpf-area >div{
 	text-overflow:ellipsis;

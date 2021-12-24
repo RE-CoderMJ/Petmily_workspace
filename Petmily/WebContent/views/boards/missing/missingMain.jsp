@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import= "java.util.ArrayList, com.pm.boards.missing.model.vo.Missing"%>
+<%
+	ArrayList<Missing> list = (ArrayList<Missing>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,10 +124,12 @@
 	      <div id="middle-area">
 	         <div align="left" id="selectBy">
 	            <!-- 선택한 카테고리에 따라 문구 변경됨 -->
-	            전체 xxx건
+	            전체 <%= list.size() %>건
 	         </div>
 	         <div align="right">
+	         	<% if(loginUser != null) { %>
 	            <button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.missing';">글쓰기</button>
+	            <% } %>
 	         </div>
 	         <br><br><hr style="border: solid 1px rgb(179, 178, 178);">
 	      </div>
@@ -134,139 +140,39 @@
 	
 	      <!-- 게시글 영역 -->
 	      <div id="content-area">
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="found-title">보호하고있어요</div>
-	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="found-title">보호하고있어요</div>
-	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="found-title">보호하고있어요</div>
-	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="found-title">보호하고있어요</div>
-	               <div class="gender-age">수컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="missing-title">찾고있어요</div>
-	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	         
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="missing-title">찾고있어요</div>
-	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="missing-title">찾고있어요</div>
-	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
-	
-	         <div class="content-box-area">
-	            <div style="border:1px solid black;" class="missing-img">
-	               <img src="" alt="">
-	            </div>
-	            <div class="content-info-area" align="left">
-	               <div class="missing-title">찾고있어요</div>
-	               <div class="gender-age">루루 | 암컷 | 추정나이: 만 3세</div>
-	               <div class="dpf-area">
-	               	  <div>발견일자 : 2021년 11월 12일</div>
-	                  <div>발견지역 : 구갈동 ak플라자 앞</div>
-	                  <div>신체특징 : 귀가 큼</div>
-	               </div>
-	            </div>
-	         </div>
+		      <% for(Missing mi : list) { %>
+		         <div class="content-box-area">
+		            <div class="missing-img">
+		               <img src="<%=contextPath %>/<%=mi.getTitleImg() %>" alt="">
+		               <input type="hidden" id="miNo" value="<%= mi.getMissingNo()%>">
+		            </div>
+		            <div class="content-info-area" align="left">
+		            	<input type="hidden" id="miNo" value="<%= mi.getMissingNo()%>">
+		               <% if(mi.getdCategory() == 1) { %>
+		               		<div class="missing-title">찾고있어요</div>
+		               <% }else { %>
+		               		<div class="found-title">보호하고있어요</div>
+		               <% } %>
+		               <div class="gender-age"><%=mi.getpName() == null ? "" : mi.getpName()%> | <%=mi.getpGender().equals("F") ? "암컷" : "수컷"%> | 추정나이: 만 <%=mi.getpAgeFrom()%>세</div>
+		               <div class="dpf-area">
+		               	  <div>발견일자 : <%=mi.getMissingDate() %></div>
+		                  <div>발견지역 : <%=mi.getLocation() %></div>
+		                  <div>신체특징 : <%=mi.getFeature() %></div>
+		               </div>
+		            </div>
+		         </div>
+			<% } %>
 	      </div>
+	      
 	      <script>
 	         $(function(){
 	            $(".content-info-area").click(function(){
-	               //const num = $(this).children().eq(0).text();
-	               
-	               // /jsp/detail.no?num=클릭한글번호
-	               location.href = '<%=contextPath%>/detail.missing';
+	               const num = $(this).children("input").val();
+	               location.href = '<%=contextPath%>/detail.missing?miNo=' + num;
 	            })
 	            $(".missing-img").click(function(){
-	               //const num = $(this).children().eq(0).text();
-	               
-	               // /jsp/detail.no?num=클릭한글번호
-	               location.href = '<%=contextPath%>/detail.missing';
+	               const num = $(this).children("input").val();
+	               location.href = '<%=contextPath%>/detail.missing?miNo=' + num;
 	            })
 	         })
 	      </script>

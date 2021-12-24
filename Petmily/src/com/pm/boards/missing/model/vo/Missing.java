@@ -1,4 +1,4 @@
-package com.pm.boards.missing.modle.vo;
+package com.pm.boards.missing.model.vo;
 
 public class Missing {
 	
@@ -17,6 +17,7 @@ public class Missing {
 	private String feature;
 	private int count;
 	private String status;
+	private String titleImg;
 	
 	public Missing () {}
 	
@@ -39,6 +40,15 @@ public class Missing {
 		this.feature = feature;
 		this.count = count;
 		this.status = status;
+	}
+
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
 	public int getMissingNo() {
