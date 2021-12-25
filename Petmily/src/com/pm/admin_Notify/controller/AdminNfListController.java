@@ -1,11 +1,16 @@
 package com.pm.admin_Notify.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.admin_Notify.model.service.AdminNotifyService;
+import com.pm.admin_Notify.model.vo.AdminNotify;
 
 /**
  * Servlet implementation class AdminNfListController
@@ -26,6 +31,11 @@ public class AdminNfListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArrayList<AdminNotify> list = new AdminNotifyService().selectNotifyList();
+		
+		request.setAttribute("list", list);
+		
 		request.getRequestDispatcher("views/admin/notify/adminNotifyList.jsp").forward(request, response);
 	}
 

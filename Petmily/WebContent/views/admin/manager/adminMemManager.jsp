@@ -4,8 +4,9 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
- 	Member m = (Member)request.getAttribute("m");
+ 	//Member m = (Member)request.getAttribute("m");
 	
+ 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -212,9 +213,9 @@
                             
                         <!-- 회원수정 Modal -->
                             
-                     	<form id="update-form" action="<%= contextPath %>/memUp.ad?mno=" method="post">
-                     	<input type="hidden" name="mno" value="">
+                     	
                            <div class="modal" id="myModal">
+                     	<form id="update-form" action="<%= contextPath %>/memUp.ad" method="post">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <!-- Modal Header -->
@@ -283,13 +284,13 @@
                                     
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="submit" id="submit" class="btn btn-warning" data-dismiss="modal" data-toggle="modal">회원수정</button>
+                                        <button type="submit" id="submit" class="btn btn-warning" data-toggle="modal">회원수정</button>
                                         <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     	</form>
+                        </div>
                         <!-- 회원 수정완료 Modal -->
                         <div class="modal fade" id="changeCompleted">
                             <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -387,6 +388,7 @@
                     </div>
                 </div>
             </div>
+            
             <!--<script>
             	$(document).ready(function(){
             		var selected = [];
@@ -469,6 +471,7 @@
                  	$("#memEmail").val(email); 
                  	$("#memTel").val(tel); 
                  	$("#memNick").val(nick);
+                 	
                  
              }
             </script>

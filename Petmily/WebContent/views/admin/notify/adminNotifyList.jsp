@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.admin_Notify.model.vo.AdminNotify"%>
+<%
+	ArrayList<AdminNotify> list = (ArrayList<AdminNotify>)request.getAttribute("list");
+ %>  
     <!DOCTYPE html>
     <html>
     <head>
@@ -259,20 +262,26 @@
                             </thead>
                             <tbody>
                                 <!--1. 게시글 없을 경우-->
+                             <% if(list.isEmpty()) {%>
                                 <tr style="display:none">
                                     <td colspan="6">조회된 게시글이 없습니다</td>
                                 </tr>
+                                <% }else { %>
                                 <!--2. 게시글 있을 경우-->
+                                <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
                                     <td><input type="checkbox" name="" value=""></td>
-                                    <td>1</td>
-                                    <td class="tbList" data-toggle="modal" data-target="#idModal">qldrmsl</td>
-                                    <td>댓글</td>
-                                    <td>욕설/비방</td>
-                                    <td class="tbList" data-toggle="modal" data-target="#contentModal">저희집 강아지 보고 돼지래요 사실이긴 합니다</td>
-                                    <td class="tbList" data-toggle="modal" data-target="#idModal">bomi</td>
-                                    <td>21/11/15</td>
+                                    <td><%= list.get(i).getReportNo() %></td>
+                                    <td class="tbList" data-toggle="modal" data-target="#idModal"><%= list.get(i).getClientId() %></td>
+                                    <td><%= list.get(i).getComments() %></td>
+                                    <td><%= list.get(i).getReportReason() %></td>
+                                    <td class="tbList" data-toggle="modal" data-target="#contentModal"><%= list.get(i).getReportContent() %></td>
+                                    <td class="tbList" data-toggle="modal" data-target="#idModal"><%= list.get(i).getReportId() %></td>
+                                    <td><%= list.get(i).getReportDate() %></td>
                                 </tr>
+                                <% } %>
+                                
+                             <% } %>
                                 <!-- 신고 아이디 Modal -->
                                 <div class="modal fade" id="idModal">
                                     <div class="modal-dialog modal-sm modal-dialog-centered">

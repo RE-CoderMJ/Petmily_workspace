@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectNotifyList">
+		SELECT
+				REPORT_NO
+			  ,	CLIENT_ID
+			  ,	COMMENTS
+			  ,	BOARD_TYPE
+			  ,	BOARD_NO
+			  ,	REPORT_ID
+			  ,	REPORT_REASON
+			  ,	REPORT_CONTENT
+			  ,	REPORT_DATE
+		   FROM TB_REPORT
+	</entry>
+</properties>

@@ -45,9 +45,6 @@ public class AdminMemUpdateController extends HttpServlet {
 		m.setMemTel(memTel);
 		m.setNickname(nickname);
 		
-		System.out.println(m);
-		
-		
 		int result = new AdminMemService().updateMem(m);
 		
 		if(result > 0) {
