@@ -30,9 +30,37 @@
 		                     , MEM_TEL
 		                     , NICKNAME
 		                 FROM TB_MEMBER
+		                 WHERE MEM_STATUS = 'Y'
 		                ) A
 		        )
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="selectMember">
+		SELECT 
+		       MEM_NO
+		     , MEM_NAME
+		     , MEM_EMAIL
+		     , MEM_TEL
+		     , NICKNAME
+		  FROM TB_MEMBER
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="memDelete">
+		UPDATE
+			   TB_MEMBER
+		   SET MEM_STATUS = 'N'
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="updateMem">
+		UPDATE
+		       TB_MEMBER
+		   SET MEM_NAME = ?
+             , MEM_EMAIL = ?
+             , MEM_TEL = ?
+             , NICKNAME = ?
+		 WHERE MEM_NO = ? 
+	</entry>
 </properties>

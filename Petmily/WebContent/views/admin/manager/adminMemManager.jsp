@@ -4,8 +4,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-
-	System.out.println(pi);
+ 	Member m = (Member)request.getAttribute("m");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -206,82 +205,91 @@
                         <div class="btn-box">
                             <!-- btn-box -->
                             <div class="pb-5">
-                                <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">회원수정</button>
+                                <button id="updateBtn" class="btn btn-sm btn-warning mr-2" data-toggle="modal" data-target="#myModal">회원수정</button>
                             </div>
                             
                             
                             
-                            <!-- 회원수정 Modal -->
-                            <div class="modal" id="myModal">
+                        <!-- 회원수정 Modal -->
+                            
+                     	<form id="update-form" action="<%= contextPath %>/memUp.ad?mno=" method="post">
+                     	<input type="hidden" name="mno" value="">
+                           <div class="modal" id="myModal">
                                 <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <div class="md-box">
-                                            <p>회원 no.</p>
-                                            <input type="text" value="id">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
-                                        <div class="md-box">
-                                            <p>이름</p>
-                                            <input type="text" value="name">
-                                        </div>
-                                        <div class="md-box">
-                                            <p>회원 이메일</p>
-                                            <input type="text" value="email">
-                                        </div>
-                                        <div class="md-box">
-                                            <p>회원 번화번호</p>
-                                            <input type="text" value="phone">
-                                        </div>
-                                        <div class="md-box">
-                                            <p>회원 닉네임</p>
-                                            <input type="text" value="nickname">
-                                        </div>
-                                        <!--<div class="md-box">
-                                            <p>회원 포인트</p>
-                                            <input id="point1" class="point" type="number" value="3000">
-                                            
-                                            <div class="btn-box">
-                                                <button onclick="plus();" style="margin-right: 5px;" class="btn btn-sm material-icons">add</button>
-                                                <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
-                                            </div>
-                                        </div>
-                                        		회원 포인트 +,- 구현
-                                        <script>
-                                            function plus(){
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="md-box">
+                                                <pW>회원 no.</p>
+                                                <input type="text" id="memNo" name="mno">
                                                 
-                                                const p1 = document.getElementById("point1").value;
+                                            </div>
+                                            <div class="md-box">
+                                                <p>이름</p>
+                                                <input type="text" id="memName" name="name">
+                                                <!-- <input type="hidden" name="name"> -->
+                                            </div>
+                                            <div class="md-box">
+                                                <p>회원 이메일</p>
+                                                <input type="text" id="memEmail" name="email">
+                                                <!-- <input type="hidden" name="email"> -->
+                                            </div>
+                                            <div class="md-box">
+                                                <p>회원 전화번호</p>
+                                                <input type="text" id="memTel" name="tel" >
+                                                <!-- <input type="hidden" name="tel"> -->
+                                            </div>
+                                            <div class="md-box">
+                                                <p>회원 닉네임</p>
+                                                <input type="text" id="memNick" name="nick">
+                                                <!-- <input type="hidden" name="nick"> -->
+                                            </div>
+                                            <!--<div class="md-box">
+                                                <p>회원 포인트</p>
+                                                <input id="point1" class="point" type="number" value="3000">
+                                                
+                                                <div class="btn-box">
+                                                    <button onclick="plus();" style="margin-right: 5px;" class="btn btn-sm material-icons">add</button>
+                                                    <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
+                                                </div>
+                                            </div>
+                                                    	회원 포인트 +,- 구현
+                                            <script>
+                                                function plus(){
+                                                    
+                                                    const p1 = document.getElementById("point1").value;
 
-                                                const sum = Number(p1) + Number(10);
+                                                    const sum = Number(p1) + Number(10);
 
-                                                document.getElementById("point1").value = sum;
+                                                    document.getElementById("point1").value = sum;
 
-                                            }
-                                        </script>
-                                        <script>
-                                            function minus(){
+                                                }
+                                            </script>
+                                            <script>
+                                                function minus(){
 
-                                                const m1 = document.getElementById("point1").value;
+                                                    const m1 = document.getElementById("point1").value;
 
-                                                const minus = Number(m1) - Number(10);
+                                                    const minus = Number(m1) - Number(10);
 
-                                                document.getElementById("point1").value = minus;
-                                            }
-                                        </script>-->
-
-                                    </div>
+                                                    document.getElementById("point1").value = minus;
+                                                }
+                                            </script>-->
+                                        </div>
+                                    
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">회원수정</button>
+                                        <button type="submit" id="submit" class="btn btn-warning" data-dismiss="modal" data-toggle="modal">회원수정</button>
                                         <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    	</form>
                         <!-- 회원 수정완료 Modal -->
                         <div class="modal fade" id="changeCompleted">
                             <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -302,7 +310,7 @@
                         </div>
                             <!-- 회원 삭제 버튼 -->
                             <div class="pb-5">
-                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
+                                <button onclick="location.href='<%= contextPath %>/Delete.ad?mno='+no;" id="delBtn" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
                             </div>
                             <!-- 회원삭제 모달 -->
                             <div class="modal fade" id="deleteModal">
@@ -342,7 +350,7 @@
                             </div>
                         </div>
                         
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" id="memTable">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
@@ -363,14 +371,14 @@
                                 <!--2. 게시글 있을 경우-->
                                 <% }else { %>
                                 <% for(int i=0; i<list.size(); i++) {%>
-                                <tr>
-                                    <td><input type="checkbox" name="" value=""></td>
+                                <tr id="row">
+                                    <td><input type="checkbox" name="selectCheck" value=""></td>
                                     <td><%= i+1 %></td>
-                                    <td><%= list.get(i).getMemNo() %></td>
-                                    <td><%= list.get(i).getMemName() %></td>
-                                    <td><%= list.get(i).getMemEmail() %></td>
-                                    <td><%= list.get(i).getMemTel() %></td>
-                                    <td><%= list.get(i).getNickname() %></td>
+                                    <td id="mNo"><%= list.get(i).getMemNo() %></td>
+                                    <td id="mName"><%= list.get(i).getMemName() %></td>
+                                    <td id="mEmail"><%= list.get(i).getMemEmail() %></td>
+                                    <td id="mTel"><%= list.get(i).getMemTel() %></td>
+                                    <td id="mNick"><%= list.get(i).getNickname() %></td>
                                 </tr>
                                <% } %>
 							<% } %>
@@ -379,6 +387,104 @@
                     </div>
                 </div>
             </div>
+            <!--<script>
+            	$(document).ready(function(){
+            		var selected = [];
+            		$('#memTable').DataTable({
+                        "ordering":false
+                    });
+            		$('#memTable tbody').on('click', 'tr', function(){
+            			if($(this).hasClass('selected')){
+                            $(this).removeClass('selected');
+                        }else{
+                            $('tr.selected').removeClass('selected');
+                            $(this).addClass('selected');
+
+                            $('#submit').on('click',function(){
+                                var no = $('#no').val();
+                                var name = $('#name').val();
+                                var email = $('#email').val();
+                                var data = { no : no
+                                            , name : name
+                                            , email : email};
+
+                                $.ajax({
+                                    type:"POST",
+                                    url:""
+                                })
+                            })
+                        }
+            		})
+                    
+            	})
+            </script>-->
+			<script type="text/javascript">
+			 $(function(){
+                 $('input:checkbox[name="selectCheck"]').click(function(){
+                     if($('input:checkbox[name="selectCheck"]').is(':checked')){
+                         //console.log("확인");
+                         clickEvent(event);
+                     }else{
+                         //console.log("체크해제확인");
+                     }
+                 })
+             });                           
+
+			 function clickEvent(event) {
+                 //console.log('target ::', $(event.target));
+
+                 var row = $(event.target).closest('tr');
+				
+                 var columns0 = row.find('#mNo');
+                 var columns1 = row.find('#mName');
+                 var columns2 = row.find('#mEmail');
+                 var columns3 = row.find('#mTel');
+                 var columns4 = row.find('#mNick');
+
+                 var values = "";
+				
+                 //for(var i=0; i<=4; i++){
+	                 //var value = $('columns'+i).val();
+	                 $.each(columns0, function(idx, item){
+	                	 no = item.innerHTML;
+	                 });
+	                 $.each(columns1, function(idx, item){
+	                	 name = item.innerHTML;
+	                 });
+	                 $.each(columns2, function(idx, item){
+	                	 email = item.innerHTML;
+	                 });
+	                 $.each(columns3, function(idx, item){
+	                	 tel = item.innerHTML;
+	                 });
+	                 $.each(columns4, function(idx, item){
+	                	 nick = item.innerHTML;
+	                 });
+                 //}
+                 //for(var i=0; i<=4; i++){
+                 	console.log(columns0);
+                 //}
+                 	$("#memNo").val(no); 
+                 	$("#memName").val(name); 
+                 	$("#memEmail").val(email); 
+                 	$("#memTel").val(tel); 
+                 	$("#memNick").val(nick);
+                 
+             }
+            </script>
+            
+            <!--<script type="text/javascript">
+
+                function updateBtn(){
+                    var updateform = document.update-form;
+
+                    updateform.method = "post";
+                    updateform.action = "memUp.ad";
+                    updateform.submit();
+                }
+
+            </script>-->
+
             <br><br><br><br>
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">

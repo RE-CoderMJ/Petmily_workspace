@@ -1,7 +1,9 @@
 package com.pm.admin_Mem.model.service;
 
 import static com.pm.common.JDBCTemplate.close;
+import static com.pm.common.JDBCTemplate.commit;
 import static com.pm.common.JDBCTemplate.getConnection;
+import static com.pm.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -24,6 +26,39 @@ public class AdminMemService {
 		close(conn);
 		return list;
 	}
-	
+	public Member selectMember(int memNo) {
+		Connection conn = getConnection();
+		Member m = new AdminMemDao().selectMember(conn,memNo);
+		close(conn);
+		return m;
+	}
+	public int memDelete(int memNo) {
+		Connection conn = getConnection();
+		int result = new AdminMemDao().memDelete(conn,memNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	public int updateMem(Member m) {
+		Connection conn = getConnection();
+		int result = new AdminMemDao().updateMem(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		System.out.println(result);
+		close(conn);
+		
+		return result;
+	}
 
 }
