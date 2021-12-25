@@ -96,7 +96,7 @@
                 <div class="menu-box">
                     <div class="menu"><a href="<%= contextPath %>/memMg.ad?cpage=1">회원관리</a></div> 
                     <div class="menu"><a href="<%= contextPath %>/spErPd.ad">쇼핑몰</a></div>
-                    <div class="menu"><a href="<%= contextPath %>/adminList.bo?cpage=1">게시판관리</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/adminList.miss?cpage=1">게시판관리</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminMain.pl?cpage=1">Petlog</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminCus.main">고객센터</a></div>
                     <div class="menu"><a href="<%= contextPath %>/nfList.ad">신고관리</a></div>

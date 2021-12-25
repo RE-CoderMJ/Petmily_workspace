@@ -1,4 +1,4 @@
-package com.pm.admin_Boards.model.dao;
+package com.pm.admin_Missing.model.dao;
 
 import static com.pm.common.JDBCTemplate.close;
 
@@ -11,31 +11,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.pm.admin_Boards.model.vo.Ask;
-import com.pm.admin_Boards.model.vo.Missing;
-import com.pm.admin_Faq.model.dao.FaqDao;
-import com.pm.admin_Faq.model.vo.Faq;
-import com.pm.admin_Boards.model.vo.Market;
+import com.pm.admin_Missing.model.vo.Missing;
 import com.pm.common.model.vo.PageInfo;
 
-
-public class BoardsDao {
-
+public class MissingDao {
+	
 	private Properties prop = new Properties();
 	
-	public BoardsDao() {
+	public MissingDao() {
 		
 		try {
-			prop.loadFromXML(new FileInputStream(BoardsDao.class.getResource("/db/sql/admin/boards-mapper.xml").getPath() ));
+			prop.loadFromXML(new FileInputStream(MissingDao.class.getResource("/db/sql/admin/missing-mapper.xml").getPath() ));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		
 	}
-	
-	// 여기 밑으로는 복붙만 해둠
-	/* 1. faq 전체게시글 수 */
+
+	/* 1. <찾고있어요> 전체게시글 수 */
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		
@@ -63,8 +57,8 @@ public class BoardsDao {
 	}
 	
 	/* 2. 최신글순으로 페이징바에 맞게 조회 */
-	public ArrayList<Faq> selectList(Connection conn, PageInfo pi) {
-		ArrayList<Faq> list = new ArrayList<>();
+	public ArrayList<Missing> selectList(Connection conn, PageInfo pi) {
+		ArrayList<Missing> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -82,12 +76,12 @@ public class BoardsDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Faq(rset.getInt("faq_no"),
-								 rset.getString("faq_title"),
-								 rset.getString("faq_content"),
-							 	 rset.getString("faq_cate"),
-							 	 rset.getString("status"),
-								 rset.getString("manager_id")));
+				list.add(new Missing(rset.getInt("missing_no"),
+								 	 rset.getString("missing_writer"),
+								 	 rset.getString("category"),
+								 	 rset.getString("missing_writer"),
+								 	 rset.getString("enroll_date"),
+								 	 rset.getString("location")));
 			}
 
 			
@@ -103,26 +97,27 @@ public class BoardsDao {
 	}
 	
 	
-	/* 4. faq 조회*/
-	public Faq selectFaq(Connection conn, int faqNo) {
-		Faq f = null;
+	/* 4. <찾고있어요> 조회*/
+	public Missing selectMissing(Connection conn, int missingNo) {
+		Missing m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectFaq");
+		String sql = prop.getProperty("selectMissing");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, faqNo);
+			pstmt.setInt(1, missingNo);
 			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				f = new Faq(rset.getInt("faq_no"),
-							rset.getString("faq_title"),
-							rset.getString("faq_content"),
-							rset.getString("faq_cate"),
-							rset.getString("manager_no"));
+				m = new Missing(rset.getInt("missing_no"),
+								rset.getString("missing_writer"),
+								rset.getString("category"),
+								rset.getString("d_category"),
+								rset.getString("enroll_date"),
+								rset.getString("location"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,19 +126,19 @@ public class BoardsDao {
 			close(pstmt);
 		}
 		
-		return f;
+		return m;
 	}
 	
-	/* 6. faq 삭제 */
-	public int deleteFaq(Connection conn, int faqNo) {
+	/* 6. <찾고있어요> 삭제 */
+	public int deleteMissing(Connection conn, int missingNo) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("deleteFaq");
+		String sql = prop.getProperty("deleteMissing");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, faqNo);
+			pstmt.setInt(1, missingNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -155,4 +150,5 @@ public class BoardsDao {
 		return result;
 	}
 	
+
 }

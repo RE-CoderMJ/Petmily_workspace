@@ -60,7 +60,7 @@
                 <ul>
                     <div id="category">Petlog</div>
                     <div id="d-category">
-                        <div class="d-category" id="notice" onclick="location.href='<%= contextPath %>/adminMain.pl';">피드 관리</div>
+                        <div class="d-category" id="notice" onclick="location.href='<%= contextPath %>/adminMain.pl?cpage=1';">피드 관리</div>
                     </div>
                 </ul>
             </div>

@@ -1,4 +1,4 @@
-package com.pm.admin_Boards.controller;
+package com.pm.admin_Missing.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.admin_Faq.model.service.FaqService;
-import com.pm.admin_Faq.model.vo.Faq;
+import com.pm.admin_Missing.model.service.MissingService;
+import com.pm.admin_Missing.model.vo.Missing;
 import com.pm.common.model.vo.PageInfo;
 
 /**
- * Servlet implementation class AdminBoardsListController
+ * Servlet implementation class AdminMissingListController
  */
-@WebServlet("/adminList.bo")
-public class AdminBoardsListController extends HttpServlet {
+@WebServlet("/adminList.miss")
+public class AdminMissingListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminBoardsListController() {
+    public AdminMissingListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,6 +33,7 @@ public class AdminBoardsListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		int listCount;
 		int currentPage;
 		int pageLimit;
@@ -42,7 +43,7 @@ public class AdminBoardsListController extends HttpServlet {
 		int endPage;
 		
 		/* 총 게시글 갯수 */
-		listCount = new FaqService().selectListCount();
+		listCount = new MissingService().selectListCount();
 		
 		/* 현재 페이지 */
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
@@ -65,18 +66,14 @@ public class AdminBoardsListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Boards> list = new BoardsService().selectList(pi);
+		ArrayList<Missing> list = new MissingService().selectList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 
 		
-		
+		request.getRequestDispatcher("views/admin/missing/adminMissingListView.jsp").forward(request, response);
 
-		
-		
-		
-		request.getRequestDispatcher("views/admin/boards/adminBoardsListView.jsp").forward(request, response);
 		
 	}
 

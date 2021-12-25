@@ -65,7 +65,9 @@
                 <ul>
                     <div id="category">게시판 관리</div>
                     <div id="d-category">
-                        <div class="d-category" id="boards" onclick="location.href='<%= contextPath %>/adminList.bo';">전체 게시글 조회</a></div>
+                        <div class="d-category" id="boards" onclick="location.href='';">궁금해요</div>
+                        <div class="d-category" id="boards" onclick="location.href='<%= contextPathms %>/adminList.miss?cpage=1';">찾고있어요</div>
+                        <div class="d-category" id="boards" onclick="location.href='';">중고거래</div>
                     </div>
                 </ul>
             </div>
