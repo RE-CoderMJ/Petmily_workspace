@@ -65,15 +65,15 @@
                 <ul>
                     <div id="category">고객센터</div>
                     <div id="d-category">
-                        <div class="d-category" id="notice" onclick="location.href='<%= request.getContextPath() %>/adminList.no?cpage=1';" id="notice">공지사항 관리</div>
+                        <div class="d-category" id="notice" onclick="location.href='<%= request.getContextPath() %>/adminList.no?cpage=1';">공지사항 관리</div>
         
-                        <div class="d-category" id="faq" onclick="location.href='<%= request.getContextPath() %>/adminList.faq?cpage=1';" id="faq">FAQ 관리</div>
+                        <div class="d-category" id="faq" onclick="location.href='<%= request.getContextPath() %>/adminList.faq?cpage=1';">FAQ 관리</div>
         
-                        <div class="d-category" id="qna" onclick="location.href='<%= request.getContextPath() %>/adminList.qna?cpage=1';" id="qna">Q&A문의 관리</div>
+                        <div class="d-category" id="qna" onclick="location.href='<%= request.getContextPath() %>/adminList.qna?cpage=1';">Q&A문의 관리</div>
                         
-                        <div class="d-category" id="qna" onclick="location.href='<%= request.getContextPath() %>/adminList.iq?cpage=1';" "id="inquiry">상품문의 관리</div>
+                        <div class="d-category" id="inquiry" onclick="location.href='<%= request.getContextPath() %>/adminList.iq?cpage=1';">상품문의 관리</div>
         
-                        <div class="d-category" id="review" onclick="location.href='<%= request.getContextPath() %>/adminMain.rv?cpage=1';" id="review">리뷰 관리</div>
+                        <div class="d-category" id="review" onclick="location.href='<%= request.getContextPath() %>/adminMain.rv?cpage=1';">리뷰 관리</div>
                     </div>
                 </ul>
             </div>

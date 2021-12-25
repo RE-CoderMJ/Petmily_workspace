@@ -1,4 +1,4 @@
-package com.pm.admin_Missing;
+package com.pm.admin_Market.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.admin_Faq.model.service.FaqService;
 import com.pm.admin_Missing.model.service.MissingService;
 
 /**
- * Servlet implementation class AdminMissingDeleteController
+ * Servlet implementation class AdminMarketDeleteController
  */
-@WebServlet("/adminDelete.miss")
-public class AdminMissingDeleteController extends HttpServlet {
+@WebServlet("/adminDelete.mk")
+public class AdminMarketDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMissingDeleteController() {
+    public AdminMarketDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +29,20 @@ public class AdminMissingDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int missingNo = Integer.parseInt(request.getParameter("num"));
+		int marketNo = Integer.parseInt(request.getParameter("num"));
     	
-		int result = new MissingService().deleteMissing(missingNo);
+		int result = new MarketService().deleteMarket(marketNo);
 		
     	if(result > 0) {
-    		request.getSession().setAttribute("alertMsg", "성공적으로 '찾고있어요' 게시글을 삭제하였습니다.");
-    		response.sendRedirect(request.getContextPath() + "/adminList.miss?cpage=1");
+    		request.getSession().setAttribute("alertMsg", "성공적으로 '중고거래' 게시글을 삭제하였습니다.");
+    		response.sendRedirect(request.getContextPath() + "/adminList.mk?cpage=1");
     		
     	}else {
-    		request.setAttribute("errorMsg", "찾고있어요 게시글 삭제 실패!");
+    		request.setAttribute("errorMsg", "중고거래 게시글 삭제 실패!");
     		request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
     		
     	}
+		
 	}
 
 	/**

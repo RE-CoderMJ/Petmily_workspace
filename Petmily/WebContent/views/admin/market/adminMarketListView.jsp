@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Missing.model.vo.Missing, com.pm.admin_Login.model.vo.AdminMember" %>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Market.model.vo.Market, com.pm.admin_Login.model.vo.AdminMember" %>
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
-   ArrayList<Missing> list = (ArrayList<Missing>)request.getAttribute("list");
+   ArrayList<Market> list = (ArrayList<Market>)request.getAttribute("list");
  
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Missing List View</title>
+<title>Market List View</title>
 <style>
     /* 전체 틀 */
     .outer{
@@ -60,7 +60,7 @@
         text-align:center;
     }
     /* 마우스로 선택한 줄 항목 */
-    #missingtable>tbody>tr:hover{
+    #markettable>tbody>tr:hover{
     	background:rgb(220, 220, 220);
     	cursor:pointer;
     }
@@ -96,7 +96,7 @@
             <br>
             	<h2 style="color:gray">&gt; 관리자 게시판 관리</h2>
             <hr>
-            	<h5>찾고있어요</h5>
+            	<h5>중고거래</h5>
         </div>
 
         <!-- 게시판별 알림박스 -->
@@ -121,14 +121,15 @@
 			
 			<!-- 조회 테이블 -->
             <div class="table table-bordered">
-                <table id ="missingtable">
+                <table id ="markettable">
                     <thead>
                         <tr>
                             <th width="100">글번호</th>
                             <th width="100">아이디</th>
                             <th width="150">동물 분류</th>
                             <th width="150">게시판 분류</th>
-                            <th width="450">발견, 발생장소</th>
+                            <th width="300">제목</th>
+                            <th width="150">가격</th>
                             <th width="150">작성일</th>
                         </tr>
                     </thead>
@@ -137,14 +138,14 @@
                     <% if(list.isEmpty()) { %>
                         <!--1. 게시글 없을 경우-->
                         <tr>
-                            <td colspan="6">조회된 게시글이 없습니다</td>
+                            <td colspan="7">조회된 게시글이 없습니다</td>
                         </tr>
                     <% }else { %>
                         <!--2. 게시글 있을 경우-->
-                    <% for (Missing m : list) { %>
+                    <% for (Market m : list) { %>
                         <tr>
-                            <td><%= m.getMissingNo() %></td>
-                            <td><%= m.getMissingWriter() %></td>
+                            <td><%= m.getMarketNo() %></td>
+                            <td><%= m.getMarketWriter() %></td>
                             <% 
                         	String category = "";
                         
@@ -159,12 +160,13 @@
                         	String dcategory = "";
                         
                         	switch(Integer.parseInt(m.getdCategory())) {
-                        	case 1: category="찾고있어요"; break;
-                        	case 2: category="보호하고있어요"; break;
+                        	case 1: category="살래요"; break;
+                        	case 2: category="팔래요"; break;
                         	}
                         	%>
                         	<td><%= dcategory %></td>
-                            <td><%= m.getLocation() %></td>
+                            <td><%= m.getMarketTitle() %></td>
+                            <td><%= m.getPrice() %></td>
                             <td><%= m.getEnrollDate() %></td>
                         </tr>
                       <% } %>
@@ -188,8 +190,8 @@
     		<!-- 글 클릭시 상세페이지 조회 -->
 	    	<script>
 	    	$(function(){
-	    		$("#boardstable>tbody>tr").click(function(){
-	    			location.href = '<%=contextPath%>/adminDetail.miss?num=' + $(this).children().eq(0).text();
+	    		$("#markettable>tbody>tr").click(function(){
+	    			location.href = '<%=contextPath%>/adminDetail.mk?num=' + $(this).children().eq(0).text();
 	    		})
 	    	})
 	    	</script>
@@ -209,19 +211,19 @@
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
             <% if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.miss?cpage=<%=currentPage-1%>';"> &lt; </button>
+                <button onclick="location.href='<%=contextPath%>/adminList.mk?cpage=<%=currentPage-1%>';"> &lt; </button>
             <% } %>
             
             <% for(int p=startPage; p<=endPage; p++) { %>
             	<% if(p== currentPage) { %>
                 <button disabled><%= p %></button>
                 <% }else { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.miss?cpage=<%= p %>';"><%= p %></button>
+                <button onclick="location.href='<%=contextPath%>/adminList.mk?cpage=<%= p %>';"><%= p %></button>
                 <% } %>
 			<% } %>
 			
 			<% if(currentPage != maxPage){ %>
-            	<button onclick="location.href='<%=contextPath%>/adminList.miss?cpage=<%=currentPage+1%>';"> &gt; </button>
+            	<button onclick="location.href='<%=contextPath%>/adminList.mk?cpage=<%=currentPage+1%>';"> &gt; </button>
 			<% } %>
 		
             </div>

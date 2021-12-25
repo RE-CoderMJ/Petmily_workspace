@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Missing m = (Missing)request.getAttribute("missing");
+	Market m = (Market)request.getAttribute("market");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Missing Detail View</title>
+<title>Market Detail View</title>
 <style>
 	/* 전체 틀 */
     .outer{
@@ -66,12 +66,17 @@
     	<br>
 
        <div class="detail-area">
-        <!-- 찾고있어요 상세테이블  -->
+        <!-- 중고거래 상세테이블  -->
             <table>
             	<tr>
             		<th></th>
             		<td>작성자</td>
-            		<td><%= m.getMissingWriter() %></td>
+            		<td><%= m.getMarketWriter() %></td>
+            	</tr>
+            	<tr>
+            		<th></th>
+            		<td>작성일</td>
+            		<td><%= m.getEnrollDate() %></td>
             	</tr>
                 <tr>
                 	<th width="10px"></th>
@@ -88,21 +93,34 @@
                     <td><%= category %></td>
                 </tr>
                 <tr>
-                    <th style="color:red" width="10px"></th>
-                    <td>작성일</td>
-                    <td><%= m.getEnrollDate() %></td>
+                	<th width="10px"></th>
+                    <td>게시판 분류</td>
+                    <% 
+                        String dcategory = "";
+                        
+                        switch(Integer.parseInt(m.getCategory())) {
+                        case 1: dcategory="살래요"; break;
+                        case 2: dcategory="팔래요"; break;
+                        }
+                    %>
+                    <td><%= dcategory %></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px"></th>
-                    <td>발견, 발생장소</td>
-                    <td><%= m.getLocation() %></td>
+                    <td>제목</td>
+                    <td><%= m.getMarketTitle() %></td>
+                </tr>
+                <tr>
+                    <th style="color:red" width="10px"></th>
+                    <td>가격</td>
+                    <td><%= m.getPrice() %></td>
                 </tr>
             </table>
             <br><br>
 
             <!-- 하단 버튼 (상세: 삭제,뒤로) -->
             <div>
-                <a href="<%= contextPath %>/adminDelete.miss?num=<%= m.getMissingNo() %>" class="btn btn-sm btn-danger">삭제</a>
+                <a href="<%= contextPath %>/adminDelete.mk?num=<%= m.getMarketNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 

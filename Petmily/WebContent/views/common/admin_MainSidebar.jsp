@@ -76,7 +76,7 @@
                 
                 <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
-                    <li><a href="<%= contextPathms %>/adminList.miss?cpage=1" id="allboards">전체 게시글 조회</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.miss?cpage=1" id="missing">찾고있어요</a></li>
                 </ul>
 
                 <div class="aMenu" id="">Petlog</div>

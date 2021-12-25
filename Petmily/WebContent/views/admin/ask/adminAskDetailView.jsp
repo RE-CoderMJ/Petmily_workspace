@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Missing m = (Missing)request.getAttribute("missing");
+	Ask a = (Ask)request.getAttribute("ask");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Missing Detail View</title>
+<title>Ask Detail View</title>
+</head>
+<body>
 <style>
 	/* 전체 틀 */
     .outer{
@@ -66,12 +68,12 @@
     	<br>
 
        <div class="detail-area">
-        <!-- 찾고있어요 상세테이블  -->
+        <!-- 궁금해요 상세테이블  -->
             <table>
             	<tr>
             		<th></th>
             		<td>작성자</td>
-            		<td><%= m.getMissingWriter() %></td>
+            		<td><%= a.getAskWriter() %></td>
             	</tr>
                 <tr>
                 	<th width="10px"></th>
@@ -79,7 +81,7 @@
                     <% 
                         String category = "";
                         
-                        switch(Integer.parseInt(m.getCategory())) {
+                        switch(Integer.parseInt(a.getCategory())) {
                         case 1: category="강아지"; break;
                         case 2: category="고양이"; break;
                         case 3: category="기타"; break;
@@ -89,20 +91,20 @@
                 </tr>
                 <tr>
                     <th style="color:red" width="10px"></th>
-                    <td>작성일</td>
-                    <td><%= m.getEnrollDate() %></td>
+                    <td>제목</td>
+                    <td><%= a.getAskTitle() %></td>
                 </tr>
                 <tr>
                     <th style="color:red" width="10px"></th>
-                    <td>발견, 발생장소</td>
-                    <td><%= m.getLocation() %></td>
+                    <td>작성일</td>
+                    <td><%= a.getEnrollDate() %></td>
                 </tr>
             </table>
             <br><br>
 
             <!-- 하단 버튼 (상세: 삭제,뒤로) -->
             <div>
-                <a href="<%= contextPath %>/adminDelete.miss?num=<%= m.getMissingNo() %>" class="btn btn-sm btn-danger">삭제</a>
+                <a href="<%= contextPath %>/adminDelete.ak?num=<%= a.getAskNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>
 

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Missing.model.vo.Missing, com.pm.admin_Login.model.vo.AdminMember" %>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Ask.model.vo.Ask, com.pm.admin_Login.model.vo.AdminMember" %>
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
-   ArrayList<Missing> list = (ArrayList<Missing>)request.getAttribute("list");
+   ArrayList<Ask> list = (ArrayList<Ask>)request.getAttribute("list");
  
  	int currentPage = pi.getCurrentPage();
  	int startPage = pi.getStartPage();
@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Missing List View</title>
+<title>Ask List View</title>
 <style>
     /* 전체 틀 */
     .outer{
@@ -60,7 +60,7 @@
         text-align:center;
     }
     /* 마우스로 선택한 줄 항목 */
-    #missingtable>tbody>tr:hover{
+    #asktable>tbody>tr:hover{
     	background:rgb(220, 220, 220);
     	cursor:pointer;
     }
@@ -96,7 +96,7 @@
             <br>
             	<h2 style="color:gray">&gt; 관리자 게시판 관리</h2>
             <hr>
-            	<h5>찾고있어요</h5>
+            	<h5>궁금해요</h5>
         </div>
 
         <!-- 게시판별 알림박스 -->
@@ -121,14 +121,13 @@
 			
 			<!-- 조회 테이블 -->
             <div class="table table-bordered">
-                <table id ="missingtable">
+                <table id ="asktable">
                     <thead>
                         <tr>
                             <th width="100">글번호</th>
-                            <th width="100">아이디</th>
+                            <th width="150">닉네임</th>
                             <th width="150">동물 분류</th>
-                            <th width="150">게시판 분류</th>
-                            <th width="450">발견, 발생장소</th>
+                            <th width="550">제목</th>
                             <th width="150">작성일</th>
                         </tr>
                     </thead>
@@ -137,35 +136,26 @@
                     <% if(list.isEmpty()) { %>
                         <!--1. 게시글 없을 경우-->
                         <tr>
-                            <td colspan="6">조회된 게시글이 없습니다</td>
+                            <td colspan="5">조회된 게시글이 없습니다</td>
                         </tr>
                     <% }else { %>
                         <!--2. 게시글 있을 경우-->
-                    <% for (Missing m : list) { %>
+                    <% for (Ask a : list) { %>
                         <tr>
-                            <td><%= m.getMissingNo() %></td>
-                            <td><%= m.getMissingWriter() %></td>
+                            <td><%= a.getAskNo() %></td>
+                            <td><%= a.getAskWriter() %></td>
                             <% 
                         	String category = "";
                         
-                        	switch(Integer.parseInt(m.getCategory())) {
+                        	switch(Integer.parseInt(a.getCategory())) {
                         	case 1: category="강아지"; break;
                         	case 2: category="고양이"; break;
                         	case 3: category="기타"; break;
                         	}
                         	%>
                         	<td><%= category %></td>
-                        	<% 
-                        	String dcategory = "";
-                        
-                        	switch(Integer.parseInt(m.getdCategory())) {
-                        	case 1: category="찾고있어요"; break;
-                        	case 2: category="보호하고있어요"; break;
-                        	}
-                        	%>
-                        	<td><%= dcategory %></td>
-                            <td><%= m.getLocation() %></td>
-                            <td><%= m.getEnrollDate() %></td>
+                            <td><%= a.getAskTitle() %></td>
+                            <td><%= a.getEnrollDate() %></td>
                         </tr>
                       <% } %>
 					<% } %>
@@ -188,8 +178,8 @@
     		<!-- 글 클릭시 상세페이지 조회 -->
 	    	<script>
 	    	$(function(){
-	    		$("#boardstable>tbody>tr").click(function(){
-	    			location.href = '<%=contextPath%>/adminDetail.miss?num=' + $(this).children().eq(0).text();
+	    		$("#asktable>tbody>tr").click(function(){
+	    			location.href = '<%=contextPath%>/adminDetail.ak?num=' + $(this).children().eq(0).text();
 	    		})
 	    	})
 	    	</script>
@@ -209,19 +199,19 @@
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
             <% if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.miss?cpage=<%=currentPage-1%>';"> &lt; </button>
+                <button onclick="location.href='<%=contextPath%>/adminList.ak?cpage=<%=currentPage-1%>';"> &lt; </button>
             <% } %>
             
             <% for(int p=startPage; p<=endPage; p++) { %>
             	<% if(p== currentPage) { %>
                 <button disabled><%= p %></button>
                 <% }else { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.miss?cpage=<%= p %>';"><%= p %></button>
+                <button onclick="location.href='<%=contextPath%>/adminList.ak?cpage=<%= p %>';"><%= p %></button>
                 <% } %>
 			<% } %>
 			
 			<% if(currentPage != maxPage){ %>
-            	<button onclick="location.href='<%=contextPath%>/adminList.miss?cpage=<%=currentPage+1%>';"> &gt; </button>
+            	<button onclick="location.href='<%=contextPath%>/adminList.ak?cpage=<%=currentPage+1%>';"> &gt; </button>
 			<% } %>
 		
             </div>
