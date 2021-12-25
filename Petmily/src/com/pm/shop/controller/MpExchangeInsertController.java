@@ -50,7 +50,7 @@ public class MpExchangeInsertController extends HttpServlet {
 		// 4. 서비스 요청 (요청처리)
 		int result = new ExchangeService().insertExchanage(ec);
 		
-		
+		System.out.println(result);
 		// 5. 응답뷰 지정
 		if(result > 0) {
 			//  성공 => /jsp/list.bo?cpage=1    url 재요청 => 목록페이지

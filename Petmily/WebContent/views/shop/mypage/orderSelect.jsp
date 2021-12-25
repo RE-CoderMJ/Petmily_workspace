@@ -168,7 +168,6 @@
 				<div class="inline-block" >	             
 	                <img src=""  id="content-img">    
 	        	</div>
-	            
 	            <div class="inline-block"  id="cart-option" >	                
 	               	 <%=os.getProductName() %>
 	                <br>

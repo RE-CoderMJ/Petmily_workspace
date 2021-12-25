@@ -35,6 +35,7 @@ public class MpExchangeSelectController extends HttpServlet {
 		int orderNo = Integer.parseInt(request.getParameter("orderno"));
 		
 		OrderSelect o = new ExchangeService().selectOrderProduct(orderPnum);
+		
 		OrderSelect od = new ExchangeService().selectOrderDelivery(orderNo);
 		
 		

@@ -246,7 +246,7 @@
 	        <!-- Modal body -->
 	        <div class="modal-body">
 	        <input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
-	        <input type="hidden" name="pno" value="<%= od.getOrderPnum() %>">
+	        <input type="hidden" name="pno" value="<%= od.getOrderPnum() %>"> <%-- <%= o.getOrderPnum %> --%>
 	        <input type="hidden" name="payment" value="<%= od.getPayment() %>">
 	        <input type="hidden" name="deliveryMemo" value="<%= od.getDeliveryMemo() %>">
 	            <p  style="color: white;">※불량 교환시 [불량 교환] 기재 부탁드립니다.</p> 
