@@ -113,7 +113,7 @@
 		   AND REF_NO = ?
 	</entry>
 	<entry key="updateMissing">
-		UPATE
+		UPDATE
 		      TB_MISSING
 		  SET CATEGORY = ?
 		    , D_CATEGORY = ?
@@ -124,7 +124,36 @@
 		    , AGE_TO = ?
 		    , LOCATION = ?
 		    , FEATURE = ?
-	    WEHRE MISSING_NO = ?
+	    WHERE MISSING_NO = ?
+	</entry>
+	<entry key="updateAttachment">
+		UPDATE 
+		  	   ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , FILE_PATH = ?
+		 WHERE ATTACHMENT_NO = ?
+	</entry>
+	<entry key="insertNewAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 3
+		  , ?
+		  , ?
+		  )
 	</entry>
 	<entry key="deleteMissing">
 		UPDATE

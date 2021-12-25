@@ -72,12 +72,13 @@ public class MissingUpdateController extends HttpServlet {
 					att.setOriginName(multiRequest.getOriginalFileName(key));
 					att.setChangeName(multiRequest.getFilesystemName(key));
 					att.setFilePath("resources/boards_upfiles/missing_upfiles/");
-					
 					if(multiRequest.getParameter(originAttNo) != null) {
 						att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
 					}else {
 						att.setRefNo(miNo);						
 					}
+					
+					list.add(att);
 				}
 			}
 			
