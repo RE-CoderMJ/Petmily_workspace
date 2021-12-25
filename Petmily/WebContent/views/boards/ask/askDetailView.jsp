@@ -33,9 +33,44 @@
 	                </div>
 	            </div>
 			</div>
-	        <div id="photo-area" style="border: black 1px solid;">
-	            <img src="" alt="">사진
-	        </div>
+	        <div id="photo-area">
+	            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
+	              
+	                <!-- The slideshow -->
+	                <div class="carousel-inner">
+	              <%--   <% if(!list.isEmpty()) { %>
+	                	<% for(int i=0; i<list.size(); i++) { %>
+	                		<% if(i == 0) { %> --%>
+	                			<div class="carousel-item active">
+	                    			<%-- <img src="<%= contextPath %>/<%= list.get(0).getFilePath() + list.get(0).getChangeName() %>" alt=""> --%>
+	                  			</div>
+	                  		<%-- <% }else { %> --%>
+	                  			<div class="carousel-item">
+	                    			<%-- <img src="<%= contextPath %>/<%= list.get(i).getFilePath() + list.get(i).getChangeName() %>" alt=""> --%>
+	                  			</div>
+	                  		<%-- <% } %>
+	                	<% } %>
+	                <% } %>
+	                 --%>
+	                </div>
+	              	<%-- <script>
+	              		$(function(){
+		              		if(<%= !list.isEmpty()%>){
+		              			$(".carousel-inner").css({"background":"url('')"});
+		              		}	              			
+	              		})
+	              	</script> --%>
+	              	<%-- <% if(list.size()>1) { %> --%>
+		                <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
+	                    	<img src="resources/img/left_arrow.png" id="left-controller">
+	                    </a>
+						<a class="right carousel-control" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">
+							<img src="resources/img/right_arrow.png" id="right-controller">
+						</a>
+					<%-- <% } %> --%>
+	              
+	           </div> 
+	       </div>
 	        <div id="text-area" align="left">
 	           	안녕하세요 감사합니다.안녕하세요 감사합니다.안녕하세요 감사합니다.안녕하세요 감사합니다.
 	           	안녕하세요 감사합니다.안녕하세요 감사합니다.안녕하세요 감사합니다.안녕하세요 감사합니다.

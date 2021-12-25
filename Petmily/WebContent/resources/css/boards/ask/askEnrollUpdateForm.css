@@ -1,122 +1,167 @@
 div, img, li, a{
     box-sizing: border-box;
 }
+.content-area{
+	width: 1400px;
+	height: auto;
+	margin: auto;
+	padding:200px;
+	padding-top:35px;
+	margin-bottom:100px;
+}
 #outer{
 	width: 1600px;
 	height: auto;
 	margin: auto;
+	position:relative;
 }
-.content-area{
-   width: 1400px;
-   height: auto;
-   margin: auto;
-   padding:200px;
-   padding-top:35px
-}
-
-/* 위쪽 부분 스타일 */
-/* 목록 버튼 */
+/* 목록버튼 스타일 */
 #list-btn{
-   width: 997px;
-   margin-bottom: -10px;
+	width: 997px;
+	margin-bottom: -10px;
 }
 #list{
-   height: 27px;
-   font-size: 14px;
-   line-height: 2px;
+	height: 27px;
+	font-size: 14px;
+	line-height: 2px;
 }
-/* 필수입력사항 */
+
+/* 사진 부분 스타일 */
+#photo-area{
+    width: 400px;
+    min-height: 500px;
+    height:auto;
+    margin-top: 0px;
+    float: left;
+    margin-bottom:150px;
+}
+.carousel-inner{
+	border:solid 1px darkgray;
+	width: 400px;
+    min-height: 400px;
+    background: url("../../../img/default-img.png");
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.carousel-item{
+    width: 100%;
+    height: 400px;
+    overflow:hidden;
+}
+.carousel-item>img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+#right-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:190px;
+	left:370px;
+	opacity:0.8;
+}
+#left-controller{
+	width:15px;
+	height:30px;
+	position:absolute;
+	top:190px;
+	left:15px;
+	opacity:0.8;
+}
+#file-upload-area>p{
+    float: left;
+    font-weight: bolder;
+    color: rgb(106, 106, 106);
+    margin-top:px;
+}
+#file-upload-area{
+    margin-top: 40px;
+    heigth:auto;
+    margin-bottom:35px;
+}
+#add-area{
+	margin-left:30px;
+	height:auto;
+	margin-top:-15px;
+}
+#add-area>input{
+	margin-bottom:10px;
+}
+#add-btn{
+	width:30px;
+	height:30px;
+	border:none;
+	background:orange;
+	font-weight:bolder;
+	font-size:20px;
+	line-height:2px;
+	position:absolute;
+	left:660px;
+	border-radius:5px;
+	bottom:300px;
+}
+.originName{
+	width: 300px;
+	height:26px;
+	text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
+   	margin-left:-30px;
+}
+.file{
+	width: 300px;
+	height: 40px;
+	text-overflow:ellipsis;
+   	white-space:nowrap;
+   	overflow:hidden;
+   	margin-left:-30px;
+}
+/* 입력부분 스타일 */
+#input-area{
+    width: 500px;
+    height: 500px;
+    margin-left: 495px;
+    margin-top: 80px;
+}
+#input-area>div{
+    text-align: left;
+    padding-left: 50px;
+    margin-bottom: 25px;
+}
+#input-area span{
+    color: rgb(99, 99, 99);
+    font-weight: bolder;
+    margin-right: 20px;
+}
 .required{
-   color: orange; 
-   font-weight: bold;
+    margin-right: 20px!important;
+    color: orange!important;
 }
-#required{
-   font-size: 13px;
+.titles{
+    margin-right: 0px!important;
 }
-#required-area{
-   margin-top: -15px;
+/* 제목 */
+#title-area>input{
+    width: 300px;
+    padding-left: 5px;
 }
-/* 전체 입력 영역 스타일 */
-#content{
-   text-align: left;
-   height: 900px;
-   position: relative;
+/* 내용 */
+#text-area>textarea{
+    width: 370px;
+    height: 300px;
+    resize: none;
+    padding: 10px;    
 }
-/* 분류 스타일 */
-#category-area{
-   margin-top: 60px;
+
+/* 올리기 버튼 */
+#enroll-btn-area{
+    margin-top: 30px;
 }
-#category-area>div{
-   width: 700px;
-   height: 26px;
-}
-#category-area>div>div{
-   float: left;
-   margin-right: 20px;
-   font-size: 17px;
-   font-weight: bolder;
-}
-#required-category{
-   margin-left: -570px;
-}
-/* 제목 스타일 */
-#title{
-   width: 700px;
-   margin-top: 20px;
-   margin-left: 150px;
-   padding-left: 10px;
-   padding-right: 10px;
-}
-#title-required{
-   position: absolute;
-   top: 20px;
-   left: 860px;
-}
-/* 내용 스타일 */
-#texts{
-   width: 700px;
-   height: 500px;
-   margin-top: 30px;
-   margin-left: 150px;
-   resize: none;
-   padding:10px;
-}
-#texts-required{
-   position: absolute;
-   top: 80px;
-   left: 860px;
-}
-/* 파일첨부 영역 스타일 */
-#file-area{
-   margin-left: 150px;
-   margin-top: 30px;
-   position: relative;
-}
-#file-area>p{
-   margin-right: 30px;
-   float: left;
-   font-weight: bolder;
-}
-#file-area>input{
-   position: absolute;
-   top: 8px;
-}
-/*
-#file-area>textarea{
-   width: 610px;
-   resize: none;
-}
-*/
-/* 올리기 버튼 영역 스타일 */
-#btn-area{
-   margin-top: 75px;
-   width:850px;
-}
-#btn-area>button{
-   background-color: orange;
-   color: white;
-   font-weight: bolder;
-   font-size: 14px;
-   height: 27px;
-   line-height: 2px;
+#enroll-btn-area>button{
+    background: rgb(247, 198, 4);
+    font-weight: bolder;
+    height: 30px;
+    line-height: 2px;
 }

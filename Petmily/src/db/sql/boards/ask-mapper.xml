@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertAsk">
+		INSERT
+		  INTO ASK
+		  (
+		    ASK_NO
+		  , ASK_WRITER
+		  , CATEGORY
+		  , ASK_TITLE
+		  , ASK_CONTENT
+		  )
+		  VALUES
+		  (
+		    SEQ_ASKNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	<entry key="insertAttachmentList">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 1
+		  , SEQ_ASKNO.CURRVAL
+		  , ?
+		  )
+	</entry>
+	<entry key="selectAskList">
+		SELECT
+			   ASK_NO
+			 , ASK_WRITER
+			 , NICKNAME
+			 , CATEGORY
+			 , ASK_TITLE
+			 , ASK_CONTENT
+			 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
+			 , COUNT
+			 , (SELECT 
+		               FILE_PATH || CHANGE_NAME
+		          FROM ATTACHMENT 
+		         WHERE REF_NO = A.ASK_NO
+		           AND REF_BOARD_NO = 1
+		           AND ROWNUM = 1) "TITLEIMG"
+		  FROM ASK A
+		  JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
+		 WHERE STATUS = 'Y'
+	</entry>
+</properties>

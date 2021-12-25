@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.pm.boards.ask.model.vo.Ask" %>
+<%
+	ArrayList<Ask> list = (ArrayList<Ask>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +58,9 @@
 	            </select>
 	         </div>
 	         <div align="right">
+	         <% if(loginUser != null) { %>
 	            <button type="button" class="btn btn-secondary" id="write" onclick= "location.href = '<%= contextPath%>/enrollForm.ask';">글쓰기</button>
+	         <% } %>
 	         </div>
 	         <br><br><hr style="border: solid 1px rgb(179, 178, 178);">
 	      </div>
@@ -64,59 +70,33 @@
 	      </div>
 	      
 	      <div id="content-area">
-	         
+	         <% for(Ask a : list) { %>
 	         <div class="contents">
-	            <div class="number">1</div>
-	            <div class="photo"><img src="" alt=""></div>
-	            <div class="texts">
-	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요..</div>
-	               <div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
-	               <div class="text" align="left">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
-	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
-	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
-	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
-	               얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸
-	               
-	               </div>
-	            </div>
-	         </div>
-	         <div class="contents">
-	            <div class="number">2</div>
+	            <div class="number"><%= a.getAskNo() %></div>
+	            <% if(a.getTitleImg() != null) { %>
+	            <div class="photo"><img src="<%=contextPath %>/<%=a.getTitleImg() %>" alt=""></div>
+	            <% } else {%>
 	            <div class="photo"></div>
+	            <% } %>
 	            <div class="texts">
-	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-	               <div class="info">쪼꼬언니 &nbsp;&nbsp;2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
-	               <div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
+	               <div class="title"><%= a.getAskTitle() %></div>
+	               <div class="info"><%= a.getAskWriterNickName() %>&nbsp;&nbsp; <%=a.getEnrollDate() %> &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회 <%= a.getCount() %></div>
+	               <div class="text" align="left"><%= a.getAskContent() %></div>
 	            </div>
 	         </div>
-	         <div class="contents">
-	            <div class="number">3</div>
-	            <div class="photo"></div>
-	            <div class="texts">
-	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-	               <div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
-	               <div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
-	            </div>
-	         </div>
-	         <div class="contents">
-	            <div class="number">4</div>
-	            <div class="photo"></div>
-	            <div class="texts">
-	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-	               <div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
-	               <div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
-	            </div>
-	         </div>
-	         <div class="contents">
-	            <div class="number">5</div>
-	            <div class="photo"></div>
-	            <div class="texts">
-	               <div class="title">쪼꼬가 요새 밥을 잘 안먹어요.. 왜그럴까요?</div>
-	               <div class="info">쪼꼬언니&nbsp;&nbsp; 2021.11.10 &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회3</div>
-	               <div class="text">얼마전에도 하루에 두번은 먹었는데 요새는 하루에 한번도 안먹으려고 하네요.. 산책도 어쩌구저쩌꾸</div>
-	            </div>
-	         </div>
+	         <% } %>
 	      </div>
+	      <script>
+           		$(function(){
+	               $(".photo-box").each(function(){
+	            	   if($(this).html()){
+	            		   $(this).css({"background":"url('')"});   
+	            	   }
+	               })
+           				
+           		})
+           	</script>
+           	
 	      <script>
 	         $(function(){
 	            $(".contents").click(function(){

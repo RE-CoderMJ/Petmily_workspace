@@ -100,6 +100,11 @@ div, img, li, a{
    width: 130px;
    height:130px;
    overflow:hidden;
+   border: 1px solid darkgray;
+   background: url("../../../img/default-img.png");
+   background-size: 60% 60%;
+   background-repeat: no-repeat;
+   background-position: center;
 }
 .photo>img{
 	objectfit:cover;
