@@ -158,17 +158,18 @@
 
             <div class="content">
 
-                <form action="<%= contextPath %>/insert.me" id="joinForm" method="post" onsubmit="joinCheck()">
+                <form action="<%= contextPath %>/insert.me" id="joinForm" method="post" onsubmit="return joinCheck()">
                     
                     <div>
                         <div>
-                            <label class="leftText" for="userEmail" onKeyup="this.value=this.value.replace(/[^a-z0-9]/g,'');">이메일<span class="star">*</span></label>
+                            <label class="leftText" for="userEmail">이메일<span class="star">*</span></label>
                         </div>
 
                         <div>
+                            <!-- onKeyup="this.value=this.value.replace(/[^a-zA-Z0-9_-.]/g,'');" 안 먹히는 이유는?.. -->
                             <input type="text" id="userEmail" name="userEmail" placeholder="이메일" style="width: 150px;" required>
                             @
-                            <select name="emailDomain" aria-placeholder="선택해주세요" required>
+                            <select id="emailDomain" name="emailDomain" aria-placeholder="선택해주세요" required>
                                 <option value="">선택해주세요</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="hanmail.com">hanmail.com</option>
@@ -177,6 +178,8 @@
                                 <option value="nate.com">nate.com</option>
                                 <option value="1">직접입력</option>
                             </select>
+                            <!-- 직접입력 아직 >
+                            <input type="text" id="selfInput" name="" style="width: 150px;" required> -->
 
                             <button type="button" class="rightBtn btn-sm btn-light">이메일 인증</button>
                             
@@ -185,6 +188,23 @@
                         </div>
 
                     </div>
+
+                    <!-- 도메인 직접입력 시 -->
+                    <!-- <script> 
+                        $(function(){
+
+                            $("#selfInput").hide();
+                            $("#emailDomain").change(function() {
+
+                                if($("#emailDomain").val() == "1") {
+                                    $("#emailDomain").hide();
+                                    $("#selfInput").show();
+                                }  else {
+                                    $("#selfInput").hide();
+                                }
+                            }) 
+                        });
+                    </script> -->
 
 
                     <!-- 이메일 인증 버튼 누를 시 아래에 나타나는 div -->
@@ -232,6 +252,31 @@
                         </div>
                     </div>
 
+
+                    <script>
+                        function checkPwd(userPwd, userPwd2) {
+
+                            var pwdRegExp = /^[a-zA-z0-9]{8,}$/;
+                            if (!pwdRegExp.test(userPwd)) {
+                                alert("영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요");
+                                form.userPwd.value = "";
+                                form.userPwd2.value = "";
+                                form.userPwd.focus();
+                                return false;
+
+                            } else if (userPwd != userPwd2) {
+                                alert("비밀번호가 일치하지 않습니다");
+                                form.userPwd.value = "";
+                                form.userPwd2.value = "";
+                                form.userPwd.focus();
+                                return false;
+
+                            } else {
+                                return true;
+                            }
+                        }
+
+                    </script>
 
                     <div>
                         <div>
@@ -385,8 +430,13 @@
         
     <script>
     
-         function joinCheck() {
-        	 
+         function joinCheck(event) {
+            event.preventDefault();
+
+            if (!checkPwd(form.userPwd.value, form.userPwd2.value)) {
+                return false;
+            }
+            return true;
          }
     </script>
        

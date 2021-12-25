@@ -91,6 +91,7 @@
 		     , QNA_CONTENT
 		     , TO_CHAR(QNA_DATE, 'YYYY/MM/DD HH24:MI') "QNA_DATE"
 		     , COUNT
+		     , MEM_IMG
 		  FROM TB_QNA
 		  JOIN TB_MEMBER USING(MEM_NO)
 		 WHERE QNA_NO = ?

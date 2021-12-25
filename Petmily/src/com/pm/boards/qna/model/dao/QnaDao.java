@@ -168,7 +168,8 @@ public class QnaDao {
 							rset.getString("qna_title"),
 							rset.getString("qna_content"),
 							rset.getString("qna_date"),
-							rset.getInt("count")
+							rset.getInt("count"),
+							rset.getString("mem_img")
 						   );
 			}
 		} catch (SQLException e) {

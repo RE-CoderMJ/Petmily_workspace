@@ -226,7 +226,11 @@
                     <p name="count">조회 <%= q.getCount() %></p>
                     <a href="">신고</a>
                     <div id="writer" style="float:right;">
-                        <img src="resources/img/profile_default.png" class="profileImg">
+                    	<% if(q.getMemImg() == null) { %>
+                    		<img src="resources/img/profile_default.png" class="profileImg">
+                    	<% } else { %>
+                        	<img src="<%= q.getMemImg() %>" class="profileImg">
+                        <% } %>
                         <span name="qnaWriter"><%= q.getMemNo() %></span>
                     </div>
                 </div>

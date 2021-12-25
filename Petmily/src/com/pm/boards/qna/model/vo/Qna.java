@@ -12,6 +12,8 @@ public class Qna {
 	private int count;
 	private String status;
 	
+	private String memImg;
+	
 	public Qna() {}
 	
 
@@ -46,6 +48,17 @@ public class Qna {
 		this.qnaContent = qnaContent;
 		this.qnaDate = qnaDate;
 		this.count = count;
+	}
+
+	public Qna(int qnaNo, String memNo, String qnaTitle, String qnaContent, String qnaDate, int count, String memImg) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaContent = qnaContent;
+		this.qnaDate = qnaDate;
+		this.count = count;
+		this.memImg = memImg;
 	}
 
 
@@ -115,6 +128,17 @@ public class Qna {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+
+	public String getMemImg() {
+		return memImg;
+	}
+
+
+	public void setMemImg(String memImg) {
+		this.memImg = memImg;
+	}
+
 
 	@Override
 	public String toString() {
