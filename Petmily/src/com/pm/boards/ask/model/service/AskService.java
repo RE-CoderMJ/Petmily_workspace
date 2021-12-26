@@ -39,4 +39,43 @@ public class AskService {
 		return list;
 	}
 
+	public int increaseCount(int ano) {
+		Connection conn = getConnection();
+		int result = new AskDao().increaseCount(conn, ano);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public Ask selectAsk(int ano) {
+		Connection conn = getConnection();
+		Ask a = new AskDao().selectAsk(conn, ano);
+		close(conn);
+		return a;
+	}
+
+	public ArrayList<Attachment> selectAttachmentList(int ano) {
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new AskDao().selectAttachmentList(conn, ano);
+		close(conn);
+		return list;
+	}
+
+	public int deleteAsk(int ano) {
+		Connection conn = getConnection();
+		int result = new AskDao().deleteAsk(conn, ano);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
+	}
+
 }

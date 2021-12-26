@@ -100,10 +100,10 @@
 	      <script>
 	         $(function(){
 	            $(".contents").click(function(){
-	               //const num = $(this).children().eq(0).text();
-	               
+	               const num = $(this).children(".number").text();
+	               console.log(num);
 	               // /jsp/detail.no?num=클릭한글번호
-	               location.href = '<%=contextPath%>/detail.ask';
+	               location.href = '<%=contextPath%>/detail.ask?ano=' + num;
 	            })
 	         })
 	      </script>

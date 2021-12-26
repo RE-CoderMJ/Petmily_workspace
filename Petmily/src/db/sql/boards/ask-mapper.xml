@@ -60,5 +60,44 @@
 		  FROM ASK A
 		  JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
 		 WHERE STATUS = 'Y'
+		 ORDER
+		    BY ASK_NO DESC
+	</entry>
+	<entry key="increaseCount">
+		UPDATE
+		       ASK
+		   SET COUNT = COUNT + 1
+		 WHERE ASK_NO = ?
+		   AND STATUS = 'Y'
+	</entry>
+	<entry key="selectAsk">
+		SELECT
+			   ASK_NO
+			 , ASK_WRITER
+			 , NICKNAME
+			 , CATEGORY
+			 , ASK_TITLE
+			 , ASK_CONTENT
+			 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD HH24:MI') "ENROLL_DATE"
+			 , COUNT			
+		  FROM ASK A
+		  JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
+		 WHERE ASK_NO = ?
+	</entry>
+	<entry key="selectAttachmentList">
+		SELECT
+		       ATTACHMENT_NO
+		     , ORIGIN_NAME  
+		     , CHANGE_NAME
+		     , FILE_PATH
+		  FROM ATTACHMENT
+		 WHERE REF_BOARD_NO = 1
+		   AND REF_NO = ?
+	</entry>
+	<entry key="deleteAsk">
+		UPDATE
+		       ASK
+		   SET STATUS = 'N'
+		 WHERE ASK_NO = ?
 	</entry>
 </properties>

@@ -49,7 +49,7 @@
 		                        		<% if (pr.getMemNo() == plList.get(i).getMemNo2()) { %>
 		                        		<div class="profile-img"><img src="<%=contextPath%>/<%=pr.getpProfileImg() %>" alt=""></div>
 		                        		<div class="room-name">
-		                            		<div><%= pr.getRoomName() %></div>
+		                            		<div onclick="location.href='<%=contextPath%>/petsRoom.petLog?memNo=<%=pr.getMemNo()%>'" style="cursor:pointer"><%= pr.getRoomName() %></div>
 		                            	<% } %>
 		                            <% } %>
 		                            <div class="report-account-btn" data-toggle="modal" data-target="#reportAskModal">신고</div>

@@ -111,4 +111,102 @@ public class AskDao {
 		return list;
 	}
 
+	public int increaseCount(Connection conn, int ano) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ano);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public Ask selectAsk(Connection conn, int ano) {
+		Ask a = new Ask();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAsk");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ano);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				a.setAskNo(rset.getInt("ask_no"));
+				a.setWriterNo(rset.getInt("ask_writer"));
+				a.setAskWriterNickName(rset.getString("nickname"));
+				a.setCategory(rset.getInt("category"));
+				a.setAskTitle(rset.getString("ask_title"));
+				a.setAskContent(rset.getString("ask_content"));
+				a.setEnrollDate(rset.getString("enroll_date"));
+				a.setCount(rset.getInt("count"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return a;
+	}
+
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, int ano) {
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ano);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment att = new Attachment();
+				att.setAttachmentNo(rset.getInt("attachment_no"));
+				att.setOriginName(rset.getString("origin_name"));
+				att.setChangeName(rset.getString("change_name"));
+				att.setFilePath(rset.getString("file_path"));
+				
+				list.add(att);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public int deleteAsk(Connection conn, int ano) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteAsk");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ano);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

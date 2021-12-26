@@ -75,10 +75,8 @@
                 </div>
             </div>
             <div id="right-part">
-	            	<% if(loginUser != null) { %>
-	            		<% if(pr.getMemNo() == loginUser.getMemNo()) { %>
-	                		<div align="right" id="enroll-btn" onclick="location.href='<%=contextPath%>/enrollForm.petLog'"></div>
-	                	<% } %>
+	            	<% if(loginUser != null && loginUser.getMemNo() == pr.getMemNo()) { %> --%>
+	                	<div align="right" id="enroll-btn" onclick="location.href='<%=contextPath%>/enrollForm.petLog'"></div>
 	                <% } %>
             	<div id="list-area">
 	                <div id="pictures-area">
@@ -147,7 +145,7 @@
 	                    <% if(loginUser != null) { %>
 	                    	<label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
 	                    <% } %>
-	                    <% if(loginUser.getMemNo() == pr.getMemNo()) { %>
+	                    <% if(loginUser != null && loginUser.getMemNo() == pr.getMemNo()) { %>
 	                    	<label class="modify-post">수정하기</label>
 	                    	<label data-toggle="modal" data-target="#deleteAskModal" class="delete-btn">X</label>
 	                    <% } %>
