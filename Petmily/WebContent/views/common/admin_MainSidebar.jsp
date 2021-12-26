@@ -76,7 +76,9 @@
                 
                 <div class="aMenu" id="boards">게시판 관리</div>
                 <ul>
+                    <li><a href="<%= contextPathms %>/adminList.ak?cpage=1" id="ask">궁금해요</a></li>
                     <li><a href="<%= contextPathms %>/adminList.miss?cpage=1" id="missing">찾고있어요</a></li>
+                    <li><a href="<%= contextPathms %>/adminList.mk?cpage=1" id="market">중고거래</a></li>
                 </ul>
 
                 <div class="aMenu" id="">Petlog</div>

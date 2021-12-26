@@ -14,7 +14,7 @@
 <style>
 	/* 전체 틀 */
     .outer{
-        font-size:15px;
+        font-size:18px;
         width:1000px;
         height:500px;
         margin:auto;
@@ -22,14 +22,13 @@
     }
     /* 필수상항 (별표) */
     .detail-area table th{
-        width:10px;
+        width:150px;
     }
     /* 테이블 카테고리, 박스 */
     .detail-area table td{
         width:300px;
-        padding:10px;
+        padding:15px;
         text-align:left;
-        font-weight:900;
         font-family: 'Gowun Dodum', sans-serif;
     }
     /* 테이블 테두리 */
@@ -73,12 +72,12 @@
             <table>
             	<tr>
             		<th></th>
-            		<td>작성자</td>
+            		<td style="font-weight:900">작성자</td>
             		<td><%= a.getAskWriter() %></td>
             	</tr>
                 <tr>
-                	<th width="10px"></th>
-                    <td>동물 분류</td>
+                	<th></th>
+                    <td style="font-weight:900">동물 분류</td>
                     <% 
                         String category = "";
                         
@@ -91,20 +90,20 @@
                     <td><%= category %></td>
                 </tr>
                 <tr>
-                    <th style="color:red" width="10px"></th>
-                    <td>제목</td>
+                    <th></th>
+                    <td style="font-weight:900">제목</td>
                     <td><%= a.getAskTitle() %></td>
                 </tr>
                 <tr>
-                    <th style="color:red" width="10px"></th>
-                    <td>작성일</td>
+                    <th></th>
+                    <td style="font-weight:900">작성일</td>
                     <td><%= a.getEnrollDate() %></td>
                 </tr>
             </table>
             <br><br>
 
             <!-- 하단 버튼 (상세: 삭제,뒤로) -->
-            <div>
+            <div align="center">
                 <a href="<%= contextPath %>/adminDelete.ak?num=<%= a.getAskNo() %>" class="btn btn-sm btn-danger">삭제</a>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
             </div>

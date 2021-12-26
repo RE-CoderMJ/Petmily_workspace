@@ -32,6 +32,32 @@ public class Qna {
 		this.status = status;
 	}
 
+	
+	
+	public Qna(int qnaNo, String memNo, String qnaTitle, String qnaDate, String status) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaDate = qnaDate;
+		this.status = status;
+	}
+
+	
+	
+	public Qna(int qnaNo, String memNo, String managerNo, String qnaTitle, String qnaContent, String qnaDate,
+			String qnaReplyContent, String qnaReplyDate) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.managerNo = managerNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaContent = qnaContent;
+		this.qnaDate = qnaDate;
+		this.qnaReplyContent = qnaReplyContent;
+		this.qnaReplyDate = qnaReplyDate;
+	}
+
 	public int getQnaNo() {
 		return qnaNo;
 	}

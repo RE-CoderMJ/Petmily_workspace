@@ -12,7 +12,7 @@
 <style>
 	/* 전체 틀 */
     .outer{
-        font-size:15px;
+        font-size:18px;
         width:1000px;
         height:500px;
         margin:auto;
@@ -25,7 +25,7 @@
     /* 테이블 카테고리, 박스 */
     .detail-area table td{
         width:300px;
-        padding:10px;
+        padding:15px;
         text-align:left;
         font-family: 'Gowun Dodum', sans-serif;
     }

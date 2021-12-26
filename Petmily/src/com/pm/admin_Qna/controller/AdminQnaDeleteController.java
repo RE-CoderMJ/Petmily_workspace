@@ -1,11 +1,14 @@
 package com.pm.admin_Qna.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.admin_Qna.model.service.QnaService;
 
 /**
  * Servlet implementation class AdminQnaDeleteController
@@ -26,8 +29,20 @@ public class AdminQnaDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		int qnaNo = Integer.parseInt(request.getParameter("num"));
+    	
+		int result = new QnaService().deleteQna(qnaNo);
+		
+    	if(result > 0) {
+    		response.sendRedirect(request.getContextPath() + "/adminList.qna?cpage=1");
+    		
+    	}else {
+    		request.setAttribute("errorMsg", "Q&A 삭제 실패");
+    		request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
+    		
+    	}
+		
 	}
 
 	/**

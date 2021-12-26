@@ -260,17 +260,7 @@
 	              </tbody>
 	         </table>
 	      </div>
-	        
-	      <!-- 페이징 바 -->
-	      <div class="paging-area" align="center">
-	         <button> &lt; </button>
-	         <button>1</button>
-	         <button>2</button>
-	         <button>3</button>
-	         <button>4</button>
-	         <button>5</button>
-	         <button> &gt; </button>
-	       </div>
+
 	       
 	      <!-- 페이징바 -->
 		  <script>

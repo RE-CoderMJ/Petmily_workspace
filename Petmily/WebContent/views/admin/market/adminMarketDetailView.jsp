@@ -12,7 +12,7 @@
 <style>
 	/* 전체 틀 */
     .outer{
-        font-size:20px;
+        font-size:18px;
         width:1000px;
         height:500px;
         margin:auto;
@@ -30,7 +30,6 @@
         width:300px;
         padding:15px;
         text-align:left;
-
         font-family: 'Gowun Dodum', sans-serif;
     }
     /* 테이블 테두리 */
