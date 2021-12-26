@@ -108,6 +108,20 @@ public class MemberService {
 		return email;
 	}
 
+	public int deleteMember(int userNo, String userPwd, String delReason) {
+		Connection conn = getConnection();
+		int result = new MemberDao().deleteMember(conn, userNo, userPwd, delReason);
+		
+		if(result > 0) {
+			commit(conn);
+		} else { 
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
 	
 
 }

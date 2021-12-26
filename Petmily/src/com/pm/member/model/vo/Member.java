@@ -104,6 +104,13 @@ public class Member {
 		this.memEmail = memEmail;
 		this.memName = memName;
 	}
+	
+	public Member(String memDelDetail, int memNo, String memPwd) {
+		super();
+		this.memDelDetail = memDelDetail;
+		this.memNo = memNo;
+		this.memPwd = memPwd;
+	}
 
 	public int getMemNo() {
 		return memNo;

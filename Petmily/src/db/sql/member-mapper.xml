@@ -166,4 +166,14 @@
 	
 	</entry>
 	
+	
+	<entry key="deleteMember">
+		UPDATE TB_MEMBER 
+		   SET MEM_STATUS = 'N'
+		     , MEM_DEL_DATE = SYSDATE
+             , MEM_DEL_DETAIL = ?
+		 WHERE MEM_NO = ?
+		   AND MEM_PWD = ?
+	</entry>
+	
 </properties>

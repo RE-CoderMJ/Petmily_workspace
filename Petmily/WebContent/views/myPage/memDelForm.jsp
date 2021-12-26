@@ -90,7 +90,7 @@ input[type=password] {
 			</div>
 
 			<div class="content">
-				<form action="<%= contextPath %>" name="delForm" onsubmit="return checkForm()">
+				<form action="<%= contextPath %>/delete.me" method="post" id="delForm" name="delForm" onsubmit="return checkForm()">
                 
                     <p class="delTitle">회원 탈퇴 신청에 앞서 아래 내용을 반드시 확인해주세요</p>
                         <div class="delContent">
@@ -113,7 +113,7 @@ input[type=password] {
                     	
                     	<br>
     
-                    <input type="checkbox" id="confirm" name="confirm" style="transform: scale(1.5);" required>위 내용을 모두 확인하였습니다. 
+                    <input type="checkbox" id="confirm" style="transform: scale(1.5);" required>위 내용을 모두 확인하였습니다. 
                     <span style="color: red; font-size: 12px;">필수</span>
     				
     				
@@ -140,13 +140,19 @@ input[type=password] {
                     <div class="delContent">
 					
 
-						<input type="checkbox" class="ck" name="ck1" value="이용빈도 낮음|">이용빈도 낮음<br>
-						<input type="checkbox" class="ck" name="ck2" value="재가입|">재가입<br>
-						<input type="checkbox" class="ck" name="ck3" value="콘텐츠/제품정보/상품부족|">콘텐츠/제품정보/상품 부족<br>
-						<input type="checkbox" class="ck" name="ck4" value="개인정보보호|">개인정보보호<br>
-						<input type="checkbox" class="ck" name="ck5" value="회원특혜/쇼핑혜택부족|">회원특혜/쇼핑혜택 부족<br>
-						<input type="checkbox" class="ck" name="ck6" value="기타|">기타
-
+						<input type="checkbox" class="ck" name="ck" id="ck1" value="이용빈도 낮음">
+						<label for="ck1">이용빈도 낮음</label><br>
+						<input type="checkbox" class="ck" name="ck" id="ck2" value="재가입">
+						<label for="ck2">재가입</label><br>
+						<input type="checkbox" class="ck" name="ck" id="ck3" value="콘텐츠/제품정보/상품부족">
+						<label for="ck3">콘텐츠/제품정보/상품 부족</label><br>
+						<input type="checkbox" class="ck" name="ck" id="ck4" value="개인정보보호">
+						<label for="ck4">개인정보보호</label><br>
+						<input type="checkbox" class="ck" name="ck" id="ck5" value="회원특혜/쇼핑혜택부족">
+						<label for="ck5">회원특혜/쇼핑혜택 부족</label><br>
+						<input type="checkbox" class="ck" name="ck" id="ck6" value="기타">
+						<label for="ck6">기타</label>
+						
                     </div>
                     
                     <script>
@@ -164,6 +170,7 @@ input[type=password] {
 						
 						    });
 						});
+						
 					</script>
 					
 
@@ -172,7 +179,7 @@ input[type=password] {
                     <p class="delTitle">PETMILY 서비스 이용 중 어떤 부분이 불편하셨나요? <span style="color: gray; font-size: 12px;">선택</span></p>
                         <p style="font-size: 15px;">펫밀리를 떠나시는 이유를 자세히 알려주신다면, <br>
                            						       여러분의 소중한 의견을 반영해 더 좋은 서비스로 꼭 찾아뵙겠습니다.</p>
-                        <textarea name="delDetail" id=""></textarea>
+                        <textarea name="delDetail"></textarea>
                     
     
                     <div align="center" style="margin-top: 50px;">
@@ -197,12 +204,12 @@ input[type=password] {
 							  <button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
 							
-							<input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
 							<!-- Modal body -->
 							<div class="modal-body" style="margin: auto; text-align: center; padding: 30px;">
 							  
 							  탈퇴 후 복구가 불가능합니다. <br>
 							  정말로 <b>탈퇴</b>하시겠습니까? <br><br>
+							  <input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
 							  <input type="password" name="userPwd" placeholder="비밀번호" required> <br><br>
 							  <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
 							</div>
@@ -216,18 +223,17 @@ input[type=password] {
 
 		</div>
 	</div>
+
 	
 	<div class="modal" id="delSuccessModal">
 		<div class="modal-dialog">
 		  <div class="modal-content">
 		  
-			<!-- Modal Header -->
 			<div class="modal-header">
 			  <h4 class="modal-title" style="margin-left: 170px; font-weight: bold;">탈퇴 완료</h4>
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			
-			<!-- Modal body -->
 			<div class="modal-body" style="margin: auto; text-align: center; padding: 30px;">
 			  
 			  그 동안 펫밀리를 이용해주셔서 감사합니다 <br>
@@ -238,7 +244,7 @@ input[type=password] {
 		  </div>
 		</div>
 	</div>
-
+	 
 
 </body>
 </html>

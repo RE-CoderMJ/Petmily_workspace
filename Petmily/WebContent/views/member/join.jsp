@@ -172,7 +172,7 @@
                             <select id="emailDomain" name="emailDomain" aria-placeholder="선택해주세요" required>
                                 <option value="">선택해주세요</option>
                                 <option value="naver.com">naver.com</option>
-                                <option value="hanmail.com">hanmail.com</option>
+                                <option value="hanmail.net">hanmail.net</option>
                                 <option value="daum.net">daum.net</option>
                                 <option value="gmail.com">gmail.com</option>
                                 <option value="nate.com">nate.com</option>
