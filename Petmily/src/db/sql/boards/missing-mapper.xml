@@ -61,27 +61,34 @@
 		   AND STATUS = 'Y'
 	</entry>
 	<entry key="selectMissingList">
-		SELECT
-			   MISSING_NO
-			 , MISSING_WRITER
-			 , CATEGORY
-			 , D_CATEGORY
-			 , PNAME
-			 , GENDER
-			 , MI_DATE
-			 , AGE_FROM
-			 , LOCATION
-			 , FEATURE
-			 , (SELECT 
-		               FILE_PATH || CHANGE_NAME
-		          FROM ATTACHMENT 
-		         WHERE REF_NO = MI.MISSING_NO
-		           AND REF_BOARD_NO = 3
-		           AND ROWNUM = 1) "TITLEIMG"
-		  FROM TB_MISSING MI
-		 WHERE STATUS = 'Y'
-		 ORDER
-		    BY MISSING_NO DESC
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+						SELECT
+							   MISSING_NO
+							 , MISSING_WRITER
+							 , CATEGORY
+							 , D_CATEGORY
+							 , PNAME
+							 , GENDER
+							 , MI_DATE
+							 , AGE_FROM
+							 , LOCATION
+							 , FEATURE
+							 , (SELECT 
+						               FILE_PATH || CHANGE_NAME
+						          FROM ATTACHMENT 
+						         WHERE REF_NO = MI.MISSING_NO
+						           AND REF_BOARD_NO = 3
+						           AND ROWNUM = 1) "TITLEIMG"
+						  FROM TB_MISSING MI
+						 WHERE STATUS = 'Y'
+						 ORDER
+						    BY MISSING_NO DESC
+		  		       ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND?
 	</entry>
 	<entry key="selectMissing">
 		SELECT
@@ -160,5 +167,11 @@
 		       TB_MISSING
 		   SET STATUS = 'N'
 		 WHERE MISSING_NO = ?
+	</entry>
+	<entry key="selectMissingCount">
+		SELECT
+		       COUNT(*) count
+		  FROM TB_MISSING
+		 WHERE STATUS = 'Y'
 	</entry>
 </properties>

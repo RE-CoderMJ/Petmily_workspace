@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.pm.boards.missing.model.vo.Missing;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 public class MissingDao {
 	
 	private Properties prop = new Properties();
@@ -78,7 +79,7 @@ public class MissingDao {
 		return result;
 	}
 	
-	public ArrayList<Missing> selectMissingList(Connection conn){
+	public ArrayList<Missing> selectMissingList(Connection conn, PageInfo pi){
 		ArrayList<Missing> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -86,6 +87,13 @@ public class MissingDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -287,5 +295,28 @@ public class MissingDao {
 		}
 		
 		return result;
+	}
+
+	public int selectMissingCount(Connection conn) {
+		
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMissingCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
 	}
 }

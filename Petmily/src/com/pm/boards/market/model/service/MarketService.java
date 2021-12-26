@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.boards.market.model.vo.Market;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 
 public class MarketService {
 
@@ -32,9 +33,9 @@ public class MarketService {
 		return result1 * result2;
 	}
 	
-	public ArrayList<Market> selectMarketList(){
+	public ArrayList<Market> selectMarketList(PageInfo pi){
 		Connection conn = getConnection();
-		ArrayList<Market> list = new MarketDao().selectMarketList(conn);
+		ArrayList<Market> list = new MarketDao().selectMarketList(conn, pi);
 		
 		close(conn);
 		
@@ -118,5 +119,12 @@ public class MarketService {
 		close(conn);
 		
 		return result;
+	}
+
+	public int selectMarketCount() {
+		Connection conn = getConnection();
+		int listCount = new MarketDao().selectMarketCount(conn);
+		close(conn);
+		return listCount;
 	}
 }

@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.pm.boards.market.model.vo.Market;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 
 public class MarketDao {
 	
@@ -84,7 +85,7 @@ public class MarketDao {
 		return result;
 	}
 	
-	public ArrayList<Market> selectMarketList(Connection conn){
+	public ArrayList<Market> selectMarketList(Connection conn, PageInfo pi){
 		ArrayList<Market> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -92,6 +93,13 @@ public class MarketDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -289,5 +297,29 @@ public class MarketDao {
 		}
 		
 		return result;
+	}
+
+	public int selectMarketCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMarketCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
 	}
 }

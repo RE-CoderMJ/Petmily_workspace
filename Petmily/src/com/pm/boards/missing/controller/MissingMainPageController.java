@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pm.boards.missing.model.service.MissingService;
 import com.pm.boards.missing.model.vo.Missing;
+import com.pm.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class MissingMainPageController
@@ -32,9 +33,26 @@ public class MissingMainPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Missing> list = new MissingService().selectMissingList();
+		int listCount = new MissingService().selectMissingCount();
+		int currentPage = Integer.parseInt(request.getParameter("page"));
+		int pageLimit = 5;
+		int boardLimit = 8;
 		
+		int maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + pageLimit -1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Missing> list = new MissingService().selectMissingList(pi);
+		
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		
 		request.getRequestDispatcher("views/boards/missing/missingMain.jsp").forward(request, response);
 	}
 

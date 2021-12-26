@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import= "java.util.ArrayList, com.pm.boards.missing.model.vo.Missing"%>
+<%@ page import= "java.util.ArrayList, com.pm.boards.missing.model.vo.Missing, com.pm.common.model.vo.PageInfo"%>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Missing> list = (ArrayList<Missing>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -11,6 +17,18 @@
 <title>Insert title here</title>
 <link href="resources/css/boards/missing/missingMain.css" rel="stylesheet">
 <%@ include file="../../common/links.jsp" %>
+<style>
+/* 페이징바 */
+.paging-area button{
+     border:  0;
+     background-color: transparent;
+     height: 40px;
+     width: 40px;
+     border-radius: 5px;
+     margin-bottom: 50px;
+     margin-top: 40px;
+}
+</style>
 </head>
 
 <body>
@@ -157,7 +175,7 @@
 		               <div class="dpf-area">
 		               	  <div>발견일자 : <%=mi.getMissingDate() %></div>
 		                  <div>발견지역 : <%=mi.getLocation() %></div>
-		                  <div>신체특징 : <%=mi.getFeature() %></div>
+		                  <div>신체특징 : <%=mi.getFeature() == null ? "" : mi.getFeature()%></div>
 		               </div>
 		            </div>
 		         </div>
@@ -177,9 +195,36 @@
 	         })
 	      </script>
 	      
-	      <%@ include file="../bCommon/boardPagingBar.jsp" %>
+	      <% if(list.isEmpty()){ %>
+	      	<div>등록된 게시글이 없습니다.</div>
+	      <% } %>
+	      
+	      <div class="paging-area" align="center">
+	      	<% if(currentPage != 1) { %>
+            	<button onclick="location.href='<%=contextPath %>/main.missing?page=<%=currentPage-1 %>';"> &lt; </button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++) { %>
+            	<% if(p == currentPage) { %>
+            		<button disabled><%= p %></button>
+            	<% }else { %>
+            		<button onclick="location.href='<%=contextPath %>/main.missing?page=<%=p %>';"><%=p %></button>
+            	<% } %>
+            <% } %>
+            
+            <% if(currentPage != maxPage) { %>
+            	<button onclick="location.href='<%=contextPath %>/main.missing?page=<%=currentPage+1%>';"> &gt; </button>
+            <% } %>
+    	  </div>
+    	  <script>
+	        $(function(){
+	            $(".paging-area button").click(function(){
+	                $(this).siblings(".paging-area button").css({background: "", color:"black"});
+	                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+	            })
+	        })
+	     </script>
 	         
-	      <!-- <div>등록된 게시글이 없습니다.</div> -->
 	      
 	   </div>
    

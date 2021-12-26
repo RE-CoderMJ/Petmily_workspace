@@ -42,26 +42,33 @@
 		  )
 	</entry>
 	<entry key="selectAskList">
-		SELECT
-			   ASK_NO
-			 , ASK_WRITER
-			 , NICKNAME
-			 , CATEGORY
-			 , ASK_TITLE
-			 , ASK_CONTENT
-			 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
-			 , COUNT
-			 , (SELECT 
-		               FILE_PATH || CHANGE_NAME
-		          FROM ATTACHMENT 
-		         WHERE REF_NO = A.ASK_NO
-		           AND REF_BOARD_NO = 1
-		           AND ROWNUM = 1) "TITLEIMG"
-		  FROM ASK A
-		  JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
-		 WHERE STATUS = 'Y'
-		 ORDER
-		    BY ASK_NO DESC
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+						SELECT
+							   ASK_NO
+							 , ASK_WRITER
+							 , NICKNAME
+							 , CATEGORY
+							 , ASK_TITLE
+							 , ASK_CONTENT
+							 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
+							 , COUNT
+							 , (SELECT 
+						               FILE_PATH || CHANGE_NAME
+						          FROM ATTACHMENT 
+						         WHERE REF_NO = A.ASK_NO
+						           AND REF_BOARD_NO = 1
+						           AND ROWNUM = 1) "TITLEIMG"
+						  FROM ASK A
+						  JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
+						 WHERE STATUS = 'Y'
+						 ORDER
+						    BY ASK_NO DESC		          
+		               ) A
+		  	   )
+		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	<entry key="increaseCount">
 		UPDATE
@@ -136,5 +143,11 @@
 		       ASK
 		   SET STATUS = 'N'
 		 WHERE ASK_NO = ?
+	</entry>
+	<entry key="selectAskCount">
+		SELECT
+		       COUNT(*) count
+		  FROM ASK
+		 WHERE STATUS = 'Y'
 	</entry>
 </properties>

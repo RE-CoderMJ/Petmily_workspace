@@ -160,15 +160,22 @@
 		  FROM PETSROOM
 	</entry>
 	<entry key="selectAllPetLogList">
-		SELECT
-			   PETLOG_NO
-			 , MEM_NO
-			 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
-			 , PETLOG_CONTENT
-		  FROM PETLOG
-	     WHERE STATUS = 'Y'
-	     ORDER
-	        BY ENROLL_DATE DESC
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+						SELECT
+							   PETLOG_NO
+							 , MEM_NO
+							 , TO_CHAR(ENROLL_DATE, 'YYYY-MM-DD') "ENROLL_DATE"
+							 , PETLOG_CONTENT
+						  FROM PETLOG
+					     WHERE STATUS = 'Y'
+					     ORDER
+					        BY ENROLL_DATE DESC		          
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	<entry key="selectAllAttachmentList">
 		SELECT
@@ -179,5 +186,11 @@
 			 , REF_NO
 	      FROM ATTACHMENT
 	     WHERE REF_BOARD_NO = 6
+	</entry>
+	<entry key="selectPetLogCount">
+		SELECT
+		       COUNT(*) count
+		  FROM PETLOG
+		 WHERE STATUS = 'Y'
 	</entry>
 </properties>

@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.pm.common.model.vo.Attachment, com.pm.petLog.model.vo.PetLog, com.pm.petLog.model.vo.PetsRoom" %>
+<%@ page import="java.util.ArrayList, com.pm.common.model.vo.Attachment, com.pm.petLog.model.vo.PetLog, com.pm.petLog.model.vo.PetsRoom, com.pm.common.model.vo.PageInfo" %>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<PetLog> plList = (ArrayList<PetLog>)request.getAttribute("plList");
 	ArrayList<PetsRoom> prList = (ArrayList<PetsRoom>)request.getAttribute("prList");
 	ArrayList<Attachment> attList = (ArrayList<Attachment>)request.getAttribute("attList");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +19,18 @@
 <title>Insert title here</title>
 <%@ include file="../common/links.jsp" %>
 <link href="resources/css/petLog/petLogMain.css" rel="stylesheet">
+<style>
+/* 페이징바 */
+.paging-area button{
+     border:  0;
+     background-color: transparent;
+     height: 40px;
+     width: 40px;
+     border-radius: 5px;
+     margin-bottom: 50px;
+     margin-top: -10px;
+}
+</style>
 </head>
 <body>
 
@@ -150,29 +168,38 @@
 		                            </div>
 		                        </div>
 		                    </div>
-		                    <!-- 페이징 바 -->
-		                    <div class="paging-area" align="center">
-		                        <button> &lt; </button>
-		                        <button>1</button>
-		                        <button>2</button>
-		                        <button>3</button>
-		                        <button>4</button>
-		                        <button>5</button>
-		                        <button> &gt; </button>
-		                    </div>
-		                    <script>
-		                        $(function(){
-		                            $(".paging-area button").click(function(){
-		                                $(this).siblings(".paging-area button").css({background: "", color:"black"});
-		                                $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-		                            })
-		                        })
-		                    </script>
+		                    
 		                </div>
 		
 		            </div>
 				<% } %>
             <% } %>
+            <!-- 페이징 바 -->
+            <div class="paging-area" align="center">
+            	<% if(currentPage != 1) { %>
+                	<button onclick="location.href='<%=contextPath%>/main.petLog?page=<%=currentPage-1%>';"> &lt; </button>
+                <% } %>
+                
+                <% for(int p=startPage; p<=endPage; p++) { %>
+                	<% if(p == currentPage) { %>
+                		<button disabled><%= p %></button>
+                	<% }else { %>
+                		<button onclick="location.href='<%=contextPath%>/main.petLog?page=<%= p %>';"><%= p %></button>
+                	<% } %>
+                <% } %>
+                
+                <% if(currentPage != maxPage){ %>
+                	<button onclick="loaction.href='<%=contextPath%>/main.petLog?page=<%=currentPage -1%>';">&gt;</button>
+                <% } %>
+            </div>
+            <script>
+                $(function(){
+                    $(".paging-area button").click(function(){
+                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                    })
+                })
+            </script>
         </div>
     </div>
     <input type="hidden" id="deleteNo">

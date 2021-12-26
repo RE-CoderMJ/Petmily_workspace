@@ -8,10 +8,10 @@ import static com.pm.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.boards.missing.model.dao.MissingDao;
 import com.pm.boards.missing.model.vo.Missing;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 
 public class MissingService {
 	
@@ -32,10 +32,10 @@ public class MissingService {
 		return result1 * result2;
 	}
 	
-	public ArrayList<Missing> selectMissingList(){
+	public ArrayList<Missing> selectMissingList(PageInfo pi){
 		Connection conn = getConnection();
 		
-		ArrayList<Missing> list = new MissingDao().selectMissingList(conn);
+		ArrayList<Missing> list = new MissingDao().selectMissingList(conn, pi);
 		close(conn);
 		
 		return list;
@@ -119,5 +119,12 @@ public class MissingService {
 		close(conn);
 		
 		return result;
+	}
+
+	public int selectMissingCount() {
+		Connection conn = getConnection();
+		int listCount = new MissingDao().selectMissingCount(conn);
+		close(conn);
+		return listCount;
 	}
 }

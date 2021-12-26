@@ -33,6 +33,9 @@ public class PetLogPetsRoomController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount = new PetLogService().selectPetsRoomPetLogCount();
+		int currentPage = Integer.
+		
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		ArrayList<PetLog> list = new PetLogService().selectPetLogList(memNo);
 		PetsRoom pr = new PetLogService().selectPetsRoom(memNo);

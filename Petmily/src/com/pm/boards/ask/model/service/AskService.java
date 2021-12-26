@@ -1,14 +1,17 @@
 package com.pm.boards.ask.model.service;
 
-import static com.pm.common.JDBCTemplate.*;
+import static com.pm.common.JDBCTemplate.close;
+import static com.pm.common.JDBCTemplate.commit;
+import static com.pm.common.JDBCTemplate.getConnection;
+import static com.pm.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.pm.boards.ask.model.dao.AskDao;
 import com.pm.boards.ask.model.vo.Ask;
-import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 
 public class AskService {
 
@@ -30,10 +33,10 @@ public class AskService {
 		return result1 * result2;
 	}
 	
-	public ArrayList<Ask> selectAskList(){
+	public ArrayList<Ask> selectAskList(PageInfo pi){
 		Connection conn = getConnection();
 		
-		ArrayList<Ask> list = new AskDao().selectAskList(conn);
+		ArrayList<Ask> list = new AskDao().selectAskList(conn, pi);
 		
 		close(conn);
 		return list;
@@ -109,5 +112,12 @@ public class AskService {
 			rollback(conn);
 		}
 		return result;
+	}
+
+	public int selectAskCount() {
+		Connection conn = getConnection();
+		int listCount = new AskDao().selectAskCount(conn);
+		close(conn);
+		return listCount;
 	}
 }

@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.pm.boards.ask.model.vo.Ask;
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 
 public class AskDao {
 
@@ -77,7 +78,7 @@ public class AskDao {
 		return result;
 	}
 
-	public ArrayList<Ask> selectAskList(Connection conn) {
+	public ArrayList<Ask> selectAskList(Connection conn, PageInfo pi) {
 		ArrayList<Ask> list = new ArrayList<>();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
@@ -85,6 +86,13 @@ public class AskDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -273,6 +281,32 @@ public class AskDao {
 		}
 		
 		return result;
+	}
+
+	public int selectAskCount(Connection conn) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAskCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
 	}
 
 

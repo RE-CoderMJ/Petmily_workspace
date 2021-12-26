@@ -48,23 +48,30 @@
 	</entry>
 	
 	<entry key="selectMarketList">
-		SELECT
-		       MARKET_NO
-		     , CATEGORY
-		     , D_CATEGORY
-		     , MARKET_TITLE
-		     , MARKET_CONTENT
-		     , TO_CHAR(PRICE, '999,999,999') AS "PRICE"
-		     , (SELECT 
-		               FILE_PATH || CHANGE_NAME
-		          FROM ATTACHMENT 
-		         WHERE REF_NO = M.MARKET_NO
-		           AND REF_BOARD_NO = 2
-		           AND ROWNUM = 1) "TITLEIMG"
-		  FROM MARKET M
-		 WHERE M.STATUS = 'Y'
-		 ORDER
-		    BY MARKET_NO DESC
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+						SELECT
+						       MARKET_NO
+						     , CATEGORY
+						     , D_CATEGORY
+						     , MARKET_TITLE
+						     , MARKET_CONTENT
+						     , TO_CHAR(PRICE, '999,999,999') AS "PRICE"
+						     , (SELECT 
+						               FILE_PATH || CHANGE_NAME
+						          FROM ATTACHMENT 
+						         WHERE REF_NO = M.MARKET_NO
+						           AND REF_BOARD_NO = 2
+						           AND ROWNUM = 1) "TITLEIMG"
+						  FROM MARKET M
+						 WHERE M.STATUS = 'Y'
+						 ORDER
+						    BY MARKET_NO DESC		  		       
+		  		       ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="increaseCount">
@@ -150,5 +157,12 @@
 			   MARKET
 		   SET STATUS = 'N'
 		 WHERE MARKET_NO = ?
+	</entry>
+	
+	<entry key="selectMarketCount">
+		SELECT
+		       COUNT(*) count
+		  FROM MARKET
+		 WHERE STATUS = 'Y'
 	</entry>
 </properties>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pm.boards.market.model.service.MarketService;
 import com.pm.boards.market.model.vo.Market;
+import com.pm.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class MarketMainPageController
@@ -31,10 +32,26 @@ public class MarketMainPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int listCount = new MarketService().selectMarketCount();
+		int currentPage = Integer.parseInt(request.getParameter("page"));
+		int pageLimit = 5;
+		int boardLimit = 15;
 		
-		ArrayList<Market> list = new MarketService().selectMarketList();
+		int maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + pageLimit -1;
 		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Market> list = new MarketService().selectMarketList(pi);
+		
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		
 		request.getRequestDispatcher("views/boards/market/marketMain.jsp").forward(request, response);
 	}
 	

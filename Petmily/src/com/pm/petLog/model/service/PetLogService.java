@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 import com.pm.petLog.model.dao.PetLogDao;
 import com.pm.petLog.model.vo.PetLog;
 import com.pm.petLog.model.vo.PetsRoom;
@@ -145,9 +146,9 @@ public class PetLogService {
 		return list;
 	}
 
-	public ArrayList<PetLog> selectAllPetLogList() {
+	public ArrayList<PetLog> selectAllPetLogList(PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<PetLog> list = new PetLogDao().selectAllPetLogList(conn);
+		ArrayList<PetLog> list = new PetLogDao().selectAllPetLogList(conn, pi);
 		close(conn);
 		return list;
 	}
@@ -157,6 +158,13 @@ public class PetLogService {
 		ArrayList<Attachment> list = new PetLogDao().selectAllAttachmentList(conn);
 		close(conn);
 		return list;
+	}
+
+	public int selectPetLogCount() {
+		Connection conn = getConnection();
+		int listCount = new PetLogDao().selectPetLogCount(conn);
+		close(conn);
+		return listCount;
 	}
 	
 }

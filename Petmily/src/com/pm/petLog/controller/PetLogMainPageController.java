@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.PageInfo;
 import com.pm.petLog.model.service.PetLogService;
 import com.pm.petLog.model.vo.PetLog;
 import com.pm.petLog.model.vo.PetsRoom;
@@ -34,10 +35,26 @@ public class PetLogMainPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount = new PetLogService().selectPetLogCount();
+		int currentPage = Integer.parseInt(request.getParameter("page"));
+		int pageLimit = 5;
+		int boardLimit = 3;
+		
+		int maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + pageLimit -1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
 		ArrayList<PetsRoom> prList = new PetLogService().selectPetsRoomList();
-		ArrayList<PetLog> plList = new PetLogService().selectAllPetLogList();
+		ArrayList<PetLog> plList = new PetLogService().selectAllPetLogList(pi);
 		ArrayList<Attachment> attList = new PetLogService().selectAllAttachmentList();
 		
+		request.setAttribute("pi", pi);
 		request.setAttribute("prList", prList);
 		request.setAttribute("plList", plList);
 		request.setAttribute("attList", attList);
