@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectNotifyList">
+	
+	<entry key="selectListCount">
 		SELECT
-				REPORT_NO
-			  ,	CLIENT_ID
-			  ,	COMMENTS
-			  ,	BOARD_TYPE
-			  ,	BOARD_NO
-			  ,	REPORT_ID
-			  ,	REPORT_REASON
-			  ,	REPORT_CONTENT
-			  ,	REPORT_DATE
-		   FROM TB_REPORT
+		       COUNT(*) COUNT
+		  FROM TB_REPORT
+	</entry>
+	
+	<entry key="selectNotifyList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+                                REPORT_NO
+                              ,	CLIENT_ID
+                              ,	COMMENTS
+                              ,	BOARD_TYPE
+                              ,	BOARD_NO
+                              ,	REPORT_ID
+                              ,	REPORT_REASON
+                              ,	REPORT_CONTENT
+                              ,	REPORT_DATE
+                        FROM TB_REPORT
+                        JOIN TB_MEMBER ON (CLIENT_ID = MEM_EMAIL)
+                       WHERE MEM_STATUS = 'Y'
+		                ) A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="deleteNotify">
+		UPDATE TB_MEMBER
+		   SET MEM_STATUS = 'N'
+		 WHERE MEM_NO =(SELECT MEM_NO
+		                FROM TB_REPORT
+		                JOIN TB_MEMBER ON (CLIENT_ID = MEM_EMAIL)
+		                WHERE REPORT_NO = ?)
 	</entry>
 </properties>

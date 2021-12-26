@@ -62,7 +62,7 @@
             <ul>
                 <div id="category">신고관리</div>
                 <div id="d-category">
-                    <div class="d-category" id="nfList" onclick="location.href='<%= contextPathas %>/nfList.ad';">신고 내역 조회</div>
+                    <div class="d-category" id="nfList" onclick="location.href='<%= contextPathas %>/nfList.ad?cpage=1';">신고 내역 조회</div>
     
                     <div class="d-category" id="nfWnList" onclick="location.href='<%= contextPathas %>/nfWnList.ad';">신고 회원 관리</div>
                     

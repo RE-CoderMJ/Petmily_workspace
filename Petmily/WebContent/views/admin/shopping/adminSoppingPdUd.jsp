@@ -371,7 +371,6 @@
 			            	<button onclick="location.href='<%=contextPath%>/spPdUd.ad?cpage=<%=currentPage+1%>';">&gt; </button>
 						<% } %>
 			
-                            <button> &gt; </button>
                         </div>
                         <script>
                             $(function(){

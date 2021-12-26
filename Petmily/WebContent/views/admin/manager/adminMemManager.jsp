@@ -6,7 +6,6 @@
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
  	//Member m = (Member)request.getAttribute("m");
 	
- 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -225,7 +224,7 @@
                                         <!-- Modal body -->
                                         <div class="modal-body">
                                             <div class="md-box">
-                                                <pW>회원 no.</p>
+                                                <p>회원 no.</p>
                                                 <input type="text" id="memNo" name="mno">
                                                 
                                             </div>
@@ -507,7 +506,6 @@
 			       <button onclick="location.href='<%=contextPath%>/memMg.ad?cpage=<%=currentPage+1%>';">&gt; </button>
 					<% } %>
 			
-                   <button> &gt; </button>
               </div>
               <script>
                 $(function(){

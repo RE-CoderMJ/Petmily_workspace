@@ -53,7 +53,7 @@ public class AdminMemManagerController extends HttpServlet {
 		pageLimit = 5;
 		
 		// * boardLimit : 게시글 최대 개수 (단위)
-		boardLimit = 10;
+		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		

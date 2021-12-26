@@ -99,7 +99,7 @@
                     <div class="menu"><a href="<%= contextPath %>/adminList.ak?cpage=1">게시판관리</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminMain.pl?cpage=1">Petlog</a></div>
                     <div class="menu"><a href="<%= contextPath %>/adminCus.main">고객센터</a></div>
-                    <div class="menu"><a href="<%= contextPath %>/nfList.ad">신고관리</a></div>
+                    <div class="menu"><a href="<%= contextPath %>/nfList.ad?cpage=1">신고관리</a></div>
                 </div>
                 <a class="logout" href="<%= contextPath %>/login.ad">로그아웃</a>
             </div>

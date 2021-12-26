@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.pm.admin_Notify.model.vo.AdminNotify"%>
+    pageEncoding="UTF-8" import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Notify.model.vo.AdminNotify"%>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<AdminNotify> list = (ArrayList<AdminNotify>)request.getAttribute("list");
+	//System.out.println(list);
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
  %>  
     <!DOCTYPE html>
     <html>
@@ -114,6 +120,12 @@
         .tbList:hover{
             text-decoration: underline;
         }
+        /* 입력 박스창 */
+        .inputBox{
+            text-align: center;
+            font-weight: bold;
+            border: none;
+        }
         /* 신고 아이디 내용 모달 */
         .modalMsg2-area{
             font-weight: bolder;
@@ -203,19 +215,19 @@
 
                     <!-- table -->
                     <div class="table">
-                        <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
+                            <button onclick="location.href='<%= contextPath %>/NfDelete.ad?rnum='+rno;" class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
                         </div>
+                        <!-- btn-box -->
                         <!-- 회원삭제 Modal -->
                         <div class="modal fade" id="deleteModal">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content" style="width: 400px;">
                     
-                                    <!-- Modal body -->
+                                     <!-- Modal body --> 
                                     <div class="modal-body" align="center">
                                         <div class="modalMsg-area">
-                                                            정말 삭제하시겠습니까?
+                                                                                            정말 삭제하시겠습니까?
                                         </div>
                                         <div id="deletebtn-area">
                                           <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
@@ -226,7 +238,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 게시글 삭제완료 Modal -->
+                        	 게시글 삭제완료 Modal 
                         <div class="modal fade" id="deleteCompleted">
                             <div class="modal-dialog modal-sm modal-dialog-centered">
                                 <div class="modal-content">
@@ -234,7 +246,7 @@
                                     <!-- Modal body -->
                                     <div class="modal-body" align="center" style="text-align: center;">
                                         <div class="modalMsg-area">
-                                            정상적으로 삭제되었습니다.
+                                           	 정상적으로 삭제되었습니다.
                                         </div>
                                         <div>
                                         <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
@@ -246,7 +258,7 @@
                         </div>
                     </div>
                     
-                        </div>
+                        <!-- </div> -->
                         <table style="width: 100%;">
                             <thead>
                                 <tr>
@@ -270,33 +282,35 @@
                                 <!--2. 게시글 있을 경우-->
                                 <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
-                                    <td><input type="checkbox" name="" value=""></td>
-                                    <td><%= list.get(i).getReportNo() %></td>
-                                    <td class="tbList" data-toggle="modal" data-target="#idModal"><%= list.get(i).getClientId() %></td>
+                                    <td><input type="checkbox" name="selectCheck" value=""></td>
+                                    <td id="rNo"><%= list.get(i).getReportNo() %></td>
+                                    <td id="cId" class="tbList" data-toggle="modal" data-target="#idModal"><%= list.get(i).getClientId() %></td>
                                     <td><%= list.get(i).getComments() %></td>
-                                    <td><%= list.get(i).getReportReason() %></td>
-                                    <td class="tbList" data-toggle="modal" data-target="#contentModal"><%= list.get(i).getReportContent() %></td>
-                                    <td class="tbList" data-toggle="modal" data-target="#idModal"><%= list.get(i).getReportId() %></td>
+                                    <td id="rRs"><%= list.get(i).getReportReason() %></td>
+                                    <td id="rCt" class="tbList" data-toggle="modal" data-target="#contentModal"><%= list.get(i).getReportContent() %></td>
+                                    <td id="rId"><%= list.get(i).getReportId() %></td><!-- class="tbList" data-toggle="modal" data-target="#idModal"-->
                                     <td><%= list.get(i).getReportDate() %></td>
                                 </tr>
                                 <% } %>
                                 
                              <% } %>
-                                <!-- 신고 아이디 Modal -->
+                            </tbody>
+                        </table>
+                        <!-- 신고 아이디 Modal -->
                                 <div class="modal fade" id="idModal">
                                     <div class="modal-dialog modal-sm modal-dialog-centered">
                                         <div class="modal-content">
                                             <!-- Modal body -->
                                             <div class="modal-body" align="center">
                                                 <div class="modalMsg2-area">
-                                                    회원 ID
+                                                    	회원 아이디
                                                 </div>
                                                 <div id="report-Msg">
-                                                    qldrmsl
+                                                    <input class="inputBox" type="text" id="client">
                                                 </div>
                                                 <hr>
                                                 <div class="modalMsg2-area">
-                                                    누적 경고 수
+                                                    	누적 경고 수
                                                 </div>
                                                 <div id="report-Msg">
                                                     0회
@@ -306,10 +320,11 @@
                                             <div class="modal-footer" align="center">
                                                 <button type="button" class="btn btn-warning" data-dismiss="modal" id="idModalbtn">회원 경고 처리</button>            
                                             </div>
-                                    
+                                    		
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <!-- 신고내용 Modal -->
                                 <div class="modal fade" id="contentModal">
                                     <div class="modal-dialog modal-sm modal-dialog-centered" style="max-width:350px">
@@ -317,26 +332,26 @@
                                             <!-- Modal body -->
                                             <div class="modal-body" align="center">
                                                 <div class="modalMsg2-area">
-                                                    신고 사유
+                                                    	신고 사유
                                                 </div>
                                                 <div id="report-Msg">
-                                                    욕설/비방
+                                                    <input class="inputBox" type="text" id="reason">
                                                 </div>
                                                 <hr>
                                                 <div class="modalMsg2-area">
-                                                    신고 제목
+                                                    	신고 내용
                                                 </div>
+                                                	<textarea class="inputBox" id="content" rows="" cols="30" style="resize: none;"></textarea>
                                                 <div id="report-Msg">
-                                                    저희집 강아지 보고 돼지래요 사실이긴 합니다
                                                 </div>
-                                                <hr>
+                                                <!--<hr>
                                                 <div class="modalMsg2-area">
-                                                    신고 내용
+                                                    	신고 내용
                                                 </div>
                                                 <div id="report-Msg">
-                                                    왜자꾸 우리집 개한테 돼지라 하는건지 모르겠어요.ㅡㅡ<br>
-                                                    신고합니다. 처리 부탁요<br>
-                                                </div>
+                                                    	왜자꾸 우리집 개한테 돼지라 하는건지 모르겠어요.ㅡㅡ<br>
+                                                   		 신고합니다. 처리 부탁요<br>
+                                                </div>-->
                                             </div>
                                             <!-- Modal footer -->
                                             <div class="modal-footer" align="center">
@@ -346,22 +361,83 @@
                                         </div>
                                     </div>
                                 </div>
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
             <br><br><br><br>
+            <script type="text/javascript">
+			 $(function(){
+                 $('input:checkbox[name="selectCheck"]').click(function(){
+                     if($('input:checkbox[name="selectCheck"]').is(':checked')){
+                         console.log("확인");
+                         clickEvent(event);
+                     }else{
+                         //console.log("체크해제확인");
+                     }
+                 })
+             });                           
+
+			 function clickEvent(event) {
+                 //console.log('target ::', $(event.target));
+
+                 var row = $(event.target).closest('tr');
+				
+                 var columns0 = row.find('#rNo');
+                 var columns1 = row.find('#cId');
+                 var columns2 = row.find('#rRs');
+                 var columns3 = row.find('#rCt');
+                 var columns4 = row.find('#rId');
+
+                 var values = "";
+				
+                 //for(var i=0; i<=4; i++){
+	                 //var value = $('columns'+i).val();
+	                 $.each(columns0, function(idx, item){
+	                	 rno = item.innerHTML;
+	                 });
+	                 $.each(columns1, function(idx, item){
+	                	 cid = item.innerHTML;
+	                 });
+	                 $.each(columns2, function(idx, item){
+	                	 reason = item.innerHTML;
+	                 });
+	                 $.each(columns3, function(idx, item){
+	                	 content = item.innerHTML;
+	                 });
+	                 $.each(columns4, function(idx, item){
+	                	 rid = item.innerHTML;
+	                 });
+                 //}
+                 //for(var i=0; i<=4; i++){
+                 	console.log(rno);
+                 //}
+                 	//$("#rpNo").val(rno); 
+                 	$("#client").val(cid); 
+                 	$("#reason").val(reason); 
+                 	$("#content").val(content); 
+                 	$("#report").val(rid);
+                 
+             }
+            </script>
             <!-- 페이징 바 -->
-            <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
-            </div>
+	        <div class="paging-area" align="center">
+	            <% if(currentPage != 1) {%>
+	            <button onclick="location.href='<%=contextPath%>/nfList.ad?cpage=<%=currentPage-1%>';">&lt; </button>
+	            <% } %>
+	            
+	            <% for(int p=startPage; p<=endPage; p++) {%>
+	            	<% if(p == currentPage) { %>
+	            		<button disabled><%= p %></button>
+	            	<% }else { %>
+						<button onclick="location.href='<%= contextPath %>/nfList.ad?cpage=<%= p %>';"><%= p %></button>
+	            	<% } %>
+	            <% } %>
+	            
+	            <% if(currentPage != maxPage) {%>
+	            	<button onclick="location.href='<%=contextPath%>/nfList.ad?cpage=<%=currentPage+1%>';">&gt; </button>
+				<% } %>
+				
+	        </div>
             <script>
                 $(function(){
                     $(".paging-area button").click(function(){
