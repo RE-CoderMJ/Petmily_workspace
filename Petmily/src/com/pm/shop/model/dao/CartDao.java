@@ -26,7 +26,7 @@ public class CartDao {
 		}
 	}
 	
-	public ArrayList<Cart> selectList(Connection conn){
+	public ArrayList<Cart> selectList(Connection conn, int userNo){
 		
 		ArrayList<Cart> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -35,7 +35,7 @@ public class CartDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+			pstmt.setInt(1, userNo);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -55,9 +55,33 @@ public class CartDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	
+	public Cart selectSum(Connection conn, int userNo) {
+		Cart c = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectSum");
 		
-		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				c = (new Cart(rset.getInt("pricesum"),
+						       rset.getInt("amountsum")));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return c;
 	}
 	
 	

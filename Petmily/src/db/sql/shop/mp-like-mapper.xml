@@ -14,4 +14,9 @@
 
 </entry>
 
+<entry key="deleteLike">
+	DELETE FROM SPMY_LIKE
+	WHERE PRODUCT_NO = ?
+</entry>
+
 </properties>

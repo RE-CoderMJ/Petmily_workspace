@@ -11,9 +11,21 @@
 	     , S.PRICE
 	FROM SPMY_CART S
 	JOIN TB_PRODUCT_UD USING(PRODUCT_NO)
+	WHERE MEM_NO = ?
 	
 </entry>
 
+<entry key="selectSum">
+	SELECT SUM(PRICE) PRICESUM, SUM(AMOUNT) AMOUNTSUM
+	  FROM (SELECT
+			       PRODUCT_NAME
+			     , S.PRODUCT_OP
+			     , S.AMOUNT
+			     , S.PRICE
+			FROM SPMY_CART S
+			JOIN TB_PRODUCT_UD USING(PRODUCT_NO)
+			WHERE MEM_NO = ?)
+</entry>
 
 
 

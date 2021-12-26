@@ -1,30 +1,27 @@
 package com.pm.shop.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.pm.member.model.vo.Member;
 import com.pm.shop.model.service.LikeService;
 import com.pm.shop.model.vo.Like;
 
 /**
- * Servlet implementation class MpLikeController
+ * Servlet implementation class AjaxDeleteLikeController
  */
-@WebServlet("/like.my")
-public class MpLikeController extends HttpServlet {
+@WebServlet("/deleteLike")
+public class AjaxDeleteLikeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MpLikeController() {
+    public AjaxDeleteLikeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +31,25 @@ public class MpLikeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
-		HttpSession session = request.getSession();
-		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
+		int productNo = Integer.parseInt(request.getParameter("pno"));
 		
-		ArrayList<Like> list = new LikeService().selectList(userNo);
+		Like l = new Like();
+		l.setProductNo(productNo);
 		
-		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/shop/mypage/like.jsp").forward(request, response);
+		int result = new LikeService().deleteLike(l);
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg", "성공적으로 삭제되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/list.no");
+		} else {
+			request.getSession().setAttribute("alertMsg","삭제 요청 실패했습니다.");
+			request.setAttribute("errorMsg", "삭제 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+		}
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "성공적으로 삭제되었습니다.");
+			response.setContentType("application/json; charset=UTF-8"); 
+		}
 	}
 
 	/**

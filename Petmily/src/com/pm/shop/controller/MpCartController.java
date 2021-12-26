@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.pm.member.model.vo.Member;
 import com.pm.shop.model.service.CartService;
 import com.pm.shop.model.vo.Cart;
 
@@ -32,9 +34,14 @@ public class MpCartController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Cart> list = new CartService().selectList();
+		HttpSession session = request.getSession();
+		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
+		ArrayList<Cart> list = new CartService().selectList(userNo);
+		
+		Cart c = new CartService().selectSum(userNo);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("c", c);
 		
 		request.getRequestDispatcher("views/shop/mypage/cart.jsp").forward(request, response);
 	}

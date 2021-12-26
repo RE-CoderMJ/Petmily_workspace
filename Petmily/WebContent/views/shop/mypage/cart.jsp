@@ -3,6 +3,7 @@
 <%@ page import=" java.util.ArrayList, com.pm.shop.model.vo.Cart" %>
  <%
  	ArrayList<Cart> list = (ArrayList<Cart>)request.getAttribute("list");
+ 	Cart sum = (Cart)request.getAttribute("c");
  %> 
     
 <!DOCTYPE html>
@@ -57,9 +58,18 @@
             margin-bottom: 20px;
             vertical-align: middle;
         }
-        #cart-checkbox{width:700px; margin:auto; font-size:20px;}
+        #cart-checkbox{
+	        margin-left: 85px; 
+	        margin-top:10px; 
+	        font-size:20px;
+	    }
 
-        input[type=checkbox] { vertical-align:middle; }
+        input[type=checkbox] { 
+        	width:18px;
+        	height:18px;
+        	vertical-align:middle; 
+        }
+        
         #content-img{
             margin-top:10px;
             margin-left: 10px;
@@ -127,8 +137,11 @@
     <form action="">
         <div>
             <div id="cart-checkbox">
-                <input type="checkbox" name="" id=""> <label for="">모두선택</label>  
-                <div class="inline" style="float:right;"><input type="checkbox" name="" id="" > <label for="">모두선택해제</label>  </div>
+                <input type="checkbox" 
+                	   name="cart" 
+                	   value="selectAll" 
+               	       onclick="selectAll(this)"> <label for="">모두선택</label>  
+                
             </div>
             
 	<% if(list.isEmpty()) { %>
@@ -148,17 +161,17 @@
                    	<%= c.getProductName() %>
                     <br>
                     <hr>
-                    <%= c.getProductOp() %>
-                    <input type="number" name="" id="" placeholder="1" style="width:30px;" value="<%= c.getAmount() %>">
-                    <input type="button" value="옵션변경">
-                    <input type="button" value="바로구매">
+                    <%= c.getProductOp() %>&nbsp;
+                    <input type="number" name="" id="" placeholder="1" style="width:30px;" value="<%= c.getAmount() %>">&nbsp;
+                    <input type="button" value="옵션변경">&nbsp;
+                    <input type="button" value="바로구매">&nbsp;
 
                 </div>
                 <div class="inline-block" id="delivery">
                   	  무료배송 | 2500원
                 </div>
                 <div class="inline-block" id="money">
-                    <h3><%= c.getProductName() %></h3>
+                    <h3><%= c.getPrice() %>원</h3>
                 </div>
 
 	                
@@ -170,8 +183,8 @@
             
 
             <div id="foot1">
-                <span id="sumcount">총개수 : xx개</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span id="summoney">총금액 : xxxxx원</span>
+                <span id="sumcount">총개수 : <%= sum.getAmountSum() %>개</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span id="summoney">총금액 : <%= sum.getPriceSum() %>원</span>
             
             </div>
             <br>
@@ -194,6 +207,17 @@
 </div>
 </div>
 </div>
+<script>
+function selectAll(selectAll) {
+	const checkboxes
+	     = document.querySelectorAll('input[type="checkbox"]');
+	
+	checkboxes.forEach((checkbox) => {
+		checkbox.checked = selectAll.checked
+	}) 
+}
+
+</script>
 	
 	
 	<%@ include file="../../common/footerbar.jsp" %>

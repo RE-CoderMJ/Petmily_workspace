@@ -25,7 +25,7 @@ private Properties prop = new Properties();
 		}
 	}
 	
-	public ArrayList<Like> selectList(Connection conn){
+	public ArrayList<Like> selectList(Connection conn, int userNo){
 		
 		ArrayList<Like> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -34,7 +34,7 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			//pstmt.setInt(1, user_no);
+			pstmt.setInt(1, userNo);
 			
 			rset = pstmt.executeQuery();
 						
@@ -56,6 +56,28 @@ private Properties prop = new Properties();
 		return list;
 		
 		
+		
+	}
+	
+	// 찜한 상품 삭제
+	public int deleteLike(Connection conn, Like l) {
+		// delete문 -> 처리된 행수 -> 트랜잭션 처리
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteLike");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,l.getProductNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 		
 	}
 }

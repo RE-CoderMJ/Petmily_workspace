@@ -77,7 +77,7 @@
 	            <br>
 	            	<%= like.getPrice() %>원
 	            <br>
-	            <button>
+	            <button style="border:none;" onclick="deleteLike();">
 	            <img src="resources/img/likeheart.png" alt="" width="40px" height="40px">
 	            </button>
 	        </div>
@@ -96,8 +96,25 @@
         </div>
 
     </div>
-<%@ include file="../../common/footerbar.jsp" %> 
  </div>
 </div> 
+<script>
+// ajax로 like delete
+function delteLike(){
+	$.ajax({
+		url:"delteLike",
+		data:{
+			content:$(#like-content)			
+		},
+		type:"post",
+		error:function(){
+			console.log("찜 삭제용 ajax 실패")
+		}
+		
+		
+	})
+}
+</script>
+<%@ include file="../../common/footerbar.jsp" %> 
 </body>
 </html>
