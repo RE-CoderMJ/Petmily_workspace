@@ -131,8 +131,11 @@
 		border-radius: 5px;
 	}
 
-
-
+	/* cancel-content div 클릭하면 넘어가게*/
+	#c {
+		cursor:pointer;
+	}
+	
       
       .inline-block{display:inline-block;}
     </style>
@@ -169,6 +172,7 @@
 		<div align="center" id="nullcase">취소/환불 내역이 없습니다.</div>
 	<% } else { %>
 		<% for(Cancel c : list) { %>
+		<div id ="c" onclick="location.href='<%= contextPath %>/canceldetail.my?orderno=<%= c.getOrderNo() %>'">
           <table id="cancel-content" style="border-spacing: 10px;">
             <tr style="background-color: rgb(213,213,213);">
                 <th>주문번호/주문일 </th>
@@ -190,7 +194,7 @@
             </tr>
     
         </table>
-
+	</div>
 
 	        <% } %>
 	<% } %>  
@@ -208,14 +212,16 @@
             	<% if(pp == currentPage) { %> 
             		<button disabled><%=pp %></button>
             	<% } else { %>
-            		<button onclick="location.href='<%=contextPath %>/cancelselect.my?cpage=<%=pp%>';"><%=pp %></button>
+            		<button onclick="location.href='<%=contextPath %>/term.my?cpage=<%=pp%>';"><%=pp %></button>
             	<% } %>	
             <% } %>
 
 			<% if(currentPage != maxPage) { %>
-				<button onclick="location.href='<%= contextPath %>/cancelselect.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
+				<button onclick="location.href='<%= contextPath %>/term.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
 			<% } %>	
+			
 		<% } else { %>	
+		
             <% if(currentPage != startPage) { %>
             	<button onclick="location.href='<%=contextPath%>/cancelselect.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
             <% } %>	

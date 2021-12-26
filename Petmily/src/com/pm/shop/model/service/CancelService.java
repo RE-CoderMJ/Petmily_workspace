@@ -37,6 +37,16 @@ public class CancelService {
 		ArrayList<Cancel> termList = new CancelDao().selectTermList(conn, search, pi);
 		
 		close(conn);
-		return(termList);
+		return termList;
+	}
+	
+	
+	// 상세조회
+	public Cancel selectDetailList(int orderNo) {
+		Connection conn = getConnection();
+		Cancel c = new CancelDao().selectDetailList(conn, orderNo);
+		
+		close(conn);
+		return c;
 	}
 }

@@ -1,11 +1,15 @@
 package com.pm.shop.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.shop.model.service.CancelService;
+import com.pm.shop.model.vo.Cancel;
 
 /**
  * Servlet implementation class MpCancelDetailSelectController
@@ -26,6 +30,13 @@ public class MpCancelDetailSelectController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int orderNo = Integer.parseInt(request.getParameter("orderno"));
+		
+		Cancel c = new CancelService().selectDetailList(orderNo);
+		
+		request.setAttribute("c", c);
+		
 		request.getRequestDispatcher("views/shop/mypage/cancelDetail.jsp").forward(request, response);
 	}
 

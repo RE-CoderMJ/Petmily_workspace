@@ -61,6 +61,24 @@ public class Cancel {
 		this.ccSledding = ccSledding;
 		this.ccPayment = ccPayment;
 	}
+	
+	
+
+	public Cancel(int orderNo, String productName, int orderPnum, String orderPoption, int orderPamount, int price,
+			String memName, String phone, String adderess, String ccPayment) {
+		super();
+		this.orderNo = orderNo;
+		this.productName = productName;
+		this.orderPnum = orderPnum;
+		this.orderPoption = orderPoption;
+		this.orderPamount = orderPamount;
+		this.price = price;
+		this.memName = memName;
+		this.phone = phone;
+		this.adderess = adderess;
+		this.ccPayment = ccPayment;
+	}
+
 
 	public int getCcNo() {
 		return ccNo;

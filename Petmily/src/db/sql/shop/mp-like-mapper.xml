@@ -4,21 +4,14 @@
 
 <entry key="selectList">
 
-	SELECT
-	       PRODUCT_NAME
-	     , S.PRODUCT_OP
-	     , S.AMOUNT
-	     , S.PRICE
-	FROM SPMY_CART S
-	JOIN TB_PRODUCT_UD USING(PRODUCT_NO)
-	
+	SELECT 
+		    PRODUCT_NO
+	      , PRODUCT_NAME
+	      , PRICE
+	  FROM SPMY_LIKE
+	  JOIN TB_PRODUCT_UD USING (PRODUCT_NO)
+	  WHERE MEM_NO = ?
+
 </entry>
-
-
-
-
-
-
-
 
 </properties>

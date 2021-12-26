@@ -154,6 +154,41 @@ private Properties prop = new Properties();
 	}
 	
 	
+	public Cancel selectDetailList(Connection conn, int orderNo) {
+		// select문 -> ResultSet(한행) -> Cancel
+		Cancel c = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderNo);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				c = new Cancel(rset.getInt("cancel_ono"),
+								 rset.getString("cancel_pname"),
+								 rset.getInt("order_pnum"),
+								 rset.getString("cancel_opoption"),
+								 rset.getInt("cancel_opamount"),
+								 rset.getInt("cancel_price"),
+								 rset.getString("cancel_name"),
+								 rset.getString("cancel_phone"),
+								 rset.getString("cancel_address"),
+								 rset.getString("payment"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return c;
+	}
+	
 	
 	
 }

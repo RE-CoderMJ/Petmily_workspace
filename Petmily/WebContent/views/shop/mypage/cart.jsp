@@ -18,13 +18,13 @@
 		}
 		.oouter{
 			width: 1700px;
-			height: 1000px;
+			min-height: 1000px;
 			margin:auto;
 		}   
 		     
 		.content-area{
 			width: 1400px;
-			height: 1000px;
+			min-height: 1000px;
 			padding:200px;
 			padding-top:5px;
 			margin:auto;
@@ -134,15 +134,15 @@
 	<% if(list.isEmpty()) { %>
 		<div align="center" id="nullcase">장바구니에 상품이 없습니다.</div>
 	<% } else { %>
-		<% for(Cart c : list) { %>
 	
+		<% for(Cart c : list) { %>
             <div class="cart-content" >
                 
                 <div class="inline-block" >
                     <input type="checkbox" name="cartCk" value="결제창에넘길값" style="margin-top: 10px; margin-left:15px;"> 
                     <img src=""  id="content-img" width="80px" height="80px">    
                 </div>
-                
+
                 <div class="inline-block"  id="cart-option" >
                     
                    	<%= c.getProductName() %>
@@ -161,8 +161,9 @@
                     <h3><%= c.getProductName() %></h3>
                 </div>
 
-                
+	                
             </div>
+       	<% } %>
 
 
             
@@ -185,7 +186,6 @@
             <br>
             <br>
             
-           <% } %>
 	<% } %>
 
         </div>

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.pm.shop.model.vo.Like" %>
+ <%
+ 	ArrayList<Like> list = (ArrayList<Like>)request.getAttribute("list");
+
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +42,11 @@
             font-size: 18px;
         }
         .inline-block{display:inline-block;}
+        
+        #nullcase{
+	       	font-size:20px;
+	       	padding-top:50px;
+        }
     </style>
 </head>
 <body>
@@ -51,110 +61,37 @@
     <img src="resources/img/nullheart.png" width="60px" height="60px" alt="" style="margin-left:150px; margin-bottom:20px;">
     
     <div id="outer">
+    
+	<input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
+	
+    <% int a = 0; %>
+    <% if(list.isEmpty()) { %>
+    	<div align="center" id="nullcase">찜한 상품이 없습니다.</div>
+    <% } else { %>
+		<% for(Like like : list) { %>
+			
+	        <div class="inline-block" id="like-content" align="center">
+	            <img src=""  id="content-img" width="100px" height="100px" > 
+	            <br>
+	            	<%= like.getProductName() %>
+	            <br>
+	            	<%= like.getPrice() %>원
+	            <br>
+	            <button>
+	            <img src="resources/img/likeheart.png" alt="" width="40px" height="40px">
+	            </button>
+	        </div>
 
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px" > 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <br>
-            <img src="resources/img/likeheart.png" alt="" width="40px" height="40px">
-            
-        </div>
+		<!-- 한줄에 5개씩 보여지도록 어떻게 하지 -->
+	        <% a++;
+	        if(a % 5 ==0) { 
+	        	System.out.println();	        
+   			}%>
+        
 
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
+		<% } %>
+	<% } %>
 
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-
-        <br>
-
-
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-            상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-           	 상품명
-            <br>
-            20,000원
-            <img src="" alt="">
-            
-        </div>
-
-        <div class="inline-block" id="like-content" align="center">
-            <img src=""  id="content-img" width="100px" height="100px"> 
-            <br>
-          	  상품명
-            <br>
-            20,000원
-            <img src="" alt="">
             
         </div>
 

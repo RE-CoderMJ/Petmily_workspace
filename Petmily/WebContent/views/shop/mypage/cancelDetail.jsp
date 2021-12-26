@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.shop.model.vo.Cancel" %>
+ <%
+ 	Cancel c = (Cancel)request.getAttribute("c");
+ 	
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +37,10 @@
             font-weight: 900;
             margin-bottom:20px;
             margin-left:150px;
+            cursor:pointer;
         } 
         #outer{
-            width:800px;
+            width:800px; 
             border: 1px solid rgb(94,94,94);
             padding: 10px 20px;
             border-radius: 10px;
@@ -83,10 +89,15 @@
 
 <div class="content-area">
 
-    <div id="title" class="inline-block" >취소/환불 내역 조회</div>
+    <div id="title" class="inline-block"
+   	 		onclick="location.href='<%=contextPath%>/cancelselect.my?cpage=1'">
+   	 	취소/환불 내역 조회
+   	 </div>
 
+	<% if(c == null) { %>
+		<div align="center" id="nullcase">취소/환불 내역이 없습니다.</div>
+	<% } else { %>
     <div id="outer">
-
         <div class="one">
             <div class="inline-block" >
                 <img src=""  class="content-img" width="80px" height="80px">    
@@ -94,15 +105,15 @@
             
             <div class="inline-block onecontent" >
                         
-                상품명
+               <%= c.getProductName() %>
                 <br>
 
-                <div id="option" style="font-size:12px; margin-top: 5px;">블루 1개</div>
+                <div id="option" style="font-size:12px; margin-top: 5px;"><%= c.getOrderPoption() %></div>
     
             </div>
             
             <div class="inline-block money">
-                <h3>20,000 원</h3>
+                <h3><%= c.getPrice() %>원</h3>
             </div>
         </div>
 
@@ -114,7 +125,7 @@
             <div class="inline-block onecontent">
                 상품명
                 <br>
-                <div id="option" style="font-size:12px; margin-top: 5px;">블루 1개</div>
+                <div id="option" style="font-size:12px; margin-top: 5px;"></div>
     
             </div>
             
@@ -150,20 +161,17 @@
             <table style="border-spacing: 10px;">
                 <tr>
                     <td>이름 </td>
-                    <td>xxx님</td>
+                    <td><%= c.getMemName() %>님</td>
                 </tr>
                 <tr>
                     <td>주소 </td>
-                    <td>서울시 용산구</td>
+                    <td><%= c.getAdderess() %></td>
                 </tr>
                 <tr>
                     <td>휴대폰 </td>
-                    <td>010-xxxx-xxxx</td>
+                    <td><%= c.getPhone() %></td>
                 </tr>
-                <tr>
-                    <td>배송메모 </td>
-                    <td>dfdfdfdf</td>
-                </tr>
+
             </table>
 
 
@@ -175,7 +183,7 @@
             <table style="border-spacing: 10px;">
                 <tr>
                     <td>상품금액</td>
-                    <td>20,000원</td>
+                    <td><%= c.getPrice() %>원</td>
                 </tr>
                 <tr>
                     <td>배송비</td>
@@ -183,11 +191,15 @@
                 </tr>
                 <tr>
                     <td>포인트</td>
-                    <td>-500원</td>
+                    <td>xxx p</td>
+                </tr>
+                <tr>
+					<td>결제수단</td>
+					<td><%= c.getCcPayment() %><td>
                 </tr>
                 <tr>
                     <th>최종 결제금액</th>
-                    <th>22,000 </th>
+                    <th>xxxx 원</th>
                 </tr>
             </table>
 
@@ -199,7 +211,7 @@
                 <table>
                     <tr>
                         <td>환불상품금액</td>
-                        <td>60,000원</td>
+                        <td>(총금액)원</td>
                     </tr>
                     <tr>
                         <td>환불배송비</td>
@@ -207,7 +219,7 @@
                     </tr>
                     <tr>
                         <td>환불포인트</td>
-                        <td> -500원</td>
+                        <td> -xxx p</td>
                     </tr>
                     <tr>
                         <th>최종 결제금액</th>
@@ -219,8 +231,8 @@
             
         </div>
     </div>
-
     </div>
+	<% } %>
 
 </div>
     
