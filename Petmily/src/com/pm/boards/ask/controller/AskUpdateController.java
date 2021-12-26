@@ -1,4 +1,4 @@
-package com.pm.boards.market.controller;
+package com.pm.boards.ask.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.pm.boards.market.model.service.MarketService;
-import com.pm.boards.market.model.vo.Market;
+import com.pm.boards.ask.model.service.AskService;
+import com.pm.boards.ask.model.vo.Ask;
 import com.pm.common.MyFileRenamePolicy;
 import com.pm.common.model.vo.Attachment;
 
 /**
- * Servlet implementation class MarketUpdateController
+ * Servlet implementation class AskUpdateController
  */
-@WebServlet("/update.market")
-public class MarketUpdateController extends HttpServlet {
+@WebServlet("/update.ask")
+public class AskUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MarketUpdateController() {
+    public AskUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,21 +40,17 @@ public class MarketUpdateController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
-			
 			int maxSize = 30 * 1024 * 1024;
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/boards_upfiles/market_upfiles/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/boards_upfiles/ask_upfiles/");
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
-			int marketNo = Integer.parseInt(multiRequest.getParameter("mno")); 
+			int ano = Integer.parseInt(multiRequest.getParameter("ano"));
 			
-			Market m = new Market();
-			m.setMarketNo(marketNo);
-			m.setMarketWriter(multiRequest.getParameter("userNo"));
-			m.setCategory(multiRequest.getParameter("category"));
-			m.setdCategory(multiRequest.getParameter("d-category"));
-			m.setMarketTitle(multiRequest.getParameter("title"));
-			m.setPrice(multiRequest.getParameter("price"));
-			m.setMarketContent(multiRequest.getParameter("content"));
+			Ask a = new Ask();
+			a.setAskNo(ano);
+			a.setCategory(Integer.parseInt(multiRequest.getParameter("category")));
+			a.setAskTitle(multiRequest.getParameter("title"));
+			a.setAskContent(multiRequest.getParameter("content"));
 			
 			ArrayList<Attachment> list = new ArrayList<>();
 			
@@ -67,22 +63,22 @@ public class MarketUpdateController extends HttpServlet {
 					Attachment att = new Attachment();
 					att.setOriginName(multiRequest.getOriginalFileName(key));
 					att.setChangeName(multiRequest.getFilesystemName(key));
-					att.setFilePath("resources/boards_upfiles/market_upfiles/");
+					att.setFilePath("resources/boards_upfiles/ask_upfiles/");
 					
-					if(multiRequest.getParameter(originAttNo) != null) { // 기존 첨부파일 있었을 경우
+					if(multiRequest.getParameter(originAttNo) != null) {
 						att.setAttachmentNo(Integer.parseInt(multiRequest.getParameter(originAttNo)));
+					}else {
+						att.setRefNo(ano);
 					}
 					
-					att.setRefNo(marketNo);
-					
-					list.add(att);					
+					list.add(att);
 				}
 			}
 			
-			int result = new MarketService().updateMarket(m, list);
+			int result = new AskService().updateAsk(a, list);
 			
-			if(result >0) {
-				response.sendRedirect(request.getContextPath() + "/detail.market?mno=" + marketNo);
+			if(result > 0) {
+				response.sendRedirect(request.getContextPath() + "/detail.ask?ano=" + ano);
 			}else {
 				
 			}

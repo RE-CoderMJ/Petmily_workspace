@@ -24,7 +24,7 @@
 				<div id="title-area">
 	                <div id="title"><%=a.getAskTitle() %></div>
 	                <% if(loginUser != null) { %>
-	                <button type="button" class="btn" id="enr oll" onclick="location.href='<%= contextPath %>/enrollForm.ask';">글쓰기</button>
+	                <button type="button" class="btn" id="enroll" onclick="location.href='<%= contextPath %>/enrollForm.ask';">글쓰기</button>
 	                <% } %>
 				</div>
 				<hr style="border: solid 1px rgb(179, 178, 178);">
@@ -33,7 +33,7 @@
 	                    <%=a.getEnrollDate() %> &nbsp;&nbsp;&nbsp;&nbsp;조회 <%=a.getCount() %>&nbsp;&nbsp;&nbsp;
 	                    <a data-toggle="modal" data-target="#reportAskModal">신고</a> &nbsp;
 	                    <% if(loginUser != null && loginUser.getMemNo() == a.getWriterNo()) { %>
-	                    <a href="<%=contextPath%>/updateForm.ask">수정하기</a>
+	                    <a href="<%=contextPath%>/updateForm.ask?ano=<%=a.getAskNo()%>">수정하기</a>
 	                    <% } %>
 	                </div>
 	                <div id="writer">

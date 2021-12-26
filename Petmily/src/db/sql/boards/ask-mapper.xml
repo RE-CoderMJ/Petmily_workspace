@@ -94,6 +94,43 @@
 		 WHERE REF_BOARD_NO = 1
 		   AND REF_NO = ?
 	</entry>
+	<entry key="updateAsk">
+		UPDATE
+		       ASK
+		   SET CATEGORY = ?
+		     , ASK_TITLE = ?
+		     , ASK_CONTENT = ?
+		 WHERE ASK_NO = ?
+	</entry>
+	<entry key="updateAttachment">
+		UPDATE 
+		  	   ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , FILE_PATH = ?
+		 WHERE ATTACHMENT_NO = ?
+	</entry>
+	<entry key="insertNewAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	ATTACHMENT_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , 1
+		  , ?
+		  , ?
+		  )
+	</entry>
 	<entry key="deleteAsk">
 		UPDATE
 		       ASK

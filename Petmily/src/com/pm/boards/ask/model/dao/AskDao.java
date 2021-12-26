@@ -190,6 +190,72 @@ public class AskDao {
 		return list;
 	}
 
+	public int updateAsk(Connection conn, Ask a) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAsk");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, a.getCategory());
+			pstmt.setString(2, a.getAskTitle());
+			pstmt.setString(3, a.getAskContent());
+			pstmt.setInt(4, a.getAskNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int updateAttachment(Connection conn, Attachment att) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setString(3, att.getFilePath());
+			pstmt.setInt(4, att.getAttachmentNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertNewAttachment(Connection conn, Attachment att) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, att.getOriginName());
+			pstmt.setString(2, att.getChangeName());
+			pstmt.setInt(3, att.getRefNo());
+			pstmt.setString(4, att.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 	public int deleteAsk(Connection conn, int ano) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -208,5 +274,8 @@ public class AskDao {
 		
 		return result;
 	}
+
+
+
 
 }

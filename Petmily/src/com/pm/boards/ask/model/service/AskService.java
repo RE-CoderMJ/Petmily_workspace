@@ -67,6 +67,39 @@ public class AskService {
 		return list;
 	}
 
+
+	public int updateAsk(Ask a, ArrayList<Attachment> list) {
+		Connection conn = getConnection();
+		
+		int result1 = new AskDao().updateAsk(conn, a);
+		
+		int result2 = 1;
+		if(!list.isEmpty()) {
+			for(Attachment att : list) {
+				if(att.getAttachmentNo() != 0) {
+					result2 = new AskDao().updateAttachment(conn, att);
+				}else {
+					result2 = new AskDao().insertNewAttachment(conn, att);
+				}
+				
+				if(!(result2>0)) {
+					result2 = 0;
+					break;
+				}
+			}
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
+	}
+
 	public int deleteAsk(int ano) {
 		Connection conn = getConnection();
 		int result = new AskDao().deleteAsk(conn, ano);
@@ -77,5 +110,4 @@ public class AskService {
 		}
 		return result;
 	}
-
 }
