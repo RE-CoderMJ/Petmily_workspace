@@ -1,13 +1,14 @@
 package com.pm.admin_Ask.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.admin_Missing.model.service.MissingService;
+import com.pm.admin_Ask.model.service.AskService;
 
 /**
  * Servlet implementation class AdminAskDeleteController
@@ -34,7 +35,7 @@ public class AdminAskDeleteController extends HttpServlet {
 		int result = new AskService().deleteAsk(askNo);
 		
     	if(result > 0) {
-    		request.getSession().setAttribute("alertMsg", "성공적으로 '궁금해요' 게시글을 삭제하였습니다.");
+    		
     		response.sendRedirect(request.getContextPath() + "/adminList.ak?cpage=1");
     		
     	}else {

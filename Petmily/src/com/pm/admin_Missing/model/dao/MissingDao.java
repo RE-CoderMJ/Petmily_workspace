@@ -77,9 +77,9 @@ public class MissingDao {
 			
 			while(rset.next()) {
 				list.add(new Missing(rset.getInt("missing_no"),
-								 	 rset.getString("missing_writer"),
+								 	 rset.getString("nickname"),
 								 	 rset.getString("category"),
-								 	 rset.getString("missing_writer"),
+								 	 rset.getString("d_category"),
 								 	 rset.getString("enroll_date"),
 								 	 rset.getString("location")));
 			}
@@ -113,7 +113,7 @@ public class MissingDao {
 			
 			if(rset.next()) {
 				m = new Missing(rset.getInt("missing_no"),
-								rset.getString("missing_writer"),
+								rset.getString("nickname"),
 								rset.getString("category"),
 								rset.getString("d_category"),
 								rset.getString("enroll_date"),

@@ -160,13 +160,13 @@
                         	String dcategory = "";
                         
                         	switch(Integer.parseInt(m.getdCategory())) {
-                        	case 1: category="살래요"; break;
-                        	case 2: category="팔래요"; break;
+                        	case 1: dcategory="살래요"; break;
+                        	case 2: dcategory="팔래요"; break;
                         	}
                         	%>
                         	<td><%= dcategory %></td>
                             <td><%= m.getMarketTitle() %></td>
-                            <td><%= m.getPrice() %></td>
+                            <td>￦<%= m.getPrice() %></td>
                             <td><%= m.getEnrollDate() %></td>
                         </tr>
                       <% } %>

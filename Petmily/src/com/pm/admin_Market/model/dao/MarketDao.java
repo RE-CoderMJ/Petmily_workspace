@@ -77,7 +77,7 @@ public class MarketDao {
 			
 			while(rset.next()) {
 				list.add(new Market(rset.getInt("market_no"),
-								 	rset.getString("market_writer"),
+								 	rset.getString("nickname"),
 								 	rset.getString("category"),
 								 	rset.getString("d_category"),
 								 	rset.getString("market_title"),
@@ -114,7 +114,7 @@ public class MarketDao {
 			
 			if(rset.next()) {
 				m = new Market(rset.getInt("market_no"),
-							   rset.getString("market_writer"),
+							   rset.getString("nickname"),
 							   rset.getString("category"),
 							   rset.getString("d_category"),
 							   rset.getString("market_title"),

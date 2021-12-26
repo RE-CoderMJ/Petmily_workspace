@@ -77,7 +77,7 @@ public class AskDao {
 			
 			while(rset.next()) {
 				list.add(new Ask(rset.getInt("ask_no"),
-								 rset.getString("ask_writer"),
+								 rset.getString("nickname"),
 								 rset.getString("category"),
 								 rset.getString("ask_title"),
 								 rset.getString("enroll_date")));
@@ -112,7 +112,7 @@ public class AskDao {
 			
 			if(rset.next()) {
 				a = new Ask(rset.getInt("ask_no"),
-							rset.getString("ask_writer"),
+							rset.getString("nickname"),
 							rset.getString("category"),
 							rset.getString("ask_title"),
 							rset.getString("enroll_date"));

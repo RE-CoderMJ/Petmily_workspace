@@ -127,8 +127,8 @@
                             <th width="100">글번호</th>
                             <th width="100">아이디</th>
                             <th width="150">동물 분류</th>
-                            <th width="150">게시판 분류</th>
-                            <th width="450">발견, 발생장소</th>
+                            <th width="200">게시판 분류</th>
+                            <th width="400">발견, 발생장소</th>
                             <th width="150">작성일</th>
                         </tr>
                     </thead>
@@ -159,8 +159,8 @@
                         	String dcategory = "";
                         
                         	switch(Integer.parseInt(m.getdCategory())) {
-                        	case 1: category="찾고있어요"; break;
-                        	case 2: category="보호하고있어요"; break;
+                        	case 1: dcategory="찾고있어요"; break;
+                        	case 2: dcategory="보호하고있어요"; break;
                         	}
                         	%>
                         	<td><%= dcategory %></td>
@@ -188,7 +188,7 @@
     		<!-- 글 클릭시 상세페이지 조회 -->
 	    	<script>
 	    	$(function(){
-	    		$("#boardstable>tbody>tr").click(function(){
+	    		$("#missingtable>tbody>tr").click(function(){
 	    			location.href = '<%=contextPath%>/adminDetail.miss?num=' + $(this).children().eq(0).text();
 	    		})
 	    	})

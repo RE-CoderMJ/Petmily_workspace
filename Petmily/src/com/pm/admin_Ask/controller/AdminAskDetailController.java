@@ -1,14 +1,15 @@
 package com.pm.admin_Ask.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.admin_Missing.model.service.MissingService;
-import com.pm.admin_Missing.model.vo.Missing;
+import com.pm.admin_Ask.model.service.AskService;
+import com.pm.admin_Ask.model.vo.Ask;
 
 /**
  * Servlet implementation class AdminAskDetailController
@@ -30,13 +31,13 @@ public class AdminAskDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int marketNo = Integer.parseInt(request.getParameter("num"));
+		int askNo = Integer.parseInt(request.getParameter("num"));
 		
-		Market m = new MarketService().selectMarket(marketNo);
+		Ask a = new AskService().selectAsk(askNo);
 
 			
-			request.setAttribute("market", m);
-			request.getRequestDispatcher("views/admin/market/adminMarketDetailView.jsp").forward(request, response);
+			request.setAttribute("ask", a);
+			request.getRequestDispatcher("views/admin/ask/adminAskDetailView.jsp").forward(request, response);
 			
 		
 	}

@@ -35,7 +35,6 @@ public class AdminMissingDeleteController extends HttpServlet {
 		int result = new MissingService().deleteMissing(missingNo);
 		
     	if(result > 0) {
-    		request.getSession().setAttribute("alertMsg", "성공적으로 '찾고있어요' 게시글을 삭제하였습니다.");
     		response.sendRedirect(request.getContextPath() + "/adminList.miss?cpage=1");
     		
     	}else {
