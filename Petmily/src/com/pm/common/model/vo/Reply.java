@@ -2,16 +2,17 @@ package com.pm.common.model.vo;
 
 public class Reply {
 	private int replyNo;
-	private String replyWriter;
+	private int replyWriter;
 	private int boardNo;
 	private int contentNo;
 	private String replyContent;
 	private String enrollDate;
+	private String modifyDate;
 	private String status;
 	private String privateVa;
 	
-	public Reply(int replyNo, String replyWriter, int boardNo, int contentNo, String replyContent, String enrollDate,
-			String status, String privateVa) {
+	public Reply(int replyNo, int replyWriter, int boardNo, int contentNo, String replyContent, String enrollDate,
+			String modifyDate, String status, String privateVa) {
 		super();
 		this.replyNo = replyNo;
 		this.replyWriter = replyWriter;
@@ -19,7 +20,17 @@ public class Reply {
 		this.contentNo = contentNo;
 		this.replyContent = replyContent;
 		this.enrollDate = enrollDate;
+		this.modifyDate = modifyDate;
 		this.status = status;
+		this.privateVa = privateVa;
+	}
+
+	public Reply(int replyNo, int replyWriter, String replyContent, String enrollDate, String privateVa) {
+		super();
+		this.replyNo = replyNo;
+		this.replyWriter = replyWriter;
+		this.replyContent = replyContent;
+		this.enrollDate = enrollDate;
 		this.privateVa = privateVa;
 	}
 
@@ -31,11 +42,11 @@ public class Reply {
 		this.replyNo = replyNo;
 	}
 
-	public String getReplyWriter() {
+	public int getReplyWriter() {
 		return replyWriter;
 	}
 
-	public void setReplyWriter(String replyWriter) {
+	public void setReplyWriter(int replyWriter) {
 		this.replyWriter = replyWriter;
 	}
 
@@ -71,6 +82,14 @@ public class Reply {
 		this.enrollDate = enrollDate;
 	}
 
+	public String getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(String modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -90,7 +109,8 @@ public class Reply {
 	@Override
 	public String toString() {
 		return "Reply [replyNo=" + replyNo + ", replyWriter=" + replyWriter + ", boardNo=" + boardNo + ", contentNo="
-				+ contentNo + ", replyContent=" + replyContent + ", enrollDate=" + enrollDate + ", status=" + status
-				+ ", privateVa=" + privateVa + "]";
+				+ contentNo + ", replyContent=" + replyContent + ", enrollDate=" + enrollDate + ", modifyDate="
+				+ modifyDate + ", status=" + status + ", privateVa=" + privateVa + "]";
 	}
+	
 }
