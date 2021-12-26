@@ -28,5 +28,7 @@ public class InquiryService {
 		close(conn);
 		return list;
 	}
+	
+	
 
 }
