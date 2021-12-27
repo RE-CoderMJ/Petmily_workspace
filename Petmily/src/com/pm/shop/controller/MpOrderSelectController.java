@@ -79,12 +79,12 @@ public class MpOrderSelectController extends HttpServlet {
 		ArrayList<OrderSelect> list = new OrderSelectService().selectList(pi, userNo);
 		
 		//int orderNo = Integer.parseInt(request.getParameter("orderno"));
-		ArrayList<OrderSelect> sum = new OrderSelectService().selectSum(userNo);
+		//ArrayList<OrderSelect> sum = new OrderSelectService().selectSum(userNo);
 		
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		request.setAttribute("list", sum);
+		//request.setAttribute("list", sum);
 		
 		//System.out.println(pi);
 		request.getRequestDispatcher("views/shop/mypage/orderSelect.jsp").forward(request, response);

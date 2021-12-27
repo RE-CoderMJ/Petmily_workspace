@@ -8,6 +8,7 @@ public class Like {
 	private Date likdDate;
 	private String productName;
 	private int price;
+	private String basicImg;
 	
 	public Like() {}
 
@@ -21,11 +22,12 @@ public class Like {
 	}
 	
 
-	public Like(int productNo, String productName, int price) {
+	public Like(int productNo, String productName, int price, String basicImg) {
 		super();
 		this.productNo = productNo;
 		this.productName = productName;
 		this.price = price;
+		this.basicImg = basicImg;
 	}
 
 	public int getMemNo() {
@@ -68,11 +70,22 @@ public class Like {
 		this.price = price;
 	}
 
+	
+	public String getBasicImg() {
+		return basicImg;
+	}
+
+	public void setBasicImg(String basicImg) {
+		this.basicImg = basicImg;
+	}
+
 	@Override
 	public String toString() {
 		return "Like [memNo=" + memNo + ", productNo=" + productNo + ", likdDate=" + likdDate + ", productName="
-				+ productName + ", price=" + price + "]";
+				+ productName + ", price=" + price + ", basicImg=" + basicImg + "]";
 	}
+
+	
 	
 	
 }

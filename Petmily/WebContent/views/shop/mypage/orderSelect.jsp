@@ -77,14 +77,16 @@
         }
         #c2{
             color:darkslategray; /*색 바꾸기*/
-            margin-left:30px;
+            position:absolute;
+        	top:20px;
+        	left: 200px;
             font-weight: 700;
             font-size: 18px;
         }
 
         #c3{
             color:gray;  /*색 바꾸기*/
-            margin-left: 320px;
+            margin-left: 420px;
             font-size:16px;
         }
         #c4{
@@ -177,8 +179,8 @@
         <div id="content">
             <div class="inline-block" id="c1"><%= os.getOrderDate() %> 구매</div>
             <div class="inline-block" id="c2" name="orderno" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno=<%= os.getOrderNo() %>'">주문번호 : <%= os.getOrderNo() %></div>
-            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno<%= os.getOrderNo() %>'">총 <%= os.getAmountSum() %>개</div>
-            <div class="inline-block" id="c4">총 <%= os.getPriceSum() %>원</div>
+            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno<%= os.getOrderNo() %>'">총 1개</div>
+            <div class="inline-block" id="c4">총 <%= os.getPrice() %>원</div>
             <button class="btn" data-toggle="modal" data-target="#my80sizeModal"> 
             	<img src="resources/img/down-arrow.png" class="down-arrow">
             </button>

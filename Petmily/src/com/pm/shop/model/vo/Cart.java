@@ -9,6 +9,7 @@ public class Cart {
 	private String productName;
 	private int priceSum;
 	private int amountSum;
+	private String basicImg;
 	
 
 	public Cart(int memNo, int productNo, String productOp, int amount, int price, String productName) {
@@ -31,12 +32,13 @@ public class Cart {
 
 
 
-	public Cart(String productName, String productOp, int amount, int price) {
+	public Cart(String productName, String productOp, int amount, int price, String basicImg) {
 		super();
 		this.productName= productName;
 		this.productOp = productOp;
 		this.amount = amount;
 		this.price = price;
+		this.basicImg = basicImg;
 	}
 
 	public int getMemNo() {
@@ -109,6 +111,20 @@ public class Cart {
 	public void setAmountSum(int amountSum) {
 		this.amountSum = amountSum;
 	}
+	
+	
+
+
+
+	public String getBasicImg() {
+		return basicImg;
+	}
+
+
+
+	public void setBasicImg(String basicImg) {
+		this.basicImg = basicImg;
+	}
 
 
 
@@ -116,7 +132,11 @@ public class Cart {
 	public String toString() {
 		return "Cart [memNo=" + memNo + ", productNo=" + productNo + ", productOp=" + productOp + ", amount=" + amount
 				+ ", price=" + price + ", productName=" + productName + ", priceSum=" + priceSum + ", amountSum="
-				+ amountSum + "]";
+				+ amountSum + ", basicImg=" + basicImg + "]";
 	}
+
+
+
+	
 
 }

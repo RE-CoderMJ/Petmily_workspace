@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.pm.member.model.vo.Member;
 import com.pm.shop.model.service.CancelService;
 import com.pm.shop.model.vo.Cancel;
 
@@ -30,10 +32,12 @@ public class MpCancelDetailSelectController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
 		
 		int orderNo = Integer.parseInt(request.getParameter("orderno"));
 		
-		Cancel c = new CancelService().selectDetailList(orderNo);
+		Cancel c = new CancelService().selectDetailList(orderNo, userNo);
 		
 		request.setAttribute("c", c);
 		

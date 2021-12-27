@@ -153,7 +153,7 @@
                 
                 <div class="inline-block" >
                     <input type="checkbox" name="cartCk" value="결제창에넘길값" style="margin-top: 10px; margin-left:15px;"> 
-                    <img src=""  id="content-img" width="80px" height="80px">    
+                    <img src="<%= contextPath %>/<%=c.getBasicImg() %>"  id="content-img" width="80px" height="80px">    
                 </div>
 
                 <div class="inline-block"  id="cart-option" >

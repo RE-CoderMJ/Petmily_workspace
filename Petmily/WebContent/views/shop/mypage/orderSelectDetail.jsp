@@ -206,8 +206,8 @@ div, img, li, a{
 
 
         <div id="foot">            
-            <span id="sumcount">총개수 : xx개</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="summoney">총금액 : xxxxx원</span>
+            <span id="sumcount">총개수 : 1개</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="summoney">총금액 : <%= osd.getPrice() %>원</span>
         </div>
         <br><br>
         

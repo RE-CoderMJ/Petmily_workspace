@@ -47,9 +47,9 @@ public class CancelService {
 	
 	
 	// 상세조회
-	public Cancel selectDetailList(int orderNo) {
+	public Cancel selectDetailList(int orderNo, int userNo) {
 		Connection conn = getConnection();
-		Cancel c = new CancelDao().selectDetailList(conn, orderNo);
+		Cancel c = new CancelDao().selectDetailList(conn, orderNo, userNo);
 		
 		close(conn);
 		return c;

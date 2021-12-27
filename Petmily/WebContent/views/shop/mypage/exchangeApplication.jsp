@@ -278,7 +278,8 @@
     <div class="modal" id="cancel">
         <div class="modal-dialog">
           <div class="modal-content" style="background-color: gray;">
-      
+          
+
             <!-- Modal Header -->
             <div class="modal-header" >
               <h4 class="modal-title" style="color: white;">반품 사유</h4>
@@ -307,8 +308,11 @@
       
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="submit" id="donebtn">확인</button>
+              <button type="submit" id="donebtn" onclick="location.href='<%= contextPath %>/returnComplete.my'">확인</button>
             </div>
+            
+
+            
           </div>
         </div>
       </div>

@@ -42,7 +42,8 @@ public class CartDao {
 				list.add(new Cart(rset.getString("product_name"),
 								  rset.getString("product_op"),
 								  rset.getInt("amount"),
-								  rset.getInt("price")						
+								  rset.getInt("price"),
+								  rset.getString("basicimg")
 						));
 			}
 			

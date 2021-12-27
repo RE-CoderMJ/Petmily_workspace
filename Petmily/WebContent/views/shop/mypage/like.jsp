@@ -71,7 +71,7 @@
 		<% for(Like like : list) { %>
 			
 	        <div class="inline-block like-content" align="center">
-	            <img src=""  id="content-img" width="100px" height="100px" > 
+	            <img src="<%= contextPath %>/<%=like.getBasicImg() %>"  id="content-img" width="100px" height="100px" > 
 	            <br>
 	            	<%= like.getProductName() %>
 	            <br>

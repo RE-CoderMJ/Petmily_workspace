@@ -145,7 +145,7 @@ public class OrderSelectDao {
 		
 	}
 		
-	
+	/*
 	public ArrayList<OrderSelect> selectSum(Connection conn, int userNo) {
 		ArrayList<OrderSelect> sum = null;
 		PreparedStatement pstmt = null;
@@ -173,7 +173,7 @@ public class OrderSelectDao {
 	}
 
 	
-	
+	*/
 	
 	
 	

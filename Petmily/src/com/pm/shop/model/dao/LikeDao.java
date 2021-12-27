@@ -41,7 +41,8 @@ private Properties prop = new Properties();
 			while(rset.next()) {
 				list.add(new Like(rset.getInt("product_no"),
 								  rset.getString("product_name"),
-								  rset.getInt("price")						
+								  rset.getInt("price"),
+								  rset.getString("basicimg")
 						));
 			}
 			

@@ -157,7 +157,7 @@ private Properties prop = new Properties();
 	}
 	
 	
-	public Cancel selectDetailList(Connection conn, int orderNo) {
+	public Cancel selectDetailList(Connection conn, int orderNo, int userNo) {
 		// select문 -> ResultSet(한행) -> Cancel
 		Cancel c = null;
 		PreparedStatement pstmt = null;
@@ -167,6 +167,7 @@ private Properties prop = new Properties();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, orderNo);
+			pstmt.setInt(2, userNo);
 			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {

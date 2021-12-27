@@ -23,6 +23,12 @@
          div, img, li, a{
 		     box-sizing: border-box;
 		}
+ 
+		.oouter{
+			width: 1700px;
+			min-height: 1000px;
+			margin:auto;
+		}  
 		     
 		.content-area{
 			width: 1700px;
@@ -85,8 +91,8 @@
 
 <body>
 <%@ include file="../../common/menubar.jsp" %>
+<div class="oouter">
 <%@ include file="mypageSidebar.jsp" %> 
-
 <div class="content-area">
 
     <div id="title" class="inline-block"
@@ -153,11 +159,11 @@
                 </tr>
                 <tr>
                     <td>배송비</td>
-                    <td>2,500원</td>
+                    <td>무료배송</td>
                 </tr>
                 <tr>
                     <td>포인트</td>
-                    <td>xxx p</td>
+                    <td>500 p</td>
                 </tr>
                 <tr>
 					<td>결제수단</td>
@@ -165,7 +171,7 @@
                 </tr>
                 <tr>
                     <th>최종 결제금액</th>
-                    <th>xxxx 원</th>
+                    <th><%= c.getPrice() %>원</th>
                 </tr>
             </table>
 
@@ -179,13 +185,10 @@
                         <td>환불상품금액</td>
                         <td>(총금액)원</td>
                     </tr>
-                    <tr>
-                        <td>환불배송비</td>
-                        <td style="text-align: left;">2,500원</td>
-                    </tr>
+
                     <tr>
                         <td>환불포인트</td>
-                        <td> -xxx p</td>
+                        <td> -500 p</td>
                     </tr>
                     <tr>
                         <th>최종 결제금액</th>
@@ -200,6 +203,7 @@
     </div>
 	<% } %>
 
+</div>
 </div>
     
  <%@ include file="../../common/footerbar.jsp" %>   
