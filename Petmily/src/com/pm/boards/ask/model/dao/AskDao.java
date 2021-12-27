@@ -394,6 +394,35 @@ public class AskDao {
 		return list;
 	}
 
+	public ArrayList<Ask> selectMainList(Connection conn) {
+		ArrayList<Ask> mAskList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Ask a = new Ask();
+				a.setAskNo(rset.getInt("ask_no"));
+				a.setAskTitle(rset.getString("ask_title"));
+				a.setAskContent(rset.getString("ask_content"));
+				a.setTitleImg(rset.getString("titleimg"));
+				
+				mAskList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return mAskList;
+	}
+
 
 
 

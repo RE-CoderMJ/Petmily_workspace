@@ -177,7 +177,7 @@
 	                    <span class="like-count">33</span>
 	                    <img src="resources/img/petLog/reply.png" alt="">
 	                    <span>댓글</span>
-	                    <span class="reply-count">2</span>
+	                    <span class="reply-count"></span>
 	                    <% if(loginUser != null) { %>
 	                    	<label data-toggle="modal" data-target="#reportAskModal" class="report-post">게시글 신고</label>
 	                    <% } %>
@@ -196,52 +196,17 @@
 	                <div class="right-bottom">
 	                    <div class="reply-area">
 	                        <div class="write-reply">
-	                                <form action="">
-	                                    <input type="text" placeholder="댓글을 남겨 보세요." required>
-	                                    <button type="submit" class="reply-enrollbtn">등록</button>
-	                                </form>
-	                        </div>
+				            	<% if(loginUser != null) { %>
+					                <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
+				                <% }else { %>
+				             		<input type="text" id="reply-input" placeholder="로그인 후 댓글을 남겨보세요." readonly>
+				                <% } %>
+					                <button class="btn" id="reply-enrollbtn">등록</button>
+					                <input type="hidden" id="rPetLogNo">
+				            </div>
 	                        
 	                        <div id="scroll-area">
-	                            <div class="replies">
-	                                
-	                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
-	                                <div class="user-name">choco22</div>
-	                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-	                                <div class="reply-info">
-	                                    xxxx-xx-xx<br> 
-	                                    <label href="">수정</label>
-	                                    <label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
-	                                </div>
-	                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
-	                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
-	                            </div>
-	                            <div class="replies">
-	                                
-	                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
-	                                <div class="user-name">choco22</div>
-	                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-	                                <div class="reply-info">
-	                                    xxxx-xx-xx<br> 
-	                                    <label href="">수정</label>
-	                                    <label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
-	                                </div>
-	                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
-	                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
-	                            </div>
-	                            <div class="replies">
-	                                
-	                                <div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
-	                                <div class="user-name">choco22</div>
-	                                <div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-	                                <div class="reply-info">
-	                                    xxxx-xx-xx<br> 
-	                                    <label href="">수정</label>
-	                                    <label href="" data-toggle="modal" data-target="#reportAskModal">신고</label>
-	                                </div>
-	                                <a type="button" class="delete-reply" data-toggle="modal" data-target="#deleteAskModal">x</a>
-	                                <!--<div>등록된 댓글이 없습니다 . 첫번째 댓글을 달아보세요!</div>-->
-	                            </div>
+	                            
 	                        </div>
 	                    </div>
 	                </div>
@@ -264,7 +229,7 @@
 						$(".carousel-inner").empty();
 						$("#list-area").hide();
 						$("#detail-area").show();
-						console.log(datas.pl.petLogNo)
+
 						$(".date-area").html(datas.pl.enrollDate);
 						$(".text-area").html(datas.pl.petLogContent);
 						$("#petLogNo").val(value);
@@ -273,7 +238,7 @@
 								let path1 = datas.list[i].filePath;
 								let path2 = datas.list[i].changeName;
 	                			let path3 = "/PM/" + path1 + path2;
-	                			console.log(path3);
+
 	                			if(i == 0) {
 	                				$(".carousel-inner").append("<div class='carousel-item active'><img src='' alt=''></div>");
 	                				$(".carousel-item").children("img").attr("src", path3);
@@ -288,6 +253,9 @@
 							$("#detail-area").hide();
 							$(".carousel-inner").empty();
 						});
+						
+						$("#rPetLogNo").val(value);
+						selectReplyList();
 					},error:function(){
 						console.log("게시글 상세조회용 ajax 통신 실패");
 					}
@@ -296,6 +264,65 @@
 			
 		})
 	</script>
+	
+	<script>		
+		$(document).on("click", "#reply-enrollbtn", function(){	
+				
+			$.ajax({
+				url:"rinsert.petLog",
+				data:{
+					content:$("#reply-input").val(),
+					pno:$("#rPetLogNo").val()
+				},
+				type:"post",
+				success:function(result){
+					if(result > 0){
+						selectReplyList();
+						$("#reply-input").val("");
+					}
+				},error:function(){
+					console.log("댓글 작성용 ajax 통신 실패");
+				}
+			})
+		})
+		
+		function selectReplyList(){
+			var num = $("#rPetLogNo").val();
+			$.ajax({
+				url:"rlist.petLog",
+				data:{pno: num},
+				success:function(result){
+					
+					let reply="";
+					if(result.list == null){
+						reply = "<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>";
+						$("#scroll-area").html(reply);
+					}else{
+						for(let i=0; i<result.list.length; i++){
+							let pfPath = "";							
+							if(result.list[i].writerImg != null){
+								pfPath = '<%=contextPath%>/' + result.list[i].writerImg;							
+							}
+							reply += "<div class='replies'><div class='profile-pic'><img src='" + pfPath + "' alt=''></div>";
+							reply += "<div class='user-name'>" + result.list[i].writerNickname + "</div>";
+							reply += "<div class='reply-content'>" + result.list[i].replyContent + "</div>";
+							reply += "<a href='' class='btn delete-btn'>x</a>";
+							reply += "<div class='reply-info'>" + result.list[i].modifyDate + "&nbsp;&nbsp; <label>수정</label><label>신고</label></div></div>";
+						}
+						
+						$("#scroll-area").html(reply);	
+						$("#reply-count").text(result.replyCount);
+					}
+					
+				},error:function(){
+					console.log("댓글목록 조회용 ajax 통신 실패");
+					console.log($("#rPetLogNo").val());
+				}
+			})
+			
+		}
+	</script>
+	
     <!-- 프로필 수정 모달창 -->
     <div class="container">
 

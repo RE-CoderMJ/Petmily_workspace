@@ -1,0 +1,331 @@
+@charset "UTF-8";
+div, img, li, a{
+    box-sizing: border-box;
+}
+/*전체적인 틀*/
+.outer{
+    width: 1400px;
+    height: 1200px;
+    margin:auto;
+
+}     
+.content-area{
+    width: 1400px;
+    height: 1000px;
+    padding:200px;
+    padding-top:0px;
+    margin:auto;
+}
+#petlog{
+    width:1100px;
+    height:30%;
+}
+
+#store{
+    width:1100px;
+    height:250px;
+    margin-top:60px;
+}
+
+#board{
+    width:1100px;
+    height:350px;
+    margin-top:60px;
+    display: flex;
+    justify-content: center;
+}
+#ask{
+    width:360px;
+    height:100%;
+    display: inline-block;
+    margin-right:25px;
+}
+#market{
+    width:320px;
+    height:100%;
+    display: inline-block;
+    margin:0 15px;
+}
+#missing{
+    width:360px;
+    height:100%;
+    display: inline-block;
+    margin-left:25px;
+}
+.smallTitle{
+    font-size: 23px;
+    font-weight: 700;
+    text-align: left;
+    margin-left:10px;
+    color: rgb(247, 198, 4);
+}
+/*펫로그*/
+#content1{
+    background-color: rgb(247, 198, 4);
+    width:100%;
+    height:88%;
+    margin: auto;
+}
+#profile{
+    width:150px;
+    height: 100%;
+    padding-top:30px;
+    display: inline-block;
+}
+#profileimg img{
+    display: inline-block;
+    width:100px;
+    height:100px;
+    border-radius: 100px;
+}
+#login-user{
+	display: inline-block; 
+	border-radius:5px;
+	background-color:white;
+	width:150px;
+}
+#petlogSummary{
+    width:830px;
+    height: 100%;
+    background-color: white;
+    float:right;
+    display: inline-block;
+}
+/*펫로그 슬라이드메뉴*/
+.swiper-container {
+    width:800px;
+    height: 98%;
+}
+.swiper-slide {
+    text-align:center;
+    display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+ align-items:center; /* 위아래 기준 중앙정렬 */
+ justify-content:center; /* 좌우 기준 중앙정렬 */
+    box-sizing:border-box;
+}
+.swiper-slide img {
+	width:150px;
+	height:150px;
+    /*max-width:80%;*/ /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
+
+   }
+
+ .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+ 	background:black;
+ }
+.button-next{
+	position:absolute;
+	right: -5px;
+    top: 70px;
+    z-index: 10;
+    cursor: pointer;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.button-next img{
+    width: 27px;
+    height: 44px;
+    opacity: 0.7;
+    
+}
+
+.button-prev{
+	position:absolute;
+	left: -5px;
+    top: 70px;
+    z-index: 10;
+    cursor: pointer;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right:100px;
+}
+
+.button-prev img{
+    width: 27px;
+    height: 44px;
+    opacity: 0.7;
+}
+
+
+/*스토어*/
+.storecontent{
+    height:210px;
+    display: inline-block;
+    padding-top: 20px;
+    margin:0 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color:rgb(78, 78, 78);
+
+}
+.storecontentimg img{
+    display: inline-block;
+    width:110px;
+    height:110px;
+    border-radius: 100px;
+    display: inline-block;
+    background:#FAE6B9;
+}
+
+/*궁금해요 게시판*/
+.ask-contents{
+    width:100%;
+}
+
+/* 제목, 내용, 작성날짜, 작성자, 댓글수, 조회수 */
+.ask-contents{
+	height: 80px;
+	margin-bottom:13px;
+	margin-top:15px;
+}
+.ask-photo{
+    border: 1px solid darkgray;
+    margin-right: 5px;
+    margin-left:0px;
+    width: 80px;
+    height: 80px;
+    float:left;
+}
+.ask-photo img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+.ask-texts{
+    width:75%;
+    display: inline-block;
+}
+.ask-title{
+	color:#2e2e2e;
+    font-weight: bolder;
+    font-size: 17px;
+    text-align: left;
+    width: 100%;
+    height: 21%;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    display: inline-block;
+}
+
+.ask-text{
+    width:100%;
+    text-align: left;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    display: inline-block;
+    font-size: 13px;
+}
+
+
+/*중고거래게시판*/
+#market-content-area{
+    height: 300px;
+}
+.market-content-box-area{
+    width: 120px;
+    height: 170px;
+    cursor: pointer;
+    display: inline-block;
+    margin:0 10px;
+    margin-top:50px;
+}
+.sell-icon{
+    font-size: 11px;
+    color: white;
+    background: rgb(199, 64, 15);
+    margin-left: -75px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+.buy-icon{
+    font-size: 11px;
+    color: white;
+    background: rgb(4, 77, 4);
+    margin-left: -75px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+.photo-box{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+}
+.content-title{
+    font-weight: bolder;
+    font-size: 15px;
+    margin-top: 3px;
+
+    height: 23px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}
+.sell-price{
+    font-weight: bolder;
+    color: orange;
+    font-size: 14px;
+}
+.buy-price{
+    font-weight: bolder;
+    color: rgb(4, 77, 4);
+    font-size: 14px;
+}
+
+
+/*찾고있어요 게시판*/
+#missing-content-area{
+    height: 300px;
+}
+.missing-content-box-area{
+    width: 340px;
+    margin:10px 0px;	
+}
+.missing-content-info-area, .missing-img{
+    cursor:pointer;	
+}
+.missing-img{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-top:15px;
+    margin-left:10px;
+}
+.found-title{
+    background: rgb(2, 68, 2);
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
+}
+.missing-title{
+    background: rgba(255, 110, 32, 0.946);
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+}
+.missing-content-info-area{
+    width: 200px;
+    margin-left: 100px;
+    font-size: 14px;
+}
+.gender-age{
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.dpf-area >div{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}

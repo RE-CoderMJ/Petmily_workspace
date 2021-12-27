@@ -199,4 +199,24 @@
 		  		)
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	<entry key="selectMainList">
+		SELECT ROWNUM, AA.*
+		  FROM (
+		       	 SELECT
+					    ASK_NO
+					  , ASK_TITLE
+					  , ASK_CONTENT
+					  , (SELECT 
+				                FILE_PATH || CHANGE_NAME
+				           FROM ATTACHMENT 
+				          WHERE REF_NO = A.ASK_NO
+				            AND REF_BOARD_NO = 1
+				            AND ROWNUM = 1) "TITLEIMG"
+				   FROM ASK A
+				  WHERE STATUS = 'Y'
+				  ORDER
+				     BY ASK_NO DESC
+				) AA
+		<![CDATA[WHERE ROWNUM <= 3]]>
+	</entry>
 </properties>

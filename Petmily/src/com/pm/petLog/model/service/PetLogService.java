@@ -8,8 +8,10 @@ import static com.pm.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.pm.boards.ask.model.dao.AskDao;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 import com.pm.petLog.model.dao.PetLogDao;
 import com.pm.petLog.model.vo.PetLog;
 import com.pm.petLog.model.vo.PetsRoom;
@@ -172,6 +174,34 @@ public class PetLogService {
 		int listCount = new PetLogDao().selectPetLogCount(conn, memNo);
 		close(conn);
 		return listCount;
+	}
+
+	public int insertReply(Reply r) {
+		Connection conn = getConnection();
+		int result = new PetLogDao().insertReply(conn, r);
+		
+		if(result > 0) {
+			commit(conn);
+		}else{
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int selectReplyCount(int pno) {
+		Connection conn = getConnection();
+		int replyCount = new PetLogDao().selectReplyCount(conn, pno);
+		close(conn);
+		return replyCount;
+	}
+
+	public ArrayList<Reply> selectReplyList(int pno) {
+		Connection conn = getConnection();
+		ArrayList<Reply> list = new PetLogDao().selectReplyList(conn, pno);
+		close(conn);
+		return list;
 	}
 	
 }

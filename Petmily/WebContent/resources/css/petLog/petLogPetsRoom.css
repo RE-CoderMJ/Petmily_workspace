@@ -367,7 +367,7 @@ body{
     height: 25px;
     margin-top: 7px;
 }
-.reply-enrollbtn{
+#reply-enrollbtn{
     background-color: orange;
     font-size: 13px;
     font-weight: bolder;
@@ -425,7 +425,7 @@ body{
     cursor:pointer;
 }
 .reply-info{
-    width: 60px;
+    width: 70px;
     font-size: 11px;
     color: gray;
     height: 50px;

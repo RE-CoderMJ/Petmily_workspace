@@ -149,4 +149,11 @@ public class AskService {
 		close(conn);
 		return list;
 	}
+
+	public ArrayList<Ask> selectMainList() {
+		Connection conn = getConnection();
+		ArrayList<Ask> mAskList = new AskDao().selectMainList(conn);
+		close(conn);
+		return mAskList;
+	}
 }
