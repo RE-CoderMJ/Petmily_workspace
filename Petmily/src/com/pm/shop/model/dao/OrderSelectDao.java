@@ -26,15 +26,17 @@ public class OrderSelectDao {
 		}
 	}
 	
-	public int selectListCount(Connection conn) {
+	public int selectListCount(Connection conn, int userNo) {
 		// select문 -> ResultSet(한개) -> int
 		int listCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectCount");
+		String sql = prop.getProperty("selectListCount");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
 			
 			rset = pstmt.executeQuery();
 			
@@ -56,7 +58,7 @@ public class OrderSelectDao {
 	
 	
 	
-	public ArrayList<OrderSelect> selectList(Connection conn, PageInfo pi){
+	public ArrayList<OrderSelect> selectList(Connection conn, PageInfo pi, int userNo){
 		// select문 => resultset(여러행) => ArrayList<Point>
 
 		ArrayList<OrderSelect> list = new ArrayList<>();
@@ -75,8 +77,9 @@ public class OrderSelectDao {
 			int startRow = (pi.getCurrentPage() -1 ) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1,  startRow);
-			pstmt.setInt(2,  endRow);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2,  startRow);
+			pstmt.setInt(3,  endRow);
 			
 			rset = pstmt.executeQuery();
 		
@@ -103,7 +106,7 @@ public class OrderSelectDao {
 	}
 	
 	
-	public ArrayList<OrderSelect> selectDetailList(Connection conn, int orderNo) {
+	public ArrayList<OrderSelect> selectDetailList(Connection conn, int orderNo, int userNo) {
 		// select문 => resultset(여러행) => ArrayList<Point>
 
 		ArrayList<OrderSelect> osdetail = new ArrayList<>();
@@ -114,6 +117,7 @@ public class OrderSelectDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, orderNo);
+			pstmt.setInt(2, userNo);
 			
 			rset = pstmt.executeQuery();
 		

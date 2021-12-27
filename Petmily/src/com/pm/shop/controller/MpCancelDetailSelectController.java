@@ -38,6 +38,7 @@ public class MpCancelDetailSelectController extends HttpServlet {
 		request.setAttribute("c", c);
 		
 		request.getRequestDispatcher("views/shop/mypage/cancelDetail.jsp").forward(request, response);
+		//request.getRequestDispatcher("views/shop/mypage/orderCancelForm.jsp").forward(request, response);
 	}
 
 	/**

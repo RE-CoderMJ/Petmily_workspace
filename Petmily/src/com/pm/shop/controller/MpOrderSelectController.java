@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pm.common.model.vo.PageInfo;
+import com.pm.member.model.vo.Member;
 import com.pm.shop.model.service.OrderSelectService;
 import com.pm.shop.model.service.PointService;
 import com.pm.shop.model.vo.OrderSelect;
@@ -35,6 +37,9 @@ public class MpOrderSelectController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		HttpSession session = request.getSession();
+		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
+		
 		// ------- 페이징 처리 ---------
 		int listCount; 		// 현재 총 게시글 개수
 		int currentPage; 	// 현재 페이지 (즉, 사용자가 요청한 페이지)
@@ -46,7 +51,7 @@ public class MpOrderSelectController extends HttpServlet {
 		int endPage;		// 페이징바의 끝수
 		
 		// * listCount : 총 게시글 개수
-		listCount = new PointService().selectListCount();
+		listCount = new OrderSelectService().selectListCount(userNo);
 		
 		// * currentPage : 현재 페이지 (즉, 사용자가 요청한 페이지)
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
@@ -71,12 +76,12 @@ public class MpOrderSelectController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		// * 현재 요청한 페이지(currentPage)에 보여질 <주문내역 리스트> boardLimit수만큼 조회해가기
-		ArrayList<OrderSelect> list = new OrderSelectService().selectList(pi);
+		ArrayList<OrderSelect> list = new OrderSelectService().selectList(pi, userNo);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		
+		System.out.println(pi);
 		request.getRequestDispatcher("views/shop/mypage/orderSelect.jsp").forward(request, response);
 	}
 

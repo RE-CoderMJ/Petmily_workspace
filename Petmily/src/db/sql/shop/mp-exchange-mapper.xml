@@ -41,7 +41,7 @@
 		  )
 		  VALUES
 		  (
-			  ?
+			  SEQ_ECNO.NEXTVAL
 			, ?
 			, ?
 			, ?

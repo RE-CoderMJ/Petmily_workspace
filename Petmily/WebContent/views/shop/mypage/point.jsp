@@ -223,7 +223,7 @@
 			<% if(currentPage != maxPage) { %>
 				<button onclick="location.href='<%= contextPath %>/point.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
 			<% } %>	
-    </div>
+    	</div>
 
 </div>
 <%@ include file="../../common/footerbar.jsp" %>

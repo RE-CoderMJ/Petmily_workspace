@@ -27,12 +27,12 @@
 		     
 		.oouter{
 			width: 1700px;
-			height: 1000px;
+			min-height: 1000px;
 			margin:auto;
 		}     
 		.content-area{
 			width: 1700px;
-			height: 1000px;
+			min-height: 1000px;
 			padding:200px;
 			padding-top:0px;
 			margin:auto;
@@ -203,26 +203,9 @@
 
  <!-- 페이징 바 -->
       <div class="paging-area" >
-      <% if( search != null) { %>
+      <% if( search == null || search.isEmpty() ) { %>
+      		
       		<% if(currentPage != startPage) { %>
-            	<button onclick="location.href='<%=contextPath%>/term.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
-            <% } %>	
-            	
-            <% for(int pp=startPage; pp<=endPage; pp++){ %>
-            	<% if(pp == currentPage) { %> 
-            		<button disabled><%=pp %></button>
-            	<% } else { %>
-            		<button onclick="location.href='<%=contextPath %>/term.my?cpage=<%=pp%>';"><%=pp %></button>
-            	<% } %>	
-            <% } %>
-
-			<% if(currentPage != maxPage) { %>
-				<button onclick="location.href='<%= contextPath %>/term.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
-			<% } %>	
-			
-		<% } else { %>	
-		
-            <% if(currentPage != startPage) { %>
             	<button onclick="location.href='<%=contextPath%>/cancelselect.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
             <% } %>	
             	
@@ -237,6 +220,27 @@
 			<% if(currentPage != maxPage) { %>
 				<button onclick="location.href='<%= contextPath %>/cancelselect.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
 			<% } %>	
+      		
+      		
+			
+		<% } else { %>	
+		
+            <% if(currentPage != startPage) { %>
+            	<button onclick="location.href='<%=contextPath%>/term.my?search=<%= search %>&cpage=<%= currentPage-1 %>';"> &lt; </button>
+            <% } %>	
+            	
+            <% for(int p=startPage; p<=endPage; p++){ %>
+            	<% if(p == currentPage) { %> 
+            		<button disabled><%=p %></button>
+            	<% } else { %>
+            		<button onclick="location.href='<%=contextPath %>/term.my?search=<%= search %>&cpage=<%=p%>';"><%=p %></button>
+            	<% } %>	
+            <% } %>
+
+			<% if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/term.my?search=<%= search %>&cpage=<%= currentPage+1 %>';"> &gt; </button>
+			<% } %>	
+			
 		<% } %>	
     </div>
 

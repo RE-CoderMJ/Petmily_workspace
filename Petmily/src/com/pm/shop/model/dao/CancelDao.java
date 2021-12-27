@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.pm.common.model.vo.PageInfo;
 import com.pm.shop.model.vo.Cancel;
+import com.pm.shop.model.vo.Cart;
 
 public class CancelDao {
 private Properties prop = new Properties();
@@ -25,16 +26,16 @@ private Properties prop = new Properties();
 		}
 	}
 	
-	public int selectListCount(Connection conn) {
+	public int selectListCount(Connection conn, int userNo) {
 		// select문 -> ResultSet(한개) -> int
 		int listCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectCount");
+		String sql = prop.getProperty("selectListCount");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+			pstmt.setInt(1, userNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -55,7 +56,7 @@ private Properties prop = new Properties();
 	
 	
 	
-	public ArrayList<Cancel> selectList(Connection conn, PageInfo pi){
+	public ArrayList<Cancel> selectList(Connection conn, PageInfo pi, int userNo){
 		// select문 => resultset(여러행) => ArrayList<Point>
 
 		ArrayList<Cancel> list = new ArrayList<>();
@@ -74,8 +75,9 @@ private Properties prop = new Properties();
 			int startRow = (pi.getCurrentPage() -1 ) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1,  startRow);
-			pstmt.setInt(2,  endRow);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2,  startRow);
+			pstmt.setInt(3,  endRow);
 			
 			rset = pstmt.executeQuery();
 		
@@ -104,7 +106,7 @@ private Properties prop = new Properties();
 	}
 	
 	
-	public ArrayList<Cancel> selectTermList(Connection conn, int search, PageInfo pi){
+	public ArrayList<Cancel> selectTermList(Connection conn, int search, PageInfo pi, int userNo){
 		// select문 -> ResultSet(여러행) -> ArrayList<Cancel>
 		ArrayList<Cancel> termList = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -127,8 +129,9 @@ private Properties prop = new Properties();
 			int startRow = (pi.getCurrentPage() -1 ) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
-			pstmt.setInt(1,  startRow);
-			pstmt.setInt(2,  endRow);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2,  startRow);
+			pstmt.setInt(3,  endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -167,6 +170,7 @@ private Properties prop = new Properties();
 			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
+				
 				c = new Cancel(rset.getInt("cancel_ono"),
 								 rset.getString("cancel_pname"),
 								 rset.getInt("order_pnum"),
@@ -189,6 +193,99 @@ private Properties prop = new Properties();
 		return c;
 	}
 	
+	// 주문취소 신청 페이지 조회할 것들
+	public Cancel selectCancelApp(Connection conn, int userNo, int orderNo) {
+		// select문 -> ResultSet(한행) -> Cancel
+		Cancel ca1 = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectCancelApp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, orderNo);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				
+				ca1 = new Cancel(rset.getInt("CANCEL_ONO"),
+								 rset.getDate("ORDER_DATE"),
+								 rset.getString("MEM_NAME"),
+								 rset.getString("PHONE"),
+								 rset.getString("ADDRESS"),
+								 rset.getString("DELMEMO"),
+								 rset.getInt("PRICE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ca1;
+		
+	}
+	
+	public Cancel selectSum(Connection conn, int userNo, int orderNo) {
+		Cancel sum = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectSum");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, orderNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				sum = (new Cancel(rset.getInt("pricesum"),
+						         rset.getInt("amountsum")));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return sum;
+	}
+	
+	
+	public int insertCancel(Connection conn, Cancel cc) {
+		
+		// insert문 => 처리된행수 => 트랜잭션처리
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertCancel");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cc.getOrderNo());
+			pstmt.setString(2, cc.getCcReason());
+			pstmt.setString(3, cc.getCcPayment());
+			pstmt.setInt(4, cc.getOrderPnum());
+			pstmt.setString(5, cc.getDeliveryMemo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
 	
 	
 }

@@ -107,7 +107,7 @@ function deleteLike(){
 	console.log(num);
 	                
 	$.ajax({
-		url:"deleteLike.my?pno="+$("pno").val, //문제야문제
+		url:"deleteLike.my", //문제
 		data:{
 			pno:$("#pno").val()		
 		},

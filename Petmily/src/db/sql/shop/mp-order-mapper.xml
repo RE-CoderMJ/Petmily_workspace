@@ -5,8 +5,9 @@
 <entry key="selectListCount">
 	SELECT
 	       COUNT(*) COUNT
-	  FROM SP_ORDERPRODUCT
-
+	  FROM SP_ORDERPRODUCT OP, SPMY_ORDER O
+	 WHERE OP.ORDER_NO = O.ORDER_NO
+	   AND MEM_NO = ?
 </entry>
 
 <entry key="selectList">
@@ -25,6 +26,7 @@
 					  FROM SP_ORDERPRODUCT O
 					  JOIN SPMY_ORDER USING(ORDER_NO)
 					  JOIN TB_PRODUCT_UD USING(PRODUCT_NO)
+					  WHERE MEM_NO = ?
 	                  ORDER 
 	                     BY ORDER_DATE DESC
 	                ) A
@@ -46,6 +48,7 @@
 	JOIN SPMY_ORDER USING(ORDER_NO)
 	JOIN TB_PRODUCT_UD USING(PRODUCT_NO)	
 	WHERE ORDER_NO = ?
+	  AND MEM_NO = ?
 
 </entry>
 

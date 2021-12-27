@@ -117,41 +117,7 @@
             </div>
         </div>
 
-        <div class="one">
-            <div class="inline-block">
-                <img src=""  class="content-img" width="80px" height="80px">    
-            </div>
-    
-            <div class="inline-block onecontent">
-                상품명
-                <br>
-                <div id="option" style="font-size:12px; margin-top: 5px;"></div>
-    
-            </div>
-            
-            <div class="inline-block money">
-                <h3>20,000 원</h3>
-            </div>
 
-        </div>
-
-        <div class="one">
-            <div class="inline-block">
-                <img src=""  class="content-img" width="80px" height="80px">    
-            </div>
-    
-            <div class="inline-block onecontent">
-                상품명
-                <br>
-                <div id="option" style="font-size:12px; margin-top: 5px;">블루 1개</div>
-    
-            </div>
-            
-            <div class="inline-block money">
-                <h3>20,000 원</h3>
-            </div>
-
-        </div>
 
 
 

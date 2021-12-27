@@ -79,7 +79,7 @@
     
         <br><br><br>
         <button id="btnshop" onclick="location.href='<%=contextPath%>/shop.main';">쇼핑 계속하기</button>
-        <button id="btncancel" onclick="location.href='<%= contextPath %>/cancelselect.my';">취소내역 조회</button>
+        <button id="btncancel" onclick="location.href='<%= contextPath %>/cancelselect.my?cpage=1';">취소내역 조회</button>
 
     </div>
 </div>

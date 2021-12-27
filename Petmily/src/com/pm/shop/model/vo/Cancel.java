@@ -20,6 +20,8 @@ public class Cancel {
 	private String phone;
 	private String adderess;
 	private String deliveryMemo;
+	private int priceSum;
+	private int amountSum;
 	
 	public Cancel() {}
 
@@ -77,6 +79,31 @@ public class Cancel {
 		this.phone = phone;
 		this.adderess = adderess;
 		this.ccPayment = ccPayment;
+	}
+
+
+	
+
+
+	public Cancel(int orderNo, Date orderDate, String memName, String phone, String adderess, String deliveryMemo,
+			int price) {
+		super();
+		this.orderNo = orderNo;
+		this.orderDate = orderDate;
+		this.memName = memName;
+		this.phone = phone;
+		this.adderess = adderess;
+		this.deliveryMemo = deliveryMemo;
+		this.price = price;
+	}
+	
+	
+
+
+	public Cancel(int priceSum, int amountSum) {
+		super();
+		this.priceSum = priceSum;
+		this.amountSum = amountSum;
 	}
 
 
@@ -216,14 +243,36 @@ public class Cancel {
 	}
 
 
+	public int getPriceSum() {
+		return priceSum;
+	}
+
+
+	public void setPriceSum(int priceSum) {
+		this.priceSum = priceSum;
+	}
+
+
+	public int getAmountSum() {
+		return amountSum;
+	}
+
+
+	public void setAmountSum(int amountSum) {
+		this.amountSum = amountSum;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Cancel [ccNo=" + ccNo + ", ccReason=" + ccReason + ", ccPayment=" + ccPayment + ", ccSledding="
 				+ ccSledding + ", orderPnum=" + orderPnum + ", orderNo=" + orderNo + ", productNo=" + productNo
 				+ ", productName=" + productName + ", price=" + price + ", orderDate=" + orderDate + ", orderPoption="
 				+ orderPoption + ", orderPamount=" + orderPamount + ", memName=" + memName + ", phone=" + phone
-				+ ", adderess=" + adderess + ", deliveryMemo=" + deliveryMemo + "]";
+				+ ", adderess=" + adderess + ", deliveryMemo=" + deliveryMemo + ", priceSum=" + priceSum
+				+ ", amountSum=" + amountSum + "]";
 	}
 
-	
+
+		
 }

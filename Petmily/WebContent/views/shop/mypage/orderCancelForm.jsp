@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.shop.model.vo.*"%>
+<%
+	Cancel ca1 = (Cancel)request.getAttribute("ca1");
+	Cancel sum = (Cancel)request.getAttribute("sum");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,7 +115,7 @@
 <%@ include file="../../common/menubar.jsp" %>
 
 
-    <form action="" method="">
+    <form action="<%=contextPath %>/cancelinsert.my" method="post">
     <div class="content-area">
         <div class="outer">
             <div id="title">주문취소신청</div>
@@ -121,10 +125,10 @@
             <div id="content">
                 <div id="canclebody">
                     <div id="one">
-                        <div class="smalltitle">주문번호 : A-14124954 </div>
+                        <div class="smalltitle" name="orderno">주문번호 : <%= ca1.getOrderNo() %> </div>
                         21.11.15 구매 
-                        <a href="" id="merchandise">3개의 상품</a>
-                        <div class="inline-block" id="summoney">총 : 55000원</div>
+                        <a href="" id="merchandise"><%= sum.getAmountSum() %>개의 상품</a>
+                        <div class="inline-block" id="summoney">총 : <%= sum.getPriceSum() %>원</div>
     
                     </div>
     
@@ -134,15 +138,17 @@
                         <div class="smalltitle">취소사유</div>
                         <div class="dropdown">
                             <button type="button" id="dropdown" class="btn dropdown-toggle" data-toggle="dropdown">
-                                취소사유
+                               	 취소사유
                             </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">고객변심</a>
-                              <a class="dropdown-item" href="#">상품불만족</a>
-                              <a class="dropdown-item" href="#">고객주문오류</a>
-                              <a class="dropdown-item" href="#">배송 늦어짐</a>
-                              <a class="dropdown-item" href="#">기타</a>
-                            </div>
+
+                            <select id="ccreason" name="ccreason">
+		                      <option value="ccreson1">고객변심</option>
+		                      <option value="ccreson2">상품불만족</option>
+		                      <option value="ccreson3">고객주문오류</option>
+		                      <option value="ccreson4">불량반품</option>
+		                      <option value="ccreson5">기타</option>
+		                    </select>
+		                    
                           </div>
                     </div>
     
@@ -154,19 +160,19 @@
                         <table>
                             <tr>
                                 <td>이름 </td>
-                                <td>xxx님</td>
+                                <td><%= ca1.getMemName() %>님</td>
                             </tr>
                             <tr>
                                 <td>주소 </td>
-                                <td>서울시 용산구</td>
+                                <td><%= ca1.getAdderess() %></td>
                             </tr>
                             <tr>
                                 <td>휴대폰 </td>
-                                <td>010-xxxx-xxxx</td>
+                                <td><%= ca1.getPhone() %></td>
                             </tr>
                             <tr>
                                 <td>배송메모 </td>
-                                <td>dfdfdfdf</td>
+                                <td name="delmemo"><%= ca1.getDeliveryMemo() %></td>
                             </tr>
                         </table>
     
@@ -179,7 +185,7 @@
                         <table>
                             <tr>
                                 <td>상품금액</td>
-                                <td>20,000원</td>
+                                <td><%= ca1.getPrice() %></td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
@@ -191,10 +197,18 @@
                             </tr>
                             <tr>
                                 <th>최종 결제금액</th>
-                                <th>22,000 </th>
+                                <th><%= sum.getPriceSum() %> </th>
                             </tr>
                         </table>
-                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my">취소신청</a></button>
+                        
+                        <input type="hidden" name="orderno" value="<%= ca1.getOrderNo() %>">
+                        <input type="hidden" name="ccreason" value="<%= ca1.getCcReason() %>">
+                        <input type="hidden" name="payment" value="<%= ca1.getCcPayment() %>">
+                        <input type="hidden" name="delmemo" value="<%= ca1.getDeliveryMemo() %>">
+                        <%-- <input type="hidden" name="sledding" value="<%= ca1.get %>">--%>
+                        <input type="hidden" name="pnum" value="<%= ca1.getOrderPnum() %>">
+                        
+                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my?cpage=1">취소신청</a></button>
 
                         
                     </div>

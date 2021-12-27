@@ -187,7 +187,7 @@ div, img, li, a{
 			      		</div>
 			            <!-- Modal footer -->
 			            <div class="modal-footer">
-			              <a href="<%= contextPath %>/ordercancelform.my?pno=<%= osd.getOrderPnum()%>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
+			              <a href="<%= contextPath %>/appselect.my?orderno=<%= osd.getOrderNo() %>" class="btn" style="background-color:rgb(247, 198, 4);">확인</a>
 			            </div>
 			      
 			        </div>
@@ -214,6 +214,8 @@ div, img, li, a{
 		</div>
         <% } %>
 	<% } %>
+	
+	
 
 </div>
 

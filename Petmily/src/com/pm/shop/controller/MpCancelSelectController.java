@@ -8,10 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pm.common.model.vo.PageInfo;
+import com.pm.member.model.vo.Member;
 import com.pm.shop.model.service.CancelService;
-import com.pm.shop.model.service.PointService;
 import com.pm.shop.model.vo.Cancel;
 
 /**
@@ -33,6 +34,8 @@ public class MpCancelSelectController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
 		
 		// ------- 페이징 처리 ---------
 		int listCount; 		// 현재 총 게시글 개수
@@ -45,7 +48,7 @@ public class MpCancelSelectController extends HttpServlet {
 		int endPage;		// 페이징바의 끝수
 		
 		// * listCount : 총 게시글 개수
-		listCount = new PointService().selectListCount();
+		listCount = new CancelService().selectListCount(userNo);
 		
 		// * currentPage : 현재 페이지 (즉, 사용자가 요청한 페이지)
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
@@ -54,7 +57,7 @@ public class MpCancelSelectController extends HttpServlet {
 		pageLimit = 5;
 		
 		// * boardLimit : 게시글 최대 개수 (단위)
-		boardLimit = 5;
+		boardLimit = 3;
 		
 		maxPage = (int)Math.ceil( (double)listCount / boardLimit );
 		startPage = (currentPage-1) / pageLimit * pageLimit + 1;
@@ -70,7 +73,11 @@ public class MpCancelSelectController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		// ---------------------------페이징 끝---------------------------
-		ArrayList<Cancel> list = new CancelService().selectList(pi);
+		
+		
+		
+		ArrayList<Cancel> list = new CancelService().selectList(pi, userNo);
+
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

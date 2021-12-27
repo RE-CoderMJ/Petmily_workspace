@@ -100,11 +100,10 @@ public class ExchangeDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, ec.getEcCode());
-			pstmt.setInt(2, ec.getOrderPnum());
-			pstmt.setString(3, ec.getEcreason());
-			pstmt.setString(4, ec.getPayment());
-			pstmt.setString(5, ec.getDeliveryMemo());
+			pstmt.setInt(1, ec.getOrderPnum());
+			pstmt.setString(2, ec.getEcreason());
+			pstmt.setString(3, ec.getPayment());
+			pstmt.setString(4, ec.getDeliveryMemo());
 			
 			result = pstmt.executeUpdate();
 			

@@ -67,6 +67,7 @@
             padding-top :5px;
             padding-bottom:5px;
             cursor:pointer;
+            position:relative;
         }
         
         #c1{
@@ -97,6 +98,9 @@
         width: 30px;
         height: 30px;
         margin:auto;
+        position:absolute;
+        top:20px;
+        right: 50px
         }
         
 		/*주문내역 상품정보 슬라이드*/  
@@ -137,6 +141,21 @@
         
          #money{position:absolute; right:2%; bottom:5%; font-size:18px;}
         
+        /* 페이징바 스타일 */
+		.paging-area{
+		margin:auto;
+		text-align:center;
+		margin-top:50px;
+		margin-left:100px;
+		}
+		/* 페이징바 */
+		.paging-area button{
+		border:  0;
+		background-color: transparent;
+		height: 40px;
+		width: 40px;
+		border-radius: 5px;
+		}
     </style>
 </head>
 <body>
@@ -181,7 +200,23 @@
     
     <% } %>
 <% } %>   
-    
+    <!-- 페이징 바 -->
+      <div class="paging-area" >
+            <% if(currentPage != startPage) { %>
+            	<button onclick="location.href='<%=contextPath%>/orderselect.my?cpage=<%= currentPage-1 %>';"> &lt; </button>
+            <% } %>		
+            <% for(int pp=startPage; pp<=endPage; pp++){ %>
+            	<% if(pp == currentPage) { %> 
+            		<button disabled><%=pp %></button>
+            	<% } else { %>
+            		<button onclick="location.href='<%=contextPath %>/orderselect.my?cpage=<%=pp%>';"><%=pp %></button>
+            	<% } %>	
+            <% } %>
+
+			<% if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/orderselect.my?cpage=<%= currentPage+1 %>';"> &gt; </button>
+			<% } %>	
+    	</div>
     </div>
 </div>
 
@@ -195,6 +230,13 @@ $("button").click(function() {
 	  $(this).toggleClass('on').siblings().removeClass('on');
 	  $(this).next(".orderProduct").siblings(".orderProduct").slideUp(300); // 1개씩 펼치기
 	});
+	
+$(function(){
+    $(".paging-area button").click(function(){
+        $(this).siblings(".paging-area button").css({background: "", color:"black"});
+        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+    })
+})	
 </script>
 
 <%@ include file="../../common/footerbar.jsp" %>

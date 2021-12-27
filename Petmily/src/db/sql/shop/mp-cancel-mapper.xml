@@ -6,7 +6,9 @@
 <entry key="selectListCount">
 	SELECT
 	       COUNT(*) COUNT
-	  FROM SP_ORDERPRODUCT
+	  FROM SPMY_CANCEL CC, SPMY_ORDER O
+	WHERE CC.ORDER_NO = O.ORDER_NO
+	  AND MEM_NO = ?
 
 </entry>
 
@@ -29,12 +31,38 @@
 					 WHERE 
 					       CC.ORDER_NO = O.ORDER_NO
 					   AND CC.ORDER_PNUM = OP.ORDER_PNUM
-					   AND CC.PRODUCT_NO = P.PRODUCT_NO
+					   AND OP.PRODUCT_NO = P.PRODUCT_NO
+					   AND MEM_NO = ?
 					  ORDER 
 					     BY ORDER_DATE DESC
 	                ) A
 	        )
 	 WHERE RNUM BETWEEN ? AND ?
+	 
+</entry>
+
+<entry key="selectCancel">
+
+	
+     SELECT
+	       CC.ORDER_NO "CANCEL_ONO"
+	     , P.PRODUCT_NAME "CANCEL_PNAME"
+	     , OP.ORDER_POPTION "CANCEL_OPOPTION"
+	     , OP.ORDER_PAMOUNT "CANCEL_OPAMOUNT"
+	     , O.PRICE "CANCEL_PRICE" 
+	     , TO_CHAR(O.ORDER_DATE, 'yyyy-mm-dd') "ORDER_DATE"
+         , CC_SLEDDING
+         , CC_PAYMENT
+	  FROM SPMY_CANCEL CC, SPMY_ORDER O, SP_ORDERPRODUCT OP, TB_PRODUCT_UD P
+	 WHERE 
+	       CC.ORDER_NO = O.ORDER_NO
+	   AND CC.ORDER_PNUM = OP.ORDER_PNUM
+	   AND OP.PRODUCT_NO = P.PRODUCT_NO
+	   AND MEM_NO = ?
+	  ORDER 
+	     BY ORDER_DATE DESC
+
+	 
 </entry>
 
 <entry key="selectTermListA">
@@ -57,7 +85,8 @@
 					 WHERE 
 					       CC.ORDER_NO = O.ORDER_NO
 					   AND CC.ORDER_PNUM = OP.ORDER_PNUM
-					   AND CC.PRODUCT_NO = P.PRODUCT_NO
+					   AND OP.PRODUCT_NO = P.PRODUCT_NO
+					   AND MEM_NO = ?
 					  ORDER 
 					     BY ORDER_DATE DESC
 					) T
@@ -90,7 +119,8 @@
 					 WHERE 
 					       CC.ORDER_NO = O.ORDER_NO
 					   AND CC.ORDER_PNUM = OP.ORDER_PNUM
-					   AND CC.PRODUCT_NO = P.PRODUCT_NO
+					  AND OP.PRODUCT_NO = P.PRODUCT_NO
+					   AND MEM_NO = ?
 					  ORDER 
 					     BY ORDER_DATE DESC
 					) T
@@ -123,7 +153,8 @@
 						 WHERE 
 						       CC.ORDER_NO = O.ORDER_NO
 						   AND CC.ORDER_PNUM = OP.ORDER_PNUM
-						   AND CC.PRODUCT_NO = P.PRODUCT_NO
+						   AND OP.PRODUCT_NO = P.PRODUCT_NO
+						   AND MEM_NO = ?
 						  ORDER 
 						     BY ORDER_DATE DESC
 						) T
@@ -156,7 +187,8 @@
 					 WHERE 
 					       CC.ORDER_NO = O.ORDER_NO
 					   AND CC.ORDER_PNUM = OP.ORDER_PNUM
-					   AND CC.PRODUCT_NO = P.PRODUCT_NO
+					   AND OP.PRODUCT_NO = P.PRODUCT_NO
+					   AND MEM_NO = ?
 					  ORDER 
 					     BY ORDER_DATE DESC
 					) T
@@ -187,11 +219,73 @@
 	 WHERE 
 	       CC.ORDER_NO = O.ORDER_NO
 	   AND CC.ORDER_PNUM = OP.ORDER_PNUM
-	   AND CC.PRODUCT_NO = P.PRODUCT_NO	
+	   AND OP.PRODUCT_NO = P.PRODUCT_NO	
 	   AND CC.ORDER_NO = ?
+	   AND MEM_NO = ?
 
 </entry>
 
+<entry key="selectCancelApp">
+
+	SELECT 
+	        O.ORDER_NO "CANCEL_ONO"
+	      , O.ORDER_DATE "ORDER_DATE"
+	      , M.MEM_NAME "MEM_NAME"
+	      , O.PHONE "PHONE"
+	      , O.ADDRESS "ADDRESS"
+	      , O.DELIVERY_MEMO "DELMEMO"
+	      , O.PRICE "PRICE"
+	FROM  SPMY_ORDER O, TB_MEMBER M
+	WHERE 
+	      O.MEM_NO = M.MEM_NO
+	  AND O.MEM_NO = ?
+	  AND O.ORDER_NO = ?
+
+</entry>
+
+
+<entry key="selectSum">
+	SELECT SUM(PRICE) PRICESUM, SUM(AMOUNT) AMOUNTSUM
+	  FROM (SELECT
+			        O.ORDER_NO "CANCEL_ONO"
+			      , O.ORDER_DATE "ORDER_DATE"
+			      , M.MEM_NAME "MEM_NAME"
+			      , O.PHONE "PHONE"
+			      , O.ADDRESS "ADDRESS"
+			      , O.DELIVERY_MEMO "DELMEMO"
+			      , O.PRICE "PRICE"
+			      , OP.ORDER_PAMOUNT "AMOUNT"
+			FROM  SPMY_ORDER O, TB_MEMBER M, SP_ORDERPRODUCT OP
+			WHERE 
+			      O.MEM_NO = M.MEM_NO
+			  AND O.ORDER_NO = OP.ORDER_NO    
+			  AND O.MEM_NO = ?
+			  AND O.ORDER_NO = ?)
+</entry>
+
+<entry key="insertCancel">
+
+INSERT 
+	  INTO SPMY_EXCHANGE
+	  (
+	      CC_NO
+		, ORDER_NO
+		, CC_REASON
+		, CC_PAYMENT
+		, ORDER_PNUM
+		, CC_DELMEMO
+	  )
+	  VALUES
+	  (
+		  SEQ_CCNO.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, ?
+		, ?
+	  )
+
+</entry>
 
 
 

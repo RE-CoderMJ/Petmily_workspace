@@ -12,17 +12,17 @@ import com.pm.shop.model.vo.OrderSelect;
 
 public class OrderSelectService {
 	
-	public int selectListCount() {
+	public int selectListCount(int userNo) {
 		Connection conn = getConnection();
-		int listCount = new OrderSelectDao().selectListCount(conn);
+		int listCount = new OrderSelectDao().selectListCount(conn, userNo);
 
 		close(conn);
 		return listCount;
 	}
 	
-	public ArrayList<OrderSelect> selectList(PageInfo pi){
+	public ArrayList<OrderSelect> selectList(PageInfo pi, int userNo){
 		Connection conn = getConnection();
-		ArrayList<OrderSelect> list = new OrderSelectDao().selectList(conn, pi);
+		ArrayList<OrderSelect> list = new OrderSelectDao().selectList(conn, pi, userNo);
 		
 		close(conn);
 		
@@ -31,9 +31,9 @@ public class OrderSelectService {
 		
 	}
 	
-	public ArrayList<OrderSelect> selectDetailList(int orderNo){
+	public ArrayList<OrderSelect> selectDetailList(int orderNo, int userNo){
 		Connection conn = getConnection();
-		ArrayList<OrderSelect> osdetail = new OrderSelectDao().selectDetailList(conn, orderNo);
+		ArrayList<OrderSelect> osdetail = new OrderSelectDao().selectDetailList(conn, orderNo, userNo);
 		
 		close(conn);
 		
