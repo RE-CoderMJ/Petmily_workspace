@@ -84,7 +84,7 @@
             </div>
 
             <div align="center">
-                <button type="submit" class="btn btn-warning">로그인 하러 가기</button>
+                <button type="submit" class="btn btn-warning" onclick="location.href='<%= contextPath%>/loginForm.me';">로그인 하러 가기</button>
             </div>
 
             <div align="center" class="btnBottom">

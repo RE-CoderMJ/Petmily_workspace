@@ -118,15 +118,37 @@ public class QnaService {
 		return result;
 	}
 
-	public ArrayList<Reply> selectReplyList(/*PageInfo pi, */int qnaNo) {
+
+	public int insertReply(Reply r) {
 		Connection conn = getConnection();
-		ArrayList<Reply> list = new QnaDao().selectReplyList(conn, /*pi, */qnaNo);
+		int result = new QnaDao().insertReply(conn, r);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int selectReplyCount(int qnaNo) {
+		Connection conn = getConnection();
+		int replyCount = new QnaDao().selectReplyCount(conn , qnaNo);
+		
+		close(conn);
+		return replyCount;
+	}
+
+	
+	public ArrayList<Reply> selectReplyList(PageInfo pi, int qnaNo) {
+		Connection conn = getConnection();
+		ArrayList<Reply> list = new QnaDao().selectReplyList(conn, pi, qnaNo);
 		
 		close(conn);
 		return list;
 	}
-
-	
 	
 
 

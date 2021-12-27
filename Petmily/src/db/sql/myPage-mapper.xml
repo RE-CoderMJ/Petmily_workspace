@@ -16,7 +16,7 @@
 				          FROM ASK
 				          JOIN TB_MEMBER
 				            ON (MEM_NO = ASK_WRITER)
-				         
+				            
 				         UNION
 				         
 				        SELECT 
@@ -28,7 +28,7 @@
 				          FROM TB_MISSING
 				          JOIN TB_MEMBER
 				            ON (MEM_NO = MISSING_WRITER)
-				         
+				            
 				         UNION
 				         
 				        SELECT
@@ -40,7 +40,7 @@
 				          FROM MARKET
 				          JOIN TB_MEMBER
 				            ON (MEM_NO = MARKET_WRITER)
-				         
+				            
 				         UNION
 				         
 				        SELECT
@@ -64,7 +64,7 @@
 				          FROM TB_REVIEW
 				          JOIN TB_MEMBER
 				         USING (MEM_NO)
-				          
+				         
 				         UNION
 				         
 				        SELECT
@@ -76,12 +76,11 @@
 				          FROM TB_QNA
 				          JOIN TB_MEMBER
 				         USING (MEM_NO)
-				         )
-				   WHERE MEM_NO = ?
+				         )A
+				   WHERE MEM_NO =? 
 				   ORDER 
 				      BY ENROLL_DATE DESC
-		           ) A
-		       )
+		           ) 
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 

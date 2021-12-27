@@ -69,7 +69,7 @@
         margin-bottom: 10px;
     }
 
-    textarea {
+    #qnaContent {
         width: 600px;
         height: 500px;
         padding: 10px;
@@ -77,6 +77,7 @@
         border-radius: 7px;
         margin-top: 10px;
         margin-bottom: 20px;
+        resize: none;
     }
 
     label {
@@ -123,7 +124,7 @@
 	                        <input type="hidden" name="memNo" value="<%= loginUser.getMemNo() %>">
 	                        
 	                        <input type="text" id="qnaTitle" name="qnaTitle" placeholder="제목">
-	                        <textarea id="qnaContent" name="qnaContent" style="resize: none;" placeholder="내용"></textarea>
+	                        <textarea id="qnaContent" name="qnaContent" placeholder="내용"></textarea>
 	                        
 	                        <div style="margin-top: 20px;">
 	                            <p style="margin: 0px -70px 30px 40px; float: left;">파일<br>첨부</p>

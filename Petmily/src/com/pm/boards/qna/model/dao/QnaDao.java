@@ -300,7 +300,56 @@ public class QnaDao {
 		return result;
 	}
 
-	public ArrayList<Reply> selectReplyList(Connection conn, /*PageInfo pi, */int qnaNo) {
+
+	public int insertReply(Connection conn, Reply r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getReplyWriter());
+			pstmt.setInt(2, r.getContentNo());
+			pstmt.setString(3, r.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int selectReplyCount(Connection conn, int qnaNo) {
+		
+		int replyCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReplyCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnaNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				replyCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return replyCount;
+	}
+	
+	
+	public ArrayList<Reply> selectReplyList(Connection conn, PageInfo pi, int qnaNo) {
 		ArrayList<Reply> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -311,22 +360,23 @@ public class QnaDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-//			int startRow = (pi.getCurrentPage() -1)* pi.getBoardLimit() +1;
-//			int endRow = startRow + pi.getBoardLimit() -1;
-//			
-			pstmt.setInt(1, qnaNo);
-//			pstmt.setInt(2, startRow);
-//			pstmt.setInt(3, endRow);
+			int startRow = (pi.getCurrentPage() -1)* pi.getBoardLimit() +1;
+			int endRow = startRow + pi.getBoardLimit() -1;
 			
+			pstmt.setInt(1, qnaNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Reply(rset.getInt("reply_no"),
-								   rset.getInt("reply_writer"),
-								   rset.getString("reply_content"),
-								   rset.getString("enroll_date"),
-								   rset.getString("privateva")
-								  ));
+				Reply r = new Reply();
+				r.setReplyNo(rset.getInt("reply_no"));
+				r.setWriterNickname(rset.getString("nickname"));
+				r.setWriterImg(rset.getString("mem_img"));
+				r.setReplyContent(rset.getString("reply_content"));
+				r.setModifyDate(rset.getString("modify_date"));
+				
+				list.add(r);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
