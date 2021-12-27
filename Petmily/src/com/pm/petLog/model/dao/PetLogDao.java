@@ -71,7 +71,7 @@ public class PetLogDao {
 		return result;
 	}
 	
-	public ArrayList<PetLog> selectPetLogList(Connection conn, int memNo){
+	public ArrayList<PetLog> selectPetLogList(Connection conn, int memNo, PageInfo pi){
 		ArrayList<PetLog> list = new ArrayList<>();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
@@ -79,8 +79,16 @@ public class PetLogDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
 			rset = pstmt.executeQuery();
+			
 			while(rset.next()) {
 				PetLog pl = new PetLog();
 				pl.setPetLogNo(rset.getInt("petlog_no"));
@@ -453,7 +461,30 @@ public class PetLogDao {
 		return list;
 	}
 
-	public int selectPetLogCount(Connection conn) {
+	public int selectAllPetLogCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllPetLogCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+
+	public int selectPetLogCount(Connection conn, int memNo) {
 		int listCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -461,6 +492,7 @@ public class PetLogDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {

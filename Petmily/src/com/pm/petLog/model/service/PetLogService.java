@@ -32,9 +32,9 @@ public class PetLogService {
 		return result1 * result2;
 	}
 	
-	public ArrayList<PetLog> selectPetLogList(int memNo){
+	public ArrayList<PetLog> selectPetLogList(int memNo, PageInfo pi){
 		Connection conn = getConnection();
-		ArrayList<PetLog> list = new PetLogDao().selectPetLogList(conn, memNo);
+		ArrayList<PetLog> list = new PetLogDao().selectPetLogList(conn, memNo, pi);
 		close(conn);
 		return list;
 	}
@@ -160,9 +160,16 @@ public class PetLogService {
 		return list;
 	}
 
-	public int selectPetLogCount() {
+	public int selectAllPetLogCount() {
 		Connection conn = getConnection();
-		int listCount = new PetLogDao().selectPetLogCount(conn);
+		int listCount = new PetLogDao().selectAllPetLogCount(conn);
+		close(conn);
+		return listCount;
+	}
+
+	public int selectPetLogCount(int memNo) {
+		Connection conn = getConnection();
+		int listCount = new PetLogDao().selectPetLogCount(conn, memNo);
 		close(conn);
 		return listCount;
 	}

@@ -3,7 +3,7 @@
 <%@ page import="java.util.ArrayList, com.pm.petLog.model.vo.PetsRoom, com.pm.petLog.model.vo.PetLog" %>
 <%
 	PetsRoom pr = (PetsRoom)request.getAttribute("pr");
-	ArrayList<PetLog> list = (ArrayList<PetLog>)request.getAttribute("list");
+	/* ArrayList<PetLog> list = (ArrayList<PetLog>)request.getAttribute("list"); */
 %>
 <!DOCTYPE html>
 <html>
@@ -37,7 +37,7 @@
                     <button type="button" id="follow-btn">팔로우</button>
                     <!-- <button type="button" id="following-btn">팔로잉</button> -->
                     <div id="room-info">
-                        <div class="count info"><%= list.size() %></div>
+                        <div class="count info"><%-- <%= list.size() %> --%></div>
                         <div class="count info follower" data-toggle="modal" data-target="#follower">10</div>
                         <div class="count info following" data-toggle="modal" data-target="#following">5</div>
                         <div class="info-title info">게시글</div>
@@ -75,28 +75,28 @@
                 </div>
             </div>
             <div id="right-part">
-	            	<% if(loginUser != null && loginUser.getMemNo() == pr.getMemNo()) { %> --%>
+	            	<% if(loginUser != null && loginUser.getMemNo() == pr.getMemNo()) { %>
 	                	<div align="right" id="enroll-btn" onclick="location.href='<%=contextPath%>/enrollForm.petLog'"></div>
 	                <% } %>
             	<div id="list-area">
 	                <div id="pictures-area">
-	                <% if(!list.isEmpty()) { %>
+	                <%-- <% if(!list.isEmpty()) { %>
 	                	<% for(PetLog pl:list) { %>
 	                    	<div class="pictures">
 	                        	<img src=<%= pl.getTitleImg()%> alt="">
 	                        	<input type="hidden" value=<%=pl.getPetLogNo() %>>
 	                    	</div>
 	                	<% } %>
-	                <% } %>
+	                <% } %> --%>
 	                </div>
 	                <div id="paging-area" align="center">
-	                    <button> &lt; </button>
+	                    <!-- <button> &lt; </button>
 	                    <button>1</button>
 	                    <button>2</button>
 	                    <button>3</button>
 	                    <button>4</button>
 	                    <button>5</button>
-	                    <button> &gt; </button>
+	                    <button> &gt; </button> -->
 	                </div>
                 </div>
                 <script>
@@ -135,6 +135,56 @@
 	                       
 	                    </div>
 	                </div>
+	                <script>
+	                	$(function(){
+	                		selectPetLogList();
+	                	});
+	                	
+	                	function selectPetLogList(){
+	                		$.ajax({
+	                			url:"pl.petsRoom.petLog",
+	                			data:{memNo:<%=pr.getMemNo()%>, page:1},
+	                			success:function(result){
+	                				
+	                				$("#room-info").children().first().html(result.list.length);
+	                				
+	                				let result2 = "";
+	                				if(result.list != null){
+		                				for(let i=0; i<result.list.length; i++){
+		                					result2 += "<div class='pictures'>"
+		                					 			+ "<img src='" + result.list[i].titleImg + "' alt=''>"
+		                					 			+ "<input type='hidden' value='" + result.list[i].petLogNo + "'>"
+		                					 			+ "</div>";
+		                				}
+		                				$("#pictures-area").html(result2);
+	                				}
+	                				
+	                				let result3 ="";
+	                				if(result.pi.currentPage != 1){
+	                					result3 += "<button onclick='location.href='" + "<%=contextPath%>" + "/pl.petsRoom.petLog?page=" + "(result.pi.currentPage -1)" 
+	                							+  "';'> &lt; </button>";
+	                				}
+	                				
+	                				for(let p = result.pi.startPage; p<=result.pi.endPage; p++){
+	                					if(p == result.pi.currentPage){
+	                						result3 += "<button disabled>" + p + "</button>";
+	                					}else{
+	                						result3 += "<button onclick='location.href='" + "<%=contextPath%>" + "/pl.petsRoom.petLog?page=" + p + "';'>" + p +"</button>";
+	                					}
+	                				}
+	                				
+	                				if(result.pi.currentPage != result.pi.maxPage){
+	                					result3 += "<button onclick='location.href='" + "<%=contextPath%>" + "/pl.petsRoom.petLog?page=" + (result.pi.currentPage +1)
+            							+  "';'> &gt; </button>";
+	                				}
+	                				
+	        	                    $("#paging-area").html(result3);
+	                			},error:function(){
+	                				console.log("게시글 목록 조회용 ajax 통신 실패");
+	                			}
+	                		})
+	                	}
+	                </script>
 	                <div class="right-middle">
 	                    <img src="resources/img/heart.jpg" alt="">
 	                    <span>좋아요</span>

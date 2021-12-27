@@ -35,7 +35,7 @@ public class PetLogMainPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount = new PetLogService().selectPetLogCount();
+		int listCount = new PetLogService().selectAllPetLogCount();
 		int currentPage = Integer.parseInt(request.getParameter("page"));
 		int pageLimit = 5;
 		int boardLimit = 3;

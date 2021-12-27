@@ -39,24 +39,31 @@
 		  )
 	</entry>
 	<entry key="selectPetLogList">
-		SELECT
-			   PETLOG_NO
-			 , MEM_NO
-			 , ENROLL_DATE
-			 , PETLOG_CONTENT
-			 , ROOM_NAME
-			 , (SELECT
-			           FILE_PATH || CHANGE_NAME
-			      FROM ATTACHMENT
-			     WHERE REF_NO = P.PETLOG_NO
-			       AND REF_BOARD_NO = 6
-			       AND ROWNUM = 1) "TITLEIMG"
-		  FROM PETLOG P
-		  JOIN PETSROOM USING (MEM_NO)
-	     WHERE P.STATUS = 'Y'
-	       AND MEM_NO = ?
-	     ORDER
-	        BY PETLOG_NO DESC
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+						SELECT
+							   PETLOG_NO
+							 , MEM_NO
+							 , ENROLL_DATE
+							 , PETLOG_CONTENT
+							 , ROOM_NAME
+							 , (SELECT
+							           FILE_PATH || CHANGE_NAME
+							      FROM ATTACHMENT
+							     WHERE REF_NO = P.PETLOG_NO
+							       AND REF_BOARD_NO = 6
+							       AND ROWNUM = 1) "TITLEIMG"
+						  FROM PETLOG P
+						  JOIN PETSROOM USING (MEM_NO)
+					     WHERE P.STATUS = 'Y'
+					       AND MEM_NO = ?
+					     ORDER
+					        BY PETLOG_NO DESC		  		  		
+		  		       ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	<entry key="selectPetsRoom">
 		SELECT
@@ -172,7 +179,7 @@
 						  FROM PETLOG
 					     WHERE STATUS = 'Y'
 					     ORDER
-					        BY ENROLL_DATE DESC		          
+					        BY PETLOG_NO DESC		          
 		               ) A
 		       )
 		 WHERE RNUM BETWEEN ? AND ?
@@ -187,10 +194,17 @@
 	      FROM ATTACHMENT
 	     WHERE REF_BOARD_NO = 6
 	</entry>
+	<entry key="selectAllPetLogCount">
+		SELECT
+		       COUNT(*) count
+		  FROM PETLOG
+		 WHERE STATUS = 'Y'
+	</entry>
 	<entry key="selectPetLogCount">
 		SELECT
 		       COUNT(*) count
 		  FROM PETLOG
 		 WHERE STATUS = 'Y'
+		   AND MEM_NO = ?
 	</entry>
 </properties>
