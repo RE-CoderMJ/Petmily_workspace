@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectListCount">
+	SELECT
+           COUNT(*) COUNT
+      FROM PETLOG
+     WHERE STATUS='Y'
+    </entry>
+	
+	<entry key="selectThumbnailList">
+		SELECT *
+		  FROM (
+		         SELECT ROWNUM RNUM, A.*
+		           FROM (
+		                 SELECT 
+                                NICKNAME
+                              , (SELECT
+			           				    FILE_PATH || CHANGE_NAME
+			      				   FROM ATTACHMENT
+			     			 	  WHERE REF_NO = P.PETLOG_NO
+			       					AND REF_BOARD_NO = 6
+			       					AND ROWNUM = 1) "TITLEIMG"
+		  						   FROM PETLOG P
+		  				  		   JOIN ATTACHMENT ON (PETLOG_NO = REF_NO)
+          						   JOIN TB_MEMBER USING (MEM_NO)
+		 						  WHERE P.STATUS = 'Y'
+		   							AND REF_BOARD_NO = 6
+		 						  ORDER
+	      							 BY P.PETLOG_NO DESC
+		                 	      ) A
+		          			)
+		  			WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="newfeed">
+		SELECT COUNT(*) COUNT
+	      FROM PETLOG
+		 WHERE ENROLL_DATE = SYSDATE
+	</entry>
+
+	<entry key="selectPetlog">
+    	SELECT 
+               PETLOG_NO
+             , MEM_NO
+             , TO_CHAR(ENROLL_DATE, 'YY/MM/DD') "ENROLL_DATE"
+             , PETLOG_CONTENT
+             , STATUS
+             , (SELECT
+			           FILE_PATH || CHANGE_NAME
+			      FROM ATTACHMENT
+			     WHERE REF_NO = P.PETLOG_NO
+			       AND REF_BOARD_NO = 6
+			       AND ROWNUM = 1) "TITLEIMG"
+          FROM PETLOG P
+		  JOIN PETSROOM USING (MEM_NO)
+		  WHERE P.STATUS = 'Y'
+	       AND MEM_NO = ?
+	     ORDER
+	        BY PETLOG_NO DESC
+   </entry>
+   
+   <entry key="selectAttachment">
+		SELECT
+               ATTACHMENT_NO
+             , ORIGIN_NAME
+             , CHANGE_NAME
+             , FILE_PATH
+             , FILE_LEVEL
+          FROM ATTACHMENT
+         WHERE REF_NO = ?
+   </entry>
+   
+
+   
+	
+</properties>

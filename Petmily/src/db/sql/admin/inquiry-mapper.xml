@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM TB_PINQUIRY
+		 WHERE STATUS = 'Y' 
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+		  		  		 SELECT
+		  		  		 	    PINQUIRY_NO
+		  		  		 	  , NICKNAME
+		  		  		 	  , PRODUCT_NO
+		  		  		 	  , PINQUIRY_TITLE
+		  		  		 	  , PINQUIRY_DATE
+		  		  		 	  , MANAGER_ID
+		  		  		   FROM TB_PINQUIRY P
+		  		  		   JOIN TB_MEMBER USING (MEM_NO)
+		  		  		   JOIN TB_PRODUCT_UD USING (PRODUCT_NO)
+		  		  		   JOIN TB_MANAGER_ID USING (MANAGER_NO)
+		  		  		  WHERE P.STATUS = 'Y'
+		  		  		  ORDER
+		  		  		     BY P.PINQUIRY_NO DESC
+		  		  		   ) A
+		  		  	)
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="insertPinquiry">
+		INSERT
+		  INTO TB_PINQUIRY
+		  	 (
+		       PINQUIRY_NO
+		   	 , MANAGER_NO
+		   	 , REPLY_CONTENT
+		   	 , REPLY_DATE
+		   	 )
+		   	 VALUES
+		   	 (
+		       SEQ_PQNANO.NEXTVAL
+		     , ?
+		     , ?
+		     , ?
+		     )
+	</entry>
+	
+	
+	<entry key="selectPinquiry">
+		SELECT 
+			   PINQUIRY_NO
+			 , NICKNAME
+			 , PRODUCT_NAME
+			 , PINQUIRY_TITLE
+			 , PINQUIRY_DATE
+			 , MANAGER_NO
+			 , REPLY_CONTENT
+			 , REPLY_DATE
+		  FROM TB_PINQUIRY
+		  JOIN TB_MEMBER USING (MEM_NO)
+		  JOIN TB_PRODUCT_UD USING (PRODUCT_NO)
+		  JOIN TB_MANAGER_ID USING (MANAGER_NO)
+		 WHERE PINQUIRY_NO = ?
+	</entry>
+
+	<entry key="updatePinquiry">
+		UPDATE
+               TB_PINQUIRY
+           SET PINQUIRY_NO
+		   	 , MANAGER_NO
+		   	 , REPLY_CONTENT
+		   	 , REPLY_DATE
+         WHERE PINQUIRY_NO = ?
+	</entry>
+	
+	<entry key="deletePinquiry">
+	 	UPDATE
+			   TB_PINQUIRY
+		   SET STATUS = 'N'
+		 WHERE PINQUIRY_NO = ?
+	 </entry>
+
+</properties>

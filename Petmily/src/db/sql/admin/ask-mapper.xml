@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM ASK
+		 WHERE STATUS = 'Y' 
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+		  		  		 SELECT
+		  		  		 	    ASK_NO
+		  		  		 	  , NICKNAME
+		  		  		 	  , CATEGORY
+		  		  		 	  , ASK_TITLE
+		     			  	  , TO_CHAR(ENROLL_DATE, 'YY/MM/DD') "ENROLL_DATE"
+		  		  		   FROM ASK A
+		  		  		   JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
+		  		  		  WHERE A.STATUS = 'Y'
+		  		  		  ORDER
+		  		  		     BY A.ASK_NO DESC
+		  		  		   ) A
+		  		  	)
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	
+	<entry key="selectAsk">
+		SELECT 
+			   ASK_NO
+			 , NICKNAME
+			 , CATEGORY
+			 , ASK_TITLE
+		     , TO_CHAR(ENROLL_DATE, 'YY/MM/DD') "ENROLL_DATE"
+		  FROM ASK A
+		  JOIN TB_MEMBER ON (ASK_WRITER = MEM_NO)
+		 WHERE A.ASK_NO = ?
+	</entry>
+	
+	<entry key="deleteAsk">
+	 	UPDATE
+			   ASK
+		   SET STATUS = 'N'
+		 WHERE ASK_NO = ?
+	 </entry>
+
+</properties>

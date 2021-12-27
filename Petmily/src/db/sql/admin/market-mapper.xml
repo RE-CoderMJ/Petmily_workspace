@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM MARKET
+		 WHERE STATUS = 'Y' 
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+		  		  		 SELECT
+		  		  		 	    MARKET_NO
+		  		  		 	  , NICKNAME
+		  		  		 	  , CATEGORY
+		  		  		 	  , D_CATEGORY
+		  		  		 	  , MARKET_TITLE
+		  		  		 	  , PRICE
+		                      , TO_CHAR(ENROLL_DATE, 'YY/MM/DD') "ENROLL_DATE"
+		  		  		   FROM MARKET M
+		  		  		   JOIN TB_MEMBER ON (MARKET_WRITER = MEM_NO)
+		  		  		  WHERE M.STATUS = 'Y'
+		  		  		  ORDER
+		  		  		     BY M.MARKET_NO DESC
+		  		  		   ) A
+		  		  	)
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	
+	<entry key="selectMarket">
+		SELECT 
+			   MARKET_NO
+			 , NICKNAME
+			 , CATEGORY
+			 , D_CATEGORY
+			 , MARKET_TITLE
+			 , PRICE
+		     , TO_CHAR(ENROLL_DATE, 'YY/MM/DD') "ENROLL_DATE"
+		  FROM MARKET M
+		  JOIN TB_MEMBER ON (MARKET_WRITER = MEM_NO)
+		 WHERE M.MARKET_NO = ?
+	</entry>
+	
+	<entry key="deleteMarket">
+	 	UPDATE
+			   MARKET
+		   SET STATUS = 'N'
+		 WHERE MARKET_NO = ?
+	 </entry>
+
+</properties>

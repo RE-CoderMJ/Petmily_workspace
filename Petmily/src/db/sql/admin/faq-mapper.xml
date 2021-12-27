@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+			   COUNT(*) count
+		  FROM TB_FAQ
+		 WHERE STATUS = 'Y' 
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		  		SELECT ROWNUM RNUM, A.*
+		  		  FROM (
+		  		  		 SELECT
+		  		  		 	    FAQ_NO
+		  		  		 	  , FAQ_TITLE
+		  		  		 	  , FAQ_CONTENT
+		  		  		 	  , FAQ_CATE
+		  		  		 	  , STATUS
+		  		  		 	  , MANAGER_ID
+		  		  		   FROM TB_FAQ F
+		  		  		   JOIN TB_MANAGER_ID USING (MANAGER_NO)
+		  		  		  WHERE F.STATUS = 'Y'
+		  		  		  ORDER
+		  		  		     BY FAQ_NO DESC
+		  		  		   ) A
+		  		  	)
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="insertFaq">
+		INSERT
+		  INTO TB_FAQ
+		  	 (
+		       FAQ_NO
+		   	 , FAQ_TITLE
+		   	 , FAQ_CONTENT
+		   	 , FAQ_CATE
+		   	 , MANAGER_NO
+		   	 )
+		   	 VALUES
+		   	 (
+		       SEQ_FAQNO.NEXTVAL
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     )
+	</entry>
+	
+	
+	<entry key="selectFaq">
+		SELECT 
+			   FAQ_NO
+			 , FAQ_TITLE
+			 , FAQ_CONTENT
+			 , FAQ_CATE
+			 , MANAGER_NO
+		  FROM TB_FAQ
+		  JOIN TB_MANAGER_ID USING (MANAGER_NO)
+		 WHERE FAQ_NO = ?
+	</entry>
+
+	<entry key="updateFaq">
+		UPDATE
+               TB_FAQ
+           SET FAQ_TITLE = ?
+             , FAQ_CONTENT = ?
+             , FAQ_CATE = ?
+         WHERE FAQ_NO = ?
+	</entry>
+	
+	<entry key="deleteFaq">
+	 	UPDATE
+			   TB_FAQ
+		   SET STATUS = 'N'
+		 WHERE FAQ_NO = ?
+	 </entry>
+
+</properties>

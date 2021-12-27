@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectListCount">
+		SELECT COUNT(*) count
+		  FROM TB_NOTICE
+		 WHERE STATUS = 'Y'
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		  		 SELECT ROWNUM RNUM, A.*
+		  		   FROM (
+		  		   		  SELECT
+		  		   		  		 NOTICE_NO
+		  		   		  	   , NOTICE_TITLE
+		  		   		  	   , NOTICE_CONTENT
+		  		   		  	   , NOTICE_DATE
+		  		   		  	   , NOTICE_CATE
+		  		   		  	   , STATUS
+		  		   		  	   , MANAGER_ID
+		  		   		    FROM TB_NOTICE N
+		  		   		    JOIN TB_MANAGER_ID USING (MANAGER_NO)
+		  		   		   WHERE N.STATUS = 'Y'
+		  		   		   ORDER
+		  		   		      BY NOTICE_NO DESC
+		  		   		   ) A
+		  		  )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+		  
+
+	<entry key="insertNotice">
+		INSERT
+		  INTO TB_NOTICE
+		  (
+		     NOTICE_NO
+		   , NOTICE_TITLE
+		   , NOTICE_CONTENT
+		   , NOTICE_CATE
+		   , MANAGER_NO
+		   )
+		   VALUES
+		   (
+		      SEQ_NOTICENO.NEXTVAL
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    )
+	</entry>
+
+
+
+	<entry key="selectNotice">
+		SELECT
+			   NOTICE_NO
+			 , NOTICE_TITLE
+			 , NOTICE_CONTENT
+			 , TO_CHAR(NOTICE_DATE, 'YY/MM/DD') "CREATE_DATE"
+			 , NOTICE_CATE
+			 , MANAGER_NO
+		  FROM TB_NOTICE
+		  JOIN TB_MANAGER_ID USING (MANAGER_NO)
+		 WHERE NOTICE_NO = ?
+	</entry>
+
+	 
+	 <entry key="updateNotice">
+	 	UPDATE
+               TB_NOTICE
+           SET NOTICE_TITLE = ?
+             , NOTICE_CONTENT = ?
+             , NOTICE_CATE = ?
+         WHERE NOTICE_NO = ?
+	 </entry>
+	
+	 <entry key="deleteNotice">
+	 	UPDATE
+			   TB_NOTICE
+		   SET STATUS = 'N'
+		 WHERE NOTICE_NO = ?
+	 </entry>
+</properties>
