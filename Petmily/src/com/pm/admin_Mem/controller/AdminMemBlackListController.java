@@ -1,4 +1,4 @@
-package com.pm.admin_Notify.controller;
+package com.pm.admin_Mem.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.admin_Notify.model.service.AdminNotifyService;
-import com.pm.admin_Notify.model.vo.AdminNotify;
+import com.pm.admin_Mem.model.service.AdminMemService;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.member.model.vo.Member;
 
 /**
- * Servlet implementation class AdminNfWarningListController
+ * Servlet implementation class AdminMemBlackListController
  */
-@WebServlet("/nfWarningList.ad")
-public class AdminNfWarningListController extends HttpServlet {
+@WebServlet("/blackMem.ad")
+public class AdminMemBlackListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminNfWarningListController() {
+    public AdminMemBlackListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +32,7 @@ public class AdminNfWarningListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int listCount;	 // 총 게시글 개수
 		int currentPage; // 현재 페이지
 		int pageLimit;	 // 페이지 최대개수 (몇개 단위씩)
@@ -41,12 +42,16 @@ public class AdminNfWarningListController extends HttpServlet {
 		int startPage;	 // 시작수
 		int endPage;	 // 끝수
 		
-		listCount = new AdminNotifyService().selectWarningListCount();
+		// * listCount : 총 게시글 개수
+		listCount = new AdminMemService().selectBlackListCount();
 		
+		// * currentPage : 현재 페이지(즉, 사용자가 요청한 페이지)
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
-		
+	
+		// * pageLimit : 페이징바의 페이지 최대 개수
 		pageLimit = 5;
 		
+		// * boardLimit : 게시글 최대 개수 (단위)
 		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
@@ -59,24 +64,25 @@ public class AdminNfWarningListController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
+		// com.kh.common.model.vo.PageInfo
+		// * 페이징바를 만들때 필요한 객체
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<AdminNotify> list = new AdminNotifyService().selectNfWarningList(pi);
+		ArrayList<Member> list = new AdminMemService().selectBlackList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		//System.out.println("2차확인:"+ list);
+		request.getRequestDispatcher("views/admin/manager/adminMemManager_warning.jsp").forward(request, response);
 		
-		request.getRequestDispatcher("views/admin/notify/adminWarningList.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

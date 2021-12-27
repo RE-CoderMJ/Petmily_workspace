@@ -71,10 +71,21 @@
                         FROM TB_REPORT R
                         JOIN TB_MEMBER M ON (CLIENT_ID = MEM_EMAIL)
                        WHERE REPORT_COUNT != 0
+                         AND MEM_BLOCK = 'N'
 		                )A
                         
 		        ) 
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="updateBlackMem">
+	 UPDATE
+		    TB_MEMBER
+		SET MEM_BLOCK = 'Y'
+	  WHERE MEM_EMAIL =(SELECT CLIENT_ID
+                         FROM TB_REPORT
+		                 JOIN TB_MEMBER ON (CLIENT_ID = MEM_EMAIL)
+		                WHERE REPORT_NO = ?)
 	</entry>
 	
 </properties>

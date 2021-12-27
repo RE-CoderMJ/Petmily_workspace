@@ -249,7 +249,7 @@
                         </div>
                     </div>
                     
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>

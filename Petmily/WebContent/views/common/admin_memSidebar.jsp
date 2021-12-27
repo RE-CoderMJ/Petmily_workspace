@@ -66,7 +66,7 @@
     
                     <div class="d-category" id="memPoint" onclick="location.href='<%= contextPathas %>/memPoint.ad?cpage=1';">회원 포인트 관리</div>
                     
-                    <div class="d-category" id="memWarning" onclick="location.href='<%= contextPathas %>/memWarning.ad';">블랙리스트 관리</div>
+                    <div class="d-category" id="memWarning" onclick="location.href='<%= contextPathas %>/blackMem.ad?cpage=1';">블랙리스트 관리</div>
                     
                 </div>
             </ul>

@@ -259,17 +259,17 @@
                     </div>
                     
                         <!-- </div> -->
-                        <table style="width: 100%;" class="table">
+                        <table style="width: 100%;" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
                                     <th width="150px">회원 ID</th>
-                                    <th width="120px">분류</th>
+                                    <th width="100px">분류</th>
                                     <th width="200px">신고사유</th>
                                     <th width="450px">신고내용</th>
                                     <th width="150px">신고자 ID</th>
-                                    <th width="100px">신고일</th>
+                                    <th width="150px">신고일</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -300,6 +300,7 @@
                         	<div class="table">
                                 <div class="modal fade" id="idModal">
                                   <form id="update-form" action="<%= contextPath %>/reportUd.ad" method="post">
+                                    <input type="hidden" name="rnum" id="rNum">
                                     <div class="modal-dialog modal-sm modal-dialog-centered">
                                         <div class="modal-content">
                                             <!-- Modal body -->
@@ -414,7 +415,7 @@
                  //for(var i=0; i<=4; i++){
                  	console.log(rno);
                  //}
-                 	//$("#rpNo").val(rno); 
+                 	$("#rNum").val(rno); 
                  	$("#client").val(cid); 
                  	$("#reason").val(reason); 
                  	$("#content").val(content); 

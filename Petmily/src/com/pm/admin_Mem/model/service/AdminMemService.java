@@ -20,9 +20,21 @@ public class AdminMemService {
 		close(conn);
 		return listCount;
 	}
+	public int selectBlackListCount() {
+		Connection conn = getConnection();
+		int listCount = new AdminMemDao().selectBlackListCount(conn);
+		close(conn);
+		return listCount;
+	}
 	public ArrayList<Member> selectList(PageInfo pi){
 		Connection conn = getConnection();
 		ArrayList<Member> list = new AdminMemDao().selectList(conn, pi);
+		close(conn);
+		return list;
+	}
+	public ArrayList<Member> selectBlackList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<Member> list = new AdminMemDao().selectBlackList(conn, pi);
 		close(conn);
 		return list;
 	}

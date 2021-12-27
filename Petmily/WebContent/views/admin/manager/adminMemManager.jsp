@@ -350,7 +350,7 @@
                             </div>
                         </div>
                         
-                        <table style="width: 100%;" id="memTable">
+                        <table style="width: 100%;" id="memTable" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>

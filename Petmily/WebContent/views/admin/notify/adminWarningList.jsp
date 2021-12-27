@@ -203,6 +203,8 @@
                         <div class="btn-box">
                             <!-- 회원 삭제 버튼 -->
                             <div class="pb-5">
+                                <button onclick="location.href='<%= contextPath %>/blackUd.ad?rnum='+rno;" class="btn btn-sm btn-warning">블랙리스트</button>
+                                <input type="hidden" name="rnum" id="rNo">
                                 <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원삭제</button>
                             </div>
                             <!-- 회원삭제 모달 -->
@@ -243,15 +245,15 @@
                             </div>
                         </div>
                         
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
                                     <th width="50px">No.</th>
-                                    <th width="150px">회원 ID</th>
-                                    <th width="150px">누적 신고수</th>
+                                    <th width="300px">회원 ID</th>
+                                    <th width="130px">누적 신고수</th>
                                     <th width="500px">재재 내용</th>
-                                    <th width="300px">회원 상태</th>
+                                    <th width="200px">회원 상태</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -265,11 +267,11 @@
                                 <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
                                     <td><input type="checkbox" name="selectCheck" value=""></td>
-                                    <td id="rNo">1</td>
-                                    <td id="cId">qldrmsl@naver.com</td>
-                                    <td id="rCo">2회</td>
-                                    <td>욕설,비방 / 광고성 게시글</td>
-                                    <td>탈퇴</td>
+                                    <td id="rNo"><%= list.get(i).getReportNo() %></td>
+                                    <td id="cId"><%= list.get(i).getClientId() %></td>
+                                    <td id="rCo"><%= list.get(i).getReportCount() %></td>
+                                    <td><%= list.get(i).getReportContent() %></td>
+                                    <td><%= list.get(i).getMemStatus() %></td>
                                 </tr>
                                 <% } %>
                                 
@@ -318,11 +320,9 @@
                  	console.log(cid);
                  	console.log(rco);
                  //}
-                 	//$("#rpNo").val(rno); 
-                 	$("#client").val(cid); 
-                 	$("#reason").val(rcd); 
-                 	$("#content").val(content); 
-                 	$("#report").val(rid);
+                 	$("#rNo").val(rno); 
+                 	//$("#client").val(cid); 
+                 	//$("#count").val(rco);
                  
              }
             </script>

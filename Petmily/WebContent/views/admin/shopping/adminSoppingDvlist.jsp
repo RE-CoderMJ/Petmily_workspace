@@ -195,21 +195,20 @@
                            <input class="form-control mr-2" type="date"> ~ <input class="form-control mr-2" type="date">
                         </div>
                      </div>
-                     <br>
+                     <br><br><br><br>
                     <!-- table -->
                     <div class="table">
                         
                         
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th width="50px">No.</th>
                                     <th width="200px">주문번호</th>
-                                    <th width="170px">고객명</th>
+                                    <th width="200px">고객명</th>
                                     <th width="200px">배송상태</th>
                                     <th width="350px">배송주소</th>
                                     <th width="170px">주문일자</th>
-                                    <th width="200px">수량방법</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -220,12 +219,83 @@
                                 <!--2. 게시글 있을 경우-->
                                 <tr>
                                     <td>1</td>
-                                    <td>A-13124954</td>
+                                    <td>135</td>
                                     <td>김혜선</td>
                                     <td>배송중</td>
                                     <td>서울시동작구사당동</td>
-                                    <td>21.11.13</td>
-                                    <td>경비실</td>
+                                    <td>21.12.26</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>90</td>
+                                    <td>이동물</td>
+                                    <td>배송전</td>
+                                    <td>인천시 연수구</td>
+                                    <td>21.12.26</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>89</td>
+                                    <td>짱보미</td>
+                                    <td>배송중</td>
+                                    <td>서울시 서초구 방배동</td>
+                                    <td>21.12.26</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>70</td>
+                                    <td>김사랑</td>
+                                    <td>배송중</td>
+                                    <td>서울시 용산구</td>
+                                    <td>21.12.25</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>65</td>
+                                    <td>실험3</td>
+                                    <td>배송전</td>
+                                    <td>서울시 강남구 청담동</td>
+                                    <td>21.12.25</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>62</td>
+                                    <td>실험2</td>
+                                    <td>배송중</td>
+                                    <td>서울시동작구사당동</td>
+                                    <td>21.12.25</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>60</td>
+                                    <td>실험4</td>
+                                    <td>배송중</td>
+                                    <td>경기도 의정부시</td>
+                                    <td>21.12.24</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>59</td>
+                                    <td>실험3</td>
+                                    <td>배송중</td>
+                                    <td>경기도부천시</td>
+                                    <td>21.12.24</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>57</td>
+                                    <td>김민지</td>
+                                    <td>배송전</td>
+                                    <td>경기도 의정부시</td>
+                                    <td>21.12.23</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>55</td>
+                                    <td>김가연</td>
+                                    <td>배송중</td>
+                                    <td>경기도 의정부시</td>
+                                    <td>21.12.23</td>
                                 </tr>
                             </tbody>
                         </table>

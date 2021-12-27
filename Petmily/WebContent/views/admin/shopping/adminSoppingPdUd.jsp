@@ -267,7 +267,7 @@
                             </div>
                         </div>
                         
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="allCheck" id="allCheck" value=""></th>

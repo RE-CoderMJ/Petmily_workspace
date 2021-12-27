@@ -19,6 +19,13 @@
          WHERE MEM_STATUS = 'Y'
 	</entry>
 	
+	<entry key="selectBlackListCount">
+		SELECT
+	         COUNT(*) COUNT
+			  FROM TB_MEMBER
+	         WHERE MEM_BLOCK = 'Y'	
+	</entry>
+	
 	<entry key="selectList">
 		SELECT *
 		  FROM (
@@ -39,6 +46,26 @@
 					ON A.MEM_NO = B.MEM_NO
 		        )
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectBlackList">
+		SELECT *
+			  FROM (
+			        SELECT ROWNUM RNUM, A.*
+			          FROM (
+			                SELECT
+	                                MEM_NO
+	                              ,	MEM_EMAIL
+	                              ,	MEM_NAME
+	                              ,	REPORT_DATE
+	                              ,	MEM_STATUS
+	                              , REPORT_COUNT
+	                        FROM TB_REPORT
+	                        JOIN TB_MEMBER ON (CLIENT_ID = MEM_EMAIL)
+	                       WHERE MEM_BLOCK = 'Y'
+			                )A
+			        ) 
+			WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="selectMember">

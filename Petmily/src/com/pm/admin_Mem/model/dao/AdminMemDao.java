@@ -51,6 +51,31 @@ private Properties prop = new Properties();
 		
 		return listCount;
 	}
+	public int selectBlackListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBlackListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
 	
 	public ArrayList<Member> selectList(Connection conn, PageInfo pi){
 		// select문 => ResultSet (여러행) => ArrayList<Board>
@@ -85,6 +110,43 @@ private Properties prop = new Properties();
 								   rset.getString("Mem_tel"),
 								   rset.getString("Nickname"),
 								   rset.getInt("Ad_point")
+								   ));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+	}
+	public ArrayList<Member> selectBlackList(Connection conn, PageInfo pi){
+		// select문 => ResultSet (여러행) => ArrayList<Board>
+		ArrayList<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlackList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getInt("Mem_no"),
+								    rset.getString("Mem_email"),
+								    rset.getString("Mem_name"),
+								    rset.getDate("Report_date"),
+								    rset.getString("Mem_status"),
+								    rset.getInt("Report_count")
 								   ));
 			}
 			

@@ -72,5 +72,21 @@ public class AdminNotifyService {
 		
 		return list;
 	}
+	public int updateBlackMem(int reportNo) {
+		
+		Connection conn = getConnection();
+		int result = new AdminNotifyDao().updateBlackMem(conn, reportNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+	}
 	
 }

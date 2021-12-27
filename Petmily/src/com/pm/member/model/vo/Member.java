@@ -22,6 +22,9 @@ public class Member {
 	
 	private int adPoint;
 	
+	private Date reportDate;
+	private int reportCount;
+	
 	public Member() {
 		
 	}
@@ -123,6 +126,16 @@ public class Member {
 		this.memDelDetail = memDelDetail;
 		this.memNo = memNo;
 		this.memPwd = memPwd;
+	}
+
+	public Member(int memNo, String memEmail, String memName, Date reportDate, String status, int reportCount) {
+		super();
+		this.memNo = memNo;
+		this.memEmail = memEmail;
+		this.memName = memName;
+		this.reportDate = reportDate;
+		this.status = status;
+		this.reportCount = reportCount;
 	}
 
 	public int getMemNo() {
@@ -253,14 +266,33 @@ public class Member {
 		this.adPoint = adPoint;
 	}
 
+	public Date getReportDate() {
+		return reportDate;
+	}
+
+	public void setReportDate(Date reportDate) {
+		this.reportDate = reportDate;
+	}
+
+	public int getReportCount() {
+		return reportCount;
+	}
+
+	public void setReportCount(int reportCount) {
+		this.reportCount = reportCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memEmail=" + memEmail + ", memPwd=" + memPwd + ", memName=" + memName
 				+ ", memTel=" + memTel + ", nickname=" + nickname + ", postalCode=" + postalCode + ", address="
 				+ address + ", detailAddress=" + detailAddress + ", memEnrollDate=" + memEnrollDate + ", status="
 				+ status + ", memDelDate=" + memDelDate + ", memDelDetail=" + memDelDetail + ", memBlock=" + memBlock
-				+ ", memImg=" + memImg + ", adPoint=" + adPoint + "]";
+				+ ", memImg=" + memImg + ", adPoint=" + adPoint + ", reportDate=" + reportDate + ", reportCount="
+				+ reportCount + "]";
 	}
+
+	
 
 	
 

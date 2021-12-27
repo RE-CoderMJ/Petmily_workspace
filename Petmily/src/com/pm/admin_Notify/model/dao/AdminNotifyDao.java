@@ -159,7 +159,7 @@ public class AdminNotifyDao {
 		}
 		return result;
 	}
-public ArrayList<AdminNotify> selectNfWarningList(Connection conn, PageInfo pi) {
+	public ArrayList<AdminNotify> selectNfWarningList(Connection conn, PageInfo pi) {
 		
 		ArrayList<AdminNotify> list = new ArrayList<>();
 		
@@ -193,8 +193,27 @@ public ArrayList<AdminNotify> selectNfWarningList(Connection conn, PageInfo pi) 
 			close(rset);
 			close(pstmt);
 		}
-		//System.out.println("2차확인:"+ list);
 		return list;
+	}
+	public int updateBlackMem(Connection conn, int reportNo) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBlackMem");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reportNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.member.model.vo.Member" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
     <!DOCTYPE html>
     <html>
     <head>
@@ -188,33 +198,38 @@
                     </div>
                     
                         </div>
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" class="table table-hover">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
-                                    <th width="50px">No.</th>
-                                    <th width="150px">회원 ID</th>
-                                    <th width="120px">누적신고횟수</th>
-                                    <th width="200px">일자</th>
-                                    <th width="450px">재재 내용</th>
-                                    <th width="100px">회원상태</th>
+                                    <th width="100px">회원 No</th>
+                                    <th width="250px">회원 이메일</th>
+                                    <th width="150px">회원 이름</th>
+                                    <th width="200px">신고 일자</th>
+                                    <th width="200px">회원 상태</th>
+                                    <th width="100px">누적신고 수</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!--1. 게시글 없을 경우-->
+                                <% if(list.isEmpty()) { %>
                                 <tr style="display:none">
                                     <td colspan="6">조회된 게시글이 없습니다</td>
                                 </tr>
                                 <!--2. 게시글 있을 경우-->
-                                <tr>
-                                    <td><input type="checkbox" name="" value=""></td>
-                                    <td>1</td>
-                                    <td>id</td>
-                                    <td>3회</td>
-                                    <td>date</td>
-                                    <td>content</td>
-                                    <td>경고3회</td>
+                                <% }else { %>
+                                <% for(int i=0; i<list.size(); i++) {%>
+                                <tr id="row">
+                                    <td><input type="checkbox" name="selectCheck" value=""></td>
+                                    <td><%= list.get(i).getMemNo() %></td>
+                                    <td><%= list.get(i).getMemEmail() %></td>
+                                    <td><%= list.get(i).getMemName() %></td>
+                                    <td><%= list.get(i).getReportDate() %></td>
+                                    <td><%= list.get(i).getStatus() %></td>
+                                    <td><%= list.get(i).getReportCount() %></td>
                                 </tr>
+                                <% } %>
+							<% } %>
                             </tbody>
                         </table>
                     </div>
@@ -223,22 +238,31 @@
             <br><br><br><br>
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
-                <button> &lt; </button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button> &gt; </button>
-            </div>
-            <script>
+                 <% if(currentPage != 1) {%>
+                 <button onclick="location.href='<%=contextPath%>/blackMem.ad?cpage=<%=currentPage-1%>';"> &lt; </button>
+                 <% } %>
+                            
+               <% for(int p=startPage; p<=endPage; p++) {%>
+			      <% if(p == currentPage) { %>
+			      <button disabled><%= p %></button>
+			      <% }else { %>
+						<button onclick="location.href='<%= contextPath %>/blackMem.ad?cpage=<%= p %>';"><%= p %></button>
+			            	<% } %>
+			            <% } %>
+			            
+			       <% if(currentPage != maxPage) {%>
+			       <button onclick="location.href='<%=contextPath%>/blackMem.ad?cpage=<%=currentPage+1%>';">&gt; </button>
+					<% } %>
+			
+              </div>
+              <script>
                 $(function(){
-                    $(".paging-area button").click(function(){
-                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-                    })
-                })
-            </script>
+                  $(".paging-area button").click(function(){
+                    $(this).siblings(".paging-area button").css({background: "", color:"black"});
+                    $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+                      })
+                  })
+             </script>
         </div>
 
     </body>
