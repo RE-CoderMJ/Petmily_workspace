@@ -1,11 +1,14 @@
 package com.pm.admin_Inquiry.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pm.admin_Inquiry.model.service.InquiryService;
 
 /**
  * Servlet implementation class AdminInquiryDeleteController
@@ -26,8 +29,19 @@ public class AdminInquiryDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int pinquiryNo = Integer.parseInt(request.getParameter("num"));
+    	
+		int result = new InquiryService().deleteInquiry(pinquiryNo);
+		
+    	if(result > 0) {
+
+    		response.sendRedirect(request.getContextPath() + "/adminList.iq?cpage=1");
+    		
+    	}else {
+    		request.setAttribute("errorMsg", "상품문의 삭제 실패");
+    		request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
+    		
+    	}
 	}
 
 	/**

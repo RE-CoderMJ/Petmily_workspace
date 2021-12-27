@@ -6,9 +6,7 @@ public class Inquiry {
 	
 	private int pinquiryNo;
 	private String memNo;
-	private String memberNick;
 	private String productNo;
-	private String productName;
 	private String pinquiryTitle;
 	private String pinquiryContent;
 	private String pinquiryDate;
@@ -21,15 +19,13 @@ public class Inquiry {
 	
 	public Inquiry() {}
 
-	public Inquiry(int pinquiryNo, String memNo, String memberNick, String productNo, String productName,
-			String pinquiryTitle, String pinquiryContent, String pinquiryDate, String managerNo, String replyContent,
-			String replyDate, String secret, int count, String status) {
+	public Inquiry(int pinquiryNo, String memNo, String productNo, String pinquiryTitle, String pinquiryContent,
+			String pinquiryDate, String managerNo, String replyContent, String replyDate, String secret, int count,
+			String status) {
 		super();
 		this.pinquiryNo = pinquiryNo;
 		this.memNo = memNo;
-		this.memberNick = memberNick;
 		this.productNo = productNo;
-		this.productName = productName;
 		this.pinquiryTitle = pinquiryTitle;
 		this.pinquiryContent = pinquiryContent;
 		this.pinquiryDate = pinquiryDate;
@@ -39,6 +35,32 @@ public class Inquiry {
 		this.secret = secret;
 		this.count = count;
 		this.status = status;
+	}
+
+	public Inquiry(int pinquiryNo, String memNo, String productNo, String pinquiryTitle, String pinquiryDate,
+			String managerNo) {
+		super();
+		this.pinquiryNo = pinquiryNo;
+		this.memNo = memNo;
+		this.productNo = productNo;
+		this.pinquiryTitle = pinquiryTitle;
+		this.pinquiryDate = pinquiryDate;
+		this.managerNo = managerNo;
+	}
+	
+	
+
+	public Inquiry(int pinquiryNo, String memNo, String productNo, String pinquiryTitle, String pinquiryDate,
+			String managerNo, String replyContent, String replyDate) {
+		super();
+		this.pinquiryNo = pinquiryNo;
+		this.memNo = memNo;
+		this.productNo = productNo;
+		this.pinquiryTitle = pinquiryTitle;
+		this.pinquiryDate = pinquiryDate;
+		this.managerNo = managerNo;
+		this.replyContent = replyContent;
+		this.replyDate = replyDate;
 	}
 
 	public int getPinquiryNo() {
@@ -57,28 +79,12 @@ public class Inquiry {
 		this.memNo = memNo;
 	}
 
-	public String getMemberNick() {
-		return memberNick;
-	}
-
-	public void setMemberNick(String memberNick) {
-		this.memberNick = memberNick;
-	}
-
 	public String getProductNo() {
 		return productNo;
 	}
 
 	public void setProductNo(String productNo) {
 		this.productNo = productNo;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
 	}
 
 	public String getPinquiryTitle() {
@@ -155,16 +161,12 @@ public class Inquiry {
 
 	@Override
 	public String toString() {
-		return "Inquiry [pinquiryNo=" + pinquiryNo + ", memNo=" + memNo + ", memberNick=" + memberNick + ", productNo="
-				+ productNo + ", productName=" + productName + ", pinquiryTitle=" + pinquiryTitle + ", pinquiryContent="
-				+ pinquiryContent + ", pinquiryDate=" + pinquiryDate + ", managerNo=" + managerNo + ", replyContent="
-				+ replyContent + ", replyDate=" + replyDate + ", secret=" + secret + ", count=" + count + ", status="
-				+ status + "]";
+		return "Inquiry [pinquiryNo=" + pinquiryNo + ", memNo=" + memNo + ", productNo=" + productNo
+				+ ", pinquiryTitle=" + pinquiryTitle + ", pinquiryContent=" + pinquiryContent + ", pinquiryDate="
+				+ pinquiryDate + ", managerNo=" + managerNo + ", replyContent=" + replyContent + ", replyDate="
+				+ replyDate + ", secret=" + secret + ", count=" + count + ", status=" + status + "]";
 	}
 
-	
-	
-	
 	
 	
 

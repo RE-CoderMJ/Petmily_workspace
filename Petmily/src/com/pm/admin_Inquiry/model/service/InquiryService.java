@@ -8,6 +8,8 @@ import static com.pm.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.pm.admin_Faq.model.dao.FaqDao;
+import com.pm.admin_Faq.model.vo.Faq;
 import com.pm.admin_Inquiry.model.dao.InquiryDao;
 import com.pm.admin_Inquiry.model.vo.Inquiry;
 import com.pm.common.model.vo.PageInfo;
@@ -29,6 +31,51 @@ public class InquiryService {
 		return list;
 	}
 	
+	/* 3. 상품문의 등록 */
+	public int insertInquiry(Inquiry i) {
+		Connection conn = getConnection();
+		int result = new InquiryDao().insertInquiry(conn, i);
+		close(conn);
+		return result;
+	
+	}
+	
+	
+	/* 4. 상품문의 조회 */
+	public Inquiry selectInquiry(int pinquiryNo) {
+		Connection conn = getConnection();
+		Inquiry i = new InquiryDao().selectInquiry(conn, pinquiryNo);
+		close(conn);
+		return i;
+	}
+	
+	/* 5. 상품문의 수정 */
+	public int updateInquiry(Inquiry i) {
+		Connection conn = getConnection();
+		int result = new InquiryDao().updateInquiry(conn, i);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/* 6. 상품문의 삭제 */
+	public int deleteInquiry(int pinquiryNo) {
+		Connection conn = getConnection();
+		int result = new InquiryDao().deleteInquiry(conn, pinquiryNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 	
 
 }
