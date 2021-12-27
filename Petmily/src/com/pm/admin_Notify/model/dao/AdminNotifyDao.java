@@ -51,6 +51,31 @@ public class AdminNotifyDao {
 		
 		return listCount;
 	}
+	public int selectWarningListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectWarningListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
 
 	
 	public ArrayList<AdminNotify> selectNotifyList(Connection conn, PageInfo pi) {
@@ -102,7 +127,9 @@ public class AdminNotifyDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, reportNo);
+			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,6 +138,63 @@ public class AdminNotifyDao {
 		}
 	
 		return result;
+	}
+	public int updateReportCount(Connection conn, int reportNo) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateReportCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reportNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+public ArrayList<AdminNotify> selectNfWarningList(Connection conn, PageInfo pi) {
+		
+		ArrayList<AdminNotify> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectNfWarningList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new AdminNotify(rset.getInt("report_No"),
+						 				 rset.getString("client_Id"),
+						 				 rset.getInt("report_Count"),
+						 				 rset.getString("report_Content"),
+						 				 rset.getString("mem_Status")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		//System.out.println("2차확인:"+ list);
+		return list;
 	}
 
 }

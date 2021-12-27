@@ -9,10 +9,13 @@ public class Point {
 	private String point;
 	private String pointContent;
 	private Date pointDate;
+	private int adPoint;
 	
 	public Point() {}
+	
 
-	public Point(int pointNo, int memNo, int orderNo, String point, String pointContent, Date pointDate) {
+	public Point(int pointNo, int memNo, int orderNo, String point, String pointContent, Date pointDate,
+			int adPoint) {
 		super();
 		this.pointNo = pointNo;
 		this.memNo = memNo;
@@ -20,9 +23,9 @@ public class Point {
 		this.point = point;
 		this.pointContent = pointContent;
 		this.pointDate = pointDate;
+		this.adPoint = adPoint;
 	}
-	
-	
+
 
 	public Point(int pointNo, String point, String pointContent, Date pointDate) {
 		super();
@@ -80,11 +83,23 @@ public class Point {
 		this.pointDate = pointDate;
 	}
 
+	public int getAdPoint() {
+		return adPoint;
+	}
+
+
+	public void setAdPoint(int adPoint) {
+		this.adPoint = adPoint;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Point [pointNo=" + pointNo + ", memNo=" + memNo + ", orderNo=" + orderNo + ", point=" + point
-				+ ", pointContent=" + pointContent + ", pointDate=" + pointDate + "]";
+				+ ", pointContent=" + pointContent + ", pointDate=" + pointDate + ", adPoint=" + adPoint + "]";
 	}
+
+
 	
 	
 }

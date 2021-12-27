@@ -8,6 +8,13 @@
 		  FROM TB_REPORT
 	</entry>
 	
+	<entry key="selectWarningListCount">
+	SELECT
+			COUNT(*) COUNT
+	  FROM TB_REPORT
+	 WHERE REPORT_COUNT != 0
+	</entry>
+	
 	<entry key="selectNotifyList">
 		SELECT *
 		  FROM (
@@ -38,5 +45,36 @@
 		                FROM TB_REPORT
 		                JOIN TB_MEMBER ON (CLIENT_ID = MEM_EMAIL)
 		                WHERE REPORT_NO = ?)
+	
 	</entry>
+	
+	<entry key="updateReportCount">
+	UPDATE TB_REPORT
+	   SET REPORT_COUNT = REPORT_COUNT+1
+	 WHERE CLIENT_ID =(SELECT MEM_EMAIL
+	                     FROM TB_MEMBER
+			             JOIN TB_REPORT ON (CLIENT_ID = MEM_EMAIL)
+			            WHERE REPORT_NO = ?)
+	</entry>
+	
+	<entry key="selectNfWarningList">
+	SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+                                REPORT_NO
+                              ,	CLIENT_ID
+                              ,	REPORT_COUNT
+                              ,	REPORT_CONTENT
+                              ,	MEM_STATUS
+                        FROM TB_REPORT R
+                        JOIN TB_MEMBER M ON (CLIENT_ID = MEM_EMAIL)
+                       WHERE REPORT_COUNT != 0
+		                )A
+                        
+		        ) 
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 </properties>

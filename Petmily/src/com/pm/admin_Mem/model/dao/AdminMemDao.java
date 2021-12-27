@@ -14,7 +14,6 @@ import java.util.Properties;
 import com.pm.common.model.vo.PageInfo;
 import com.pm.member.model.vo.Member;
 
-
 public class AdminMemDao {
 	
 private Properties prop = new Properties();
@@ -84,7 +83,9 @@ private Properties prop = new Properties();
 								   rset.getString("Mem_name"),
 								   rset.getString("Mem_email"),
 								   rset.getString("Mem_tel"),
-								   rset.getString("Nickname")));
+								   rset.getString("Nickname"),
+								   rset.getInt("Ad_point")
+								   ));
 			}
 			
 		} catch (SQLException e) {
@@ -158,6 +159,26 @@ private Properties prop = new Properties();
 			
 			result = pstmt.executeUpdate();
 			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	public int updatePoint(Connection conn, Member mp) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePoint");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mp.getAdPoint());
+			pstmt.setInt(2, mp.getMemNo());
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

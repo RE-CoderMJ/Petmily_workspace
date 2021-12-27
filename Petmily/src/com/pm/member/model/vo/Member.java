@@ -20,6 +20,8 @@ public class Member {
 	private String memBlock;
 	private String memImg;
 	
+	private int adPoint;
+	
 	public Member() {
 		
 	}
@@ -59,15 +61,26 @@ public class Member {
 		this.detailAddress = detailAddress;
 	}
 
-	public Member(int memNo, String memName, String memEmail, String memTel, String nickname) {
+	
+
+	public Member(int memNo, String memName, String memEmail, String memTel, String nickname, int adPoint) {
 		super();
 		this.memNo = memNo;
 		this.memName = memName;
 		this.memEmail = memEmail;
 		this.memTel = memTel;
 		this.nickname = nickname;
+		this.adPoint = adPoint;
 	}
-	
+
+	public Member(int memNo, String memEmail, String memName, String memTel, String nickname) {
+		super();
+		this.memNo = memNo;
+		this.memEmail = memEmail;
+		this.memName = memName;
+		this.memTel = memTel;
+		this.nickname = nickname;
+	}
 
 	public Member(int memNo, String memEmail, String memPwd, String memName, String memTel, String nickname,
 			String postalCode, String address, String detailAddress) {
@@ -232,14 +245,23 @@ public class Member {
 		this.memImg = memImg;
 	}
 
+	public int getAdPoint() {
+		return adPoint;
+	}
+
+	public void setAdPoint(int adPoint) {
+		this.adPoint = adPoint;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memEmail=" + memEmail + ", memPwd=" + memPwd + ", memName=" + memName
 				+ ", memTel=" + memTel + ", nickname=" + nickname + ", postalCode=" + postalCode + ", address="
 				+ address + ", detailAddress=" + detailAddress + ", memEnrollDate=" + memEnrollDate + ", status="
 				+ status + ", memDelDate=" + memDelDate + ", memDelDetail=" + memDelDetail + ", memBlock=" + memBlock
-				+ ", memImg=" + memImg + "]";
+				+ ", memImg=" + memImg + ", adPoint=" + adPoint + "]";
 	}
+
 	
 
 }

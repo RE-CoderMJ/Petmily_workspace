@@ -14,24 +14,29 @@
 	
 	<entry key="selectListCount">
 		SELECT
-		       COUNT(*) COUNT
+         COUNT(*) COUNT
 		  FROM TB_MEMBER
+         WHERE MEM_STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectList">
 		SELECT *
 		  FROM (
-		        SELECT ROWNUM RNUM, A.*
-		          FROM (
-		                SELECT
-		                	   MEM_NO
-		                     , MEM_NAME
-		                     , MEM_EMAIL
-		                     , MEM_TEL
-		                     , NICKNAME
-		                 FROM TB_MEMBER
-		                 WHERE MEM_STATUS = 'Y'
-		                ) A
+		        SELECT ROWNUM RNUM, B.MEM_NO,B.MEM_NAME, B.MEM_EMAIL,B.MEM_TEL, B.NICKNAME, A.AD_POINT
+                FROM 
+                   ( 
+                      SELECT  DISTINCT MEM_NO, SUM(CASE WHEN AD_POINT IS NULL THEN 0 ELSE AD_POINT END) AS AD_POINT
+                      FROM (
+                            SELECT MEM_NO, MEM_NAME, MEM_EMAIL,MEM_TEL, AD_POINT, NICKNAME
+                            FROM TB_MEMBER M
+                            LEFT JOIN SPMY_POINT S USING(MEM_NO) 
+                            WHERE MEM_STATUS = 'Y'
+                            ORDER BY MEM_NO ASC 
+                            )
+                      GROUP BY MEM_NO 
+                   ) A
+					JOIN TB_MEMBER B
+					ON A.MEM_NO = B.MEM_NO
 		        )
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -62,5 +67,13 @@
              , MEM_TEL = ?
              , NICKNAME = ?
 		 WHERE MEM_NO = ? 
+	</entry>
+	
+	<entry key="updatePoint">
+		UPDATE
+		       SPMY_POINT
+		   SET       
+		       AD_POINT = ?
+		 WHERE MEM_NO = ?
 	</entry>
 </properties>

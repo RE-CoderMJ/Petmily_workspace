@@ -4,7 +4,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-
+	
 	System.out.println(pi);
 	
 	int currentPage = pi.getCurrentPage();
@@ -179,51 +179,56 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">전체 +/-</button>
+                            <!--<button class="btn btn-sm btn-warning mr-2"  data-toggle="modal" data-target="#myModal">전체 +/-</button>-->
                             <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal">선택 +/-</button>
                         </div>
+                        
                         <!-- 포인트관리 Modal -->
                         <div class="modal" id="myModal">
+                		
+                	<form id="update-form" action="<%= contextPath %>/memUpPoint.ad" method="post">
+                        
+                        <input type="hidden" id="memNo" name="mno">
                             <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
                             <div class="modal-content">
                                 <!-- Modal body -->
                                 <div class="modal-body">
                                     <div class="md-box">
-                                        <h4 class="modal-title" style="font-size: 18px;">전체(선택) 회원에게 포인트를 <br>적립/차감 합니다.</h4>
-                                        <input id="point1" type="number">
-                                        <button onclick="plus();" style="margin-right: 5px;" class="btn btn-sm material-icons">add</button>
-                                        <button onclick="minus();" class="btn btn-sm material-icons">remove</button>
+                                        <h4 class="modal-title" style="font-size: 18px;">선택 회원에게 포인트를 <br>적립/차감 합니다.</h4>
+                                        <input id="adPoint" type="number" name="adpoint">
+                                        <button type="button" onclick="plus();" style="margin-right: 5px;" class="btn btn-sm material-icons">add</button>
+                                        <button type="button" onclick="minus();" class="btn btn-sm material-icons">remove</button>
                                     </div>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">적립</button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal" data-toggle="modal" href="#changeCompleted">차감</button>
+                                    <button type="submit" class="btn btn-warning" data-toggle="modal">확인</button>
                                 </div>
                             </div>
                         </div>
+                     </form>
                         <!-- 회원 포인트 +,- 구현 -->
                         <script>
                             function plus(){
                                 
-                                const p1 = document.getElementById("point1").value;
+                                const p1 = document.getElementById("adPoint").value;
 
                                 const sum = Number(p1) + Number(100);
 
-                                document.getElementById("point1").value = sum;
+                                document.getElementById("adPoint").value = sum;
 
                             }
                         </script>
                         <script>
                             function minus(){
 
-                                const m1 = document.getElementById("point1").value;
+                                const m1 = document.getElementById("adPoint").value;
 
                                 const minus = Number(m1) - Number(100);
 
-                                document.getElementById("point1").value = minus;
+                                document.getElementById("adPoint").value = minus;
                             }
-                        </script>
+                        </script> 
                     </div>
                     <!-- 처리완료 Modal -->
                     <div class="modal fade" id="changeCompleted">
@@ -243,6 +248,7 @@
                             </div>
                         </div>
                     </div>
+                    
                         <table style="width: 100%;">
                             <thead>
                                 <tr>
@@ -250,9 +256,9 @@
                                     <th width="50px">No.</th>
                                     <th width="150px">회원 no.</th>
                                     <th width="150px">회원 이름</th>
-                                    <th width="300px">회원 이메일</th>
-                                    <th width="300px">회원 전화번호</th>
-                                    <th width="200px">회원 닉네임</th>
+                                    <th width="350px">회원 이메일</th>
+                                    <th width="200px">회원 포인트</th>
+                                    <th width="250px">회원 닉네임</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -265,12 +271,12 @@
                                 <% }else { %>
                                 <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
-                                    <td><input type="checkbox" name="" value=""></td>
+                                    <td><input type="checkbox" name="selectCheck" value=""></td>
                                     <td><%= i+1 %></td>
-                                    <td><%= list.get(i).getMemNo() %></td>
+                                    <td id="mNo"><%= list.get(i).getMemNo() %></td>
                                     <td><%= list.get(i).getMemName() %></td>
                                     <td><%= list.get(i).getMemEmail() %></td>
-                                    <td><%= list.get(i).getMemTel() %></td>
+                                    <td id="mP"><%= list.get(i).getAdPoint() %></td>
                                     <td><%= list.get(i).getNickname() %></td>
                                 </tr>
                                 <% } %>
@@ -281,6 +287,44 @@
                 </div>
             </div>
             <br><br><br><br>
+            <script type="text/javascript">
+			 $(function(){
+                 $('input:checkbox[name="selectCheck"]').click(function(){
+                     if($('input:checkbox[name="selectCheck"]').is(':checked')){
+                         //console.log("확인");
+                         clickEvent(event);
+                     }else{
+                         //console.log("체크해제확인");
+                     }
+                 })
+             });                           
+
+			 function clickEvent(event) {
+                 //console.log('target ::', $(event.target));
+
+                 var row = $(event.target).closest('tr');
+				
+                 var columns0 = row.find('#mNo');
+                 var columns1 = row.find('#mP');
+
+                 var values = "";
+				
+                 
+                 $.each(columns0, function(idx, item){
+                	 no = item.innerHTML;
+                 });
+	             $.each(columns1, function(idx, item){
+	                mp = item.innerHTML;
+	             });
+	             
+	             	console.log(no);
+                 	console.log(mp);
+                 
+                 	$("#memNo").val(no); 
+                 	$("#adPoint").val(mp); 
+                 	
+             }
+            </script>
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">
                  <% if(currentPage != 1) {%>
@@ -295,11 +339,9 @@
 			            	<% } %>
 			            <% } %>
 			            
-			       <% if(currentPage != maxPage) {%>
-			       <button onclick="location.href='<%=contextPath%>/memPoint.ad?cpage=<%=currentPage+1%>';">&gt; </button>
-					<% } %>
-			
-                   <button> &gt; </button>
+			      <% if(currentPage != maxPage) {%>
+			      <button onclick="location.href='<%=contextPath%>/memPoint.ad?cpage=<%=currentPage+1%>';">&gt; </button>
+				  <% } %>
               </div>
               <script>
                 $(function(){

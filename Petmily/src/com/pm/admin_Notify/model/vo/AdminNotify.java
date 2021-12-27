@@ -14,6 +14,9 @@ public class AdminNotify {
 	private String reportContent;
 	private Date reportDate;
 	
+	private int reportCount;
+	private String memStatus;
+	
 	public AdminNotify() {}
 
 	public AdminNotify(int reportNo, String clientId, String comments, String boardType, int boardNo, String reportId,
@@ -28,6 +31,15 @@ public class AdminNotify {
 		this.reportReason = reportReason;
 		this.reportContent = reportContent;
 		this.reportDate = reportDate;
+	}
+
+	public AdminNotify(int reportNo, String clientId, int reportCount, String reportContent, String memStatus) {
+		super();
+		this.reportNo = reportNo;
+		this.clientId = clientId;
+		this.reportCount = reportCount;
+		this.reportContent = reportContent;
+		this.memStatus = memStatus;
 	}
 
 	public int getReportNo() {
@@ -102,12 +114,30 @@ public class AdminNotify {
 		this.reportDate = reportDate;
 	}
 
+	public int getReportCount() {
+		return reportCount;
+	}
+
+	public void setReportCount(int reportCount) {
+		this.reportCount = reportCount;
+	}
+
+	public String getMemStatus() {
+		return memStatus;
+	}
+
+	public void setMemStatus(String memStatus) {
+		this.memStatus = memStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminNotify [reportNo=" + reportNo + ", clientId=" + clientId + ", comments=" + comments
 				+ ", boardType=" + boardType + ", boardNo=" + boardNo + ", reportId=" + reportId + ", reportReason="
-				+ reportReason + ", reportContent=" + reportContent + ", reportDate=" + reportDate + "]";
+				+ reportReason + ", reportContent=" + reportContent + ", reportDate=" + reportDate + ", reportCount="
+				+ reportCount + ", memStatus=" + memStatus + "]";
 	}
+
 	
 	
 	

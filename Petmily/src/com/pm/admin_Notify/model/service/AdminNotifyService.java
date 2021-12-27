@@ -26,6 +26,12 @@ public class AdminNotifyService {
 		close(conn);
 		return listCount;
 	}
+	public int selectWarningListCount() {
+		Connection conn = getConnection();
+		int listCount = new AdminNotifyDao().selectWarningListCount(conn);
+		close(conn);
+		return listCount;
+	}
 	
 	public int deleteNotify(int reportNo) {
 		Connection conn = getConnection();
@@ -40,6 +46,31 @@ public class AdminNotifyService {
 		close(conn);
 		
 		return result;
+	}
+	public int updateReportCount(int reportNo) {
+		
+		Connection conn = getConnection();
+		int result = new AdminNotifyDao().updateReportCount(conn, reportNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		//System.out.println(result);
+		close(conn);
+		
+		return result;
+		
+	}
+	public ArrayList<AdminNotify> selectNfWarningList(PageInfo pi) {
+		Connection conn = getConnection();
+		
+		ArrayList<AdminNotify> list = new AdminNotifyDao().selectNfWarningList(conn, pi);
+		
+		close(conn);
+		
+		return list;
 	}
 	
 }

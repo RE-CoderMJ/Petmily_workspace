@@ -1,4 +1,4 @@
-package com.pm.admin_Mem.controller;
+package com.pm.admin_Notify.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.admin_Mem.model.service.AdminMemService;
+import com.pm.admin_Notify.model.service.AdminNotifyService;
+import com.pm.admin_Notify.model.vo.AdminNotify;
 import com.pm.common.model.vo.PageInfo;
-import com.pm.member.model.vo.Member;
 
 /**
- * Servlet implementation class adminMemPointController
+ * Servlet implementation class AdminNfWarningListController
  */
-@WebServlet("/memPoint.ad")
-public class AdminMemPointController extends HttpServlet {
+@WebServlet("/nfWarningList.ad")
+public class AdminNfWarningListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMemPointController() {
+    public AdminNfWarningListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,16 +41,12 @@ public class AdminMemPointController extends HttpServlet {
 		int startPage;	 // 시작수
 		int endPage;	 // 끝수
 		
-		// * listCount : 총 게시글 개수
-		listCount = new AdminMemService().selectListCount();
+		listCount = new AdminNotifyService().selectWarningListCount();
 		
-		// * currentPage : 현재 페이지(즉, 사용자가 요청한 페이지)
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
-	
-		// * pageLimit : 페이징바의 페이지 최대 개수
+		
 		pageLimit = 5;
 		
-		// * boardLimit : 게시글 최대 개수 (단위)
 		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
@@ -63,24 +59,24 @@ public class AdminMemPointController extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		// com.kh.common.model.vo.PageInfo
-		// * 페이징바를 만들때 필요한 객체
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Member> list = new AdminMemService().selectList(pi);
+		ArrayList<AdminNotify> list = new AdminNotifyService().selectNfWarningList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/admin/manager/adminMemManager_point.jsp").forward(request, response);
+		System.out.println("2차확인:"+ list);
+		
+		request.getRequestDispatcher("views/admin/notify/adminWarningList.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
 	}
 
 }

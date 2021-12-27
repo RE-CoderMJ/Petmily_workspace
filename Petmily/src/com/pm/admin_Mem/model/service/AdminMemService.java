@@ -60,5 +60,19 @@ public class AdminMemService {
 		
 		return result;
 	}
+	public int updatePoint(Member mp) {
+		Connection conn = getConnection();
+		int result = new AdminMemDao().updatePoint(conn, mp);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		System.out.println(result);
+		close(conn);
+		
+		return result;
+	}
 
 }

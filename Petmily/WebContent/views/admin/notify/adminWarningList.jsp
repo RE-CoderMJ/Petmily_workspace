@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.admin_Notify.model.vo.AdminNotify"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<AdminNotify> list = (ArrayList<AdminNotify>)request.getAttribute("list");
+	//System.out.println(list);
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+ %>  
     <!DOCTYPE html>
     <html>
     <head>
@@ -204,7 +213,7 @@
                                         <!-- Modal body -->
                                         <div class="modal-body" align="center">
                                             <div class="modalMsg-area">
-                                                                정말 삭제하시겠습니까?
+                                                                	정말 삭제하시겠습니까?
                                             </div>
                                             <div id="deletebtn-area">
                                               <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
@@ -222,7 +231,7 @@
                                         <!-- Modal body -->
                                         <div class="modal-body" align="center" style="text-align: center;">
                                             <div class="modalMsg-area">
-                                                정상적으로 삭제되었습니다.
+                                                	정상적으로 삭제되었습니다.
                                             </div>
                                             <div>
                                             <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
@@ -247,39 +256,103 @@
                             </thead>
                             <tbody>
                                 <!--1. 게시글 없을 경우-->
+                                <% if(list.isEmpty()) {%>
                                 <tr style="display:none">
                                     <td colspan="6">조회된 게시글이 없습니다</td>
                                 </tr>
+                                <% }else { %>
                                 <!--2. 게시글 있을 경우-->
+                                <% for(int i=0; i<list.size(); i++) {%>
                                 <tr>
-                                    <td><input type="checkbox" name="" value=""></td>
-                                    <td>1</td>
-                                    <td>qldrmsl</td>
-                                    <td>2회</td>
+                                    <td><input type="checkbox" name="selectCheck" value=""></td>
+                                    <td id="rNo">1</td>
+                                    <td id="cId">qldrmsl@naver.com</td>
+                                    <td id="rCo">2회</td>
                                     <td>욕설,비방 / 광고성 게시글</td>
                                     <td>탈퇴</td>
                                 </tr>
+                                <% } %>
+                                
+                             <% } %>
                             </tbody>
                         </table>
                         <br><br><br><br>
+                        
+             <script type="text/javascript">
+			 $(function(){
+                 $('input:checkbox[name="selectCheck"]').click(function(){
+                     if($('input:checkbox[name="selectCheck"]').is(':checked')){
+                         console.log("확인");
+                         clickEvent(event);
+                     }else{
+                         //console.log("체크해제확인");
+                     }
+                 })
+             });                           
+
+			 function clickEvent(event) {
+                 //console.log('target ::', $(event.target));
+
+                 var row = $(event.target).closest('tr');
+				
+                 var columns0 = row.find('#rNo');
+                 var columns1 = row.find('#cId');
+                 var columns2 = row.find('#rCo');
+
+                 var values = "";
+				
+                 //for(var i=0; i<=4; i++){
+	                 //var value = $('columns'+i).val();
+	                 $.each(columns0, function(idx, item){
+	                	 rno = item.innerHTML;
+	                 });
+	                 $.each(columns1, function(idx, item){
+	                	 cid = item.innerHTML;
+	                 });
+	                 $.each(columns2, function(idx, item){
+	                	 rco = item.innerHTML;
+	                 });
+                 //}
+                 //for(var i=0; i<=4; i++){
+                 	console.log(rno);
+                 	console.log(cid);
+                 	console.log(rco);
+                 //}
+                 	//$("#rpNo").val(rno); 
+                 	$("#client").val(cid); 
+                 	$("#reason").val(rcd); 
+                 	$("#content").val(content); 
+                 	$("#report").val(rid);
+                 
+             }
+            </script>
                         <!-- 페이징 바 -->
                         <div class="paging-area" align="center">
-                            <button> &lt; </button>
-                            <button>1</button>
-                            <button>2</button>
-                            <button>3</button>
-                            <button>4</button>
-                            <button>5</button>
-                            <button> &gt; </button>
-                        </div>
-                        <script>
-                            $(function(){
-                                $(".paging-area button").click(function(){
-                                    $(this).siblings(".paging-area button").css({background: "", color:"black"});
-                                    $(this).css({background: "rgb(247, 198, 4)", color:"black"});
-                                })
-                            })
-                        </script>
+			            <% if(currentPage != 1) {%>
+			            <button onclick="location.href='<%=contextPath%>/nfWarningList.ad?cpage=<%=currentPage-1%>';">&lt; </button>
+			            <% } %>
+			            
+			            <% for(int p=startPage; p<=endPage; p++) {%>
+			            	<% if(p == currentPage) { %>
+			            		<button disabled><%= p %></button>
+			            	<% }else { %>
+								<button onclick="location.href='<%= contextPath %>/nfWarningList.ad?cpage=<%= p %>';"><%= p %></button>
+			            	<% } %>
+			            <% } %>
+			            
+			            <% if(currentPage != maxPage) {%>
+			            	<button onclick="location.href='<%=contextPath%>/nfWarningList.ad?cpage=<%=currentPage+1%>';">&gt; </button>
+						<% } %>
+						
+			        </div>
+		            <script>
+		                $(function(){
+		                    $(".paging-area button").click(function(){
+		                        $(this).siblings(".paging-area button").css({background: "", color:"black"});
+		                        $(this).css({background: "rgb(247, 198, 4)", color:"black"});
+		                    })
+		                })
+		            </script>
                     </div>
                 </div>
             </div>

@@ -259,7 +259,7 @@
                     </div>
                     
                         <!-- </div> -->
-                        <table style="width: 100%;">
+                        <table style="width: 100%;" class="table">
                             <thead>
                                 <tr>
                                     <th width="30px"><input type="checkbox" name="" value=""></th>
@@ -297,7 +297,9 @@
                             </tbody>
                         </table>
                         <!-- 신고 아이디 Modal -->
+                        	<div class="table">
                                 <div class="modal fade" id="idModal">
+                                  <form id="update-form" action="<%= contextPath %>/reportUd.ad" method="post">
                                     <div class="modal-dialog modal-sm modal-dialog-centered">
                                         <div class="modal-content">
                                             <!-- Modal body -->
@@ -313,18 +315,19 @@
                                                     	누적 경고 수
                                                 </div>
                                                 <div id="report-Msg">
-                                                    0회
+                                                    	0회
                                                 </div>
                                             </div>
                                             <!-- Modal footer -->
                                             <div class="modal-footer" align="center">
-                                                <button type="button" class="btn btn-warning" data-dismiss="modal" id="idModalbtn">회원 경고 처리</button>            
+                                                <button type="submit" class="btn btn-warning" id="idModalbtn">회원 경고 처리</button>            
                                             </div>
                                     		
                                         </div>
                                     </div>
-                                </div>
-                                
+                              	 </form>
+                              </div>
+                            </div>
                                 <!-- 신고내용 Modal -->
                                 <div class="modal fade" id="contentModal">
                                     <div class="modal-dialog modal-sm modal-dialog-centered" style="max-width:350px">

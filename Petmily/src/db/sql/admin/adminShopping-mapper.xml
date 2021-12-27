@@ -58,6 +58,7 @@
 		SELECT
 		       COUNT(*) COUNT
 		  FROM TB_PRODUCT_UD
+		 WHERE STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectList">
