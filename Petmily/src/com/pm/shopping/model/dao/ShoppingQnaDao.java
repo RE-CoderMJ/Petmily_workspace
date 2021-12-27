@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.shopping.model.vo.ShoppingQna;
-import com.pm.boards.qna.model.vo.Qna;
 import com.pm.common.model.vo.PageInfo;
 
 public class ShoppingQnaDao {

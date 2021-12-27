@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectList">
+		SELECT *
+		 FROM (
+		    SELECT ROWNUM RNUM, A.*
+		      FROM (
+		        SELECT
+		              REVIEW_NO
+		            , MEM_NICK
+		            , REVIEW_CONTENT
+		            , REVIEW_GRADE
+		            , TO_CHAR(REVIEW_DATE, 'YYYY/MM/DD') "REVIEW_DATE"
+		         FROM TB_REVIEW P
+		         WHERE P.STATUS = 'Y'
+		         ORDER
+		            BY REVIEW_NO DESC
+		        ) A
+		    )       
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+		<entry key="insertREVIEW">
+		INSERT
+		  INTO TB_REVIEW
+		  (
+		    REVIEW_NO
+		  , MEM_NO
+		  , REVIEW_CONTENT
+		  , REVIEW_GRADE
+		  )
+		  VALUES
+		  (
+		    SEQ_REVIEWNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+		<entry key="insertAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		     ATTACHMENT_NO
+		   , ORIGIN_NAME
+		   , CHANGE_NAME
+		   , REF_BOARD_NO
+		   , REF_NO
+		   , FILE_PATH
+		   )
+		    VALUES
+			(
+		      SEQ_ATT.NEXTVAL
+		    , ?
+		    , ?
+		    , 5
+		    , SEQ_REVIEWNO.CURRVAL
+		    , ?
+		    )
+	</entry>
+	
+		<entry key="selectREVIEW">
+		SELECT
+		       REVIEW_NO
+		     , NICKNAME
+		     , REVIEW_CONTENT
+		     , REVIEW_GRADE
+		     , TO_CHAR(REVIEWDATE, 'YYYY/MM/DD HH24:MI') "REVIEW_DATE"
+		  FROM TB_REVIEW
+		  JOIN TB_MEMBER USING(MEM_NO)
+		 WHERE REVIEW_NO = ?
+		   AND STATUS = 'Y'
+	</entry>
+	
+		<entry key="selectAttachment">
+		SELECT
+		       ATTACHMENT_NO
+		     , ORIGIN_NAME
+		     , CHANGE_NAME
+		     , FILE_PATH
+		  FROM ATTACHMENT
+		 WHERE REF_BOARD_NO = 5
+		   AND REF_NO = ?
+	</entry>
+	
+	
+	<entry key="updateREVIEW">
+		UPDATE
+		       TB_REVIEW
+		   SET REVIEW_CONTENT = ?
+		     , REVIEW_GRADE = ?
+		 WHERE REVIEW_NO = ?
+	</entry>
+	
+		<entry key="updateAttachment">
+		UPDATE
+		       ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , FILE_PATH = ?
+		 WHERE ATTACHMENT_NO = ?
+	</entry>		   
+		   
+		<entry key="insertNewAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    FILE_NO
+		  , REF_BOARD_NO
+		  , REF_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ.ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>	   
+	   
+		   
+	
+
+</properties>
