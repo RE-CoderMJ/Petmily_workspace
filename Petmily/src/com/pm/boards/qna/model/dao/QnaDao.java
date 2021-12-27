@@ -14,6 +14,7 @@ import java.util.Properties;
 import com.pm.boards.qna.model.vo.Qna;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 
 public class QnaDao {
 	
@@ -265,11 +266,10 @@ public class QnaDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, at.getRefBoardNo());
-			pstmt.setInt(2, at.getRefNo());
-			pstmt.setString(3, at.getOriginName());
-			pstmt.setString(4, at.getChangeName());
-			pstmt.setString(5, at.getFilePath());
+			pstmt.setInt(1, at.getRefNo());
+			pstmt.setString(2, at.getOriginName());
+			pstmt.setString(3, at.getChangeName());
+			pstmt.setString(4, at.getFilePath());
 			
 			atResult = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -299,8 +299,42 @@ public class QnaDao {
 		}
 		return result;
 	}
-	
-	
-	
+
+	public ArrayList<Reply> selectReplyList(Connection conn, /*PageInfo pi, */int qnaNo) {
+		ArrayList<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReplyList");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+//			int startRow = (pi.getCurrentPage() -1)* pi.getBoardLimit() +1;
+//			int endRow = startRow + pi.getBoardLimit() -1;
+//			
+			pstmt.setInt(1, qnaNo);
+//			pstmt.setInt(2, startRow);
+//			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Reply(rset.getInt("reply_no"),
+								   rset.getInt("reply_writer"),
+								   rset.getString("reply_content"),
+								   rset.getString("enroll_date"),
+								   rset.getString("privateva")
+								  ));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }

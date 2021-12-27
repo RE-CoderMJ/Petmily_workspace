@@ -15,37 +15,37 @@
 				             , '궁금해요' "CATEGORY"
 				          FROM ASK
 				          JOIN TB_MEMBER
-				            ON MEM_NO = ASK_WRITER
+				            ON (MEM_NO = ASK_WRITER)
 				         
 				         UNION
 				         
 				        SELECT 
-				               PNAME "TITLE"
-				             , ENROLL_DATE "ENROLL_DATE"
+				               PNAME
+				             , ENROLL_DATE
 				             , COUNT
 				             , MEM_NO
 				             , '찾고있어요'
 				          FROM TB_MISSING
 				          JOIN TB_MEMBER
-				            ON MEM_NO = MISSING_WRITER
+				            ON (MEM_NO = MISSING_WRITER)
 				         
 				         UNION
 				         
 				        SELECT
-				               MARKET_TITLE "TITLE"
-				             , ENROLL_DATE "ENROLL_DATE"
+				               MARKET_TITLE
+				             , ENROLL_DATE
 				             , COUNT
 				             , MEM_NO
 				             , '중고거래'
 				          FROM MARKET
 				          JOIN TB_MEMBER
-				            ON MEM_NO = MARKET_WRITER
+				            ON (MEM_NO = MARKET_WRITER)
 				         
 				         UNION
 				         
 				        SELECT
-				               PINQUIRY_TITLE "TITLE"
-				             , PINQUIRY_DATE "ENROLL_DATE"
+				               PINQUIRY_TITLE
+				             , PINQUIRY_DATE
 				             , COUNT
 				             , MEM_NO
 				             , '상품문의'
@@ -56,8 +56,8 @@
 				         UNION
 				         
 				        SELECT
-				               PRODUCT_NAME "TITLE"
-				             , REVIEW_DATE "ENROLL_DATE"
+				               PRODUCT_NAME
+				             , REVIEW_DATE
 				             , COUNT
 				             , MEM_NO
 				             , '상품리뷰'
@@ -68,8 +68,8 @@
 				         UNION
 				         
 				        SELECT
-				               QNA_TITLE "TITLE"
-				             , QNA_DATE "ENROLL_DATE"
+				               QNA_TITLE
+				             , QNA_DATE
 				             , COUNT
 				             , MEM_NO
 				             , 'QnA'

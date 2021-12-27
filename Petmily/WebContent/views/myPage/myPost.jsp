@@ -125,7 +125,7 @@
                     </div>
                 </div>
 
-        			<input type="hidden" name="userNo" value="<%= loginUser.getMemEmail() %>">
+        			<input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
                     <table class="table table-hover" style="width: 1000px;">
                         <thead>
                             <tr style="background-color: lightgray;">
@@ -140,10 +140,10 @@
                             <!--1. 게시글 없을 경우-->
                             <% if(list.isEmpty()) { %>
 	                            <tr style="display:none">
-	                                <td colspan="6">조회된 게시글이 없습니다</td>
+	                                <td colspan="5">조회된 게시글이 없습니다</td>
 	                            </tr>
                             <!--2. 게시글 있을 경우-->
-                             <% }else { %>
+                             <% } else { %>
                                 <% for(int i=0; i<list.size(); i++) {%>
                             <tr>
                                 <td><%= i+1 %></td>

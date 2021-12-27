@@ -12,6 +12,7 @@ import com.pm.boards.qna.model.dao.QnaDao;
 import com.pm.boards.qna.model.vo.Qna;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 
 public class QnaService {
 
@@ -116,6 +117,17 @@ public class QnaService {
 		}
 		return result;
 	}
+
+	public ArrayList<Reply> selectReplyList(/*PageInfo pi, */int qnaNo) {
+		Connection conn = getConnection();
+		ArrayList<Reply> list = new QnaDao().selectReplyList(conn, /*pi, */qnaNo);
+		
+		close(conn);
+		return list;
+	}
+
+	
+	
 
 
 }

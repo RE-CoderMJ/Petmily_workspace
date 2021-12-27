@@ -13,7 +13,7 @@ public class MyPageService {
 
 	public ArrayList<MyPost> selectList(PageInfo pi, int userNo) {
 		Connection conn = getConnection();
-		ArrayList<com.pm.myPage.model.vo.MyPost> list = new MyPageDao().selectList(conn, pi, userNo);
+		ArrayList<MyPost> list = new MyPageDao().selectList(conn, pi, userNo);
 		
 		close(conn);
 		return list;

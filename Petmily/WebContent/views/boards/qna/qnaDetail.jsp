@@ -261,7 +261,11 @@
                     <div class="write-reply">
                         <img src="resources/img/profile_default.png" class="profileImg">
                             <form action="">
-                                <input type="text" placeholder="댓글을 남겨 보세요." required>
+                            	<% if(loginUser == null) {%>
+                            		<input type="text" placeholder="로그인 후 댓글을 남겨보세요" readonly>
+                            	<% } else { %>
+                                	<input type="text" placeholder="댓글을 남겨 보세요." required>
+                               	<% } %>
                                 <button id="reply-enrollbtn" class="btn btn-sm btn-warning">등록</button>
                             </form>
                     </div>
@@ -279,6 +283,29 @@
                         
                         <!--<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>-->
                     </div>
+                    
+                    <script>
+                    
+                    	$(function(){
+                    		selectReplyList();
+                    	});
+                    	
+                    	function selectReplyList() {
+                    		$.ajax({
+                    			url: "rlist.qna",
+                    			data: {qno:<%= q.getQnaNo() %>},
+                    				  
+                    			success:function(list) {
+                    				
+                    				console.log(list);
+                    				
+                    			}, error:function() {
+                    				console.log("댓글 목록 조회 ajax 통신 실패");
+                    			}
+                    		})
+                    	}
+                    		
+                    </script>
 
                 </div>
                 
