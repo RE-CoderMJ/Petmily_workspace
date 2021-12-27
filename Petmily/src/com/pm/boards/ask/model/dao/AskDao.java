@@ -14,6 +14,7 @@ import java.util.Properties;
 import com.pm.boards.ask.model.vo.Ask;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 
 public class AskDao {
 
@@ -307,6 +308,82 @@ public class AskDao {
 		}
 		
 		return listCount;
+	}
+
+	public int insertReply(Connection conn, Reply r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getReplyWriter());
+			pstmt.setInt(2, r.getContentNo());
+			pstmt.setString(3, r.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int selectReplyCount(Connection conn, int ano) {
+		
+		int replyCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ano);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				replyCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return replyCount;
+	}
+
+	public ArrayList<Reply> selectReplyList(Connection conn, PageInfo pi, int ano) {
+		ArrayList<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, ano);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Reply r = new Reply();
+				r.setReplyNo(rset.getInt("reply_no"));
+				r.set
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return null;
 	}
 
 

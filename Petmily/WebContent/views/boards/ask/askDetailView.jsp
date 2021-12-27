@@ -98,10 +98,8 @@
 	            
 	            <div id="write-reply">
 	                <div id="writearea-pic"><img src="resources/img/profile_default.png" alt=""></div>
-	                    <form action="">
-	                        <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
-	                        <button class="btn" id="reply-enrollbtn" onclick="insertReply();">등록</button>
-	                    </form>
+	                <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
+	                <button class="btn" id="reply-enrollbtn" onclick="insertReply();">등록</button>
 	            </div>
 	            
 	            <div class="replies">
@@ -122,7 +120,9 @@
 	</div>
 	<script>
 		$(function(){
+			selectReplyList(1);
 			
+			setInterval(selectReplyList, 1000);
 		});
 		
 		function insertReply(){
@@ -148,7 +148,7 @@
 		function selectReplyList(){
 			$.ajax({
 				url:"rlist.ask",
-				data:{ano:<%=a.getAskNo()%>},
+				data:{ano:<%=a.getAskNo()%>, rpage:},
 				success:function(list){
 					let result="";
 					

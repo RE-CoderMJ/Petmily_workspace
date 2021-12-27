@@ -10,6 +10,8 @@ public class Reply {
 	private String modifyDate;
 	private String status;
 	private String privateVa;
+	private String writerNickname;
+	private String writerImg;
 	
 	public Reply() {}
 	
@@ -34,6 +36,39 @@ public class Reply {
 		this.replyContent = replyContent;
 		this.enrollDate = enrollDate;
 		this.privateVa = privateVa;
+	}
+
+	public Reply(int replyNo, int replyWriter, int boardNo, int contentNo, String replyContent, String enrollDate,
+			String modifyDate, String status, String privateVa, String writerNickname, String writerImg) {
+		super();
+		this.replyNo = replyNo;
+		this.replyWriter = replyWriter;
+		this.boardNo = boardNo;
+		this.contentNo = contentNo;
+		this.replyContent = replyContent;
+		this.enrollDate = enrollDate;
+		this.modifyDate = modifyDate;
+		this.status = status;
+		this.privateVa = privateVa;
+		this.writerNickname = writerNickname;
+		this.writerImg = writerImg;
+	}
+
+	
+	public String getWriterNickname() {
+		return writerNickname;
+	}
+
+	public void setWriterNickname(String writerNickname) {
+		this.writerNickname = writerNickname;
+	}
+
+	public String getWriterImg() {
+		return writerImg;
+	}
+
+	public void setWriterImg(String writerImg) {
+		this.writerImg = writerImg;
 	}
 
 	public int getReplyNo() {

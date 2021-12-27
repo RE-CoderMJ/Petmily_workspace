@@ -12,6 +12,7 @@ import com.pm.boards.ask.model.dao.AskDao;
 import com.pm.boards.ask.model.vo.Ask;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 
 public class AskService {
 
@@ -119,5 +120,33 @@ public class AskService {
 		int listCount = new AskDao().selectAskCount(conn);
 		close(conn);
 		return listCount;
+	}
+
+	public int insertReply(Reply r) {
+		Connection conn = getConnection();
+		int result = new AskDao().insertReply(conn, r);
+		
+		if(result > 0) {
+			commit(conn);
+		}else{
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int selectReplyCount(int ano) {
+		Connection conn = getConnection();
+		int listCount = new AskDao().selectReplyCount(conn, ano);
+		close(conn);
+		return listCount;
+	}
+
+	public ArrayList<Reply> selectReplyList(PageInfo pi, int ano) {
+		Connection conn = getConnection();
+		ArrayList<Reply> list = new AskDao().selectReplyList(conn, pi, ano);
+		close(conn);
+		return list;
 	}
 }
