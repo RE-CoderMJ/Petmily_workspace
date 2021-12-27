@@ -95,11 +95,12 @@
 	                    <a href="<%=contextPath%>/main.ask?page=1" class="btn">목록</a>
 	                </div>
 	            </div>
+	            
 	            <div id="write-reply">
 	                <div id="writearea-pic"><img src="resources/img/profile_default.png" alt=""></div>
 	                    <form action="">
-	                        <input type="text" placeholder="댓글을 남겨 보세요." required>
-	                        <button class="btn" id="reply-enrollbtn">등록</button>
+	                        <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
+	                        <button class="btn" id="reply-enrollbtn" onclick="insertReply();">등록</button>
 	                    </form>
 	            </div>
 	            
@@ -119,6 +120,45 @@
 		
 	
 	</div>
+	<script>
+		$(function(){
+			
+		});
+		
+		function insertReply(){
+			
+			$.ajax({
+				url:"rinsert.ask",
+				data:{
+					content:$("#reply-input").val(),
+					ano:<%=a.getAskNo()%>
+				},
+				type:"post",
+				success:function(result){
+					if(result > 0){
+						selectReplyList();
+						$("#reply-input").val("");
+					}
+				},error:function(){
+					console.log("댓글 작성용 ajax 통신 실패");
+				}
+			})
+		}
+		
+		function selectReplyList(){
+			$.ajax({
+				url:"rlist.ask",
+				data:{ano:<%=a.getAskNo()%>},
+				success:function(list){
+					let result="";
+					
+					
+				},error:function(){
+					console.log("댓글목록 조회용 ajax 통신 실패");
+				}
+			})
+		}
+	</script>
     
     <%@ include file="../bCommon/reportDeleteModals.jsp" %>
     <script>

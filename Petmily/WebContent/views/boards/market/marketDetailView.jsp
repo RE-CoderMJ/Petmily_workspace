@@ -113,7 +113,7 @@
 					<% if(loginUser != null && loginUser.getNickname().equals(m.getMarketWriter())) {%>
 						<button type="button" class="btn" data-toggle="modal" data-target="#deleteAskModal">글삭제</button>
 					<% } %>
-						<a href="<%=contextPath%>/main.missing?page=1" class="btn">목록</a>
+						<a href="<%=contextPath%>/main.market?page=1" class="btn">목록</a>
 					</div>
 				</div>
 				<div id="write-reply">

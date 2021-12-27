@@ -11,6 +11,8 @@ public class Reply {
 	private String status;
 	private String privateVa;
 	
+	public Reply() {}
+	
 	public Reply(int replyNo, int replyWriter, int boardNo, int contentNo, String replyContent, String enrollDate,
 			String modifyDate, String status, String privateVa) {
 		super();

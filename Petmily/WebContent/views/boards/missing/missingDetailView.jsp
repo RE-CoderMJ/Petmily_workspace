@@ -123,7 +123,7 @@
 				</div>
 				<div class="feature-area">
 					<span class="info-title">신체특징</span>
-					<div><%=mi.getFeature() %></div>
+					<div><%=mi.getFeature() == null ? "" : mi.getFeature()%></div>
 				</div>
 	
 			</div>
