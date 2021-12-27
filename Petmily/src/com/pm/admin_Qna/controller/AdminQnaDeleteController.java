@@ -35,7 +35,7 @@ public class AdminQnaDeleteController extends HttpServlet {
 		int result = new QnaService().deleteQna(qnaNo);
 		
     	if(result > 0) {
-    		response.sendRedirect(request.getContextPath() + "/adminList.qna?cpage=1");
+    		response.sendRedirect(request.getContextPath() + "/adminList.qna?num=1");
     		
     	}else {
     		request.setAttribute("errorMsg", "Q&A 삭제 실패");

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.admin_Qna.model.vo.Qna" %>
+<%
+	Qna q = (Qna)request.getAttribute("qna");
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,25 +61,24 @@
         <br>
         <br>
 
-    <!-- Q&A 폼 -->
-    <form action="" id="enroll-form-inquiry" method="post">
+	<div class="detail-area">
 		<table>
         	<tr>
-            	<th width="70px">접수일시</th>
-                <td>2021-11-11</td>
-                <td>2021-11-13</td>
+            	<th width="70px">등록일</th>
+                <td><%= q.getQnaDate() %></td>
+                <td></td>
                 </tr>
             <tr>
                 <th width="70px">작성자</th>
-                <td>이하늬</td>
-                <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea></td>
+                <td><%= q.getMemNo() %></td>
+                <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required></textarea></td>
             </tr>
             <tr>
                 <th width="70px">문의제목</th>
-                <td>주문 취소했는데 아직 환불 안됨</td>
+                <td><%= q.getQnaTitle() %></td>
             </tr>
             <tr>
-                <td colspan="2">문의내용 어쩌구저쩌구</td>
+                <td colspan="2"><%= q.getQnaContent() %></td>
             </tr>
          </table>
          <br><br>
@@ -87,9 +90,8 @@
              <button type="button" class="btn btn-sm btn-secondary" onclick="history.back();">뒤로</button>
          </div>
 
-      </form>
 
-
+	</div>
     </div>
     
     

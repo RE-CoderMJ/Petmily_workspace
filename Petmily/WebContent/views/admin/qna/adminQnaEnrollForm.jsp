@@ -58,27 +58,26 @@
         <br>
 
         <!-- Q&A 답변 입력폼 -->
-        <form action="" id="enroll-form-inquiry" method="post">
+        <form action="<%= contextPath %>/adminInsert.qna" id="enroll-form-inquiry" method="post">
+        
+        				<input type="hidden" name="managerNo" value="<%= loginAdmin.getManagerNo() %>">
 			
 			<!-- 조회 및 입력창 -->
             <table>
                 <tr>
-                    <th width="70px">접수일시</th>
-                    <td>2021-11-11</td>
-                    <td>2021-11-13</td>
+                	<td>Q&A 답변내용</td>
+                	<td rowspan="4"><textarea rows="10" name="content" style="resize:none" required></textarea></td>
                 </tr>
                 <tr>
-                    <th width="70px">작성자</th>
-                    <td>이하늬</td>
-                    <td rowspan="3"><textarea rows="10" name="content" style="resize:none" required>입점 및 제휴 문의는 온라인 점수를 통해서만 가능합니다.</textarea></td>
+                	<td></td>
                 </tr>
                 <tr>
-                    <th width="70px">문의제목</th>
-                    <td>주문 취소했는데 아직 환불 안됨</td>
+                	<td></td>
                 </tr>
                 <tr>
-                	<td colspan="2">문의내용 어쩌구저쩌구</td>
+                	<td></td>
                 </tr>
+                
             </table>
             <br><br>
 

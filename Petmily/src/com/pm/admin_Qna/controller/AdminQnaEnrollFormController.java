@@ -32,42 +32,9 @@ public class AdminQnaEnrollFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 미수정!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		request.setCharacterEncoding("utf-8");
-		
-		String faqTitle = request.getParameter("title");
-		String faqContent = request.getParameter("content");
-		String managerNo = request.getParameter("managerNo");
-		String faqCate = request.getParameter("cate");
-		
-		
-		HttpSession session = request.getSession();
-		int ManagerNo = ((AdminMember)session.getAttribute("loginAdmin")).getManagerNo();
-		
-		Faq f = new Faq();
-
-		f.setFaqTitle(faqTitle);
-		f.setFaqContent(faqContent);
-		f.setManagerNo(String.valueOf(managerNo)); // 무조건 String으로 만들어줌 .valueOf()
-		f.setFaqCate(faqCate);
-
-		
-	
-		int result = new FaqService().insertFaq(f);
-		
-		if(result > 0) { 
-			
-			session.setAttribute("alertMsg", "성공적으로  FAQ 등록되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/adminList.faq?cpage=1");
-			
-		}else {
-			request.setAttribute("errorMsg", "FAQ 등록에 실패하였습니다!");
-			request.getRequestDispatcher("views/common/error/loginErrorPage.jsp").forward(request, response);
-			
-			
-		}	
 		
 		request.getRequestDispatcher("views/admin/qna/adminQnaEnrollForm.jsp").forward(request,response);
+		
 	}
 
 	/**

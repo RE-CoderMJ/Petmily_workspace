@@ -35,30 +35,32 @@ public class AdminInquiryInsertController extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		
-
-		String managerNo = request.getParameter("managerNo");
-		String replyContent = request.getParameter("iqcontent");
-		String replyDate = request.getParameter("iqdate");
+		int pinquiryNo = Integer.parseInt(request.getParameter("inum"));
 		
+		String replyContent = request.getParameter("iqcontent");
+		
+		System.out.println(pinquiryNo);
 		
 		HttpSession session = request.getSession();
 		int ManagerNo = ((AdminMember)session.getAttribute("loginAdmin")).getManagerNo();
 		
-		Inquiry p = new Inquiry();
+		Inquiry i = new Inquiry();
 
 
-		p.setManagerNo(String.valueOf(managerNo)); // 무조건 String으로 만들어줌 .valueOf()
-		p.setReplyContent(replyContent);
-		p.setReplyDate(replyDate);
+		i.setPinquiryNo(pinquiryNo);
+		i.setManagerNo(String.valueOf(ManagerNo)); // 무조건 String으로 만들어줌 .valueOf()
+		i.setReplyContent(replyContent);
 
 		
+		System.out.println(i);
+		
 	
-		int result = new InquiryService().insertInquiry(p);
+		int result = new InquiryService().insertInquiry(i);
 		
 		if(result > 0) { 
 			
 
-			response.sendRedirect(request.getContextPath() + "/adminList.faq?cpage=1");
+			response.sendRedirect(request.getContextPath() + "/adminList.iq?cpage=1");
 			
 		}else {
 			request.setAttribute("errorMsg", "상품문의 답변 등록에 실패하였습니다!");

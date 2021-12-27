@@ -77,11 +77,12 @@ private Properties prop = new Properties();
 			
 			while(rset.next()) {
 				list.add(new Inquiry(rset.getInt("pinquiry_no"),
-					 				 rset.getString("mem_no"),
-					 				 rset.getString("product_no"),
+					 				 rset.getString("nickname"),
+					 				 rset.getString("product_name"),
 					 				 rset.getString("pinquiry_title"),
 					 				 rset.getString("pinquiry_date"),
-					 				 rset.getString("manager_no")));
+					 				 rset.getString("manager_id"),
+									rset.getString("reply_content")));
 			}
 
 			
@@ -100,13 +101,13 @@ private Properties prop = new Properties();
 	public int insertInquiry(Connection conn, Inquiry i) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertInquiry");
+		String sql = prop.getProperty("updatePinquiry");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, i.getManagerNo());
 			pstmt.setString(2, i.getReplyContent());
-			pstmt.setString(3, i.getReplyDate());
+			pstmt.setInt(3, i.getPinquiryNo());
 
 			
 			result = pstmt.executeUpdate();
@@ -122,7 +123,7 @@ private Properties prop = new Properties();
 	}
 	
 	/* 4.  상품문의 조회*/
-	public Inquiry selectInquiry(Connection conn, int inquiryNo) {
+	public Inquiry selectInquiry(Connection conn, int pinquiryNo) {
 		Inquiry i = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -140,7 +141,7 @@ private Properties prop = new Properties();
 								rset.getString("nickname"),
 								rset.getString("product_name"),
 								rset.getString("pinquiry_title"),
-								rset.getString("pinquiry_date")
+								rset.getString("pinquiry_date"),
 								rset.getString("manager_no"),
 								rset.getString("reply_content"),
 								rset.getString("reply_date"));
@@ -163,10 +164,10 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, i.getPinquiryNo());
+			pstmt.setString(1, i.getManagerNo());
 			pstmt.setString(2, i.getReplyContent());
 			pstmt.setString(3, i.getReplyDate());
-			
+			pstmt.setInt(4, i.getPinquiryNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -179,7 +180,7 @@ private Properties prop = new Properties();
 	}
 	
 	/* 6. 상품문의 삭제 */
-	public int deleteInquiry(Connection conn, int inquiryNo) {
+	public int deleteInquiry(Connection conn, int pinquiryNo) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;

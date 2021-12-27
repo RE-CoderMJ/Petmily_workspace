@@ -80,8 +80,7 @@ public class QnaDao {
 				list.add(new Qna(rset.getInt("qna_no"),
 								 rset.getString("nickname"),
 								 rset.getString("qna_title"),
-							 	 rset.getString("enroll_date"),
-							 	 rset.getString("status")));
+							 	 rset.getString("qna_date")));
 			}
 
 			
@@ -104,9 +103,9 @@ public class QnaDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, q.getManagerNo());
-			pstmt.setString(2, q.getQnaReplyContent());
-			pstmt.setString(3, q.getQnaReplyDate());
+			pstmt.setString(1, q.getMemNo());
+			pstmt.setString(2, q.getQnaTitle());
+			pstmt.setString(3, q.getQnaReplyContent());
 			
 			result = pstmt.executeUpdate();
 			

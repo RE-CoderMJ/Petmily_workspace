@@ -87,6 +87,11 @@
         color: white;
         font-weight: bolder;
     }
+    /* 마우스로 선택한 줄 항목 */
+     #noticetable>tbody>tr:hover{
+    	 background:rgb(220, 220, 220);
+    	 cursor:pointer;
+     }
 	/* 페이징바 */
     .paging-area button{
         border:  0;
@@ -166,53 +171,9 @@
 	    <div class="under">
 	        <div class="rightbutton" align="right">
 	            <a href="<%= contextPath %>/adminEnrollForm.qna" class="btn btn-sm btn-warning">등록</a>
-	            <a href="<%= contextPath %>/adminUpdateForm.qna" class="btn btn-sm btn-warning">수정</a>
+	            <a href="<%= contextPath %>/adminDelete.qna" class="btn btn-sm btn-danger">삭제</a>
 	            
-	        	<!-- 삭제버튼(혜선꺼) : Button to Open the Modal -->
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">
-                             삭제
-                </button>
-
-                <!-- 삭제 모달 Modal -->
-                <div class="modal fade" id="deleteModal">
-                   <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content" style="width: 400px;">
-
-                         <!-- Modal body -->
-                         <div class="modal-body" align="center">
-                            <div class="modalMsg-area">
-                                                    정말 삭제하시겠습니까?
-                            </div>
-                           
-                       	    <div id="deletebtn-area">
-                           	   <a type="button" class="btn" id="confirm-btn" data-dismiss="modal" data-toggle="modal" href="#deleteCompleted">확인</a>
-                           	   <button type="button" class="btn" data-dismiss="modal" id="closebtn">닫기</button>
-                            </div>              
-                         </div>
-                        
-                      </div>
-                   </div>
-                </div>
-               
-               <!-- 삭제 완료 확인창 Modal -->
-               <div class="modal fade" id="deleteCompleted">
-                  <div class="modal-dialog modal-sm modal-dialog-centered">
-                     <div class="modal-content">
-
-                        <!-- Modal body -->
-                        <div class="modal-body" align="center" style="text-align: center;">
-                           <div class="modalMsg-area">
-                                                  정상적으로 삭제되었습니다.
-                           </div>
-                           
-                           <div>
-                           	   <button type="button" class="btn" data-dismiss="modal" id="deleteCompletedclosebtn">닫기</button>
-                           </div>              
-                        </div>
-                  
-                     </div>
-                  </div>
-               </div>
+	        	
 	            
 	            
 	           <br><br>
@@ -221,13 +182,12 @@
 	     
 	    <!-- Q&A 조회 테이블 -->
 		<div class="bottom" align="right">
-			<table class="table table-bordered" style="margin:none;">
+			<table id="qnatable"class="table table-bordered" style="margin:none;">
 	        	<thead>
 	            	<tr>
-	                	<th width="50"><input type="checkbox" name="" value=""></th>
 	                    <th width="100">번호</th>
 	                    <th width="150">등록일</th>
-	                    <th width="500">문의제목</th>
+	                    <th width="400">문의제목</th>
 	                    <th width="150">작성자</th>
 	                    <th width="150">처리상태</th>
 	                </tr>
@@ -243,13 +203,12 @@
 	                <!--2. 게시글 있을 경우-->
 	                <% for(Qna q : list) { %>
 	                <tr align="center">
-	                    <td><input type="checkbox" name="" value=""></td>
 	                    <td><%= q.getQnaNo() %></td>
 	                    <td><%= q.getQnaDate() %></td>
 	                    <td><%= q.getQnaTitle() %></td>
 	                    <td><%= q.getMemNo() %></td>
 	                    
-	                    <% if (q.getQnaReplyContent() == null && q.getQnaReplyContent() == "") { %>
+	                    <% if (q.getQnaReplyContent() == null) { %>
 	                    <td>미답변</td>
 	                    <% }else { %>
 	                    <td>답변완료</td>
@@ -261,6 +220,15 @@
 	         </table>
 	      </div>
 
+
+		<!-- 글 클릭시 상세페이지 조회 -->
+    	<script>
+    	$(function(){
+    		$("#qnatable>tbody>tr").click(function(){
+    			location.href = '<%=contextPath%>/adminDetail.qna?num=' + $(this).children().eq(0).text();
+    		})
+    	})
+    	</script>
 	       
 	      <!-- 페이징바 -->
 		  <script>
@@ -278,19 +246,19 @@
 	    <!-- 페이징 바 -->
             <div class="paging-area" align="center">
             <% if(currentPage != 1) { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.qna?cpage=<%=currentPage-1%>';"> &lt; </button>
+                <button onclick="location.href='<%=contextPath%>/adminList.qna?num=<%=currentPage-1%>';"> &lt; </button>
             <% } %>
             
             <% for(int p=startPage; p<=endPage; p++) { %>
             	<% if(p== currentPage) { %>
                 <button disabled><%= p %></button>
                 <% }else { %>
-                <button onclick="location.href='<%=contextPath%>/adminList.qna?cpage=<%= p %>';"><%= p %></button>
+                <button onclick="location.href='<%=contextPath%>/adminList.qna?num=<%= p %>';"><%= p %></button>
                 <% } %>
 			<% } %>
 			
 			<% if(currentPage != maxPage){ %>
-            	<button onclick="location.href='<%=contextPath%>/adminList.qna?cpage=<%=currentPage+1%>';"> &gt; </button>
+            	<button onclick="location.href='<%=contextPath%>/adminList.qna?num=<%=currentPage+1%>';"> &gt; </button>
 			<% } %>
             </div>
         </div>

@@ -29,7 +29,7 @@ public class AdminInquiryDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pinquiryNo = Integer.parseInt(request.getParameter("num"));
+		int pinquiryNo = Integer.parseInt(request.getParameter("inum"));
     	
 		int result = new InquiryService().deleteInquiry(pinquiryNo);
 		

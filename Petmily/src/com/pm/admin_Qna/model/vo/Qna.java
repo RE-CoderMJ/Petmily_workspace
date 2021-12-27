@@ -45,6 +45,36 @@ public class Qna {
 
 	
 	
+	public Qna(int qnaNo, String memNo, String qnaTitle, String qnaDate) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaDate = qnaDate;
+	}
+
+	public Qna(int qnaNo, String memNo, String qnaTitle, String qnaContent, String qnaDate, String qnaReplyContent,
+			String qnaReplyDate) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaContent = qnaContent;
+		this.qnaDate = qnaDate;
+		this.qnaReplyContent = qnaReplyContent;
+		this.qnaReplyDate = qnaReplyDate;
+	}
+
+	public Qna(int qnaNo, String memNo, String qnaTitle, String qnaDate, String qnaReplyContent, String qnaReplyDate) {
+		super();
+		this.qnaNo = qnaNo;
+		this.memNo = memNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaDate = qnaDate;
+		this.qnaReplyContent = qnaReplyContent;
+		this.qnaReplyDate = qnaReplyDate;
+	}
+
 	public Qna(int qnaNo, String memNo, String managerNo, String qnaTitle, String qnaContent, String qnaDate,
 			String qnaReplyContent, String qnaReplyDate) {
 		super();

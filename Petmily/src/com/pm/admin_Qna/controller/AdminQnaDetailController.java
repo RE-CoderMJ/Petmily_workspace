@@ -33,6 +33,8 @@ public class AdminQnaDetailController extends HttpServlet {
 		
 
 		int qnaNo = Integer.parseInt(request.getParameter("num"));
+
+
 		
 		Qna q = new QnaService().selectQna(qnaNo);
 

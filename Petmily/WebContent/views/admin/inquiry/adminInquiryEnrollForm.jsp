@@ -57,28 +57,15 @@
         <br>
 
         <!-- (상품문의) 답변 입력폼 -->
-        <form action="<%= contextPath %>/adminInsert.iq" id="enroll-form-inquiry" method="post">
+        <form action="<%= contextPath %>/adminInsert.iq?num=<%= Inquiry.getPinquiryNo() %>" id="enroll-form-inquiry" method="post">
 
 				<input type="hidden" name="managerNo" value="<%= loginAdmin.getManagerNo() %>">
 			<!--  상품문의 답변입력창 -->
             <table>
                 <tr>
-                   <th width="70px">접수일시</th>
-                   <td>2021-11-11</td>
-                   <td><input type="text" name="iqdate" required></td>
-                </tr>
-                <tr>
-                   <th width="70px">작성자</th>
-                   <td></td>
+                   <th width="70px">답변 내용</th>
                    <td rowspan="2"><textarea rows="10" name="iqcontent" style="resize:none" required></textarea></td>
                 </tr>
-                <tr>
-                    <th width="70px"></th>
-                    <td></td>
-                </tr>
-                <!--<tr>
-                	<td colspan="2">문의내용 어쩌구저쩌구</td>
-                </tr>-->
             </table>
             <br><br>
 

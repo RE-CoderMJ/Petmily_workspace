@@ -37,6 +37,8 @@ public class Inquiry {
 		this.status = status;
 	}
 
+	
+	
 	public Inquiry(int pinquiryNo, String memNo, String productNo, String pinquiryTitle, String pinquiryDate,
 			String managerNo) {
 		super();
@@ -51,6 +53,18 @@ public class Inquiry {
 	
 
 	public Inquiry(int pinquiryNo, String memNo, String productNo, String pinquiryTitle, String pinquiryDate,
+			String managerNo, String replyContent) {
+		super();
+		this.pinquiryNo = pinquiryNo;
+		this.memNo = memNo;
+		this.productNo = productNo;
+		this.pinquiryTitle = pinquiryTitle;
+		this.pinquiryDate = pinquiryDate;
+		this.managerNo = managerNo;
+		this.replyContent = replyContent;
+	}
+
+	public Inquiry(int pinquiryNo, String memNo, String productNo, String pinquiryTitle, String pinquiryDate,
 			String managerNo, String replyContent, String replyDate) {
 		super();
 		this.pinquiryNo = pinquiryNo;
@@ -61,6 +75,30 @@ public class Inquiry {
 		this.managerNo = managerNo;
 		this.replyContent = replyContent;
 		this.replyDate = replyDate;
+	}
+
+	
+	
+	public Inquiry(int pinquiryNo, String managerNo, String replyContent, String replyDate) {
+		super();
+		this.pinquiryNo = pinquiryNo;
+		this.managerNo = managerNo;
+		this.replyContent = replyContent;
+		this.replyDate = replyDate;
+	}
+
+	public Inquiry(String managerNo, String replyContent, String replyDate) {
+		super();
+		this.managerNo = managerNo;
+		this.replyContent = replyContent;
+		this.replyDate = replyDate;
+	}
+
+	
+	
+	public Inquiry(int pinquiryNo) {
+		super();
+		this.pinquiryNo = pinquiryNo;
 	}
 
 	public int getPinquiryNo() {
@@ -166,6 +204,8 @@ public class Inquiry {
 				+ pinquiryDate + ", managerNo=" + managerNo + ", replyContent=" + replyContent + ", replyDate="
 				+ replyDate + ", secret=" + secret + ", count=" + count + ", status=" + status + "]";
 	}
+
+	
 
 	
 	

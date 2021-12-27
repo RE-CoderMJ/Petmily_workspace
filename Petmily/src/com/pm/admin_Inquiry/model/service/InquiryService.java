@@ -8,8 +8,7 @@ import static com.pm.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.pm.admin_Faq.model.dao.FaqDao;
-import com.pm.admin_Faq.model.vo.Faq;
+
 import com.pm.admin_Inquiry.model.dao.InquiryDao;
 import com.pm.admin_Inquiry.model.vo.Inquiry;
 import com.pm.common.model.vo.PageInfo;
