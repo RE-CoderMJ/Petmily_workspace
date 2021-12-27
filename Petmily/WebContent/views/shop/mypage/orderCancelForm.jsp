@@ -208,7 +208,7 @@
                         <%-- <input type="hidden" name="sledding" value="<%= ca1.get %>">--%>
                         <input type="hidden" name="pnum" value="<%= ca1.getOrderPnum() %>">
                         
-                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my?cpage=1">취소신청</a></button>
+                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my?">취소신청</a></button>
 
                         
                     </div>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.common.model.vo.PageInfo;
+import com.pm.shop.model.vo.Cancel;
 import com.pm.shop.model.vo.OrderSelect;
 
 public class OrderSelectDao {
@@ -144,9 +145,33 @@ public class OrderSelectDao {
 		
 	}
 		
+	
+	public ArrayList<OrderSelect> selectSum(Connection conn, int userNo) {
+		ArrayList<OrderSelect> sum = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectSum");
 		
-	
-	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				sum.add(new OrderSelect(rset.getInt("pricesum"),
+									   rset.getInt("amountsum")));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return sum;
+	}
+
 	
 	
 	

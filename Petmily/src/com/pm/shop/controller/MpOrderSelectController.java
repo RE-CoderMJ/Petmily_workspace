@@ -78,10 +78,15 @@ public class MpOrderSelectController extends HttpServlet {
 		// * 현재 요청한 페이지(currentPage)에 보여질 <주문내역 리스트> boardLimit수만큼 조회해가기
 		ArrayList<OrderSelect> list = new OrderSelectService().selectList(pi, userNo);
 		
+		//int orderNo = Integer.parseInt(request.getParameter("orderno"));
+		ArrayList<OrderSelect> sum = new OrderSelectService().selectSum(userNo);
+		
+		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		request.setAttribute("list", sum);
 		
-		System.out.println(pi);
+		//System.out.println(pi);
 		request.getRequestDispatcher("views/shop/mypage/orderSelect.jsp").forward(request, response);
 	}
 

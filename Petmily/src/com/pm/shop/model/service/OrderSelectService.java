@@ -39,4 +39,15 @@ public class OrderSelectService {
 		
 		return osdetail;
 	}
+
+	public ArrayList<OrderSelect> selectSum( int userNo){
+		Connection conn = getConnection();
+		ArrayList<OrderSelect> sum = new OrderSelectDao().selectSum(conn, userNo);
+		
+		close(conn);
+		
+		return sum;
+	}
+
+	
 }

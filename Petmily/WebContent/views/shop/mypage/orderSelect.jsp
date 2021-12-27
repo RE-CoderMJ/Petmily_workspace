@@ -176,9 +176,9 @@
 	
         <div id="content">
             <div class="inline-block" id="c1"><%= os.getOrderDate() %> 구매</div>
-            <div class="inline-block" id="c2" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno=<%= os.getOrderNo() %>'">주문번호 : <%= os.getOrderNo() %></div>
-            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno<%= os.getOrderNo() %>'">총 x개</div>
-            <div class="inline-block" id="c4">총 xxxx원</div>
+            <div class="inline-block" id="c2" name="orderno" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno=<%= os.getOrderNo() %>'">주문번호 : <%= os.getOrderNo() %></div>
+            <div class="inline-block" id="c3" onclick="location.href='<%= contextPath %>/orderselectdetail.my?orderno<%= os.getOrderNo() %>'">총 <%= os.getAmountSum() %>개</div>
+            <div class="inline-block" id="c4">총 <%= os.getPriceSum() %>원</div>
             <button class="btn" data-toggle="modal" data-target="#my80sizeModal"> 
             	<img src="resources/img/down-arrow.png" class="down-arrow">
             </button>

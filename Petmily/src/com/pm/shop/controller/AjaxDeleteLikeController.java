@@ -14,7 +14,7 @@ import com.pm.shop.model.vo.Like;
 /**
  * Servlet implementation class AjaxDeleteLikeController
  */
-@WebServlet("/deleteLike")
+@WebServlet("/deleteLike.my")
 public class AjaxDeleteLikeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,13 +38,8 @@ public class AjaxDeleteLikeController extends HttpServlet {
 		
 		int result = new LikeService().deleteLike(l);
 		if(result>0) {
-			request.getSession().setAttribute("alertMsg", "성공적으로 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/like.my");
-		} else {
-			request.getSession().setAttribute("alertMsg","삭제 요청 실패했습니다.");
-			request.setAttribute("errorMsg", "삭제 실패");
-			
-			
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().print(result);
 		}
 	}
 

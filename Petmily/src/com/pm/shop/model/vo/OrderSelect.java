@@ -19,6 +19,8 @@ public class OrderSelect {
 	private String adderess;
 	private String deliveryMemo;
 	private String payment;
+	private int priceSum;
+	private int amountSum;
 
 	
 	public OrderSelect() {}
@@ -75,6 +77,7 @@ public class OrderSelect {
 		this.price = price;
 		this.orderDate = orderDate;
 		this.orderPnum = orderPnum;
+
 	}
 	
 	
@@ -109,6 +112,13 @@ public class OrderSelect {
 		this.payment = payment;
 	}
 
+	
+
+	public OrderSelect(int priceSum, int amountSum) {
+		super();
+		this.priceSum = priceSum;
+		this.amountSum = amountSum;
+	}
 
 	public int getOrderPnum() {
 		return orderPnum;
@@ -244,6 +254,24 @@ public class OrderSelect {
 	public void setPayment(String payment) {
 		this.payment = payment;
 	}
+	
+	
+
+	public int getPriceSum() {
+		return priceSum;
+	}
+
+	public void setPriceSum(int priceSum) {
+		this.priceSum = priceSum;
+	}
+
+	public int getAmountSum() {
+		return amountSum;
+	}
+
+	public void setAmountSum(int amountSum) {
+		this.amountSum = amountSum;
+	}
 
 	@Override
 	public String toString() {
@@ -251,8 +279,10 @@ public class OrderSelect {
 				+ ", pOption=" + pOption + ", pAmount=" + pAmount + ", productName=" + productName + ", price=" + price
 				+ ", orderDate=" + orderDate + ", orderPoption=" + orderPoption + ", orderPamount=" + orderPamount
 				+ ", memName=" + memName + ", phone=" + phone + ", adderess=" + adderess + ", deliveryMemo="
-				+ deliveryMemo + "]";
+				+ deliveryMemo + ", payment=" + payment + ", priceSum=" + priceSum + ", amountSum=" + amountSum + "]";
 	}
+
+
 
 
 }

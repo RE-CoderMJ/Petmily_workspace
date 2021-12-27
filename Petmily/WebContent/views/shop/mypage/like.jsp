@@ -36,7 +36,7 @@
             text-align: center;
             margin:auto !important;
         }
-        #like-content{
+        .like-content{
             text-align: center;
             margin:50px 30px;
             font-size: 18px;
@@ -70,17 +70,18 @@
     <% } else { %>
 		<% for(Like like : list) { %>
 			
-	        <div class="inline-block" id="like-content" align="center">
+	        <div class="inline-block like-content" align="center">
 	            <img src=""  id="content-img" width="100px" height="100px" > 
-	            <input type="hidden" value="<%= like.getProductNo() %>", name="pno", id="pno">
 	            <br>
 	            	<%= like.getProductName() %>
 	            <br>
 	            	<%= like.getPrice() %>원
 	            <br>
-	            <button style="border:none;" onclick="deleteLike();">
+	            <button style="border:none;">
+	            <input type="hidden" value="<%= like.getProductNo() %>">
 	            <img src="resources/img/likeheart.png" alt="" width="40px" height="40px">
 	            </button>
+	            
 	        </div>
 
 		<!-- 한줄에 5개씩 보여지도록 어떻게 하지 -->
@@ -101,29 +102,42 @@
 </div> 
 <script>
 // ajax로 like delete
-function deleteLike(){
-	var num = $(this).attr('data_num'); 
-	//속성을 꺼내는 attr함수, 클릭할 때마다 기본키를 받을 수 있도록 
-	console.log(num);
-	                
-	$.ajax({
-		url:"deleteLike.my", //문제
-		data:{
-			pno:$("#pno").val()		
-		},
-		type:"post",
-		success:function(result){
-			if(result>0){
-				$("#like-content").remove();
+$(function(){
+	
+	$("button").click(function(){
+		
+		var num = $(this).children("input").val(); 
+		//속성을 꺼내는 attr함수, 클릭할 때마다 기본키를 받을 수 있도록 
+		//console.log(pno);
+		console.log(num);
+		                
+		$.ajax({
+			url:"deleteLike.my", //문제
+			data:{
+				pno:num	
+			},
+			type:"post",
+			success:function(result){
+				if(result>0){
+					$(this).parent().remove();
+					//$("#like-content").remove();
+				}
+			},
+			error:function(result){
+				console.log("찜 삭제용 ajax 실패")
 			}
-		},
-		error:function(result){
-			console.log("찜 삭제용 ajax 실패")
-		}
+			
+			
+		})
 		
 		
 	})
-}
+})
+/*
+function deleteLike(pno){
+	
+	
+}*/
 </script>
 <%@ include file="../../common/footerbar.jsp" %> 
 </body>

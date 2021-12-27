@@ -255,19 +255,19 @@
                 <p class="process-content">주문이 결제 완료 상태이면,<br>
                 즉시 취소 가능합니다.</p>
             </div>
-            <img src="" alt="" width="50px" height="50">
+            <img src="resources/img/right-arrow.png" alt="" width="50px" height="50">
             <div class="inline-block" id="process2">
                 반품신청
                 <p class="process-content">주문이 배송중, 배송완료 상태이면,<br>
                      반품신청 가능합니다.</p>
             </div>
-            <img src="" alt="" width="50px" height="50">
+            <img src="resources/img/right-arrow.png" alt="" width="50px" height="50">
             <div class="inline-block" id="process3">
                 반품처리중
                 <p class="process-content">반품 신청이 완료되면 고객 <br>
                      센터에서 처리하게 됩니다.</p>
             </div>
-            <img src="" alt="" width="50px" height="50">
+            <img src="resources/img/right-arrow.png" alt="" width="50px" height="50">
             <div class="inline-block" id="process4">
                 취소/환불 완료
                 <p class="process-content">주문 건은 취소/반품 완료 후 <br>
