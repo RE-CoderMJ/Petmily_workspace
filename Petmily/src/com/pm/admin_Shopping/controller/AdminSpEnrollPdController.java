@@ -117,7 +117,7 @@ public class AdminSpEnrollPdController extends HttpServlet {
 				
 				if(result > 0) {
 					// 성공 => /jsp/list.th	url요청 => 목록페이지
-					request.getSession().setAttribute("alert", "쇼핑몰 등록 성공 ㅊㅋ");
+					request.getSession().setAttribute("alert", "쇼핑몰 등록 성공!");
 					response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 				}else {
 					request.setAttribute("errorMsg", "쇼핑몰 등록 실패");

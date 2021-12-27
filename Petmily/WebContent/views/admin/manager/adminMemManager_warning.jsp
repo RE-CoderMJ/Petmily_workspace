@@ -156,7 +156,8 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
+                            <button onclick="location.href='<%= contextPath %>/blackDelete.ad?mno='+no;" class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
+                        	<input type="hidden" id="memNo" name="mno">
                         </div>
                         <!-- 회원삭제 Modal -->
                         <div class="modal fade" id="deleteModal">
@@ -221,7 +222,7 @@
                                 <% for(int i=0; i<list.size(); i++) {%>
                                 <tr id="row">
                                     <td><input type="checkbox" name="selectCheck" value=""></td>
-                                    <td><%= list.get(i).getMemNo() %></td>
+                                    <td id="mNo"><%= list.get(i).getMemNo() %></td>
                                     <td><%= list.get(i).getMemEmail() %></td>
                                     <td><%= list.get(i).getMemName() %></td>
                                     <td><%= list.get(i).getReportDate() %></td>
@@ -235,6 +236,41 @@
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+			 $(function(){
+                 $('input:checkbox[name="selectCheck"]').click(function(){
+                     if($('input:checkbox[name="selectCheck"]').is(':checked')){
+                         //console.log("확인");
+                         clickEvent(event);
+                     }else{
+                         //console.log("체크해제확인");
+                     }
+                 })
+             });                           
+
+			 function clickEvent(event) {
+                 //console.log('target ::', $(event.target));
+
+                 var row = $(event.target).closest('tr');
+				
+                 var columns0 = row.find('#mNo');
+
+                 var values = "";
+				
+                 //for(var i=0; i<=4; i++){
+	                 //var value = $('columns'+i).val();
+	                 $.each(columns0, function(idx, item){
+	                	 no = item.innerHTML;
+	                 });
+                 //}
+                 //for(var i=0; i<=4; i++){
+                 	console.log(no);
+                 //}
+                 	$("#memNo").val(no); 
+                 	
+                 
+             }
+            </script>
             <br><br><br><br>
             <!-- 페이징 바 -->
             <div class="paging-area" align="center">

@@ -359,7 +359,7 @@
                                             </div>
                                             <!-- Modal footer -->
                                             <div class="modal-footer" align="center">
-                                                <button type="button" class="btn btn-warning" data-dismiss="modal" id="contentModalbtn">해당 게시글/댓글 로 이동</button>            
+                                                <button onclick="location.href='<%= contextPath %>/detail.market?mno='+2;" type="button" class="btn btn-warning" id="contentModalbtn">해당 게시글/댓글 로 이동</button>            
                                             </div>
                                     
                                         </div>

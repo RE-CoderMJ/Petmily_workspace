@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.pm.admin_Mem.model.service.AdminMemService;
 
 /**
- * Servlet implementation class AdminMemDeleteController
+ * Servlet implementation class AdminMemBlackDeleteController
  */
-@WebServlet("/Delete.ad")
-public class AdminMemDeleteController extends HttpServlet {
+@WebServlet("/blackDelete.ad")
+public class AdminMemBlackDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMemDeleteController() {
+    public AdminMemBlackDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class AdminMemDeleteController extends HttpServlet {
 		if(result > 0) {
 			request.getSession().setAttribute("alert", "회원 삭제를 완료했습니다.");
 
-			response.sendRedirect(request.getContextPath() + "/memMg.ad?cpage=1");
+			response.sendRedirect(request.getContextPath() + "/blackMem.ad?cpage=1");
 			
 		}else {
 			request.setAttribute("errorMsg", "에러.");

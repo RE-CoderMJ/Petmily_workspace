@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-<%@ page import="java.util.ArrayList, com.pm.boards.market.model.vo.Market, com.pm.common.model.vo.Attachment"%>
+<%@ page import="java.util.ArrayList, com.pm.boards.market.model.vo.Market, com.pm.common.model.vo.Attachment, com.pm.admin_Login.model.vo.AdminMember"%>
 <%
 	Market m = (Market)request.getAttribute("m");
 	int replyCount = (int)request.getAttribute("replyCount");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+
+	AdminMember loginAdmin = (AdminMember)session.getAttribute("loginAdmin");
 %>
 <!DOCTYPE html>
 <html>
