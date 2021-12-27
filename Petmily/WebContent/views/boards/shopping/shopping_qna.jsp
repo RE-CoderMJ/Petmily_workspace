@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.pm.common.model.vo.PageInfo, java.util.ArrayList, com.pm.shopping.model.vo.ShoppingQna" %>
+<%
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<ShoppingQna> list = (ArrayList<ShoppingQna>)request.getAttribute("list");
+ 
+ 	int currentPage = pi.getCurrentPage();
+ 	int startPage = pi.getStartPage();
+ 	int endPage = pi.getEndPage();
+ 	int maxPage = pi.getMaxPage();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,8 +100,7 @@
 	<%@ include file="shoppingsidebar.jsp"%>
  
     <div class="outer">
-        
-        
+                
         <div class="inner">
             
             <div class="qna-top">
@@ -123,110 +132,61 @@
                     </thead>
     
                     <tbody>
+         
+    					<% if(list.isEmpty()) { %>
+	    					<tr>
+	    						<td colspan="5">조회된 게시글이 없습니다</td>
+	    					</tr>
+	    				<% } else { %>
+    						<% for(ShoppingQna s : list) { %>
+		                        <tr>
+		                            <td class="tdNo"><%= s.getPinquiryNo() %></td>
+		                            <td class="tdTitle"><%= s.getPinquiryTitle() %> <span class="tdreply">(1)</span></td>
+		                            <td class="tdWriter"><%= s.getMemberNick() %></td>
+		                            <td class="tdDate"><%= s.getPinquiryDate() %></td>
+		                            <td class="tdCount"><%= s.getCount() %></td>
+		                        </tr>
+		                    <% } %>
+	                    <% } %>
     
-                        <tr>
-                            <td class="tdNo">10</td>
-                            <td class="tdTitle">이번주에 구매하면 유통기한이 언제까지일까요? <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">서머</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-    
-                        <tr>
-                            <td class="tdNo">9</td>
-                            <td class="tdTitle">비밀 문의글입니다 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">쭈니</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-    
-                        <tr>
-                            <td class="tdNo">8</td>
-                            <td class="tdTitle">제공량이 하루 제공량인가요? <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">뽀야미</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-    
-                        <tr>
-                            <td class="tdNo">7</td>
-                            <td class="tdTitle">재입고 언제 되나요<span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">애플</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-    
-                        <tr>
-                            <td class="tdNo">6</td>
-                            <td class="tdTitle">품절 언제 풀리나여<span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">미애</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">5</td>
-                            <td class="tdTitle">재입고<span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">핑키</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">4</td>
-                            <td class="tdTitle">배송 언제쯤 되나요 <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter"차차</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">3</td>
-                            <td class="tdTitle">상품 받았는데 유통기한이<span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">동글이</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">2</td>
-                            <td class="tdTitle">지금 막 주문 넣었어요 유통기한 넉넉한걸로 부탁드려여<span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">집사</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
-
-                        <tr>
-                            <td class="tdNo">1</td>
-                            <td class="tdTitle">사료 알갱이 크기 좀 알려주세요 강쥐가 예민해서요  <span class="tdreply">(1)</span></td>
-                            <td class="tdWriter">달리</td>
-                            <td class="tdDate">20xx-xx-xx</td>
-                            <td class="tdCount">4</td>
-                        </tr>
     
                     </tbody>
                 </table>
 
-                <%@ include file="../../common/pagingBar.jsp" %>
+                <div class="paging-area" align="center">
+					<% if(currentPage != 1) { %> 
+		            	<button onclick="location.href='<%= contextPath %>/shop.qna?cpage=<%=currentPage-1%>';"> &lt; </button>
+					<% } %>
+		
+					<% for(int p=startPage; p<=endPage; p++) { %>            
+		            	<% if(p == currentPage) { %> <!-- 페이지가 현재 보고 있는 페이지라면 -->
+		            		<button disabled><%= p %></button> <!-- 클릭 안되는 버튼으로 -->
+		            	<% } else { %>
+		            		<!-- 숫자 클릭 시 페이지 요청 -->
+		            		<button onclick="location.href='<%= contextPath %>/shop.qna?cpage=<%= p %>';"><%= p %></button>
+		            	<% } %>
+		            <% } %>
+		            
+		            <% if(currentPage != maxPage) { %> <!-- 마지막 페이지 버튼 아닐 경우 다음버튼이 보여진다 -->
+		            	<button onclick="location.href='<%= contextPath %>/shop.qna?cpage=<%= currentPage+1 %>';"> &gt; </button>
+					<% } %> <!-- 마지막 페이지일 경우 다음버튼이 없다 -->
+		        </div>
+		        
             </div>
-            
+
             <script>
 	            $(function(){
-	                $("tr").click(function(){
-	                //const num = $(this).children().eq(0).text();
-	               
-	                // /jsp/detail.qna?num=클릭한글번호
-	                location.href = '<%=contextPath%>/'
+	                $("table>tbody>tr").click(function(){
+	                location.href= '<%= contextPath %>/detail.sqna?qno=' + $(this).children().eq(0).text();
 	                })
 	            })
 	        </script>
 
-    
+	  
             <div style="margin-top: 200px;">
                 <%@ include file="../../common/footerbar.jsp" %>
             </div>
-
-       </div>
-   </div>
+        </div>
+ 
 </body>
 </html>

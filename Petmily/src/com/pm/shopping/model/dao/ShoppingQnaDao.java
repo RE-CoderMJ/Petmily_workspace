@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.pm.shopping.model.vo.ShoppingQna;
+import com.pm.boards.qna.model.vo.Qna;
 import com.pm.common.model.vo.PageInfo;
 
 public class ShoppingQnaDao {
@@ -77,19 +78,130 @@ public ArrayList<ShoppingQna> selectList(Connection conn, PageInfo pi) {
 					 rset.getString("membernick"),
 					 rset.getString("pinquiry_title"),
 					 rset.getString("pinquiry_date"),
-					 rset.getInt("count")));		
+					 rset.getInt("count")
+					 ));		
 		}
-
-		
 	} catch (SQLException e) {
 		e.printStackTrace();
-	}finally {
+	} finally {
 		close(rset);
 		close(pstmt);
 	}
-	
-	return  list;
-	
+	return list;
 }
 
+		public int insertShoppingQna(Connection conn, ShoppingQna s) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+						
+			String sql = prop.getProperty("insertShoppingQna");
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, s.getMemberNick());
+				pstmt.setString(2, s.getPinquiryTitle());
+				pstmt.setString(3, s.getPinquiryContent());	
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+			return result;
+		}
+
+		public int increaseCount(Connection conn, int pinquiryNo) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("increaseCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pinquiryNo);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			return result;
+		}
+				
+		public ShoppingQna selectShoppingQna(Connection conn, int pinquiryNo) {
+			Qna q = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectShoppingQna");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pinquiryNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					q = new Qna(rset.getInt("pinquiry_no"),
+								rset.getString("membernick"),
+								rset.getString("pinquiry_title"),
+								rset.getString("pinquiry_content"),
+								rset.getString("pinquiry_date"),
+								rset.getInt("count")
+							    );
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return q;
+		}
+		
+		public int updateShoppingQna(Connection conn, ShoppingQna s) {
+			int qResult = 0;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("updateShoppingQna");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, s.getPinquiryTitle());
+				pstmt.setString(2, s.getPinquiryContent());
+				pstmt.setInt(3, s.getPinquiryNo());
+				
+				qResult = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally { 
+				close(pstmt);
+			}
+			
+			return qResult;
+		}
+		
+		public int deleteShoppingQna(Connection conn, int pinquiryNo) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("deleteShoppingQna");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pinquiryNo);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			return result;
+		}
 }
+
