@@ -2,6 +2,7 @@ package com.pm.boards.qna.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,8 +34,10 @@ public class AjaxQnaReplyListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		int listCount;
+		
+		int qnaNo = Integer.parseInt(request.getParameter("qno"));
+		
+		int replyCount;
 		int currentPage; 
 		int pageLimit;
 		int boardLimit;
@@ -43,14 +46,14 @@ public class AjaxQnaReplyListController extends HttpServlet {
 		int startPage;
 		int endPage;
 				
-		listCount = new QnaService().selectListCount(); 
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		replyCount = new QnaService().selectReplyCount(qnaNo); 
+		currentPage = Integer.parseInt(request.getParameter("rpage"));
 				
 		pageLimit = 5;
 		boardLimit = 10;
 				
 				
-		maxPage = (int) Math.ceil((double)listCount / boardLimit);
+		maxPage = (int) Math.ceil((double)replyCount / boardLimit);
 		startPage = (currentPage -1) / pageLimit * pageLimit +1;
 		endPage = startPage + pageLimit -1;
 		
@@ -58,11 +61,13 @@ public class AjaxQnaReplyListController extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		*/
-		int qnaNo = Integer.parseInt(request.getParameter("qno"));
+		PageInfo pi = new PageInfo(replyCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
 
-		ArrayList<Reply> list = new QnaService().selectReplyList(/*pi, */qnaNo);
+		ArrayList<Reply> list = new QnaService().selectReplyList(pi, qnaNo);
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("pi", pi);
+		result.put("list", list);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(list, response.getWriter());

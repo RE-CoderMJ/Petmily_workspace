@@ -163,7 +163,7 @@
         <!-- 페이징 바 -->
         <div class="paging-area" align="center">
 			<% if(currentPage != 1) { %> <!-- 1번 페이지 아닐 경우 이전버튼이 보여진다 -->
-		       <button onclick="location.href='<%= contextPath %>/myPost.mp?cpage=<%=currentPage-1%>';"> &lt; </button>
+		       <button onclick="location.href='<%= contextPath %>/myPost.mp?cpage=<%= currentPage-1 %>&userNo=<%= loginUsers.getMemNo() %>';"> &lt; </button>
 			<% } %> <!-- 1번 페이지일 경우 이전버튼이 없다  -->
 		
 			<% for(int p=startPage; p<=endPage; p++) { %>            
@@ -171,16 +171,16 @@
 		            <button disabled><%= p %></button> <!-- 클릭 안되는 버튼으로 -->
 		         <% } else { %>
 		            <!-- 숫자 클릭 시 페이지 요청 -->
-		            <button onclick="location.href='<%= contextPath %>/myPost.mp?cpage=<%= p %>';"><%= p %></button>
+		            <button onclick="location.href='<%= contextPath %>/myPost.mp?cpage=<%= p %>&userNo=<%= loginUsers.getMemNo() %>';"><%= p %></button>
 		        <% } %>
 		    <% } %>
 		            
 		    <% if(currentPage != maxPage) { %> <!-- 마지막 페이지 버튼 아닐 경우 다음버튼이 보여진다 -->
-		        <button onclick="location.href='<%= contextPath %>/myPost.mp?cpage=<%= currentPage+1 %>';"> &gt; </button>
+		        <button onclick="location.href='<%= contextPath %>/myPost.mp?cpage=<%= currentPage+1 %>&userNo=<%= loginUsers.getMemNo() %>';"> &gt; </button>
 			<% } %> <!-- 마지막 페이지일 경우 다음버튼이 없다 -->
 		</div>
 		
-		<!-- 게시글마다 불러오는 건 어떻게 해야하지
+		<%-- 게시글마다 불러오는 건 어떻게 해야하지
 		<script>
 	            $(function(){
 	                $("table>tbody>tr").click(function(){
@@ -188,7 +188,7 @@
 	                })
 	            })
 	    </script>
-	     -->
+	     --%>
 
         <div style="margin-top: 200px;">
             

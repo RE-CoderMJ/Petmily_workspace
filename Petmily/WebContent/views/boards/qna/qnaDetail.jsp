@@ -116,7 +116,7 @@
         display: inline-block;
     }
 
-    .write-reply > form > input {
+    .write-reply > input {
         width: 985px;
         height: 35px;
         padding: 10px;
@@ -260,45 +260,95 @@
 
                     <div class="write-reply">
                         <img src="resources/img/profile_default.png" class="profileImg">
-                            <form action="">
-                            	<% if(loginUser == null) {%>
-                            		<input type="text" placeholder="로그인 후 댓글을 남겨보세요" readonly>
-                            	<% } else { %>
-                                	<input type="text" placeholder="댓글을 남겨 보세요." required>
-                               	<% } %>
-                                <button id="reply-enrollbtn" class="btn btn-sm btn-warning">등록</button>
-                            </form>
+                            <% if(loginUser == null) {%>
+                            	<input type="text" placeholder="로그인 후 댓글을 남겨보세요" readonly>
+                            <% } else { %>
+                                <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
+                            <% } %>
+                                <button id="reply-enrollbtn" class="btn btn-sm btn-warning" onclick="insertReply()">등록</button>
                     </div>
 
                     <div class="replies">
                         
-                        <div class="replyProfile">
-                            <img src="resources/img/profile_default.png" class="profileImg">
-                            <b class="replyId">choco22</b>
-                        </div>
-                        <div class="reply-content" style="width: 820px;">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-                        <a href="" class="btn delete-btn" style="float: right;">x</a>
                         
-                        <p class="reply-info">xxxx-xx-xx &nbsp;&nbsp; <a href="">수정</a>&nbsp;<a href="">신고</a></p>
                         
-                        <!--<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>-->
                     </div>
+                    
                     
                     <script>
                     
                     	$(function(){
-                    		selectReplyList();
+                    		selectReplyList(1);
                     	});
                     	
-                    	function selectReplyList() {
+                    	function insertReply() {
+                    		$.ajax({
+                    			url: "rinsert.qna",
+                    			data: {
+                    				content: $("#reply-input").val(),
+                    				qno: <%= q.getQnaNo() %>
+                    			},
+                    			type:"post",
+                    			success:function(result){
+                    				if(result > 0) {
+                    					selectReplyList(1);
+                    					$("#reply-input").val("");
+                    				}
+                    			}, error:function(){
+                    				console.log("댓글 작성 ajax 통신 실패");
+                    			}
+                    		})
+                    	}
+                    	
+                    	function selectReplyList(rpageNo) {
                     		$.ajax({
                     			url: "rlist.qna",
-                    			data: {qno:<%= q.getQnaNo() %>},
-                    				  
-                    			success:function(list) {
+                    			data: {qno:<%= q.getQnaNo() %>, rpage: rpageNo},
+                    			success:function(result) {
                     				
-                    				console.log(list);
+                    				var noReply = "";
+                    				var reply = "";
+                    				if(result.list == null) {
+                    					noReply = "<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>";
+                    					$("replies").html(noReply);
+                    				} else {
+                    					for(var i=0; i<result.list.length; i++) {
+                    						var pfPath = "";
+                    						if(result.list[i].writerImg != null) {
+                    							pfPath = "<%= contextPath %>" + "/" + result.list[i].writerImg;
+                    						} 
+                    						reply += "<div class='replyProfile'>";
+                    						reply += "<img src='" + pfPath + "' class=profileImg>";
+                    						reply += "<b class='replyId'>" + result.list[i].writerNickname + "</b>";
+                    						reply += "</div>";
+
+                                        	reply += "<div class='reply-content' style='width: 820px;'>" + result.list[i].replyContent + "</div>";
+                                            reply += "<a href='' class='btn delbtn' style='float: right;'>x</a>";
+                                        
+                                        	reply += "<p class='reply-info'>" + result.list[i].modifyDate + "&nbsp;&nbsp; <a href=''>수정</a>&nbsp;<a href=''>신고</a></p>";
+                    					}
+                    					$(".replies").html(reply);
+                    				}
+                    					
                     				
+                    				var paging ="";
+                    				if(result.pi.currentPage != 1) {
+                    					paging += "<button onclick='selectReplyList" + (result.pi.currentPage -1) + ")';> &lt; </button>";
+                    				}
+                    				for(var p=result.pi.startPage; p<=result.pi.endPage; p++) {
+                    					if(p == result.pi.currentPage) {
+                    						paging += "<button disabled>"+ p +"</button>";
+                    					} else {
+                    						paging += "<button onclick='selectReplyList(" + p + ");'>"+ p +"</button>";
+                    					}
+                    				}
+                    				
+                    				if(result.pi.currentPage != result.pi.maxPage) {
+                    					paging += "<button onclick='selectReplyList(" + (result.pi.currentPage +1) +"';> &gt; </button>";
+                    				}
+                    				
+                    				$(".replies").html(paging);
+			
                     			}, error:function() {
                     				console.log("댓글 목록 조회 ajax 통신 실패");
                     			}
