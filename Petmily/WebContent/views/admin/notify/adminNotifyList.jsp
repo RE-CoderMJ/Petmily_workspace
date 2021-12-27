@@ -238,7 +238,7 @@
                                 </div>
                             </div>
                         </div>
-                        	 게시글 삭제완료 Modal 
+                        	 <!-- 게시글 삭제완료 Modal   -->
                         <div class="modal fade" id="deleteCompleted">
                             <div class="modal-dialog modal-sm modal-dialog-centered">
                                 <div class="modal-content">
