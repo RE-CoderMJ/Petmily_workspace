@@ -72,6 +72,7 @@
 			
 	        <div class="inline-block" id="like-content" align="center">
 	            <img src=""  id="content-img" width="100px" height="100px" > 
+	            <input type="hidden" value="<%= like.getProductNo() %>", name="pno", id="pno">
 	            <br>
 	            	<%= like.getProductName() %>
 	            <br>
@@ -100,14 +101,23 @@
 </div> 
 <script>
 // ajax로 like delete
-function delteLike(){
+function deleteLike(){
+	var num = $(this).attr('data_num'); 
+	//속성을 꺼내는 attr함수, 클릭할 때마다 기본키를 받을 수 있도록 
+	console.log(num);
+	                
 	$.ajax({
-		url:"delteLike",
+		url:"deleteLike.my?pno="+$("pno").val, //문제야문제
 		data:{
-			content:$(#like-content)			
+			pno:$("#pno").val()		
 		},
 		type:"post",
-		error:function(){
+		success:function(result){
+			if(result>0){
+				$("#like-content").remove();
+			}
+		},
+		error:function(result){
 			console.log("찜 삭제용 ajax 실패")
 		}
 		

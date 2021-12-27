@@ -39,16 +39,12 @@ public class AjaxDeleteLikeController extends HttpServlet {
 		int result = new LikeService().deleteLike(l);
 		if(result>0) {
 			request.getSession().setAttribute("alertMsg", "성공적으로 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/list.no");
+			response.sendRedirect(request.getContextPath() + "/like.my");
 		} else {
 			request.getSession().setAttribute("alertMsg","삭제 요청 실패했습니다.");
 			request.setAttribute("errorMsg", "삭제 실패");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			
-		}
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "성공적으로 삭제되었습니다.");
-			response.setContentType("application/json; charset=UTF-8"); 
+			
 		}
 	}
 
