@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.pm.petLog.model.vo.PetsRoom, com.pm.petLog.model.vo.PetLog" %>
 <%
+	int postCount = (int)request.getAttribute("postCount");
 	PetsRoom pr = (PetsRoom)request.getAttribute("pr");
 	/* ArrayList<PetLog> list = (ArrayList<PetLog>)request.getAttribute("list"); */
 %>
@@ -37,7 +38,7 @@
                     <button type="button" id="follow-btn">팔로우</button>
                     <!-- <button type="button" id="following-btn">팔로잉</button> -->
                     <div id="room-info">
-                        <div class="count info"><%-- <%= list.size() %> --%></div>
+                        <div class="count info"><%=postCount %></div>
                         <div class="count info follower" data-toggle="modal" data-target="#follower">10</div>
                         <div class="count info following" data-toggle="modal" data-target="#following">5</div>
                         <div class="info-title info">게시글</div>
@@ -80,23 +81,10 @@
 	                <% } %>
             	<div id="list-area">
 	                <div id="pictures-area">
-	                <%-- <% if(!list.isEmpty()) { %>
-	                	<% for(PetLog pl:list) { %>
-	                    	<div class="pictures">
-	                        	<img src=<%= pl.getTitleImg()%> alt="">
-	                        	<input type="hidden" value=<%=pl.getPetLogNo() %>>
-	                    	</div>
-	                	<% } %>
-	                <% } %> --%>
+
 	                </div>
 	                <div id="paging-area" align="center">
-	                    <!-- <button> &lt; </button>
-	                    <button>1</button>
-	                    <button>2</button>
-	                    <button>3</button>
-	                    <button>4</button>
-	                    <button>5</button>
-	                    <button> &gt; </button> -->
+
 	                </div>
                 </div>
                 <script>
@@ -137,16 +125,16 @@
 	                </div>
 	                <script>
 	                	$(function(){
-	                		selectPetLogList();
+	                		selectPetLogList(1);
 	                	});
 	                	
-	                	function selectPetLogList(){
+	                	function selectPetLogList(pageNo){
 	                		$.ajax({
 	                			url:"pl.petsRoom.petLog",
-	                			data:{memNo:<%=pr.getMemNo()%>, page:1},
+	                			data:{memNo:<%=pr.getMemNo()%>, page:pageNo},
 	                			success:function(result){
 	                				
-	                				$("#room-info").children().first().html(result.list.length);
+	                				/* $("#room-info").children().first().html(result.list.length); */
 	                				
 	                				let result2 = "";
 	                				if(result.list != null){
@@ -161,21 +149,19 @@
 	                				
 	                				let result3 ="";
 	                				if(result.pi.currentPage != 1){
-	                					result3 += "<button onclick='location.href='" + "<%=contextPath%>" + "/pl.petsRoom.petLog?page=" + "(result.pi.currentPage -1)" 
-	                							+  "';'> &lt; </button>";
+	                					result3 += "<button onclick='selectPetLogList(" + (result.pi.currentPage -1) + ")'>&lt;</button>";
 	                				}
-	                				
+	                				console.log(result.pi.currentPage -1);
 	                				for(let p = result.pi.startPage; p<=result.pi.endPage; p++){
 	                					if(p == result.pi.currentPage){
 	                						result3 += "<button disabled>" + p + "</button>";
 	                					}else{
-	                						result3 += "<button onclick='location.href='" + "<%=contextPath%>" + "/pl.petsRoom.petLog?page=" + p + "';'>" + p +"</button>";
+	                						result3 += "<button onclick='selectPetLogList(" + p + ")'>" + p +"</button>";
 	                					}
 	                				}
 	                				
 	                				if(result.pi.currentPage != result.pi.maxPage){
-	                					result3 += "<button onclick='location.href='" + "<%=contextPath%>" + "/pl.petsRoom.petLog?page=" + (result.pi.currentPage +1)
-            							+  "';'> &gt; </button>";
+	                					result3 += "<button onclick='selectPetLogList(" + (result.pi.currentPage +1) + ")'>&gt;</button>";
 	                				}
 	                				
 	        	                    $("#paging-area").html(result3);
@@ -267,7 +253,8 @@
 	<script>
 		$(function(){
 			
-			$(".pictures").click(function selectPetLog(){
+			//$(".pictures").click(function selectPetLog(){
+			$(document).on("click", ".pictures", function(){	
 				const value = $(this).children("input").val();
 				
 				$.ajax({

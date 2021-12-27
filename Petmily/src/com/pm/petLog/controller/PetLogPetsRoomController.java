@@ -36,8 +36,9 @@ public class PetLogPetsRoomController extends HttpServlet {
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		/* ArrayList<PetLog> list = new PetLogService().selectPetLogList(memNo); */
 		PetsRoom pr = new PetLogService().selectPetsRoom(memNo);
-		
+		int postCount = new PetLogService().selectPetLogCount(memNo);
 		/* request.setAttribute("list", list); */
+		request.setAttribute("postCount", postCount);
 		request.setAttribute("pr", pr);
 		request.getRequestDispatcher("views/petLog/petLogPetsRoom.jsp").forward(request, response);
 	}
