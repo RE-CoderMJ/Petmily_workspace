@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.pm.boards.ask.model.service.AskService;
 import com.pm.boards.ask.model.vo.Ask;
 import com.pm.common.model.vo.Attachment;
+import com.pm.petLog.model.service.PetLogService;
 
 /**
  * Servlet implementation class AskDetailController
@@ -39,7 +40,9 @@ public class AskDetailController extends HttpServlet {
 		if(result > 0) {
 			Ask a = new AskService().selectAsk(ano);
 			ArrayList<Attachment> list = new AskService().selectAttachmentList(ano);
+			int replyCount = new AskService().selectReplyCount(ano);
 			
+			request.setAttribute("replyCount", replyCount);
 			request.setAttribute("a", a);
 			request.setAttribute("list", list);
 			

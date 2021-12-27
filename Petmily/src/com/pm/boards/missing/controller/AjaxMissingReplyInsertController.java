@@ -1,7 +1,6 @@
 package com.pm.boards.missing.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.boards.ask.model.service.AskService;
 import com.pm.boards.missing.model.service.MissingService;
-import com.pm.boards.missing.model.vo.Missing;
-import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.Reply;
+import com.pm.member.model.vo.Member;
 
 /**
- * Servlet implementation class MissingDetailController
+ * Servlet implementation class AjaxMissingReplyInsertController
  */
-@WebServlet("/detail.missing")
-public class MissingDetailController extends HttpServlet {
+@WebServlet("/rinsert.missing")
+public class AjaxMissingReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MissingDetailController() {
+    public AjaxMissingReplyInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +31,20 @@ public class MissingDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String replyContent = request.getParameter("content");
 		int miNo = Integer.parseInt(request.getParameter("miNo"));
 		
-		int result = new MissingService().increaseCount(miNo);
-		if(result > 0) {
-			Missing mi = new MissingService().selectMissing(miNo);
-			ArrayList<Attachment> list = new MissingService().selectAttachmentList(miNo);
-			int replyCount = new MissingService().selectReplyCount(miNo);
-			
-			request.setAttribute("replyCount", replyCount);
-			request.setAttribute("mi", mi);
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("views/boards/missing/missingDetailView.jsp").forward(request, response);
-		}else {
-			
-		}
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		
+		Reply r = new Reply();
+		r.setReplyContent(replyContent);
+		r.setContentNo(miNo);
+		r.setReplyWriter(userNo);
+		
+		int result = new MissingService().insertReply(r);
+		
+		response.getWriter().print(result);
 	}
 
 	/**

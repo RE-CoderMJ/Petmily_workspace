@@ -1,4 +1,4 @@
-package com.pm.boards.ask.controller;
+package com.pm.boards.market.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.pm.boards.ask.model.service.AskService;
+import com.pm.boards.market.model.service.MarketService;
 import com.pm.common.model.vo.PageInfo;
 import com.pm.common.model.vo.Reply;
 
 /**
- * Servlet implementation class AjaxAskReplyListController
+ * Servlet implementation class AjaxMarketReplyListController
  */
-@WebServlet("/rlist.ask")
-public class AjaxAskReplyListController extends HttpServlet {
+@WebServlet("/rlist.market")
+public class AjaxMarketReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAskReplyListController() {
+    public AjaxMarketReplyListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,9 +34,8 @@ public class AjaxAskReplyListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int ano = Integer.parseInt(request.getParameter("ano"));
-		int replyCount = new AskService().selectReplyCount(ano);
+		int mno = Integer.parseInt(request.getParameter("mno"));
+		int replyCount = new MarketService().selectReplyCount(mno);
 		int currentPage = Integer.parseInt(request.getParameter("rpage"));
 		int pageLimit = 5;
 		int replyLimit = 10;
@@ -50,7 +49,7 @@ public class AjaxAskReplyListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(replyCount, currentPage, pageLimit, replyLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Reply> list = new AskService().selectReplyList(pi, ano);
+		ArrayList<Reply> list = new MarketService().selectReplyList(pi, mno);
 		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("pi", pi);

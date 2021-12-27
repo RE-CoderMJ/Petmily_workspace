@@ -187,7 +187,7 @@
 						     , NICKNAME
 						     , MEM_IMG
 						     , REPLY_CONTENT
-						     , MODIFY_DATE
+						     , TO_CHAR(MODIFY_DATE, 'YYYY-MM-DD') "MODIFY_DATE"
 						  FROM REPLY R
 						  JOIN TB_MEMBER ON (REPLY_WRITER = MEM_NO)
 						 WHERE R.STATUS = 'Y'

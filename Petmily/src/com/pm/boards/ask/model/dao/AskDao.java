@@ -377,13 +377,21 @@ public class AskDao {
 			while(rset.next()) {
 				Reply r = new Reply();
 				r.setReplyNo(rset.getInt("reply_no"));
-				r.set
+				r.setWriterNickname(rset.getString("nickname"));
+				r.setWriterImg(rset.getString("mem_img"));
+				r.setReplyContent(rset.getString("reply_content"));
+				r.setModifyDate(rset.getString("modify_date"));
+				
+				list.add(r);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 				
-		return null;
+		return list;
 	}
 
 

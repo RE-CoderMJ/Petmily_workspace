@@ -12,6 +12,7 @@ import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.boards.market.model.vo.Market;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 
 public class MarketService {
 
@@ -126,5 +127,33 @@ public class MarketService {
 		int listCount = new MarketDao().selectMarketCount(conn);
 		close(conn);
 		return listCount;
+	}
+
+	public int insertReply(Reply r) {
+		Connection conn = getConnection();
+		int result = new MarketDao().insertReply(conn, r);
+		
+		if(result > 0) {
+			commit(conn);
+		}else{
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int selectReplyCount(int mno) {
+		Connection conn = getConnection();
+		int replyCount = new MarketDao().selectReplyCount(conn, mno);
+		close(conn);
+		return replyCount;
+	}
+
+	public ArrayList<Reply> selectReplyList(PageInfo pi, int mno) {
+		Connection conn = getConnection();
+		ArrayList<Reply> list = new MarketDao().selectReplyList(conn, pi, mno);
+		close(conn);
+		return list;
 	}
 }

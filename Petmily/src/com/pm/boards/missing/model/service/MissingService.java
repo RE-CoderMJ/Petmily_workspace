@@ -8,10 +8,12 @@ import static com.pm.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.pm.boards.ask.model.dao.AskDao;
 import com.pm.boards.missing.model.dao.MissingDao;
 import com.pm.boards.missing.model.vo.Missing;
 import com.pm.common.model.vo.Attachment;
 import com.pm.common.model.vo.PageInfo;
+import com.pm.common.model.vo.Reply;
 
 public class MissingService {
 	
@@ -126,5 +128,33 @@ public class MissingService {
 		int listCount = new MissingDao().selectMissingCount(conn);
 		close(conn);
 		return listCount;
+	}
+
+	public int insertReply(Reply r) {
+		Connection conn = getConnection();
+		int result = new MissingDao().insertReply(conn, r);
+		
+		if(result > 0) {
+			commit(conn);
+		}else{
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int selectReplyCount(int miNo) {
+		Connection conn = getConnection();
+		int replyCount = new MissingDao().selectReplyCount(conn, miNo);
+		close(conn);
+		return replyCount;
+	}
+
+	public ArrayList<Reply> selectReplyList(PageInfo pi, int miNo) {
+		Connection conn = getConnection();
+		ArrayList<Reply> list = new MissingDao().selectReplyList(conn, pi, miNo);
+		close(conn);
+		return list;
 	}
 }

@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList, com.pm.boards.missing.model.vo.Missing, com.pm.common.model.vo.Attachment" %>
 <%
 	Missing mi = (Missing)request.getAttribute("mi");
+	int replyCount = (int)request.getAttribute("replyCount");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
@@ -14,6 +15,18 @@
 <link href="resources/css/boards/missing/missingDetailView.css" rel="stylesheet">
 <link href="resources/css/boards/bCommon/reply.css" rel="stylesheet">
 <%@ include file="../../common/links.jsp" %>
+<style>
+/* 페이징바 */
+#paging-area button{
+     border:  0;
+     background-color: transparent;
+     height: 40px;
+     width: 40px;
+     border-radius: 5px;
+     margin-bottom: 50px;
+     margin-top: 40px;
+}
+</style>
 </head>
 <body>
 
@@ -142,7 +155,7 @@
 				<div id="reply-top">
 					<div id="reply-count-area">
 						<span>댓글</span>
-						<span id="reply-count">2</span>
+						<span id="reply-count"><%=replyCount %></span>
 					</div>
 					<div id="btn-area">
 					 	<% if(loginUser != null && loginUser.getNickname().equals(mi.getMissingWriter())) { %>
@@ -152,31 +165,107 @@
 					</div>
 				</div>
 				<div id="write-reply">
-					<div id="writearea-pic"><img src="resources/img/profile_default.png" alt=""></div>
-						<form action="">
-							<input type="text" placeholder="댓글을 남겨 보세요." required>
-							<button class="btn" id="reply-enrollbtn">등록</button>
-						</form>
-				</div>
+	            	<% if(loginUser != null) { %>
+		                <div id="writearea-pic"><img src="<%=contextPath %>/<%=loginUser.getMemImg() %>" alt=""></div>
+		                <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
+	                <% }else { %>
+	                	<div id="writearea-pic"><img src="resources/img/profile_default.png" alt=""></div>
+	             		<input type="text" id="reply-input" placeholder="로그인 후 댓글을 남겨보세요." readonly>
+	                <% } %>
+		                <button class="btn" id="reply-enrollbtn" onclick="insertReply();">등록</button>
+	            </div>
 				
-				<div class="replies">
-					
-					<div class="profile-pic"><img src="resources/img/profile_default.png" alt=""></div>
-					<div class="user-name">choco22</div>
-					<div class="reply-content">아이고! 저희집 초코도 그래요! 진정시키는 훈련이 필요할 것 같네요:)</div>
-					<a href="" class="btn delete-btn">x</a>
-					<div class="reply-info">xxxx-xx-xx &nbsp;&nbsp; <a href="">수정</a><a href="">신고</a></div>
-					
-					<!--<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>-->
-				</div>
+				<div id="replies-area">
+	            
+	            </div>
+
+	            <div id="paging-area" align="center">
+
+	            </div>
 				
 			</div>
-	        
-	        <%@ include file="../bCommon/boardPagingBar.jsp" %>
 			
 	    </div>
     
     </div>
+    
+    <script>
+		$(function(){
+			selectReplyList(1);			
+		});
+		
+		function insertReply(){
+			
+			$.ajax({
+				url:"rinsert.missing",
+				data:{
+					content:$("#reply-input").val(),
+					miNo:<%=mi.getMissingNo()%>
+				},
+				type:"post",
+				success:function(result){
+					if(result > 0){
+						selectReplyList(1);
+						$("#reply-input").val("");
+					}
+				},error:function(){
+					console.log("댓글 작성용 ajax 통신 실패");
+				}
+			})
+		}
+		
+		function selectReplyList(rpageNo){
+			$.ajax({
+				url:"rlist.missing",
+				data:{miNo:<%=mi.getMissingNo()%>, rpage:rpageNo},
+				success:function(result){
+					
+					let reply="";
+					if(result.list == null){
+						reply = "<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>";
+						$("#replies-area").html(reply);
+					}else{
+						for(let i=0; i<result.list.length; i++){
+							let pfPath = "";							
+							if(result.list[i].writerImg != null){
+								pfPath = '<%=contextPath%>/' + result.list[i].writerImg;							
+							}
+							reply += "<div class='replies'><div class='profile-pic'><img src='" + pfPath + "' alt=''></div>";
+							reply += "<div class='user-name'>" + result.list[i].writerNickname + "</div>";
+							reply += "<div class='reply-content'>" + result.list[i].replyContent + "</div>";
+							reply += "<a href='' class='btn delete-btn'>x</a>";
+							reply += "<div class='reply-info'>" + result.list[i].modifyDate + "&nbsp;&nbsp; <a href=''>수정</a><a href=''>신고</a></div></div>";
+						}
+						
+						$("#replies-area").html(reply);						
+					}
+					
+					
+					let paging ="";
+    				if(result.pi.currentPage != 1){
+    					paging += "<button onclick='selectReplyList(" + (result.pi.currentPage -1) + ")'>&lt;</button>";
+    				}
+    				
+    				for(let p = result.pi.startPage; p<=result.pi.endPage; p++){
+    					if(p == result.pi.currentPage){
+    						paging += "<button disabled>" + p + "</button>";
+    					}else{
+    						paging += "<button onclick='selectReplyList(" + p + ")'>" + p +"</button>";
+    					}
+    				}
+    				
+    				if(result.pi.currentPage != result.pi.maxPage){
+    					paging += "<button onclick='selectReplyList(" + (result.pi.currentPage +1) + ")'>&gt;</button>";
+    				}
+    				
+                    $("#paging-area").html(paging);
+                    
+				},error:function(){
+					console.log("댓글목록 조회용 ajax 통신 실패");
+				}
+			})
+		}
+	</script>
     
     <script>
 		function deleteContent(){

@@ -68,7 +68,7 @@
                        <input type="text" name="title" id="title" placeholder="제목을 입력해주세요 (35자 이내)" required>
                    </div>
                    <div id="text-area">
-                       <textarea name="content" id="input-texts" placeholder="내용을 입력해주세요(1300자 이내)"></textarea>
+                       <textarea name="content" id="input-texts" placeholder="내용을 입력해주세요(1300자 이내)" required></textarea>
                    </div>
                </div>    
                <div align="right" id="enroll-btn-area"><button class= "btn" type="submit">올리기</button></div>

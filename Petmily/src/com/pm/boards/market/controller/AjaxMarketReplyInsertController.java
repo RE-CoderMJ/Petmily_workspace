@@ -1,7 +1,6 @@
 package com.pm.boards.market.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pm.boards.ask.model.service.AskService;
 import com.pm.boards.market.model.service.MarketService;
-import com.pm.boards.market.model.vo.Market;
-import com.pm.common.model.vo.Attachment;
+import com.pm.common.model.vo.Reply;
+import com.pm.member.model.vo.Member;
 
 /**
- * Servlet implementation class MarketDetailViewController
+ * Servlet implementation class AjaxMarketReplyInsertController
  */
-@WebServlet("/detail.market")
-public class MarketDetailViewController extends HttpServlet {
+@WebServlet("/rinsert.market")
+public class AjaxMarketReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MarketDetailViewController() {
+    public AjaxMarketReplyInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +32,19 @@ public class MarketDetailViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int marketNo = Integer.parseInt(request.getParameter("mno"));
+		String replyContent = request.getParameter("content");
+		int mno = Integer.parseInt(request.getParameter("mno"));
 		
-		int result = new MarketService().increaseCount(marketNo);
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		
-		if(result > 0) {
-			Market m = new MarketService().selectMarket(marketNo);
-			ArrayList<Attachment> list = new MarketService().selectAttachmentList(marketNo);
-			int replyCount = new MarketService().selectReplyCount(marketNo);
-			
-			request.setAttribute("replyCount", replyCount);
-			request.setAttribute("m", m);
-			request.setAttribute("list", list);
-			
-			request.getRequestDispatcher("views/boards/market/marketDetailView.jsp").forward(request, response);
-		}else {
-			
-		}
+		Reply r = new Reply();
+		r.setReplyContent(replyContent);
+		r.setContentNo(mno);
+		r.setReplyWriter(userNo);
 		
+		int result = new MarketService().insertReply(r);
+		
+		response.getWriter().print(result);
 	}
 
 	/**

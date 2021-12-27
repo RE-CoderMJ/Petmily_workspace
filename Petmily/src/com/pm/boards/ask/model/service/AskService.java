@@ -138,9 +138,9 @@ public class AskService {
 
 	public int selectReplyCount(int ano) {
 		Connection conn = getConnection();
-		int listCount = new AskDao().selectReplyCount(conn, ano);
+		int replyCount = new AskDao().selectReplyCount(conn, ano);
 		close(conn);
-		return listCount;
+		return replyCount;
 	}
 
 	public ArrayList<Reply> selectReplyList(PageInfo pi, int ano) {

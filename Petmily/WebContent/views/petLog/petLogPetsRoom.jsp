@@ -151,7 +151,7 @@
 	                				if(result.pi.currentPage != 1){
 	                					result3 += "<button onclick='selectPetLogList(" + (result.pi.currentPage -1) + ")'>&lt;</button>";
 	                				}
-	                				console.log(result.pi.currentPage -1);
+	                				
 	                				for(let p = result.pi.startPage; p<=result.pi.endPage; p++){
 	                					if(p == result.pi.currentPage){
 	                						result3 += "<button disabled>" + p + "</button>";
