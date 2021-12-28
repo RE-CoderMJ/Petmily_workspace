@@ -84,4 +84,18 @@
 		   SET STATUS = 'N'
 		 WHERE NOTICE_NO = ?
 	 </entry>
+	 
+	 
+	 <entry key="userSelectList">
+	 	SELECT
+		  	   NOTICE_NO
+		     , NOTICE_TITLE
+		  	 , NOTICE_CONTENT
+		  	 , TO_CHAR(NOTICE_DATE, 'YYYY-MM-DD') NOTICE_DATE
+		  	 , STATUS
+		  FROM TB_NOTICE
+		 WHERE STATUS = 'Y'
+		 ORDER
+		    BY NOTICE_NO DESC
+	 </entry>
 </properties>

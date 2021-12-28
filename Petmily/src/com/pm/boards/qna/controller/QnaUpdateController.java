@@ -62,9 +62,9 @@ public class QnaUpdateController extends HttpServlet {
 				at.setFilePath("resources/boards_upfiles/qna_upfiles/");
 				
 				if(multiRequest.getParameter("originFileNo") != null) {
-					at.setAttachmentNo(Integer.parseInt(multiRequest.getOriginalFileName("upfile")));
+					at.setAttachmentNo(Integer.parseInt(multiRequest.getParameter("originFileNo")));
 				} else {
-					at.setRefBoardNo(qnaNo);
+					at.setRefNo(qnaNo);
 				}
 			}
 			

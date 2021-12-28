@@ -39,9 +39,11 @@ public class QnaDetailController extends HttpServlet {
 		if(result > 0) {
 			Qna q = new QnaService().selectQna(qnaNo);
 			Attachment at = new QnaService().selectAttachment(qnaNo);
+			int replyCount = new QnaService().selectReplyCount(qnaNo);
 			
 			request.setAttribute("q", q);
 			request.setAttribute("at", at);
+			request.setAttribute("replyCount", replyCount);
 			request.getRequestDispatcher("views/boards/qna/qnaDetail.jsp").forward(request, response);
 		} else {
 			// 에러페이지

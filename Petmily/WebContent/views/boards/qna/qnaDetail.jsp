@@ -4,6 +4,7 @@
 <%
 	Qna q = (Qna)request.getAttribute("q");
 	Attachment at = (Attachment)request.getAttribute("at");
+	int replyCount = (int)request.getAttribute("replyCount");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
+
 
     .outer {
         width: 1600px;
@@ -136,7 +138,7 @@
         font-size: 15px;
     }
 
-    .replies {
+    .reply {
         margin-top: 10px;
         margin-left: 20px;
         width: 1020px;
@@ -150,16 +152,21 @@
     }
 
     .replyProfile {
-        vertical-align: middle;
+        float: left;
     }
 
-    .replies > * {
+    .reply > * {
         display: inline-block;
         margin-right: 10px;
     }
+    
+    .reply-content {
+    	float: left;
+    	margin-top: 3px;
+    }
 
     .reply-info {
-        margin: 10px 0px 0px 50px;
+        margin: 10px 0px 0px -70px;
     }
 
     .reply-info > a {
@@ -191,6 +198,21 @@
         text-align: left;
         vertical-align: middle;
     }
+    
+    .pagingbar {
+		margin:auto;
+		text-align:center;
+		margin-top:30px;
+	}
+
+	.pagingbar button {
+		border:  0;
+		background-color: transparent;
+		height: 40px;
+		width: 40px;
+		border-radius: 5px;
+	}
+
 
 </style>
 </head>
@@ -256,7 +278,7 @@
                 </div>
 
                 <div class="replyArea">
-                    <b>댓글 <b style="color: orange;">1</b></b>
+                    <b>댓글 <b style="color: orange;"><%= replyCount %></b></b>
 
                     <div class="write-reply">
                         <img src="resources/img/profile_default.png" class="profileImg">
@@ -269,12 +291,15 @@
                     </div>
 
                     <div class="replies">
-                        
-                        
+
                         
                     </div>
                     
+                    <div class="pagingbar" align="center">
                     
+                    </div>
+                    
+                    <%--
                     <script>
                     
                     	$(function(){
@@ -306,20 +331,22 @@
                     			data: {qno:<%= q.getQnaNo() %>, rpage: rpageNo},
                     			success:function(result) {
                     				
-                    				var noReply = "";
-                    				var reply = "";
-                    				if(result.list == null) {
+                    				let noReply = "";
+                    				let reply = "";
+                    				if(result.list != null) {
                     					noReply = "<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>";
-                    					$("replies").html(noReply);
+                    					$(".reply").html(noReply);
                     				} else {
-                    					for(var i=0; i<result.list.length; i++) {
-                    						var pfPath = "";
+                    					for(let i=0; i<result.list.length; i++) {
+                    						let pfPath = "";
                     						if(result.list[i].writerImg != null) {
-                    							pfPath = "<%= contextPath %>" + "/" + result.list[i].writerImg;
-                    						} 
+                    							pfPath = '<%= contextPath %>/' + result.list[i].writerImg;
+                    						}
+                    						reply += "<div class='reply'>";
                     						reply += "<div class='replyProfile'>";
                     						reply += "<img src='" + pfPath + "' class=profileImg>";
-                    						reply += "<b class='replyId'>" + result.list[i].writerNickname + "</b>";
+                    						reply += "<b class='replyNick'>" + result.list[i].writerNickname + "</b>";
+                    						reply += "</div>";
                     						reply += "</div>";
 
                                         	reply += "<div class='reply-content' style='width: 820px;'>" + result.list[i].replyContent + "</div>";
@@ -327,7 +354,7 @@
                                         
                                         	reply += "<p class='reply-info'>" + result.list[i].modifyDate + "&nbsp;&nbsp; <a href=''>수정</a>&nbsp;<a href=''>신고</a></p>";
                     					}
-                    					$(".replies").html(reply);
+                    					$(".reply").html(reply);
                     				}
                     					
                     				
@@ -347,7 +374,7 @@
                     					paging += "<button onclick='selectReplyList(" + (result.pi.currentPage +1) +"';> &gt; </button>";
                     				}
                     				
-                    				$(".replies").html(paging);
+                    				$(".pagingbar").html(paging);
 			
                     			}, error:function() {
                     				console.log("댓글 목록 조회 ajax 통신 실패");
@@ -356,6 +383,92 @@
                     	}
                     		
                     </script>
+                    --%>
+                    
+                    
+                    
+                    <script>
+						$(function(){
+							selectReplyList(1);			
+						});
+						
+						function insertReply(){
+							
+							$.ajax({
+								url:"rinsert.qna",
+								data:{
+									content:$("#reply-input").val(),
+									qno:<%= q.getQnaNo() %>
+								},
+								type:"post",
+								success:function(result){
+									if(result > 0){
+										selectReplyList(1);
+										$("#reply-input").val("");
+									}
+								},error:function(){
+									console.log("댓글 작성용 ajax 통신 실패");
+								}
+							})
+						}
+						
+						function selectReplyList(rpageNo){
+							$.ajax({
+								url:"rlist.qna",
+								data:{qno:<%= q.getQnaNo() %>, rpage:rpageNo},
+								success:function(result){
+									
+									let reply="";
+									if(result.list == null){
+										reply = "<div>등록된 댓글이 없습니다. 첫번째 댓글을 달아보세요!</div>";
+										$(".replies").html(reply);
+									}else{
+										for(let i=0; i<result.list.length; i++){
+											let pfPath = "";							
+											if(result.list[i].writerImg != null){
+												pfPath = '<%= contextPath %>/' + result.list[i].writerImg;							
+											}
+											reply += "<div class='reply'>";
+				    						reply += "<div class='replyProfile'>";
+				    						reply += "<img src='" + pfPath + "' class=profileImg>";
+				    						reply += "<b class='replyNick'>" + result.list[i].writerNickname + "</b>";
+				    						reply += "</div>";
+				                        	reply += "<div class='reply-content' style='width: 820px;'>" + result.list[i].replyContent + "</div>";
+				                            reply += "<a href='' class='btn delbtn' style='float: right;'>x</a>";
+				                        	reply += "<p class='reply-info'>" + result.list[i].modifyDate + "&nbsp;&nbsp; <a href=''>수정</a>&nbsp;<a href=''>신고</a></p>";
+				    						reply += "</div>";
+
+										}
+										
+										$(".replies").html(reply);						
+									}
+									
+									
+									let paging ="";
+				    				if(result.pi.currentPage != 1){
+				    					paging += "<button onclick='selectReplyList(" + (result.pi.currentPage -1) + ")'>&lt;</button>";
+				    				}
+				    				
+				    				for(let p = result.pi.startPage; p<=result.pi.endPage; p++){
+				    					if(p == result.pi.currentPage){
+				    						paging += "<button disabled>" + p + "</button>";
+				    					}else{
+				    						paging += "<button onclick='selectReplyList(" + p + ")'>" + p +"</button>";
+				    					}
+				    				}
+				    				
+				    				if(result.pi.currentPage != result.pi.maxPage){
+				    					paging += "<button onclick='selectReplyList(" + (result.pi.currentPage +1) + ")'>&gt;</button>";
+				    				}
+				    				
+				                    $(".pagingbar").html(paging);
+				                    
+								},error:function(){
+									console.log("댓글목록 조회용 ajax 통신 실패");
+								}
+							})
+						}
+					</script>
 
                 </div>
                 

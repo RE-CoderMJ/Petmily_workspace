@@ -81,6 +81,10 @@
 </head>
 <body>
 
+<script>
+	console.log(list);
+</script>
+
 	<!-- 메뉴바 -->
     <%@ include file="../../common/admin_menubar.jsp" %>
     

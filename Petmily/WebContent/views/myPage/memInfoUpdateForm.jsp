@@ -9,6 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
 <style>
@@ -259,18 +260,45 @@
                         </div>
 
                         <div>
-                            <input type="text" name="address1" placeholder="우편번호" value="<%= postalCode %>">
-                            <button type="button" class="rightBtn btn-sm btn-light">우편번호 찾기</button>
+                            <input type="text" id="address1" name="address1" placeholder="우편번호" value="<%= postalCode %>">
+                            <button type="button" onclick="postCode()" class="rightBtn btn-sm btn-light">우편번호 찾기</button>
                         </div>
 
                         <div style="margin : 10px 160px">
-                            <input type="text" name="address2" placeholder="주소" value="<%= address %>">
+                            <input type="text" id="address2" name="address2" placeholder="주소" value="<%= address %>">
                         </div>
 
                         <div style="margin : 10px 160px">
-                            <input type="text" name="address3" placeholder="상세주소" value="<%= detailAddress %>">
+                            <input type="text" id="address3" name="address3" placeholder="상세주소" value="<%= detailAddress %>">
                         </div>
                     </div>
+                    
+                    
+                    <script>
+	                    function postCode() {
+	                		//daum.postcode.load(function(){
+	                			new daum.Postcode({
+	                				oncomplete: function(data) {
+	                				
+	                				var roadAddr = data.roadAddress;
+	                	            var jibunAddr = data.jibunAddress;
+	                	            
+	                	            document.getElementById("address1").value = data.zonecode;
+	                	            if(roadAddr !== ""){
+	                	                document.getElementById("address2").value = roadAddr;
+	                	            } 
+	                	            else if(jibunAddr !== ""){
+	                	                document.getElementById("address2").value = jibunAddr;
+	                	            }
+	                	            
+	                	            document.getElementById("address3").focus();
+	                	            
+	                				}
+	                			}).open();
+	                		// });
+	                	}
+                    </script>
+                    
 
                     <div>
                         <div>
@@ -278,10 +306,10 @@
                         </div>
 
                         <div>
-                        	<% if(loginUser.getMemImg() == null){ %>
-                            	<img id="imgFile" width="250" height="250">
-                            <% }else{ %>
+                        	<% if(loginUser.getMemImg() != null){ %>
                             	<img id="imgFile" width="250" height="250" src="<%=contextPath%>/<%=loginUser.getMemImg()%>">
+                            <% } else { %>
+                            	<img id="imgFile" width="250" height="250">
                             <% } %>
                         </div>
                         
@@ -305,8 +333,6 @@
                                     // const img = document.getElementById("#imgFile");
                                     // img.setAttribute("src", e.target.result);
                                 }
-                            } else {
-                                $("#imgFile").attr("src", null);
                             }
                         }
                     </script>

@@ -76,6 +76,14 @@ public class NoticeService {
 		return result;
 	}
 	
+	/* 가연: userNoticePageView*/
+	public ArrayList<Notice> userSelectList() {
+		Connection conn = getConnection();
+		ArrayList<Notice> list = new NoticeDao().userSelectList(conn);
+		close(conn);
+		return list;
+	}
+	
 	
 	
 }

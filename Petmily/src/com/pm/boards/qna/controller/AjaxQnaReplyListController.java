@@ -37,40 +37,63 @@ public class AjaxQnaReplyListController extends HttpServlet {
 		
 		int qnaNo = Integer.parseInt(request.getParameter("qno"));
 		
-		int replyCount;
-		int currentPage; 
-		int pageLimit;
-		int boardLimit;
+//		int replyCount;
+//		int currentPage; 
+//		int pageLimit;
+//		int replyLimit;
+//		
+//		int maxPage;
+//		int startPage;
+//		int endPage;
+//				
+//		replyCount = new QnaService().selectReplyCount(qnaNo); 
+//		currentPage = Integer.parseInt(request.getParameter("rpage"));
+//				
+//		pageLimit = 5;
+//		replyLimit = 10;
+//				
+//				
+//		maxPage = (int) Math.ceil((double)replyCount / replyLimit);
+//		startPage = (currentPage -1) / pageLimit * pageLimit +1;
+//		endPage = startPage + pageLimit -1;
+//		
+//		if(endPage > maxPage) {
+//			endPage = maxPage;
+//		}
+//
+//		PageInfo pi = new PageInfo(replyCount, currentPage, pageLimit, replyLimit, maxPage, startPage, endPage);
+//		
+//
+//		ArrayList<Reply> list = new QnaService().selectReplyList(pi, qnaNo);
+//		HashMap<String, Object> result = new HashMap<>();
+//		result.put("pi", pi);
+//		result.put("list", list);
+//		
+//		response.setContentType("application/json; charset=UTF-8");
+//		new Gson().toJson(list, response.getWriter());
 		
-		int maxPage;
-		int startPage;
-		int endPage;
-				
-		replyCount = new QnaService().selectReplyCount(qnaNo); 
-		currentPage = Integer.parseInt(request.getParameter("rpage"));
-				
-		pageLimit = 5;
-		boardLimit = 10;
-				
-				
-		maxPage = (int) Math.ceil((double)replyCount / boardLimit);
-		startPage = (currentPage -1) / pageLimit * pageLimit +1;
-		endPage = startPage + pageLimit -1;
+		int replyCount = new QnaService().selectReplyCount(qnaNo);
+		int currentPage = Integer.parseInt(request.getParameter("rpage"));
+		int pageLimit = 5;
+		int replyLimit = 10;
+		int maxPage = (int)Math.ceil((double)replyCount / replyLimit);
+		int startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		int endPage = startPage + pageLimit -1;
 		
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
-
-		PageInfo pi = new PageInfo(replyCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-
+		PageInfo pi = new PageInfo(replyCount, currentPage, pageLimit, replyLimit, maxPage, startPage, endPage);
+		
 		ArrayList<Reply> list = new QnaService().selectReplyList(pi, qnaNo);
+		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("pi", pi);
 		result.put("list", list);
 		
-		response.setContentType("application/json; charset=UTF-8");
-		new Gson().toJson(list, response.getWriter());
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(result, response.getWriter());
 		
 	}
 

@@ -95,7 +95,7 @@ public class QnaService {
 			}
 		}
 		
-		if(qResult * atResult > 0) {
+		if(qResult > 0 && atResult > 0) {
 			commit(conn);
 		} else {
 			rollback(conn);

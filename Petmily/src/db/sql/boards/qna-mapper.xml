@@ -135,19 +135,19 @@
 		  INTO ATTACHMENT
 		  (
 		    ATTACHMENT_NO
-		  , REF_BOARD_NO
-		  , REF_NO
 		  , ORIGIN_NAME
 		  , CHANGE_NAME
+		  , REF_NO
+		  , REF_BOARD_NO
 		  , FILE_PATH
 		  )
 		  VALUES
 		  (
 		    SEQ_ATT.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
 		  , 8
-		  , ?
-		  , ?
-		  , ?
 		  , ?
 		  )
 	</entry>

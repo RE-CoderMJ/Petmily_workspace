@@ -200,6 +200,38 @@ public class NoticeDao {
 		return result;
 	}
 	
+	/* 가연: userNoticePageView*/
+	public ArrayList<Notice> userSelectList(Connection conn) {
+		
+		ArrayList<Notice> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userSelectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Notice(rset.getInt("notice_no"),
+								 	rset.getString("notice_title"),
+								 	rset.getString("notice_content"),
+								 	rset.getString("notice_date"),
+								 	rset.getString("status")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
 
 
 }

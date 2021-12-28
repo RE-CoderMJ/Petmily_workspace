@@ -266,9 +266,9 @@ public class QnaDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, at.getRefNo());
-			pstmt.setString(2, at.getOriginName());
-			pstmt.setString(3, at.getChangeName());
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setInt(3, at.getRefNo());
 			pstmt.setString(4, at.getFilePath());
 			
 			atResult = pstmt.executeUpdate();
@@ -277,7 +277,6 @@ public class QnaDao {
 		} finally {
 			close(pstmt);
 		}
-		
 		return atResult; 
 	}
 
