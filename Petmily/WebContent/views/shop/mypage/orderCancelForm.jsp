@@ -142,12 +142,11 @@
                     <hr>
                     <div id="two">
                         <div class="smalltitle">취소사유</div>
-                        <div class="dropdown">
-                            <button type="button" id="dropdown" class="btn dropdown-toggle" data-toggle="dropdown">
-                               	 취소사유
-                            </button>
+
+                            
 
                             <select id="ccreason" name="ccreason">
+                              <option>( 취소사유를 선택하세요 )</option>
 		                      <option value="ccreson1">고객변심</option>
 		                      <option value="ccreson2">상품불만족</option>
 		                      <option value="ccreson3">고객주문오류</option>
@@ -191,7 +190,7 @@
                         <table>
                             <tr>
                                 <td>상품금액</td>
-                                <td><%= ca1.getPrice() %></td>
+                                <td><%= ca1.getPrice() %>원</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
@@ -203,7 +202,7 @@
                             </tr>
                             <tr>
                                 <th>최종 결제금액</th>
-                                <th><%= sum.getPriceSum() %> </th>
+                                <th><%= sum.getPriceSum()-500 %> 원</th>
                             </tr>
                         </table>
                         

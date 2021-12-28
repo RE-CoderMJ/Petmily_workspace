@@ -206,11 +206,11 @@
             <table>
                 <tr>
                     <td>상품금액</td>
-                    <td><%= od.getPrice() %> 원</td>
+                    <td><%= o.getPrice() %> 원</td>
                 </tr>
                 <tr>
                     <td>배송비</td>
-                    <td>2,500원</td>
+                    <td>무료배송</td>
                 </tr>
                  <tr>
                     <td>결제수단</td>
@@ -222,7 +222,7 @@
                 </tr>
                 <tr>
                     <th>최종 결제금액</th>
-                    <th>22,000 </th>
+                    <th><%= o.getPrice()-500 %> 원 </th>
                 </tr>
             </table>
             <br><br>

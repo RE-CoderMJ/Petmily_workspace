@@ -51,13 +51,14 @@
             padding: 10px 20px;
             border-radius: 10px;
             position: relative;
-            margin-left:200px;
+            margin-left:250px;
         }
         .content-img{margin-left: 30px;}
 
         .one{
             position: relative;
             margin:10px 0;
+            font-size:15px;
         }
         .onecontent{
             position: absolute;
@@ -69,11 +70,11 @@
 
         #two{
             margin:10px 30px;
-
+			font-size:18px;
         }
         #three{
             margin:10px 30px;
-
+			font-size:18px;
         }
 
         .smalltitle{
@@ -183,12 +184,12 @@
                 <table>
                     <tr>
                         <td>환불상품금액</td>
-                        <td>(총금액)원</td>
+                        <td><%= c.getPrice() %>원</td>
                     </tr>
 
                     <tr>
                         <td>환불포인트</td>
-                        <td> -500 p</td>
+                        <td> 500 p</td>
                     </tr>
                     <tr>
                         <th>최종 결제금액</th>
