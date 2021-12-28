@@ -107,6 +107,7 @@ $(function(){
 	$("button").click(function(){
 		
 		var num = $(this).children("input").val(); 
+		var $divEl = $(this).parent();
 		//속성을 꺼내는 attr함수, 클릭할 때마다 기본키를 받을 수 있도록 
 		//console.log(pno);
 		console.log(num);
@@ -119,7 +120,8 @@ $(function(){
 			type:"post",
 			success:function(result){
 				if(result>0){
-					$(this).parent().remove();
+					$divEl.remove();
+					//$(this).parent().remove();
 					//$("#like-content").remove();
 				}
 			},

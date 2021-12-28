@@ -99,6 +99,8 @@
         }
         #bbtn{ 
             background-color: rgb(247, 198, 4);
+            color:black;
+            text-decoration:none;
             width:100px;
             padding:7px 15px;
             border:0;
@@ -107,6 +109,10 @@
             position: absolute;
             right:100px;
             bottom:100px;
+        }
+        #bb{
+         	color:black;
+            text-decoration:none;
         }
         .inline-block{display:inline-block;}
     </style>
@@ -208,7 +214,7 @@
                         <%-- <input type="hidden" name="sledding" value="<%= ca1.get %>">--%>
                         <input type="hidden" name="pnum" value="<%= ca1.getOrderPnum() %>">
                         
-                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my?">취소신청</a></button>
+                        <button id="bbtn"><a href="<%= contextPath %>/cancelComplete.my?" id="bb">취소신청</a></button>
 
                         
                     </div>
