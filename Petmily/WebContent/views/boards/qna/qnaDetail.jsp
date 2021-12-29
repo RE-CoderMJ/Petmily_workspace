@@ -281,10 +281,11 @@
                     <b>댓글 <b style="color: orange;"><%= replyCount %></b></b>
 
                     <div class="write-reply">
-                        <img src="resources/img/profile_default.png" class="profileImg">
                             <% if(loginUser == null) {%>
+                        		<img src="resources/img/profile_default.png" class="profileImg">
                             	<input type="text" placeholder="로그인 후 댓글을 남겨보세요" readonly>
                             <% } else { %>
+                            	<img src="<%= loginUser.getMemImg() %>" class="profileImg">
                                 <input type="text" id="reply-input" placeholder="댓글을 남겨 보세요." required>
                             <% } %>
                                 <button id="reply-enrollbtn" class="btn btn-sm btn-warning" onclick="insertReply()">등록</button>

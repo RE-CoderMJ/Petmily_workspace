@@ -129,7 +129,7 @@
                     <table class="table table-hover" style="width: 1000px;">
                         <thead>
                             <tr style="background-color: lightgray;">
-                                <th width="50px">No.</th>
+                                <%-- <th width="50px">No.</th> --%>
                                 <th width="150px">분류</th>
                                 <th width="550px">제목</th>
                                 <th width="150px">작성일</th>
@@ -146,7 +146,7 @@
                              <% } else { %>
                                 <% for(int i=0; i<list.size(); i++) {%>
                             <tr>
-                                <td><%= i+1 %></td>
+                                <%-- <td><%= i+1 %></td> --%>
                                 <td><%= list.get(i).getCategory() %></td>
                                 <td><%= list.get(i).getTitle() %></td>
                                 <td><%= list.get(i).getEnrollDate() %></td>
