@@ -98,7 +98,7 @@
 	            <% } %>
 	            <div class="texts">
 	               <div class="title"><%= a.getAskTitle() %></div>
-	               <div class="info"><%= a.getAskWriterNickName() %>&nbsp;&nbsp; <%=a.getEnrollDate() %> &nbsp;&nbsp;&nbsp;댓글0 &nbsp;&nbsp;&nbsp;조회 <%= a.getCount() %></div>
+	               <div class="info"><%= a.getAskWriterNickName() %>&nbsp;&nbsp; <%=a.getEnrollDate() %>&nbsp;&nbsp;&nbsp;조회 <%= a.getCount() %></div>
 	               <div class="text" align="left"><%= a.getAskContent() %></div>
 	            </div>
 	         </div>

@@ -585,4 +585,29 @@ public class PetLogDao {
 		
 		return list;
 	}
+
+	public ArrayList<PetLog> selectMainList(Connection conn) {
+		ArrayList<PetLog> mPetLogList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PetLog pl = new PetLog();
+				pl.setPetLogNo(rset.getInt("petlog_no"));
+				pl.setTitleImg(rset.getString("titleimg"));
+				mPetLogList.add(pl);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return mPetLogList;
+	}
 } 

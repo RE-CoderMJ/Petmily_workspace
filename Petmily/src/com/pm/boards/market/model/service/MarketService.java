@@ -8,6 +8,8 @@ import static com.pm.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.pm.boards.ask.model.dao.AskDao;
+import com.pm.boards.ask.model.vo.Ask;
 import com.pm.boards.market.model.dao.MarketDao;
 import com.pm.boards.market.model.vo.Market;
 import com.pm.common.model.vo.Attachment;
@@ -155,5 +157,12 @@ public class MarketService {
 		ArrayList<Reply> list = new MarketDao().selectReplyList(conn, pi, mno);
 		close(conn);
 		return list;
+	}
+
+	public ArrayList<Market> selectMainList() {
+		Connection conn = getConnection();
+		ArrayList<Market> mMarketList = new MarketDao().selectMainList(conn);
+		close(conn);
+		return mMarketList;
 	}
 }

@@ -203,5 +203,11 @@ public class PetLogService {
 		close(conn);
 		return list;
 	}
+
+	public ArrayList<PetLog> selectMainList() {
+		Connection conn = getConnection();
+		ArrayList<PetLog> mPetLogList = new PetLogDao().selectMainList(conn);
+		return mPetLogList;
+	}
 	
 }

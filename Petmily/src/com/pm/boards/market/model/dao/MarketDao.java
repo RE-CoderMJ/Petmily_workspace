@@ -406,4 +406,35 @@ public class MarketDao {
 				
 		return list;
 	}
+
+	public ArrayList<Market> selectMainList(Connection conn) {
+		ArrayList<Market> mMarketList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Market m = new Market();
+				m.setMarketNo(rset.getInt("market_no"));
+				m.setdCategory(String.valueOf(rset.getInt("d_category")));
+				m.setMarketTitle(rset.getString("market_title"));
+				m.setMarketContent(rset.getString("market_content"));
+				m.setPrice(rset.getString("pricetxt"));
+				m.setTitleImg(rset.getString("titleimg"));
+				
+				mMarketList.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return mMarketList;
+	}
 }

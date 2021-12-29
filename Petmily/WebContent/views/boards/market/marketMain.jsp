@@ -4,6 +4,7 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Market> list = (ArrayList<Market>)request.getAttribute("list");
 	
+	int listCount = (int)request.getAttribute("listCount");
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -61,7 +62,7 @@
 	        <div id="middle-area">
 	            <div align="left" id="selectBy">
 	               <!-- 선택한 카테고리에 따라 문구 변경됨 -->
-	               전체 <%= list.size() %>건
+	               전체 <%= listCount %>건
 	            </div>
 	            <% if(loginUser != null) { %>
 		            <div align="right">

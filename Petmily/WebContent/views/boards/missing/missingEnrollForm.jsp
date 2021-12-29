@@ -94,7 +94,7 @@
 		                </div>
 		                <div class="name-area">
 		                    <span>이름</span>
-		                    <input type="text" name="mpName" required>
+		                    <input type="text" name="mpName">
 		                </div>
 		                <div class="age-area">
 		                    <span style="margin-right: 49px;">나이</span>
@@ -140,7 +140,7 @@
     		$(".select-dcategory").on("change", function(){
 	    		var option = $(".select-dcategory option:selected").val();
 	    		console.log(option);
-	    		if(option == "found"){
+	    		if(option == 2){
 	    			$(".missing-t").hide();
 	    			$(".found-t").show();
 	    		}else{

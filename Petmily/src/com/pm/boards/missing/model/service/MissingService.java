@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.pm.boards.ask.model.dao.AskDao;
+import com.pm.boards.ask.model.vo.Ask;
 import com.pm.boards.missing.model.dao.MissingDao;
 import com.pm.boards.missing.model.vo.Missing;
 import com.pm.common.model.vo.Attachment;
@@ -156,5 +157,12 @@ public class MissingService {
 		ArrayList<Reply> list = new MissingDao().selectReplyList(conn, pi, miNo);
 		close(conn);
 		return list;
+	}
+
+	public ArrayList<Missing> selectMainList() {
+		Connection conn = getConnection();
+		ArrayList<Missing> mMissingList = new MissingDao().selectMainList(conn);
+		close(conn);
+		return mMissingList;
 	}
 }

@@ -5,7 +5,7 @@ div, img, li, a{
 /*전체적인 틀*/
 .outer{
     width: 1400px;
-    height: 1200px;
+    height: 1280px;
     margin:auto;
 
 }     
@@ -62,9 +62,11 @@ div, img, li, a{
 /*펫로그*/
 #content1{
     background-color: rgb(247, 198, 4);
-    width:100%;
-    height:88%;
+    width:98%;
+    height:270px;
     margin: auto;
+    margin-top:10px;
+    margin-right:100px;
 }
 #profile{
     width:150px;
@@ -72,17 +74,30 @@ div, img, li, a{
     padding-top:30px;
     display: inline-block;
 }
+#profileimg{
+	border-radius: 100px;
+	width:150px;
+	height:150px;
+	overflow:hidden;
+	background:white;
+}
 #profileimg img{
     display: inline-block;
-    width:100px;
-    height:100px;
+    width:100%;
+    height:100%;
     border-radius: 100px;
+    object-fit: cover;
 }
 #login-user{
 	display: inline-block; 
 	border-radius:5px;
 	background-color:white;
-	width:150px;
+	width:200px;
+	height:40px;
+	font-weight:bolder;
+	font-size:20px;
+	line-height:40px;
+	margin-left:-24px;
 }
 #petlogSummary{
     width:830px;
@@ -99,24 +114,27 @@ div, img, li, a{
 .swiper-slide {
     text-align:center;
     display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
- align-items:center; /* 위아래 기준 중앙정렬 */
- justify-content:center; /* 좌우 기준 중앙정렬 */
+ 	justify-content:center; /* 좌우 기준 중앙정렬 */
     box-sizing:border-box;
 }
 .swiper-slide img {
-	width:150px;
-	height:150px;
+	width:100%;
+	height:90%;
+	object-fit: cover;
     /*max-width:80%;*/ /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
-
    }
 
- .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
- 	background:black;
- }
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+ 	background:rgb(247, 198, 4);
+}
+.swiper-pagination{
+	position:absolute;
+	top:240px;
+}
 .button-next{
 	position:absolute;
-	right: -5px;
-    top: 70px;
+	right: 5px;
+    top: 100px;
     z-index: 10;
     cursor: pointer;
     background-size: 27px 44px;
@@ -125,16 +143,14 @@ div, img, li, a{
 }
 
 .button-next img{
-    width: 27px;
-    height: 44px;
-    opacity: 0.7;
-    
+    width: 20px;
+    height: 30px;
 }
 
 .button-prev{
 	position:absolute;
-	left: -5px;
-    top: 70px;
+	left: 5px;
+    top: 100px;
     z-index: 10;
     cursor: pointer;
     background-size: 27px 44px;
@@ -144,9 +160,8 @@ div, img, li, a{
 }
 
 .button-prev img{
-    width: 27px;
-    height: 44px;
-    opacity: 0.7;
+    width: 20px;
+    height: 30px;
 }
 
 
@@ -180,11 +195,12 @@ div, img, li, a{
 	height: 80px;
 	margin-bottom:13px;
 	margin-top:15px;
+	cursor:pointer;
 }
 .ask-photo{
     border: 1px solid darkgray;
     margin-right: 5px;
-    margin-left:0px;
+    margin-left:5px;
     width: 80px;
     height: 80px;
     float:left;
@@ -195,7 +211,7 @@ div, img, li, a{
 	object-fit:cover;
 }
 .ask-texts{
-    width:75%;
+    width:73%;
     display: inline-block;
 }
 .ask-title{
@@ -256,7 +272,12 @@ div, img, li, a{
 .photo-box{
     width: 120px;
     height: 120px;
-    border: 1px solid black;
+    border: 1px solid darkgray;
+}
+.photo-box img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
 }
 .content-title{
     font-weight: bolder;
@@ -286,17 +307,25 @@ div, img, li, a{
 }
 .missing-content-box-area{
     width: 340px;
-    margin:10px 0px;	
+    margin:10px 0px;
+    margin-bottom:30px;
+    margnin-top:50px;
 }
 .missing-content-info-area, .missing-img{
     cursor:pointer;	
 }
 .missing-img{
     float: left;
-    width: 100px;
-    height: 100px;
-    margin-top:15px;
+    width: 110px;
+    height: 110px;
+	margin-right: 10px;
     margin-left:10px;
+    border:1px solid darkgray;
+}
+.missing-img img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
 }
 .found-title{
     background: rgb(2, 68, 2);
@@ -305,6 +334,7 @@ div, img, li, a{
     font-size: 14px;
     width: 100px;
     text-align: center;
+    margin-left:10px;
 }
 .missing-title{
     background: rgba(255, 110, 32, 0.946);
@@ -313,6 +343,7 @@ div, img, li, a{
     font-size: 14px;
     width: 80px;
     text-align: center;
+    margin-left:10px;
 }
 .missing-content-info-area{
     width: 200px;
@@ -321,8 +352,8 @@ div, img, li, a{
 }
 .gender-age{
     font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 4px;
+    margin-bottom: 2px;
 }
 .dpf-area >div{
     text-overflow:ellipsis;

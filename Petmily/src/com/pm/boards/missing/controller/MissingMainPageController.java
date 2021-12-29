@@ -52,7 +52,7 @@ public class MissingMainPageController extends HttpServlet {
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
+		request.setAttribute("listCount", listCount);
 		request.getRequestDispatcher("views/boards/missing/missingMain.jsp").forward(request, response);
 	}
 

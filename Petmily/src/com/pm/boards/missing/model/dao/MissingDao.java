@@ -405,4 +405,38 @@ public class MissingDao {
 				
 		return list;
 	}
+
+	public ArrayList<Missing> selectMainList(Connection conn) {
+		ArrayList<Missing> mMissingList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Missing m = new Missing();
+				m.setMissingNo(rset.getInt("missing_no"));
+				m.setdCategory(rset.getInt("d_category"));
+				m.setpName(rset.getString("pname"));
+				m.setpGender(rset.getString("gender"));
+				m.setpAgeFrom(rset.getInt("age_from"));
+				m.setMissingDate(rset.getString("mi_date"));
+				m.setLocation(rset.getString("location"));
+				m.setFeature(rset.getString("feature"));
+				m.setTitleImg(rset.getString("titleimg"));
+				
+				mMissingList.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return mMissingList;
+	}
 }

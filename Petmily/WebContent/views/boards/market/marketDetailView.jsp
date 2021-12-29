@@ -90,10 +90,10 @@
 	              		})
 	              	</script>
 	              	<% if(list.size()>1) { %>
-		                <a class="left carousel-control" href="#demo" data-slide="prev" onclick="$('#demo').carousel('prev')">
+		                <a class="left carousel-control" href="#demo" data-slide="prev">
 	                    	<img src="resources/img/left_arrow.png" id="left-controller">
 	                    </a>
-						<a class="right carousel-control" href="#demo" data-slide="next" onclick="$('#demo').carousel('next')">
+						<a class="right carousel-control" href="#demo" data-slide="next">
 							<img src="resources/img/right_arrow.png" id="right-controller">
 						</a>
 					<% } %>

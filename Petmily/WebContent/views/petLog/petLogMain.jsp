@@ -200,6 +200,7 @@
                     })
                 })
             </script>
+            <a href="#top" id="pageUp"><img src="resources/img/pageUp.png"></a>
         </div>
     </div>
     <input type="hidden" id="deleteNo">
@@ -237,13 +238,6 @@
 				location.href="<%=contextPath%>/main.petLog?page=1";
 			})
 		})
-	</script>
-	
-	<script>
-	$(function(){
-     	
- 		
- 	})
 	</script>
     
     <%@ include file="../common/footerbar.jsp" %>

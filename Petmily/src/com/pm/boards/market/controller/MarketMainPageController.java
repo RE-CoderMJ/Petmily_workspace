@@ -49,6 +49,7 @@ public class MarketMainPageController extends HttpServlet {
 		
 		ArrayList<Market> list = new MarketService().selectMarketList(pi);
 		
+		request.setAttribute("listCount", listCount);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		

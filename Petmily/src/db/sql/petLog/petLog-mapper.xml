@@ -249,4 +249,22 @@
 		 ORDER
 		    BY REPLY_NO DESC     
 	</entry>
+	<entry key="selectMainList">
+		SELECT ROWNUM, AA.*
+		  FROM (
+		       	SELECT
+					   PETLOG_NO
+					 , (SELECT
+					           FILE_PATH || CHANGE_NAME
+					      FROM ATTACHMENT
+					     WHERE REF_NO = P.PETLOG_NO
+					       AND REF_BOARD_NO = 6
+					       AND ROWNUM = 1) "TITLEIMG"
+				  FROM PETLOG P
+			     WHERE P.STATUS = 'Y'
+			     ORDER
+			        BY PETLOG_NO DESC
+				) AA
+		<![CDATA[WHERE ROWNUM <= 8]]>					  		
+	</entry>
 </properties>
