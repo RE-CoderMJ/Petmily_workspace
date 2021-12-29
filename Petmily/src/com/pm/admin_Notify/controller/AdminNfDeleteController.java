@@ -34,7 +34,7 @@ public class AdminNfDeleteController extends HttpServlet {
 		int result = new AdminNotifyService().deleteNotify(reportNo);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("alert", "회원삭제 완!");
+			request.getSession().setAttribute("alert", "회원삭제를 완료했습니다.");
 			
 			response.sendRedirect(request.getContextPath() + "/nfList.ad?cpage=1");
 		}else {

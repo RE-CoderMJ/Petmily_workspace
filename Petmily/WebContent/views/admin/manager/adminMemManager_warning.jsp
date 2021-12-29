@@ -156,7 +156,7 @@
                     <div class="table">
                         <!-- btn-box -->
                         <div class="btn-box pb-5" style="width: 100%;">
-                            <button onclick="location.href='<%= contextPath %>/blackDelete.ad?mno='+no;" class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">계정 삭제</button>
+                            <button onclick="location.href='<%= contextPath %>/blackDelete.ad?mno='+no;" class="btn btn-sm btn-danger mr-2"  data-toggle="modal" data-target="#deleteModal">회원 탈퇴</button>
                         	<input type="hidden" id="memNo" name="mno">
                         </div>
                         <!-- 회원삭제 Modal -->

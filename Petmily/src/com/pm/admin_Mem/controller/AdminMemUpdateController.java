@@ -49,7 +49,7 @@ public class AdminMemUpdateController extends HttpServlet {
 		
 		if(result > 0) {
 			
-			request.getSession().setAttribute("alert", "횐님 수정완.");
+			request.getSession().setAttribute("alert", "회원 수정을 완료 했습니다.");
 			response.sendRedirect(request.getContextPath() + "/memMg.ad?cpage=1");
 			
 		}else {

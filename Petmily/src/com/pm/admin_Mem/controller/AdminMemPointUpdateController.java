@@ -43,7 +43,7 @@ public class AdminMemPointUpdateController extends HttpServlet {
 		
 		if(result > 0) {
 			
-			request.getSession().setAttribute("alert", "포인트(적립/차감) 완료");
+			request.getSession().setAttribute("alert", "포인트(적립/차감)을 완료 했습니다.");
 			response.sendRedirect(request.getContextPath() + "/memPoint.ad?cpage=1");
 			
 		}else {

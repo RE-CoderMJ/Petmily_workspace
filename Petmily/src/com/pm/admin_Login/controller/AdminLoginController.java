@@ -40,7 +40,7 @@ public class AdminLoginController extends HttpServlet {
 		AdminMember loginAdmin = new AdminMemberService().loginAdmin(managerId,managerPwd);
 		
 		if(loginAdmin == null) {
-			request.setAttribute("errorMsg", "당신같은 관리자는 없습니다.나가세요.");
+			request.setAttribute("errorMsg", "존재하지 않는 관리자 입니다. 다시 로그인 해 주세요.");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/error/loginErrorPage.jsp");
 			view.forward(request, response);

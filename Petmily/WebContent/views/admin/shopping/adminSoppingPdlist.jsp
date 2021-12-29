@@ -335,7 +335,7 @@
                         </div>
                         <div class="md-box">
                             <p>#불량 교환시 [불량교환] 기대 부탁드립니다.</p>
-                            <textarea id="reason" type="text" style="resize: none;">사이즈가 개판이에요.ㅡㅡ l시켰는데 s왔어요 원래 장사 이렇게 하시나요?
+                            <textarea id="reason" type="text" style="resize: none;">츄르맛이 별로네요 제가 먼저 먹어봤어요
                             </textarea> 
                         </div>
                         

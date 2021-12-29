@@ -34,7 +34,7 @@ public class AdminSpDeleteController extends HttpServlet {
 		int result = new AdminShoppingService().spDelete(productNo);
 	
 		if(result > 0) {
-			request.getSession().setAttribute("alert", "글삭제 완.");
+			request.getSession().setAttribute("alert", "글삭제가 완료 되었습니다.");
 
 			response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 			

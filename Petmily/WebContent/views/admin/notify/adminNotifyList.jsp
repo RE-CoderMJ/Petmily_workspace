@@ -316,7 +316,7 @@
                                                     	누적 경고 수
                                                 </div>
                                                 <div id="report-Msg">
-                                                    	0회
+                                                    	1회
                                                 </div>
                                             </div>
                                             <!-- Modal footer -->

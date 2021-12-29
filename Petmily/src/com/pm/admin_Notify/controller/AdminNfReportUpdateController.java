@@ -36,7 +36,7 @@ public class AdminNfReportUpdateController extends HttpServlet {
 		int result = new AdminNotifyService().updateReportCount(reportNo);
 	
 		if(result > 0) {
-			request.getSession().setAttribute("alert", "경고처리 완료");
+			request.getSession().setAttribute("alert", "경고처리를 완료 했습니다.");
 			
 			response.sendRedirect(request.getContextPath() + "/nfList.ad?cpage=1");
 		}else {

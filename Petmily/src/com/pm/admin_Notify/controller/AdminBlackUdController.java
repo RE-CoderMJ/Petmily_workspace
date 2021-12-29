@@ -36,7 +36,7 @@ public class AdminBlackUdController extends HttpServlet {
 		int result = new AdminNotifyService().updateBlackMem(reportNo);
 	
 		if(result > 0) {
-			request.getSession().setAttribute("alert", "블랙리스트 회원으로 변경 완료");
+			request.getSession().setAttribute("alert", "블랙리스트 회원으로 변경 완료했습니다.");
 			
 			response.sendRedirect(request.getContextPath() + "/memWarning.ad");
 		}else {

@@ -126,7 +126,7 @@ public class AdminSpPdUpdateController extends HttpServlet {
 			int result = new AdminShoppingService().updateProduct(as, list);
 			
 			if(result >0) {
-				request.getSession().setAttribute("alert", "성공적으로 수정 완.");
+				request.getSession().setAttribute("alert", "성공적으로 상품 수정 완료 되었습니다.");
 				response.sendRedirect(request.getContextPath() + "/spPdUd.ad?cpage=1");
 			}else {
 				request.setAttribute("errorMsg", "쇼핑몰 수정 실패 ㅋㅋ");

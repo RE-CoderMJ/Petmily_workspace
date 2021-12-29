@@ -181,7 +181,7 @@
                 </div>
                 <div class="content">
                     <hr>
-                    <p class="ct-tit pb-3">신고 회원 관리</p>
+                    <p class="ct-tit pb-3">경고 회원 관리</p>
                     <!-- 회원 조회 -->
                     <div class="search-box pb-5">
                         <select class="selectpicker show-tick p-2">
