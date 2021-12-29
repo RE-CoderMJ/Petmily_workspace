@@ -139,7 +139,7 @@
     	$(function(){
     		$(".select-dcategory").on("change", function(){
 	    		var option = $(".select-dcategory option:selected").val();
-	    		console.log(option);
+	    		
 	    		if(option == 2){
 	    			$(".missing-t").hide();
 	    			$(".found-t").show();

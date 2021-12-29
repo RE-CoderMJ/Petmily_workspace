@@ -127,11 +127,19 @@
 					<span><%=mi.getpAgeFrom() %>세 ~ <%=mi.getpAgeTo() %>세</span>
 				</div>
 				<div class="missing-date-area">
+				<%if(mi.getdCategory() == 1) {  %>
 					<span class="info-title">발생일</span>
+				<% }else { %>
+					<span class="info-title">발견일</span>
+				<% } %>
 					<span><%=mi.getMissingDate() %></span>
 				</div>
 				<div id="missing-place-area">
+				<%if(mi.getdCategory() == 1) {  %>
 					<div class="adTitle info-title">발생장소</div>
+				<% }else { %>
+					<div class="adTitle info-title">발견장소</div>
+				<% } %>
 					<div class="address-content"><%=mi.getLocation() %></div>
 				</div>
 				<div class="feature-area">

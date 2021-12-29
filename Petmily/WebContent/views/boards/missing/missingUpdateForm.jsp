@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>    
-            <div align="right" class="enroll-btn-area"><button class= "btn">올리기</button></div>
+            <div align="right" class="enroll-btn-area"><button class= "btn">수정하기</button></div>
        		</form>
 	        </div>
 		
@@ -263,22 +263,6 @@
                             $(".carousel-item").last().children("img").attr("src", e.target.result);
                             $imgCount++;
                     	}
-                    	/*
-                    	switch(num){
-                    		case 1: $(".active").children("img").attr("src", e.target.result); break;
-                    		case 2: $(".carousel-item").children("img").attr("src", e.target.result); break;
-                    		case 3: $(".carousel-item").next().children("img").attr("src", e.target.result);break;
-                    		case 4: $(".carousel-item").next().next().children("img").attr("src", e.target.result); break;
-                    		case 5: $(".carousel-item").last().children("img").attr("src", e.target.result); break;
-                    	}
-                    	*/
-                       /*if(num == 1){
-                          //$(".carousel-inner").append("<div class='carousel-item active'><img src='' alt=''></div>");
-                          $(".active").children("img").attr("src", e.target.result);
-                       }else{
-                          $(".carousel-inner").append("<div class='carousel-item'><img src='' alt=''></div>");
-                        $(".carousel-item").last().children("img").attr("src", e.target.result);
-                       }*/
                        
                     }
                  }else{

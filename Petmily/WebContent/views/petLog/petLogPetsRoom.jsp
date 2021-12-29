@@ -370,11 +370,9 @@
 						$("#edit-profile-img").append("<img src='' alt=''>");
 						$("#edit-profile-img").children("img").attr("src", "/PM/" + info.pr.pProfileImg);
 						$("#originFileNo").val(info.att.attachmentNo);														
-						/* if(info.att.attachmentNo != 0){
-							$("#file-upload-area").append("<input type='hidden' id='originFileNo' name='o'")
-						} */
+						
 						$("#bio-edit").val(info.pr.bio);
-						console.log(info.att.attachmentNo);
+						
 					},
 					error:function(){
 						console.log("게시글 삭제 실패!");

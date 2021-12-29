@@ -119,8 +119,6 @@
 					alert("사진은 5개까지 업로드가 가능합니다.");
 					return;
 				}
-				//let $num = ($("#add-area").children("input").last().attr('name')).substring(4);
-				//let result = $maxAppend+1;
 				$("#add-area").append("<input class='file' type='file'>");
 				$maxAppend++;
 				$("#add-area").children("input").last().attr('name', 'file' + $maxAppend);
@@ -130,7 +128,6 @@
 		})
 	</script>
    <script>
-		  //let clickCount = 0;
 		  let $imgCount = Number(($("#add-area").children("input").last().attr('name')).substring(4));
 		  
 		  
